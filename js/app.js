@@ -162,85 +162,88 @@ let leafletMap = null;
 let mapMarkers = [];
 
 function initMap() {
-  // Set explicit pixel height for iOS PWA compatibility
-  const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 48;
-  const tabH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tab-height')) || 56;
-  const safeBottom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom')) || 0;
-  const availH = window.innerHeight - headerH - tabH - safeBottom;
-  views.map.style.height = availH + 'px';
-
   if (state.mapReady) {
-    setTimeout(() => leafletMap.invalidateSize(), 100);
+    requestAnimationFrame(() => leafletMap.invalidateSize());
     return;
   }
 
+  state.mapReady = true;
   views.map.innerHTML = '<div id="map-container"></div>';
 
-  leafletMap = L.map('map-container', {
-    center: [27.7706, -82.6600],
-    zoom: 13,
-    zoomControl: false,
-  });
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO',
-    maxZoom: 19,
-  }).addTo(leafletMap);
-
-  murals.forEach(m => {
-    if (!m.lat || !m.lng) return;
-    const color = YEAR_COLORS[m.year] || '#999';
-
-    const marker = L.circleMarker([m.lat, m.lng], {
-      radius: 7,
-      fillColor: color,
-      color: '#fff',
-      weight: 2,
-      fillOpacity: 0.9,
-    }).addTo(leafletMap);
-
-    const popupHtml = `
-      <div style="text-align:center;min-width:150px">
-        ${m.img ? `<img src="${m.img}" style="width:150px;height:100px;object-fit:cover;border-radius:4px;margin-bottom:6px" loading="lazy" onerror="this.style.display='none'">` : ''}
-        <div style="font-weight:700;font-size:13px">${m.artist}</div>
-        ${m.title ? `<div style="font-size:11px;font-style:italic;color:#555">${m.title}</div>` : ''}
-        <div style="font-size:11px;color:#666;margin:2px 0">${m.year}${m.building ? ' · ' + m.building : ''}</div>
-        <div style="margin-top:6px;display:flex;gap:8px;justify-content:center">
-          <a href="#" class="popup-detail-link" data-mural-id="${m.id}" style="font-size:12px;font-weight:600;color:#1E5B8A">View Details</a>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking" target="_blank" rel="noopener" style="font-size:12px;color:#666">Directions →</a>
-        </div>
-      </div>
-    `;
-
-    marker.bindPopup(popupHtml);
-
-    marker.on('popupopen', () => {
-      const link = document.querySelector(`.popup-detail-link[data-mural-id="${m.id}"]`);
-      if (link) {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          leafletMap.closePopup();
-          openDetail(m);
-        });
-      }
+  // Wait one frame for layout after view is unhidden — critical for iOS Safari/PWA
+  requestAnimationFrame(() => {
+    leafletMap = L.map('map-container', {
+      center: [27.7706, -82.6600],
+      zoom: 13,
+      zoomControl: false,
     });
 
-    mapMarkers.push({ marker, mural: m });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      maxZoom: 19,
+    }).addTo(leafletMap);
+
+    murals.forEach(m => {
+      if (!m.lat || !m.lng) return;
+      const color = YEAR_COLORS[m.year] || '#999';
+
+      const marker = L.circleMarker([m.lat, m.lng], {
+        radius: 7,
+        fillColor: color,
+        color: '#fff',
+        weight: 2,
+        fillOpacity: 0.9,
+      }).addTo(leafletMap);
+
+      const popupHtml = `
+        <div style="text-align:center;min-width:150px">
+          ${m.img ? `<img src="${m.img}" style="width:150px;height:100px;object-fit:cover;border-radius:4px;margin-bottom:6px" loading="lazy" onerror="this.style.display='none'">` : ''}
+          <div style="font-weight:700;font-size:13px">${m.artist}</div>
+          ${m.title ? `<div style="font-size:11px;font-style:italic;color:#555">${m.title}</div>` : ''}
+          <div style="font-size:11px;color:#666;margin:2px 0">${m.year}${m.building ? ' · ' + m.building : ''}</div>
+          <div style="margin-top:6px;display:flex;gap:8px;justify-content:center">
+            <a href="#" class="popup-detail-link" data-mural-id="${m.id}" style="font-size:12px;font-weight:600;color:#1E5B8A">View Details</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking" target="_blank" rel="noopener" style="font-size:12px;color:#666">Directions →</a>
+          </div>
+        </div>
+      `;
+
+      marker.bindPopup(popupHtml);
+
+      marker.on('popupopen', () => {
+        const link = document.querySelector(`.popup-detail-link[data-mural-id="${m.id}"]`);
+        if (link) {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            leafletMap.closePopup();
+            openDetail(m);
+          });
+        }
+      });
+
+      mapMarkers.push({ marker, mural: m });
+    });
+
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        L.circleMarker([state.userLat, state.userLng], {
+          radius: 8, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
+        }).addTo(leafletMap).bindPopup('You are here');
+      }, () => {}, { enableHighAccuracy: true });
+    }
+
+    setTimeout(() => leafletMap.invalidateSize(), 200);
   });
-
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(pos => {
-      state.userLat = pos.coords.latitude;
-      state.userLng = pos.coords.longitude;
-      L.circleMarker([state.userLat, state.userLng], {
-        radius: 8, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
-      }).addTo(leafletMap).bindPopup('You are here');
-    }, () => {}, { enableHighAccuracy: true });
-  }
-
-  state.mapReady = true;
-  setTimeout(() => leafletMap.invalidateSize(), 100);
 }
+
+// Resize handler for map (orientation changes, etc.)
+window.addEventListener('resize', () => {
+  if (state.mapReady && leafletMap && !views.map.hidden) {
+    leafletMap.invalidateSize();
+  }
+});
 
 // =============
 // Nearby

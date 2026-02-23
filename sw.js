@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'shine-v5';
+const CACHE_VERSION = 'shine-v6';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const IMG_CACHE = `${CACHE_VERSION}-images`;
 const TILE_CACHE = `${CACHE_VERSION}-tiles`;
