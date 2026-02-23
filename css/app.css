@@ -367,8 +367,13 @@ html, body {
 }
 .leaflet-popup-content { margin: 8px 10px !important; }
 
-/* Fix: Map view needs explicit height */
-#view-map { height: 100%; }
 
-/* Fix: Map view needs explicit height */
-#view-map { height: 100%; }
+
+/* Map view: use absolute positioning for Safari compatibility */
+#view-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
