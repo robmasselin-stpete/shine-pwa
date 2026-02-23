@@ -294,9 +294,11 @@ function renderNearby() {
         };
       });
 
-    const combined = [...muralItems, ...photoItems]
-      .sort((a, b) => a.dist - b.dist)
-      .slice(0, 20);
+    // Guarantee photos appear: take top 15 murals + top 5 photos, then sort
+    const topMurals = muralItems.sort((a, b) => a.dist - b.dist).slice(0, 15);
+    const topPhotos = photoItems.sort((a, b) => a.dist - b.dist).slice(0, 5);
+    const combined = [...topMurals, ...topPhotos]
+      .sort((a, b) => a.dist - b.dist);
 
     if (combined.length === 0) {
       views.nearby.innerHTML = `
