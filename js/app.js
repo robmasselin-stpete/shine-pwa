@@ -176,6 +176,7 @@ function initMap() {
       center: [27.7706, -82.6600],
       zoom: 13,
       zoomControl: false,
+      tap: false,
     });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
