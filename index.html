@@ -139,8 +139,27 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
-          .then(reg => console.log('SW registered:', reg.scope))
+          .then(reg => {
+            console.log('SW registered:', reg.scope);
+            // Check for updates immediately
+            reg.update();
+            // When a new SW is waiting, tell it to activate
+            reg.addEventListener('updatefound', () => {
+              const newSW = reg.installing;
+              newSW.addEventListener('statechange', () => {
+                if (newSW.state === 'activated') {
+                  // New SW active — reload to get fresh cached files
+                  window.location.reload();
+                }
+              });
+            });
+          })
           .catch(err => console.warn('SW registration failed:', err));
+      });
+      // If a new SW takes over mid-session, reload
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) { refreshing = true; window.location.reload(); }
       });
     }
 
