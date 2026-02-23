@@ -131,35 +131,39 @@
 
   </div>
 
+  <!-- Cache-bust: nuke old SW + caches once, then load fresh -->
+  <script>
+    (function() {
+      var CLEAN_VERSION = 'v12';
+      if (localStorage.getItem('shine-clean') === CLEAN_VERSION) return;
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          var promises = regs.map(function(r) { return r.unregister(); });
+          return Promise.all(promises);
+        }).then(function() {
+          return caches.keys();
+        }).then(function(keys) {
+          return Promise.all(keys.map(function(k) { return caches.delete(k); }));
+        }).then(function() {
+          localStorage.setItem('shine-clean', CLEAN_VERSION);
+          window.location.reload();
+        });
+      } else {
+        localStorage.setItem('shine-clean', CLEAN_VERSION);
+      }
+    })();
+  </script>
+
   <!-- App modules -->
   <script type="module" src="js/app.js"></script>
 
   <!-- Service Worker registration -->
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
+      window.addEventListener('load', function() {
         navigator.serviceWorker.register('sw.js')
-          .then(reg => {
-            console.log('SW registered:', reg.scope);
-            // Check for updates immediately
-            reg.update();
-            // When a new SW is waiting, tell it to activate
-            reg.addEventListener('updatefound', () => {
-              const newSW = reg.installing;
-              newSW.addEventListener('statechange', () => {
-                if (newSW.state === 'activated') {
-                  // New SW active — reload to get fresh cached files
-                  window.location.reload();
-                }
-              });
-            });
-          })
-          .catch(err => console.warn('SW registration failed:', err));
-      });
-      // If a new SW takes over mid-session, reload
-      let refreshing = false;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (!refreshing) { refreshing = true; window.location.reload(); }
+          .then(function(reg) { console.log('SW registered:', reg.scope); })
+          .catch(function(err) { console.warn('SW registration failed:', err); });
       });
     }
 
