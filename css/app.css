@@ -369,3 +369,6 @@ html, body {
 
 /* Fix: Map view needs explicit height */
 #view-map { height: 100%; }
+
+/* Fix: Map view needs explicit height */
+#view-map { height: 100%; }
