@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>JS Debug</title></head>
+<body>
+<pre id="log"></pre>
+<script>
+// Capture all errors
+window.onerror = function(msg, url, line, col, err) {
+  document.getElementById('log').textContent += 'ERROR: ' + msg + '\n  at ' + url + ':' + line + ':' + col + '\n';
+};
+window.addEventListener('unhandledrejection', function(e) {
+  document.getElementById('log').textContent += 'PROMISE ERROR: ' + e.reason + '\n';
+});
+</script>
+<script type="module">
+import { murals, YEARS, YEAR_COLORS } from './js/data.js';
+import { fieldPhotos, ARTIST_ALIASES } from './js/photos.js';
+document.getElementById('log').textContent += 'Imports OK\n';
+document.getElementById('log').textContent += 'murals: ' + murals.length + '\n';
+document.getElementById('log').textContent += 'YEARS: ' + JSON.stringify(YEARS) + '\n';
+document.getElementById('log').textContent += 'fieldPhotos: ' + fieldPhotos.length + '\n';
+document.getElementById('log').textContent += 'First mural keys: ' + Object.keys(murals[0]).join(', ') + '\n';
+document.getElementById('log').textContent += 'First mural: ' + murals[0].a + ' (' + murals[0].y + ')\n';
+</script>
+<script type="module">
+// Test app.js itself
+import './js/app.js';
+document.getElementById('log').textContent += 'app.js loaded OK\n';
+</script>
+</body>
+</html>
