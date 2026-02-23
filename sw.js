@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shine-v10';
+const CACHE_NAME = 'shine-v11';
 const TILE_CACHE = 'shine-tiles-v1';
 const IMG_CACHE = 'shine-images-v2';
 const FONT_CACHE = 'shine-fonts-v1';
