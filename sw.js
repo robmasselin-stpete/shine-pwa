@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'shine-v4';
+const CACHE_VERSION = 'shine-v5';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const IMG_CACHE = `${CACHE_VERSION}-images`;
 const TILE_CACHE = `${CACHE_VERSION}-tiles`;
@@ -16,7 +16,9 @@ const SHELL_URLS = [
 // Install: cache shell
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(SHELL_CACHE).then(c => c.addAll(SHELL_URLS)).then(() => self.skipWaiting())
+    caches.open(SHELL_CACHE)
+      .then(c => c.addAll(SHELL_URLS))
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -24,7 +26,9 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => !k.startsWith(CACHE_VERSION)).map(k => caches.delete(k)))
+      Promise.all(
+        keys.filter(k => !k.startsWith(CACHE_VERSION)).map(k => caches.delete(k))
+      )
     ).then(() => self.clients.claim())
   );
 });
@@ -53,6 +57,21 @@ self.addEventListener('fetch', e => {
         return fetch(e.request).then(r => {
           const clone = r.clone();
           caches.open(IMG_CACHE).then(c => c.put(e.request, clone));
+          return r;
+        });
+      })
+    );
+    return;
+  }
+
+  // Google Fonts: cache-first
+  if (url.hostname.includes('fonts.googleapis.com') || url.hostname.includes('fonts.gstatic.com')) {
+    e.respondWith(
+      caches.match(e.request).then(cached => {
+        if (cached) return cached;
+        return fetch(e.request).then(r => {
+          const clone = r.clone();
+          caches.open(SHELL_CACHE).then(c => c.put(e.request, clone));
           return r;
         });
       })

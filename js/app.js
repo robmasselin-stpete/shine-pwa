@@ -8,7 +8,8 @@ const state = {
   tab: 'explore',
   searchQuery: '',
   activeYear: null,
-  userLat: null, userLng: null,
+  userLat: null,
+  userLng: null,
   mapReady: false,
   selectedMural: null,
 };
@@ -18,12 +19,14 @@ const state = {
 // =============
 const $ = sel => document.querySelector(sel);
 const $$ = sel => document.querySelectorAll(sel);
+
 const views = {
   explore: $('#view-explore'),
   map: $('#view-map'),
   nearby: $('#view-nearby'),
   gallery: $('#view-gallery'),
 };
+
 const detailPage = $('#detail-page');
 const detailContent = $('#detail-content');
 const searchBar = $('#search-bar');
@@ -41,7 +44,9 @@ $$('.tab').forEach(btn => {
 function switchTab(tab) {
   state.tab = tab;
   $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-  Object.entries(views).forEach(([key, el]) => { el.hidden = key !== tab; });
+  Object.entries(views).forEach(([key, el]) => {
+    el.hidden = key !== tab;
+  });
   searchBar.hidden = tab !== 'explore';
   yearFilters.hidden = tab !== 'explore';
   detailPage.hidden = true;
@@ -62,6 +67,7 @@ function haversine(lat1, lng1, lat2, lng2) {
   const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng/2)**2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
+
 function formatDistance(meters) {
   const feet = meters * 3.28084;
   if (feet < 1000) return `${Math.round(feet)} ft`;
@@ -73,14 +79,14 @@ function formatDistance(meters) {
 // =============
 function getFilteredMurals() {
   let list = murals;
-  if (state.activeYear) list = list.filter(m => m.y === state.activeYear);
+  if (state.activeYear) list = list.filter(m => m.year === state.activeYear);
   if (state.searchQuery) {
     const q = state.searchQuery.toLowerCase();
     list = list.filter(m =>
-      m.a.toLowerCase().includes(q) ||
-      (m.loc && m.loc.toLowerCase().includes(q)) ||
-      (m.t && m.t.toLowerCase().includes(q)) ||
-      (m.bldg && m.bldg.toLowerCase().includes(q))
+      m.artist.toLowerCase().includes(q) ||
+      (m.address && m.address.toLowerCase().includes(q)) ||
+      (m.title && m.title.toLowerCase().includes(q)) ||
+      (m.building && m.building.toLowerCase().includes(q))
     );
   }
   return list;
@@ -118,6 +124,7 @@ searchInput.addEventListener('input', e => {
 // =============
 function renderExplore() {
   const filtered = getFilteredMurals();
+
   if (!filtered.length) {
     views.explore.innerHTML = `
       <div class="empty-state">
@@ -126,18 +133,20 @@ function renderExplore() {
       </div>`;
     return;
   }
+
   views.explore.innerHTML = `
     <div class="mural-grid">
       ${filtered.map(m => `
         <div class="mural-card" data-id="${m.id}">
-          <img class="mural-card-img" src="${m.img || ''}" alt="${m.a}" loading="lazy">
+          <img class="mural-card-img" src="${m.img || ''}" alt="${m.artist}" loading="lazy">
           <div class="mural-card-info">
-            <div class="mural-card-artist">${m.a}</div>
-            <div class="mural-card-meta">${m.bldg || m.loc || ''} · ${m.y}</div>
+            <div class="mural-card-artist">${m.artist}</div>
+            <div class="mural-card-meta">${m.building || m.address || ''} · ${m.year}</div>
           </div>
         </div>
       `).join('')}
     </div>`;
+
   views.explore.querySelectorAll('.mural-card').forEach(card => {
     card.addEventListener('click', () => {
       const mural = murals.find(m => m.id === Number(card.dataset.id));
@@ -147,19 +156,19 @@ function renderExplore() {
 }
 
 // =============
-// Map view — FIX: pins now open detail on click
+// Map view
 // =============
 let leafletMap = null;
 let mapMarkers = [];
 
 function initMap() {
   if (state.mapReady) {
-    // If map exists, just resize
     setTimeout(() => leafletMap.invalidateSize(), 100);
     return;
   }
 
   views.map.innerHTML = '<div id="map-container"></div>';
+
   leafletMap = L.map('map-container', {
     center: [27.7706, -82.6600],
     zoom: 13,
@@ -171,10 +180,9 @@ function initMap() {
     maxZoom: 19,
   }).addTo(leafletMap);
 
-  // Add mural markers with CLICK → DETAIL
   murals.forEach(m => {
     if (!m.lat || !m.lng) return;
-    const color = YEAR_COLORS[m.y] || '#999';
+    const color = YEAR_COLORS[m.year] || '#999';
 
     const marker = L.circleMarker([m.lat, m.lng], {
       radius: 7,
@@ -184,24 +192,21 @@ function initMap() {
       fillOpacity: 0.9,
     }).addTo(leafletMap);
 
-    // Popup with "View Details" link
     const popupHtml = `
       <div style="text-align:center;min-width:150px">
         ${m.img ? `<img src="${m.img}" style="width:150px;height:100px;object-fit:cover;border-radius:4px;margin-bottom:6px" loading="lazy" onerror="this.style.display='none'">` : ''}
-        <div style="font-weight:700;font-size:13px">${m.a}</div>
-        ${m.t ? `<div style="font-size:11px;font-style:italic;color:#555">${m.t}</div>` : ''}
-        <div style="font-size:11px;color:#666;margin:2px 0">${m.y}${m.bldg ? ' · ' + m.bldg : ''}</div>
+        <div style="font-weight:700;font-size:13px">${m.artist}</div>
+        ${m.title ? `<div style="font-size:11px;font-style:italic;color:#555">${m.title}</div>` : ''}
+        <div style="font-size:11px;color:#666;margin:2px 0">${m.year}${m.building ? ' · ' + m.building : ''}</div>
         <div style="margin-top:6px;display:flex;gap:8px;justify-content:center">
           <a href="#" class="popup-detail-link" data-mural-id="${m.id}" style="font-size:12px;font-weight:600;color:#1E5B8A">View Details</a>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking" 
-             target="_blank" rel="noopener" style="font-size:12px;color:#666">Directions →</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking" target="_blank" rel="noopener" style="font-size:12px;color:#666">Directions →</a>
         </div>
       </div>
     `;
 
     marker.bindPopup(popupHtml);
 
-    // When popup opens, wire up the detail link
     marker.on('popupopen', () => {
       const link = document.querySelector(`.popup-detail-link[data-mural-id="${m.id}"]`);
       if (link) {
@@ -216,7 +221,6 @@ function initMap() {
     mapMarkers.push({ marker, mural: m });
   });
 
-  // User location
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(pos => {
       state.userLat = pos.coords.latitude;
@@ -258,7 +262,7 @@ function renderNearby() {
       .filter(m => m.lat && m.lng)
       .map(m => ({ ...m, dist: haversine(state.userLat, state.userLng, m.lat, m.lng) }))
       .sort((a, b) => a.dist - b.dist)
-      .slice(0, 15);
+      .slice(0, 20);
 
     if (!withDist.length) {
       views.nearby.innerHTML = `
@@ -273,10 +277,10 @@ function renderNearby() {
       <div class="nearby-list">
         ${withDist.map(m => `
           <div class="nearby-item" data-id="${m.id}">
-            <img class="nearby-thumb" src="${m.img || ''}" alt="${m.a}" loading="lazy">
+            <img class="nearby-thumb" src="${m.img || ''}" alt="${m.artist}" loading="lazy">
             <div class="nearby-info">
-              <div class="nearby-artist">${m.a}</div>
-              <div class="nearby-location">${m.bldg || m.loc}</div>
+              <div class="nearby-artist">${m.artist}</div>
+              <div class="nearby-location">${m.building || m.address}</div>
               <div class="nearby-distance">${formatDistance(m.dist)}</div>
             </div>
           </div>
@@ -289,6 +293,7 @@ function renderNearby() {
         if (mural) openDetail(mural);
       });
     });
+
   }, () => {
     views.nearby.innerHTML = `
       <div class="empty-state">
@@ -310,6 +315,7 @@ function renderGallery() {
       </div>`;
     return;
   }
+
   views.gallery.innerHTML = `
     <div class="gallery-grid">
       ${fieldPhotos.map(p => `
@@ -319,7 +325,7 @@ function renderGallery() {
 }
 
 // =============
-// Detail page — now with otherImg support
+// Detail page
 // =============
 function openDetail(mural) {
   state.selectedMural = mural;
@@ -327,32 +333,33 @@ function openDetail(mural) {
 
   const photos = fieldPhotos.filter(p => p.muralId === mural.id);
 
-  // Nearby by distance
   const nearby = murals
     .filter(m => m.id !== mural.id && m.lat && m.lng && mural.lat && mural.lng)
     .map(m => ({ ...m, dist: haversine(mural.lat, mural.lng, m.lat, m.lng) }))
     .sort((a, b) => a.dist - b.dist)
     .slice(0, 6);
 
-  // More by same artist
-  const artistNames = getArtistAliases(mural.a);
+  const artistNames = getArtistAliases(mural.artist);
   const moreByArtist = murals.filter(m =>
     m.id !== mural.id &&
-    artistNames.some(name => m.a.toLowerCase() === name.toLowerCase())
+    artistNames.some(name => m.artist.toLowerCase() === name.toLowerCase())
   );
 
   detailContent.innerHTML = `
-    <img class="detail-hero" src="${mural.img || ''}" alt="${mural.a}" onerror="this.style.display='none'">
+    <img class="detail-hero" src="${mural.img || ''}" alt="${mural.artist}"
+         onerror="this.style.display='none'">
     <div class="detail-body">
-      <div class="detail-artist">${mural.a}</div>
-      ${mural.t ? `<div class="detail-title">${mural.t}</div>` : ''}
-      <span class="detail-year-badge">SHINE ${mural.y}</span>
-      ${mural.from ? `<div class="detail-from">${mural.from}</div>` : ''}
+      <div class="detail-artist">${mural.artist}</div>
+      ${mural.title ? `<div class="detail-title">${mural.title}</div>` : ''}
+      <span class="detail-year-badge">SHINE ${mural.year}</span>
+
+      ${mural.basedIn ? `<div class="detail-from">${mural.basedIn}</div>` : ''}
+
       ${mural.ig ? `<div class="detail-ig"><a href="https://instagram.com/${mural.ig}" target="_blank" rel="noopener">@${mural.ig}</a></div>` : ''}
 
       <div class="detail-address">
         <span>📍</span>
-        <span>${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</span>
+        <span>${mural.building ? mural.building + ' — ' : ''}${mural.address || 'St. Petersburg, FL'}</span>
       </div>
 
       ${mural.bio ? `
@@ -363,20 +370,11 @@ function openDetail(mural) {
       ` : ''}
 
       ${mural.lat && mural.lng ? `
-        <a class="detail-directions" href="https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking" target="_blank" rel="noopener">
+        <a class="detail-directions"
+           href="https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking"
+           target="_blank" rel="noopener">
           🚶 Walking Directions
         </a>
-      ` : ''}
-
-      ${mural.oimg ? `
-        <div class="detail-section">
-          <div class="detail-section-title">Other Work by ${mural.a}</div>
-          <div class="detail-photo-scroll">
-            <div class="detail-photo-card">
-              <img src="${mural.oimg}" alt="Other work by ${mural.a}" loading="lazy" onerror="this.parentElement.style.display='none'">
-            </div>
-          </div>
-        </div>
       ` : ''}
 
       ${photos.length > 0 ? `
@@ -398,8 +396,8 @@ function openDetail(mural) {
           <div class="detail-nearby-row">
             ${nearby.map(m => `
               <div class="detail-nearby-card" data-id="${m.id}">
-                <img src="${m.img || ''}" alt="${m.a}" loading="lazy">
-                <div class="detail-nearby-card-artist">${m.a}</div>
+                <img src="${m.img || ''}" alt="${m.artist}" loading="lazy">
+                <div class="detail-nearby-card-artist">${m.artist}</div>
                 <div class="detail-nearby-card-dist">${formatDistance(m.dist)}</div>
               </div>
             `).join('')}
@@ -409,13 +407,13 @@ function openDetail(mural) {
 
       ${moreByArtist.length > 0 ? `
         <div class="detail-section">
-          <div class="detail-section-title">More by ${mural.a}</div>
+          <div class="detail-section-title">More by ${mural.artist}</div>
           <div class="detail-nearby-row">
             ${moreByArtist.map(m => `
               <div class="detail-nearby-card" data-id="${m.id}">
-                <img src="${m.img || ''}" alt="${m.a}" loading="lazy">
-                <div class="detail-nearby-card-artist">${m.loc}</div>
-                <div class="detail-nearby-card-dist">${m.y}</div>
+                <img src="${m.img || ''}" alt="${m.artist}" loading="lazy">
+                <div class="detail-nearby-card-artist">${m.address}</div>
+                <div class="detail-nearby-card-dist">${m.year}</div>
               </div>
             `).join('')}
           </div>
@@ -424,7 +422,6 @@ function openDetail(mural) {
     </div>
   `;
 
-  // Wire up nearby/more card clicks
   detailContent.querySelectorAll('.detail-nearby-card').forEach(card => {
     card.addEventListener('click', () => {
       const m = murals.find(m => m.id === Number(card.dataset.id));
