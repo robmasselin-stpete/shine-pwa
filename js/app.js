@@ -162,6 +162,13 @@ let leafletMap = null;
 let mapMarkers = [];
 
 function initMap() {
+  // Set explicit pixel height for iOS PWA compatibility
+  const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 48;
+  const tabH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tab-height')) || 56;
+  const safeBottom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom')) || 0;
+  const availH = window.innerHeight - headerH - tabH - safeBottom;
+  views.map.style.height = availH + 'px';
+
   if (state.mapReady) {
     setTimeout(() => leafletMap.invalidateSize(), 100);
     return;
