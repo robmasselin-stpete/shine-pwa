@@ -207,16 +207,22 @@ function initMap() {
 
     marker.bindPopup(`
       <div style="text-align:center;min-width:140px">
-        ${m.img ? `<img src="${m.img}" style="width:140px;height:100px;object-fit:cover;border-radius:4px;margin-bottom:6px" loading="lazy">` : ''}
-        <div style="font-weight:700;font-size:13px">${m.a}</div>
+        <a href="#" class="map-detail-link" data-id="${m.id}" style="text-decoration:none;color:inherit">
+          ${m.img ? `<img src="${m.img}" style="width:140px;height:100px;object-fit:cover;border-radius:4px;margin-bottom:6px" loading="lazy">` : ''}
+          <div style="font-weight:700;font-size:13px">${m.a}</div>
+        </a>
         ${m.t ? `<div style="font-size:11px;font-style:italic;color:#555">${m.t}</div>` : ''}
         <div style="font-size:11px;color:#666;margin:2px 0">${m.y}${m.bldg ? ' · ' + m.bldg : ''}</div>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking" 
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking"
            target="_blank" rel="noopener" style="font-size:12px">Directions →</a>
       </div>
     `);
 
     marker.on('click', () => marker.openPopup());
+    marker.on('popupopen', () => {
+      const link = document.querySelector(`.map-detail-link[data-id="${m.id}"]`);
+      if (link) link.addEventListener('click', (e) => { e.preventDefault(); openDetail(m); });
+    });
   });
 
   // User location
