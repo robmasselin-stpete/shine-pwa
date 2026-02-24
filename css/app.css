@@ -351,7 +351,7 @@ a {
 .detail-page {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 10000;
   background: var(--bg);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -361,7 +361,7 @@ a {
   position: fixed;
   top: calc(var(--safe-top) + 8px);
   left: 8px;
-  z-index: 210;
+  z-index: 10001;
   width: 36px;
   height: 36px;
   display: flex;
