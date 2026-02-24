@@ -403,8 +403,17 @@ function openDetail(mural) {
   state.selectedMural = mural;
   detailPage.hidden = false;
 
-  // Get field photos for this mural
-  const photos = fieldPhotos.filter(p => p.muralId === mural.id);
+  // Get field photos: linked by muralId OR geographically nearby (within 200m)
+  const linkedPhotos = fieldPhotos.filter(p => p.muralId === mural.id);
+  const nearbyPhotos = (mural.lat && mural.lng)
+    ? fieldPhotos.filter(p =>
+        p.lat && p.lng &&
+        p.muralId !== mural.id &&
+        !linkedPhotos.includes(p) &&
+        haversine(mural.lat, mural.lng, p.lat, p.lng) < 200
+      )
+    : [];
+  const photos = [...linkedPhotos, ...nearbyPhotos];
 
   // Get nearby murals (by GPS distance)
   const nearby = murals
@@ -455,6 +464,7 @@ function openDetail(mural) {
             ${photos.map(p => `
               <div class="detail-photo-card">
                 <img src="images/field/${p.src}" alt="${p.note}" loading="lazy">
+                <div style="font-size:11px;color:#666;padding:4px 2px 0">${p.note}</div>
               </div>
             `).join('')}
           </div>
