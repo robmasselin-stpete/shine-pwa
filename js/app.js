@@ -314,12 +314,6 @@ function showWalkingRoute(destLat, destLng, name, img) {
 function drawRoute(fromLat, fromLng, toLat, toLng, name, img) {
   clearRoute();
 
-  // Dashed polyline from user to destination
-  routePolyline = L.polyline(
-    [[fromLat, fromLng], [toLat, toLng]],
-    { color: '#1E5B8A', weight: 4, opacity: 0.8, dashArray: '10, 8' }
-  ).addTo(leafletMap);
-
   // Highlight destination
   routeDestMarker = L.circleMarker([toLat, toLng], {
     radius: 20,
@@ -332,10 +326,32 @@ function drawRoute(fromLat, fromLng, toLat, toLng, name, img) {
   // Fit bounds to show both points
   leafletMap.fitBounds(
     L.latLngBounds([fromLat, fromLng], [toLat, toLng]),
-    { padding: [60, 60] }
+    { padding: [60, 80] }
   );
 
-  // Calculate distance + walking time (~80m/min)
+  // Fetch actual walking route from OSRM, fall back to straight line
+  const osrmUrl = `https://router.project-osrm.org/route/v1/foot/${fromLng},${fromLat};${toLng},${toLat}?overview=full&geometries=geojson`;
+
+  fetch(osrmUrl)
+    .then(r => r.json())
+    .then(data => {
+      if (data.code === 'Ok' && data.routes && data.routes[0]) {
+        const route = data.routes[0];
+        const coords = route.geometry.coordinates.map(c => [c[1], c[0]]); // GeoJSON is [lng,lat]
+        routePolyline = L.polyline(coords, {
+          color: '#1E5B8A', weight: 5, opacity: 0.85
+        }).addTo(leafletMap);
+        leafletMap.fitBounds(routePolyline.getBounds(), { padding: [60, 80] });
+        showRoutePanel(route.distance, route.duration, toLat, toLng, name, img);
+      } else {
+        drawStraightFallback(fromLat, fromLng, toLat, toLng, name, img);
+      }
+    })
+    .catch(() => {
+      drawStraightFallback(fromLat, fromLng, toLat, toLng, name, img);
+    });
+
+  // Show panel immediately with straight-line estimate while OSRM loads
   const distMeters = haversine(fromLat, fromLng, toLat, toLng);
   const walkMinutes = Math.max(1, Math.round(distMeters / 80));
   const distText = formatDistance(distMeters);
@@ -357,6 +373,39 @@ function drawRoute(fromLat, fromLng, toLat, toLng, name, img) {
 
   routePanel.querySelector('.route-panel-close').addEventListener('click', clearRoute);
   views.map.appendChild(routePanel);
+}
+
+function showRoutePanel(distMeters, durationSecs, toLat, toLng, name, img) {
+  // Remove the preliminary panel if it exists
+  if (routePanel) { routePanel.remove(); routePanel = null; }
+
+  const distText = formatDistance(distMeters);
+  const walkMinutes = Math.max(1, Math.round(durationSecs / 60));
+  const timeText = walkMinutes === 1 ? '~1 min walk' : `~${walkMinutes} min walk`;
+
+  routePanel = document.createElement('div');
+  routePanel.className = 'route-panel';
+  routePanel.innerHTML = `
+    <div class="route-panel-content">
+      <img class="route-panel-thumb" src="${img || ''}" alt="${name}">
+      <div class="route-panel-info">
+        <div class="route-panel-name">${name}</div>
+        <div class="route-panel-stats">${distText} · ${timeText}</div>
+        <a class="route-panel-fallback" href="https://www.google.com/maps/dir/?api=1&destination=${toLat},${toLng}&travelmode=walking" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <button class="route-panel-close" aria-label="Close directions">\u2715</button>
+    </div>`;
+  routePanel.querySelector('.route-panel-close').addEventListener('click', clearRoute);
+  views.map.appendChild(routePanel);
+}
+
+function drawStraightFallback(fromLat, fromLng, toLat, toLng, name, img) {
+  if (!routePolyline) {
+    routePolyline = L.polyline(
+      [[fromLat, fromLng], [toLat, toLng]],
+      { color: '#1E5B8A', weight: 4, opacity: 0.8, dashArray: '10, 8' }
+    ).addTo(leafletMap);
+  }
 }
 
 function clearRoute() {
