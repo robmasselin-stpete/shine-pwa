@@ -329,20 +329,22 @@ function drawRoute(fromLat, fromLng, toLat, toLng, name, img) {
     { padding: [60, 80] }
   );
 
-  // Fetch actual walking route from OSRM, fall back to straight line
-  const osrmUrl = `https://router.project-osrm.org/route/v1/foot/${fromLng},${fromLat};${toLng},${toLat}?overview=full&geometries=geojson`;
+  // Fetch actual walking route with turn-by-turn steps from OSRM
+  const osrmUrl = `https://router.project-osrm.org/route/v1/foot/${fromLng},${fromLat};${toLng},${toLat}?overview=full&geometries=geojson&steps=true`;
 
   fetch(osrmUrl)
     .then(r => r.json())
     .then(data => {
       if (data.code === 'Ok' && data.routes && data.routes[0]) {
         const route = data.routes[0];
-        const coords = route.geometry.coordinates.map(c => [c[1], c[0]]); // GeoJSON is [lng,lat]
+        const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
         routePolyline = L.polyline(coords, {
           color: '#1E5B8A', weight: 5, opacity: 0.85
         }).addTo(leafletMap);
         leafletMap.fitBounds(routePolyline.getBounds(), { padding: [60, 80] });
-        showRoutePanel(route.distance, route.duration, toLat, toLng, name, img);
+        // Collect steps from all legs
+        const steps = route.legs ? route.legs.flatMap(leg => leg.steps || []) : [];
+        showRoutePanel(route.distance, route.duration, toLat, toLng, name, img, steps);
       } else {
         drawStraightFallback(fromLat, fromLng, toLat, toLng, name, img);
       }
@@ -375,13 +377,58 @@ function drawRoute(fromLat, fromLng, toLat, toLng, name, img) {
   views.map.appendChild(routePanel);
 }
 
-function showRoutePanel(distMeters, durationSecs, toLat, toLng, name, img) {
-  // Remove the preliminary panel if it exists
+function stepIcon(modifier, type) {
+  if (type === 'depart') return '\u{1F6B6}';
+  if (type === 'arrive') return '\u{1F3C1}';
+  if (modifier === 'left' || modifier === 'sharp left' || modifier === 'slight left') return '\u2B05';
+  if (modifier === 'right' || modifier === 'sharp right' || modifier === 'slight right') return '\u27A1';
+  if (modifier === 'uturn') return '\u21A9';
+  return '\u2B06';
+}
+
+function stepText(step) {
+  const maneuver = step.maneuver || {};
+  const type = maneuver.type || '';
+  const modifier = maneuver.modifier || '';
+  const street = step.name || '';
+  const dist = step.distance;
+
+  if (type === 'depart') return `Head ${modifier || 'forward'}${street ? ' on ' + street : ''}`;
+  if (type === 'arrive') return `Arrive at destination`;
+  let action = 'Continue';
+  if (type === 'turn' || type === 'end of road' || type === 'new name') {
+    if (modifier.includes('left')) action = 'Turn left';
+    else if (modifier.includes('right')) action = 'Turn right';
+    else action = 'Continue';
+  }
+  let text = action;
+  if (street) text += ` on ${street}`;
+  if (dist > 0 && type !== 'arrive') text += ` (${formatDistance(dist)})`;
+  return text;
+}
+
+function showRoutePanel(distMeters, durationSecs, toLat, toLng, name, img, steps) {
   if (routePanel) { routePanel.remove(); routePanel = null; }
 
   const distText = formatDistance(distMeters);
   const walkMinutes = Math.max(1, Math.round(durationSecs / 60));
   const timeText = walkMinutes === 1 ? '~1 min walk' : `~${walkMinutes} min walk`;
+
+  // Filter out zero-distance steps (except arrive)
+  const visibleSteps = (steps || []).filter(s =>
+    s.distance > 0 || (s.maneuver && s.maneuver.type === 'arrive')
+  );
+
+  const stepsHtml = visibleSteps.length > 0 ? `
+    <div class="route-steps">
+      ${visibleSteps.map(s => {
+        const m = s.maneuver || {};
+        return `<div class="route-step">
+          <span class="route-step-icon">${stepIcon(m.modifier, m.type)}</span>
+          <span class="route-step-text">${stepText(s)}</span>
+        </div>`;
+      }).join('')}
+    </div>` : '';
 
   routePanel = document.createElement('div');
   routePanel.className = 'route-panel';
@@ -394,7 +441,8 @@ function showRoutePanel(distMeters, durationSecs, toLat, toLng, name, img) {
         <a class="route-panel-fallback" href="https://www.google.com/maps/dir/?api=1&destination=${toLat},${toLng}&travelmode=walking" target="_blank" rel="noopener">Open in Maps</a>
       </div>
       <button class="route-panel-close" aria-label="Close directions">\u2715</button>
-    </div>`;
+    </div>
+    ${stepsHtml}`;
   routePanel.querySelector('.route-panel-close').addEventListener('click', clearRoute);
   views.map.appendChild(routePanel);
 }

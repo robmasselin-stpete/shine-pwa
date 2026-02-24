@@ -372,6 +372,41 @@ a {
   background: var(--border);
 }
 
+/* Turn-by-turn steps */
+.route-steps {
+  max-height: 180px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid var(--border);
+  padding: 8px 12px;
+}
+
+.route-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.route-step + .route-step {
+  border-top: 1px solid var(--border);
+}
+
+.route-step-icon {
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.route-step-text {
+  flex: 1;
+  min-width: 0;
+  color: var(--text);
+}
+
 /* ========================================
    Nearby List
    ======================================== */
