@@ -12,7 +12,8 @@ export function normalizeUrl(url) {
 }
 
 const rawMap = {
-  'hwid.us/hubfp48hnamothrrmvevenogra9irg': 23, // Emmanuel Jarus — Green Bench Brewing
+  'hwid.us/hubfp48hnamothrrmvevenogra9irg': 23, // Emmanuel Jarus (letter O variant)
+  'hwid.us/hubfp48hnam0thrrmvevenogra9irg': 23, // Emmanuel Jarus (zero variant)
   // Add more as you scan plaques:
   // 'hwid.us/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx': ID,
 };
