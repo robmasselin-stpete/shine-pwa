@@ -510,11 +510,21 @@ function renderScanPrompt() {
           <rect x="7" y="7" width="10" height="10" rx="1"/>
         </svg>
       </div>
-      <div class="scan-prompt-title">Scan a Mural Plaque</div>
-      <div class="scan-prompt-text">Point your camera at a PixelStix QR code to identify the mural and see its details.</div>
-      <button class="scan-start-btn" id="scan-start">Start Camera</button>
+      <div class="scan-prompt-title">Identify a Mural</div>
+      <div class="scan-prompt-text">Scan a plaque QR code or use your location to find the mural you're looking at.</div>
+      <div class="scan-dual-buttons">
+        <button class="scan-start-btn" id="scan-start">Scan QR Code</button>
+        <button class="scan-identify-btn" id="scan-identify">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Identify by Location
+        </button>
+      </div>
     </div>`;
   $('#scan-start').addEventListener('click', startScanner);
+  $('#scan-identify').addEventListener('click', renderIdentifyLoading);
 }
 
 function startScanner() {
@@ -591,6 +601,85 @@ function renderScanError(err) {
       <button class="scan-start-btn" id="scan-error-retry">Try Again</button>
     </div>`;
   $('#scan-error-retry').addEventListener('click', startScanner);
+}
+
+function renderIdentifyLoading() {
+  views.scan.innerHTML = `
+    <div class="scan-prompt">
+      <div class="scan-prompt-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <div class="scan-prompt-title">Finding your location…</div>
+    </div>`;
+
+  if (!('geolocation' in navigator)) {
+    renderIdentifyError('Location is not available on this device.');
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(pos => {
+    renderIdentifyResults(pos.coords.latitude, pos.coords.longitude);
+  }, () => {
+    renderIdentifyError('Could not get your location. Check your GPS permissions and try again.');
+  }, { enableHighAccuracy: true, timeout: 10000 });
+}
+
+function renderIdentifyResults(lat, lng) {
+  const nearby = murals
+    .filter(m => m.lat && m.lng)
+    .map(m => ({ ...m, dist: haversine(lat, lng, m.lat, m.lng) }))
+    .sort((a, b) => a.dist - b.dist)
+    .slice(0, 8);
+
+  if (nearby.length === 0) {
+    renderIdentifyError('No murals with GPS coordinates found.');
+    return;
+  }
+
+  views.scan.innerHTML = `
+    <div class="identify-results">
+      <div class="identify-header">
+        <div class="identify-title">Which mural are you looking at?</div>
+        <div class="identify-subtitle">Tap to open its detail page</div>
+      </div>
+      <div class="identify-grid">
+        ${nearby.map(m => `
+          <div class="identify-card" data-id="${m.id}">
+            <img class="identify-card-img" src="${m.img || ''}" alt="${m.a}" loading="lazy">
+            <div class="identify-card-info">
+              <div class="identify-card-artist">${m.a}</div>
+              <div class="identify-card-meta">${formatDistance(m.dist)} away</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="identify-footer">
+        <button class="scan-stop-btn" id="identify-back">None of these — go back</button>
+      </div>
+    </div>`;
+
+  views.scan.querySelectorAll('.identify-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const mural = murals.find(m => m.id === Number(card.dataset.id));
+      if (mural) openDetail(mural);
+    });
+  });
+
+  $('#identify-back').addEventListener('click', renderScanPrompt);
+}
+
+function renderIdentifyError(msg) {
+  views.scan.innerHTML = `
+    <div class="scan-error">
+      <div class="scan-result-icon">!</div>
+      <div class="scan-result-title">Location Unavailable</div>
+      <div class="scan-prompt-text">${msg}</div>
+      <button class="scan-start-btn" id="identify-error-back">Go Back</button>
+    </div>`;
+  $('#identify-error-back').addEventListener('click', renderScanPrompt);
 }
 
 function stopScanner() {
