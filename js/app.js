@@ -356,10 +356,18 @@ function renderNearby() {
 
     views.nearby.querySelectorAll('.nearby-item').forEach(item => {
       item.addEventListener('click', () => {
+        const type = item.dataset.type;
         const mid = item.dataset.muralId;
-        if (mid) {
+        if (type === 'mural' && mid) {
           const mural = murals.find(m => m.id === Number(mid));
           if (mural) openDetail(mural);
+        } else if (type === 'photo') {
+          // Find the photo by matching the thumbnail src
+          const thumb = item.querySelector('.nearby-thumb');
+          if (thumb) {
+            const photo = fieldPhotos.find(p => thumb.src.includes(p.src));
+            if (photo) openPhotoDetail(photo);
+          }
         }
       });
     });
@@ -389,11 +397,93 @@ function renderGallery() {
 
   views.gallery.innerHTML = `
     <div class="gallery-grid">
-      ${fieldPhotos.map(p => `
-        <img src="images/field/${p.src}" alt="${p.note}" loading="lazy">
+      ${fieldPhotos.map((p, i) => `
+        <img src="images/field/${p.src}" alt="${p.note}" loading="lazy" data-photo-idx="${i}">
       `).join('')}
     </div>
   `;
+
+  views.gallery.querySelectorAll('.gallery-grid img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      const photo = fieldPhotos[Number(img.dataset.photoIdx)];
+      if (photo) openPhotoDetail(photo);
+    });
+  });
+}
+
+// =============================================
+// Photo detail page (for gallery tap)
+// =============================================
+function openPhotoDetail(photo) {
+  detailPage.hidden = false;
+
+  const linked = photo.muralId ? murals.find(m => m.id === photo.muralId) : null;
+
+  // Find nearby murals by GPS
+  const nearby = (photo.lat && photo.lng)
+    ? murals
+        .filter(m => m.lat && m.lng)
+        .map(m => ({ ...m, dist: haversine(photo.lat, photo.lng, m.lat, m.lng) }))
+        .sort((a, b) => a.dist - b.dist)
+        .slice(0, 6)
+    : [];
+
+  detailContent.innerHTML = `
+    <img class="detail-hero" src="images/field/${photo.src}" alt="${photo.note}">
+    <div class="detail-body">
+      <div class="detail-artist">${photo.note}</div>
+      ${linked ? `<div class="detail-title">Linked mural: ${linked.a}${linked.t ? ' — ' + linked.t : ''}</div>` : ''}
+
+      ${photo.lat && photo.lng ? `
+        <div class="detail-address">
+          <span>📍</span>
+          <span>${photo.lat.toFixed(4)}, ${photo.lng.toFixed(4)}</span>
+        </div>
+        <a class="detail-directions" href="https://www.google.com/maps/dir/?api=1&destination=${photo.lat},${photo.lng}&travelmode=walking" target="_blank" rel="noopener">
+          🚶 Walking Directions
+        </a>
+      ` : ''}
+
+      ${linked ? `
+        <div class="detail-section">
+          <div class="detail-section-title">Linked Mural</div>
+          <div class="detail-nearby-row">
+            <div class="detail-nearby-card" data-id="${linked.id}">
+              <img src="${linked.img || ''}" alt="${linked.a}" loading="lazy">
+              <div class="detail-nearby-card-artist">${linked.a}</div>
+              <div class="detail-nearby-card-dist">${linked.y}</div>
+            </div>
+          </div>
+        </div>
+      ` : ''}
+
+      ${nearby.length > 0 ? `
+        <div class="detail-section">
+          <div class="detail-section-title">Nearby Murals</div>
+          <div class="detail-nearby-row">
+            ${nearby.map(m => `
+              <div class="detail-nearby-card" data-id="${m.id}">
+                <img src="${m.img || ''}" alt="${m.a}" loading="lazy">
+                <div class="detail-nearby-card-artist">${m.a}</div>
+                <div class="detail-nearby-card-dist">${formatDistance(m.dist)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
+
+  // Wire up mural card clicks
+  detailContent.querySelectorAll('.detail-nearby-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const m = murals.find(m => m.id === Number(card.dataset.id));
+      if (m) openDetail(m);
+    });
+  });
+
+  detailPage.scrollTop = 0;
 }
 
 // =============================================

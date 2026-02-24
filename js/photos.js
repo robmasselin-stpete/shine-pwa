@@ -46,7 +46,6 @@ export const fieldPhotos = [
   { src: 'IMG_0428.jpeg', muralId: null,  note: 'Gothic B with moon — 31st St wall',          lat: 27.7583, lng: -82.688 },
   { src: 'IMG_0429.jpeg', muralId: null,  note: 'Waves and hands mural',                      lat: 27.7583, lng: -82.688 },
   { src: 'IMG_0430.jpeg', muralId: null,  note: 'Blue brushstrokes — mural in progress',      lat: 27.7583, lng: -82.688 },
-  { src: 'IMG_0431.jpeg', muralId: null,  note: 'Festival atmosphere — sky at dusk',           lat: 27.758,  lng: -82.688 },
   { src: 'IMG_0432.jpeg', muralId: 29,   note: 'NeSpoon — lace pattern at Cemex',             lat: 27.7604, lng: -82.6697 },
 ];
 
