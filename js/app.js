@@ -527,7 +527,7 @@ function startScanner() {
   html5QrCode = new Html5Qrcode('scan-reader');
   html5QrCode.start(
     { facingMode: 'environment' },
-    { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1 },
+    { fps: 10, qrbox: { width: 250, height: 250 } },
     onScanSuccess,
     () => {}
   ).catch(err => {

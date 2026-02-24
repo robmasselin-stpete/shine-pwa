@@ -659,8 +659,19 @@ a {
 
 #scan-reader {
   width: 100%;
+  min-height: 300px;
   border-radius: var(--radius);
   overflow: hidden;
+}
+
+#scan-reader video {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: var(--radius);
+}
+
+#scan-reader img[alt="Info icon"] {
+  display: none;
 }
 
 .scan-stop-btn {
