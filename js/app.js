@@ -205,24 +205,47 @@ function initMap() {
       fillOpacity: 0.9,
     }).addTo(leafletMap);
 
-    marker.bindPopup(`
-      <div style="text-align:center;min-width:140px">
-        <a href="#" class="map-detail-link" data-id="${m.id}" style="text-decoration:none;color:inherit">
-          ${m.img ? `<img src="${m.img}" style="width:140px;height:100px;object-fit:cover;border-radius:4px;margin-bottom:6px" loading="lazy">` : ''}
-          <div style="font-weight:700;font-size:13px">${m.a}</div>
-        </a>
-        ${m.t ? `<div style="font-size:11px;font-style:italic;color:#555">${m.t}</div>` : ''}
-        <div style="font-size:11px;color:#666;margin:2px 0">${m.y}${m.bldg ? ' · ' + m.bldg : ''}</div>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking"
-           target="_blank" rel="noopener" style="font-size:12px">Directions →</a>
-      </div>
-    `);
+    const popupEl = document.createElement('div');
+    popupEl.style.cssText = 'text-align:center;min-width:140px';
 
+    const tapArea = document.createElement('div');
+    tapArea.style.cursor = 'pointer';
+    if (m.img) {
+      const img = document.createElement('img');
+      img.src = m.img;
+      img.alt = m.a;
+      img.loading = 'lazy';
+      img.style.cssText = 'width:140px;height:100px;object-fit:cover;border-radius:4px;margin-bottom:6px';
+      tapArea.appendChild(img);
+    }
+    const name = document.createElement('div');
+    name.style.cssText = 'font-weight:700;font-size:13px';
+    name.textContent = m.a;
+    tapArea.appendChild(name);
+    tapArea.addEventListener('click', () => openDetail(m));
+    popupEl.appendChild(tapArea);
+
+    if (m.t) {
+      const title = document.createElement('div');
+      title.style.cssText = 'font-size:11px;font-style:italic;color:#555';
+      title.textContent = m.t;
+      popupEl.appendChild(title);
+    }
+    const meta = document.createElement('div');
+    meta.style.cssText = 'font-size:11px;color:#666;margin:2px 0';
+    meta.textContent = m.y + (m.bldg ? ' \u00b7 ' + m.bldg : '');
+    popupEl.appendChild(meta);
+
+    const dir = document.createElement('a');
+    dir.href = `https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking`;
+    dir.target = '_blank';
+    dir.rel = 'noopener';
+    dir.style.cssText = 'font-size:12px';
+    dir.textContent = 'Directions \u2192';
+    popupEl.appendChild(dir);
+
+    marker.bindPopup(popupEl);
     marker.on('click', () => marker.openPopup());
-    marker.on('popupopen', () => {
-      const link = document.querySelector(`.map-detail-link[data-id="${m.id}"]`);
-      if (link) link.addEventListener('click', (e) => { e.preventDefault(); openDetail(m); });
-    });
   });
 
   // User location
