@@ -1,6 +1,6 @@
 import { murals, YEARS, YEAR_COLORS } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
-import { lookupQrUrl, normalizeUrl } from './qrcodes.js';
+import { lookupQrUrl } from './qrcodes.js';
 
 // =============================================
 // State
@@ -564,14 +564,12 @@ function onScanSuccess(decodedText) {
 
 function renderScanNoMatch(decodedText) {
   const safeText = escapeHtml(decodedText);
-  const normalizedKey = escapeHtml(normalizeUrl(decodedText));
   const isLink = /^https?:\/\//i.test(decodedText);
   views.scan.innerHTML = `
     <div class="scan-result">
       <div class="scan-result-icon">?</div>
       <div class="scan-result-title">QR Code Not Recognized</div>
       <div class="scan-result-url">${safeText}</div>
-      <div class="scan-result-url" style="font-size:11px;color:#999">Key: ${normalizedKey}</div>
       <div class="scan-result-actions">
         <button class="scan-start-btn" id="scan-retry">Try Again</button>
         ${isLink ? `<a class="scan-open-link" href="${safeText}" target="_blank" rel="noopener">Open Link</a>` : ''}
