@@ -198,10 +198,10 @@ function initMap() {
     if (!m.lat || !m.lng) return;
     const color = YEAR_COLORS[m.y] || '#999';
     const marker = L.circleMarker([m.lat, m.lng], {
-      radius: 7,
+      radius: 14,
       fillColor: color,
       color: '#fff',
-      weight: 2,
+      weight: 2.5,
       fillOpacity: 0.9,
     }).addTo(leafletMap);
 
