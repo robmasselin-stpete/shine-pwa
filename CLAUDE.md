@@ -69,7 +69,7 @@ Also exports: `YEARS` (array), `YEAR_COLORS` (year→hex map)
 - **Gallery tab** — clickable photo grid, opens photo detail cards
 - **Detail pages** — hero image, artist info, in-app walking directions button, field photos, nearby murals
 - **Photo detail** — separate detail view for field photos with linked/nearby murals
-- **In-app walking directions** — dashed route line on map with distance/time panel (see below)
+- **In-app walking directions** — OSRM-powered street-level route on map with turn-by-turn steps (see below)
 - **PWA install** — Android beforeinstallprompt + iOS Safari share banner
 
 Tab order: **Explore, Map, Nearby, Gallery** (4 tabs)
@@ -77,11 +77,24 @@ Tab order: **Explore, Map, Nearby, Gallery** (4 tabs)
 ### In-App Walking Directions
 Replaces external Google Maps links. Tapping "Walking Directions" from any detail page stays inside the app.
 
-**Flow:** Detail page → close detail → switch to Map tab → dashed polyline from user location to mural → bottom panel with thumbnail, distance, estimated walk time, and "Open in Maps" fallback link → close button clears route.
+**Flow:** Detail page → close detail → switch to Map tab → OSRM street-level route drawn on map → bottom panel with summary + scrollable turn-by-turn steps → close button clears route.
+
+**Routing API:** OSRM public server (free, no API key)
+- Endpoint: `https://router.project-osrm.org/route/v1/foot/{lng},{lat};{lng},{lat}?overview=full&geometries=geojson&steps=true`
+- Returns: GeoJSON route geometry, total distance/duration, and per-step maneuver instructions with street names
+- Falls back to dashed straight line if OSRM is unreachable (offline, rate-limited)
+
+**Route panel** (`.route-panel`, positioned absolute inside `#view-map`):
+- **Summary row:** mural thumbnail, name, total distance, estimated walk time, "Open in Maps" fallback link, close button
+- **Turn-by-turn steps** (`.route-steps`): scrollable list (max 180px), each step has a direction icon (arrow/walking/flag) and instruction text like "Turn left on Central Ave (350 ft)"
 
 **Functions in `js/app.js`:**
 - `showWalkingRoute(lat, lng, name, img)` — gets fresh GPS position, switches to Map tab, calls `drawRoute()`
-- `drawRoute(fromLat, fromLng, toLat, toLng, name, img)` — draws dashed polyline + destination highlight marker, fits map bounds, creates bottom route panel
+- `drawRoute(fromLat, fromLng, toLat, toLng, name, img)` — fetches OSRM route with `steps=true`, draws polyline + destination marker, shows preliminary panel then replaces with full panel including steps
+- `showRoutePanel(distMeters, durationSecs, toLat, toLng, name, img, steps)` — builds the summary + step-by-step panel
+- `stepIcon(modifier, type)` — returns emoji arrow/icon for a maneuver type
+- `stepText(step)` — formats a human-readable instruction from OSRM step data
+- `drawStraightFallback(...)` — dashed straight-line polyline when OSRM fails
 - `clearRoute()` — removes polyline, marker, and panel from map
 
 **Three locations call `showWalkingRoute()`:**
@@ -89,7 +102,7 @@ Replaces external Google Maps links. Tapping "Walking Directions" from any detai
 2. Mural detail page "Walking Directions" button
 3. Photo detail page "Walking Directions" button
 
-**Walking time:** ~80m/min (~3 mph), minimum 1 minute display.
+**Walking time:** Uses OSRM's calculated duration when available; falls back to ~80m/min (~3 mph) estimate.
 
 **GPS fallback:** Fresh geolocation → cached `state.userLat/userLng` → map center.
 
