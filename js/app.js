@@ -496,6 +496,7 @@ function openPhotoDetail(photo) {
 // QR Scanner
 // =============================================
 let html5QrCode = null;
+let scanHandled = false;
 
 function renderScanPrompt() {
   views.scan.innerHTML = `
@@ -524,6 +525,7 @@ function startScanner() {
       <button class="scan-stop-btn" id="scan-stop">Stop Camera</button>
     </div>`;
 
+  scanHandled = false;
   html5QrCode = new Html5Qrcode('scan-reader');
   html5QrCode.start(
     { facingMode: 'environment' },
@@ -536,19 +538,26 @@ function startScanner() {
   });
 
   $('#scan-stop').addEventListener('click', () => {
-    stopScanner();
-    renderScanPrompt();
+    stopScanner().then(() => renderScanPrompt());
   });
 }
 
 function onScanSuccess(decodedText) {
-  stopScanner();
-  const muralId = lookupQrUrl(decodedText);
-  if (muralId !== null) {
-    const mural = murals.find(m => m.id === muralId);
-    if (mural) { openDetail(mural); return; }
-  }
-  renderScanNoMatch(decodedText);
+  // Prevent multiple callbacks for same scan
+  if (scanHandled) return;
+  scanHandled = true;
+
+  // Defer stop + navigation to next tick so the library finishes its callback
+  setTimeout(() => {
+    stopScanner().then(() => {
+      const muralId = lookupQrUrl(decodedText);
+      if (muralId !== null) {
+        const mural = murals.find(m => m.id === muralId);
+        if (mural) { openDetail(mural); return; }
+      }
+      renderScanNoMatch(decodedText);
+    });
+  }, 0);
 }
 
 function renderScanNoMatch(decodedText) {
@@ -584,10 +593,15 @@ function renderScanError(err) {
 
 function stopScanner() {
   if (html5QrCode) {
-    html5QrCode.stop().catch(() => {});
-    html5QrCode.clear();
+    const scanner = html5QrCode;
     html5QrCode = null;
+    return scanner.stop().then(() => {
+      scanner.clear();
+    }).catch(() => {
+      try { scanner.clear(); } catch {}
+    });
   }
+  return Promise.resolve();
 }
 
 function escapeHtml(str) {
