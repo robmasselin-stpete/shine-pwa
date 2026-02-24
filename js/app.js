@@ -1,7 +1,5 @@
 import { murals, YEARS, YEAR_COLORS } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
-import { lookupQrUrl } from './qrcodes.js';
-
 // =============================================
 // State
 // =============================================
@@ -15,6 +13,11 @@ const state = {
   selectedMural: null, // mural object for detail view
 };
 
+// Walking directions route state
+let routePolyline = null;
+let routeDestMarker = null;
+let routePanel = null;
+
 // =============================================
 // DOM refs
 // =============================================
@@ -24,7 +27,6 @@ const $$ = (sel) => document.querySelectorAll(sel);
 const views = {
   explore: $('#view-explore'),
   map: $('#view-map'),
-  scan: $('#view-scan'),
   nearby: $('#view-nearby'),
   gallery: $('#view-gallery'),
 };
@@ -48,9 +50,6 @@ $$('.tab').forEach(btn => {
 function switchTab(tab) {
   state.tab = tab;
 
-  // Stop scanner camera when leaving scan tab
-  stopScanner();
-
   // Update tab bar
   $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
 
@@ -68,8 +67,10 @@ function switchTab(tab) {
 
   // Lazy init views
   if (tab === 'explore') renderExplore();
-  if (tab === 'map') initMap();
-  if (tab === 'scan') renderScanPrompt();
+  if (tab === 'map') {
+    initMap();
+    if (state.mapReady) setTimeout(() => leafletMap.invalidateSize(), 100);
+  }
   if (tab === 'nearby') renderNearby();
   if (tab === 'gallery') renderGallery();
 }
@@ -242,12 +243,14 @@ function initMap() {
     meta.textContent = m.y + (m.bldg ? ' \u00b7 ' + m.bldg : '');
     popupEl.appendChild(meta);
 
-    const dir = document.createElement('a');
-    dir.href = `https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking`;
-    dir.target = '_blank';
-    dir.rel = 'noopener';
-    dir.style.cssText = 'font-size:12px';
+    const dir = document.createElement('button');
+    dir.style.cssText = 'font-size:12px;color:#1E5B8A;background:none;border:none;cursor:pointer;padding:4px 0';
     dir.textContent = 'Directions \u2192';
+    dir.addEventListener('click', (e) => {
+      e.stopPropagation();
+      leafletMap.closePopup();
+      showWalkingRoute(m.lat, m.lng, m.a, m.img);
+    });
     popupEl.appendChild(dir);
 
     marker.bindPopup(popupEl);
@@ -273,6 +276,93 @@ function initMap() {
 
   // Fix Leaflet sizing after tab switch
   setTimeout(() => leafletMap.invalidateSize(), 100);
+}
+
+// =============================================
+// In-app walking directions
+// =============================================
+function showWalkingRoute(destLat, destLng, name, img) {
+  // Close detail page
+  detailPage.hidden = true;
+
+  // Switch to map tab (initializes map if needed)
+  switchTab('map');
+
+  // Request fresh user location, then draw route
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        drawRoute(state.userLat, state.userLng, destLat, destLng, name, img);
+      },
+      () => {
+        if (state.userLat && state.userLng) {
+          drawRoute(state.userLat, state.userLng, destLat, destLng, name, img);
+        } else {
+          const center = leafletMap.getCenter();
+          drawRoute(center.lat, center.lng, destLat, destLng, name, img);
+        }
+      },
+      { enableHighAccuracy: true, timeout: 8000 }
+    );
+  } else if (state.userLat && state.userLng) {
+    drawRoute(state.userLat, state.userLng, destLat, destLng, name, img);
+  }
+}
+
+function drawRoute(fromLat, fromLng, toLat, toLng, name, img) {
+  clearRoute();
+
+  // Dashed polyline from user to destination
+  routePolyline = L.polyline(
+    [[fromLat, fromLng], [toLat, toLng]],
+    { color: '#1E5B8A', weight: 4, opacity: 0.8, dashArray: '10, 8' }
+  ).addTo(leafletMap);
+
+  // Highlight destination
+  routeDestMarker = L.circleMarker([toLat, toLng], {
+    radius: 20,
+    fillColor: '#1E5B8A',
+    color: '#fff',
+    weight: 3,
+    fillOpacity: 0.3,
+  }).addTo(leafletMap);
+
+  // Fit bounds to show both points
+  leafletMap.fitBounds(
+    L.latLngBounds([fromLat, fromLng], [toLat, toLng]),
+    { padding: [60, 60] }
+  );
+
+  // Calculate distance + walking time (~80m/min)
+  const distMeters = haversine(fromLat, fromLng, toLat, toLng);
+  const walkMinutes = Math.max(1, Math.round(distMeters / 80));
+  const distText = formatDistance(distMeters);
+  const timeText = walkMinutes === 1 ? '~1 min walk' : `~${walkMinutes} min walk`;
+
+  // Bottom panel
+  routePanel = document.createElement('div');
+  routePanel.className = 'route-panel';
+  routePanel.innerHTML = `
+    <div class="route-panel-content">
+      <img class="route-panel-thumb" src="${img || ''}" alt="${name}">
+      <div class="route-panel-info">
+        <div class="route-panel-name">${name}</div>
+        <div class="route-panel-stats">${distText} · ${timeText}</div>
+        <a class="route-panel-fallback" href="https://www.google.com/maps/dir/?api=1&destination=${toLat},${toLng}&travelmode=walking" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <button class="route-panel-close" aria-label="Close directions">\u2715</button>
+    </div>`;
+
+  routePanel.querySelector('.route-panel-close').addEventListener('click', clearRoute);
+  views.map.appendChild(routePanel);
+}
+
+function clearRoute() {
+  if (routePolyline) { leafletMap.removeLayer(routePolyline); routePolyline = null; }
+  if (routeDestMarker) { leafletMap.removeLayer(routeDestMarker); routeDestMarker = null; }
+  if (routePanel) { routePanel.remove(); routePanel = null; }
 }
 
 // =============================================
@@ -446,9 +536,9 @@ function openPhotoDetail(photo) {
           <span>📍</span>
           <span>${photo.lat.toFixed(4)}, ${photo.lng.toFixed(4)}</span>
         </div>
-        <a class="detail-directions" href="https://www.google.com/maps/dir/?api=1&destination=${photo.lat},${photo.lng}&travelmode=walking" target="_blank" rel="noopener">
+        <button class="detail-directions" data-route-lat="${photo.lat}" data-route-lng="${photo.lng}" data-route-name="${photo.note}" data-route-img="images/field/${photo.src}">
           🚶 Walking Directions
-        </a>
+        </button>
       ` : ''}
 
       ${linked ? `
@@ -489,216 +579,20 @@ function openPhotoDetail(photo) {
     });
   });
 
+  // Wire up walking directions button
+  const dirBtn = detailContent.querySelector('.detail-directions[data-route-lat]');
+  if (dirBtn) {
+    dirBtn.addEventListener('click', () => {
+      showWalkingRoute(
+        Number(dirBtn.dataset.routeLat),
+        Number(dirBtn.dataset.routeLng),
+        dirBtn.dataset.routeName,
+        dirBtn.dataset.routeImg
+      );
+    });
+  }
+
   detailPage.scrollTop = 0;
-}
-
-// =============================================
-// QR Scanner
-// =============================================
-let html5QrCode = null;
-let scanHandled = false;
-
-function renderScanPrompt() {
-  views.scan.innerHTML = `
-    <div class="scan-prompt">
-      <div class="scan-prompt-icon">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
-          <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
-          <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
-          <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
-          <rect x="7" y="7" width="10" height="10" rx="1"/>
-        </svg>
-      </div>
-      <div class="scan-prompt-title">Identify a Mural</div>
-      <div class="scan-prompt-text">Scan a plaque QR code or use your location to find the mural you're looking at.</div>
-      <div class="scan-dual-buttons">
-        <button class="scan-start-btn" id="scan-start">Scan QR Code</button>
-        <button class="scan-identify-btn" id="scan-identify">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          Identify by Location
-        </button>
-      </div>
-    </div>`;
-  $('#scan-start').addEventListener('click', startScanner);
-  $('#scan-identify').addEventListener('click', renderIdentifyLoading);
-}
-
-function startScanner() {
-  views.scan.innerHTML = `
-    <div class="scan-camera-wrap">
-      <div class="scan-camera-label">Scanning…</div>
-      <div id="scan-reader"></div>
-      <button class="scan-stop-btn" id="scan-stop">Stop Camera</button>
-    </div>`;
-
-  scanHandled = false;
-  html5QrCode = new Html5Qrcode('scan-reader');
-  html5QrCode.start(
-    { facingMode: 'environment' },
-    { fps: 10, qrbox: { width: 250, height: 250 } },
-    onScanSuccess,
-    () => {}
-  ).catch(err => {
-    console.warn('Scanner start error:', err);
-    renderScanError(err);
-  });
-
-  $('#scan-stop').addEventListener('click', () => {
-    stopScanner().then(() => renderScanPrompt());
-  });
-}
-
-function onScanSuccess(decodedText) {
-  // Prevent multiple callbacks for same scan
-  if (scanHandled) return;
-  scanHandled = true;
-
-  // Defer stop + navigation to next tick so the library finishes its callback
-  setTimeout(() => {
-    stopScanner().then(() => {
-      console.log('QR decoded:', decodedText);
-      const muralId = lookupQrUrl(decodedText);
-      console.log('Lookup result:', muralId);
-      if (muralId !== null) {
-        const mural = murals.find(m => m.id === muralId);
-        if (mural) { openDetail(mural); return; }
-      }
-      renderScanNoMatch(decodedText);
-    });
-  }, 0);
-}
-
-function renderScanNoMatch(decodedText) {
-  const safeText = escapeHtml(decodedText);
-  const isLink = /^https?:\/\//i.test(decodedText);
-  views.scan.innerHTML = `
-    <div class="scan-result">
-      <div class="scan-result-icon">?</div>
-      <div class="scan-result-title">QR Code Not Recognized</div>
-      <div class="scan-result-url">${safeText}</div>
-      <div class="scan-result-actions">
-        <button class="scan-start-btn" id="scan-retry">Try Again</button>
-        ${isLink ? `<a class="scan-open-link" href="${safeText}" target="_blank" rel="noopener">Open Link</a>` : ''}
-      </div>
-    </div>`;
-  $('#scan-retry').addEventListener('click', startScanner);
-}
-
-function renderScanError(err) {
-  const msg = err ? err.toString() : '';
-  const isDenied = /denied|permission|notallowed/i.test(msg);
-  views.scan.innerHTML = `
-    <div class="scan-error">
-      <div class="scan-result-icon">!</div>
-      <div class="scan-result-title">${isDenied ? 'Camera Access Denied' : 'Camera Error'}</div>
-      <div class="scan-prompt-text">${isDenied
-        ? 'Please allow camera access in your browser settings and try again.'
-        : 'Could not start the camera. Make sure no other app is using it.'}</div>
-      <button class="scan-start-btn" id="scan-error-retry">Try Again</button>
-    </div>`;
-  $('#scan-error-retry').addEventListener('click', startScanner);
-}
-
-function renderIdentifyLoading() {
-  views.scan.innerHTML = `
-    <div class="scan-prompt">
-      <div class="scan-prompt-icon">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-      </div>
-      <div class="scan-prompt-title">Finding your location…</div>
-    </div>`;
-
-  if (!('geolocation' in navigator)) {
-    renderIdentifyError('Location is not available on this device.');
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(pos => {
-    renderIdentifyResults(pos.coords.latitude, pos.coords.longitude);
-  }, () => {
-    renderIdentifyError('Could not get your location. Check your GPS permissions and try again.');
-  }, { enableHighAccuracy: true, timeout: 10000 });
-}
-
-function renderIdentifyResults(lat, lng) {
-  const nearby = murals
-    .filter(m => m.lat && m.lng)
-    .map(m => ({ ...m, dist: haversine(lat, lng, m.lat, m.lng) }))
-    .sort((a, b) => a.dist - b.dist)
-    .slice(0, 8);
-
-  if (nearby.length === 0) {
-    renderIdentifyError('No murals with GPS coordinates found.');
-    return;
-  }
-
-  views.scan.innerHTML = `
-    <div class="identify-results">
-      <div class="identify-header">
-        <div class="identify-title">Which mural are you looking at?</div>
-        <div class="identify-subtitle">Tap to open its detail page</div>
-      </div>
-      <div class="identify-grid">
-        ${nearby.map(m => `
-          <div class="identify-card" data-id="${m.id}">
-            <img class="identify-card-img" src="${m.img || ''}" alt="${m.a}" loading="lazy">
-            <div class="identify-card-info">
-              <div class="identify-card-artist">${m.a}</div>
-              <div class="identify-card-meta">${formatDistance(m.dist)} away</div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-      <div class="identify-footer">
-        <button class="scan-stop-btn" id="identify-back">None of these — go back</button>
-      </div>
-    </div>`;
-
-  views.scan.querySelectorAll('.identify-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const mural = murals.find(m => m.id === Number(card.dataset.id));
-      if (mural) openDetail(mural);
-    });
-  });
-
-  $('#identify-back').addEventListener('click', renderScanPrompt);
-}
-
-function renderIdentifyError(msg) {
-  views.scan.innerHTML = `
-    <div class="scan-error">
-      <div class="scan-result-icon">!</div>
-      <div class="scan-result-title">Location Unavailable</div>
-      <div class="scan-prompt-text">${msg}</div>
-      <button class="scan-start-btn" id="identify-error-back">Go Back</button>
-    </div>`;
-  $('#identify-error-back').addEventListener('click', renderScanPrompt);
-}
-
-function stopScanner() {
-  if (html5QrCode) {
-    const scanner = html5QrCode;
-    html5QrCode = null;
-    return scanner.stop().then(() => {
-      scanner.clear();
-    }).catch(() => {
-      try { scanner.clear(); } catch {}
-    });
-  }
-  return Promise.resolve();
-}
-
-function escapeHtml(str) {
-  const d = document.createElement('div');
-  d.textContent = str;
-  return d.innerHTML;
 }
 
 // =============================================
@@ -757,9 +651,9 @@ function openDetail(mural) {
       ` : ''}
 
       ${mural.lat && mural.lng ? `
-        <a class="detail-directions" href="https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking" target="_blank" rel="noopener">
+        <button class="detail-directions" data-route-lat="${mural.lat}" data-route-lng="${mural.lng}" data-route-name="${mural.a}" data-route-img="${mural.img || ''}">
           🚶 Walking Directions
-        </a>
+        </button>
       ` : ''}
 
       ${photos.length > 0 ? `
@@ -815,6 +709,19 @@ function openDetail(mural) {
       if (m) openDetail(m);
     });
   });
+
+  // Wire up walking directions button
+  const dirBtn = detailContent.querySelector('.detail-directions[data-route-lat]');
+  if (dirBtn) {
+    dirBtn.addEventListener('click', () => {
+      showWalkingRoute(
+        Number(dirBtn.dataset.routeLat),
+        Number(dirBtn.dataset.routeLng),
+        dirBtn.dataset.routeName,
+        dirBtn.dataset.routeImg
+      );
+    });
+  }
 
   // Scroll to top
   detailPage.scrollTop = 0;

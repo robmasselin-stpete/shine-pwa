@@ -27,8 +27,6 @@
   <!-- Leaflet (map) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
-
   <title>SHINE St. Pete</title>
 </head>
 <body>
@@ -92,7 +90,6 @@
       <!-- Tab views rendered here by app.js -->
       <div id="view-explore" class="view" data-view="explore"></div>
       <div id="view-map" class="view" data-view="map" hidden></div>
-      <div id="view-scan" class="view" data-view="scan" hidden></div>
       <div id="view-nearby" class="view" data-view="nearby" hidden></div>
       <div id="view-gallery" class="view" data-view="gallery" hidden></div>
     </main>
@@ -123,16 +120,6 @@
           <path d="m3 7 6-3 6 3 6-3v13l-6 3-6-3-6 3Z"/><path d="m9 4v13"/><path d="m15 7v13"/>
         </svg>
         <span class="tab-label">Map</span>
-      </button>
-      <button class="tab" data-tab="scan" aria-label="Scan">
-        <svg class="tab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
-          <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
-          <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
-          <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
-          <rect x="7" y="7" width="10" height="10" rx="1"/>
-        </svg>
-        <span class="tab-label">Scan</span>
       </button>
       <button class="tab" data-tab="nearby" aria-label="Nearby">
         <svg class="tab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
