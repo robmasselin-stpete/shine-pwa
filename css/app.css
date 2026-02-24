@@ -573,6 +573,146 @@ a {
 }
 
 /* ========================================
+   Scan View
+   ======================================== */
+.scan-prompt, .scan-result, .scan-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  min-height: 50vh;
+}
+
+.scan-prompt-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 16px;
+  background: var(--accent-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.scan-result-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  background: #FFF3E0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #E8A838;
+}
+
+.scan-prompt-title, .scan-result-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.scan-prompt-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  max-width: 280px;
+}
+
+.scan-start-btn {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.scan-start-btn:active { opacity: 0.8; }
+
+.scan-camera-wrap {
+  padding: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.scan-camera-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+#scan-reader {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.scan-stop-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.scan-result-url {
+  font-size: 13px;
+  color: var(--text-muted);
+  word-break: break-all;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin: 12px 0 20px;
+  max-width: 320px;
+}
+
+.scan-result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.scan-open-link {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+/* ========================================
    Tab Bar
    ======================================== */
 .tab-bar {

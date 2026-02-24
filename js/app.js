@@ -1,5 +1,6 @@
 import { murals, YEARS, YEAR_COLORS } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
+import { lookupQrUrl } from './qrcodes.js';
 
 // =============================================
 // State
@@ -23,6 +24,7 @@ const $$ = (sel) => document.querySelectorAll(sel);
 const views = {
   explore: $('#view-explore'),
   map: $('#view-map'),
+  scan: $('#view-scan'),
   nearby: $('#view-nearby'),
   gallery: $('#view-gallery'),
 };
@@ -46,6 +48,9 @@ $$('.tab').forEach(btn => {
 function switchTab(tab) {
   state.tab = tab;
 
+  // Stop scanner camera when leaving scan tab
+  stopScanner();
+
   // Update tab bar
   $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
 
@@ -64,6 +69,7 @@ function switchTab(tab) {
   // Lazy init views
   if (tab === 'explore') renderExplore();
   if (tab === 'map') initMap();
+  if (tab === 'scan') renderScanPrompt();
   if (tab === 'nearby') renderNearby();
   if (tab === 'gallery') renderGallery();
 }
@@ -484,6 +490,110 @@ function openPhotoDetail(photo) {
   });
 
   detailPage.scrollTop = 0;
+}
+
+// =============================================
+// QR Scanner
+// =============================================
+let html5QrCode = null;
+
+function renderScanPrompt() {
+  views.scan.innerHTML = `
+    <div class="scan-prompt">
+      <div class="scan-prompt-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+          <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+          <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+          <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+          <rect x="7" y="7" width="10" height="10" rx="1"/>
+        </svg>
+      </div>
+      <div class="scan-prompt-title">Scan a Mural Plaque</div>
+      <div class="scan-prompt-text">Point your camera at a PixelStix QR code to identify the mural and see its details.</div>
+      <button class="scan-start-btn" id="scan-start">Start Camera</button>
+    </div>`;
+  $('#scan-start').addEventListener('click', startScanner);
+}
+
+function startScanner() {
+  views.scan.innerHTML = `
+    <div class="scan-camera-wrap">
+      <div class="scan-camera-label">Scanning…</div>
+      <div id="scan-reader"></div>
+      <button class="scan-stop-btn" id="scan-stop">Stop Camera</button>
+    </div>`;
+
+  html5QrCode = new Html5Qrcode('scan-reader');
+  html5QrCode.start(
+    { facingMode: 'environment' },
+    { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1 },
+    onScanSuccess,
+    () => {}
+  ).catch(err => {
+    console.warn('Scanner start error:', err);
+    renderScanError(err);
+  });
+
+  $('#scan-stop').addEventListener('click', () => {
+    stopScanner();
+    renderScanPrompt();
+  });
+}
+
+function onScanSuccess(decodedText) {
+  stopScanner();
+  const muralId = lookupQrUrl(decodedText);
+  if (muralId !== null) {
+    const mural = murals.find(m => m.id === muralId);
+    if (mural) { openDetail(mural); return; }
+  }
+  renderScanNoMatch(decodedText);
+}
+
+function renderScanNoMatch(decodedText) {
+  const safeText = escapeHtml(decodedText);
+  const isLink = /^https?:\/\//i.test(decodedText);
+  views.scan.innerHTML = `
+    <div class="scan-result">
+      <div class="scan-result-icon">?</div>
+      <div class="scan-result-title">QR Code Not Recognized</div>
+      <div class="scan-result-url">${safeText}</div>
+      <div class="scan-result-actions">
+        <button class="scan-start-btn" id="scan-retry">Try Again</button>
+        ${isLink ? `<a class="scan-open-link" href="${safeText}" target="_blank" rel="noopener">Open Link</a>` : ''}
+      </div>
+    </div>`;
+  $('#scan-retry').addEventListener('click', startScanner);
+}
+
+function renderScanError(err) {
+  const msg = err ? err.toString() : '';
+  const isDenied = /denied|permission|notallowed/i.test(msg);
+  views.scan.innerHTML = `
+    <div class="scan-error">
+      <div class="scan-result-icon">!</div>
+      <div class="scan-result-title">${isDenied ? 'Camera Access Denied' : 'Camera Error'}</div>
+      <div class="scan-prompt-text">${isDenied
+        ? 'Please allow camera access in your browser settings and try again.'
+        : 'Could not start the camera. Make sure no other app is using it.'}</div>
+      <button class="scan-start-btn" id="scan-error-retry">Try Again</button>
+    </div>`;
+  $('#scan-error-retry').addEventListener('click', startScanner);
+}
+
+function stopScanner() {
+  if (html5QrCode) {
+    html5QrCode.stop().catch(() => {});
+    html5QrCode.clear();
+    html5QrCode = null;
+  }
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
 }
 
 // =============================================
