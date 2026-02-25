@@ -1,5 +1,6 @@
 import { murals, YEARS, YEAR_COLORS } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
+import { tourRoutes } from './routes.js';
 // =============================================
 // State
 // =============================================
@@ -28,6 +29,7 @@ const views = {
   explore: $('#view-explore'),
   map: $('#view-map'),
   nearby: $('#view-nearby'),
+  routes: $('#view-routes'),
   gallery: $('#view-gallery'),
 };
 
@@ -72,6 +74,7 @@ function switchTab(tab) {
     if (state.mapReady) setTimeout(() => leafletMap.invalidateSize(), 100);
   }
   if (tab === 'nearby') renderNearby();
+  if (tab === 'routes') renderRoutes();
   if (tab === 'gallery') renderGallery();
 }
 
@@ -572,6 +575,185 @@ function renderNearby() {
       </div>
     `;
   }, { enableHighAccuracy: true, timeout: 10000 });
+}
+
+// =============================================
+// Routes view
+// =============================================
+let activeRoute = null;      // current tour route object
+let routeStopMarkers = [];   // Leaflet markers for route stops
+
+function renderRoutes() {
+  views.routes.innerHTML = `
+    <div class="routes-list">
+      <div class="routes-header">
+        <div class="routes-title">SHINE 2025 Tours</div>
+        <div class="routes-subtitle">Curated mural routes with turn-by-turn directions</div>
+      </div>
+      ${tourRoutes.map(route => {
+        const stops = route.stops.map(id => murals.find(m => m.id === id)).filter(Boolean);
+        return `
+          <div class="route-card" data-route-id="${route.id}">
+            <div class="route-card-header">
+              <span class="route-card-icon">${route.icon}</span>
+              <div class="route-card-info">
+                <div class="route-card-name">${route.name}</div>
+                <div class="route-card-meta">${stops.length} stops</div>
+              </div>
+            </div>
+            <div class="route-card-desc">${route.description}</div>
+            <div class="route-card-stops">
+              ${stops.map((m, i) => `<img class="route-card-thumb" src="${m.img || ''}" alt="${m.a}" title="${m.a}" loading="lazy">`).join('')}
+            </div>
+            <button class="route-card-start">Start Tour</button>
+          </div>`;
+      }).join('')}
+    </div>`;
+
+  views.routes.querySelectorAll('.route-card').forEach(card => {
+    card.querySelector('.route-card-start').addEventListener('click', () => {
+      const route = tourRoutes.find(r => r.id === card.dataset.routeId);
+      if (route) startTourRoute(route);
+    });
+  });
+}
+
+function startTourRoute(route) {
+  activeRoute = route;
+  const stops = route.stops.map(id => murals.find(m => m.id === id)).filter(Boolean);
+  if (stops.length < 2) return;
+
+  // Switch to map
+  switchTab('map');
+
+  // Clear any existing single-direction route
+  clearRoute();
+  clearTourRoute();
+
+  // Build OSRM waypoints
+  const coords = stops.map(m => `${m.lng},${m.lat}`).join(';');
+  const profile = route.mode === 'foot' ? 'foot' : 'driving';
+  const osrmUrl = `https://router.project-osrm.org/route/v1/${profile}/${coords}?overview=full&geometries=geojson&steps=true`;
+
+  // Add numbered stop markers
+  stops.forEach((m, i) => {
+    const marker = L.marker([m.lat, m.lng], {
+      icon: L.divIcon({
+        className: 'tour-stop-icon',
+        html: `<div class="tour-stop-number">${i + 1}</div>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+      }),
+    }).addTo(leafletMap);
+    marker.bindPopup(`<b>${i + 1}. ${m.a}</b><br>${m.bldg || m.loc}`);
+    routeStopMarkers.push(marker);
+  });
+
+  // Fit map to stops
+  const bounds = L.latLngBounds(stops.map(m => [m.lat, m.lng]));
+  leafletMap.fitBounds(bounds, { padding: [40, 40] });
+
+  // Fetch route
+  fetch(osrmUrl)
+    .then(r => r.json())
+    .then(data => {
+      if (data.code === 'Ok' && data.routes && data.routes[0]) {
+        const osrmRoute = data.routes[0];
+        const coords = osrmRoute.geometry.coordinates.map(c => [c[1], c[0]]);
+        routePolyline = L.polyline(coords, {
+          color: '#1E5B8A', weight: 5, opacity: 0.85
+        }).addTo(leafletMap);
+        leafletMap.fitBounds(routePolyline.getBounds(), { padding: [40, 60] });
+        showTourPanel(route, stops, osrmRoute);
+      } else {
+        showTourPanel(route, stops, null);
+      }
+    })
+    .catch(() => {
+      showTourPanel(route, stops, null);
+    });
+}
+
+function showTourPanel(route, stops, osrmRoute) {
+  if (routePanel) { routePanel.remove(); routePanel = null; }
+
+  // Calculate totals
+  let totalDist = '', totalTime = '';
+  if (osrmRoute) {
+    totalDist = formatDistance(osrmRoute.distance);
+    const mins = Math.max(1, Math.round(osrmRoute.duration / 60));
+    totalTime = mins >= 60 ? `${Math.floor(mins/60)}h ${mins%60}m` : `~${mins} min`;
+  }
+
+  // Build per-leg step instructions
+  const legs = osrmRoute && osrmRoute.legs ? osrmRoute.legs : [];
+  let stepsHtml = '';
+  legs.forEach((leg, i) => {
+    const fromMural = stops[i];
+    const toMural = stops[i + 1];
+    if (!toMural) return;
+    const legDist = formatDistance(leg.distance);
+    const legMins = Math.max(1, Math.round(leg.duration / 60));
+    const legSteps = (leg.steps || []).filter(s =>
+      s.distance > 0 || (s.maneuver && s.maneuver.type === 'arrive')
+    );
+    stepsHtml += `
+      <div class="tour-leg">
+        <div class="tour-leg-header">
+          <span class="tour-leg-num">${i + 1} → ${i + 2}</span>
+          <span class="tour-leg-names">${fromMural.a} → ${toMural.a}</span>
+          <span class="tour-leg-stats">${legDist} · ~${legMins} min</span>
+        </div>
+        ${legSteps.map(s => {
+          const m = s.maneuver || {};
+          return `<div class="route-step">
+            <span class="route-step-icon">${stepIcon(m.modifier, m.type)}</span>
+            <span class="route-step-text">${stepText(s)}</span>
+          </div>`;
+        }).join('')}
+      </div>`;
+  });
+
+  routePanel = document.createElement('div');
+  routePanel.className = 'route-panel tour-panel';
+  routePanel.innerHTML = `
+    <div class="route-panel-content">
+      <div class="route-panel-info" style="flex:1">
+        <div class="route-panel-name">${route.icon} ${route.name}</div>
+        <div class="route-panel-stats">${stops.length} stops${totalDist ? ' · ' + totalDist + ' · ' + totalTime : ''}</div>
+      </div>
+      <button class="route-panel-close" aria-label="Close route">\u2715</button>
+    </div>
+    <div class="tour-stops-bar">
+      ${stops.map((m, i) => `
+        <div class="tour-stop-chip" data-id="${m.id}">
+          <span class="tour-stop-chip-num">${i + 1}</span>
+          <span class="tour-stop-chip-name">${m.a}</span>
+        </div>
+      `).join('')}
+    </div>
+    ${stepsHtml ? `<div class="route-steps tour-steps">${stepsHtml}</div>` : ''}`;
+
+  routePanel.querySelector('.route-panel-close').addEventListener('click', () => {
+    clearTourRoute();
+    clearRoute();
+  });
+
+  // Tap a stop chip to open its detail
+  routePanel.querySelectorAll('.tour-stop-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const m = murals.find(m => m.id === Number(chip.dataset.id));
+      if (m) openDetail(m);
+    });
+  });
+
+  views.map.appendChild(routePanel);
+}
+
+function clearTourRoute() {
+  routeStopMarkers.forEach(m => leafletMap.removeLayer(m));
+  routeStopMarkers = [];
+  activeRoute = null;
 }
 
 // =============================================
