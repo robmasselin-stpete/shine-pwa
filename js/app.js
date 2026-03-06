@@ -521,11 +521,9 @@ function calcRouteTotalDist(orderedMurals) {
 //   - Auto: `filter` function selects murals, nearest-neighbor computes order
 const ROUTE_DEFS = [
   { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'All 2025 murals plus classics along the way',
-    ids: [17, 6, 107, 116, 1, 11, 109, 110, 7, 9, 5, 16, 12, 2, 3, 8, 10, 13, 15, 19] },
+    ids: [17, 6, 107, 116, 1, 109, 110, 7, 9, 5, 16, 12, 2, 3, 8, 10, 13, 15, 19] },
   { id: 'shine-2024', name: 'SHINE 2024', desc: '2024 festival collection', filter: m => m.y === 2024 && m.cat === 'shine' },
-  { id: 'shine-2023', name: 'SHINE 2023', desc: '2023 festival collection', filter: m => m.y === 2023 && m.cat === 'shine' },
   { id: 'downtown', name: 'Downtown Highlights', desc: 'Best murals within walking distance', filter: m => m.cat !== 'commercial' && haversine(27.7706, -82.6400, m.lat, m.lng) < 2000 },
-  { id: 'all-shine', name: 'All SHINE Murals', desc: 'Every reviewed SHINE mural', filter: m => m.cat !== 'commercial' },
 ];
 
 /**
