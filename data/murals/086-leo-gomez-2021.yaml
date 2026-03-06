@@ -4,31 +4,45 @@
 id: 86
 artist: Leo Gomez
 year: 2021
-lat: 27.7643
-lng: -82.643
+lat: 27.76399667
+lng: -82.64393667
 address: 744 6th Ave. S.
 category: shine
-img: "images/murals/2021/leo-gomez.png"
+img: "images/murals/2021/leo-gomez.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Can't Thank You Enough"
 building: Bayfront Health St. Pete
 instagram: leogomezstudio
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Leo Gomez is an artist specializing in hand lettering and custom type. He
-  combines his talents as a designer and illustrator in the art of lettering to
-  create stunning artworks. His works include both small- and large-scale
-  murals tailored to boost engagement and create positive social impressions.
-  Based in St. Petersburg, Leo has worked with companies including Starbucks
-  and Publix.
+  Leo Gomez launched his eponymous studio in St. Petersburg in 2017,
+  focusing on hand lettering, sign painting, and large-format murals.
+  His client list runs from Disney Springs and the St. Pete/Clearwater
+  International Airport to local spots like Green Bench Brewing and
+  Tombolo Books.
 
-muralDescription: ""
+  His SHINE 2021 piece at Bayfront Health reads "Can't Thank You Enough"
+  in flowing gold script across a deep navy blue wall — a tribute to
+  healthcare workers painted with the precision and flourish of a
+  trained sign painter.
+
+muralDescription: |
+  Elegant gold script lettering spelling "Can't Thank You Enough" fills
+  the entire wall of a building adjacent to Bayfront Health. The flowing
+  cursive letterforms are painted on a rich navy blue background, with
+  decorative swashes and flourishes extending from each word. "Leo Gomez
+  Studio" is signed in the upper right corner.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://www.leogomezstudio.com/about"
+  - "https://stpeteartsalliance.org/leo-gomez"
+  - "https://www.leogomezstudio.com/murals"

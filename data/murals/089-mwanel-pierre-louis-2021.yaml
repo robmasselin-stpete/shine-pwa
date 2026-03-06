@@ -4,11 +4,11 @@
 id: 89
 artist: "Mwanel Pierre-Louis"
 year: 2021
-lat: 27.7751
-lng: -82.6402
+lat: 27.77184167
+lng: -82.65008667
 address: 1100 1st Ave. N.
 category: shine
-img: "images/murals/2021/mwanel-pierre-louis.jpg"
+img: "images/murals/2021/mwanel-pierre-louis.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,19 +17,34 @@ instagram: mwanel1_l
 basedIn: "Miami, FL"
 
 artistBio: |
-  Born in NY, from Haitian descent, Mwanel Pierre-Louis is an artist based out
-  of Miami, FL. His work combines realism and abstraction in a narrative that
-  draws from personal interactions and pop references. Mwanel's paintings
-  feature juxtapositions of fragmented experiences and a strong emphasis on the
-  relationship between subject and color. His work has been exhibited across
-  the country with his first solo show in 2019 at Thinkspace Gallery and his
-  clients include Starbucks, Fader Magazine, Adidas, and Atlantic Records.
+  Mwanel Pierre-Louis is a Miami-based painter born in New York to
+  Haitian parents. He studied at New World School of the Arts in Miami
+  and the Art Center College of Design in Pasadena, and has since built a
+  client roster that includes Adidas, Jack Daniel's, Foot Locker, Puma,
+  the Miami Dolphins, and the Florida Panthers. His paintings have shown
+  at Scope Art Fair during Art Basel and at POW!WOW! Hawaii.
 
-muralDescription: ""
+  His 2021 SHINE portrait on the side of Green Bench Brewing features a
+  woman with flowing locs against layered washes of warm color. The piece
+  shows his signature approach — photorealistic faces dissolving into
+  loose, expressive abstraction around the edges.
+
+muralDescription: |
+  A striking portrait of a woman with long locs dominates the side of
+  Green Bench Brewing. The face is rendered with photorealistic detail
+  while the background dissolves into expressive washes of warm oranges,
+  reds, and earth tones. The contrast between the precise portrait work
+  and the loose, painterly surroundings gives the piece real presence
+  from across the street.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://www.mwanel.com/about"
+  - "https://stpeteartsalliance.org/Mwanel-Pierre-Louis-2021"
+  - "https://thinkspaceprojects.com/artists/mwanel-pierre-louis/"

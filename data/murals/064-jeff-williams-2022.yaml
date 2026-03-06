@@ -4,11 +4,11 @@
 id: 64
 artist: Jeff Williams
 year: 2022
-lat: 27.7771
-lng: -82.6537
+lat: 27.77776333
+lng: -82.6466
 address: 511 Dr. MLK Jr St. N.
 category: shine
-img: "images/murals/2022/Jeff-Williams-SHINE-Day-10.jpg"
+img: "images/murals/2022/jeff-williams.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,19 +17,38 @@ instagram: sunsigns.stpete
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Jeff Williams is a traditional sign painter who was born and raised in St.
-  Petersburg, FL. An early exposure to mid century design via his parents’
-  vintage shop had a lasting impact and is still prevalent in his work today.
-  Most of his work is influenced by old hand drawn and painted letter forms,
-  mid century style illustrations, ‘50s advertising and packaging, as well as
-  vintage tattoo flash. His aim is to preserve the rich visual identity of our
-  city through traditional hand painted signage.
+  Jeff Williams is a St. Petersburg native who runs Sun Signs, a
+  traditional sign painting shop in the city. His work is steeped in
+  mid-century design — hand-drawn letterforms, 1950s advertising
+  aesthetics, and vintage tattoo flash — and he's painted the sign for
+  Sunken Gardens, one of Florida's oldest roadside attractions. He's
+  been featured on PBS WEDU's Arts Plus.
 
-muralDescription: ""
+  His SHINE 2022 mural at Myoblast Strength is a love letter to old
+  Florida tourism — stacked horizontal bands reading "Florida Souvenirs,"
+  "St. Petersburg," "the sun... the sea... you & me," "Tampa Bay," and
+  "Sunshine 360 Days a Year," all painted in vintage postcard style with
+  retro illustrations. It looks like it could have been on a highway
+  billboard in 1955.
+
+muralDescription: |
+  A tall wall painted as a stack of vintage Florida tourism signs in
+  bold primary colors. From top to bottom: "Florida SOUVENIRS" with palm
+  trees, "ST. PETERSBURG" in large white block letters on black,
+  "the sun... the sea... you & me — THE SUNSHINE CITY" on red with
+  pin-up illustrations and oranges, "FLORIDA" in classic postcard
+  lettering, "Tampa Bay" in red script with a pelican mascot, and
+  "Sunshine 360 Days A Year" with a retro couple in green. Every detail
+  is hand-painted in authentic mid-century sign style.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://stpeteartsalliance.org/jeff-williams-2022"
+  - "https://gnarlymagazine.com/blogs/news/the-art-of-hand-painted-signs-a-journey-with-jeff-williams-of-sun-signs"
+  - "https://www.pbs.org/video/1215-jeff-williams-2nmbue/"

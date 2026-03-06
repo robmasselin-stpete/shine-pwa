@@ -4,11 +4,11 @@
 id: 80
 artist: Greg Mike
 year: 2021
-lat: 27.7751
-lng: -82.6444
+lat: 27.77231167
+lng: -82.64716333
 address: 915 1st Ave. N.
 category: shine
-img: "images/murals/2021/greg-mike.jpg"
+img: "images/murals/2021/greg-mike.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,20 +17,32 @@ instagram: gregmike
 basedIn: "Atlanta, GA"
 
 artistBio: |
-  Born and raised in CT, childhood trips to NYC exposed Greg Mike Mensching to
-  the creative potential of reinventing public spaces through art and design.
-  Obsessed with the boundless energy and crisp line work of iconic mid-century
-  cartoons, Greg began using the walls on the streets to fuse these two
-  passions together. He is known for pieces that incorporate vivid explosions
-  of incandescent color filtered through a Surrealist Pop Art perspective.
-  Populated by gleefully twisted characters, his world is unsettling,
-  mischievous, and uniquely captivating.
+  Greg Mike is an Atlanta-based artist and designer known for his
+  character "Larry Loudmouf" and a hyper-saturated cartoon style that
+  lands somewhere between vintage animation and pop surrealism. Beyond
+  walls, he runs MADPOP — a line of designer toys and collectibles — and
+  has had solo shows at ABV Gallery and painted projects for Moxy Hotels.
 
-muralDescription: ""
+  His 2021 SHINE mural on the Goldman Wetzel building is pure Greg Mike —
+  a packed crowd of grinning, bug-eyed characters in neon pinks and acid
+  greens with "SMILE" running across the center. It's one of those walls
+  where the energy is impossible to ignore from the sidewalk.
+
+muralDescription: |
+  A massive wall covered edge-to-edge with Greg Mike's signature cartoon
+  characters — bug-eyed, grinning figures in electric pinks, greens, and
+  yellows. The word "SMILE" runs across the center in bold lettering,
+  surrounded by the crowd of manic, playful characters that make the
+  building impossible to walk past without looking.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://www.gregmike.com/"
+  - "https://www.atlantamagazine.com/news-culture-articles/atlanta-artist-greg-mike-came-iconic-character/"
+  - "https://www.abvgallery.com/news/artist-spotlight-greg-mike"

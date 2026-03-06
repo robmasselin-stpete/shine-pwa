@@ -1,0 +1,55 @@
+# Palehorse (Chris Parks) — 2020
+
+# ── Required ──
+id: 117
+artist: Palehorse
+year: 2020
+lat: 27.77232167
+lng: -82.64343333
+address: ""
+category: commercial
+img: "images/murals/2020/palehorse.jpeg"
+
+# ── Optional ──
+title: Saraswati Goddess
+building: ""
+instagram: palehorsedesign
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Palehorse (Chris Parks) is a St. Petersburg-based illustrator and
+  fine artist who co-founded and curated the SHINE Mural Festival from
+  2015 to 2017. His highly detailed work draws on Southeast Asian and
+  Latin mythology, and he's landed commercial projects with Nike, Under
+  Armour, National Geographic, Hasbro, DC Comics, WWE, Red Bull, and
+  Harley-Davidson. He's exhibited at Art Basel Miami and in galleries
+  in LA, New York, Berlin, and Jakarta.
+
+  The Saraswati Goddess mural, painted in August 2020 with his brother
+  Matthew Parks and Cat Gomez, fills a building wall with an intricate
+  depiction of the Hindu goddess of knowledge and arts. Saraswati plays
+  a veena flanked by a swan and peacock, with an Om symbol and
+  Devanagari script, all rendered in meticulous white and gold linework
+  on a deep black background.
+
+muralDescription: |
+  A massive black-and-gold mural depicting Saraswati, the Hindu goddess
+  of knowledge and the arts. The multi-armed figure plays a veena
+  (stringed instrument) at center, surrounded by extraordinary
+  ornamental detail — a swan on the left, a peacock on the right, an
+  Om symbol above, and the word "सरस्वती" (Saraswati) in Devanagari
+  script. The entire composition is rendered in white and gold linework
+  on a jet-black background, giving it the quality of an illuminated
+  manuscript at building scale.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://palehorsedesign.com/saraswati-goddess-mural-artwork"
+  - "https://palehorsedesign.com/about/"
+  - "https://stpeteartsalliance.org/palehorse"

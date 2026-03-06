@@ -4,11 +4,11 @@
 id: 24
 artist: Fintan Magee
 year: 2024
-lat: 27.7753
-lng: -82.6422
+lat: 27.77525833
+lng: -82.64443833
 address: 777 3rd Ave North
 category: shine
-img: "images/murals/2024/FintanMagee-FinalShot-SHINE2024-Image3.jpg"    # TODO: needs-photo
+img: "images/murals/2024/fintan-magee.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,28 +17,38 @@ instagram: fintan_magee
 basedIn: Australia
 
 artistBio: |
-  Fintan Magee is a Sydney based social realist painter, specializing in
-  large-scale murals. Born in 1985 in Lismore, New South Wales, to an architect
-  mother and father who was a sculptor, he started drawing at a young age. His
-  earlier large-scale paintings often inhabited the isolated, abandoned and
-  broken corners of the city, and today are found all over the world including
-  in London, Vienna, Los Angeles, Miami, Atlanta, Buenos Aires, Copenhagen,
-  Moscow, Rome, Jordan, and Dublin amongst others. Magee's practice is informed
-  by a profound interest in political murals, inspired by exposure at a young
-  age to those of his Father's native Northern Ireland. This is reflected in
-  the socialist nature of his public art-works, which combine journalistic
-  elements with public art. Magee's work is driven by his recognition of the
-  power of murals to communicate political and social viewpoints and thus
-  divide or unite communities. Drawing from personal experience and the
-  mundane, his figurative paintings are deeply integrated with the urban
-  environment and explore themes of diversity, migration and transition, waste
-  and consumption, loss, and the environment.
+  Fintan Magee is an Australian muralist based in Sydney, known for
+  large-scale social realist paintings that tackle environmental themes
+  — water, endangered species, the refugee crisis. He holds a BFA from
+  Griffith University and started as a graffiti writer before shifting
+  to figurative public art. His walls appear in cities from London and
+  Vienna to Buenos Aires and Kyiv, and he's shown at Nuart Festival in
+  Stavanger and Aberdeen.
 
-muralDescription: ""
+  His SHINE 2024 mural spans four stories of the Reflection St. Pete
+  apartment building, depicting an underwater scene in cool blues and
+  teals — a submerged figure, a glass bottle, crystal formations, and
+  a pineapple, all rendered with photorealistic precision. The piece
+  plays on the water and submersion themes that run through much of
+  Magee's environmental work.
+
+muralDescription: |
+  A four-story mural in shades of blue and teal covers the face of the
+  Reflection St. Pete building. The scene depicts objects and a figure
+  submerged underwater — a glass perfume-style bottle, crystalline
+  formations, and a pineapple float in rippling blue water. The
+  photorealistic rendering captures light refracting through the water
+  surface above. The building's "REFLECTION" signage sits just below
+  the mural's lower edge.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://en.wikipedia.org/wiki/Fintan_Magee"
+  - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_fintan_magee"
+  - "https://www.streetartbio.com/artists/fintan-magee-biography/"

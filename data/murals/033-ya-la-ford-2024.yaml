@@ -1,32 +1,48 @@
-# Ya La'Ford — 2024
+# Ya La'Ford — 2021
 
 # ── Required ──
 id: 33
 artist: "Ya La'Ford"
-year: 2024
-lat: 27.773
-lng: -82.631
+year: 2021
+lat: 27.77573
+lng: -82.632255
 address: 255 Beach Dr NE
 category: shine
-img: "images/murals/2024/BrightSpot-YaLaFord-stories.jpg"    # TODO: needs-photo
+img: "images/murals/2024/ya-la-ford.jpeg"
 
 # ── Optional ──
 title: ""
-building: Museum of Fine Arts
+building: "Smith & Associates"
 instagram: yalaford
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Ya La'Ford is a multidisciplinary artist whose practice spans painting,
-  sculpture, and large-scale public art. La'Ford invites the community to
-  participate in a hands-on mural making experience to celebrate a decade of
-  the SHINE St. Petersburg Mural Festival and its impact in St. Pete.
+  Ya La'Ford is a Florida-based multidisciplinary artist whose geometric
+  murals and installations explore cultural heritage and collective memory.
+  Her vibrant, pattern-heavy work has landed commissions with Nike, the
+  NBA, and a project honoring Maya Angelou, and she maintains an active
+  mural map documenting her public pieces across the state.
 
-muralDescription: ""
+  Her SHINE 2021 mural on the Smith & Associates building along Beach
+  Drive features a glowing orange heart rendered in warm gradients with
+  radiating lines, turning the real estate office facade into one of the
+  more eye-catching walls on the downtown waterfront strip.
+
+muralDescription: |
+  A large orange heart dominates the wall of the Smith & Associates
+  building, rendered in warm gradients with radiating lines that give it
+  a glowing, luminous quality. The heart shape is built from layered
+  brushwork, creating a textured surface that reads differently up close
+  versus from across Beach Drive.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://www.yalaford.com/"
+  - "https://stpetecatalyst.com/local-ish-meet-artist-ya-laford/"
+  - "https://www.cnbc.com/2024/05/03/ya-laford-abstract-artist-who-has-worked-for-nike-nba-maya-angelou.html"

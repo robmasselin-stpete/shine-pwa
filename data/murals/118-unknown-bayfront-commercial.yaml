@@ -1,0 +1,53 @@
+# Elizabeth Barenis — 2025
+
+# ── Required ──
+id: 118
+artist: Elizabeth Barenis
+year: 2025
+lat: 27.764375
+lng: -82.64328
+address: 744 6th Ave. S.
+category: commercial
+img: "images/murals/commercial/unknown-1498.jpeg"
+
+# ── Optional ──
+title: Healing Palms
+building: Bayfront Health St. Pete
+instagram: ""
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Elizabeth Barenis is a St. Petersburg-based painter originally from
+  Greenville, Mississippi, who studied at Sarah Lawrence College in New
+  York. She works in a style she calls "Abstract Precisionism" —
+  gently abstracted shapes and colors drawn from her photography,
+  intended to recreate moments of tranquility. She was named a 2023
+  Creative Pinellas Professional Artist grantee and participated in the
+  International Painting Symposium at the Mark Rothko Art Center in
+  Latvia in 2018.
+
+  "Healing Palms" was commissioned by Orlando Health as an original
+  painting, then enlarged and printed on the louvered exterior wall of
+  the Bayfront Hospital ambulance entrance. The installation translates
+  her tropical foliage compositions to architectural scale, wrapping the
+  building in overlapping palm fronds rendered in cool greens and blues.
+
+muralDescription: |
+  Overlapping angular planes in shades of green and blue fill the
+  louvered exterior wall of the Bayfront Health ambulance entrance. The
+  geometric shapes suggest tropical palm fronds abstracted into faceted,
+  crystalline forms — a diptych painting enlarged to building scale. The
+  cool palette and precise geometry complement the medical campus
+  architecture while adding a distinctly tropical warmth.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://creativepinellas.org/artist/elizabeth-barenis/"
+  - "https://www.elizabethbarenis.com/3d-work"
+  - "https://moreanartscenter.org/exibition/tropical-splendor-paintings-by-elizabeth-barenis/"

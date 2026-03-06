@@ -35,7 +35,9 @@ IMAGES_DIR = os.path.join(PROJECT_ROOT, 'images', 'murals')
 
 
 def get_exif_gps(image_path):
-    """Extract GPS coordinates from image EXIF data. Returns (lat, lng) or (None, None)."""
+    """Extract GPS coordinates from image EXIF data using Pillow.
+    Reads GPSInfo tag, converts DMS (degrees/minutes/seconds) to decimal degrees.
+    Returns (lat, lng) or (None, None) if no GPS data found."""
     try:
         img = Image.open(image_path)
         exif_data = img._getexif()
@@ -91,7 +93,7 @@ def slugify(text):
 
 
 def read_yaml_field(content, field):
-    """Read a simple scalar field from YAML content."""
+    """Read a simple scalar field from YAML content via regex (avoids full YAML parse)."""
     match = re.search(rf'^{field}:\s*["\']?([^"\'\n]*)["\']?\s*$', content, re.MULTILINE)
     if match:
         return match.group(1).strip()
@@ -99,7 +101,8 @@ def read_yaml_field(content, field):
 
 
 def update_yaml_field(content, field, value):
-    """Update a simple scalar field in YAML content."""
+    """Update a simple scalar field in YAML content via regex substitution.
+    Preserves the rest of the file. Warns if the field isn't found."""
     # Match the field line and replace the value
     pattern = rf'^({field}:\s*).*$'
     replacement = rf'\g<1>{value}'

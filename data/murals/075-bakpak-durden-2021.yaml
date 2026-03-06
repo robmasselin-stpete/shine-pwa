@@ -4,31 +4,48 @@
 id: 75
 artist: Bakpak Durden
 year: 2021
-lat: 27.7751
-lng: -82.6444
+lat: 27.77227
+lng: -82.64756667
 address: 919 1st Ave. N.
 category: shine
-img: "images/murals/2021/bakpak-durden.jpg"
+img: "images/murals/2021/bakpak-durden.jpeg"
 
 # ── Optional ──
 title: ""
 building: The Bends
 instagram: bakpakdurden
-basedIn: "Detroit , MI"
+basedIn: "Detroit, MI"
 
 artistBio: |
-  Bakpak Durden, born and raised in Detroit, is a self-taught interdisciplinary
-  fine artist. Pulling from various figurative art techniques, Durden employs a
-  wide range of mediums—oil and acrylic paint, graphite, and fine art
-  photography—to construct their hyperrealistic and conceptual works of art.
-  Durden’s artworks illuminate the complexity and precarity of human emotion
-  and identity by meticulously examining their own.
+  Bakpak Durden is a self-taught Detroit artist working across oil,
+  acrylic, graphite, and photography. Their hyperrealistic work fuses
+  Baroque and Afro-Surrealist influences, and they've shown at Cranbrook
+  Art Museum's inaugural Fresh Paint series, Paradigm Gallery in
+  Philadelphia, and Muskegon Museum of Art. They received the Torch of
+  Wisdom Foundation Cultural Arts Rising Star award in 2024.
 
-muralDescription: ""
+  The SHINE 2021 mural on The Bends is a dark, dramatic vanitas piece —
+  a human jaw and skull emerge from swirling dark greens and blacks,
+  with the text "TELL ME HOW YOU FEEL" visible in the upper corner. The
+  entire wall reads like something out of a Baroque gallery, not on the
+  side of a bar.
+
+muralDescription: |
+  A dark, moody mural stretches across the long wall of The Bends. On
+  a near-black background, a skull and exposed jawbone with visible
+  teeth emerge from tangled, organic forms in deep greens and grays.
+  The text "TELL ME HOW YOU FEEL" appears in the upper right corner.
+  The hyperrealistic rendering and somber palette give it the gravity
+  of a classical vanitas painting at massive scale.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://www.bakpakdurden.com/about"
+  - "https://cranbrookartmuseum.org/exhibition/bakpak-durden-eye-of-horus/"
+  - "https://kresgeartsindetroit.org/artist/bakpak-durden/"

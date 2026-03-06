@@ -4,11 +4,11 @@
 id: 73
 artist: Vitale Bros
 year: 2022
-lat: 27.8174
-lng: -82.6773
+lat: 27.77245333
+lng: -82.643495
 address: 3190 75th St. N.
 category: shine
-img: images/murals/2022/VITALE_BROS.jpg
+img: "images/murals/2022/vitale-bros.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,18 +17,31 @@ instagram: vitalebros
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  The Vitale Brothers are a St. Petersburg-based mural and hand-painted sign
-  company, led by Johnny Vitale and Paul Vitale, with clients from the Tampa
-  Bay Rays to Great Bay Distributors. Trailblazers in the local art scene, the
-  Vitale Brothers have launched memorable art events for many years and
-  collaborated in set design for movies filming in area such as Harmony
-  Korine’s Spring Breakers.
+  The Vitale Brothers — Johnny and Paul — are a St. Petersburg muralist
+  duo who've been part of the local art scene for years. They're known
+  for large-scale character paintings with a playful, pop-culture-heavy
+  approach that makes their walls some of the most photographed in the
+  city.
 
-muralDescription: ""
+  Their 2022 SHINE piece at Parc features a lineup of cartoon characters
+  rendered in the Vitales' bold, graphic style, turning the building wall
+  into a crowd-pleasing photo spot.
+
+muralDescription: |
+  A row of SpongeBob SquarePants characters fills the wall in the Vitale
+  Brothers' bold, graphic mural style. The familiar cartoon figures are
+  painted at building scale with clean outlines and flat, saturated colors
+  that pop against the building exterior. It's become one of the more
+  popular photo-op walls in the area.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://vitalebrothers.com/"
+  - "https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/"
+  - "https://monochronicle.com/artist/vitale-brothers/"

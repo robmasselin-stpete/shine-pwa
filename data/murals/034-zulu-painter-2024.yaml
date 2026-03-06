@@ -1,32 +1,60 @@
-# Zulu Painter — 2024
+# Zulu Painter (Carlos Culbertson) — 2022
 
 # ── Required ──
 id: 34
 artist: Zulu Painter
-year: 2024
-lat: 27.8458
-lng: -82.6283
-address: 12022 Gandy Blvd
-category: shine
-img: "images/murals/2024/BrightSpot-Zulu-Stories.jpeg"    # TODO: needs-photo
+year: 2022
+lat: 27.7726
+lng: -82.64923
+address: Arlington Ave N
+category: commercial
+img: "images/murals/2024/zulu-painter.jpeg"
 
 # ── Optional ──
-title: Bright Spot
-building: AMI Kids
+title: ""
+building: "CASA Family Justice Center"
 instagram: zulupainter1
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Zulu Painter is an international multi-media artist who works in traditional
-  mediums as well as special effects and scenic art. Zulu’s large scale mural
-  work can be seen across the country and contributes to the art revitalization
-  in communities throughout the USA.
+  Zulu Painter (Carlos Culbertson) is a St. Petersburg-based multimedia
+  artist whose "Mindful Murals" appear on buildings across the US. His
+  practice spans traditional painting, special effects, and scenic art,
+  and he's been part of SHINE since 2017 when he painted "Thirst" for
+  the festival. His vibrant, community-focused work aims to uplift
+  through color and representation.
 
-muralDescription: ""
-muralInspiration: ""
+  The CASA Family Justice Center mural was commissioned by
+  philanthropists Willi Rudowsky and Hal Freedman through a
+  request-for-proposals process, completed ahead of the center's
+  October 2022 grand opening. It spans two buildings on Arlington
+  Avenue, two blocks north of Central, and was designed to create a
+  welcoming environment for domestic violence survivors arriving at
+  the center.
+
+muralDescription: |
+  Four diverse faces fill the two-story CASA Family Justice Center
+  building, representing different demographics affected by domestic
+  violence. On one side, a woman cradles a baby, with words embedded
+  in the curls of her hair — "Drive, Bravery, Family, Growth, Hope,
+  Empathy, Love, Community, Wisdom, Faith, Create, and Unity." The
+  other side depicts a young woman extending a helping hand and a young
+  man making direct eye contact. Colorful geometric patterns, blue
+  polka dots, swirling vines, and flowers in purples and golds
+  surround the figures. A pathway of white polka dots and purple
+  triangles crosses Arlington Avenue as part of the design.
+
+muralInspiration: |
+  As Zulu Painter described the faces: "They're everyone... people from
+  our community who have in some way been affected by family turmoil."
+
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://creativepinellas.org/magazine/welcoming-domestic-violence-survivors-with-art/"
+  - "https://www.zulupainter.com/about.html"
+  - "https://creativepinellas.org/artist/zulu-painter/"

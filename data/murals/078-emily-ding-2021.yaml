@@ -4,11 +4,11 @@
 id: 78
 artist: Emily Ding
 year: 2021
-lat: 27.7693
-lng: -82.648
+lat: 27.77026667
+lng: -82.64296667
 address: 100 7th St. S.
 category: shine
-img: "images/murals/2021/emily-ding.jpg"
+img: "images/murals/2021/emily-ding.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,18 +17,35 @@ instagram: _emilyding
 basedIn: "Houston, TX"
 
 artistBio: |
-  Emily Ding is a Houston based muralist who draws inspiration from flora,
-  fauna, and human temperament. Her large-scale work is characterized by
-  expressive animals and figures, which come to life through bold color
-  gradients and a fluid, painterly style. Resonating deeply with the phenomena
-  of the natural world, she aims to communicate emotions and experiences,
-  through storytelling with wild creatures and people.
+  Emily Ding is a Houston-based muralist known for large-scale paintings
+  of animals rendered with a classicist's attention to fur and feather
+  and a surrealist's sense of composition. She's painted walls across
+  the US — Sacramento, Oakland, DC, Salt Lake City, Flint — and
+  internationally in China, and was featured in Houston's Mini Murals
+  project and Michigan's Bright Walls festival.
 
-muralDescription: ""
+  Her SHINE 2021 mural at Rob Graham Enterprise features a sleeping fawn
+  curled up among white blossoms, painted in rich naturalistic detail
+  against a deep forest-green background. The piece has a quiet
+  tenderness to it, with the young deer nestled into roots and foliage
+  as if the building wall were a woodland floor.
+
+muralDescription: |
+  A young fawn sleeps curled in a gentle pose, its spotted fur rendered
+  with painterly realism. White flowers bloom from the deer's back and
+  around its body, growing up toward a window that's incorporated into
+  the design. The deep emerald-green background gives the whole wall
+  the feeling of a forest clearing. Emily Ding's signature is visible
+  in the lower right.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://stpeteartsalliance.org/emily-ding-2021"
+  - "https://streetartmankind.org/artists/emily-ding/"
+  - "https://www.emilyding.art/"

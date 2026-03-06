@@ -40,8 +40,11 @@ def parse_data_js(filepath):
     """
     Parse the murals array from data.js.
 
-    The file uses JS object syntax with single-quoted strings.
-    We extract the array content, convert to valid JSON, and parse.
+    This is non-trivial because data.js uses JS syntax (not JSON):
+    single-quoted strings, unquoted keys, null literals.
+    Strategy: regex-extract each {...} object, then parse key:value
+    pairs character-by-character to handle escaped quotes in values.
+    Also extracts YEARS and YEAR_COLORS config exports.
     """
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -81,7 +84,9 @@ def parse_data_js(filepath):
 
 
 def parse_mural_object(obj_str):
-    """Parse a single JS object string like id:1,a:'Aaron Tullo',... into a dict."""
+    """Parse a single JS object string like id:1,a:'Aaron Tullo',... into a dict.
+    Walks character-by-character to handle: quoted strings with escapes,
+    numeric values, null literals. Returns dict with abbreviated keys (a, t, loc, etc.)."""
     mural = {}
 
     # We need to handle values that may contain commas (inside quotes)

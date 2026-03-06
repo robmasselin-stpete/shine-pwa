@@ -1,8 +1,34 @@
+/**
+ * SHINE St. Pete — Main Application
+ *
+ * Single-file vanilla JS app. No framework, no build step.
+ *
+ * Architecture:
+ *   - All UI state lives in the `state` object (line ~20)
+ *   - State changes trigger explicit render calls (no reactivity)
+ *   - All HTML is rendered via template literals into container divs
+ *   - Three tabs: Explore (card grid), Map (Leaflet), Routes (walking tours)
+ *   - Detail page is a fixed overlay that can appear on top of any tab
+ *
+ * Data:
+ *   - data.js is GENERATED from YAML — never hand-edit it
+ *   - Mural fields use abbreviated keys: a(artist), t(title), loc(address),
+ *     bldg(building), y(year), cat(category), ig(instagram), from(basedIn)
+ *   - See scripts/README.md for the full field reference
+ *
+ * Key patterns:
+ *   - render*() functions fully replace innerHTML of their container
+ *   - Event listeners are re-attached after each render (no delegation)
+ *   - Map initializes once (guarded by state.mapReady), subsequent visits
+ *     just call invalidateSize()
+ *   - Routes use nearest-neighbor ordering for walk optimization
+ */
+
 import { murals, YEARS, YEAR_COLORS, CATEGORY_COLORS } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
 
 // =============================================
-// State
+// State — single mutable object drives all UI
 // =============================================
 const state = {
   tab: 'explore',
@@ -15,8 +41,13 @@ const state = {
   selectedMural: null,
   activeMapTab: 'shine',
   activeMapYears: null,
+  directionsRoute: null,   // L.polyline on map
+  directionsMarker: null,  // destination marker
+  directionsProfile: 'foot', // 'foot' or 'car'
+  directionsMural: null,   // target mural object
 };
 
+// Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021];
 const VINTAGE_YEARS = [2020, 2019, 2018, 2017, 2016, 2015];
 
@@ -47,6 +78,7 @@ $$('.tab').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
 
+/** Switch active tab — hides other views, shows search/filters for Explore only, triggers render. */
 function switchTab(tab) {
   state.tab = tab;
   $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
@@ -56,14 +88,17 @@ function switchTab(tab) {
   exploreFilters.hidden = tab !== 'explore';
   detailPage.hidden = true;
 
+  if (tab !== 'map') clearDirections();
   if (tab === 'explore') renderExplore();
   if (tab === 'map') initMap();
   if (tab === 'routes') renderRoutes();
 }
 
 // =============================================
-// Haversine distance (meters)
+// Geo utilities
 // =============================================
+
+/** Great-circle distance between two lat/lng points. Returns meters. */
 function haversine(lat1, lng1, lat2, lng2) {
   const R = 6371000;
   const toRad = (d) => d * Math.PI / 180;
@@ -73,6 +108,7 @@ function haversine(lat1, lng1, lat2, lng2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
+/** Format meters as "X ft" or "X.X mi" for display. */
 function formatDistance(meters) {
   const feet = meters * 3.28084;
   if (feet < 1000) return `${Math.round(feet)} ft`;
@@ -82,6 +118,11 @@ function formatDistance(meters) {
 // =============================================
 // Explore filtering
 // =============================================
+/**
+ * Apply the current filter/search state to the full mural list.
+ * Chain: category filter → year sub-filter → text search.
+ * Returns a new filtered array (does not mutate `murals`).
+ */
 function getFilteredMurals() {
   let list = murals;
 
@@ -115,6 +156,7 @@ function getFilteredMurals() {
 // =============================================
 // Explore filter pills
 // =============================================
+/** Render the top-level category pills (All/Shine/Vintage/Commercial) and attach click handlers. */
 function renderFilterPills() {
   const f = state.exploreFilter;
   filterPills.innerHTML = `
@@ -135,6 +177,7 @@ function renderFilterPills() {
   renderYearSubPills();
 }
 
+/** Render year sub-pills (2025, 2024...) below the category pills. Only shown for Shine/Vintage. */
 function renderYearSubPills() {
   const f = state.exploreFilter;
   if (f === 'shine' || f === 'vintage') {
@@ -174,6 +217,7 @@ searchInput.addEventListener('input', (e) => {
 // =============================================
 // Explore view (mural grid)
 // =============================================
+/** Render the Explore tab — 2-column card grid of filtered murals. Full innerHTML replace. */
 function renderExplore() {
   const filtered = getFilteredMurals();
 
@@ -213,10 +257,15 @@ function renderExplore() {
 // Map view
 // =============================================
 let leafletMap = null;
-const mapMarkers = [];
+const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each mural
 
+// At this zoom level and above, markers switch from colored dots to thumbnail images
 const ICON_ZOOM_THRESHOLD = 15;
 
+/**
+ * Initialize the Leaflet map (runs once) or just resize it on subsequent tab visits.
+ * Creates two marker types per mural (dot + image icon) and sets up category/year filtering.
+ */
 function initMap() {
   if (state.mapReady) {
     setTimeout(() => leafletMap.invalidateSize(), 100);
@@ -299,6 +348,7 @@ function initMap() {
   setTimeout(() => leafletMap.invalidateSize(), 100);
 }
 
+/** Toggle between dot markers (zoomed out) and image markers (zoomed in) based on current zoom. */
 function swapMarkerStyle() {
   const useIcons = leafletMap.getZoom() >= ICON_ZOOM_THRESHOLD;
   mapMarkers.forEach(({ dot, imgMarker, visible }) => {
@@ -313,6 +363,7 @@ function swapMarkerStyle() {
   });
 }
 
+/** Render category filter pills for the map view (All/Shine/Vintage/Commercial). */
 function renderMapCatPills() {
   const catPillsEl = document.getElementById('map-cat-pills');
   const t = state.activeMapTab;
@@ -332,6 +383,10 @@ function renderMapCatPills() {
   });
 }
 
+/**
+ * Show/hide map markers based on active category + year filters.
+ * Also re-renders year sub-pills and the year legend.
+ */
 function updateMapMarkers() {
   const tab = state.activeMapTab || 'all';
   const yearPillsEl = document.getElementById('map-year-pills');
@@ -422,6 +477,13 @@ function updateMapMarkers() {
 // =============================================
 // Routes view
 // =============================================
+/**
+ * Get murals for a route, ordered by nearest-neighbor walk.
+ * Starts from the mural closest to the group centroid, then greedily
+ * picks the nearest unvisited mural. Not optimal TSP, but good enough.
+ * @param {Function} filterFn - Predicate to select which murals are in this route
+ * @returns {Array} Ordered mural objects
+ */
 function getRouteMurals(filterFn) {
   const list = murals.filter(m => m.lat && m.lng && filterFn(m));
   if (list.length < 2) return list;
@@ -444,6 +506,7 @@ function getRouteMurals(filterFn) {
   return sorted;
 }
 
+/** Sum haversine distances between consecutive stops. Returns total meters. */
 function calcRouteTotalDist(orderedMurals) {
   let total = 0;
   for (let i = 1; i < orderedMurals.length; i++) {
@@ -452,6 +515,8 @@ function calcRouteTotalDist(orderedMurals) {
   return total;
 }
 
+// Pre-defined walking routes. To add a new route, add an entry here with a filter function.
+// The filter selects which murals belong to the route; ordering is computed automatically.
 const ROUTE_DEFS = [
   { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'The latest festival murals', filter: m => m.y === 2025 && m.cat === 'shine' },
   { id: 'shine-2024', name: 'SHINE 2024', desc: '2024 festival collection', filter: m => m.y === 2024 && m.cat === 'shine' },
@@ -460,6 +525,7 @@ const ROUTE_DEFS = [
   { id: 'all-shine', name: 'All SHINE Murals', desc: 'Every reviewed SHINE mural', filter: m => m.cat !== 'commercial' },
 ];
 
+/** Render the Routes tab — list of route cards with stats (stop count, distance, walk time). */
 function renderRoutes() {
   const routeCards = ROUTE_DEFS.map(def => {
     const routeMurals = murals.filter(m => m.lat && m.lng && def.filter(m));
@@ -502,6 +568,7 @@ function renderRoutes() {
   });
 }
 
+/** Open route detail overlay — numbered stop list with distances and a Google Maps deep link. */
 function openRoute(def) {
   const ordered = getRouteMurals(def.filter);
   if (ordered.length === 0) return;
@@ -549,6 +616,13 @@ function openRoute(def) {
 // =============================================
 // Detail page
 // =============================================
+
+/**
+ * Open the full-screen detail overlay for a mural.
+ * Renders: hero image, metadata, bio, walking directions,
+ * field photos, 6 nearest murals, and "more by this artist".
+ * @param {Object} mural - Mural object from data.js
+ */
 function openDetail(mural) {
   state.selectedMural = mural;
   detailPage.hidden = false;
@@ -590,9 +664,9 @@ function openDetail(mural) {
       ` : ''}
 
       ${mural.lat && mural.lng ? `
-        <a class="detail-directions" href="https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking" target="_blank" rel="noopener">
-          🚶 Walking Directions
-        </a>
+        <button class="detail-directions" onclick="startDirections(${mural.id})">
+          🚶 Get Directions
+        </button>
       ` : ''}
 
       ${photos.length > 0 ? `
@@ -659,6 +733,7 @@ $('#detail-back').addEventListener('click', () => {
 // =============================================
 // Artist alias lookup
 // =============================================
+/** Look up all known name variants for an artist (e.g. "Dream Weaver" ↔ "Dreamweaver"). */
 function getArtistAliases(name) {
   for (const [key, aliases] of Object.entries(ARTIST_ALIASES)) {
     if (aliases.some(a => a.toLowerCase() === name.toLowerCase())) {
@@ -669,8 +744,208 @@ function getArtistAliases(name) {
 }
 
 // =============================================
+// In-app directions
+// =============================================
+
+/**
+ * Start directions from user location to a mural.
+ * Closes the detail overlay, switches to map tab, and draws route.
+ * @param {number} muralId - ID of the target mural
+ */
+function startDirections(muralId) {
+  const mural = murals.find(m => m.id === muralId);
+  if (!mural) return;
+
+  const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking`;
+
+  // On insecure origins (HTTP), geolocation is blocked and window.open gets
+  // killed by popup blockers in async callbacks. Detect this synchronously
+  // during the click handler and navigate directly to Google Maps.
+  if (!window.isSecureContext) {
+    window.location.href = gmapsUrl;
+    return;
+  }
+
+  // We have location already — go straight to in-app route
+  if (state.userLat && state.userLng) {
+    state.directionsMural = mural;
+    state.directionsProfile = 'foot';
+    detailPage.hidden = true;
+    state.selectedMural = null;
+    switchTab('map');
+    fetchAndDrawRoute();
+    return;
+  }
+
+  // Secure context but no location yet — request it
+  if ('geolocation' in navigator) {
+    state.directionsMural = mural;
+    state.directionsProfile = 'foot';
+    detailPage.hidden = true;
+    state.selectedMural = null;
+    switchTab('map');
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        L.circleMarker([state.userLat, state.userLng], {
+          radius: 8, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
+        }).addTo(leafletMap).bindPopup('You are here');
+        fetchAndDrawRoute();
+      },
+      () => {
+        // User denied location — redirect to Google Maps
+        state.directionsMural = null;
+        window.location.href = gmapsUrl;
+      },
+      { enableHighAccuracy: true }
+    );
+  } else {
+    window.location.href = gmapsUrl;
+  }
+}
+// Expose to onclick handler
+window.startDirections = startDirections;
+
+/**
+ * Fetch route from OSRM and draw it on the map.
+ * Falls back to a straight line if OSRM fails.
+ */
+function fetchAndDrawRoute() {
+  const mural = state.directionsMural;
+  if (!mural) return;
+
+  clearDirections();
+  state.directionsMural = mural; // restore after clearDirections reset
+
+  const profile = state.directionsProfile === 'car' ? 'car' : 'foot';
+  const url = `https://router.project-osrm.org/route/v1/${profile === 'foot' ? 'foot' : 'driving'}/${state.userLng},${state.userLat};${mural.lng},${mural.lat}?overview=full&geometries=geojson`;
+
+  // Add destination marker
+  state.directionsMarker = L.marker([mural.lat, mural.lng], {
+    icon: L.divIcon({
+      className: 'directions-dest-icon',
+      html: `<div style="width:32px;height:32px;background:var(--accent,#1E5B8A);border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;">📍</div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 16],
+    })
+  }).addTo(leafletMap);
+
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      if (data.code !== 'Ok' || !data.routes || !data.routes[0]) throw new Error('No route');
+
+      const route = data.routes[0];
+      const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
+      const distMeters = route.distance;
+      const durationSecs = route.duration;
+
+      state.directionsRoute = L.polyline(coords, {
+        color: '#1E5B8A',
+        weight: 5,
+        opacity: 0.8,
+      }).addTo(leafletMap);
+
+      leafletMap.fitBounds(state.directionsRoute.getBounds(), { padding: [60, 60] });
+      showDirectionsBar(distMeters, durationSecs, profile);
+    })
+    .catch(() => {
+      // Fallback: straight line
+      const coords = [
+        [state.userLat, state.userLng],
+        [mural.lat, mural.lng],
+      ];
+      const distMeters = haversine(state.userLat, state.userLng, mural.lat, mural.lng);
+
+      state.directionsRoute = L.polyline(coords, {
+        color: '#1E5B8A',
+        weight: 4,
+        opacity: 0.6,
+        dashArray: '8, 8',
+      }).addTo(leafletMap);
+
+      leafletMap.fitBounds(state.directionsRoute.getBounds(), { padding: [60, 60] });
+
+      // Estimate time: walking ~80m/min, driving ~500m/min
+      const speed = profile === 'foot' ? 80 : 500;
+      const durationSecs = (distMeters / speed) * 60;
+      showDirectionsBar(distMeters, durationSecs, profile, true);
+    });
+}
+
+/**
+ * Show directions info bar at bottom of map.
+ * @param {number} distMeters - Route distance in meters
+ * @param {number} durationSecs - Estimated travel time in seconds
+ * @param {string} profile - 'foot' or 'car'
+ * @param {boolean} straightLine - True if using fallback straight-line estimate
+ */
+function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
+  // Remove any existing bar
+  const existing = document.querySelector('.directions-bar');
+  if (existing) existing.remove();
+
+  const distText = formatDistance(distMeters);
+  const mins = Math.max(1, Math.round(durationSecs / 60));
+  const modeText = profile === 'foot' ? 'walk' : 'drive';
+  const lineNote = straightLine ? ' (straight line)' : '';
+
+  const mural = state.directionsMural;
+  const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=${profile === 'foot' ? 'walking' : 'driving'}`;
+
+  const bar = document.createElement('div');
+  bar.className = 'directions-bar';
+  bar.innerHTML = `
+    <div class="directions-info">
+      <span class="directions-distance">${distText}${lineNote}</span>
+      <span class="directions-time">~${mins} min ${modeText}</span>
+    </div>
+    <div class="directions-controls">
+      <button class="directions-toggle ${profile === 'foot' ? 'active' : ''}" data-profile="foot" aria-label="Walking">🚶</button>
+      <button class="directions-toggle ${profile === 'car' ? 'active' : ''}" data-profile="car" aria-label="Driving">🚗</button>
+      <a class="directions-gmaps" href="${gmapsUrl}" target="_blank" rel="noopener">Google Maps ↗</a>
+      <button class="directions-close" aria-label="Close directions">✕</button>
+    </div>
+  `;
+
+  document.getElementById('map-container').appendChild(bar);
+
+  // Toggle walk/drive
+  bar.querySelectorAll('.directions-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const newProfile = btn.dataset.profile;
+      if (newProfile !== state.directionsProfile) {
+        state.directionsProfile = newProfile;
+        fetchAndDrawRoute();
+      }
+    });
+  });
+
+  // Close button
+  bar.querySelector('.directions-close').addEventListener('click', () => clearDirections());
+}
+
+/** Remove route polyline, destination marker, and directions bar from the map. */
+function clearDirections() {
+  if (state.directionsRoute) {
+    state.directionsRoute.removeFrom(leafletMap);
+    state.directionsRoute = null;
+  }
+  if (state.directionsMarker) {
+    state.directionsMarker.removeFrom(leafletMap);
+    state.directionsMarker = null;
+  }
+  state.directionsMural = null;
+  state.directionsProfile = 'foot';
+  const bar = document.querySelector('.directions-bar');
+  if (bar) bar.remove();
+}
+
+// =============================================
 // URL deep linking (?mural=ID)
 // =============================================
+/** Check URL for ?mural=ID on page load and open that mural's detail page. */
 function handleDeepLink() {
   const params = new URLSearchParams(window.location.search);
   const muralId = params.get('mural');

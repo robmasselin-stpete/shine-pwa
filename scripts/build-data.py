@@ -34,10 +34,11 @@ MURALS_DIR = os.path.join(PROJECT_ROOT, 'data', 'murals')
 CONFIG_FILE = os.path.join(PROJECT_ROOT, 'data', 'config.yaml')
 OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'js', 'data.js')
 
-# Fields required in every YAML file
+# Fields required in every YAML file — validation will error if any are missing
 REQUIRED_FIELDS = ['id', 'artist', 'year', 'lat', 'lng', 'address', 'category', 'img']
 
-# Fields that go into data.js (everything except provenance)
+# All possible YAML fields that get exported to data.js
+# Provenance fields (source, sourceNotes) are intentionally excluded
 EXPORT_FIELDS = [
     'id', 'artist', 'title', 'address', 'building',
     'lat', 'lng', 'year', 'category', 'instagram', 'artistBio',
@@ -92,7 +93,8 @@ def load_murals():
         data['_filename'] = basename
         murals.append(data)
 
-    # Only include approved murals (source: claude-enhanced)
+    # IMPORTANT: Only murals with source="claude-enhanced" are included in the build.
+    # Legacy/unreviewed murals are excluded until they've been verified by Rob.
     approved = [m for m in murals if m.get('source') == 'claude-enhanced']
     skipped = len(murals) - len(approved)
     if skipped:
@@ -178,7 +180,9 @@ def js_string_escape(s):
 
 
 def mural_to_js(m):
-    """Convert a mural dict to a JS object literal string."""
+    """Convert a mural dict to a JS object literal string.
+    Uses abbreviated field names (a, t, loc, bldg, y, cat, ig, from) to minimize payload.
+    artistBio and muralDescription are combined into a single 'bio' field."""
     mid = m.get('id', 0)
     artist = js_string_escape(m.get('artist', ''))
     title = js_string_escape(m.get('title', ''))
@@ -224,7 +228,9 @@ def mural_to_js(m):
 
 
 def generate_data_js(murals, config):
-    """Generate the full data.js content."""
+    """Generate the full data.js content as a deterministic ES module string.
+    Output includes: murals array, YEARS, YEAR_COLORS, CATEGORY_COLORS exports.
+    Murals sorted by year desc then artist alpha."""
     lines = []
 
     # Header

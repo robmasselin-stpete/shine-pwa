@@ -1,6 +1,18 @@
 #!/usr/bin/env python3
-"""Generate a one-page PDF per mural YAML, assembled into a single PDF.
-Includes ALL fields: sources, revision dates, image paths, GPS, etc."""
+"""
+generate-pdf.py — Mural catalog PDF generator
+
+Creates a print-ready PDF catalog from all YAML mural files. One page per mural
+with photo, metadata, bio, provenance, and source URLs. Useful for offline
+reference, reviews, and handoffs.
+
+Requires: pip3 install reportlab pyyaml
+
+Usage:
+    python3 scripts/generate-pdf.py
+
+Output: mural-catalog.pdf in project root (gitignored)
+"""
 
 import glob
 import os

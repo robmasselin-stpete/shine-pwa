@@ -1,0 +1,50 @@
+# Melanie Posner — 2023
+
+# ── Required ──
+id: 120
+artist: Melanie Posner
+year: 2023
+lat: 27.772
+lng: -82.6491
+address: ""
+category: commercial
+img: "images/murals/commercial/unknown-1506.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: therealmelpoz
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  Melanie Posner is an LA-based muralist originally from Pennsylvania
+  who earned her BFA from the University of Tampa. She's known for
+  vibrant, photorealistic portraits of women, and her client list
+  includes Walt Disney World, Amazon Prime, and TikTok — for whom she
+  painted a 40-foot mural in the heart of Hollywood.
+
+  Her 2023 St. Pete mural features a woman's face in oversized
+  reflective sunglasses with bright pink lips, set against a playful
+  background of colorful polka dots on teal. The sunglasses reflect
+  what appears to be the St. Pete waterfront, tying the portrait to
+  its location.
+
+muralDescription: |
+  A photorealistic woman's face fills the wall, wearing large reflective
+  sunglasses that mirror a waterfront skyline scene. Bright pink lips
+  and warm skin tones contrast with the cool teal background, which is
+  dotted with oversized polka dots in pink, gold, red, and light blue.
+  The piece wraps around windows that are incorporated into the design.
+  Palm trees frame the mural on either side.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "Credit on wall: therealmelpoz 2023"
+  - "https://www.melanieposner.com/about"
+  - "https://www.melanieposner.com/murals-portfolio"

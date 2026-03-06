@@ -4,11 +4,11 @@
 id: 98
 artist: Brian Butler
 year: 2020
-lat: 27.7751
-lng: -82.6384
+lat: 27.77247
+lng: -82.65004667
 address: 1101 1st Ave N
 category: shine
-img: images/murals/2020/2020_SHINE_Mural_Festival_Brian_Butler.jpg
+img: "images/murals/2020/brian-butler.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,21 +17,35 @@ instagram: upperhandart
 basedIn: "Miami, Florida"
 
 artistBio: |
-  Brian Butler is a Miami based artist, who's life has been guided by music for
-  multiple decades. He has serviced musicians and festivals across nearly every
-  genre imaginable with custom branding, murals, merchandise and album artwork.
-  His move to Miami was hinged entirely on once catching a really good Iggy Pop
-  concert. From 2010 until the death of live music in 2020, he could be found
-  in venues across the country illustrating concerts. His collection of Show
-  Drawn concert sketches exceeds 2000 performances, and has been exhibited
-  nationally with Superchief Gallery, Subliminal Projects, and Simmons
-  University's Trustman Gallery.
+  Brian Butler runs Upper Hand Art out of Miami, working across murals,
+  illustration, gigposters, and live concert drawing. His "Show Drawn"
+  series documents over 2,000 live performances sketched on-site at
+  venues across the country. He's done album art for GZA, murals for
+  Target and LAFC, and painted at POW!WOW! festivals in Worcester and
+  Hawaii.
 
-muralDescription: ""
+  His 2020 SHINE mural wraps the MUV Dispensary building in a sprawling
+  nature scene — dense vegetation, birds, and flowing organic linework
+  that turns the commercial facade into something closer to a botanical
+  garden wall. The bold outlines and hand-illustrated feel are
+  distinctly Butler.
+
+muralDescription: |
+  A large-scale nature scene wraps the MUV Dispensary building, featuring
+  dense tropical foliage, birds in flight, and flowing organic linework.
+  The composition covers multiple faces of the building, creating an
+  immersive green canopy effect. Bold outlines define the plant forms
+  while softer color fills give the whole piece a hand-illustrated,
+  almost storybook quality.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://upperhandart.com/"
+  - "https://mieuxmagazine.com/brian-butler-the-upper-hand-in-art/"
+  - "https://stpeteartsalliance.org/shine?alias=/2020_SHINE_Mural_Brian_Butler"

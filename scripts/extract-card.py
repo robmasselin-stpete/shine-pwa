@@ -89,8 +89,13 @@ def parse_instagram(text):
 
 def parse_format_original(text):
     """
-    Format 1/4/5: Lines start with "Artist Name (DB #N)" or "(NEW #N)"
-    followed by "Year • Festival"
+    Parse the most common detail card format(s).
+    Handles three header variants:
+      - Format 1: "Artist Name (DB #N)Year • Festival..."
+      - Format 3: "Artist Name [Card #N]Year • Festival..."
+      - Format 5: "Artist Name (NEW #N)Year • Festival..."
+    Then extracts labeled fields (Address:, Building:, GPS:, etc.) and
+    bio/description sections delimited by uppercase headers.
     """
     data = {}
 
@@ -167,8 +172,11 @@ def parse_format_original(text):
 
 def parse_format_batch03(text):
     """
-    Format 2: Starts with "SHINE Catalog — Batch 03 — Card #N"
-    Second line: "#N — Artist Name"
+    Parse Batch 03 format cards. These have a different layout:
+      Line 1: "SHINE Catalog — Batch 03 — Card #N"
+      Line 2: "#N — Artist Name"
+    Uses "Context:" instead of festival field, and "Description:"/"Artist Bio:"
+    instead of uppercase section headers.
     """
     data = {}
 
@@ -231,7 +239,10 @@ def parse_page(text):
 
 
 def yaml_scalar(value, key=None):
-    """Format a value for YAML output."""
+    """Format a value for YAML output.
+    Long bio/description fields get literal block scalars (|).
+    Strings with special chars get double-quoted.
+    Numeric and null values pass through as-is."""
     if value is None:
         return 'null'
     if isinstance(value, (int, float)):
@@ -263,7 +274,9 @@ def yaml_scalar(value, key=None):
 
 
 def data_to_yaml(data, mural_id):
-    """Convert extracted data dict to YAML string."""
+    """Convert extracted data dict to a complete YAML file string.
+    Follows the same section layout as _template.yaml (Required/Optional/Provenance).
+    Fields that need manual review are marked with TODO comments."""
     artist = data.get('artist', 'UNKNOWN')
     year = data.get('year', 0)
 

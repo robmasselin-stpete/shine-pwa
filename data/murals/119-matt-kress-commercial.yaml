@@ -1,0 +1,49 @@
+# Matt Kress — Commercial
+
+# ── Required ──
+id: 119
+artist: Matt Kress
+year: 0
+lat: 27.77230833
+lng: -82.64711167
+address: "1st St N & Dr. MLK Jr St N"
+category: commercial
+img: "images/murals/commercial/unknown-1503.jpeg"
+
+# ── Optional ──
+title: ""
+building: Animal Hospital
+instagram: mattkressart
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Matt Kress is an Ohio native who studied art and graphic design at
+  Kent State University, spent 16 years in business, then moved to St.
+  Petersburg and went full-time as an artist in 2018. He's since painted
+  30-plus murals nationwide, including a piece for the Tampa Bay
+  Buccaneers. He also created "The Mooney Anomaly," one of the world's
+  first flying artworks, recognized internationally in aviation circles.
+
+  His dogs-and-cats mural wraps the animal hospital at MLK and 1st
+  Street North with a colorful, geometric pop-art treatment — a Boston
+  terrier, a large dark dog, and a tabby cat rendered in bold color
+  blocks against kaleidoscopic diamond patterns.
+
+muralDescription: |
+  A long wall covered with oversized portraits of dogs and cats in a
+  colorful geometric pop-art style. A Boston terrier, a large dark dog,
+  and a tabby cat with prominent whiskers are painted in bold, faceted
+  color blocks — blues, oranges, greens, reds — set against a
+  kaleidoscopic background of intersecting diamond patterns. The style
+  is vibrant and eye-catching from the parking lot.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://mattkress.art/"
+  - "https://eyesonthestreets.blog/2022/04/23/at-1st-street-north-mlk/"

@@ -4,11 +4,11 @@
 id: 42
 artist: Greater Public Studio
 year: 2023
-lat: 27.7602
-lng: -82.6357
+lat: 27.76005333
+lng: -82.637055
 address: "6th Ave S & 2nd St S"
 category: shine
-img: "images/murals/2023/GreaterPublicStudio-final-USF.jpg"    # TODO: needs-photo — MURAL IS GONE
+img: "images/murals/2023/greater-public-studio.jpeg"
 
 # ── Optional ──
 title: Dive Into Discovery
@@ -17,14 +17,32 @@ instagram: greaterpublicstudio
 basedIn: "Tampa, FL"
 
 artistBio: |
-  GPS is an art and design studio specializing in art direction, brand
-  strategy, visual identity, hand painted murals, and installation design
+  Greater Public Studio is a Tampa-based creative team that designs
+  large-scale murals and visual environments. Founded with a focus on
+  making public spaces more engaging, GPS has taken on projects ranging
+  from building-sized paintings to immersive installations across Florida
+  and beyond.
 
-muralDescription: ""
+  Their 2023 SHINE piece at the USF St. Pete campus brought a burst of
+  color to the university district with "Dive Into Discovery," a vibrant
+  scene depicting an imaginative community landscape full of whimsical
+  architectural forms and figures.
+
+muralDescription: |
+  A colorful, illustrative mural spanning a large wall near the USF St.
+  Pete campus. The composition features a fantastical townscape with
+  stacked buildings, winding paths, and small figures exploring the scene.
+  Bright blues, oranges, and greens fill the design in a style that feels
+  like an oversized storybook illustration.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://greaterpublicstudio.com/"
+  - "https://greaterpublicstudio.com/gps-your-go-to-mural-painting-company-in-tampa-for-stunning-results/"
+  - "https://greaterpublicstudio.com/projects/we-are-the-krewe/"

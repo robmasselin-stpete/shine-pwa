@@ -4,11 +4,11 @@
 id: 68
 artist: "Reginald O'Neal"
 year: 2022
-lat: 27.7667
-lng: -82.643
+lat: 27.76296167
+lng: -82.63767167
 address: 701 3rd St. S.
 category: shine
-img: "images/murals/2022/Raginald-O_Neal-SHINE-Day-11.jpg"
+img: "images/murals/2022/reginald-oneal.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,18 +17,36 @@ instagram: reginaldo.neal
 basedIn: "Miami, FL"
 
 artistBio: |
-  Reginald O’Neal began painting in 2012, soon meeting his friend and mentor,
-  Alejandro Dorda, who would teach him classically. In 2014, Reginald took his
-  first trip to Europe to complete murals in Austria, Norway, and Spain, as
-  well as exhibit in a collective show alongside his teacher in Berlin,
-  Germany. In the years since, Reggie has focused on canvas work, residencies,
-  and murals that embody his community surroundings, experiences and beliefs.
+  Reginald O'Neal is a Miami-born painter who grew up in Overtown and
+  trained under mentor Alejandro Dorda. His work has been acquired by
+  Perez Art Museum Miami and ICA Miami, he's represented by Vielmetter
+  Los Angeles gallery, and he was named to the Artsy Vanguard in 2021.
+  He's completed murals in Austria, Norway, Spain, and the Dominican
+  Republic.
 
-muralDescription: ""
+  His SHINE 2022 mural on the USF Piano Man Building is a monochromatic
+  composition depicting historian John Henrik Clarke in a suit alongside
+  scenes of the Mundari tribe of South Sudan — figures with long-horned
+  cattle and a fisherman working nets. The entire piece is rendered in
+  blacks, whites, and warm sepia tones with classical oil-painting
+  technique.
+
+muralDescription: |
+  A sweeping black-and-white mural spanning the full wall. A suited man
+  — historian John Henrik Clarke — sits as the central figure, painted
+  with photorealistic precision. Behind him, silhouetted scenes show
+  Mundari tribespeople tending long-horned cattle and casting fishing
+  nets. The monochromatic palette and classical brushwork give the piece
+  the weight of a museum painting at building scale.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://stpeteartsalliance.org/reginald-o-neal-2022"
+  - "https://www.artsy.net/article/artsy-editorial-artsy-vanguard-2021-reginald-oneal"
+  - "https://vielmetter.com/artists/reginald-oneal/"

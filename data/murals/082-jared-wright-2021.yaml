@@ -4,33 +4,47 @@
 id: 82
 artist: Jared Wright
 year: 2021
-lat: 27.7706
-lng: -82.6421
+lat: 27.77083333
+lng: -82.64322833
 address: 670 Central Ave.
 category: shine
-img: "images/murals/2021/jared-wright.jpg"
+img: "images/murals/2021/jared-wright.jpeg"
 
 # ── Optional ──
-title: ""
+title: Harmony
 building: Colony Grill
 instagram: jaredwright
 basedIn: "Tampa Bay, FL"
 
 artistBio: |
-  Jared Wright is a prolific painter and illustrator based in Tampa Bay, FL. He
-  uses a variety of styles, techniques, and mediums to create fun, surreal
-  worlds with loose narratives. Inspired by everything from Dali and classic
-  rock to aliens and the beauty of mother nature, his goal is to create art
-  that inspires the viewer to feel, think, and hopefully create or simply share
-  the source of inspiration with others. He believes artists should aim to
-  represent themselves genuinely and honestly so the viewer can relate to it
-  genuinely, and that connection can be everything.
+  Jared Wright is a Tampa Bay painter and illustrator whose style lands
+  somewhere between Dali and an illustrated storybook. His SHINE 2021
+  mural on Colony Grill was his first-ever wall piece, and he was later
+  selected for the 2024 Tampa Bay Rays Artist Series with work displayed
+  inside Tropicana Field.
 
-muralDescription: ""
+  The Colony Grill mural, titled "Harmony," features a dreamlike
+  composition of an owl, a serpentine creature, and flowing organic
+  forms in muted corals, sage greens, and teals. A moon floats among
+  the intertwined figures, creating the kind of surreal, gently weird
+  scene Wright is known for.
+
+muralDescription: |
+  A surreal scene fills the Colony Grill wall with smooth, rounded
+  organic forms in muted corals, sage, and teal. An owl with large
+  dark eyes perches near a crescent moon while a snake-like creature
+  winds through the composition. Leaf shapes, clouds, and celestial
+  elements float through the scene, all rendered in soft, flat color
+  fields with clean outlines.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://stpeteartsalliance.org/shine?alias=/2021_SHINE_Mural_Jared_Wright"
+  - "https://www.jaredwrightart.com/"
+  - "https://stpetecatalyst.com/meet-the-shine-mural-festival-class-of-21/"

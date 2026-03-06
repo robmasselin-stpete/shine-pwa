@@ -4,11 +4,11 @@
 id: 30
 artist: Quinn Cale
 year: 2024
-lat: 27.7728
-lng: -82.6342
+lat: 27.77370833
+lng: -82.6362
 address: 225 2nd Ave North
 category: shine
-img: "images/murals/2024/QuinnCale-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+img: "images/murals/2024/quinn-cale.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,17 +17,33 @@ instagram: quinnsessential
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Quinn Cale is a vibrant contemporary painter, based in Tampa, Florida.
-  Hailing from Middletown, Delaware, her artistic journey is deeply intertwined
-  with her nostalgic reflections on childhood. Through her colorful canvases,
-  Quinn masterfully captures the essence of early 2000s, infusing each piece
-  with a palpable sense of joy and reminiscence.
+  Quinn Cale is a Tampa-based painter originally from Delaware whose work
+  channels early-2000s childhood nostalgia into bold, colorful
+  compositions. She previously worked at Apple, an experience that led
+  her to experiment with augmented reality overlays on her paintings
+  using Adobe Aero — viewers can point an iPad at the canvas and see
+  digital elements come to life.
 
-muralDescription: ""
+  Her SHINE 2024 mural at Main Grove features a multicolored cat in
+  vivid neon hues pouncing toward a pixelated mouse cursor and a
+  retro-styled pixel hand pointer. The gaming references and rainbow
+  palette are pure Cale — pop culture nostalgia meets street art energy.
+
+muralDescription: |
+  A large cat rendered in electric purples, teals, oranges, and pinks
+  leaps across the wall, chasing a pixelated orange mouse and a retro
+  cursor hand icon. The cat's fur is broken into bold color blocks that
+  read like a neon stained-glass window. The whole piece pops against
+  a dark teal and sage background.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Enhanced with Rob's field photo 2026-03-06"
+  - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_quinn_cale"
+  - "https://www.cltampa.com/arts/interview-tampa-artist-quinn-cale-merges-technology-with-childhood-nostalgia-for-shine-mural-festival-18892874/"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
