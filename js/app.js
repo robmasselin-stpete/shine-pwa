@@ -819,7 +819,9 @@ function fetchAndDrawRoute() {
   state.directionsMural = mural; // restore after clearDirections reset
 
   const profile = state.directionsProfile === 'car' ? 'car' : 'foot';
-  const url = `https://router.project-osrm.org/route/v1/${profile === 'foot' ? 'foot' : 'driving'}/${state.userLng},${state.userLat};${mural.lng},${mural.lat}?overview=full&geometries=geojson`;
+  // OSRM public server only has the 'driving' profile — use it for route
+  // geometry (streets are the same), then compute walk/drive time from distance
+  const url = `https://router.project-osrm.org/route/v1/driving/${state.userLng},${state.userLat};${mural.lng},${mural.lat}?overview=full&geometries=geojson`;
 
   // Add destination marker
   state.directionsMarker = L.marker([mural.lat, mural.lng], {
@@ -839,7 +841,10 @@ function fetchAndDrawRoute() {
       const route = data.routes[0];
       const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
       const distMeters = route.distance;
-      const durationSecs = route.duration;
+      // Compute time from distance: walking ~80m/min, driving uses OSRM estimate
+      const durationSecs = profile === 'foot'
+        ? (distMeters / 80) * 60
+        : route.duration;
 
       state.directionsRoute = L.polyline(coords, {
         color: '#1E5B8A',
