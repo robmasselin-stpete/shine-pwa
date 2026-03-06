@@ -1,0 +1,34 @@
+# Kris Markovich & Johnny Vitale — 2024
+
+# ── Required ──
+id: 27
+artist: "Kris Markovich & Johnny Vitale"
+year: 2024
+lat: 27.7625
+lng: -82.6598
+address: 501 16th St S
+category: shine
+img: "images/murals/2024/KrisMandJohnnyVitale-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: Anchor Skate Supply
+instagram: kris_markovich
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Kris Markovich is a world renowned professional skateboarder and artist since
+  the early 90’s. Whether it’s on a ladder with a can in his hand or on his
+  board out in the streets, Kris continues to push his art out to the world.
+  Johnny Vitale is a founding member of the Vitale Bros, St. Petersburg's most
+  prolific muralists. With over 30 years experience painting, Johnny brings his
+  personal style and aesthetic to this collaborative mural with Kris Markovich.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

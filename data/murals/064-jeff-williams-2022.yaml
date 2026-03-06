@@ -1,0 +1,35 @@
+# Jeff Williams — 2022
+
+# ── Required ──
+id: 64
+artist: Jeff Williams
+year: 2022
+lat: 27.7771
+lng: -82.6537
+address: 511 Dr. MLK Jr St. N.
+category: shine
+img: "images/murals/2022/Jeff-Williams-SHINE-Day-10.jpg"
+
+# ── Optional ──
+title: ""
+building: Myoblast Strength
+instagram: sunsigns.stpete
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Jeff Williams is a traditional sign painter who was born and raised in St.
+  Petersburg, FL. An early exposure to mid century design via his parents’
+  vintage shop had a lasting impact and is still prevalent in his work today.
+  Most of his work is influenced by old hand drawn and painted letter forms,
+  mid century style illustrations, ‘50s advertising and packaging, as well as
+  vintage tattoo flash. His aim is to preserve the rich visual identity of our
+  city through traditional hand painted signage.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

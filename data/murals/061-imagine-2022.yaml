@@ -1,0 +1,31 @@
+# Imagine — 2022
+
+# ── Required ──
+id: 61
+artist: Imagine
+year: 2022
+lat: 27.774120
+lng: -82.647112
+address: 240 Dr MLK Jr St N
+category: shine
+img: "images/murals/2022/imagine.jpeg"
+
+# ── Optional ──
+title: ""
+building: RetroTiques
+instagram: imagine876
+basedIn: "Kathmandu, Nepal"
+
+artistBio: |
+  Imagine is a Kathmandu-born artist who fuses Sanskrit calligraphy with graffiti energy. Her large-scale murals turn ancient Nepalese script into repeating visual mantras — bold, rhythmic compositions that read as both sacred text and abstract pattern. She works across painting, sculpture, and public walls internationally.
+
+muralDescription: |
+  A long parking-lot wall painted solid hot pink, covered with repeating columns of gold Sanskrit-inspired calligraphy. The metallic gold letterforms cascade downward in ornate clusters, with subtler red and pink swirls layered underneath. The effect is meditative and hypnotic — the same sacred text echoing across the entire wall like a visual chant.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."

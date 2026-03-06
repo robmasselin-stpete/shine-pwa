@@ -1,0 +1,34 @@
+# Baghead — 2022
+
+# ── Required ──
+id: 56
+artist: Baghead
+year: 2022
+lat: 27.7659
+lng: -82.6681
+address: 2025 3rd Ave S.
+category: shine
+img: "images/murals/2022/Baghead-Final-Shot.jpg"
+
+# ── Optional ──
+title: ""
+building: Morean Workshop Space
+instagram: baghead
+basedIn: "Miami, FL"
+
+artistBio: |
+  Baghead is an artist, muralist and graphic designer. Heavily influenced by
+  skate and tattoo culture, Baghead’s work references both urban and organic
+  origins that creatively reconstruct the freedom he finds as an artist. Born
+  and raised in Miami, Fl the artist has exhibited with galleries around the
+  world and worked with notable brands like Adidas, Apple, Converse, and the
+  NBA.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

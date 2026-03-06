@@ -1,0 +1,31 @@
+# MadC — 2022
+
+# ── Required ──
+id: 65
+artist: MadC
+year: 2022
+lat: 27.770712
+lng: -82.649567
+address: 1010 Central Ave.
+category: shine
+img: "images/murals/2022/madc.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: mad_c1
+basedIn: "Germany"
+
+artistBio: |
+  Claudia Walde, known as MadC, is a German graffiti artist and painter with nearly three decades in the game. Nicknamed "The Mad One" for her fearless approach, she's built an international reputation for translating the speed and energy of graffiti calligraphy into large-scale abstract compositions. Her work layers translucent sweeps of color that overlap and glow where they intersect — part street art, part color-field painting. She works on both massive outdoor walls and studio canvases.
+
+muralDescription: |
+  A multi-story abstract mural on the side of an apartment building. Sweeping translucent ribbons of hot pink, cyan, orange, and white crisscross at sharp angles over a vivid yellow background. Where the color bands overlap they create new hues — purple where pink meets blue, warm peach where orange meets white. The effect is like looking through stacked sheets of colored glass. White paint splatter near the top right adds a calligraphic flourish.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."

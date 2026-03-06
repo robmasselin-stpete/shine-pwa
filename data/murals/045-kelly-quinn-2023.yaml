@@ -1,0 +1,33 @@
+# Kelly Quinn — 2023
+
+# ── Required ──
+id: 45
+artist: Kelly Quinn
+year: 2023
+lat: 27.7736
+lng: -82.676
+address: 2553 1st Ave N
+category: shine
+img: "images/murals/2023/Kelly-Quinn-20231020-135933-MAR7301-HDR.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: Mangrove Connections
+building: LPL Financial
+instagram: canvasofthewild
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Growing up as an artist at the edge of the Everglades headwaters, Kelly is
+  passionate about protecting Florida’s natural ecosystems and developing
+  creative avenues that support environmental education. As the Art Director
+  for Canvas of the Wild, she creates large-scale murals and educational
+  displays.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

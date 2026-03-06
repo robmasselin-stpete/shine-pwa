@@ -1,0 +1,50 @@
+# Dreamweaver — 2025
+
+# ── Required ──
+id: 7
+artist: Dreamweaver
+year: 2025
+lat: 27.771708
+lng: -82.643617
+address: 696 1st Ave N
+category: shine
+img: "images/murals/2025/dreamweaver.jpeg"
+
+# ── Optional ──
+title: ""
+building: Vernis Bowling
+instagram: dream.weavin
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Taylor "Dreamweaver" Smith is a St. Petersburg-based street artist and
+  muralist whose work invokes a sense of reverence for the natural world.
+  With a background in fine art, her evolving style integrates expressive
+  abstraction and realism to capture the spirit of life through light and
+  color — often featuring portraiture, vivid patterns, and striking color
+  combinations. She creates murals, canvas works, and live painting
+  activations for communities and brands both locally and nationwide. A
+  recurring SHINE artist, Dreamweaver painted at the 2022 festival and
+  returned for 2025 Origins on the 600 block of Central Avenue, where the
+  SHINE movement started in 2012.
+
+muralDescription: |
+  A multi-story mural wrapping around a lavender building, featuring a white
+  egret with delicate plumage nestled among enormous, lush flower petals in
+  deep pinks, corals, oranges, and purples. The bird's long neck rises
+  elegantly through the blooms on the left wall, while the right wall
+  continues with swirling petals and soft round forms in warm sunset tones.
+  The scale is dramatic — the egret spans several stories — and the
+  soft-focus, almost photorealistic rendering gives the whole piece a
+  dreamlike, ethereal quality.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2022 and 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/dream-weaver-2022"
+  - "https://www.tampabay.com/life-culture/entertainment/2025/12/04/shine-mural-festival-st-petersburg-florida-arts-hurricane/"
+  - "https://www.graffitistreet.com/shine-st-petersburg-street-art-mural-festival-florida-2022/"

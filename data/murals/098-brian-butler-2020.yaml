@@ -1,0 +1,37 @@
+# Brian Butler — 2020
+
+# ── Required ──
+id: 98
+artist: Brian Butler
+year: 2020
+lat: 27.7751
+lng: -82.6384
+address: 1101 1st Ave N
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Brian_Butler.jpg
+
+# ── Optional ──
+title: ""
+building: MUV Dispensary
+instagram: upperhandart
+basedIn: "Miami, Florida"
+
+artistBio: |
+  Brian Butler is a Miami based artist, who's life has been guided by music for
+  multiple decades. He has serviced musicians and festivals across nearly every
+  genre imaginable with custom branding, murals, merchandise and album artwork.
+  His move to Miami was hinged entirely on once catching a really good Iggy Pop
+  concert. From 2010 until the death of live music in 2020, he could be found
+  in venues across the country illustrating concerts. His collection of Show
+  Drawn concert sketches exceeds 2000 performances, and has been exhibited
+  nationally with Superchief Gallery, Subliminal Projects, and Simmons
+  University's Trustman Gallery.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

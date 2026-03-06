@@ -1,0 +1,33 @@
+# Quinn Cale — 2024
+
+# ── Required ──
+id: 30
+artist: Quinn Cale
+year: 2024
+lat: 27.7728
+lng: -82.6342
+address: 225 2nd Ave North
+category: shine
+img: "images/murals/2024/QuinnCale-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: Main Grove
+instagram: quinnsessential
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Quinn Cale is a vibrant contemporary painter, based in Tampa, Florida.
+  Hailing from Middletown, Delaware, her artistic journey is deeply intertwined
+  with her nostalgic reflections on childhood. Through her colorful canvases,
+  Quinn masterfully captures the essence of early 2000s, infusing each piece
+  with a palpable sense of joy and reminiscence.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

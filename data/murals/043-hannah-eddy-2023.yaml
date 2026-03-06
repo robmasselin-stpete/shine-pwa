@@ -1,0 +1,31 @@
+# Hannah Eddy — 2023
+
+# ── Required ──
+id: 43
+artist: Hannah Eddy
+year: 2023
+lat: 27.7823
+lng: -82.6567
+address: 1019 Arlington Ave N
+category: shine
+img: "images/murals/2023/Hannah-Eddy-20231019-121609-MAR6021-Edit.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: With Flying Colors
+building: CASA Support Center
+instagram: hannaheddyart
+basedIn: Nevada
+
+artistBio: |
+  Hannah Eddy is an artist and muralist based in Reno, NV best known for her
+  colorful, bold, and imaginative work. Her art encourages an appreciation for
+  nature, connection, and community.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

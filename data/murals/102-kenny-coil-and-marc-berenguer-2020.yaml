@@ -1,0 +1,34 @@
+# Kenny Coil and Marc Berenguer — 2020
+
+# ── Required ──
+id: 102
+artist: Kenny Coil and Marc Berenguer
+year: 2020
+lat: 27.7693
+lng: -82.6368
+address: 1000 3rd St S
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Kenny_Coil_and_Marc_Berenguer.jpg
+
+# ── Optional ──
+title: ""
+building: USFSP Harbor Hall
+instagram: kennycoil
+basedIn: "St. Petersburg, Florida"
+
+artistBio: |
+  Kenny Coil is Break Maiden’s Tampa bred creative powerhouse. Working with
+  local and national brands from every consumer category, he continues to
+  immerse himself in the creative field. Marc Berenguer is Break Maiden’s Head
+  Honcho #2. He helps lead brand creation, art direction and language
+  translation. Before taking the US by storm in 2009, Marc lived in Barcelona
+  where he developed a love for typography and minimal design.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

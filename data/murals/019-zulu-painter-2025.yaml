@@ -1,0 +1,51 @@
+# Zulu Painter — 2025
+
+# ── Required ──
+id: 19
+artist: Zulu Painter
+year: 2025
+lat: 27.762869
+lng: -82.674928
+address: "31st St & 7th Ave S"
+category: shine
+img: "images/murals/2025/zulu-painter.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: zulupainter1
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Carlos Culbertson, known as Zulu Painter, is a St. Petersburg-based
+  multimedia artist who works in traditional mediums, body paint, special
+  effects, and scenic art. His motto — "I want to grow Art everywhere" —
+  drives him as he creates "Mindful Murals" across the country. He has
+  worked as a scenic artist for The Science Channel, Disney on Ice, Home
+  Shopping Network, Sea World, and national ad campaigns, and served as a
+  Representative Artist for Visit Florida. A SHINE veteran since 2016, his
+  murals are especially prominent in the Deuces neighborhood, including
+  "Moonbeam Dreams" and "Wisdom, Growth, Progress." He returned for SHINE
+  2017, 2018, 2024, and 2025 Origins.
+
+muralDescription: |
+  A vibrant mural on a cinder block wall blending multiple styles. The left
+  side features a photorealistic portrait of a young Black woman in profile
+  against a houndstooth pattern with a boombox rendered in grayscale. The
+  center and right side shift to a cartoon aesthetic — a wild-eyed character
+  with a mischievous grin faces off against a massive green alligator with
+  bared teeth, set against a turquoise geometric diamond pattern and black-
+  and-white checkerboard. Colorful polka dots in orange, pink, and yellow
+  punctuate the composition. Signed "zulupainter.com" in the lower right.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2016, 2017, 2018, 2024, and 2025 Origins festival artist; Representative Artist for Visit Florida"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://creativepinellas.org/magazine/the-mindful-murals-of-zulu-painter/"
+  - "https://stpeteartsalliance.org/zulupainter-2"
+  - "https://baynews9.com/fl/tampa/news/2024/02/20/local-muralist-painting-with-children-at-the-pinellas-american-heritage-celebration-at-the-florida-botanical-garden-in-largo"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"

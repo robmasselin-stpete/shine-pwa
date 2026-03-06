@@ -1,0 +1,31 @@
+# The Happy Mural Project — 2023
+
+# ── Required ──
+id: 51
+artist: The Happy Mural Project
+year: 2023
+lat: 27.7578
+lng: -82.6867
+address: 2727 6th Ave South
+category: shine
+img: "images/murals/2023/Happy-Mural-Project-20231022-090924-MAR9085.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: Girl Power
+building: CrossFit 9
+instagram: thehappymuralproject
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  St. Petersburg-based artist, Alyssa Marie has been playing in the realms of
+  impressionistic style fine art and large scale murals for commercial and
+  residential clients around the globe since 2017.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

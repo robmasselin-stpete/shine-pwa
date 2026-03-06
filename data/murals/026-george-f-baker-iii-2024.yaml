@@ -1,0 +1,33 @@
+# George F Baker III — 2024
+
+# ── Required ──
+id: 26
+artist: George F Baker III
+year: 2024
+lat: 27.7689
+lng: -82.6396
+address: 620 1st Ave South
+category: shine
+img: "images/murals/2024/GeorgeFBakerIII-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: "Studio@620"
+instagram: gfb3
+basedIn: "Atlanta, GA"
+
+artistBio: |
+  George F. Baker III, also known as GFB3, is a Nebraska-born, Detroit Grown,
+  and Atlanta-Raised Creator. Using his instruments of design, illustration,
+  and production, he employs a playful childlike spirit to engage the
+  inner-child we all have. With a bevy of creative curiosity, he seeks to
+  inspire people to become the person they deeply desire to be.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

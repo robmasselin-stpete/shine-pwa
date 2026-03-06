@@ -1,0 +1,56 @@
+# Emmanuel Jarus — 2024
+
+# ── Required ──
+id: 23
+artist: Emmanuel Jarus
+year: 2024
+lat: 27.777247
+lng: -82.636847
+address: 226 5th Ave N
+category: shine
+img: "images/murals/2024/emmanuel-jarus.jpeg"
+
+# ── Optional ──
+title: ""
+building: Walker-Whitney
+instagram: youngjarus
+basedIn: "Toronto, Canada"
+
+artistBio: |
+  Emmanuel Jarus (b. 1992) is a Canadian muralist and figurative painter based
+  in Toronto. Originally from Saskatoon, Saskatchewan, he transitioned from
+  painting freight trains to large-scale murals around age 19. Largely
+  self-taught with brief studies at the Academy of Realist Art in Toronto, his
+  style blends post-impressionistic influences with unconventional hardware-store
+  materials — acrylic, latex, aerosol, brushes, rollers, and sometimes a broom.
+  He describes his approach as "painting journalism," creating portraiture that
+  emerges organically from the communities he visits. His international credits
+  include the first UN75 "Zero Hunger" mural near United Nations headquarters in
+  Manhattan (2020), festivals in Boulogne-sur-Mer, Calgary, Halifax, and
+  Toronto's Graffiti Alley. He is represented by LALA Contemporary gallery.
+
+muralDescription: |
+  A 14-story photorealistic portrait of an enigmatic woman in flowing black
+  garments spanning the entire west-facing wall of the Walker-Whitney building —
+  the largest mural in SHINE's 10-year history at roughly 180 feet tall by 60
+  feet wide. The woman has long brown hair and one hand resting on her chest,
+  gazing out with a serene, mysterious expression against a muted gray-teal
+  background. Jarus intentionally keeps her identity a secret. The figure is a
+  recurring subject he first painted on a seaside structure in Boulogne-sur-Mer,
+  France. Painted with brushes, rollers, and bucket paint over 20 days —
+  interrupted by Hurricane Milton's evacuation — in time for SHINE's 10th
+  anniversary festival in November 2024.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Created first UN75 mural for the United Nations (2020); SHINE 2024 festival artist — largest mural in SHINE history"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_emmanuel_jarus"
+  - "https://ilovetheburg.com/jarus-largest-mural-in-st-pete/"
+  - "https://stpetecatalyst.com/st-petes-mural-festival-shines-despite-hurricane-interference/"
+  - "https://www.axios.com/local/tampa-bay/2024/11/22/shine-mural-festival-2024-st-pete"
+  - "https://lalacontemporary.com/emmanuel-jarus"
+  - "https://streetartmankind.org/artists/emmanuel-jarus/"

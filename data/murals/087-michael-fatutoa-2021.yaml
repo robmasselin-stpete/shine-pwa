@@ -1,0 +1,31 @@
+# Michael Fatutoa — 2021
+
+# ── Required ──
+id: 87
+artist: Michael Fatutoa
+year: 2021
+lat: 27.769725
+lng: -82.661583
+address: 2060 1st Ave. S.
+category: shine
+img: "images/murals/2021/michael-fatutoa.jpeg"
+
+# ── Optional ──
+title: ""
+building: Grayspeed
+instagram: samoan_mike
+basedIn: "Tampa Bay, FL"
+
+artistBio: |
+  Michael Fatutoa grew up on the island of Tutuila in eastern Samoa and was raised in Hawaii before settling in Tampa Bay. A full-time tattoo artist at Sacred Tatau in Tampa, he draws on the ancient Samoan tradition of tatau — hand-tapped geometric patterns passed down through generations — and translates those motifs into large-scale murals. His work also pulls from broader Polynesian visual traditions including carvings and tapa cloth designs, bringing Pacific Island heritage to Florida walls.
+
+muralDescription: |
+  Two massive sea creatures face each other on a flat gray wall. On the left, a hammerhead shark rendered in teal and black, its entire body filled with intricate Polynesian tatau patterns — spirals, chevrons, and layered geometric bands that follow the contours of its form. On the right, a sea turtle in black and white, its shell packed with bold angular motifs including step patterns and diamond shapes, with small teal accents at the flippers. The two animals appear to be circling each other, filling the wall from edge to edge.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."

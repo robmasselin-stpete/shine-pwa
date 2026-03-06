@@ -1,0 +1,56 @@
+# Chris Dyer — 2023
+
+# ── Required ──
+id: 39
+artist: Chris Dyer
+year: 2023
+lat: 27.762825
+lng: -82.672553
+address: 2875 7th Ave S
+category: shine
+img: "images/murals/2023/chris-dyer.jpeg"
+
+# ── Optional ──
+title: "Ride on the sPEACEship!"
+building: "Stewart Moving & Storage"
+instagram: chris_dyer
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Chris Dyer (b. 1979) is a Peruvian-Canadian visionary artist now based in
+  St. Petersburg/Gulfport, Florida. Born in Ottawa, he grew up in Lima, Peru
+  before returning to Canada at 17, eventually studying illustration at Dawson
+  College in Montreal. A leading figure of the North American visionary art
+  movement, his style fuses psychedelic imagery, Incan and pre-Columbian
+  influences, sacred geometry, and 1980s-90s skate culture aesthetics. He has
+  painted murals in 44+ countries, including at the Bob Marley Museum in Jamaica,
+  the Beatles Ashram in India, and the STRAAT Museum in Amsterdam. He founded the
+  Positive Creations brand in 2003 and has published two art books through
+  Schiffer and Last Gasp. He teaches workshops at the Montreal Museum of Fine
+  Arts, the National Gallery of Canada, and The Chapel of Sacred Mirrors (CoSM).
+
+muralDescription: |
+  A panoramic cosmic scene against a starry black background on Stewart Moving &
+  Storage. A wildly detailed spaceship made of interlocking creatures, tentacles,
+  and geometric patterns blasts across the wall, trailing rainbow exhaust flames
+  and lightning bolts. The vessel is piloted by psychedelic characters with
+  multiple eyes and Incan-inspired headdresses, one flashing a peace sign from
+  inside a blue bubble cockpit. "Positive Creations" floats above in rainbow
+  lettering, "PEACE PLEASE" appears in a speech bubble at right, and a smiling
+  sun face radiates in the upper right corner. Saturn, UFOs, and alien faces
+  orbit the composition. Signed "Chris Dyer" at left and "LOVE!" in pink at
+  lower right.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Murals in 44+ countries including Bob Marley Museum, Beatles Ashram, STRAAT Museum; SHINE 2023 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/chris-dyer-2023"
+  - "https://en.wikipedia.org/wiki/Chris_Dyer_(artist)"
+  - "https://positivecreations.ca/about/bio/"
+  - "https://canvasrebel.com/meet-chris-dyer/"
+  - "https://thegabber.com/meet-chris-dyer-globally-renowned-visionary-artist/"
+  - "https://www.wusf.org/arts-culture/2023-10-12/shine-st-pete-mural-festival-2023"

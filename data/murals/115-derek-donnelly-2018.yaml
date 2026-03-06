@@ -1,0 +1,52 @@
+# Derek Donnelly — 2018 (SHINE All Year / AARP)
+
+# ── Required ──
+id: 115
+artist: Derek Donnelly
+year: 2018
+lat: 27.771672
+lng: -82.644081
+address: 54 7th St N
+category: shine
+img: "images/murals/2018/derek-donnelly-365-million.jpeg"
+
+# ── Optional ──
+title: "365 Million Things To Do"
+building: Morean Arts Center (east wall)
+instagram: saintpaintarts
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Derek Donnelly is a St. Petersburg native who graduated from Pinellas County
+  Center for the Arts at Gibbs High School in 2001, then studied graphic design
+  and digital illustration at IADT Tampa. He has been a full-time muralist since
+  2010. In 2011 he opened Saint Paint Arts gallery on the 600 block of Central
+  Avenue, helping launch several artists' careers before closing in 2014 to
+  focus on murals. He later founded COVE gallery in Pinellas Park and Public
+  Art Project Inc., a nonprofit promoting public art. His playful, illustration-
+  meets-realism style frequently features his son Syre and Florida wildlife.
+  Clients include AARP, Hilton Hotels, Tampa Bay Rays, MLB, and Fender Guitars.
+  He is a multiple Best of the Bay winner and was selected as inaugural
+  Artmaker 2026 artist at Ruth Eckerd Hall. For SHINE 2025 he served as
+  Operations Lead and artist liaison.
+
+muralDescription: |
+  A whimsical mural on the east wall of the Morean Arts Center depicting
+  an anthropomorphic T-Rex dinosaur wearing a brown fedora, round glasses,
+  and a blue-and-white Hawaiian shirt, holding a fishing rod over the
+  waterfront. A pink-and-blue sunset sky frames a distant city skyline
+  across the bay. The mural is part of Donnelly's AARP "Age Friendly St.
+  Pete" series — the T-Rex going fishing represents "the older generation
+  of St. Pete enjoying life to the fullest." Signed "Donnelly @saintpaintarts."
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2025 Operations Lead; multiple Best of the Bay winner; AARP commissioned artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://www.visitstpeteclearwater.com/profile/365-million-things-to-do-derek-donnelly/140385"
+  - "https://stpeteartsalliance.org/age-friendly-st-pete-with-aarp/121-shine-aarp/609-keep-on-cruising-aka-extreme-ethel-by-derek-donnelly"
+  - "https://www.saintpaintarts.com/"
+  - "Year approximate (second AARP piece after 'Keep on Cruising' 2017)"

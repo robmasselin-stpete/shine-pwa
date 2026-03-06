@@ -1,0 +1,50 @@
+# John Vitale & Sionna MacLeish — 2025
+
+# ── Required ──
+id: 12
+artist: "John Vitale & Sionna MacLeish"
+year: 2025
+lat: 27.763314
+lng: -82.668853
+address: 2606 Fairfield Ave S
+category: shine
+img: "images/murals/2025/john-vitale-factory.jpeg"
+
+# ── Optional ──
+title: ""
+building: The Factory
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  John Vitale, co-founder of the iconic Vitale Brothers, is a veteran
+  muralist and creative force behind much of St. Petersburg's visual identity.
+  Since 1992, the Vitale Bros have painted walls throughout Tampa Bay,
+  playing a major role in establishing St. Petersburg as a world-class arts
+  destination. John is also the founder of Overspray Art Space in Gulfport,
+  where he fosters community through spray paint workshops and live art
+  events. For this mural at The Factory, Vitale collaborated with Sionna
+  "Sio" MacLeish, a Florida-based muralist and artist known for her
+  versatility across styles. MacLeish painted the roseate spoonbill panel,
+  while Vitale handled the vintage pin-up and Thunderbird motel scene.
+
+muralDescription: |
+  A multi-panel vintage Florida postcard mural inside The Factory. The left
+  panel features a glamorous 1950s-style pin-up woman with black hair and a
+  pink hibiscus, turquoise jewelry, and a leopard-print top, set against the
+  Thunderbird motel sign framed by tropical hibiscus flowers. Below reads
+  "St. Petersburg, Florida" in retro blue script on golden yellow. The right
+  panel, painted by Sionna MacLeish, shows a roseate spoonbill in soft pinks
+  against a pale blue polka-dot background with a bold orange sun. The whole
+  composition evokes mid-century Florida tourism nostalgia.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2022 and 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/"
+  - "https://vitalebrothers.com/"

@@ -1,0 +1,49 @@
+# Cecilia Lueza — 2025
+
+# ── Required ──
+id: 4
+artist: Cecilia Lueza
+year: 2025
+lat: 27.774508
+lng: -82.647736
+address: 251 10th St N
+category: shine
+img: "images/murals/2025/cecilia-lueza.jpeg"
+
+# ── Optional ──
+title: ""
+building: Haddy
+instagram: cecilialuezaap
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Cecilia Lueza is an Argentine American artist and sculptor who studied fine
+  arts at the University of La Plata in Buenos Aires. After moving to
+  St. Petersburg over two decades ago, she became known for vibrant public art
+  spanning murals, monumental sculptures, painted rooftops, and even street
+  intersections. Her geometric, nature-inspired style has been shown in
+  galleries throughout the US, South America, Spain, and France. A SHINE
+  veteran, Lueza painted "Common Ground" — an entire intersection — for
+  SHINE 2016, "The Blue Hour" for SHINE 2018, and returned again for SHINE
+  2019 and 2025 Origins.
+
+muralDescription: |
+  A large-scale mural on the side of a commercial building depicting a
+  vividly colored hummingbird in flight, wings spread wide, rendered in
+  iridescent greens, blues, and oranges. The bird hovers against a dynamic
+  background of overlapping translucent circles in gradients of blue, teal,
+  green, and yellow — Lueza's signature geometric style. Signed "LUEZA" in
+  the upper right. The building number 255 is visible at the left edge.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2016, 2018, 2019, and 2025 festival artist; Creative Pinellas featured artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://www.lueza.com/mural-art/"
+  - "https://www.lueza.com/bio/"
+  - "https://creativepinellas.org/magazine/cecilia-lueza-colors-our-world/"
+  - "https://stpeteartsalliance.org/cecilia-lueza-2/"
+  - "https://www.visitstpeteclearwater.com/profile/common-ground-cecilia-lueza/140482"

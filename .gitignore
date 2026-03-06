@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+mural-catalog.pdf
+needs-photo-list.txt
+.claude/
+*.avif
+legacy-fixes/
+fix-legacy-images.sh
+session-handoff.md

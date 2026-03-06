@@ -1,0 +1,33 @@
+# Reid Jenkins — 2021
+
+# ── Required ──
+id: 91
+artist: Reid Jenkins
+year: 2021
+lat: 27.7547
+lng: -82.6583
+address: 800 31st St. S.
+category: shine
+img: "images/murals/2021/reid-jenkins.jpg"
+
+# ── Optional ──
+title: ""
+building: St. Pete Distillery
+instagram: reidjenkinsart
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Reid Jenkins is a St. Petersburg native and graduate of the Pinellas County
+  Center for the Arts program at Gibbs High School. He holds a Bachelors's in
+  Fine Art from the Maryland Institute College of Art in Baltimore. Reid’s art
+  reflects the intricacies of social dynamics within everyday life. His work
+  displays a wide range of human experience and emotion.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

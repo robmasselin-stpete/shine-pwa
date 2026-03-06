@@ -1,0 +1,40 @@
+# Amy Ilic-Volpe — 2022
+
+# ── Required ──
+id: 54
+artist: "Amy Ilic-Volpe"
+year: 2022
+lat: null
+lng: null
+address: ""
+category: shine
+img: "images/2022/amy-ilic-volpe.jpg"
+
+# ── Optional ──
+title: Color Wheelz
+building: ""
+instagram: amy_ilic_volpe
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Amy is a St. Petersburg, Florida native. She is inspired by the sunshine and
+  the easygoing vibe of her hometown. She has a great appreciation for the
+  artistic energy her little city exudes. Amy’s work is a reflection of her
+  appreciation for fun, adventure, experimentation, and process. Amy has been
+  influenced and educated by travel and considers herself a student of
+  experience. She worked for almost a decade in the travel industry and had the
+  opportunity to live and travel all over the world. She is an intuitive artist
+  and maker, who is intrigued by mark-making and fluid applications of color a
+  shape. She lets her mediums speak through her and she engages with them in
+  free and loose movement. She oftentimes allows the process of art-making to
+  be the true representation of art. The beauty is in the experience. The
+  artwork evolves as a visceral and emotional practice.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,37 @@
+# iBOMS — 2021
+
+# ── Required ──
+id: 81
+artist: iBOMS
+year: 2021
+lat: null
+lng: null
+address: ""
+category: shine
+img: images/murals/2021/iboms.jpg
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: i.b.o.m.s
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Jabari Reed-Diop, otherwise known as iBOMS is an artist based in St.
+  Petersburg, Florida. His artistic acumen comes from personal experience and
+  formal education at Douglas Anderson School of the Arts in Jacksonville.
+  Despite constantly pushing his craft and experimenting with new mediums,
+  iBOMS’ style is immediately recognizable. At first glance, his work may seem
+  like simple illustrations or even graffiti, but each piece has a story to
+  tell, a deeper message, a powerful statement about love, destruction, or
+  discovery. His characters are complex and often represent aspects of his life
+  as a young black male.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

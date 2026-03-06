@@ -1,0 +1,56 @@
+# Stevie Shao — 2024
+
+# ── Required ──
+id: 31
+artist: Stevie Shao
+year: 2024
+lat: 27.765203
+lng: -82.646683
+address: 850 5th Ave South
+category: shine
+img: "images/murals/2024/stevie-shao.jpeg"
+
+# ── Optional ──
+title: ""
+building: Volunteers of America
+instagram: stepfrae
+basedIn: "Seattle, WA"
+
+artistBio: |
+  Stevie Shao is a second-generation Chinese-American illustrator and muralist
+  born and raised in Seattle. She studied interior design at Seattle Pacific
+  University, where an illustration course with Rachell Sumpter sparked her
+  artistic path. After being laid off during COVID-19 in 2020, she transitioned
+  to full-time art, quickly becoming one of Seattle's most in-demand public
+  artists. Her style blends folk art, Chinese ceramics, and traditional American
+  tattoo influences into ornate, maximalist compositions filled with plants,
+  animals, and mythical creatures. Clients include Starbucks, REI, Google,
+  Nordstrom, Sub Pop Records, and the Seattle Kraken, for whom she designed the
+  2022 Women in Hockey jersey. Fashion designer Anna Sui featured her work in
+  her Spring/Summer 2021 collection. She was named one of Seattle Magazine's
+  "25 Most Influential" in 2023.
+
+muralDescription: |
+  A multi-story mural on the side of the Volunteers of America building
+  depicting a sinuous, serpentine dragon in bold navy blue, red, gold, and
+  turquoise against a white background. The dragon coils upward across the
+  full height of the building, its body decorated with pink scalloped scales
+  and chartreuse dots. Two stylized birds with spread wings — one near the top
+  and one at the bottom — intertwine with the dragon's twisting form. Blue
+  flames curl from the dragon's mouth. The flat, graphic style draws on Chinese
+  folk art and traditional tattoo aesthetics. Signed "Stevie Shao 24" in the
+  lower right corner.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Seattle Magazine '25 Most Influential' 2023; Anna Sui S/S 2021 collaboration; SHINE 2024 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/shine-2024"
+  - "https://www.cascadepbs.org/culture/2021/08/stevie-shao-seattles-breakout-muralist/"
+  - "https://seattlemag.com/features/making-a-statement/"
+  - "https://iexaminer.org/seattle-artist-stevie-shao-a-reclaiming-through-storytelling-and-mysticism/"
+  - "https://www.stevieshao.com/"
+  - "https://www.voaflorida.org/event/shine-st-petersburg-mural-festival/"

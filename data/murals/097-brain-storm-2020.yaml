@@ -1,0 +1,33 @@
+# Brain Storm — 2020
+
+# ── Required ──
+id: 97
+artist: Brain Storm
+year: 2020
+lat: 27.7583
+lng: -82.6538
+address: St. Pete Youth Farm
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Brain_Storm.jpeg
+
+# ── Optional ──
+title: Bright Spot
+building: ""
+instagram: brainthegenius
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  St. Petersburg multimedia artist Chris Roberts, known as Brain Storm, is an
+  accomplished painter, designer, cinematographer, tattoo artist and owner of
+  Urban Ink Tattoo Company. For this community Bright Spot project sponsored by
+  NOAA Fisheries, Brain Storm partnered with the St. Pete Youth Farm to create
+  a mural focused on diversity and inclusion in STEM professions.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

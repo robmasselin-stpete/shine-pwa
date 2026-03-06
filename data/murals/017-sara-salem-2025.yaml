@@ -1,0 +1,49 @@
+# Sara Salem — 2025
+
+# ── Required ──
+id: 17
+artist: Sara Salem
+year: 2025
+lat: 27.792028
+lng: -82.638969
+address: 2180 4th St N
+category: shine
+img: "images/murals/2025/sara-salem.jpeg"
+
+# ── Optional ──
+title: "We Are St. Pete"
+building: LMCU
+instagram: sarasalemartsy
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Sara Salem is a St. Petersburg-based mural artist and co-founder of Phi Phi
+  Artland, a creative arts center blending fine art, wellness, and community.
+  She holds a BFA (2011) and brings over 12 years of teaching experience
+  spanning Africa, Asia, and the USA. Beyond murals, Salem is a yoga
+  instructor, Reiki Level II practitioner, and certified art therapist who
+  co-founded Milky Way Retreats. For the 2025 SHINE Origins festival, she
+  led a community mural project at LMCU Bank, inviting local residents to
+  help paint alongside her — one of the festival's signature collaborative
+  highlights.
+
+muralDescription: |
+  A large mural on the side of a building featuring a colorful pelican
+  wearing a white baseball cap and reflective sunglasses that show St. Pete
+  landmarks in their lenses. The pelican's wings are spread wide in vibrant
+  pinks, oranges, blues, and deep reds. A golden spiral sun radiates in the
+  upper left corner, and "We Are St. Pete" appears in playful navy blue
+  script to the right. Signed "Phi Phi Artland @Sarasalemartsy" at the
+  bottom. The white background keeps the whole piece bright and inviting.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "2024 St. Pete Arts Alliance Individual Artist Grant recipient; SHINE 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://phiphiartland.com/murals"
+  - "https://canvasrebel.com/meet-sara-salem/"
+  - "https://queuevision.com/discovering-wellness-through-art-the-inspiring-journey-of-phi-phi-artland/"
+  - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"

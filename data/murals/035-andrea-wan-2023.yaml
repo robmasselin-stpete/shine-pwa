@@ -1,0 +1,34 @@
+# Andrea Wan — 2023
+
+# ── Required ──
+id: 35
+artist: Andrea Wan
+year: 2023
+lat: 27.764
+lng: -82.6668
+address: 155 17th St S
+category: shine
+img: "images/murals/2023/Andrea-Wan-20231020-144359-MAR7308.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: Earth Song
+building: ""
+instagram: andrea_wan
+basedIn: Canada
+
+artistBio: |
+  Andrea Wan is a Hong Kong-born, Vancouver-raised Visual Artist and
+  Illustrator who has spent 8 years living in Berlin while exploring various
+  global destinations after completing her studies in Vancouver and Denmark.
+  She perceives her practice as a vessel for her stream of consciousness,
+  allowing what needs to emerge. Her narratives often take on an otherworldly
+  quality that reflects her inner world map and emotional states.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

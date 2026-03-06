@@ -1,0 +1,37 @@
+# IBOMS — 2020
+
+# ── Required ──
+id: 101
+artist: IBOMS
+year: 2020
+lat: 27.7706
+lng: -82.6601
+address: 2324 Central Ave
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_IBOMS.jpg
+
+# ── Optional ──
+title: ""
+building: Grand Central Brewhouse
+instagram: i.b.o.m.s
+basedIn: "St. Petersburg, Florida"
+
+artistBio: |
+  Jabari Reed-Diop, otherwise known as iBOMS is a 21-year-old artist based in
+  St. Petersburg, Florida. His artistic acumen comes from personal experience
+  and formal education at Douglas Anderson School of the Arts in Jacksonville.
+  Despite constantly pushing his craft and experimenting with new mediums,
+  iBOMS’ style is immediately recognizable. At first glance, his work may seem
+  like simple illustrations or even graffiti, but each piece has a story to
+  tell, a deeper message, a powerful statement about love, destruction, or
+  discovery. His characters are complex and often represent aspects of his life
+  as a young black male.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,43 @@
+# Amy Ilic-Volpe — 2025
+
+# ── Required ──
+id: 2
+artist: "Amy Ilic-Volpe"
+year: 2025
+lat: 27.762931
+lng: -82.674592
+address: "31st St & 7th Ave S"
+category: shine
+img: "images/murals/2025/amy-ilic-volpe.jpeg"
+
+# ── Optional ──
+title: "Here & Now"
+building: ""
+instagram: amy_ilic_volpe
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Amy Ilic-Volpe is a St. Petersburg-based multimedia artist whose work
+  explores the interplay of color, form, and perception. Her bold, graphic
+  style uses bright palettes and layered geometric compositions to create
+  work that feels both playful and contemplative. She was the 2022 Gasparilla
+  Festival of the Arts Emerging Artist Recipient, a featured artist in All
+  She Makes magazine, and a SHINE St. Petersburg "Bright Spot" artist in
+  2022. For the 2025 SHINE Origins festival she returned with a full-scale
+  mural on 31st St & 7th Ave S.
+
+muralDescription: |
+  A wide, vibrant mural on a cinder block wall bursting with overlapping
+  geometric shapes — circles, stripes, polka dots, and waves — in a candy-
+  bright palette of pink, green, yellow, orange, purple, and turquoise. The
+  left side features the words "Here & Now" in stacked multicolor block
+  letters. Signed "Amy Ilic Volpe @amy_ilic_volpe" in pink in the lower
+  right corner.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "2022 Gasparilla Festival of the Arts Emerging Artist Recipient; All She Makes magazine featured artist; SHINE 2022 Bright Spot artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Enhanced from photo, 2026-03-05"

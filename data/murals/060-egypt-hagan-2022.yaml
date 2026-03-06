@@ -1,0 +1,35 @@
+# Egypt Hagan — 2022
+
+# ── Required ──
+id: 60
+artist: Egypt Hagan
+year: 2022
+lat: 27.7745
+lng: -82.6497
+address: 299 Dr MLK Jr St N
+category: shine
+img: "images/murals/2022/Egypt-Hagan-SHINE-Day-9.jpg"
+
+# ── Optional ──
+title: ""
+building: George F. Young
+instagram: graffitiegypt
+basedIn: "Tampa, FL"
+
+artistBio: |
+  A Los Angeles born artist, Egypt highlights the use of portraiture as
+  storytelling. As each human bears a unique story, she relishes in creating
+  these stories using bold images and an underlying vibrancy that emphasizes
+  the main subject. Egypt's paintings consist of people and untold stories that
+  deserved to be heard. Egypt currently resides and works out of Florida. She
+  continues to work on numerous projects and commissions while exhibiting her
+  artwork around the world.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

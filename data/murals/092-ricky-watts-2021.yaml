@@ -1,0 +1,35 @@
+# Ricky Watts — 2021
+
+# ── Required ──
+id: 92
+artist: Ricky Watts
+year: 2021
+lat: 27.7504
+lng: -82.6636
+address: 2622 Fairfield Ave. S.
+category: shine
+img: "images/murals/2021/ricky-watts.jpg"
+
+# ── Optional ──
+title: ""
+building: The Factory St. Pete
+instagram: rickywatts
+basedIn: "San Francisco, CA"
+
+artistBio: |
+  Born 1980 in San Francisco, CA, Richard "Ricky" Watts is most notably
+  recognized for his abstract works of fluid shapes and psychedelic color
+  patterns. Watts’ self-taught techniques derive from his younger graffiti
+  years in Northern California. A versatile artist with range across multiple
+  mediums, Ricky’s large-scale murals and intricate paintings on canvas can be
+  found throughout the US. His commissions list includes work for well-known
+  technology, fashion and automotive companies.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

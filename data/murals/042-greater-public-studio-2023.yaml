@@ -1,0 +1,30 @@
+# Greater Public Studio — 2023
+
+# ── Required ──
+id: 42
+artist: Greater Public Studio
+year: 2023
+lat: 27.7602
+lng: -82.6357
+address: "6th Ave S & 2nd St S"
+category: shine
+img: "images/murals/2023/GreaterPublicStudio-final-USF.jpg"    # TODO: needs-photo — MURAL IS GONE
+
+# ── Optional ──
+title: Dive Into Discovery
+building: USF Campus
+instagram: greaterpublicstudio
+basedIn: "Tampa, FL"
+
+artistBio: |
+  GPS is an art and design studio specializing in art direction, brand
+  strategy, visual identity, hand painted murals, and installation design
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

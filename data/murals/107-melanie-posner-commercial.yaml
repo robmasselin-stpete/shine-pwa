@@ -1,0 +1,48 @@
+# Melanie Posner — Commercial
+
+# ── Required ──
+id: 107
+artist: Melanie Posner
+year: 0
+lat: 27.776736
+lng: -82.638808
+address: 421 4th Ave N
+category: commercial
+img: "images/murals/commercial/melanie-posner-hollander.jpeg"
+
+# ── Optional ──
+title: ""
+building: Hollander Hotel
+instagram: therealmelpoz
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  Melanie Posner is a fine artist and muralist from Philadelphia who earned her
+  BFA in Painting from the University of Tampa in 2016. She specializes in
+  vibrant, photorealistic paintings of women. Her clients include Walt Disney
+  World (scenic artwork for Star Wars: Galaxy's Edge), Amazon Prime, and TikTok
+  (a 40-foot mural on the LGBT Center of Los Angeles for Pride Month). She also
+  has a SHINE 2018 mural "New Beginnings" at 4139 7th Terrace S. She was a cast
+  member on the reality show Tampa Baes. Now based in Los Angeles.
+
+muralDescription: |
+  An 18-foot-tall commercial mural on the back entrance of the Hollander Hotel
+  near the swimming pool and tiki bar. A confident woman wearing a red head
+  scarf and dark sunglasses holds a tall glass of beer, rendered in
+  photorealistic style. The background features a bold psychedelic paisley
+  pattern in mint green, yellow, and pink with black and white teardrop motifs.
+  Signed "Melanie Posner" in the upper right, with "@muralcerveza" and
+  "@therealmelpoz" at the bottom. Commissioned by New Belgium Brewing to
+  promote their Mural Agua Fresca Cerveza summer beer.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2018 festival artist; scenic artist for Walt Disney World Star Wars: Galaxy's Edge"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpetecatalyst.com/melanie-posner/"
+  - "https://www.melanieposner.com/"
+  - "https://www.melanieposner.com/murals-portfolio/hollander-hotel"
+  - "https://stpeteartsalliance.org/melanie-posner"

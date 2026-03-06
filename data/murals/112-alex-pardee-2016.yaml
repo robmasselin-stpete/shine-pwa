@@ -1,0 +1,53 @@
+# Alex Pardee — 2016
+
+# ── Required ──
+id: 112
+artist: Alex Pardee
+year: 2016
+lat: 27.774586
+lng: -82.647125
+address: 251 10th St N
+category: shine
+img: "images/murals/2016/alex-pardee.jpeg"
+
+# ── Optional ──
+title: Brightmares
+building: ""
+instagram: alexpardee
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  Alex Pardee (b. 1976, Antioch, CA) is an American freelance artist,
+  illustrator, and comics creator. Hospitalized at 14 while struggling with
+  depression, art became his critical outlet. He started in graffiti and
+  homemade sketch zines before publishing his first book "My Book of Colors" in
+  1999. His signature aesthetic — which he calls "Brightmares" — features
+  fantastical, dark creatures rendered in unexpectedly vibrant colors. He
+  illustrated album art for The Used, Aesop Rock, and In Flames, and worked on
+  creature design for films including "Attack the Block" and "Sucker Punch." He
+  served as Art Director and Creature Designer for "Digging Up the Marrow"
+  (2014). Collaborations include Warner Bros., KidRobot, and Teddy Fresh. He
+  is represented by Harman Projects and Spoke Art galleries.
+
+muralDescription: |
+  A 46-by-19-foot mural depicting an emaciated, skeletal gray figure hunched
+  beneath an enormous dripping concentric-circle orb in pink, blue, green,
+  yellow, and orange — like a deflating rainbow balloon where the figure's head
+  should be. The creature has elongated bony limbs and stands on bulbous
+  white and tan blobs that spurt upward from the ground. A swirling black
+  vortex fills the background. Colors drip downward from the orb as if
+  melting in the Florida heat. This was the largest mural Pardee had ever
+  attempted at the time, completed with assistance from fellow artist Ricky
+  Watts.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2016 festival artist; creature designer for multiple Hollywood films"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/alex-pardee/"
+  - "https://en.wikipedia.org/wiki/Alex_Pardee"
+  - "http://shineonstpete.com/2016/09/06/alex-pardee-brightmares/"
+  - "https://stpetemuraltour.com/2016/09/15/alex-pardee/"

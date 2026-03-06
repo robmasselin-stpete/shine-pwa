@@ -1,0 +1,32 @@
+# HOXXOH — 2023
+
+# ── Required ──
+id: 44
+artist: HOXXOH
+year: 2023
+lat: 27.768
+lng: -82.6624
+address: 2025 3rd Ave S
+category: shine
+img: "images/murals/2023/Hoxxoh-20231019-113041-MAR5715-Edit.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: Rainbird
+building: Morean Workshop Space
+instagram: hoxxoh
+basedIn: "Miami, FL"
+
+artistBio: |
+  Hoxxoh’s works represent what happens when we let go of our control of time
+  and let its predetermined course take control. Spheres of life are on
+  display, illustrating the motions of space and time working in unison to
+  create natural order.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

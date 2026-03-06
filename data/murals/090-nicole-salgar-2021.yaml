@@ -1,0 +1,38 @@
+# Nicole Salgar — 2021
+
+# ── Required ──
+id: 90
+artist: Nicole Salgar
+year: 2021
+lat: 27.7583
+lng: -82.6497
+address: 615 23rd St. S.
+category: shine
+img: "images/murals/2021/nicole-salgar.jpg"
+
+# ── Optional ──
+title: ""
+building: Cimco Tile
+instagram: nmsalgar
+basedIn: "Miami, FL"
+
+artistBio: |
+  Nicole Salgar is a multi-media visual artist from Miami, FL. Influenced by
+  her Latin roots and passion for horror, sci-fi and folk art, Nicole has
+  traveled to Cuba, Europe, South America and along the east coast
+  collaborating on mural projects with local communities. Often using muralism
+  as a meditative and healing practice, she invites viewers to challenge their
+  perspectives and assumptions which may arise from her ambiguous motifs.
+  Nicole finds that experimentation is the key to creation and without it,
+  nothing truly effective has the chance to reveal itself. Through her creative
+  business NS/CB, she’s worked with a variety of clients including Starbucks,
+  Tanqueray, Lulu Lemon, Steven Madden and Bacardi.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

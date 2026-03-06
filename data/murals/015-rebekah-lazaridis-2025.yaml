@@ -1,0 +1,49 @@
+# Rebekah Lazaridis — 2025
+
+# ── Required ──
+id: 15
+artist: Rebekah Lazaridis
+year: 2025
+lat: 27.762931
+lng: -82.674544
+address: "31st St & 7th Ave S"
+category: shine
+img: "images/murals/2025/rebekah-lazaridis.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: rebekahlaz
+basedIn: "Pinellas County, FL"
+
+artistBio: |
+  Rebekah Eugenia Lazaridis is a St. Pete native and multidisciplinary artist
+  who graduated with a BFA from The School of the Art Institute of Chicago in
+  2005. A scenic artist and designer, she has created sets for productions at
+  American Stage, Jobsite, freeFall, and Stageworks. She also runs
+  @homeillustrations, creating customized home portraits with a nostalgic
+  flair, and her CIRCA series portrays iconic St. Petersburg spots in a
+  vintage postcard style. Her first NYC solo show explored theatrical
+  superstitions. She participated in SHINE 2025 Origins at 31st St & 7th
+  Ave S.
+
+muralDescription: |
+  A dramatic monochromatic mural on a black cinder block wall. A large
+  ornate Gothic letter "B" with intricate Celtic knotwork fills the center,
+  overlaid on a detailed full moon rendered in grays and whites. Bats swarm
+  from the left across the night sky, and a barn owl with outstretched wings
+  emerges from storm clouds on the right, with rain streaking diagonally
+  downward. Signed "ReAh @rebekahlaz" in the lower right corner. The entire
+  palette is black, white, and silver — a stark contrast to the colorful
+  murals flanking it.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "BFA, School of the Art Institute of Chicago; SHINE 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "http://www.rebekahlazaridis.com/life-story"
+  - "https://stpetecatalyst.com/a-little-bit-different-artist-rebekah-lazaridis-pays-homage-to-her-hometown/"
+  - "https://www.cltampa.com/arts/local-artist-rebekah-lazaridis-explores-theatrical-superstitions-in-her-first-nyc-solo-show-12274595"

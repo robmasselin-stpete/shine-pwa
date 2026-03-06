@@ -1,0 +1,45 @@
+# Chad Mize — Commercial (Hollander Hotel)
+
+# ── Required ──
+id: 116
+artist: Chad Mize
+year: 0
+lat: 27.777111
+lng: -82.638869
+address: 421 4th Ave N
+category: commercial
+img: "images/murals/commercial/chad-mize-hollander.jpeg"
+
+# ── Optional ──
+title: ""
+building: Hollander Hotel
+instagram: chadmize
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Chad Mize is a multimedia artist often called "St. Pete's Godfather of Art."
+  He founded MIZE Gallery (formerly Bluelucy Gallery) and was a member of
+  SHINE's organizing committee. His bold, colorful illustration style draws
+  from pop art, comics, and Florida culture. He has multiple murals across
+  St. Petersburg including the iconic Twiggy portrait behind his former
+  gallery on Central Avenue.
+
+muralDescription: |
+  A large three-story commercial mural on the side of the Hollander Hotel
+  in Chad Mize's signature bold-line illustration style. On a white background,
+  colorful vignettes in orange, teal, yellow, and pink depict Florida
+  icons — flamingos, a pink dolphin, an orange slice, a mermaid, a seahorse,
+  beach chairs, palm trees, and a retro couple in swimwear splashing in
+  the surf. "St. Pete" appears in playful lettering at top, "HH Hollander
+  Hotel" in gold at center, and "Florida" in a retro script below. NÜTRL
+  Vodka Seltzer branding appears in the upper right. Signed "@CHADMIZE."
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE organizing committee member; founder of MIZE Gallery"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "Identified from photo: signed @CHADMIZE, Hollander Hotel branding + NÜTRL sponsor"
+  - "Same building as Melanie Posner commercial mural (#107), different wall"

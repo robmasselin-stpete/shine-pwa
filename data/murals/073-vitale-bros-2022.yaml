@@ -1,0 +1,34 @@
+# Vitale Bros — 2022
+
+# ── Required ──
+id: 73
+artist: Vitale Bros
+year: 2022
+lat: 27.8174
+lng: -82.6773
+address: 3190 75th St. N.
+category: shine
+img: images/murals/2022/VITALE_BROS.jpg
+
+# ── Optional ──
+title: ""
+building: Parc
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  The Vitale Brothers are a St. Petersburg-based mural and hand-painted sign
+  company, led by Johnny Vitale and Paul Vitale, with clients from the Tampa
+  Bay Rays to Great Bay Distributors. Trailblazers in the local art scene, the
+  Vitale Brothers have launched memorable art events for many years and
+  collaborated in set design for movies filming in area such as Harmony
+  Korine’s Spring Breakers.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

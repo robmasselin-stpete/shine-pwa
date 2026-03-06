@@ -1,0 +1,34 @@
+# Naomi Haverland — 2024
+
+# ── Required ──
+id: 28
+artist: Naomi Haverland
+year: 2024
+lat: 27.7748
+lng: -82.6316
+address: 700 2nd Ave NE
+category: shine
+img: "images/murals/2024/NaomiHaverland-stories.jpeg"    # TODO: needs-photo
+
+# ── Optional ──
+title: Bright Spot
+building: Discovery Center on the Pier
+instagram: naomihaverland
+basedIn: "Titusville, FL"
+
+artistBio: |
+  Naomi Haverland is a Florida-based visual artist known for her
+  hyper-realistic portraits, 3D illusions and anamorphic art executed with the
+  most impressive quality. She has won many awards for her artwork and has been
+  invited to travel to international festivals in Germany, Canada, and Mexico.
+  She has been commissioned by brands such as Microsoft, Amazon, Harley
+  Davidson, Skittles, and Blick Art Supply.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

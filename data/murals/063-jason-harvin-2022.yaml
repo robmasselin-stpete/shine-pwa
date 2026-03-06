@@ -1,0 +1,31 @@
+# Jason Harvin — 2022
+
+# ── Required ──
+id: 63
+artist: Jason Harvin
+year: 2022
+lat: 27.772442
+lng: -82.650938
+address: 1510 Central Ave
+category: shine
+img: "images/murals/2022/jason-harvin.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: waywardwalls
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Jason Harvin is a self-taught geometric abstraction artist who left a corporate career in 2022 to paint full time through his company Wayward Walls. His hard-edged style layers triangles, circles, and stripes into dense optical compositions that pulse with energy. Featured on HGTV's 100 Day Dream Home, his work can be found across homes and businesses in Tampa Bay. He's painted walls and intersection murals for SHINE across St. Petersburg.
+
+muralDescription: |
+  A wide building wall packed with interlocking geometric shapes — overlapping triangles, concentric circles, and diagonal stripes in saturated blue, orange, red, yellow, black, and white. The composition radiates outward from a central concentric target in blue and red, framed by bold chevrons and striped bands. Palm trees line the base. The effect is Op Art at architectural scale — dizzying, precise, and impossible to ignore.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05. TODO: photo is actually the 2021 mural — need replacement photo for this 2022 intersection piece."

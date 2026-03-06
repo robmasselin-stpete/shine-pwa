@@ -1,0 +1,54 @@
+# Loretta Lizzio — 2023
+
+# ── Required ──
+id: 46
+artist: Loretta Lizzio
+year: 2023
+lat: 27.762869
+lng: -82.67305
+address: 2875 7th Ave S
+category: shine
+img: "images/murals/2023/loretta-lizzio.jpeg"
+
+# ── Optional ──
+title: The Sirens Call
+building: "Stewart Moving & Storage"
+instagram: loretta_lizzio
+basedIn: "Melbourne, Australia"
+
+artistBio: |
+  Loretta Lizzio (b. 1986) is a Greek-Australian painter, photographer, and
+  muralist based in Melbourne. She honed her artistic sensitivity through
+  professional experience in publishing, photography, and advertising before
+  dedicating herself full-time to fine art and murals. Her ethereal works layer
+  oil, acrylic, resin, gold leaf, and intricate line work to explore themes of
+  Greek mythology, romanticism, nature, and the female figure. She is the first
+  female artist commissioned for the Hellenic Museum's Dialogue Series, creating
+  "Well Behaved Women" — a three-part mural of fearless women from ancient Greek
+  history. Her work has appeared at the Brisbane Street Art Festival, Vancouver
+  Mural Festival, and Wall to Wall Festival, and in galleries including Haven,
+  Nucleus, Beinart, and Outre. She has collaborated commercially with New
+  Balance, Wacom, and Toyota.
+
+muralDescription: |
+  A wide mural on the Stewart Moving & Storage building depicting three women
+  as sirens from Greek mythology against a deep teal-green background. The
+  figures emerge from lush green foliage, their pale skin overlaid with
+  intricate leaf patterns and delicate line work that makes them appear to grow
+  from the plants themselves. Their dark hair flows and intertwines across the
+  top of the composition, creating a canopy effect. The sirens gaze outward
+  with serene yet subtly unsettling expressions — beautiful and sinister at
+  once. Signed "Loretta Lizzio" in the upper right corner.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "First female artist commissioned for Hellenic Museum's Dialogue Series; SHINE 2023 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/loretta-lizzio-2023"
+  - "https://www.lorettalizzio.com/"
+  - "https://www.hellenic.org.au/post/artist-in-conversation-meet-loretta-lizzio"
+  - "https://stpetecatalyst.com/take-a-look-all-the-2023-shine-festival-murals/"
+  - "https://medium.com/splatrs/creating-art-through-adversity-with-loretta-lizzio-6149dff201f6"

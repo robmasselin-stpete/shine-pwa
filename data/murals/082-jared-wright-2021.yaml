@@ -1,0 +1,36 @@
+# Jared Wright — 2021
+
+# ── Required ──
+id: 82
+artist: Jared Wright
+year: 2021
+lat: 27.7706
+lng: -82.6421
+address: 670 Central Ave.
+category: shine
+img: "images/murals/2021/jared-wright.jpg"
+
+# ── Optional ──
+title: ""
+building: Colony Grill
+instagram: jaredwright
+basedIn: "Tampa Bay, FL"
+
+artistBio: |
+  Jared Wright is a prolific painter and illustrator based in Tampa Bay, FL. He
+  uses a variety of styles, techniques, and mediums to create fun, surreal
+  worlds with loose narratives. Inspired by everything from Dali and classic
+  rock to aliens and the beauty of mother nature, his goal is to create art
+  that inspires the viewer to feel, think, and hopefully create or simply share
+  the source of inspiration with others. He believes artists should aim to
+  represent themselves genuinely and honestly so the viewer can relate to it
+  genuinely, and that connection can be everything.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

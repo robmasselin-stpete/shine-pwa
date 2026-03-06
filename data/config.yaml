@@ -1,0 +1,59 @@
+# SHINE Mural Festival — Configuration
+# Used by build-data.py to generate js/data.js
+
+# Valid categories for murals
+CATEGORIES:
+  - shine
+  - shine-legacy
+  - commercial
+
+# Year range for filter pills (newest first)
+YEARS:
+  - 2025
+  - 2024
+  - 2023
+  - 2022
+  - 2021
+  - 2020
+  - 2019
+  - 2018
+  - 2017
+  - 2016
+  - 2015
+
+# Year-to-color mapping for map markers
+YEAR_COLORS:
+  2025: "#1E5B8A"
+  2024: "#2E86C1"
+  2023: "#48A9A6"
+  2022: "#5FAD56"
+  2021: "#F2C14E"
+  2020: "#F78154"
+  2019: "#E74C3C"
+  2018: "#9B59B6"
+  2017: "#E91E63"
+  2016: "#795548"
+  2015: "#607D8B"
+  0: "#999999"
+
+# Category-to-color mapping for map filters
+CATEGORY_COLORS:
+  shine: "#1E5B8A"
+  shine-legacy: "#607D8B"
+  commercial: "#E67E22"
+
+# Artist alias map — handles spelling variants in search
+ARTIST_ALIASES:
+  Dreamweaver:
+    - "Dream Weaver"
+    - "Dreamweaver"
+  Sio:
+    - "Sionna"
+    - "Sio"
+
+# Tampa Bay bounding box for GPS validation
+BOUNDS:
+  lat_min: 27.6
+  lat_max: 27.9
+  lng_min: -82.8
+  lng_max: -82.5

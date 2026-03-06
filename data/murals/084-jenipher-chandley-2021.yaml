@@ -1,0 +1,35 @@
+# Jenipher Chandley — 2021
+
+# ── Required ──
+id: 84
+artist: Jenipher Chandley
+year: 2021
+lat: 27.7583
+lng: -82.6497
+address: 625 23rd St. S.
+category: shine
+img: "images/murals/2021/jenipher-chandley.jpg"
+
+# ── Optional ──
+title: ""
+building: Cimco Tile
+instagram: jenipherchandley
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Based in St. Petersburg, FL, Jenipher Chandley is a representational artist
+  whose work explores the relationship between nature and the human condition,
+  focusing on themes of strength, beauty, loss, pain, and ultimately,
+  resilience. Jenipher holds degrees in Interior and Graphic Design and has
+  shown her work in hundreds of shows and charitable events, while curating
+  exhibitions throughout the Tampa Bay area and supporting fellow artists
+  through teaching and mentorship.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

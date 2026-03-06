@@ -1,0 +1,32 @@
+# Tasko — 2022
+
+# ── Required ──
+id: 70
+artist: Tasko
+year: 2022
+lat: 27.763
+lng: -82.667
+address: 1960 5th Ave S.
+category: shine
+img: "images/murals/2022/Tasko-SHINE-Day-9.jpg"
+
+# ── Optional ──
+title: ""
+building: "Kozuba & Sons"
+instagram: the_one_of_many_
+basedIn: "Tampa Bay, FL"
+
+artistBio: |
+  Tasko is a graffiti writer with a passion for letters. He enjoys finding ways
+  to make the letters dance together and become part of the wall. Using a
+  mostly freestyle technique that allows his work to truly fit the surface,
+  every piece he paints is unique to the wall and/or objects he paints.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

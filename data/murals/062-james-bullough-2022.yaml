@@ -1,0 +1,31 @@
+# James Bullough — 2022
+
+# ── Required ──
+id: 62
+artist: James Bullough
+year: 2022
+lat: 27.771253
+lng: -82.663567
+address: 2201 Central Ave.
+category: shine
+img: "images/murals/2022/james-bullough.jpeg"
+
+# ── Optional ──
+title: ""
+building: Central Neurology
+instagram: james_bullough
+basedIn: "Berlin, Germany"
+
+artistBio: |
+  James Bullough grew up in Washington, DC, where early exposure to graffiti culture shaped his visual sensibility. He taught himself oil painting by studying Old Masters, then moved to Berlin where he now lives and works. His signature style splits photorealistic figures into fractured geometric ribbons — precise portraits shattered by bold abstract slashes. He paints both massive outdoor walls and studio canvases, with landmark murals in New Zealand, Sweden, France, Ukraine, and across the US. His gallery shows regularly sell out.
+
+muralDescription: |
+  A multi-story mural on the side of a building depicting a woman in a crimson dress, her body fragmented into sweeping ribbon-like shards that scatter across a dark black background. The photorealistic figure — head tilted back, arms outstretched — appears to be dissolving or reassembling mid-leap. Deep navy blue, coral red, and muted lavender geometric strips weave through the composition, creating a sense of explosive movement against the void.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."

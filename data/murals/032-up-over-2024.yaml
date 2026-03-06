@@ -1,0 +1,33 @@
+# Up & Over — 2024
+
+# ── Required ──
+id: 32
+artist: "Up & Over"
+year: 2024
+lat: 27.7608
+lng: -82.6668
+address: 201 17th Street South
+category: shine
+img: "images/murals/2024/UpandOver-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: Modera
+instagram: upandovermurals
+basedIn: "Tampa Bay, FL"
+
+artistBio: |
+  Founder of the SHINE Mural Festival, Leon “Tes One” Bedore, is known for his
+  signature blend of traditional art and graphic design. The Vitale Bros. are
+  St. Petersburg’s most prolific muralists, transforming public spaces for more
+  than 30 years. This powerful design collaboration of Tes One & Vitale Bros.
+  paint under the moniker Up&Over.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

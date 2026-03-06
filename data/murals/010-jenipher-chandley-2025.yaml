@@ -1,0 +1,49 @@
+# Jenipher Chandley — 2025
+
+# ── Required ──
+id: 10
+artist: Jenipher Chandley
+year: 2025
+lat: 27.762867
+lng: -82.675103
+address: "31st St & 7th Ave S"
+category: shine
+img: "images/murals/2025/jenipher-chandley.jpeg"
+
+# ── Optional ──
+title: "Stronger Together"
+building: ""
+instagram: jenipherchandley
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Jenipher Chandley is a St. Petersburg-based representational artist whose
+  work explores the relationship between nature and the human condition,
+  focusing on themes of strength, beauty, loss, and resilience. Working
+  predominantly with oils, she creates figurative artwork infused with
+  surrealism and symbolism. She holds degrees in Interior and Graphic Design
+  and has shown her work in hundreds of shows and charitable events while
+  curating exhibitions throughout Tampa Bay. A 2023 Creative Pinellas
+  Emerging Artist grantee, she has also been selected as the Local Artist
+  Spotlight by the Gasparilla Festival of the Arts and featured by American
+  Stage Theater. She participated in SHINE 2021 and returned for SHINE
+  Origins 2025.
+
+muralDescription: |
+  A wide mural on a cinder block wall with the words "Stronger Together" in
+  large flowing white script across a deep teal background. The text is
+  framed by a lush border of curling green vines and tropical flame-colored
+  flowers — gloriosa lilies in reds, oranges, and yellows. Signed "Jenipher
+  Chandley" in the upper right corner.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "2023 Creative Pinellas Emerging Artist grantee; Gasparilla Festival of the Arts Local Artist Spotlight; First Place, Gallery 21, Miami (oil painting 'Penelope')"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://www.jenipherchandley.com/about-1"
+  - "https://creativepinellas.org/artist/jenipher-chandley/"
+  - "https://theartisanmagazine.com/the-original-jenipher-chandley/"
+  - "https://stpeteartsalliance.org/shine?alias=/2021_SHINE_Mural_Jenipher_Chandley"

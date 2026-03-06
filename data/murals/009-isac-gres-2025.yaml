@@ -1,0 +1,53 @@
+# Isac Gres — 2025
+
+# ── Required ──
+id: 9
+artist: Isac Gres
+year: 2025
+lat: 27.771678
+lng: -82.643892
+address: 699 Central Ave
+category: shine
+img: "images/murals/2025/isac-gres.jpeg"
+
+# ── Optional ──
+title: ""
+building: Melting Pot
+instagram: isacgres.art
+basedIn: "Cuba / St. Petersburg, FL"
+
+artistBio: |
+  Isac Gres (b. 1993, Cuba) is a surrealist painter, muralist, and tattoo
+  artist whose work transforms themes of exile, memory, and resilience into
+  dreamlike imagery. After a 12-country journey to the U.S., he developed a
+  symbolic language of doorways, jellyfish, and apples — metaphors of identity
+  and transformation. His large-scale work blends hyperrealistic technique with
+  cosmic surrealism, often featuring a recurring motif of beaming light that he
+  describes as representing "light and good energy." For the 2025 SHINE Origins
+  festival, Gres took on his tallest wall to date on the 600 block of Central
+  Avenue — where the mural movement that launched SHINE began in 2012 —
+  alongside Dreamweaver and John Vitale.
+
+muralDescription: |
+  A massive two-story mural wrapping around the corner of a building in
+  swirling cosmic surrealism. The composition features molten planetary
+  spheres, a city skyline encased in a dripping glass orb, melting candles
+  nodding to Dalí, and a sculptural elephant form emerging from fiery nebula
+  clouds. The palette is dominated by deep space blues and purples contrasted
+  with blazing oranges, reds, and golds. Signed "Isac Gres" in the lower
+  corners of both walls.
+
+muralInspiration: |
+  The mural is on a restaurant called the Melting Pot, and Gres appreciated
+  how the work represents a melting pot of cultures. The melting clocks are
+  a nod to Dalí.
+
+muralAwards: ""
+artistAwards: "SHINE 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
+  - "https://83degreesmedia.com/tampa-bay-arts-roundup-shine-mural-festival-arts-annual-more/"

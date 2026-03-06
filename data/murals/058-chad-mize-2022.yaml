@@ -1,0 +1,43 @@
+# Chad Mize — 2022
+
+# ── Required ──
+id: 58
+artist: Chad Mize
+year: 2022
+lat: 27.762
+lng: -82.6497
+address: "20th St. S. & Pinellas Trail"
+category: shine
+img: "images/murals/2022/Chad-Mize-and-Friends-SHINE-Day-11.jpg"
+
+# ── Optional ──
+title: ""
+building: Pinellas Trail
+instagram: chadmize
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Chad Mize is a multimedia artist, designer and muralist residing in St.
+  Petersburg, Florida. He was born in New Orleans, Louisiana in 1974, and then
+  moved to Tampa Bay Florida, where he spent most of his childhood. An early
+  interest in art resulted in his earning a BFA in Visual Communications at the
+  University of Mississippi. With a love for past and contemporary culture, he
+  takes a humorous, tongue-in-cheek approach to his designs, which include
+  playful free flow artworks, colorful patterns, political art and graphics
+  with text. In 2010, Mize opened BLUELUCY, a gallery in St. Petersburg, where
+  he represented over 450 local and national artists. When the gallery closed
+  in 2015, Mize founded his own lifestyle and design brand, CHIZZY. His
+  contributions to the thriving St. Petersburg art scene also include working
+  on the SHINE Mural Festival, which brings artists from around the world to
+  paint murals in St. Petersburg. In 2018, Mize opened the gallery MIZE in the
+  Historic Uptown neighborhood of St Petersburg. Mize’s work is held in
+  numerous private and corporate collections nationally and internationally.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

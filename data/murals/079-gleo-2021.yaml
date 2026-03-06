@@ -1,0 +1,35 @@
+# Gleo — 2021
+
+# ── Required ──
+id: 79
+artist: Gleo
+year: 2021
+lat: 27.763
+lng: -82.6601
+address: 2336 5th Ave. S.
+category: shine
+img: images/murals/2021/gleo.jpg
+
+# ── Optional ──
+title: ""
+building: New Dawn Coffee Co
+instagram: gleo_co
+basedIn: Colombia
+
+artistBio: |
+  From Cali, Colombia, Gleo’s work moves in different formats—murals, canvases,
+  serigraphs—but they maintain a common language: color and shapes, elements
+  that in turn create dialogue with the spaces built by the human imaginary.
+  Gleo proposes to understand her work as part of us, since it starts from the
+  premise that we all form one with nature. She is in search of a sensorial and
+  universal language in which her work would be a turning point within the
+  spaces we normally inhabit—a bridge to an experience of inner contemplation.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

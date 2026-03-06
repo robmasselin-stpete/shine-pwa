@@ -1,0 +1,52 @@
+# J&S Signs (Jeffrey Sincich & Josh Stover) — 2018
+
+# ── Required ──
+id: 114
+artist: J&S Signs
+year: 2018
+lat: 27.778658
+lng: -82.646439
+address: 553 9th St N
+category: shine
+img: "images/murals/2018/js-signs-point-of-pines.jpeg"
+
+# ── Optional ──
+title: "Point of Pines"
+building: ""
+instagram: jandssigns
+basedIn: "Portland, OR (originally St. Petersburg, FL)"
+
+artistBio: |
+  J&S Signs is a vintage hand-lettering collaboration between Jeffrey Sincich
+  (b. 1990, Belleair, FL) and Josh Stover, who met as ceramics majors at
+  the University of Florida. After graduating in 2012, they began painting
+  positive-message murals and transitioned into professional sign painting,
+  founding J&S Signs in 2013 in St. Petersburg. They relocated to Portland,
+  Oregon around 2015. Their style draws from 1930s–1950s lettering — bold,
+  simple, with distinctive letter shapes and a signature mint-and-red palette.
+  In 2021 they rebranded as "Variety Shop." Clients include Nike, Adidas,
+  Patagonia, Airbnb, and the Portland Trail Blazers. Other well-known St.
+  Pete murals include "You Are My Sunshine" at the Morean Arts Center and
+  "Love Your Neighborhood" on Central Avenue.
+
+muralDescription: |
+  A 15-by-60-foot mural in a retro, bold children's-book style using muted
+  pink, mustard brown, sea green, and orange. The composition depicts three
+  vintage St. Pete buildings: a green one-story motel at left with a 1950s
+  neon "Motel" sign and an "All Are Welcome" placard; a two-story mustard
+  post office at center with archways and a vintage "Oranges $1.99" sign;
+  and a pink two-story apartment at right with orange and brown columns. The
+  title "Point of Pines" references the Spanish meaning of "Pinellas" — the
+  county's original name. Period details include a green bench, palm trees,
+  and a layered skyline evoking mid-century Florida.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2018 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/js-signs/"
+  - "https://www.pdxmonthly.com/home-and-real-estate/2019/02/this-duo-makes-some-of-portland-s-most-eye-catching-signs"
+  - "https://www.jeffreysincich.com/about"

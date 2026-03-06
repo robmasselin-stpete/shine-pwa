@@ -1,0 +1,47 @@
+# Derek Donnelly — 2025 (1847 1st Ave N)
+
+# ── Required ──
+id: 5
+artist: Derek Donnelly
+year: 2025
+lat: 27.7724559
+lng: -82.6586920
+address: 1847 1st Ave N
+category: shine
+img: "images/murals/2025/derek-donnelly-1847.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: saintpaintarts
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Derek Donnelly, known as Saint Paint Arts, is a St. Petersburg native whose
+  cartoon-influenced murals have become landmarks across Tampa Bay. A multiple
+  Best of the Bay winner from Creative Loafing Tampa Bay, Donnelly's playful,
+  story-driven style blends retro illustration with local culture — often
+  featuring his son and the city's wildlife. His large-scale work spans hotels,
+  breweries, public buildings, and private homes throughout the region. For the
+  2025 SHINE Origins festival, he painted two murals: this piece at 1847 1st
+  Ave N and a vintage postcard companion at the Hollander Hotel.
+
+muralDescription: |
+  A wide-format mural wrapping around two walls of a single-story building.
+  The central scene shows Donnelly's signature cartoon boy — in a red cap and
+  sunglasses — riding a pelican in flight over ocean waves. A dragonfly hovers
+  on the right side, and seagulls fill the sky. The left wall transitions into
+  an underwater scene in deep blue-green tones, with a diver amid coral and
+  sea life. Signed "Donnelly" in the upper right. The palette shifts from
+  cool oceanic blues on the left to bright sky blue and green on the right.
+
+muralInspiration: |
+  Donnelly stated: 'My murals are a celebration of all things local, with my
+  son and our city's bird.'
+
+muralAwards: ""
+artistAwards: "Multiple Best of the Bay winner (Creative Loafing Tampa Bay)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Enhanced from photo + detail card data, 2026-03-05"

@@ -1,0 +1,44 @@
+# Fintan Magee — 2024
+
+# ── Required ──
+id: 24
+artist: Fintan Magee
+year: 2024
+lat: 27.7753
+lng: -82.6422
+address: 777 3rd Ave North
+category: shine
+img: "images/murals/2024/FintanMagee-FinalShot-SHINE2024-Image3.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: Reflection St. Pete
+instagram: fintan_magee
+basedIn: Australia
+
+artistBio: |
+  Fintan Magee is a Sydney based social realist painter, specializing in
+  large-scale murals. Born in 1985 in Lismore, New South Wales, to an architect
+  mother and father who was a sculptor, he started drawing at a young age. His
+  earlier large-scale paintings often inhabited the isolated, abandoned and
+  broken corners of the city, and today are found all over the world including
+  in London, Vienna, Los Angeles, Miami, Atlanta, Buenos Aires, Copenhagen,
+  Moscow, Rome, Jordan, and Dublin amongst others. Magee's practice is informed
+  by a profound interest in political murals, inspired by exposure at a young
+  age to those of his Father's native Northern Ireland. This is reflected in
+  the socialist nature of his public art-works, which combine journalistic
+  elements with public art. Magee's work is driven by his recognition of the
+  power of murals to communicate political and social viewpoints and thus
+  divide or unite communities. Drawing from personal experience and the
+  mundane, his figurative paintings are deeply integrated with the urban
+  environment and explore themes of diversity, migration and transition, waste
+  and consumption, loss, and the environment.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

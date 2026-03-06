@@ -1,0 +1,35 @@
+# Aurailieus Artist — 2021
+
+# ── Required ──
+id: 74
+artist: Aurailieus Artist
+year: 2021
+lat: 27.7583
+lng: -82.6538
+address: 600 27th St. S.
+category: shine
+img: images/murals/2021/aurailieus.jpg
+
+# ── Optional ──
+title: ""
+building: Zen Glass Studio
+instagram: aurailieus_artist
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Aurailieus is an artist and creator based in St. Petersburg, Florida, who
+  specializes in colorful, creative and imaginative works that blend the genres
+  of fine and urban art. Graffiti and the works of Jean-Michel Basquiat served
+  as his inspiration to become an artist but originally, Aurailieus found art
+  as an escape from the trials of life. Most known for his little yellow robot,
+  “Bob the Robot Prince of Denmark,” Aurailieus creates his own vibrant world
+  of artistic wonders—one canvas or mural at a time.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

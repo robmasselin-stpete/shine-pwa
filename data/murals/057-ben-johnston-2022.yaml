@@ -1,0 +1,31 @@
+# Ben Johnston — 2022
+
+# ── Required ──
+id: 57
+artist: Ben Johnston
+year: 2022
+lat: 27.770697
+lng: -82.649575
+address: 1010 Central Ave
+category: shine
+img: "images/murals/2022/ben-johnston.jpeg"
+
+# ── Optional ──
+title: "Rise"
+building: ""
+instagram: ben_johnston
+basedIn: "Toronto, Canada"
+
+artistBio: |
+  Originally from Cape Town, South Africa, Ben Johnston now works out of Toronto creating typographic murals at massive scale. He's known for turning simple words into architectural illusions — his signature style uses isometric 3D letterforms with precise color gradients that make flat walls look like they're popping off the building. He's painted walls on six continents and shows fine art in galleries internationally.
+
+muralDescription: |
+  A towering multi-story mural on the side of an apartment building spelling "RISE" in massive 3D block letters. The isometric letterforms are rendered in graduating shades of cerulean, sky blue, and white against a deep blue background, with crisp shadows giving the typography a sculptural, floating quality. Signed "Ben" in white script at the lower left. The mural dominates the building's full height, visible from blocks away along Central Avenue.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio researched and enhanced 2026-03-05."

@@ -1,0 +1,32 @@
+# Jujmo — 2021
+
+# ── Required ──
+id: 85
+artist: Jujmo
+year: 2021
+lat: 27.763
+lng: -82.6588
+address: 2221 5th Ave. S.
+category: shine
+img: images/murals/2021/jujmo.jpg
+
+# ── Optional ──
+title: ""
+building: "A-1 Recovery"
+instagram: jujmo
+basedIn: "Tampa Bay, FL"
+
+artistBio: |
+  Tampa-based artist Jujmo brings her affinity for color to life through
+  drawings and paintings of happy, intertwined worlds. Fanciful, cartoonish,
+  and strange creatures collide in her densely patterned compositions on walls,
+  canvases, and even shoes and cars.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

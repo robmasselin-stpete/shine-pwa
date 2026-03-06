@@ -1,0 +1,35 @@
+# Nneka Jones — 2022
+
+# ── Required ──
+id: 67
+artist: Nneka Jones
+year: 2022
+lat: 27.7455
+lng: -82.7032
+address: 4301 13th Ave. S.
+category: shine
+img: images/murals/2022/NNEKA_JONES.jpg
+
+# ── Optional ──
+title: ""
+building: Childs Park Rec Center
+instagram: artyouhungry
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Nneka Jones is a contemporary multidisciplinary artist who enjoys working in
+  mixed media, embroidery, textiles and paint exploring both large-scale mural
+  work and small-scale, intimate pieces. The Trinidadian born artist produces
+  thought-provoking artwork that comments on social and environmental
+  injustice; strongly advocating for the protection of women and girls of
+  color. These are often topics that as a society, we feel uncomfortable
+  addressing but are necessary for positive change.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

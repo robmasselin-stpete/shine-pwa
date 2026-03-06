@@ -1,0 +1,55 @@
+# Morning Breath (Doug Cunningham & Jason Noto) — 2019
+
+# ── Required ──
+id: 113
+artist: Morning Breath
+year: 2019
+lat: 27.774544
+lng: -82.647133
+address: 250 Dr. Martin Luther King Jr. St N
+category: shine
+img: "images/murals/2019/morning-breath.jpeg"
+
+# ── Optional ──
+title: ""
+building: Coney Island Sandwich Shop
+instagram: morningbreathinc
+basedIn: "Brooklyn, NY"
+
+artistBio: |
+  Morning Breath Inc. is the creative duo of Doug Cunningham and Jason Noto,
+  who met in 1996 while working at Think Skateboards in San Francisco. They
+  founded their boutique design studio in 2002, now based in Brooklyn. Their
+  style draws heavily from 1950s–1980s Americana — comics, Mad magazine, punk
+  rock, hip-hop, heavy metal, and skateboarding. They use limited color
+  palettes, bold lines, and vintage pop culture elements. Clients include
+  Ray-Ban, Nike, Adidas, Vans, Beats by Dre, Jay-Z, and Foo Fighters. They
+  have designed packaging for over 100 albums and won a Grammy Award in 2021
+  for Best Recording Package for Desert Sessions Volumes 11 & 12. They also
+  painted a SHINE mural in 2015 at 2042 Central Avenue (since lost to
+  development).
+
+muralDescription: |
+  A 101-by-15-foot brush-painted mural in black, white, and red on a pale
+  blue background, designed to look like a vintage comic book pamphlet held
+  open wide. At left, the Steeplechase "Funny Face" from Coney Island grins
+  with a missing tooth. The center features a sinister figure in a red jacket
+  holding a "Welcome to Fear City" pamphlet — a reference to the real 1975
+  New York City scare pamphlet. Phrases like "GHASTLY," "STARTLING SECRETS of
+  Mystery," "JITTERY NERVES," and "Picture You NERVOUS" are scattered across
+  the composition in retro horror-comic typography. At far right, a large red
+  devil face with curling mustache and horns looms above the wall. The mural
+  was inspired by the Coney Island Sandwich Shop (operating since 1926) and
+  contains subtle nods to New York City throughout.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Grammy Award for Best Recording Package 2021; SHINE 2015 & 2019 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/morning-breath"
+  - "https://stpeteartsalliance.org/morning-breath-2015"
+  - "http://www.morningbreathinc.com/about"
+  - "https://stpetemuraltour.com/2016/07/25/morning-breath-inc/"

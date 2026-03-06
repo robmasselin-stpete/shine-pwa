@@ -1,0 +1,39 @@
+# Happy Mural Project — 2020
+
+# ── Required ──
+id: 100
+artist: Happy Mural Project
+year: 2020
+lat: 27.7347
+lng: -82.6537
+address: 4025 31st Street S
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Happy_Mural_Project.png
+
+# ── Optional ──
+title: ""
+building: The St. Pete City Theatre
+instagram: thehappymuralproject
+basedIn: ""
+
+artistBio: |
+  The Happy Mural Project is led by artist Alyssa Marie and her husband Braden.
+  Alyssa is a fine artist originally from Colorado who relocated to St. Pete in
+  early 2017. In a childhood art book Alyssa created at age 7, she drew a
+  picture of a stick figure painting a canvas on an easel. The caption read
+  “When I grow up I want to be an artsist” An “artsist” is exactly what that
+  little girl would become. Alyssa has used oil paints to spread joy to
+  collectors all over the globe. The Happy Mural Project began in an effort to
+  expand this effect. While enjoying time in her studio, she felt as if her
+  reach could even greater with large walls and giant sunflowers. She radiates
+  happiness around everything and everyone she comes in comes in contact with.
+  You will feel that energy with the walls of The Happy Mural Project.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

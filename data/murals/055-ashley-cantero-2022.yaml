@@ -1,0 +1,35 @@
+# Ashley Cantero — 2022
+
+# ── Required ──
+id: 55
+artist: Ashley Cantero
+year: 2022
+lat: 27.7706
+lng: -82.6612
+address: 2421 Central Ave.
+category: shine
+img: "images/murals/2022/Ashley-Cantero-SHINE-Day-13.jpg"
+
+# ── Optional ──
+title: ""
+building: "Fonda Nails & Spa"
+instagram: ashleycantero
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Ashley Cantero is a Tampa, FL native and artist who actively engages in the
+  local art scene. Best known for her precise line work and bold female
+  characters, her work embodies a profound energy that she defines as the
+  “intense and complex emotional responses we have to the world around us."
+  With themes inspired by ‘60s psychedelia, Atomic Age design and Sci-Fi,
+  Ashley's work is ever evolving through various mediums and artistic forms of
+  expression.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

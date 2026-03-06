@@ -1,0 +1,31 @@
+# Marina Capdevila — 2022
+
+# ── Required ──
+id: 66
+artist: Marina Capdevila
+year: 2022
+lat: 27.771775
+lng: -82.642442
+address: 601 1st Ave. N.
+category: shine
+img: "images/murals/2022/marina-capdevila.jpeg"
+
+# ── Optional ──
+title: ""
+building: The Sage
+instagram: marinacapdevila
+basedIn: "Barcelona, Spain"
+
+artistBio: |
+  Marina Capdevila is a Barcelona-born muralist who studied Fine Arts in her hometown and at the Willem de Kooning Academy in Rotterdam, where she first got into street art. Over the past decade she's painted walls across the Americas and Europe — from Brazil and Mexico to Belgium, Croatia, and the UK. Her style is playful and surreal: oversized, rubbery characters with exaggerated features interacting in absurd scenes full of warmth and humor.
+
+muralDescription: |
+  A two-story wall dominated by a crowd of surreal orange-skinned characters in various states of mischief. On the left, a figure in a beret and sunglasses clutches a boombox. In the center, an enormous face wearing oversized reflective shades holds a lobster. On the right, a figure in a bucket hat dangles a fish on a line while a pale ghost-like creature peeks out between them. The palette is almost entirely warm oranges, creams, and golds against a yellow-gold upper band with tiny palm tree silhouettes. Signed "Marina Capdevila" at the upper left.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."

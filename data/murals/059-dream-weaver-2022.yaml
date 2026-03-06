@@ -1,0 +1,31 @@
+# Dream Weaver — 2022
+
+# ── Required ──
+id: 59
+artist: Dream Weaver
+year: 2022
+lat: 27.771567
+lng: -82.654770
+address: 1510 1st Ave. N.
+category: shine
+img: "images/murals/2022/dreamweaver.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: dream.weavin
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Taylor "Dreamweaver" Smith is a St. Petersburg-based street artist and muralist whose work invokes a sense of reverence for the natural world. Her evolving style integrates expressive abstraction and realism to capture the spirit of life through light and color — often featuring portraiture, vivid patterns, and striking color combinations. She creates murals, canvas works, and live painting activations for communities and brands both locally and nationwide.
+
+muralDescription: |
+  A massive wall-sized explosion of color — a hybrid floral-phoenix form rendered in neon pinks, fiery oranges, deep purples, cerulean blues, and electric teals against a dark blue background. Feathered petals radiate outward from the center while swirling organic tendrils and tropical leaves frame the edges. Signed "Dreamweaver" in stylized script at the lower left. A SHINE festival plaque is visible at the base.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio from approved 2025 profile. 2026-03-05."

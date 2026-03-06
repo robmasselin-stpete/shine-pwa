@@ -1,0 +1,54 @@
+# Frankie Gonzalez — 2024
+
+# ── Required ──
+id: 25
+artist: Frankie Gonzalez
+year: 2024
+lat: 27.763367
+lng: -82.668428
+address: 2606 Fairfield Ave South
+category: shine
+img: "images/murals/2024/frankie-gonzalez.jpeg"
+
+# ── Optional ──
+title: ""
+building: FloridaRAMA
+instagram: frankieg_art
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Francisco "Frankie G" Gonzalez is a Miami-born, Tampa-based mixed-media artist
+  whose work blends comic, urban, and traditional painting techniques into bold,
+  culture-infused compositions rooted in his Cuban and Danish heritage. After
+  attending the Atlanta College of Art, he spent nine years in Salt Lake City
+  before returning to Florida to pursue art full-time. He combines spray paint
+  and latex to create figurative subjects juxtaposed with street art and pop art
+  elements. His public commissions include "Tampa's LIGHT" at Tampa Fire Rescue
+  Headquarters and projects for the cities of Tampa, Clearwater, Largo, and
+  St. Petersburg. Commercial clients include ESPN, the Tampa Bay Buccaneers,
+  Norwegian Cruise Lines, and Ducati. He also runs mural camps in local schools
+  and works with Habitat for Humanity and the Down Syndrome Foundation of
+  Florida.
+
+muralDescription: |
+  A wide, energetic mural on the side of FloridaRAMA blending photorealism with
+  street art. At center, a boy in a baseball cap and tan shirt launches a paper
+  airplane, his outstretched arm dissolving into bold black calligraphic strokes
+  and cartoon-style characters. Oversized pink peonies, sunflowers, and white
+  daisies bloom along the bottom, while swirls of pink, yellow, orange, and
+  turquoise fill the background. The composition moves from lush botanical
+  realism on the left through the figurative center to playful abstraction on
+  the right, creating a dynamic sense of childhood imagination taking flight.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2024 festival artist; City of Tampa public art commission (Tampa Fire Rescue HQ)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_frankie_gonzalez"
+  - "https://www.frankiegart.com/"
+  - "https://voyagetampa.com/interview/life-work-with-francisco-frankie-g-gonzalez-of-tampa-fl/"
+  - "https://creativepinellas.org/artist/frankie-g/"
+  - "https://www.tampa.gov/news/tampa-fire-rescue-dedicate-new-mural-tfr-headquarters-115516"

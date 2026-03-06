@@ -1,0 +1,45 @@
+# Sarah Sheppard — 2017 (SHINE All Year / AARP)
+
+# ── Required ──
+id: 111
+artist: Sarah Sheppard
+year: 2017
+lat: 27.771703
+lng: -82.644097
+address: 719 Central Ave
+category: shine
+img: "images/murals/2017/sarah-sheppard-life-reimagined.jpeg"
+
+# ── Optional ──
+title: "Life Reimagined"
+building: Morean Arts Center
+instagram: sarah.g.sheppard
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Sarah Sheppard is an experienced painter, muralist, designer, and metalsmith
+  based in St. Petersburg, Florida. She draws inspiration from the people and
+  places she has encountered around the world, aiming to convey beauty,
+  romanticism, and mysticism in every medium. She also participated in SHINE
+  2023 with a mural at New Dawn Coffee Co.
+
+muralDescription: |
+  A mural on the back wall of the Morean Arts Center framed with a navy blue
+  border and ornate gold trim, giving it the appearance of a steampunk painting.
+  At center, a woman merges with a banyan tree — her body becoming the trunk,
+  her roots spreading into the ground. She reaches out to a red phoenix bird
+  at left, symbolizing rebirth. The right side features massive interlocking
+  bronze and gold gears representing the passage of time and the mechanics of
+  working life. Teal water fills the base. Commissioned by AARP as part of the
+  "Age Friendly St. Pete" SHINE All Year program in 2017.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE All Year 2017 (AARP); SHINE 2023 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/age-friendly-st-pete-with-aarp/121-shine-aarp/611-life-reimagined-by-sarah-sheppard"
+  - "https://www.visitstpeteclearwater.com/profile/life-reimagined-sarah-sheppard/140395"
+  - "https://www.cltampa.com/arts/life-reimagined-sarah-sheppard-completes-new-mural-in-downtown-st-pete-12280945"

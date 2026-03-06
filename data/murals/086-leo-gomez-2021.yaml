@@ -1,0 +1,34 @@
+# Leo Gomez — 2021
+
+# ── Required ──
+id: 86
+artist: Leo Gomez
+year: 2021
+lat: 27.7643
+lng: -82.643
+address: 744 6th Ave. S.
+category: shine
+img: "images/murals/2021/leo-gomez.png"
+
+# ── Optional ──
+title: ""
+building: Bayfront Health St. Pete
+instagram: leogomezstudio
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Leo Gomez is an artist specializing in hand lettering and custom type. He
+  combines his talents as a designer and illustrator in the art of lettering to
+  create stunning artworks. His works include both small- and large-scale
+  murals tailored to boost engagement and create positive social impressions.
+  Based in St. Petersburg, Leo has worked with companies including Starbucks
+  and Publix.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,31 @@
+# Bunnie Reiss — 2023
+
+# ── Required ──
+id: 38
+artist: Bunnie Reiss
+year: 2023
+lat: 27.7706
+lng: -82.686
+address: 2700 Central Ave
+category: shine
+img: "images/murals/2023/Bunnie-Reiss-20231019-181936-MAR7181.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: "Phoebe & Friends"
+building: MTBH Studios
+instagram: bunnieluvrocks
+basedIn: California
+
+artistBio: |
+  Bunnie Reiss is a tiny rebel with a large imagination and knew at an early
+  age she would build things much larger than herself. Her brightly colored
+  folk murals decorate many countries and can be found all over the world.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

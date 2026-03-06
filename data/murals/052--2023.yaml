@@ -1,0 +1,59 @@
+# Chenlin Cai (蔡陈林) — 2023
+
+# ── Required ──
+id: 52
+artist: 蔡陈林
+year: 2023
+lat: 27.768364
+lng: -82.659783
+address: 1927 4th Ave S
+category: shine
+img: "images/murals/2023/chenlin-cai.jpeg"
+
+# ── Optional ──
+title: "The Path We Came / 我们来的路"
+building: Lantmännen Unibake
+instagram: chenlin.cai
+basedIn: "Philadelphia, PA"
+
+artistBio: |
+  Chenlin Cai (蔡陈林, b. 1984) is a Chinese-American visual artist based in
+  Philadelphia. Born in a fishing village in Fujian province, China, he holds
+  MFAs from both Tsinghua University in Beijing and the Pennsylvania Academy of
+  the Fine Arts (PAFA). He immigrated to the US in 2014. His work innovatively
+  combines traditional Chinese ink painting with contemporary Western oil
+  painting techniques, exploring the tension of navigating Eastern and Western
+  cultures. Major commissions include "The Past Supporting the Future," a
+  54-foot crane mural on the Crane Community Center in Philadelphia's Chinatown
+  created with Mural Arts Philadelphia, and an installation at Philadelphia
+  International Airport. He received the "Excellent Artist Award" at the Eye Art
+  2017 exhibition at United Nations Headquarters and the Coverly Smith Prize at
+  Woodmere Art Museum. He served as Commissioner on the Pennsylvania Governor's
+  Advisory Commission on Asian Pacific American Affairs (2022-2023).
+
+muralDescription: |
+  A wide mural on the Lantmännen Unibake building depicting three Chinese
+  American railroad laborers rendered in blue-gray tones against a dramatic
+  sunset of deep orange, gold, and purple. The three figures — one holding a
+  staff, one reading a letter, one planting a flower with his hat removed —
+  represent family longing, hope, and resilience. Behind them, golden mountain
+  peaks evoke the Sierra Nevada, with a setting sun and crescent moon
+  embodying the duality of aspiration and homesickness. A steam locomotive
+  and train cars wind along railroad tracks at right. The mural reimagines
+  Chinese laborers who built the First Transcontinental Railroad but were
+  excluded from its 1869 completion photographs. Created in partnership with
+  the James Museum's "From Far East to West" exhibition.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Excellent Artist Award at UN Headquarters 2017; Coverly Smith Prize at Woodmere Art Museum; PA Governor's Commissioner on Asian Pacific American Affairs 2022-2023"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/shine?alias=/2023_SHINE_chenlin_cai"
+  - "https://www.cai-chenlin.com/"
+  - "https://www.inquirer.com/philly/news/chenlin-cai-artist-philadelphia-chinatown-murals-20181202.html"
+  - "https://muralarts.org/stories/inheritance-the-past-supporting-the-future/"
+  - "https://www.phl.org/chenlin-cai"
+  - "https://stpetecatalyst.com/take-a-look-all-the-2023-shine-festival-murals/"

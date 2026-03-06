@@ -1,0 +1,36 @@
+# The Happy Mural Project — 2022
+
+# ── Required ──
+id: 71
+artist: The Happy Mural Project
+year: 2022
+lat: 27.7706
+lng: -82.6677
+address: 3001 Central Ave.
+category: shine
+img: "images/murals/2022/Happy-Mural_Project-SHINE-Day-5.jpg"
+
+# ── Optional ──
+title: ""
+building: St. Petersbark
+instagram: alyssa.marie.of.the.sea
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  St. Petersburg-based artist, Alyssa Marie has been playing in the realms of
+  impressionistic style fine art and large scale murals for commercial and
+  residential clients around the globe since 2017. Having spent her first 27
+  years of life in the Rocky Mountains of Colorado and now residing in a
+  tropical paradise surrounded by water, Alyssa derives inspiration from the
+  natural world for much of her work and pushes the realms of realism by
+  playfully altering what is expected of traditional wildlife and nature scenes
+  through her art.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,36 @@
+# 123Klan — 2022
+
+# ── Required ──
+id: 53
+artist: 123Klan
+year: 2022
+lat: 27.7693
+lng: -82.6497
+address: 128 20th St. S.
+category: shine
+img: "images/murals/2022/123Klan-SHINE-Day-9.jpg"
+
+# ── Optional ──
+title: ""
+building: "Tri-J Towing"
+instagram: 123klan
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  123Klan is a French graffiti crew, composed of husband and wife team Scien
+  and Klor, who have dominated the street art scene for more than 25 years. By
+  shifting the boundaries of their two favorite disciplines, graffiti art and
+  graphic design, 123KLAN have advanced the graffiti aesthetics and infused a
+  healthy dose of new ideas into current graphic design. Now living in Los
+  Angeles, 123Klan’s bold character design and iconography has helped them
+  establish a client list from Sony to Scion to KidRobot, while holding true to
+  their graffiti roots.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

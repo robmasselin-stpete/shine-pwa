@@ -1,0 +1,32 @@
+# Dave Bonzai — 2023
+
+# ── Required ──
+id: 40
+artist: Dave Bonzai
+year: 2023
+lat: 27.7706
+lng: -82.6552
+address: 1229 Central Ave
+category: shine
+img: "images/murals/2023/Dave-Bonzai-20231020-180757-MAR7845-HDR.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: Sunshine City
+building: "Cappa & Cappa"
+instagram: davebonzai
+basedIn: "London, England"
+
+artistBio: |
+  Bonzai is a full time Artist with over twenty years experience in Street /
+  mural art. Bringing together his knowledge of letterforms and spray paint
+  through street art and a process of understanding of how chrome reflects, he
+  has perfected a style that has become known as 'Liquid Chrome'.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

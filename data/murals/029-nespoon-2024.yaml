@@ -1,0 +1,55 @@
+# NeSpoon — 2024
+
+# ── Required ──
+id: 29
+artist: NeSpoon
+year: 2024
+lat: 27.764411
+lng: -82.666214
+address: 601 24th St South
+category: shine
+img: "images/murals/2024/nespoon.jpeg"
+
+# ── Optional ──
+title: ""
+building: Cemex
+instagram: nes.nespoon
+basedIn: "Warsaw, Poland"
+
+artistBio: |
+  NeSpoon (Elzbieta Dymna) is a Polish street artist based in Warsaw whose
+  signature medium is lace — traditional textile patterns rendered at monumental
+  scale on building facades and pressed into ceramic pieces installed on streets.
+  Her artist name comes from the famous line in The Matrix. She began her street
+  art career in 2009 after discovering that pressing lace into clay was a
+  traditional decorative technique, and has since created work in over 100 cities
+  across 40 countries on five continents. At each location she researches local
+  lace-making traditions through museums and community conversations. Her work
+  has appeared at the Louvre-Lens, EXPO Dubai 2020, the European Parliament in
+  Brussels, and the Urban Nation Biennale in Berlin. She won the ARTAQ Prize in
+  France in 2011 and 2012 and was selected for Urban Nation's Fresh A.I.R.
+  residency in Berlin in 2018.
+
+muralDescription: |
+  A wide mural on the Cemex building featuring NeSpoon's signature lace patterns
+  in white and pale blue against a deep plum-purple background. Intricate
+  medallions with floral and geometric motifs occupy the left and center, their
+  delicate threadwork rendered with illusory three-dimensional depth through
+  careful shading and layering. The right side transitions into flowing,
+  organic swirls that evoke wind or waves. The effect transforms the industrial
+  concrete wall into what appears to be an enormous draped lace textile. Signed
+  "NeSpoon" in the lower left corner.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "ARTAQ Prize (France) 2011 and 2012; Urban Nation Fresh A.I.R. residency Berlin 2018; SHINE 2024 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_nespoon"
+  - "https://nespoon.art/about/"
+  - "https://urban-nation.com/artist/nespoon/"
+  - "https://www.printmag.com/graffiti-and-street-art/nespoon-lace-murals/"
+  - "https://www.thisiscolossal.com/2016/09/lace-street-art-nespoon/"
+  - "https://artbreath.org/interviews/nespoon"

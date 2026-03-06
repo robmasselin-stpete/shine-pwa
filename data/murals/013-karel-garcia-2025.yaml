@@ -1,0 +1,53 @@
+# Karel Garcia — 2025
+
+# ── Required ──
+id: 13
+artist: Karel Garcia
+year: 2025
+lat: 27.762931
+lng: -82.674478
+address: "31st St & 7th Ave S"
+category: shine
+img: "images/murals/2025/karel-garcia.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: karelgarcia.fineartist
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Karel Garcia (b. 1990, Vedado, Cuba) trained as an architect in Havana,
+  completing his degree in 2017. While working as an architect, he reconnected
+  with art through exhibitions including projects at the Habana Espacio
+  Creativo Center, developing his "Human" series exploring the human
+  experience. After emigrating to Florida, he joined the Green Book of Tampa
+  Bay residency program with a studio in St. Petersburg's Warehouse Arts
+  District. The 2025 SHINE Origins festival marked Garcia's first public art
+  installation in America. "My mural is about my history, coming here to
+  America, looking for freedom. So it's about migration, love, freedom,
+  family, and live your truth," he said.
+
+muralDescription: |
+  A wide mural on a cinder block wall depicting bold, swirling ocean waves
+  in deep blues and greens against a golden-orange sky. Three carved wooden
+  totem-like hands rise from the waves, and small red paper boats ride the
+  cresting swells — symbols of migration and hope. The flowing, graphic
+  linework gives the waves a stylized, rhythmic energy. Signed "Karel Garcia"
+  in the lower right.
+
+muralInspiration: |
+  Garcia's mural explores themes of migration, freedom, and social justice,
+  reflecting his own journey from Cuba to America. The paper boats and
+  reaching hands symbolize the search for freedom and family.
+
+muralAwards: ""
+artistAwards: "Green Book of Tampa Bay artist residency; SHINE 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://creativepinellas.org/artist/karel-garcia/"
+  - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://www.tampabay.com/life-culture/entertainment/2025/12/04/shine-mural-festival-st-petersburg-florida-arts-hurricane/"

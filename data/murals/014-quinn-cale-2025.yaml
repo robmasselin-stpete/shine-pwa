@@ -1,0 +1,35 @@
+# Quinn Cale — 2025
+
+# ── Required ──
+id: 14
+artist: Quinn Cale
+year: 2025
+lat: 27.7899
+lng: -82.7358
+address: 2375 66th St N
+category: shine
+img: "images/murals/2025/quinn-cale.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: Tyrone Middle
+instagram: quinnsessential
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Quinn Cale is a contemporary painter based in Tampa, Florida. Originally from
+  Middletown, Delaware, her colorful works draw on childhood memories and the
+  vibrant spirit of the late 1990s and early 2000s. Through bold compositions
+  and nostalgic imagery—arcade machines, tropical motifs, instruments, and
+  TV-headed figures—she evokes joy and storytelling. Her work has been
+  exhibited at MOSI in Tampa and the Straz Center’s “First Annual Black Art
+  Gala.”
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

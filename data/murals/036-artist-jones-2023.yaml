@@ -1,0 +1,32 @@
+# Artist Jones — 2023
+
+# ── Required ──
+id: 36
+artist: Artist Jones
+year: 2023
+lat: 27.7728
+lng: -82.6377
+address: 350 2nd Ave N
+category: shine
+img: "images/murals/2023/The-Artist-Jones-20231020-173744-MAR7818.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: PSTA Ticket Office
+instagram: theartistjones
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Artist Jones paints vibrate-colored portraits of powerful black and brown
+  people in their greatness because it is what she is meant to do. The artist’s
+  works are explorations of the stories and hidden influences of character and
+  legacy for each subject.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

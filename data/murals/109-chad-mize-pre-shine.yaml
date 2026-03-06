@@ -1,0 +1,45 @@
+# Chad Mize (Twiggy) — Pre-SHINE
+
+# ── Required ──
+id: 109
+artist: Chad Mize
+year: 0
+lat: 27.771628
+lng: -82.642617
+address: 653 Central Ave (alley)
+category: shine-legacy
+img: "images/murals/pre-shine/chad-mize-twiggy.jpeg"
+
+# ── Optional ──
+title: Twiggy
+building: "Behind Bluelucy Gallery"
+instagram: ""
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Chad Mize is a multimedia artist often called "St. Pete's Godfather of Art."
+  He founded MIZE Gallery (formerly Bluelucy Gallery) and was a member of
+  SHINE's organizing committee. He has been painting Twiggy — the 1960s fashion
+  icon — since 2003, citing her androgynous style, 60s aesthetic, and striking
+  eyes as inspiration. This mural, painted circa 2014, is considered one of the
+  pioneering murals that helped establish the 600 block of Central Avenue as an
+  arts destination, predating the first SHINE festival in 2015.
+
+muralDescription: |
+  A stencilled black-and-white mural of 1960s fashion icon Twiggy's face in
+  the alley behind the 600 block of Central Avenue. The image references the
+  iconic 1966 photograph by Barry Lategan, showing Twiggy's signature doe eyes
+  with stars, rendered with an iridescent sheen against a faded light blue wall.
+  The deliberately muted, pastel-hued palette contrasts with the bolder murals
+  in the surrounding area.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE organizing committee member; founder of MIZE Gallery"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://www.visitstpeteclearwater.com/profile/twiggy-chad-mize/5944"
+  - "https://stpetemuraltour.com/2014/08/12/chad-mize-blue-lucy/"
+  - "https://theartisanmagazine.com/chad-size-stpete/"

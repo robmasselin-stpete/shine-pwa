@@ -1,0 +1,32 @@
+# Ya La'Ford — 2024
+
+# ── Required ──
+id: 33
+artist: "Ya La'Ford"
+year: 2024
+lat: 27.773
+lng: -82.631
+address: 255 Beach Dr NE
+category: shine
+img: "images/murals/2024/BrightSpot-YaLaFord-stories.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: Museum of Fine Arts
+instagram: yalaford
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Ya La'Ford is a multidisciplinary artist whose practice spans painting,
+  sculpture, and large-scale public art. La'Ford invites the community to
+  participate in a hands-on mural making experience to celebrate a decade of
+  the SHINE St. Petersburg Mural Festival and its impact in St. Pete.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

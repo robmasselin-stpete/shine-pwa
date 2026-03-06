@@ -1,0 +1,38 @@
+# Tatiana Suarez — 2020
+
+# ── Required ──
+id: 106
+artist: Tatiana Suarez
+year: 2020
+lat: 27.7718
+lng: -82.6327
+address: 250 2nd Ave SE
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Tatiana_Suarez.jpg
+
+# ── Optional ──
+title: ""
+building: St. Petersburg Sailing Center
+instagram: tatunga
+basedIn: "Miami, Florida"
+
+artistBio: |
+  Born and raised in Miami, Tatiana Suarez’s work draws you into a surreal,
+  creamy, and ethereal world filled with doe-eyed figures ornamented by
+  unexpected colors and elements. On both canvas and walls, Suarez’s work is
+  rich with symbols from her Brazilian and El Salvadorian heritage, juxtaposing
+  the beautiful with the exotic to create enchanted narratives. The natural
+  mythology and folklore from her respective parent cultures influence her
+  work, from the indigenous face paint and adornment used to the rich and
+  tropical color palettes of the South American landscape. Tati is a headlining
+  muralist, having participated in Sea Walls projects around the world and
+  other notable festivals like POWWOW!
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

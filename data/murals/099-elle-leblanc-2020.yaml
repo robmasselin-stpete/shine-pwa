@@ -1,0 +1,32 @@
+# Elle LeBlanc — 2020
+
+# ── Required ──
+id: 99
+artist: Elle LeBlanc
+year: 2020
+lat: 27.763
+lng: -82.668
+address: 2333 3rd Ave S
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Elle_LeBlanc.jpg
+
+# ── Optional ──
+title: Pop Art Plastic
+building: ""
+instagram: elleleblancstudio
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  St. Petersburg based artist Elle LeBlanc creates modern contemporary designs
+  with playful shapes and minimal color palettes. Finding inspiration in
+  everyday objects, her work reimagines what is often seen as mundane, creating
+  beauty from the ordinary. A Sarasota native, she lives and works in St. Pete.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

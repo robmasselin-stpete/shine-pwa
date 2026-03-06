@@ -1,0 +1,35 @@
+# Mwanel Pierre-Louis — 2021
+
+# ── Required ──
+id: 89
+artist: "Mwanel Pierre-Louis"
+year: 2021
+lat: 27.7751
+lng: -82.6402
+address: 1100 1st Ave. N.
+category: shine
+img: "images/murals/2021/mwanel-pierre-louis.jpg"
+
+# ── Optional ──
+title: ""
+building: Green Bench Brewing
+instagram: mwanel1_l
+basedIn: "Miami, FL"
+
+artistBio: |
+  Born in NY, from Haitian descent, Mwanel Pierre-Louis is an artist based out
+  of Miami, FL. His work combines realism and abstraction in a narrative that
+  draws from personal interactions and pop references. Mwanel's paintings
+  feature juxtapositions of fragmented experiences and a strong emphasis on the
+  relationship between subject and color. His work has been exhibited across
+  the country with his first solo show in 2019 at Thinkspace Gallery and his
+  clients include Starbucks, Fader Magazine, Adidas, and Atlantic Records.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

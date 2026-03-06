@@ -1,0 +1,31 @@
+# Sydney Prusso — 2022
+
+# ── Required ──
+id: 69
+artist: Sydney Prusso
+year: 2022
+lat: 27.765762
+lng: -82.671425
+address: 533 28th St. S.
+category: shine
+img: "images/murals/2022/sydney-prusso.jpeg"
+
+# ── Optional ──
+title: "Look Inside"
+building: Seriously Strong Training
+instagram: sydneyprusso
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Sydney Prusso is a St. Petersburg illustrator, lettering artist, and muralist. Her style pulls from 1960s and '70s poster art — groovy hand-lettering, warm retro palettes, and flowing psychedelic compositions. Much of her work explores themes of mental health and the outdoors, wrapped in colorful, feel-good imagery that's impossible not to smile at.
+
+muralDescription: |
+  The entire side of a peaked-roof building wrapped in retro psychedelic lettering spelling "Outside" and "Look Inside" in chunky, rounded '70s-style typography. The letters are layered in pinks, oranges, chartreuse, white, and maroon against a purple background. Colorful butterflies — a large pink-and-red one at center, smaller ones floating above — are scattered between the words. Sparkle stars dot the upper peak. The overall vibe is a vintage concert poster blown up to building scale.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."

@@ -1,0 +1,46 @@
+# Reid Jenkins — 2025
+
+# ── Required ──
+id: 16
+artist: Reid Jenkins
+year: 2025
+lat: 27.770058
+lng: -82.661369
+address: 2039 1st Ave S
+category: shine
+img: "images/murals/2025/reid-jenkins.jpeg"
+
+# ── Optional ──
+title: ""
+building: Founders Pro
+instagram: nighttakesking
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Reid Jenkins is a St. Petersburg native who holds a BFA from Maryland
+  Institute College of Art and is a graduate of the P.C.C.A program at Gibbs
+  High School. His work spans murals, canvas paintings, and tattoos — he
+  currently tattoos at Fabled Trade Tattoo Company in Lealman and maintains
+  a studio at the Arts Exchange in the Warehouse Arts District. Jenkins aims
+  to paint the human experience and capture the small moments that many
+  forget to appreciate. He painted a SHINE mural in 2021 and returned for
+  SHINE Origins 2025 with this botanical piece at Founders Pro.
+
+muralDescription: |
+  A stunning photorealistic botanical mural on the side of a commercial
+  building against a deep black background. An overflowing arrangement of
+  tropical flowers fills the wall — king proteas, red ginger, heliconia,
+  pincushion proteas, orchids, and ferns rendered in rich crimsons, pinks,
+  corals, golds, and greens. The hyperrealistic detail and dramatic dark
+  background give it the feel of a Dutch Golden Age still life painting
+  scaled up to building size.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "BFA, Maryland Institute College of Art; SHINE 2021 and 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://ilovetheburg.com/muralist-reid-jenkins/"
+  - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"

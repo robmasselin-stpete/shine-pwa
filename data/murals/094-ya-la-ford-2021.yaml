@@ -1,0 +1,33 @@
+# Ya La'Ford — 2021
+
+# ── Required ──
+id: 94
+artist: "Ya La'Ford"
+year: 2021
+lat: 27.7738
+lng: -82.6296
+address: 330 Beach Dr. NE.
+category: shine
+img: "images/murals/2021/ya-la-ford.jpg"
+
+# ── Optional ──
+title: ""
+building: "Smith & Associates Real Estate"
+instagram: yalaford
+basedIn: "Tampa Bay, FL"
+
+artistBio: |
+  Maintaining her studio work in both Tampa Bay and New York, Ya La’Ford is a
+  professor, visual painter, installation artist and muralist, with a MFA from
+  The Art Institute of Boston and a Juris Doctor law degree from the University
+  of Florida for good measure. Her work can be seen across the country from the
+  Boston Public Library to the Dr. Carter G. Woodson African American Museum.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

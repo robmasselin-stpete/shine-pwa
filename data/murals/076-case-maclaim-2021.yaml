@@ -1,0 +1,34 @@
+# Case Maclaim — 2021
+
+# ── Required ──
+id: 76
+artist: Case Maclaim
+year: 2021
+lat: 27.7706
+lng: -82.6636
+address: 2641 Central Ave.
+category: shine
+img: "images/murals/2021/case-maclaim.jpg"
+
+# ── Optional ──
+title: ""
+building: 2641 Central Ave Condos
+instagram: case_maclaim
+basedIn: Germany
+
+artistBio: |
+  German artist Andres Von Chrzanowski, better known as Case Maclaim, is a
+  street artist whose work brilliantly combines photorealism with a strong note
+  of surrealism. Best known for his depiction of overlaying hands, Case’s work
+  symbolizes power and unity. He is a founding member of the renowned Maclaim
+  Crew, a group that has been pioneering photorealism in the streets for over
+  two decades. His murals can be found in over 20 countries around the world.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

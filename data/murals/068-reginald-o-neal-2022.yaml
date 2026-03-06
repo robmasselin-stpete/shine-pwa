@@ -1,0 +1,34 @@
+# Reginald O'Neal — 2022
+
+# ── Required ──
+id: 68
+artist: "Reginald O'Neal"
+year: 2022
+lat: 27.7667
+lng: -82.643
+address: 701 3rd St. S.
+category: shine
+img: "images/murals/2022/Raginald-O_Neal-SHINE-Day-11.jpg"
+
+# ── Optional ──
+title: ""
+building: USF Piano Man Building
+instagram: reginaldo.neal
+basedIn: "Miami, FL"
+
+artistBio: |
+  Reginald O’Neal began painting in 2012, soon meeting his friend and mentor,
+  Alejandro Dorda, who would teach him classically. In 2014, Reginald took his
+  first trip to Europe to complete murals in Austria, Norway, and Spain, as
+  well as exhibit in a collective show alongside his teacher in Berlin,
+  Germany. In the years since, Reggie has focused on canvas work, residencies,
+  and murals that embody his community surroundings, experiences and beliefs.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

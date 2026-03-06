@@ -1,0 +1,49 @@
+# Brain The Genius — 2025
+
+# ── Required ──
+id: 3
+artist: Brain The Genius
+year: 2025
+lat: 27.762931
+lng: -82.674592
+address: "31st St & 7th Ave S"
+category: shine
+img: "images/murals/2025/brain-the-genius.jpeg"
+
+# ── Optional ──
+title: "Culture"
+building: ""
+instagram: brainthegenius
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Chris Roberts, known as BRAIN The Genius (formerly Brain Storm), is a
+  St. Petersburg multidisciplinary artist, tattoo artist, and entrepreneur.
+  He has spent over two decades building Urban Ink Tattoo Company into one of
+  the city's most respected studios, recognized as one of the rare Black-owned
+  businesses in the body art community. Beyond tattooing, he is an accomplished
+  painter, designer, and cinematographer who founded Culture Creative, a
+  dynamic art and event space on 34th Street South that amplifies local talent.
+  He painted a SHINE Bright Spot mural in 2020 at the St. Pete Youth Farm and
+  returned for the 2025 SHINE Origins festival.
+
+muralDescription: |
+  A bold mural on a cinder block wall featuring the word "Culture" in ornate
+  gold script, framed by oversized gold bamboo hoop earrings and topped with a
+  gold crown. Lush monstera leaves fill the background in deep greens against
+  black. The left side reads "Bamboo Earrings At Least Two Pair" in white
+  graffiti-style lettering — a nod to the LL Cool J lyric. Signed "BRAIN
+  @brainthegenius" in the lower right.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2020 Bright Spot artist (St. Pete Youth Farm)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
+  - "https://www.theburgvotes.com/2020/02/23/st-petes-very-own-the-urban-ink-tattoo-company-expands/"
+  - "https://stpeteartsalliance.org/brain-storm-2020/"
+  - "https://www.urbaninkstpete.com/brainstorm"

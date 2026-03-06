@@ -1,0 +1,31 @@
+# Woes Martin — 2021
+
+# ── Required ──
+id: 93
+artist: Woes Martin
+year: 2021
+lat: 27.765862
+lng: -82.665778
+address: 2343 Emerson Ave. S.
+category: shine
+img: "images/murals/2021/woes-martin.jpeg"
+
+# ── Optional ──
+title: ""
+building: New Dawn Coffee Co 2
+instagram: woes
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  Aaron "Woes" Martin is an LA-based multidisciplinary artist known for his signature angry-eyed panda bears — part menacing, part adorable. Originally a graffiti writer, he evolved into aerosol muralism, acrylic painting, designer toys, and resin sculpture, bringing his snarling pandas to walls and galleries across the globe. He's also a DJ and puppeteer. Despite the ferocious faces in his work, Woes brings a laid-back aloha energy to everything he does.
+
+muralDescription: |
+  A long warehouse wall covered in a pack of oversized panda bears piled on top of each other against a black background. The pandas are rendered in gritty black and white with exaggerated features — bloodshot pink eyes, bared fangs, and massive claws. Some snarl at the viewer while others sleep with one eye cracked open. Bright green bamboo leaves poke through the tangle of fur and limbs. The scale is enormous — each panda is taller than a parked truck.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."

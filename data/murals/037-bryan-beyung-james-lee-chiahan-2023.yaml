@@ -1,0 +1,58 @@
+# Bryan Beyung & James Lee Chiahan — 2023
+
+# ── Required ──
+id: 37
+artist: "Bryan Beyung & James Lee Chiahan"
+year: 2023
+lat: 27.762889
+lng: -82.673758
+address: 2875 7th Ave S
+category: shine
+img: "images/murals/2023/bryan-beyung-james-lee-chiahan.jpeg"
+
+# ── Optional ──
+title: "When the Sun is Up, the Moon is Absent!"
+building: "Stewart Moving & Storage"
+instagram: bryanbeyung
+basedIn: "Montreal, Canada"
+
+artistBio: |
+  Bryan Beyung (王永財) is a Sino-Cambodian visual artist born in Montreal to a
+  family of Chinese-Cambodian refugees. He studied graphic design at Cégep
+  Marie-Victorin and color theory and muralism at Galería LaRoja in Seville,
+  Spain. His work explores immigration, diasporic heritage, and migratory flows,
+  blending neo-muralism, post-graffiti, and contemporary painting. Notable
+  projects include "The Sea Keeper," the first mural on a Canadian bulk carrier,
+  and public works across the US, Canada, Haiti, France, Morocco, and Cambodia.
+  James Lee Chiahan (李佳翰, b. 1990) is a Taiwanese-Canadian artist from Tainan,
+  Taiwan, now based in Montreal. Largely self-taught in oil painting, he creates
+  emotionally resonant work exploring memory, closeness, and distance. His
+  editorial illustration clients include The New Yorker, The Atlantic, The
+  Washington Post, The New York Times, and Apple. He won the 2024 Canadian
+  Magazine Awards Grand Prize for Cover Art. The two share a studio in Montreal.
+
+muralDescription: |
+  A two-panel mural on the Stewart Moving & Storage building. The left side
+  features a large black circle on a golden background containing a white tree
+  silhouette and crescent moon — based on a drawing by six-year-old Amelia Kien
+  — with the word "ABSENT" below and colorful childlike figures along the bottom
+  painted by the Kien family. The right side shows a photorealistic sunset
+  landscape with four family members — two adults and two children — standing on
+  a hillside, connected by a red textile panel with traditional patterns. A navy
+  blue band along the base depicts fish silhouettes. The mural tells the story
+  of the Kien family, who fled Cambodia in 1987 and eventually settled near
+  Bradenton, Florida, just minutes from this wall.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Beyung: 2017 International Corporate Art Awards (Sea Keeper); Chiahan: 2024 Canadian Magazine Awards Grand Prize for Cover Art; SHINE 2023 festival artists"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/bryan-beyung-2023"
+  - "https://www.jlee.ca/mural-shine_9"
+  - "https://bryanbeyung.com/Bio"
+  - "https://pancouver.ca/james-lee-chiahan-finds-artistic-niche-in-illustrations-for-major-magazines-and-oil-paintings-for-himself/"
+  - "https://www.pfoac.com/en/artists/107-james-lee-chiahan/overview/"
+  - "https://stpetecatalyst.com/take-a-look-all-the-2023-shine-festival-murals/"

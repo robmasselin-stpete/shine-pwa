@@ -1,0 +1,30 @@
+# New Mural Template
+# Copy this file and rename: NNN-artist-slug-YEAR.yaml
+# Fill in all required fields, then run: python3 scripts/build-data.py
+
+# ── Required ──
+id: 0                          # next available ID (build script will warn on conflicts)
+artist: ""
+year: 0                        # 0 if unknown
+lat: null                      # decimal degrees, e.g. 27.7728
+lng: null                      # decimal degrees, e.g. -82.6348
+address: ""
+category: "shine"              # shine | shine-legacy | commercial
+img: ""                        # path relative to project root, e.g. images/murals/2025/name.jpg
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: ""
+basedIn: ""
+
+artistBio: ""
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "manual"               # detail-card | claude-enhanced | manual | legacy
+sourceNotes: ""

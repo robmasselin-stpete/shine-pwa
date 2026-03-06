@@ -1,0 +1,52 @@
+# Rhys Meatyard — 2023
+
+# ── Required ──
+id: 49
+artist: Rhys Meatyard
+year: 2023
+lat: 27.7688
+lng: -82.671
+address: 2210 1st Ave S
+category: shine
+img: "images/murals/2023/Rhys-Meatyard-20231023-095255-MAR9491-Pano.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: The Werk Gallery
+instagram: the_meatyard
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Rhys Meatyard is an artist, illustrator, and graphic designer living and
+  working from their home studio in Historic Roser Park in St. Petersburg,
+  Florida. While committed to creating and showing art, they also split their
+  time working as a freelance artist and illustrator, art director of a New
+  Jersey design studio, and creative director for a small independent record
+  label. Artist Statement For my mural, I wanted to do something hopeful and
+  bright, and the color palette reflects that intent. I took inspiration
+  primarily from classical art and 70s prog rock album covers. I am a big fan
+  of Roger Dean - the artist behind covers for bands such as Yes and Uriah Heep
+  - and borrowed some of his themes for this piece. In the foreground, you see
+  two statues in a colonnade, and as your eye moves across the piece into the
+  mid and background, you become aware that the land and temple are breaking
+  apart, with parts floating off into the sun. Th furthest statue has awakened
+  and is stepping off of her base, gazing into the sun. Although the context -
+  the solid ground she has been standing upon is breaking apart - should be
+  frightening, she is looking into the light and moving towards her new
+  existence. This is a metaphor for the process of being reborn in the breaking
+  we all face in our lives, for waking up to the beautiful and terrifying
+  reality of self, and becoming another thing and venturing into the unknown.
+  Spatially, the piece unfolds for you as you round the corner approaching it.
+  Your first view is of the static statues, and as you come closer, the rays of
+  sunlight draw you in to the rest of the scene. There is not much room to
+  stand back from the piece, so you are forced to confront its magnitude
+  up-close, pulling you into the world in which it exists.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

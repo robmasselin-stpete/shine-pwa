@@ -1,0 +1,32 @@
+# Lili Yuan — 2020
+
+# ── Required ──
+id: 103
+artist: Lili Yuan
+year: 2020
+lat: 27.7706
+lng: -82.68
+address: Grand Central District
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Lili_Yuan.jpg
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: oliooolio
+basedIn: "Jacksonville, FL"
+
+artistBio: |
+  Jacksonville based artist Lili Yuan uses her photography to create hyperreal
+  paintings, often inspired by the dichotomy of Eastern and Western cultures.
+  Originally from China, Yuan uses her natural proficiency for art to explore
+  the contrasting viewpoints she has experienced.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,32 @@
+# Zulu Painter — 2024
+
+# ── Required ──
+id: 34
+artist: Zulu Painter
+year: 2024
+lat: 27.8458
+lng: -82.6283
+address: 12022 Gandy Blvd
+category: shine
+img: "images/murals/2024/BrightSpot-Zulu-Stories.jpeg"    # TODO: needs-photo
+
+# ── Optional ──
+title: Bright Spot
+building: AMI Kids
+instagram: zulupainter1
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Zulu Painter is an international multi-media artist who works in traditional
+  mediums as well as special effects and scenic art. Zulu’s large scale mural
+  work can be seen across the country and contributes to the art revitalization
+  in communities throughout the USA.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

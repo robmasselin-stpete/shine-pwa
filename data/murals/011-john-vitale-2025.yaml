@@ -1,0 +1,55 @@
+# John Vitale — 2025
+
+# ── Required ──
+id: 11
+artist: John Vitale
+year: 2025
+lat: 27.7716472
+lng: -82.6446195
+address: 600 1st Ave N
+category: shine
+img: "images/murals/2025/john-vitale-600.jpeg"
+
+# ── Optional ──
+title: "Power to the Patients"
+building: ""
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  John Vitale, co-founder of the iconic Vitale Brothers, is a veteran
+  muralist and creative force behind much of St. Petersburg's visual identity.
+  Since 1992, the Vitale Bros have painted walls throughout Tampa Bay,
+  playing a major role in establishing St. Petersburg as a world-class arts
+  destination. John is also the founder of Overspray Art Space in Gulfport,
+  where he fosters community through spray paint workshops and live art
+  events. With over three decades of experience painting large-scale public
+  works, he combines classic craftsmanship with bold, contemporary design.
+  A recurring SHINE artist, he painted at SHINE 2022 and returned for SHINE
+  Origins 2025 on the 600 block where the mural movement began.
+
+muralDescription: |
+  A propaganda-style mural in the tradition of Shepard Fairey's OBEY
+  aesthetic. A raised fist gripping a caduceus medical symbol is centered
+  in a bold red circle, with "Power to the Patients" in block letters below.
+  The top reads "Prices Are Now a Patient's Right" and the bottom banner
+  declares "Demand Them!!!" in large cream type on red. The palette is
+  limited to navy blue, red, cream, and gray — evoking classic activist
+  poster art. "PowerToThePatients.org" runs along the bottom, with Vitale
+  Bros logos flanking it.
+
+muralInspiration: |
+  Part of Shepard Fairey's national Power to the Patients campaign to combat
+  hidden healthcare pricing and raise awareness that prices are a patient's
+  right prior to receiving care.
+
+muralAwards: ""
+artistAwards: "SHINE 2022 and 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://ilovetheburg.com/vitale-bros-power-to-the-patients-st-pete-obey/"
+  - "https://www.powertothepatients.org/murals-across-america"
+  - "https://vitalebrothers.com/about/"
+  - "https://stpeteartsalliance.org/shine?alias=/2022_SHINE_Vitale_Bros"

@@ -1,0 +1,52 @@
+# Nneka Jones and Bianca Burrows — 2020
+
+# ── Required ──
+id: 105
+artist: Nneka Jones and Bianca Burrows
+year: 2020
+lat: 27.7684
+lng: -82.667
+address: 1957 1st Ave S
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Nneka_Jones_and_Bianca_Burrows.jpg
+
+# ── Optional ──
+title: ""
+building: Goodyear Rubber Products
+instagram: artyouhungry
+basedIn: "Tampa, Florida"
+
+artistBio: |
+  Nneka Jones: Growing up in the Caribbean, Trinidad and Tobago to be exact,
+  was one of the main factors that has molded Nneka Jones into the artist she
+  is today. Her astounding love for color and special attention to detail, as
+  influenced by her culture, have always been prominent throughout her artistic
+  journey. The twenty-three-year old artist has graduated with a BFA and minor
+  in Marketing from the University of Tampa in May 2020. Her most recent
+  achievement was a commission from TIME magazine to produce the cover artwork
+  for the August 31st/ September 7th issue 2020. The artist is now speaking at
+  events like Adobe MAX, inspiring others by sharing how she turned her doubts,
+  into dreams, and made those dreams into reality. She uses her artwork as a to
+  speak out against social injustices that are overlooked in everyday life.
+  Bianca Burrows: Bianca Burrows is a mixed media commercial artist based in
+  Tampa, Florida. Whether she is painting on a traditional canvas, or crushing
+  massive walls with stencils and a spray can, her work is intentionally
+  customized for each customer. BBArt merges traditional acrylic paints with a
+  variety of unique materials, such as custom-designed stencils and collage
+  paper to create a unique and recognizable style which is best described as
+  refined NY street-art. Her signature approach to street-art is visible in all
+  of Bianca’s pieces.. Bianca draws on the inspiration of her clients’ visions
+  and her personal creativity to create these vibrant, crisp, bold pieces. In
+  2019, Bianca created The Promise Tree Project to give kids a creative outlet
+  and a safe space to work on self-expression through art. Notable clients
+  include Mercedes Benz, Bloomingdales, Refinery 29, Lululemon, Land Rover and
+  the MLB.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

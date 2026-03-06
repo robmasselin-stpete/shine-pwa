@@ -1,0 +1,36 @@
+# Miss Crit — 2021
+
+# ── Required ──
+id: 88
+artist: Miss Crit
+year: 2021
+lat: 27.7706
+lng: -82.6677
+address: 3000 Central Ave.
+category: shine
+img: "images/murals/2021/miss-crit.jpg"
+
+# ── Optional ──
+title: ""
+building: Absolutely Beautiful Flowers
+instagram: miss_crit
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Miss Crit, aka Laura Spencer, is an Illustrator born and raised in St.
+  Petersburg, FL. With a style that is a little bit spooky and a little bit
+  psychedelic, Miss Crit designs with her third-eye wide open. She brings
+  together traditional fine art techniques, narrative storytelling devices, and
+  digital design technology to craft quaint and quirky illustrations. From
+  drawings, paintings, and murals to interactive installations and
+  collaborations, Miss Crit aims to entrance and transform her audience—and
+  through their experience, they become the narrators of their own stories.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

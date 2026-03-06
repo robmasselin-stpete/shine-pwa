@@ -1,0 +1,32 @@
+# Michael Vasquez — 2023
+
+# ── Required ──
+id: 48
+artist: Michael Vasquez
+year: 2023
+lat: 27.7706
+lng: -82.6624
+address: 2063 Central Ave
+category: shine
+img: images/murals/2023/MichaelVasquez_MRapien.jpg    # TODO: needs-photo
+
+# ── Optional ──
+title: The Mangrove Refuge
+building: Little Philly
+instagram: michaelvasquez_
+basedIn: St. Petersburg/Miami
+
+artistBio: |
+  Michael Vasquez was born in St Petersburg, Florida in 1983. He is most
+  recognized for his figurative paintings and portraiture that explore identity
+  and the cultivation of community and belonging amidst an inherent social
+  disposition of broken homes and marginalized neighborhoods.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,55 @@
+# Stephen Palladino — 2017
+
+# ── Required ──
+id: 108
+artist: Stephen Palladino
+year: 2017
+lat: 27.774639
+lng: -82.646994
+address: 276 Dr. Martin Luther King Jr. Blvd N
+category: shine
+img: "images/murals/2017/stephen-palladino.jpeg"
+
+# ── Optional ──
+title: ""
+building: Benson Worley Architecture
+instagram: goodandshiddy
+basedIn: "Los Angeles / New York"
+
+artistBio: |
+  Stephen Palladino (b. 1986, Bronx, NY) is a globally recognized artist whose
+  style merges street culture, fine art, and raw emotional storytelling. His
+  father was a carpenter and pinstriper, his mother brought Sicilian heritage.
+  By age 10 his talent earned him a spot in a magnet art program for formal
+  classical training, but his true education came painting large-scale murals
+  throughout New York City as a teenager. He left high school to pursue painting
+  full-time. His signature distorted characters blend graffiti, cartoons, and
+  German Expressionism into work that is "slick and gritty, dark and lowbrow."
+  Collaborations include Lady Gaga, Tiffany & Co., Playboy, Absolut Vodka,
+  Reebok, American Express, Capital One, and Hilton. He won First Place in
+  Painting at the Beverly Hills artSHOW in 2016. Also known as "Good and
+  Shiddy."
+
+muralDescription: |
+  A 17-by-95-foot mural on the south wall of Benson Worley Architecture
+  featuring a dense composition of distorted human figures and faces in bright
+  fluorescent colors — aqua, orange, lime green, purple, blue, and rosy red.
+  From a distance the forms read as a cheery abstract puzzle, but up close bold
+  black line drawings reveal Palladino's expressive, German Expressionism-
+  influenced style. Characters include an orange woman, a blue-suited man, and
+  a red woman in profile, interspersed with phrases like "LOVE ME," "AIN'T,"
+  "NOBODY but YOU," "LOOKIN NEAT," "GAS," "YO!," and "NOT TRUE" scrawled in
+  handwritten text across the wall.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "First Place in Painting, Beverly Hills artSHOW 2016; SHINE 2017 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/stephen-palladino/"
+  - "https://stpeteartsalliance.org/shine-2017"
+  - "https://www.palladinoart.com/about"
+  - "https://hypebeast.com/2016/5/essentials-stephen-palladino-good-and-shiddy"
+  - "https://www.brooklynstreetart.com/2017/10/28/selections-from-shine-mural-festival-in-st-petersburg-florida/"

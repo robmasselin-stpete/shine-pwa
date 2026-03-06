@@ -1,0 +1,32 @@
+# Fabstraq — 2023
+
+# ── Required ──
+id: 41
+artist: Fabstraq
+year: 2023
+lat: 27.7578
+lng: -82.6856
+address: 2724 6th Ave S
+category: shine
+img: "images/murals/2023/Fabstraq-20231022-091127-MAR9128.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: The Energy of Color
+building: Clay Coop
+instagram: fabstraq919
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Shawn Rainey, the artist known as Fabstraq, is an artistic soul who has been
+  creating art since his early childhood. From paintings to poetry, this
+  multifaceted artist delivers inspiration with each of his artistic abilities.
+  He is a certified Art Therapy Life Coach.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

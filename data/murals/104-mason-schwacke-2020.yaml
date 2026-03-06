@@ -1,0 +1,33 @@
+# Mason Schwacke — 2020
+
+# ── Required ──
+id: 104
+artist: Mason Schwacke
+year: 2020
+lat: 27.7658
+lng: -82.6368
+address: 1400 3rd St S
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_Mason_Schwacke.jpg
+
+# ── Optional ──
+title: ""
+building: Hawk Diesel
+instagram: masonschwacke
+basedIn: "St. Petersburg, Florida"
+
+artistBio: |
+  Mason Schwacke is a St. Petersburg artist with a passion for illustrative
+  designs that focus on a playful color pallet. He blends street art with
+  contemporary designs to deliver symbolic messages applicable to all ages. His
+  designs may be interpreted as an assemblage of vibrant colors and characters
+  derived from his imagination, surrounding environment, and life experiences.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

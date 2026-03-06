@@ -1,0 +1,56 @@
+# Max Sansing — 2023
+
+# ── Required ──
+id: 47
+artist: Max Sansing
+year: 2023
+lat: 27.777006
+lng: -82.639969
+address: 401 5th St N
+category: shine
+img: "images/murals/2023/max-sansing.jpeg"
+
+# ── Optional ──
+title: Shining Hope
+building: Trinity Lutheran Church
+instagram: maxsansing
+basedIn: "Chicago, IL"
+
+artistBio: |
+  Max Sansing is a Chicago-based fine artist and muralist who grew up on the
+  South Side in the Avalon Park neighborhood. He began making art at 14 through
+  graffiti, joining crews like Def Con 5 and Recking Krew, before formal training
+  at the American Academy of Art. His style fuses the color-drenched dynamism of
+  street art with the technical elegance of photorealism, working in oil, acrylic,
+  spray paint, and enamel. His commissions include portraits of President Obama,
+  Walter Payton, and Fred Hampton, plus projects for Nike/Virgil Abloh, the NBA
+  All-Star Weekend, and Chicago Fire FC. He won "Best Street Artist" in Chicago's
+  Best of Chicago awards (2017) and has exhibited at POW! WOW! Hawaii, Scope
+  Miami Beach, and UNITY in Dubai. He is represented by Thinkspace Projects in
+  Los Angeles and deeply committed to expanding arts access on Chicago's South
+  Side.
+
+muralDescription: |
+  A multi-story portrait on the north face of Trinity Lutheran Church depicting
+  a young Black woman gazing outward with quiet intensity. Her face is rendered
+  in photorealistic detail with warm brown skin tones, while her body dissolves
+  into swirling, psychedelic layers of green, turquoise, purple, and gold —
+  evoking geode cross-sections and topographic forms. A large hibiscus flower
+  in peach and violet blooms at her shoulder, and deep blue flowers anchor the
+  bottom of the composition. A red archway silhouette with palm trees appears
+  within the flowing forms, and a bird silhouette flies above. A SHINE plaque
+  is visible at the base.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Best Street Artist, Chicago's Best of Chicago 2017; SHINE 2023 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/max-sansing-2023"
+  - "https://www.tampabay.com/life-culture/arts/visual-arts/2023/10/24/st-petersburg-shine-mural-festival-max-sansing/"
+  - "https://www.maxsansing.com/about"
+  - "https://upmag.com/max-sansing/"
+  - "https://chicago.suntimes.com/murals-mosaics/2020/2/28/21144592/murals-chicago-max-sansing-avalon-park-south-side-graffiti"
+  - "https://www.thisiscolossal.com/2020/08/max-sansing-lost-and-found/"

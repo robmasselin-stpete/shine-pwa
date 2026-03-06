@@ -1,0 +1,48 @@
+# Abys — 2024
+
+# ── Required ──
+id: 20
+artist: Abys
+year: 2024
+lat: 27.768439
+lng: -82.658011
+address: 201 17th Street South
+category: shine
+img: "images/murals/2024/abys.jpeg"
+
+# ── Optional ──
+title: ""
+building: Modera
+instagram: abys_osmoz
+basedIn: "Nancy, France"
+
+artistBio: |
+  Julien Brouand, known as Abys, is a self-taught French artist from Nancy,
+  born in 1991. Passionate about drawing and cartoons from a young age, he
+  discovered graffiti in 2009. After years practicing with various
+  collectives, he developed his own character-driven style in 2015 —
+  staging lively, narrative, and colorful compositions mixing whimsical
+  characters, decorations, and lettering. For the 2024 SHINE festival, he
+  painted this six-story gator in just four days and had enough time and
+  paint left over to create a bonus crab mural on the back of Anchor Skate
+  Supply nearby.
+
+muralDescription: |
+  A six-story-tall mural on the side of the Modera apartment building
+  depicting a cartoonish, pot-bellied alligator with a mischievous grin,
+  riding a red surfboard through splashing turquoise waves. A pink hibiscus
+  flower sits atop the gator's head, and teal smoke curls above. The
+  surfboard reads "SHINE" in stylized lettering. At the base, a triangular
+  logo anchors the composition. The character's exaggerated features and
+  vibrant green-on-gray color scheme make it visible from blocks away.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2024 festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_abys"
+  - "https://www.axios.com/local/tampa-bay/2024/11/22/shine-mural-festival-2024-st-pete"
+  - "https://stpetecatalyst.com/brush-to-canvas-shine-and-other-art-news/"

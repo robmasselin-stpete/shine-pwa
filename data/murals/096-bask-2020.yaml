@@ -1,0 +1,35 @@
+# BASK — 2020
+
+# ── Required ──
+id: 96
+artist: BASK
+year: 2020
+lat: 27.7738
+lng: -82.642
+address: Mirror Lake area
+category: shine
+img: images/murals/2020/2020_SHINE_Mural_Festival_BASK.jpg
+
+# ── Optional ──
+title: In the Deep Space of the Sea I Have Found My Moon
+building: ""
+instagram: knownasbask
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Fleeing communist Czechoslovakia as a young child and growing up under the
+  hot Florida sun, Ales Bask Hostomsky took an early interest in graffiti art.
+  Now a prolific artist with work in galleries across the country, BASK's art
+  covers walls from Detroit to Brooklyn to St. Petersburg, and can be seen in
+  the movie Iron Man 3. With no formal arts education, BASK built a career by
+  leaning into his mistakes, harnessing each drop of paint, accidental or not,
+  as a form of artistic risk-taking.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

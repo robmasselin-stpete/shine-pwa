@@ -1,0 +1,47 @@
+# Aaron Tullo — 2025
+
+# ── Required ──
+id: 1
+artist: Aaron Tullo
+year: 2025
+lat: 27.773992
+lng: -82.636422
+address: 253 2nd Ave N
+category: shine
+img: "images/murals/2025/aaron-tullo.jpeg"
+
+# ── Optional ──
+title: ""
+building: Cordova Inn
+instagram: aaron.tullo
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Aaron Tullo is a St. Petersburg-based muralist, sign painter, and fine artist
+  who operates under the Aaron James Tullo Fine Art studio. His work blends
+  figurative realism with bold graphic design, drawing on his background in both
+  traditional painting and commercial art — including work for clients such as
+  St. Pete College, Penn Fishing Reels, and Old Northeast Jewelers. A former
+  minor league baseball player, Tullo channels his travels and community
+  connections into story-driven public art that celebrates place and people.
+  He participated in the 2025 SHINE Origins festival, painting a five-story mural
+  on the Cordova Inn, the festival's title sponsor.
+
+muralDescription: |
+  This five-story mural on the facade of the Cordova Inn depicts a large white
+  peacock rendered in Tullo's characteristic blend of figurative realism and bold
+  graphic composition. The bird's plumage fills the building's vertical expanse,
+  creating a striking visual landmark in downtown St. Petersburg.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
+  - "https://83degreesmedia.com/tampa-bay-arts-roundup-shine-mural-festival-arts-annual-more/"
+  - "https://www.artfluentcreatives.com/artists"
+  - "https://995qyk.com/2026/01/26/downtown-st-petersburg-hotel-will-add-65-rooms-and-rooftop-bar-in-february/"

@@ -1,0 +1,33 @@
+# Sarah Sheppard — 2023
+
+# ── Required ──
+id: 50
+artist: Sarah Sheppard
+year: 2023
+lat: 27.761
+lng: -82.673
+address: 2336 5th Ave S
+category: shine
+img: "images/murals/2023/Sarah-Shepard-20231021-150335-MAR8268.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: We Are Magic
+building: New Dawn Coffee Co
+instagram: sarah.g.sheppard
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Sarah Sheppard is an experienced painter, muralist, designer, and metalsmith
+  currently based in St. Petersburg Florida. She draws inspiration from the
+  people and places she’s met and seen all over the world. Her goal is to
+  convey a sense of beauty, romanticism, and mysticism in whichever medium she
+  happens to be working with.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,34 @@
+# Emily Ding — 2021
+
+# ── Required ──
+id: 78
+artist: Emily Ding
+year: 2021
+lat: 27.7693
+lng: -82.648
+address: 100 7th St. S.
+category: shine
+img: "images/murals/2021/emily-ding.jpg"
+
+# ── Optional ──
+title: ""
+building: Rob Graham Enterprise
+instagram: _emilyding
+basedIn: "Houston, TX"
+
+artistBio: |
+  Emily Ding is a Houston based muralist who draws inspiration from flora,
+  fauna, and human temperament. Her large-scale work is characterized by
+  expressive animals and figures, which come to life through bold color
+  gradients and a fluid, painterly style. Resonating deeply with the phenomena
+  of the natural world, she aims to communicate emotions and experiences,
+  through storytelling with wild creatures and people.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

@@ -1,0 +1,33 @@
+# Cristi López — 2024
+
+# ── Required ──
+id: 21
+artist: Cristi López
+year: 2024
+lat: 27.7382
+lng: -82.6485
+address: 2655 Fairfield Ave South
+category: shine
+img: "images/murals/2024/CristiLopez-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+
+# ── Optional ──
+title: ""
+building: Groove Haven
+instagram: cristi.lopez.s
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Cristi López (b. 1993) is an artist and mental health advocate splitting time
+  between Tampa Bay and Chicago. She graduated from Ringling College of Art and
+  Design in 2016 with a BFA in Illustration. Her work explores mental health,
+  latinidad, and femininity. Through her intensely personal imagery, she hopes
+  that others will recognize themselves. To be portrayed is to be seen.
+
+muralDescription: ""
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "legacy"
+sourceNotes: "Migrated from data.js 2026-03-05"

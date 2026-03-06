@@ -1,0 +1,47 @@
+# Elizabeth Barenis — 2025
+
+# ── Required ──
+id: 8
+artist: Elizabeth Barenis
+year: 2025
+lat: 27.762931
+lng: -82.674592
+address: "31st St & 7th Ave S"
+category: shine
+img: "images/murals/2025/elizabeth-barenis.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: elizabethbarenis
+basedIn: "Pinellas County, FL"
+
+artistBio: |
+  Born and raised in Greenville, Mississippi, Elizabeth Barenis has been
+  painting since childhood. A graduate of Sarah Lawrence College in New York,
+  she was named a 2023 Creative Pinellas Professional Artist grantee and
+  participated in the 2018 International Painting Symposium at the Mark
+  Rothko Art Center in Latvia. Her signature "Abstract Precisionism" style,
+  inspired by her photography, uses softly abstracted shapes and colors to
+  evoke tranquility and beauty. Now based in Pinellas County, she believes
+  "it's the artist's job to amplify" beauty and that "art for a community
+  really uplifts the community." She participated in the 2025 SHINE Origins
+  festival.
+
+muralDescription: |
+  A wide mural on a cinder block wall depicting oversized tropical fan palm
+  fronds in layered shades of green, teal, and soft yellow. The leaves
+  radiate outward in clean, geometric planes — Barenis's "Abstract
+  Precisionism" style — creating depth through overlapping translucent shapes.
+  Signed "Elizabeth Barenis 2025" in the lower left corner.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "2023 Creative Pinellas Professional Artist grantee; 2018 International Painting Symposium, Mark Rothko Art Center, Latvia"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"

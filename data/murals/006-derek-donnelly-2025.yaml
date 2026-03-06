@@ -1,0 +1,46 @@
+# Derek Donnelly — 2025 (Hollander Hotel)
+
+# ── Required ──
+id: 6
+artist: Derek Donnelly
+year: 2025
+lat: 27.776731
+lng: -82.638764
+address: 421 4th Ave N
+category: shine
+img: "images/murals/2025/derek-donnelly-hollander.jpeg"
+
+# ── Optional ──
+title: "Greetings from Hollander Hotel"
+building: Hollander Hotel
+instagram: saintpaintarts
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Derek Donnelly, known as Saint Paint Arts, is a St. Petersburg native whose
+  cartoon-influenced murals have become landmarks across Tampa Bay. A multiple
+  Best of the Bay winner from Creative Loafing Tampa Bay, Donnelly's playful,
+  story-driven style blends retro illustration with local culture — often
+  featuring his son and the city's wildlife. His large-scale work spans hotels,
+  breweries, public buildings, and private homes throughout the region. For the
+  2025 SHINE Origins festival, he painted two murals: this vintage postcard
+  piece at the Hollander Hotel and a companion work at 1847 1st Ave N.
+
+muralDescription: |
+  A vintage-style postcard mural reading "Greetings from Hollander Hotel,
+  St. Pete, FL." A cartoon boy in a red cap rides a pelican wearing sunglasses
+  over turquoise waters, with dolphins leaping below, seagulls overhead, and a
+  palm-tree island with the Sunshine Skyway Bridge in the distance. Signed
+  "Donnelly @Saint Paint Arts" in the lower right. The retro color palette of
+  teals, creams, and warm tans gives it a classic Florida tourism feel.
+
+muralInspiration: |
+  Donnelly stated: 'My murals are a celebration of all things local, with my
+  son and our city's bird.'
+
+muralAwards: ""
+artistAwards: "Multiple Best of the Bay winner (Creative Loafing Tampa Bay)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: "Enhanced from photo + detail card data, 2026-03-05"
