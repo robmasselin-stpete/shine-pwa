@@ -515,32 +515,45 @@ function calcRouteTotalDist(orderedMurals) {
   return total;
 }
 
-// Pre-defined walking routes. To add a new route, add an entry here with a filter function.
-// The filter selects which murals belong to the route; ordering is computed automatically.
+// Pre-defined walking routes.
+// Two types:
+//   - Curated: `ids` array specifies exact mural IDs in walk order
+//   - Auto: `filter` function selects murals, nearest-neighbor computes order
 const ROUTE_DEFS = [
-  { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'The latest festival murals', filter: m => m.y === 2025 && m.cat === 'shine' },
+  { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'All 2025 murals plus classics along the way',
+    ids: [17, 6, 107, 116, 1, 11, 109, 110, 7, 9, 5, 16, 12, 2, 3, 8, 10, 13, 15, 19] },
   { id: 'shine-2024', name: 'SHINE 2024', desc: '2024 festival collection', filter: m => m.y === 2024 && m.cat === 'shine' },
   { id: 'shine-2023', name: 'SHINE 2023', desc: '2023 festival collection', filter: m => m.y === 2023 && m.cat === 'shine' },
   { id: 'downtown', name: 'Downtown Highlights', desc: 'Best murals within walking distance', filter: m => m.cat !== 'commercial' && haversine(27.7706, -82.6400, m.lat, m.lng) < 2000 },
   { id: 'all-shine', name: 'All SHINE Murals', desc: 'Every reviewed SHINE mural', filter: m => m.cat !== 'commercial' },
 ];
 
+/**
+ * Get the ordered mural list for a route definition.
+ * Curated routes (ids array) use exact order; filter routes use nearest-neighbor.
+ */
+function getRouteOrdered(def) {
+  if (def.ids) {
+    return def.ids.map(id => murals.find(m => m.id === id)).filter(m => m && m.lat && m.lng);
+  }
+  return getRouteMurals(def.filter);
+}
+
 /** Render the Routes tab — list of route cards with stats (stop count, distance, walk time). */
 function renderRoutes() {
   const routeCards = ROUTE_DEFS.map(def => {
-    const routeMurals = murals.filter(m => m.lat && m.lng && def.filter(m));
-    if (routeMurals.length === 0) return '';
-    const ordered = getRouteMurals(def.filter);
+    const ordered = getRouteOrdered(def);
+    if (ordered.length === 0) return '';
     const totalDist = calcRouteTotalDist(ordered);
     const walkMins = Math.round(totalDist / 80); // ~80m/min walking
-    const thumb = routeMurals[0]?.img || '';
+    const thumb = ordered[0]?.img || '';
     return `
       <div class="route-card" data-route="${def.id}">
         <img class="route-card-img" src="${thumb}" alt="${def.name}" loading="lazy" onerror="this.style.background='#ddd'">
         <div class="route-card-body">
           <div class="route-card-name">${def.name}</div>
           <div class="route-card-desc">${def.desc}</div>
-          <div class="route-card-stats">${routeMurals.length} stops · ${formatDistance(totalDist)} · ~${walkMins} min walk</div>
+          <div class="route-card-stats">${ordered.length} stops · ${formatDistance(totalDist)} · ~${walkMins} min walk</div>
         </div>
       </div>
     `;
@@ -570,7 +583,7 @@ function renderRoutes() {
 
 /** Open route detail overlay — numbered stop list with distances and a Google Maps deep link. */
 function openRoute(def) {
-  const ordered = getRouteMurals(def.filter);
+  const ordered = getRouteOrdered(def);
   if (ordered.length === 0) return;
 
   const totalDist = calcRouteTotalDist(ordered);
