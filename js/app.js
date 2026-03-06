@@ -918,6 +918,10 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
 
   document.getElementById('map-container').appendChild(bar);
 
+  // Prevent Leaflet from eating clicks/touches on the bar
+  L.DomEvent.disableClickPropagation(bar);
+  L.DomEvent.disableScrollPropagation(bar);
+
   // Toggle walk/drive
   bar.querySelectorAll('.directions-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -927,6 +931,12 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
         fetchAndDrawRoute();
       }
     });
+  });
+
+  // Google Maps link — use explicit handler for iOS Safari
+  bar.querySelector('.directions-gmaps').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.open(gmapsUrl, '_blank');
   });
 
   // Close button
