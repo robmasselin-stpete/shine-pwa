@@ -663,6 +663,13 @@ function openDetail(mural) {
         </div>
       ` : ''}
 
+      ${mural.desc ? `
+        <div class="detail-bio">
+          <div class="detail-bio-label">About This Mural</div>
+          ${mural.desc}
+        </div>
+      ` : ''}
+
       ${mural.lat && mural.lng ? `
         <button class="detail-directions" onclick="startDirections(${mural.id})">
           🚶 Get Directions

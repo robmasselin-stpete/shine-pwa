@@ -196,16 +196,9 @@ def mural_to_js(m):
     img = js_string_escape(m.get('img', ''))
     based_in = js_string_escape(m.get('basedIn', ''))
 
-    # Combine bio fields into a single bio for the app
-    # The app uses a single 'bio' field
-    bio_parts = []
-    artist_bio = (m.get('artistBio', '') or '').strip()
-    mural_desc = (m.get('muralDescription', '') or '').strip()
-    if artist_bio:
-        bio_parts.append(artist_bio)
-    if mural_desc:
-        bio_parts.append(mural_desc)
-    bio = js_string_escape(' '.join(bio_parts))
+    # Separate bio and mural description fields
+    bio = js_string_escape((m.get('artistBio', '') or '').strip())
+    desc = js_string_escape((m.get('muralDescription', '') or '').strip())
 
     lat_str = str(lat) if lat is not None else 'null'
     lng_str = str(lng) if lng is not None else 'null'
@@ -222,6 +215,7 @@ def mural_to_js(m):
         f"cat:'{category}',"
         f"ig:'{instagram}',"
         f"bio:'{bio}',"
+        f"desc:'{desc}',"
         f"img:'{img}',"
         f"from:'{based_in}'}}"
     )
@@ -240,7 +234,7 @@ def generate_data_js(murals, config):
     lines.append('// To make changes, edit the YAML source files and run: python3 scripts/build-data.py')
     lines.append('//')
     lines.append('// Schema: id, a(artist), t(title), loc(address), bldg(building),')
-    lines.append('//   lat, lng, y(year), cat(category), ig(instagram), bio, img, from(basedIn)')
+    lines.append('//   lat, lng, y(year), cat(category), ig(instagram), bio, desc(muralDescription), img, from(basedIn)')
     lines.append('')
 
     # Sort: year desc, then artist alpha
