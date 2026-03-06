@@ -815,10 +815,12 @@ function fetchAndDrawRoute() {
   const mural = state.directionsMural;
   if (!mural) return;
 
-  clearDirections();
-  state.directionsMural = mural; // restore after clearDirections reset
-
+  // Save profile before clearDirections resets it
   const profile = state.directionsProfile === 'car' ? 'car' : 'foot';
+
+  clearDirections();
+  state.directionsMural = mural;
+  state.directionsProfile = profile;
   // OSRM public server only has the 'driving' profile — use it for route
   // geometry (streets are the same), then compute walk/drive time from distance
   const url = `https://router.project-osrm.org/route/v1/driving/${state.userLng},${state.userLat};${mural.lng},${mural.lat}?overview=full&geometries=geojson`;
