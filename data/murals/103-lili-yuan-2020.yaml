@@ -4,29 +4,49 @@
 id: 103
 artist: Lili Yuan
 year: 2020
-lat: 27.7706
-lng: -82.68
+lat: 27.771495
+lng: -82.65477
 address: Grand Central District
 category: shine
-img: images/murals/2020/2020_SHINE_Mural_Festival_Lili_Yuan.jpg
+img: "images/murals/2020/lili-yuan.jpeg"
 
 # ── Optional ──
 title: ""
-building: ""
+building: "ARTE"
 instagram: oliooolio
 basedIn: "Jacksonville, FL"
 
 artistBio: |
-  Jacksonville based artist Lili Yuan uses her photography to create hyperreal
-  paintings, often inspired by the dichotomy of Eastern and Western cultures.
-  Originally from China, Yuan uses her natural proficiency for art to explore
-  the contrasting viewpoints she has experienced.
+  Lili Yuan is a Chinese-born, Jacksonville-based artist who blends Eastern
+  and Western visual traditions through hyperrealistic painting and muralism.
+  She uses her own photography as source material, building large-scale works
+  that merge figurative realism with cultural symbolism — often incorporating
+  Chinese calligraphy, water imagery, and references to Taoist philosophy.
 
-muralDescription: ""
+  Her mural work bridges fine art technique with street-scale ambition, and
+  she has painted walls across Florida and beyond. She participated in SHINE
+  2020 in St. Petersburg and continues to explore the tension between her
+  Chinese roots and American life through her studio and public work.
+
+muralDescription: |
+  A large circular composition on a cream-colored wall depicting a woman
+  with long dark hair floating in turquoise water, seen from above. She
+  wears a flowing red dress with deep pleats that billow and spread around
+  her like a blooming flower. The water is rendered with photorealistic
+  light caustics and ripples. Her hands gently push against the fabric as
+  her hair trails out beyond the circle's edge. To the left, bold Chinese
+  calligraphy reads "shang shan ruo shui" (the highest good is like water)
+  — a passage from the Tao Te Ching. A small red seal stamp appears at the
+  bottom left corner. The @oliooolio tag is visible near the circle's edge.
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://voyagemia.com/interview/meet-lili-gallerry-jacksonville/"
+  - "https://stpetemuraltour.com/2021/03/01/lili-yuan/"
+  - "https://www.cummermuseum.org/event/virtual-conversation-artists-dustin-harewood-crystal-floyd-and-lili-yuan"
+  - "https://lili.gallery/about/"

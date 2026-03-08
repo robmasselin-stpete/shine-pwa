@@ -1,0 +1,58 @@
+# Sara Sheppard — Stronger Together
+
+# ── Required ──
+id: 122
+artist: Sara Sheppard
+year: 0
+lat: 27.77120833
+lng: -82.66300333
+address: ""
+category: commercial
+img: "images/murals/commercial/sarah-sheppard-stronger-together.jpeg"
+
+# ── Optional ──
+title: "Stronger Together"
+building: ""
+instagram: sarah.g.sheppard
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Sara Sheppard is a painter, muralist, and metalsmith originally from
+  Dallas, Texas who spent over a decade in St. Petersburg before relocating
+  back to Texas. She grew up in an art-immersed household — her father was
+  her mother's college art teacher — and studied photography, drawing,
+  painting, graphic design, ceramics, and fabric art throughout school.
+  After moving to Florida she built a business doing Venetian plaster, faux
+  finishing, and murals for model homes and commercial clients. Her mural
+  style draws from folk art traditions, mysticism, and ornamental design
+  she's encountered traveling around the world — bold compositions with
+  strong color blocking, stylized faces, and symmetrical designs. She was
+  commissioned by AARP and the Morean Arts Center for the "Life Reimagined"
+  mural as part of the SHINE All Year program in 2017, and returned as a
+  SHINE 2023 festival artist. She also does fine jewelry and metalsmithing,
+  having trained at Creative Side Jewelry Academy in Austin — she initially
+  enrolled to finish pieces her late father had given her, and it became a
+  lasting practice. She was featured in the 2025 "We Built This City:
+  Women Artists of SHINE" exhibition at the Morean Arts Center alongside
+  15 other women muralists who shaped St. Pete's mural scene.
+
+muralDescription: |
+  A wide panoramic mural showing a row of stylized faces in profile, each
+  rendered in different bold color blocks — greens, yellows, purples, pinks,
+  blues, and oranges. The faces overlap and interlock like puzzle pieces,
+  surrounded by tropical leaves, palm fronds, and simple white flowers. The
+  words "Stronger Together!" appear in gold script on the right side. The
+  style is flat and graphic with clean geometric shapes making up each face,
+  giving the whole piece a modern, poster-art quality. It reads as a
+  celebration of community and diversity.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Featured in 'We Built This City: Women Artists of SHINE' exhibition, Morean Arts Center (2025); AARP/SHINE All Year commission (2017)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://voyagehouston.com/interview/art-life-sarah-sheppard/"
+  - "https://ilovetheburg.com/two-new-street-art-exhibitions-st-pete/"

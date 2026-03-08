@@ -4,11 +4,11 @@
 id: 55
 artist: Ashley Cantero
 year: 2022
-lat: 27.7706
-lng: -82.6612
+lat: 27.77129167
+lng: -82.6661
 address: 2421 Central Ave.
 category: shine
-img: "images/murals/2022/Ashley-Cantero-SHINE-Day-13.jpg"
+img: "images/murals/2022/ashley-cantero.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,19 +17,34 @@ instagram: ashleycantero
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Ashley Cantero is a Tampa, FL native and artist who actively engages in the
-  local art scene. Best known for her precise line work and bold female
-  characters, her work embodies a profound energy that she defines as the
-  “intense and complex emotional responses we have to the world around us."
-  With themes inspired by ‘60s psychedelia, Atomic Age design and Sci-Fi,
-  Ashley's work is ever evolving through various mediums and artistic forms of
-  expression.
+  Ashley Cantero is a Tampa native who paints murals, illustrations, and
+  immersive installations steeped in '60s psychedelia, Atomic Age design, and
+  B-movie sci-fi. Her style is built on precise black outlines, bold color
+  blocking, and characters that look like they walked off a drive-in movie
+  poster — UFOs, aliens, and retro femme fatales are recurring motifs. She's
+  a resident artist at Kress Contemporary in Ybor City, where she shares a
+  studio space called DLUANCE with artist Juan Espinosa. Beyond murals, she
+  built dioramas for FloridaRAMA (formerly Fairgrounds St. Pete), including
+  "Swamp Motel" and "Drive-In," and painted an 8-wall retro-futuristic piece
+  called "Cosmic Beams & Sunshine Dreams" for that venue. She was featured in
+  the 2025 exhibition "We Built This City: Women Artists of SHINE" at the
+  Morean Arts Center alongside 15 other Tampa Bay women muralists.
 
-muralDescription: ""
+muralDescription: |
+  A retro sci-fi scene spanning the full wall — three flying saucers beam up
+  figures against a teal background loaded with mid-century diamond shapes and
+  starbursts. A suited figure stands on a vanishing-point highway while a
+  green alien peers out from the right side. The palette is teal, pink, and
+  chartreuse with heavy black outlines giving it a vintage comic book feel.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Featured in We Built This City: Women Artists of SHINE exhibition, Morean Arts Center (2025)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.kresscontemporary.com/artists/ashleycantero"
+  - "https://www.floridarama.art/artist/ashley-cantero"
+  - "https://ilovetheburg.com/two-new-street-art-exhibitions-st-pete/"

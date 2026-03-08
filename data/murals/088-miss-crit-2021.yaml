@@ -4,33 +4,53 @@
 id: 88
 artist: Miss Crit
 year: 2021
-lat: 27.7706
-lng: -82.6677
+lat: 27.77072167
+lng: -82.67395
 address: 3000 Central Ave.
 category: shine
-img: "images/murals/2021/miss-crit.jpg"
+img: "images/murals/2021/miss-crit.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Nowness is the Portal"
 building: Absolutely Beautiful Flowers
 instagram: miss_crit
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Miss Crit, aka Laura Spencer, is an Illustrator born and raised in St.
-  Petersburg, FL. With a style that is a little bit spooky and a little bit
-  psychedelic, Miss Crit designs with her third-eye wide open. She brings
-  together traditional fine art techniques, narrative storytelling devices, and
-  digital design technology to craft quaint and quirky illustrations. From
-  drawings, paintings, and murals to interactive installations and
-  collaborations, Miss Crit aims to entrance and transform her audience—and
-  through their experience, they become the narrators of their own stories.
+  Miss Crit is the working name of Laura Spencer, an illustrator and muralist
+  born and raised in St. Petersburg. She earned her BFA in Illustration from
+  Ringling College of Art and Design in Sarasota as a Trustees' Scholar, and
+  built her career right in the Burg, becoming one of the city's most visible
+  local artists. Her style ranges from lush botanical realism to spooky,
+  psychedelic character work — she's comfortable painting a giant magnolia on
+  one wall and a third-eye skeleton on the next. She co-founded Artonomy LLC,
+  a creative studio handling murals, illustration, and design. One of her most
+  ambitious projects is the Sunshine City Mosaic, a 175-foot community mosaic
+  made from over 15,000 hand-placed tiles. She was selected for the Dali
+  Museum's "Outside In" exhibition in 2025, bringing her work into dialogue
+  with the Surrealist tradition. Beyond walls, she does illustration, digital
+  design, and interactive installations. She's painted multiple SHINE murals
+  and has work scattered across the Grand Central District and downtown.
 
-muralDescription: ""
+muralDescription: |
+  The phrase "NOWNESS IS THE PORTAL" stretches across the wall in large cream-
+  colored serif lettering with a slight Art Nouveau curve to the type. Behind
+  and around the text, a dense arrangement of tropical foliage fills the
+  entire surface — deep green monstera leaves, burgundy ti plants, broad
+  tropical leaves in teal and dark green, and a large white magnolia bloom
+  opening in the upper right. The background is a moody dark teal that makes
+  the plants and flower pop. The whole piece wraps around two second-story
+  windows on the building face.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Creative Pinellas Emerging Artist Grant (2019); Trustees' Scholar, Ringling College of Art and Design; Dali Museum 'Outside In' exhibition (2025)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://creativepinellas.org/directory/laura-spencer/"
+  - "https://creativepinellas.org/directory/laura-spencer/"
+  - "https://thedali.org/outside-in/"
+  - "https://www.sunshinecitymosaic.com/"

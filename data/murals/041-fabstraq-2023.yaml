@@ -4,11 +4,11 @@
 id: 41
 artist: Fabstraq
 year: 2023
-lat: 27.7578
-lng: -82.6856
+lat: 27.7647
+lng: -82.670595
 address: 2724 6th Ave S
 category: shine
-img: "images/murals/2023/Fabstraq-20231022-091127-MAR9128.jpg"    # TODO: needs-photo
+img: "images/murals/2023/fabstraq.jpeg"
 
 # ── Optional ──
 title: The Energy of Color
@@ -17,16 +17,40 @@ instagram: fabstraq919
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Shawn Rainey, the artist known as Fabstraq, is an artistic soul who has been
-  creating art since his early childhood. From paintings to poetry, this
-  multifaceted artist delivers inspiration with each of his artistic abilities.
-  He is a certified Art Therapy Life Coach.
+  Fabstraq is the working name of Shawn Rainey, a New York native now based
+  in Tampa. The name stands for "abstract art that makes you feel fabulous,"
+  and his tagline is "Abstract From The Heart." He's been making art since
+  he was 10, when it became an escape from childhood trauma — experiences
+  of isolation and rejection that he later channeled into a practice centered
+  on healing through creativity. He's a certified Art Therapy Life Coach who
+  volunteers at the Glazer Children's Museum in Tampa, teaches kids' art
+  classes at Center Place Fine Arts in Brandon, and visits schools across
+  the Tampa area to talk about art and mental health. He works across
+  painting, murals, and poetry. He was featured on Bay News 9's "Everyday
+  Hero" segment in 2019 for inspiring children through art, and was included
+  in the Green Book of Tampa Bay group exhibition at TheStudio@620 in St.
+  Petersburg. He was selected as one of six local artists for SHINE 2023.
 
-muralDescription: ""
+muralDescription: |
+  A bold, graphic mural covering the entire front face of the Clay Coop
+  building. The composition is a patchwork of large geometric shapes —
+  triangles, rectangles, and angular forms — in saturated flat colors:
+  bright green, royal blue, hot pink, red, purple, yellow, and teal. A
+  heart shape, a star, zigzag patterns, and concentric rectangles are
+  scattered throughout the design. The overall effect is like an abstract
+  quilt or a Memphis Design-inspired collage, with clean edges and no
+  blending between the color fields. Two tiki statues flank the entrance,
+  and the artist's "FABSTRAQ" tag appears in the lower right corner.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Bay News 9 'Everyday Hero' (2019); Green Book of Tampa Bay featured artist"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://fabstraq.com/"
+  - "https://www.baynews9.com/fl/tampa/news/2019/08/05/everyday-hero--local-artist-inspires-children-to-grow-their-imaginations"
+  - "https://thestudioat620.org/events/green-book-of-tampa-bay-group-art-exhibit/"
+  - "https://stpetecatalyst.com/local-artists-new-partnership-announced-for-mural-festival/"

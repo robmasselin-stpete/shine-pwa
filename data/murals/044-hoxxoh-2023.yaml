@@ -4,11 +4,11 @@
 id: 44
 artist: HOXXOH
 year: 2023
-lat: 27.768
-lng: -82.6624
+lat: 27.76862
+lng: -82.660675
 address: 2025 3rd Ave S
 category: shine
-img: "images/murals/2023/Hoxxoh-20231019-113041-MAR5715-Edit.jpg"    # TODO: needs-photo
+img: "images/murals/2023/hoxxoh.jpeg"
 
 # ── Optional ──
 title: Rainbird
@@ -17,16 +17,43 @@ instagram: hoxxoh
 basedIn: "Miami, FL"
 
 artistBio: |
-  Hoxxoh’s works represent what happens when we let go of our control of time
-  and let its predetermined course take control. Spheres of life are on
-  display, illustrating the motions of space and time working in unison to
-  create natural order.
+  HOXXOH is the working name of Douglas Hoekzema, a Miami-based artist known
+  for massive abstract murals built around concentric rings, ripple patterns,
+  and optical illusions. He studied architecture and double-majored in Art
+  History and Painting before turning to mural work full-time. He started in
+  graffiti and evolved into a style that's hard to categorize — part Op Art,
+  part organic abstraction, with a heavy emphasis on movement and rhythm. His
+  signature "RainBird" technique uses modified irrigation systems to apply
+  paint in flowing, controlled patterns at enormous scale, creating hundreds
+  of thin undulating lines that give his walls the illusion of three-
+  dimensional depth and motion. He's painted major walls at Art Basel Miami,
+  Wynwood Walls, and mural festivals across the Americas and Europe. This is
+  his second SHINE mural — his first was in 2015. His pieces tend to be
+  enormous, often spanning entire building facades, and they have a hypnotic
+  quality that shifts depending on your viewing distance and angle. He was
+  named an honorable mention in Miami New Times' MasterMind awards in 2016.
 
-muralDescription: ""
+muralDescription: |
+  A huge panoramic piece spanning the full length of the Morean Workshop
+  building. Three birds in flight — likely roseate spoonbills or herons —
+  are rendered in HOXXOH's signature black-and-white ripple-line technique,
+  their bodies made up of dense, undulating wave patterns that give them an
+  almost holographic shimmer. The birds soar across a luminous teal and
+  aquamarine background that itself ripples with flowing white and dark
+  streaks, making the entire wall feel like it's in motion. The scale is
+  impressive — each bird spans a full story of the building. It reads as
+  abstract pattern from a distance and resolves into recognizable bird forms
+  as you get closer.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Miami New Times MasterMind honorable mention (2016)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://wynwoodwalls.com/artists/hoxxoh"
+  - "https://www.hoxxoh.com/"
+  - "https://wynwoodwalls.com/artists/hoxxoh"
+  - "https://www.miaminewtimes.com/arts/2016-mastermind-awards-8826445"

@@ -4,31 +4,53 @@
 id: 76
 artist: Case Maclaim
 year: 2021
-lat: 27.7706
-lng: -82.6636
+lat: 27.77125333
+lng: -82.66954667
 address: 2641 Central Ave.
 category: shine
-img: "images/murals/2021/case-maclaim.jpg"
+img: "images/murals/2021/case-maclaim.jpeg"
 
 # ── Optional ──
 title: ""
 building: 2641 Central Ave Condos
 instagram: case_maclaim
-basedIn: Germany
+basedIn: "Frankfurt am Main, Germany"
 
 artistBio: |
-  German artist Andres Von Chrzanowski, better known as Case Maclaim, is a
-  street artist whose work brilliantly combines photorealism with a strong note
-  of surrealism. Best known for his depiction of overlaying hands, Case’s work
-  symbolizes power and unity. He is a founding member of the renowned Maclaim
-  Crew, a group that has been pioneering photorealism in the streets for over
-  two decades. His murals can be found in over 20 countries around the world.
+  Case Maclaim is the working name of Andreas Von Chrzanowski, born in 1979
+  in Frankfurt am Main, Germany. He studied restoration at the University of
+  Applied Sciences in Erfurt before turning to art full-time. In 2000 he
+  co-founded the Maclaim Crew in Frankfurt with Akut and several other
+  writers — the collective became one of the first to push photorealistic
+  technique in the graffiti world, and their early jams in abandoned East
+  German factories helped establish an entire movement. Case's technique is
+  entirely freehand aerosol with no projectors or grids, which makes the
+  level of anatomical detail he achieves at building scale genuinely hard to
+  believe. His signature subject is intertwined hands — clasping, pulling,
+  reaching — which he uses to explore connection, struggle, tenderness, and
+  human fragility. He's painted walls in over 20 countries across Europe,
+  the Americas, and Asia, and his work has been featured in galleries from
+  Berlin to New York. He's widely considered one of the most technically
+  skilled spray paint artists working today, and his work has been collected
+  by institutions and private collectors internationally.
 
-muralDescription: ""
+muralDescription: |
+  A massive photorealistic portrait of a healthcare worker in teal scrubs and
+  a surgical cap, one gloved hand reaching directly toward the viewer. To the
+  right, another pair of hands gently holds a small teddy bear sitting in a
+  red toy car — a warm, personal touch against the clinical setting. The
+  dark background makes the figures pop off the wall, and the skin and fabric
+  detail is rendered at a level that reads as a photograph from across the
+  parking lot.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://en.wikipedia.org/wiki/CASE_Maclaim"
+  - "https://en.wikipedia.org/wiki/CASE_Maclaim"
+  - "https://www.maclaim.de/"

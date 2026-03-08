@@ -1,33 +1,61 @@
-# Sarah Sheppard — 2023
+# Sara Sheppard — 2023
 
 # ── Required ──
 id: 50
-artist: Sarah Sheppard
+artist: Sara Sheppard
 year: 2023
-lat: 27.761
-lng: -82.673
+lat: 27.76661167
+lng: -82.66522167
 address: 2336 5th Ave S
 category: shine
-img: "images/murals/2023/Sarah-Shepard-20231021-150335-MAR8268.jpg"    # TODO: needs-photo
+img: "images/murals/2023/sarah-sheppard.jpeg"
 
 # ── Optional ──
-title: We Are Magic
+title: "We Are Magic"
 building: New Dawn Coffee Co
 instagram: sarah.g.sheppard
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Sarah Sheppard is an experienced painter, muralist, designer, and metalsmith
-  currently based in St. Petersburg Florida. She draws inspiration from the
-  people and places she’s met and seen all over the world. Her goal is to
-  convey a sense of beauty, romanticism, and mysticism in whichever medium she
-  happens to be working with.
+  Sara Sheppard is a painter, muralist, and metalsmith originally from
+  Dallas, Texas who spent over a decade in St. Petersburg before relocating
+  back to Texas. She grew up in an art-immersed household — her father was
+  her mother's college art teacher — and studied photography, drawing,
+  painting, graphic design, ceramics, and fabric art throughout school.
+  After moving to Florida she built a business doing Venetian plaster, faux
+  finishing, and murals for model homes and commercial clients. Her mural
+  style draws from folk art traditions, mysticism, and ornamental design
+  she's encountered traveling around the world — bold compositions on dark
+  backgrounds with gold leaf effects, celestial imagery, and symmetrical
+  designs that feel equal parts tarot card and Art Deco poster. She was
+  commissioned by AARP and the Morean Arts Center for the "Life Reimagined"
+  mural as part of the SHINE All Year program in 2017, and returned as a
+  SHINE 2023 festival artist. She also does fine jewelry and metalsmithing,
+  having trained at Creative Side Jewelry Academy in Austin — she initially
+  enrolled to finish pieces her late father had given her, and it became a
+  lasting practice. She was featured in the 2025 "We Built This City:
+  Women Artists of SHINE" exhibition at the Morean Arts Center alongside
+  15 other women muralists who shaped St. Pete's mural scene.
 
-muralDescription: ""
+muralDescription: |
+  A wide mural on a black background centered on a pair of large, detailed
+  eyes gazing out from behind an ornate golden mask-like structure. The face
+  is flanked by crescent moons, a starburst crown, and colorful tropical
+  flowers — hibiscus in pink and teal. White feathered wings spread out on
+  both sides, and elaborate gold filigree scrollwork curls outward to fill
+  the edges of the wall. The words "We are all Magic" appear in script
+  across the lower center. The overall effect is mystical and symmetrical,
+  like a gilded altar piece reimagined as street art.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Featured in 'We Built This City: Women Artists of SHINE' exhibition, Morean Arts Center (2025); AARP/SHINE All Year commission (2017)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://stpetemuraltour.com/2019/12/10/sarah-sheppard/"
+  - "https://voyagehouston.com/interview/art-life-sarah-sheppard/"
+  - "https://www.cltampa.com/arts/life-reimagined-sarah-sheppard-completes-new-mural-in-downtown-st-pete-12280945"
+  - "https://ilovetheburg.com/two-new-street-art-exhibitions-st-pete/"

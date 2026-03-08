@@ -4,30 +4,53 @@
 id: 26
 artist: George F Baker III
 year: 2024
-lat: 27.7689
-lng: -82.6396
+lat: 27.77008833
+lng: -82.64189167
 address: 620 1st Ave South
 category: shine
-img: "images/murals/2024/GeorgeFBakerIII-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+img: "images/murals/2024/george-f-baker-iii.jpeg"
 
 # ── Optional ──
-title: ""
+title: "At Your Show"
 building: "Studio@620"
 instagram: gfb3
 basedIn: "Atlanta, GA"
 
 artistBio: |
-  George F. Baker III, also known as GFB3, is a Nebraska-born, Detroit Grown,
-  and Atlanta-Raised Creator. Using his instruments of design, illustration,
-  and production, he employs a playful childlike spirit to engage the
-  inner-child we all have. With a bevy of creative curiosity, he seeks to
-  inspire people to become the person they deeply desire to be.
+  George F. Baker III (GFB3) is a Nebraska-born, Detroit-raised illustrator
+  and muralist who has called Atlanta home since his college years. He earned
+  his BFA from Georgia State University in 2015 and quickly built a reputation
+  for chunky, candy-colored characters packed with infectious energy. His
+  client list reads like a brand hall of fame — Nike, Jordan Brand, ESPN,
+  Mercedes-Benz, and Levi's among them — and he has painted more than 50
+  large-scale murals across the U.S. He gave a TEDxAtlanta talk on creativity
+  and community, earned a nomination for the World Illustration Awards, and
+  co-founded Foster, a multidisciplinary studio-collective in Atlanta where
+  he serves as Creative Director. Whether on a building or a sneaker box,
+  his work channels a playful, childlike spirit meant to remind people of
+  who they really want to be.
 
-muralDescription: ""
+muralDescription: |
+  A full-building mural on a black background packed with a joyful crowd of
+  cartoon-style characters rendered in bold pinks, teals, purples, blues, and
+  warm browns. The figures are chunky and expressive with exaggerated grins,
+  wild hair, and animated poses — dancing, laughing, taking selfies, playing
+  instruments, and celebrating. Across the top in large bubble letters with
+  teal outlines and cream fill reads "WE'RE ALL FRONT ROW AT YOUR SHOW."
+  White diamond-shaped dots scatter across the black background like confetti
+  or stars. The GFB3 tag appears in a small heart-shaped logo in the lower
+  right corner. The piece wraps around garage doors and windows, covering
+  the entire rear wall of Studio@620.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "TEDxAtlanta speaker; World Illustration Awards nominee; Co-founder & Creative Director of Foster (Atlanta)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://roughdraftatlanta.com/2023/11/01/artist-george-f-baker-iii-taps-into-memories-personal-history-at-cat-eye-creative/"
+  - "https://www.artsatl.org/today-in-street-art-2019-has-been-a-very-good-year-for-muralist-george-f-baker-iii/"
+  - "https://creativepro.com/interview-with-george-f-baker-iii-designer-and-illustrator/"
+  - "https://www.midtownatl.com/post/heart-of-the-arts-meet-muralist-george-f-baker-iii"

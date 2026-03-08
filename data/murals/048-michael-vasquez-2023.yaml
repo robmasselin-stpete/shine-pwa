@@ -4,29 +4,60 @@
 id: 48
 artist: Michael Vasquez
 year: 2023
-lat: 27.7706
-lng: -82.6624
+lat: 27.77136167
+lng: -82.66161333
 address: 2063 Central Ave
 category: shine
-img: images/murals/2023/MichaelVasquez_MRapien.jpg    # TODO: needs-photo
+img: "images/murals/2023/michael-vasquez.jpeg"
 
 # ── Optional ──
 title: The Mangrove Refuge
 building: Little Philly
 instagram: michaelvasquez_
-basedIn: St. Petersburg/Miami
+basedIn: "St. Petersburg/Miami, FL"
 
 artistBio: |
-  Michael Vasquez was born in St Petersburg, Florida in 1983. He is most
-  recognized for his figurative paintings and portraiture that explore identity
-  and the cultivation of community and belonging amidst an inherent social
-  disposition of broken homes and marginalized neighborhoods.
+  Michael Vasquez was born in St. Petersburg, Florida in 1983 to a Polish-
+  American mother and a Puerto Rican father. He grew up as an only child
+  raised by a single mom, and that experience — the search for belonging,
+  chosen family, and community among marginalized neighborhoods — runs
+  through everything he paints. He earned his BFA Cum Laude from New World
+  School of the Arts in Miami in 2005, where his professor Fredric Snitzer
+  became a career-long mentor and gallerist. Snitzer took his work to Art
+  Basel and the Armory Show early on, and by 2007 Vasquez had a solo show
+  at the Kemper Museum of Contemporary Art in Kansas City. His figurative
+  paintings depict young men in moments of camaraderie and tension —
+  tattoos, bandanas, hand gestures, posture — treating street culture with
+  the seriousness of anthropological portraiture. His work is held by the
+  Rubell Museum, Perez Art Museum Miami, MOCA North Miami, the Dean
+  Collection (Swizz Beatz and Alicia Keys), and Microsoft. He was included
+  in the Smithsonian National Portrait Gallery's "Portraiture Now: Staging
+  the Self" and "The Outwin 2019," and his painting "Chain Strangle" was
+  featured in the touring exhibition "The Culture: Hip Hop and Contemporary
+  Art" at the Baltimore Museum of Art and Schirn Kunsthalle Frankfurt. He
+  also painted a wall at Wynwood Walls for its 10th anniversary. This is
+  his second SHINE mural — his first was in 2015.
 
-muralDescription: ""
-muralInspiration: ""
+muralDescription: |
+  A large photorealistic scene depicting a group of young men hanging around
+  a beige Datsun 280Z parked at a waterfront spot with mangroves visible in
+  the background. One figure sits shirtless on the hood, another leans against
+  the car in a white t-shirt, and others stand or crouch nearby — all in
+  jeans and casual wear that evoke a timeless, late-70s or early-80s Florida
+  vibe. The painting captures a specific moment of youthful camaraderie, with
+  the car as the gathering point. The detail in the faces, clothing, and
+  vehicle is remarkably precise, and the mangrove setting grounds the scene
+  in coastal Florida.
+
+muralInspiration: "Depicts a displaced Lao family finding refuge at Gandy Beach circa 1980. The 1978 Datsun 280Z is a point of pride fusing car culture and masculinity. Clothing and style signal togetherness while solitary gazes allude to deeper personal histories."
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Solo exhibition, Kemper Museum of Contemporary Art (2007); Smithsonian National Portrait Gallery (2015, 2019); YoungArts Artist-in-Residence (2015); Vannucci Artist Residency, Italy (2018); Oolite Arts / Anderson Ranch Residency (2020)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "http://www.michaelvasquez.info/bio-new"
+  - "https://npg.si.edu/exhibit/staging/vasquez.html"
+  - "https://www.miaminewtimes.com/arts/artist-michael-vasquez-brings-humanity-to-the-underrepresented-7701431"
+  - "https://www.arts.gov/stories/blog/2016/art-talk-michael-vasquez"

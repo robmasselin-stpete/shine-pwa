@@ -1,0 +1,57 @@
+# Illsol — 2018
+
+# ── Required ──
+id: 125
+artist: Illsol
+year: 2018
+lat: 27.77000333
+lng: -82.66024667
+address: 2010 1st Ave S
+category: shine
+img: "images/murals/2018/notice-us.jpeg"
+
+# ── Optional ──
+title: "Notice Us"
+building: ""
+instagram: _illsol_
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Illsol is the collaborative duo of Tony Krol and Michelle Sawyer, a
+  husband-and-wife team based in Tampa. The name combines their surnames
+  while referencing the Spanish word for sun — a nod to Michelle's half-
+  Cuban heritage. They officially formed Illsol in 2015 to focus on large-
+  scale work. Michelle earned her BA in Fine Arts from the University of
+  South Florida in 2006 and spent five years as an arts educator before
+  completing a traditional tattoo apprenticeship. Tony comes from a stencil
+  art and wheat-pasting background and runs CLRTY Agency, a design and
+  multimedia studio. Together they founded Mergeculture Gallery in Tampa
+  Heights in 2017, representing artists in urban contemporary and graffiti
+  movements, and Heights Walls, a community mural initiative. They've been
+  commissioned by the City of Tampa for multiple public art projects
+  including Dream Pushers, Faces of West Tampa, and the Tampa Convention
+  Center. Michelle was selected for Valspar's 2025 "Be Bright" campaign
+  at the Feeding Tampa Bay building.
+
+muralDescription: |
+  A massive Florida panther portrait dominates the wall, its face rendered
+  in photorealistic detail with piercing gold-green eyes, whiskers, and
+  tawny fur blending into the surrounding abstract elements. The panther
+  looms 22 feet high over the intersection. Behind and around the big cat,
+  concentric rings in turquoise and coral create a haloed effect, while
+  scattered teal dots, monstera leaf silhouettes, and fragmented geometric
+  patterns fill the background. The palette balances the warm realism of
+  the panther against cool abstract elements in teals, corals, and greens.
+
+muralInspiration: "A plea on behalf of Florida's endangered wildlife. The Florida Panther was nearly declared extinct in the 1990s, with only 120-230 adults remaining. 'Notice Us' asks humans to recognize the impact of development on Florida's fragile ecosystem."
+muralAwards: ""
+artistAwards: "Michelle Sawyer: BA Fine Arts, University of South Florida (2006); Valspar 'Be Bright' campaign (2025). Tony Krol: Founder, Mergeculture Gallery (2017)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://voyagemia.com/interview/meet-illsol-michelle-sawyer-tony-krol-illsol-located-tampa/"
+  - "https://illsol.com/us"
+  - "https://creativepinellas.org/artist/michelle-sawyer/"
+  - "https://stpetemuraltour.com/2018/10/10/illsol/"

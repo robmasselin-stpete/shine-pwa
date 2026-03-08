@@ -1,0 +1,61 @@
+# Sara Sheppard — The Siren
+
+# ── Required ──
+id: 126
+artist: Sara Sheppard
+year: 2014
+lat: 27.764575
+lng: -82.66945
+address: 600 27th St S
+category: commercial
+img: "images/murals/commercial/the-siren.jpeg"
+
+# ── Optional ──
+title: "The Siren"
+building: Zen Glass Studio
+instagram: sarah.g.sheppard
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Sara Sheppard is a painter, muralist, and metalsmith originally from
+  Dallas, Texas who spent over a decade in St. Petersburg before relocating
+  back to Texas. She grew up in an art-immersed household — her father was
+  her mother's college art teacher — and studied photography, drawing,
+  painting, graphic design, ceramics, and fabric art throughout school.
+  After moving to Florida she built a business doing Venetian plaster, faux
+  finishing, and murals for model homes and commercial clients. Her mural
+  style draws from folk art traditions, mysticism, and ornamental design
+  she's encountered traveling around the world — bold compositions on dark
+  backgrounds with gold leaf effects, celestial imagery, and symmetrical
+  designs that feel equal parts tarot card and Art Deco poster. She was
+  commissioned by AARP and the Morean Arts Center for the "Life Reimagined"
+  mural as part of the SHINE All Year program in 2017, and returned as a
+  SHINE 2023 festival artist. She also does fine jewelry and metalsmithing,
+  having trained at Creative Side Jewelry Academy in Austin — she initially
+  enrolled to finish pieces her late father had given her, and it became a
+  lasting practice. She was featured in the 2025 "We Built This City:
+  Women Artists of SHINE" exhibition at the Morean Arts Center alongside
+  15 other women muralists who shaped St. Pete's mural scene.
+
+muralDescription: |
+  A nautical-themed piece centered on a golden porthole frame containing a
+  mermaid/siren figure with flowing dark hair and pale skin, entwined with
+  bright red octopus tentacles that curl through and around the circular
+  frame. The porthole is set within an elaborate compass rose or ship's
+  wheel pattern in gold, teal, and white, with geometric Art Deco-style
+  rays radiating outward. The background alternates between teal triangles
+  and white cross-hatched sections. The title "THE SIREN" appears in gold
+  lettering on a dark plaque at the bottom center. The composition has a
+  strong symmetrical, heraldic quality.
+
+muralInspiration: "Commissioned by Josh of Zen Glass Studio, who gave Sheppard free reign. The octopus and mermaid reflect his glassblowing subjects. The tentacle inside the circle creates a yin-yang incorporating the 'zen' aspect, while the compass poses a question about temptation and direction."
+muralAwards: ""
+artistAwards: "Featured in 'We Built This City: Women Artists of SHINE' exhibition, Morean Arts Center (2025); AARP/SHINE All Year commission (2017)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.cltampa.com/arts/8-murals-that-make-us-heart-the-burg-12287690"
+  - "https://stpetemuraltour.com/2019/12/10/sarah-sheppard/"
+  - "https://voyagehouston.com/interview/art-life-sarah-sheppard/"

@@ -4,33 +4,54 @@
 id: 71
 artist: The Happy Mural Project
 year: 2022
-lat: 27.7706
-lng: -82.6677
+lat: 27.77132167
+lng: -82.67402
 address: 3001 Central Ave.
 category: shine
-img: "images/murals/2022/Happy-Mural_Project-SHINE-Day-5.jpg"
+img: "images/murals/2022/the-happy-mural-project.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Wild Ride"
 building: St. Petersbark
 instagram: alyssa.marie.of.the.sea
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  St. Petersburg-based artist, Alyssa Marie has been playing in the realms of
-  impressionistic style fine art and large scale murals for commercial and
-  residential clients around the globe since 2017. Having spent her first 27
-  years of life in the Rocky Mountains of Colorado and now residing in a
-  tropical paradise surrounded by water, Alyssa derives inspiration from the
-  natural world for much of her work and pushes the realms of realism by
-  playfully altering what is expected of traditional wildlife and nature scenes
-  through her art.
+  The Happy Mural Project is a collaborative mural initiative founded and
+  directed by Alyssa Marie Everly, a St. Pete-based artist who grew up in
+  the Rocky Mountains of Colorado. She earned her BFA from Metropolitan
+  State University of Denver before relocating to Florida. Alyssa designs
+  the murals and organizes groups of artists to help execute them — the
+  project brings together various painters to collaborate on large-scale
+  public works. Her designs specialize in nature and wildlife subjects,
+  taking realistic animal forms and setting them against stylized, slightly
+  impressionistic backgrounds. She's been leading mural projects
+  professionally since 2017 and has done work for clients across the U.S.
+  and internationally. She was commissioned by the Florida Wildlife Corridor
+  Foundation for a mural celebrating the state's ecological connectivity
+  efforts. In St. Pete the project has become a go-to for Florida wildlife
+  subjects — manatees, gators, birds, and marine life on walls around the
+  city. The Happy Mural Project is a three-time SHINE participant, having
+  painted walls for the festival in 2020, 2022, and 2023.
 
-muralDescription: ""
+muralDescription: |
+  A full-wall painting of an American alligator in profile, stretching from
+  snout to tail across the entire building. The gator is rendered in rich
+  browns, tans, and dark chocolate with detailed scale texturing throughout.
+  Behind it, oversized golden sunflowers on green stems fill the background
+  against a teal sky. The composition makes the gator feel massive — its
+  head alone takes up about a third of the wall. The color contrast between
+  the warm gator tones and the cool teal background gives it a Florida
+  postcard quality.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Florida Wildlife Corridor Foundation mural commission; 3x SHINE Festival artist (2020, 2022, 2023)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.thehappymuralproject.com/"
+  - "https://www.thehappymuralproject.com/"
+  - "https://floridawildlifecorridor.org/"

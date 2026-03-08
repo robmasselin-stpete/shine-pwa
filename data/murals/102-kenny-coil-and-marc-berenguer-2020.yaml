@@ -4,11 +4,11 @@
 id: 102
 artist: Kenny Coil and Marc Berenguer
 year: 2020
-lat: 27.7693
-lng: -82.6368
+lat: 27.76005333
+lng: -82.637055
 address: 1000 3rd St S
 category: shine
-img: images/murals/2020/2020_SHINE_Mural_Festival_Kenny_Coil_and_Marc_Berenguer.jpg
+img: "images/murals/2020/kenny-coil-and-marc-berenguer.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,18 +17,36 @@ instagram: kennycoil
 basedIn: "St. Petersburg, Florida"
 
 artistBio: |
-  Kenny Coil is Break Maiden’s Tampa bred creative powerhouse. Working with
-  local and national brands from every consumer category, he continues to
-  immerse himself in the creative field. Marc Berenguer is Break Maiden’s Head
-  Honcho #2. He helps lead brand creation, art direction and language
-  translation. Before taking the US by storm in 2009, Marc lived in Barcelona
-  where he developed a love for typography and minimal design.
+  Kenny Coil and Marc Berenguer are the creative duo behind Break Maiden,
+  a Tampa-based design studio that works across branding, illustration,
+  and large-scale murals. Coil grew up in the Tampa Bay area and brings a
+  bold, graphic sensibility to their projects, while Berenguer moved from
+  Barcelona to the U.S. in 2009, bringing a European eye for typography
+  and minimal composition.
 
-muralDescription: ""
+  Together they have worked with brands across every consumer category and
+  built a reputation for clean, flat illustration styles with strong color
+  palettes. Their SHINE 2020 mural at USFSP Harbor Hall transforms the
+  building into a bright, mid-century-flavored celebration of Florida
+  coastal life — herons, fish, mangroves, and downtown buildings rendered
+  in cheerful geometric shapes.
+
+muralDescription: |
+  A full-building mural in a flat, graphic illustration style depicting
+  Florida nature and neighborhood life. The composition is divided into
+  loose grid-like sections filled with stylized herons, egrets, pelicans,
+  tropical fish, palm trees, mangroves, and colorful downtown buildings in
+  teal, pink, yellow, orange, and sage green. The shapes are rounded and
+  geometric with a mid-century modern feel — puffy trees with scalloped
+  edges, simplified houses with bright facades, and birds rendered as
+  elegant silhouettes. A large white egret dominates the lower right. The
+  overall palette is warm and coastal, giving the building a cheerful,
+  welcoming presence.
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"

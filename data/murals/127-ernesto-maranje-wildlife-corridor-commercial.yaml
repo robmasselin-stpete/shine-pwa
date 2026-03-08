@@ -1,0 +1,63 @@
+# Ernesto Maranje — Florida Wildlife Corridor
+
+# ── Required ──
+id: 127
+artist: Ernesto Maranje
+year: 0
+lat: 27.76391667
+lng: -82.66803
+address: 2606 Fairfield Ave S
+category: commercial
+img: "images/murals/commercial/ernesto-maranje-wildlife-corridor.jpeg"
+
+# ── Optional ──
+title: ""
+building: Florida Wildlife Corridor Foundation HQ
+instagram: ernestomaranje
+basedIn: "Miami, FL"
+
+artistBio: |
+  Ernesto Maranje is a Cuban-American artist born in Chicago in 1983 and
+  raised in Miami's Hialeah neighborhood. He served seven years in the U.S.
+  Coast Guard and discovered painting at 27 during his service — a knee
+  injury kept him off boats during his last year, and he started by painting
+  a California flag on a mechanic's shop window. He's entirely self-taught.
+  By 2015 he'd painted his first large-scale mural in Little Havana and his
+  career took off. His style builds detailed, nature-immersive compositions
+  where animals emerge from lush organic backgrounds of flowers, foliage,
+  and painterly brushstrokes. He was selected to paint at Wynwood Walls for
+  its prestigious 10-year anniversary in 2019, where he painted "Sentries."
+  He's done commissions for Johnnie Walker (the Blue Label Miami Edition
+  bottle design), Disney Springs, Starbucks, Chase, and Chewy. His
+  international work includes murals in Beirut, Lebanon; Sulaymaniyah, Iraq
+  (with aptART for UNHCR/World Refugee Day); a refugee camp in Athens;
+  and three walls in Kyiv, Ukraine. He's also painted at Beyond Walls in
+  Lynn, Massachusetts. His environmental work includes murals for PangeaSeed
+  Sea Walls, Florida Atlantic University, and this Florida Wildlife Corridor
+  Foundation headquarters piece.
+
+muralDescription: |
+  A richly detailed nature scene on the facade of the Florida Wildlife
+  Corridor Foundation headquarters at The Factory. A great blue heron
+  dominates the center, wings spread mid-stride, rendered in naturalistic
+  grays, blues, and whites with remarkable feather detail. A Florida black
+  bear peers from the left side among lush green foliage. A swallowtail
+  kite swoops through the upper portion while the lower background suggests
+  dark water and vegetation. The palette is moody and atmospheric — deep
+  blues, greens, and stormy grays — giving it a more serious, conservation-
+  minded tone than typical mural work. All the animals face the same
+  direction, symbolizing the corridor concept of wildlife movement and
+  connectivity.
+
+muralInspiration: "Commissioned by the Florida Wildlife Corridor Foundation for their headquarters. All animals are depicted moving in the same direction, symbolizing the need for wildlife movement and ecological connectivity across Florida."
+muralAwards: ""
+artistAwards: "Wynwood Walls 10-year anniversary (2019); Johnnie Walker Blue Label Miami Edition bottle design; Disney Springs Art Walk commission"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.maranje.com/projects/florida-wildlife-corridor"
+  - "https://floridawildlifecorridor.org/corridor-foundation-hq-mural/"
+  - "https://www.maranje.com/about"
+  - "https://thewynwoodwalls.com/artists/ernesto-maranje/"

@@ -1,0 +1,64 @@
+# DAAS — 2018
+
+# ── Required ──
+id: 123
+artist: DAAS
+year: 2018
+lat: 27.76928
+lng: -82.66040833
+address: 128 20th St S
+category: shine
+img: "images/murals/2018/daas.jpeg"
+
+# ── Optional ──
+title: "We Are Going to Be Friends"
+building: Tri-J Towing
+instagram: daas
+basedIn: "Austin, TX"
+
+artistBio: |
+  DAAS is a muralist and painter whose legal name is simply DAAS — not an
+  acronym or alias. He grew up in Jacksonville and St. Petersburg, Florida,
+  and earned an A.A.S. in Graphic Design from Pinellas Technical College in
+  Clearwater. Early in his career he worked as an assistant to an established
+  muralist in Daytona Beach for nearly six years, learning materials, styles,
+  and large-scale application techniques. In 2007 he moved to Osaka, Japan,
+  initially contracted as an artist and performer for Universal Studios Japan.
+  Living in Japan for roughly a decade had a profound effect on his style —
+  exposure to origami and the precision-based mentality of Japanese craftsmen
+  led him to develop his signature geometric faceted technique, which layers
+  angular shapes like a cubist stained glass window to build up recognizable
+  forms from flat color planes. After leaving Japan he settled in Austin,
+  Texas. He's painted walls internationally across the U.S., Japan, China,
+  Italy, Portugal, Jordan, Nepal, and the Dominican Republic. Notable
+  commissions include a 60-foot mural for the Moody Center in Austin, the
+  Van Cliburn Foundation's first-ever commissioned mural ("Chromesthesia")
+  in Fort Worth, two 144-foot tunnel murals at Salt Lake City International
+  Airport, and a series of murals in rural Chinese schools for Nippon Paint's
+  "Color, Way of Love" project. His work has been featured in The New York
+  Times, BBC, and Spoon & Tamago.
+
+muralDescription: |
+  A full building-side mural depicting a group of rabbits rendered in DAAS's
+  signature geometric faceted style. The bunnies are built from interlocking
+  angular planes of soft grays, whites, lavenders, and pale blues, giving
+  them a fractured, cubist look while remaining clearly recognizable. They
+  sit in green grass along the base of the wall. The background is a
+  patchwork of large triangles in warm tones — golds, olive greens, corals,
+  and tans — creating a quilt-like geometric pattern behind the animals.
+  The DAAS tag appears in blocky letters in the upper right corner. The
+  piece covers the entire side of the Tri-J Towing building on 20th St.
+
+muralInspiration: "Fourth in an ongoing narrative series featuring a young girl interacting with nature and animals. The previous three murals in the series were painted in Italy and China. The title references the White Stripes song. Completed in 7 days using only spray paint."
+muralAwards: ""
+artistAwards: "Van Cliburn Foundation first-ever mural commission (2022); Salt Lake City International Airport commission (2020); Nippon Paint 'Color, Way of Love' international project (2017–2018)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.artist-daas.com/"
+  - "https://stpetecatalyst.com/shine-up-close-mural-artist-daas/"
+  - "https://www.artist-daas.com/"
+  - "https://canvasrebel.com/meet-daas/"
+  - "https://cliburn.org/mural/"

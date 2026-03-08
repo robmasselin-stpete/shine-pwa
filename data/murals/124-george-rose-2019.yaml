@@ -1,0 +1,57 @@
+# George Rose — 2019
+
+# ── Required ──
+id: 124
+artist: George Rose
+year: 2019
+lat: 27.76297
+lng: -82.65384667
+address: 601 14th St S
+category: shine
+img: "images/murals/2019/george-rose.jpeg"
+
+# ── Optional ──
+title: ""
+building: Campbell Park Handball Courts
+instagram: george_rose
+basedIn: "Melbourne, Australia"
+
+artistBio: |
+  George Rose is a Melbourne-based Australian muralist who shifted to
+  painting walls full-time in 2015 and quickly became one of Australia's
+  foremost female muralists. She studied graphic design at the University
+  of Canberra and fine art at ANU School of Art, and that intersection of
+  design and art defines her approach — large-scale botanical and floral
+  imagery rendered with bold illustrative outlines and signature spray-
+  painted gradient fades in bright, surreal colors. She researches each
+  mural location to find endangered or endemic flora and fauna, creating
+  a link between the artwork and the area's ecology. She's painted walls
+  across Australia, the U.S., Asia, and Europe — festivals include Bright
+  Walls (Michigan), Sea Walls (St. Thomas), Darwin Street Art Festival,
+  Wall to Wall, Brisbane Street Art Festival, Roskilde (Denmark), and
+  KAABOO. Commercial clients include Disney, Instagram, TikTok, and
+  Jansport. She's won multiple Resene Total Colour Awards and took the
+  "Best Mural" title at the 2019 Street Art Australia Prize.
+
+muralDescription: |
+  A sprawling botanical mural covering all eight walls of two back-to-back
+  handball courts at Campbell Park. Large curved bell-shaped flowers big
+  enough to climb into sit alongside massive fringed petals and tall
+  striated leaves stretching floor to ceiling. The color palette transitions
+  from golden orange at the top through pink in the middle to electric blue
+  at the base, all outlined in smoky blue linework. Half the flowers are
+  Florida natives and half are Australian natives, connecting Rose's home
+  country with the mural's location.
+
+muralInspiration: "Half the flowers are Florida natives and half are native to Australia, connecting the artist's home country with St. Pete. Painted solo in 8 days on 8 walls using only buckets, brushes, and a paint sprayer."
+muralAwards: ""
+artistAwards: "Street Art Australia Prize, Best Mural (2019); Multiple Resene Total Colour Awards (2020, 2023)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.georgerose.com.au/about"
+  - "https://www.visitstpeteclearwater.com/profile/shine-2019-mural-george-rose-campbell-park/140785"
+  - "https://coveteur.com/muralist-george-rose-interview"
+  - "https://www.ba-reps.com/mural-art/george-rose"

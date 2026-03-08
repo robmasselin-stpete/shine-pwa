@@ -4,11 +4,11 @@
 id: 32
 artist: "Up & Over"
 year: 2024
-lat: 27.7608
-lng: -82.6668
+lat: 27.76938333
+lng: -82.65769167
 address: 201 17th Street South
 category: shine
-img: "images/murals/2024/UpandOver-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+img: "images/murals/2024/up-and-over.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,17 +17,45 @@ instagram: upandovermurals
 basedIn: "Tampa Bay, FL"
 
 artistBio: |
-  Founder of the SHINE Mural Festival, Leon “Tes One” Bedore, is known for his
-  signature blend of traditional art and graphic design. The Vitale Bros. are
-  St. Petersburg’s most prolific muralists, transforming public spaces for more
-  than 30 years. This powerful design collaboration of Tes One & Vitale Bros.
-  paint under the moniker Up&Over.
+  Up & Over is the collaboration between Leon "Tes One" Bedore and the Vitale
+  Bros, formed around 2020. Tes One has been painting in St. Pete since 1992,
+  starting as a graffiti writer before building a career that blends
+  traditional art with graphic design for clients like Nike, L'Oreal, Absolut
+  Vodka, and Architectural Digest. In 2012 he curated the "Leave a Message"
+  show at the Morean Arts Center, which planted the seed for what became the
+  SHINE Mural Festival in 2015 — he co-founded and co-curated the inaugural
+  festival that brought 17 murals to downtown and has since produced nearly
+  170. He had a full career retrospective at the Morean in 2022 and was
+  featured in the Dali Museum's "Outside In" exhibition in 2025. The Vitale
+  Bros — Johnny, Paul, and Joey Vitale — have been painting together since
+  1992, starting with hand-lettered signs and storefront windows. Their
+  warehouse studio hosted legendary art and music shows in the late '90s
+  that helped build St. Pete's arts scene before it boomed. Together as Up
+  & Over, they've painted murals for the Tampa Bay Buccaneers, Duke Energy,
+  and First Citrus Bank. This SHINE 2024 piece marks a full-circle moment:
+  the festival's founder painting alongside the city's most prolific
+  muralists for the 10th anniversary.
 
-muralDescription: ""
+muralDescription: |
+  A towering abstract geometric mural spanning the full height of the Modera
+  apartment building — roughly five stories. Bold, interlocking organic shapes
+  in saturated primary and secondary colors — red, teal, orange, yellow, deep
+  blue, maroon, and white — overlap and flow across the facade. The forms are
+  rounded and architectural, somewhere between hard-edge abstraction and
+  biomorphic design, with circles nested inside flowing vertical bands. The
+  color relationships are carefully balanced, creating a sense of depth and
+  movement. The scale dominates the block and is visible from several streets
+  away.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Tes One: SHINE Mural Festival co-founder (2015); Morean Arts Center retrospective (2022); Dali Museum 'Outside In' (2025); Vitale Bros: 4x SHINE artists; Spring Breakers set design"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://tesone.com/about/"
+  - "https://vitalebrothers.com/about/"
+  - "https://stpetecatalyst.com/signed-sealed-delivered-talking-with-artist-tes-one/"
+  - "https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/"

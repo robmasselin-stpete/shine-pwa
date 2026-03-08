@@ -4,11 +4,11 @@
 id: 92
 artist: Ricky Watts
 year: 2021
-lat: 27.7504
-lng: -82.6636
+lat: 27.76459667
+lng: -82.66943333
 address: 2622 Fairfield Ave. S.
 category: shine
-img: "images/murals/2021/ricky-watts.jpg"
+img: "images/murals/2021/ricky-watts.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,19 +17,44 @@ instagram: rickywatts
 basedIn: "San Francisco, CA"
 
 artistBio: |
-  Born 1980 in San Francisco, CA, Richard "Ricky" Watts is most notably
-  recognized for his abstract works of fluid shapes and psychedelic color
-  patterns. Watts’ self-taught techniques derive from his younger graffiti
-  years in Northern California. A versatile artist with range across multiple
-  mediums, Ricky’s large-scale murals and intricate paintings on canvas can be
-  found throughout the US. His commissions list includes work for well-known
-  technology, fashion and automotive companies.
+  Ricky Watts (Richard Watts) was born in 1980 in San Francisco. He started
+  spray-painting at 13, published a Northern California graffiti zine called
+  HelmetHeds for eight years, and taught himself fine art technique through
+  decades of aerosol work — he briefly attended the Art Institute of
+  California in San Diego for graphic design but left after two years to
+  pursue painting. His signature style builds massive flowing organic shapes
+  in saturated psychedelic color gradients, somewhere between liquid ribbons
+  and biomorphic abstraction. He was selected as a Google Artist in Residence
+  in 2021, painting a 10-wall lobby installation at Building 42 in Mountain
+  View. He's done commissions for Louis Vuitton, YouTube, Mercedes-Benz,
+  and IBM, and his illustration appeared on the 40-foot main stage at
+  Outside Lands music festival. His 2013 mural on the Phoenix Theater in
+  Petaluma was five stories tall, Kickstarter-funded, and remained the
+  largest mural in Sonoma County for years. He's painted at POW! WOW!
+  Hawaii (collaborating with James Bullough), POW! WOW! San Jose, and Wide
+  Open Walls Sacramento. He currently lives in Sebastopol in Northern
+  California. This SHINE 2021 piece was his 12th mural of the year.
 
-muralDescription: ""
+muralDescription: |
+  A massive abstract mural wrapping around The Factory St. Pete building.
+  Enormous organic, fluid shapes in bold saturated colors — orange, teal,
+  yellow, deep blue, green, and coral — flow and overlap across the facade
+  like giant brushstrokes frozen mid-motion. The forms are rounded and bulbous,
+  somewhere between liquid ribbons and inflated tubes, creating a sense of
+  constant movement. Palm trees in front of the building interact with the
+  composition. The "Ricky Watts" signature and address "2622 Fairfield Ave S"
+  are visible on the right side. The scale is impressive — the flowing shapes
+  span two stories.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Google Artist in Residence (2021); Commissions for Louis Vuitton, YouTube, Mercedes-Benz, IBM; Outside Lands main stage illustration"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://watts.art/pages/about"
+  - "https://www.sprayplanet.com/blogs/news/spray-planet-artist-feature-ricky-watts"
+  - "https://submergemag.com/art/ricky-watts/"
+  - "https://www.juxtapoz.com/news/pardees-picks-the-works-of-ricky-watts/"

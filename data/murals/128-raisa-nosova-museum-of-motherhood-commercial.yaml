@@ -1,0 +1,59 @@
+# Raisa Nosova — Museum of Motherhood
+
+# ── Required ──
+id: 128
+artist: Raisa Nosova
+year: 2025
+lat: 27.76383833
+lng: -82.66821333
+address: 2606 Fairfield Ave S
+category: commercial
+img: "images/murals/commercial/raisa-nosova-museum-of-motherhood.jpeg"
+
+# ── Optional ──
+title: "Woman of Light"
+building: Museum of Motherhood (The Factory)
+instagram: raisanosova
+basedIn: "Hoboken, NJ"
+
+artistBio: |
+  Raisa Nosova is a Russian-born multidisciplinary artist working in painting,
+  murals, blown glass sculpture, drawing, animation, and performance art. She
+  earned her MFA from NYU Steinhardt and her BFA from the Fashion Institute
+  of Technology, and studied blown glass at Urban Glass in Brooklyn. She also
+  attended Vesalius College in Brussels and the Art Students League of New
+  York. Her experience of becoming a mother during her MFA profoundly shifted
+  her practice toward themes of motherhood, trauma, resilience, displacement,
+  and the invisible labor of caregiving — she was two months pregnant when
+  Russia bombed Kyiv, and with close family in Ukraine, that event also shaped
+  her work. She's best known for blown glass breast sculptures exploring
+  postpartum experience, and her anti-war mural "Uprooted" on a Ukrainian-
+  owned gas station in Jersey City. She's exhibited at Theodore Art Gallery
+  in Manhattan, La Galerie Emeric Hahn in Paris, and Mana Contemporary in
+  Jersey City, and has held residencies at the Berlin Art Institute and the
+  Ramona Residency in Houston (the first artist-mother residency in Texas).
+  She has over 15 years of teaching experience, including adjunct
+  professorships at NYU and FIT.
+
+muralDescription: |
+  A dynamic, warm-toned mural on the facade of the Museum of Motherhood at
+  The Factory. A female figure is depicted in a crouching or seated position,
+  rendered in expressive brushwork in reds, golds, pinks, and deep magentas.
+  Radiating golden light beams and architectural fragments burst outward from
+  behind the figure, creating a sense of energy and movement. The composition
+  has a stained-glass quality with bold color blocks and strong outlines. The
+  "MoM" (Museum of Motherhood) text is visible in the upper left. The piece
+  wraps around the building entrance, framing the doorway.
+
+muralInspiration: "Painted for the Museum of Motherhood after Nosova met the founder and felt both the urge and responsibility to contribute to raising awareness for the museum, the vital institution in a society that so often feels isolating for mothers."
+muralAwards: ""
+artistAwards: "MFA, NYU Steinhardt; George T. Dorsch Art History Grant; Fannie Kipnes Memorial Award for Oil Painting; Brussels Capital Film Festival Award for Short Film; Ramona Residency, Houston (2025-2026)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.raisanosova.com/about"
+  - "https://mommuseum.org/2025/04/11/mural-at-mom-living-in-light-ongoing-art-auction-live/"
+  - "https://stpetecatalyst.com/w/raisa-nosova-paints-the-town/"
+  - "https://canvasrebel.com/meet-raisa-nosova/"

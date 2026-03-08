@@ -4,28 +4,51 @@
 id: 38
 artist: Bunnie Reiss
 year: 2023
-lat: 27.7706
-lng: -82.686
+lat: 27.77075333
+lng: -82.67048667
 address: 2700 Central Ave
 category: shine
-img: "images/murals/2023/Bunnie-Reiss-20231019-181936-MAR7181.jpg"    # TODO: needs-photo
+img: "images/murals/2023/bunnie-reiss.jpeg"
 
 # ── Optional ──
 title: "Phoebe & Friends"
 building: MTBH Studios
 instagram: bunnieluvrocks
-basedIn: California
+basedIn: "Landers, CA"
 
 artistBio: |
-  Bunnie Reiss is a tiny rebel with a large imagination and knew at an early
-  age she would build things much larger than herself. Her brightly colored
-  folk murals decorate many countries and can be found all over the world.
+  Bunnie Reiss is a muralist based near Joshua Tree, California who paints
+  massive folk-art walls full of animals, flowers, and dense patterning. She
+  grew up in a Polish/Russian family in Colorado, studied literature there,
+  and worked for NPR before earning her MFA from the San Francisco Art
+  Institute. She spent 20+ years in the Bay Area before relocating to a
+  5-acre art farm called Lilac Lane Farms in the Mojave Desert town of
+  Landers. Her style draws from Eastern European folk traditions, Mexican
+  folk art, Russian fairy tales, and Jewish mysticism — all filtered through
+  a maximalist color palette. She's painted walls in over 20 countries and
+  has had solo shows at Superchief Gallery LA and exhibitions at Paradigm
+  Gallery in Philadelphia, La Luz de Jesus, and Luna Rienne in San Francisco.
+  She also built "The Sky Rabbit's House," a giant rabbit sculpture on a
+  street-legal truck chassis. Her work has been featured in Juxtapoz,
+  Colossal, Vice, and Hi-Fructose.
 
-muralDescription: ""
+muralDescription: |
+  Three elaborately patterned pink flamingos stride across the wall on long
+  dark legs, each bird filled with intricate floral and geometric details in
+  shades of pink, coral, and lavender. They step over a blue-violet rainbow
+  arch with rolling green hills beneath. Golden flower clusters bloom on the
+  right side against a bright teal sky dotted with small clouds and birds.
+  The piece covers the entire side of the building.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "MFA, San Francisco Art Institute; Artist in Residence, St. Vincent De Paul (Oakland)"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://voyagela.com/interview/rising-stars-meet-bunnie-reiss/"
+  - "https://www.thisiscolossal.com/2023/10/bunnie-reiss-cosmic-creatures/"
+  - "https://voyagela.com/interview/rising-stars-meet-bunnie-reiss/"
+  - "https://www.palmspringslife.com/bunnie-reiss/"

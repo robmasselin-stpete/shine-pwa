@@ -7,7 +7,7 @@
  *   - All UI state lives in the `state` object (line ~20)
  *   - State changes trigger explicit render calls (no reactivity)
  *   - All HTML is rendered via template literals into container divs
- *   - Three tabs: Explore (card grid), Map (Leaflet), Routes (walking tours)
+ *   - Three tabs: Explore (card grid), Map (Leaflet), Tours (loop tours)
  *   - Detail page is a fixed overlay that can appear on top of any tab
  *
  * Data:
@@ -45,6 +45,14 @@ const state = {
   directionsMarker: null,  // destination marker
   directionsProfile: 'foot', // 'foot' or 'car'
   directionsMural: null,   // target mural object
+  // Tour loop state
+  activeTour: null,        // current ROUTE_DEF or null
+  tourStops: [],           // ordered mural array for active tour
+  tourIndex: 0,            // index of first upcoming stop (below the map)
+  tourMapReady: false,
+  tourRoute: null,         // L.polyline on tour map
+  tourMarkers: [],         // L.marker array on tour map
+  tourFetching: false,
 };
 
 // Year buckets for category filtering — update these when adding new festival years
@@ -60,7 +68,7 @@ const $$ = (sel) => document.querySelectorAll(sel);
 const views = {
   explore: $('#view-explore'),
   map: $('#view-map'),
-  routes: $('#view-routes'),
+  tours: $('#view-tours'),
 };
 
 const detailPage = $('#detail-page');
@@ -89,9 +97,10 @@ function switchTab(tab) {
   detailPage.hidden = true;
 
   if (tab !== 'map') clearDirections();
+  if (tab !== 'tours' && state.activeTour) closeTour();
   if (tab === 'explore') renderExplore();
   if (tab === 'map') initMap();
-  if (tab === 'routes') renderRoutes();
+  if (tab === 'tours') renderTourList();
 }
 
 // =============================================
@@ -257,6 +266,7 @@ function renderExplore() {
 // Map view
 // =============================================
 let leafletMap = null;
+let tourMap = null; // Second Leaflet instance for tour loop view
 const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each mural
 
 // At this zoom level and above, markers switch from colored dots to thumbnail images
@@ -475,26 +485,22 @@ function updateMapMarkers() {
 }
 
 // =============================================
-// Routes view
+// Tours (Loop Tours — replaces Routes)
 // =============================================
 /**
  * Get murals for a route, ordered by nearest-neighbor walk.
  * Starts from the mural closest to the group centroid, then greedily
  * picks the nearest unvisited mural. Not optimal TSP, but good enough.
- * @param {Function} filterFn - Predicate to select which murals are in this route
- * @returns {Array} Ordered mural objects
  */
 function getRouteMurals(filterFn) {
   const list = murals.filter(m => m.lat && m.lng && filterFn(m));
   if (list.length < 2) return list;
 
-  // Nearest-neighbor walk order from most central mural
   const avgLat = list.reduce((s, m) => s + m.lat, 0) / list.length;
   const avgLng = list.reduce((s, m) => s + m.lng, 0) / list.length;
   const sorted = [];
   const remaining = [...list];
 
-  // Start from mural closest to center
   remaining.sort((a, b) => haversine(avgLat, avgLng, a.lat, a.lng) - haversine(avgLat, avgLng, b.lat, b.lng));
   sorted.push(remaining.shift());
 
@@ -515,10 +521,7 @@ function calcRouteTotalDist(orderedMurals) {
   return total;
 }
 
-// Pre-defined walking routes.
-// Two types:
-//   - Curated: `ids` array specifies exact mural IDs in walk order
-//   - Auto: `filter` function selects murals, nearest-neighbor computes order
+// Tour definitions (same structure as old ROUTE_DEFS)
 const ROUTE_DEFS = [
   { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'All 2025 murals plus classics along the way',
     ids: [17, 6, 107, 116, 1, 109, 110, 7, 9, 5, 16, 12, 2, 3, 8, 10, 13, 15, 19] },
@@ -526,10 +529,6 @@ const ROUTE_DEFS = [
   { id: 'downtown', name: 'Downtown Highlights', desc: 'Best murals within walking distance', filter: m => m.cat !== 'commercial' && haversine(27.7706, -82.6400, m.lat, m.lng) < 2000 },
 ];
 
-/**
- * Get the ordered mural list for a route definition.
- * Curated routes (ids array) use exact order; filter routes use nearest-neighbor.
- */
 function getRouteOrdered(def) {
   if (def.ids) {
     return def.ids.map(id => murals.find(m => m.id === id)).filter(m => m && m.lat && m.lng);
@@ -537,13 +536,52 @@ function getRouteOrdered(def) {
   return getRouteMurals(def.filter);
 }
 
-/** Render the Routes tab — list of route cards with stats (stop count, distance, walk time). */
-function renderRoutes() {
+/** Modular wrap for continuous loop indexing. */
+function wrapIndex(i, len) {
+  return ((i % len) + len) % len;
+}
+
+/** Find tour stop closest to user's GPS. Returns index or 0. */
+function findNearestTourStop(stops) {
+  if (!state.userLat || !state.userLng || stops.length === 0) return 0;
+  let best = 0;
+  let bestDist = Infinity;
+  stops.forEach((m, i) => {
+    const d = haversine(state.userLat, state.userLng, m.lat, m.lng);
+    if (d < bestDist) { bestDist = d; best = i; }
+  });
+  return best;
+}
+
+/** Build HTML for one tour stop card. type: 'active' (prominent) or 'faded' (grayed). */
+function buildTourCard(mural, num, type) {
+  const cls = type === 'faded' ? ' faded' : '';
+  return `
+    <div class="tour-stop-card${cls}" data-id="${mural.id}">
+      <img class="tour-stop-img" src="${mural.img || ''}" alt="${mural.a}" loading="lazy" onerror="this.style.background='#ddd'">
+      <div class="tour-stop-body">
+        <div class="tour-stop-num">${num}</div>
+        <div class="tour-stop-text">
+          <div class="tour-stop-artist">${mural.a}</div>
+          <div class="tour-stop-loc">${mural.bldg || mural.loc || ''}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/** Render the tour list screen (replaces renderRoutes). */
+function renderTourList() {
+  if (state.activeTour) {
+    renderTourLoop();
+    return;
+  }
+
   const routeCards = ROUTE_DEFS.map(def => {
     const ordered = getRouteOrdered(def);
     if (ordered.length === 0) return '';
     const totalDist = calcRouteTotalDist(ordered);
-    const walkMins = Math.round(totalDist / 80); // ~80m/min walking
+    const walkMins = Math.round(totalDist / 80);
     const thumb = ordered[0]?.img || '';
     return `
       <div class="route-card" data-route="${def.id}">
@@ -558,70 +596,315 @@ function renderRoutes() {
   }).filter(Boolean);
 
   if (routeCards.length === 0) {
-    views.routes.innerHTML = `
+    views.tours.innerHTML = `
       <div class="empty-state">
         <div class="empty-state-icon">🗺</div>
-        <div class="empty-state-text">No routes available yet.</div>
+        <div class="empty-state-text">No tours available yet.</div>
       </div>`;
     return;
   }
 
-  views.routes.innerHTML = `
-    <div class="routes-header">Walking Routes</div>
+  views.tours.innerHTML = `
+    <div class="routes-header">Loop Tours</div>
     <div class="routes-list">${routeCards.join('')}</div>
   `;
 
-  views.routes.querySelectorAll('.route-card').forEach(card => {
+  views.tours.querySelectorAll('.route-card').forEach(card => {
     card.addEventListener('click', () => {
       const def = ROUTE_DEFS.find(r => r.id === card.dataset.route);
-      if (def) openRoute(def);
+      if (def) openTour(def);
     });
   });
 }
 
-/** Open route detail overlay — numbered stop list with distances and a Google Maps deep link. */
-function openRoute(def) {
-  const ordered = getRouteOrdered(def);
-  if (ordered.length === 0) return;
+/** Open a tour — set state, find start index, render loop view. */
+function openTour(def) {
+  const stops = getRouteOrdered(def);
+  if (stops.length === 0) return;
 
-  const totalDist = calcRouteTotalDist(ordered);
-  const walkMins = Math.round(totalDist / 80);
+  state.activeTour = def;
+  state.tourStops = stops;
+  state.tourIndex = findNearestTourStop(stops);
+  state.tourMapReady = false;
+  state.tourRoute = null;
+  state.tourMarkers = [];
+  state.tourFetching = false;
 
-  detailPage.hidden = false;
-  detailContent.innerHTML = `
-    <div class="route-detail-header">
-      <div class="route-detail-name">${def.name}</div>
-      <div class="route-detail-stats">${ordered.length} stops · ${formatDistance(totalDist)} · ~${walkMins} min walk</div>
+  renderTourLoop();
+}
+
+/** Destroy tour mini-map, reset state, show list. */
+function closeTour() {
+  if (tourMap) {
+    tourMap.remove();
+    tourMap = null;
+  }
+  state.activeTour = null;
+  state.tourStops = [];
+  state.tourIndex = 0;
+  state.tourMapReady = false;
+  state.tourRoute = null;
+  state.tourMarkers = [];
+  state.tourFetching = false;
+}
+
+/** Render the full tour loop view: header, cards, map, nav. */
+function renderTourLoop() {
+  const stops = state.tourStops;
+  const len = stops.length;
+  const idx = state.tourIndex;
+
+  // 4 cards: idx-2 faded, idx-1 active (previous), idx active (next), idx+1 faded
+  const f0 = wrapIndex(idx - 2, len);
+  const prev = wrapIndex(idx - 1, len);
+  const next = wrapIndex(idx, len);
+  const f1 = wrapIndex(idx + 1, len);
+
+  views.tours.innerHTML = `
+    <div class="tour-header">
+      <button class="tour-back" aria-label="Back to tour list">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
+      <div class="tour-header-title">${state.activeTour.name}</div>
+      <div class="tour-header-counter">${next + 1} of ${len}</div>
     </div>
-    <div class="route-stop-list">
-      ${ordered.map((m, i) => {
-        const distFromPrev = i > 0 ? haversine(ordered[i-1].lat, ordered[i-1].lng, m.lat, m.lng) : 0;
-        return `
-          ${i > 0 ? `<div class="route-walk-seg">🚶 ${formatDistance(distFromPrev)}</div>` : ''}
-          <div class="route-stop" data-id="${m.id}">
-            <div class="route-stop-num">${i + 1}</div>
-            <img class="route-stop-img" src="${m.img || ''}" alt="${m.a}" loading="lazy" onerror="this.style.background='#ddd'">
-            <div class="route-stop-info">
-              <div class="route-stop-artist">${m.a}</div>
-              <div class="route-stop-loc">${m.bldg || m.loc}</div>
-            </div>
-          </div>
-        `;
-      }).join('')}
+    <div class="tour-cards-above" id="tour-cards-above">
+      ${buildTourCard(stops[f0], f0 + 1, 'faded')}
+      ${buildTourCard(stops[prev], prev + 1, 'active')}
     </div>
-    <a class="detail-directions" href="https://www.google.com/maps/dir/${ordered.map(m => m.lat + ',' + m.lng).join('/')}/@${ordered[0].lat},${ordered[0].lng},14z/data=!4m2!4m1!3e2" target="_blank" rel="noopener">
-      🗺 Open Full Route in Google Maps
-    </a>
+    <div id="tour-map-container"></div>
+    <div class="tour-segment-info" id="tour-segment-info"></div>
+    <div class="tour-cards-below" id="tour-cards-below">
+      ${buildTourCard(stops[next], next + 1, 'active')}
+      ${buildTourCard(stops[f1], f1 + 1, 'faded')}
+    </div>
+    <div class="tour-nav">
+      <button class="tour-nav-btn" data-dir="-1" aria-label="Previous stop">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m18 15-6-6-6 6"/>
+        </svg>
+      </button>
+      <button class="tour-nav-btn" data-dir="1" aria-label="Next stop">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </button>
+    </div>
   `;
 
-  detailContent.querySelectorAll('.route-stop').forEach(stop => {
-    stop.addEventListener('click', () => {
-      const mural = murals.find(m => m.id === Number(stop.dataset.id));
+  // Back button
+  views.tours.querySelector('.tour-back').addEventListener('click', () => {
+    closeTour();
+    renderTourList();
+  });
+
+  // Nav buttons
+  views.tours.querySelectorAll('.tour-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => navigateTour(Number(btn.dataset.dir)));
+  });
+
+  // Card tap → detail
+  views.tours.querySelectorAll('.tour-stop-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const mural = murals.find(m => m.id === Number(card.dataset.id));
       if (mural) openDetail(mural);
     });
   });
 
-  detailPage.scrollTop = 0;
+  // Init map
+  initTourMap();
+
+  // Swipe support
+  setupTourSwipe();
+}
+
+/** Update just the 4 cards, counter, segment info, and fetch new route segment. */
+function renderTourCards() {
+  const stops = state.tourStops;
+  const len = stops.length;
+  const idx = state.tourIndex;
+
+  const f0 = wrapIndex(idx - 2, len);
+  const prev = wrapIndex(idx - 1, len);
+  const next = wrapIndex(idx, len);
+  const f1 = wrapIndex(idx + 1, len);
+
+  const aboveEl = document.getElementById('tour-cards-above');
+  const belowEl = document.getElementById('tour-cards-below');
+  const counterEl = views.tours.querySelector('.tour-header-counter');
+
+  if (aboveEl) aboveEl.innerHTML = buildTourCard(stops[f0], f0 + 1, 'faded') + buildTourCard(stops[prev], prev + 1, 'active');
+  if (belowEl) belowEl.innerHTML = buildTourCard(stops[next], next + 1, 'active') + buildTourCard(stops[f1], f1 + 1, 'faded');
+  if (counterEl) counterEl.textContent = `${next + 1} of ${len}`;
+
+  // Re-attach card tap listeners
+  views.tours.querySelectorAll('.tour-stop-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const mural = murals.find(m => m.id === Number(card.dataset.id));
+      if (mural) openDetail(mural);
+    });
+  });
+
+  fetchTourSegment();
+}
+
+/** Create the Leaflet mini-map for the tour. */
+function initTourMap() {
+  if (tourMap) {
+    tourMap.remove();
+    tourMap = null;
+  }
+
+  const container = document.getElementById('tour-map-container');
+  if (!container) return;
+
+  tourMap = L.map(container, {
+    center: [27.7706, -82.6341],
+    zoom: 15,
+    zoomControl: false,
+    attributionControl: false,
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+  }).addTo(tourMap);
+
+  // Prevent swipe from scrolling the map
+  L.DomEvent.disableScrollPropagation(container);
+
+  // Show user location on tour map
+  if (state.userLat && state.userLng) {
+    L.circleMarker([state.userLat, state.userLng], {
+      radius: 7, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
+    }).addTo(tourMap).bindPopup('You are here');
+  }
+
+  state.tourMapReady = true;
+  fetchTourSegment();
+}
+
+/** Fetch OSRM route between last visited stop and first upcoming stop, draw on tour map. */
+function fetchTourSegment() {
+  if (!tourMap || !state.tourMapReady) return;
+  if (state.tourFetching) return;
+
+  const stops = state.tourStops;
+  const len = stops.length;
+  const idx = state.tourIndex;
+
+  const fromStop = stops[wrapIndex(idx - 1, len)];
+  const toStop = stops[wrapIndex(idx, len)];
+
+  // Clear previous route and markers
+  if (state.tourRoute) { state.tourRoute.removeFrom(tourMap); state.tourRoute = null; }
+  state.tourMarkers.forEach(m => m.removeFrom(tourMap));
+  state.tourMarkers = [];
+
+  // Thumbnail + number markers for from/to
+  const fromNum = wrapIndex(idx - 1, len) + 1;
+  const toNum = wrapIndex(idx, len) + 1;
+  const fromMarker = L.marker([fromStop.lat, fromStop.lng], {
+    icon: L.divIcon({
+      className: 'tour-map-pin',
+      html: `<div class="tour-pin from"><img src="${fromStop.img || ''}" alt="${fromStop.a}"><span class="tour-pin-num">${fromNum}</span></div>`,
+      iconSize: [40, 40], iconAnchor: [20, 20],
+    })
+  }).addTo(tourMap);
+  const toMarker = L.marker([toStop.lat, toStop.lng], {
+    icon: L.divIcon({
+      className: 'tour-map-pin',
+      html: `<div class="tour-pin to"><img src="${toStop.img || ''}" alt="${toStop.a}"><span class="tour-pin-num">${toNum}</span></div>`,
+      iconSize: [48, 48], iconAnchor: [24, 24],
+    })
+  }).addTo(tourMap);
+  state.tourMarkers = [fromMarker, toMarker];
+
+  // Fit bounds with room for user dot
+  const boundsPoints = [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]];
+  if (state.userLat && state.userLng) boundsPoints.push([state.userLat, state.userLng]);
+  const bounds = L.latLngBounds(boundsPoints);
+  tourMap.fitBounds(bounds, { padding: [45, 45], maxZoom: 16 });
+
+  const segInfo = document.getElementById('tour-segment-info');
+
+  // Fetch OSRM route
+  state.tourFetching = true;
+  const url = `https://router.project-osrm.org/route/v1/driving/${fromStop.lng},${fromStop.lat};${toStop.lng},${toStop.lat}?overview=full&geometries=geojson`;
+
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      state.tourFetching = false;
+      if (!tourMap) return; // Tour closed while fetching
+      if (data.code !== 'Ok' || !data.routes || !data.routes[0]) throw new Error('No route');
+
+      const route = data.routes[0];
+      const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
+      const distMeters = route.distance;
+      const walkMins = Math.max(1, Math.round((distMeters / 80) * 60 / 60));
+
+      state.tourRoute = L.polyline(coords, {
+        color: '#1E5B8A', weight: 5, opacity: 0.85,
+      }).addTo(tourMap);
+
+      tourMap.fitBounds(state.tourRoute.getBounds(), { padding: [45, 45], maxZoom: 16 });
+
+      if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
+    })
+    .catch(() => {
+      state.tourFetching = false;
+      if (!tourMap) return;
+      // Fallback: straight line
+      const distMeters = haversine(fromStop.lat, fromStop.lng, toStop.lat, toStop.lng);
+      const walkMins = Math.max(1, Math.round((distMeters / 80) * 60 / 60));
+      state.tourRoute = L.polyline(
+        [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]],
+        { color: '#1E5B8A', weight: 3, opacity: 0.5, dashArray: '8, 8' }
+      ).addTo(tourMap);
+
+      if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
+    });
+}
+
+/** Navigate tour: +1 (next) or -1 (prev). Wraps continuously. */
+function navigateTour(dir) {
+  const len = state.tourStops.length;
+  if (len === 0) return;
+  state.tourIndex = wrapIndex(state.tourIndex + dir, len);
+  renderTourCards();
+}
+
+/** Set up vertical swipe on the tour view. */
+function setupTourSwipe() {
+  const el = views.tours;
+  let startY = 0;
+  let startX = 0;
+  let swiping = false;
+
+  const onTouchStart = (e) => {
+    // Don't capture swipes on the map
+    if (e.target.closest('#tour-map-container')) return;
+    startY = e.touches[0].clientY;
+    startX = e.touches[0].clientX;
+    swiping = true;
+  };
+
+  const onTouchEnd = (e) => {
+    if (!swiping) return;
+    swiping = false;
+    const dy = e.changedTouches[0].clientY - startY;
+    const dx = e.changedTouches[0].clientX - startX;
+    // Only trigger if vertical swipe is dominant and > 40px
+    if (Math.abs(dy) > 40 && Math.abs(dy) > Math.abs(dx) * 1.5) {
+      if (dy < 0) navigateTour(1);  // swipe up → next
+      else navigateTour(-1);         // swipe down → prev
+    }
+  };
+
+  el.addEventListener('touchstart', onTouchStart, { passive: true });
+  el.addEventListener('touchend', onTouchEnd, { passive: true });
 }
 
 // =============================================

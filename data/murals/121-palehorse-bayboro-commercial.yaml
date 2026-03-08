@@ -1,0 +1,56 @@
+# Palehorse (Chris Parks) — Bayboro Brewing
+
+# ── Required ──
+id: 121
+artist: Palehorse
+year: 2019
+lat: 27.76659667
+lng: -82.66558
+address: 2390 5th Ave S
+category: shine
+img: "images/murals/commercial/palehorse-bayboro.jpeg"
+
+# ── Optional ──
+title: "Temple of Eternal Bliss"
+building: Bayboro Brewing
+instagram: palehorsedesign
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Palehorse is the studio name of Chris Parks, a St. Petersburg-based
+  illustrator and fine artist who co-founded and curated the SHINE Mural
+  Festival from 2015 to 2017. He earned his BFA from Ringling College of
+  Art and Design in Sarasota. His work is rooted in Southeast Asian and
+  Latin American mythology, rendered with obsessive linework detail that
+  recalls traditional woodcuts and temple carvings. He frequently
+  collaborates with his brother Matt Parks on large-scale mural projects.
+  On the commercial side he's done projects for Nike, Under Armour,
+  National Geographic, Hasbro, DC Comics, WWE, Red Bull, and Harley-
+  Davidson. He's exhibited at Art Basel Miami and in galleries in LA, New
+  York, Berlin, and Jakarta. In St. Pete he has multiple walls around the
+  city, including both SHINE festival pieces and commercial commissions for
+  local businesses.
+
+muralDescription: |
+  An intricate Southeast Asian temple composition on a jet-black background.
+  A central Thai-style pagoda structure with layered flame-shaped spires
+  rises in the middle, flanked by two elaborate Naga serpent-dragons that
+  coil outward in ornamental detail. The entire piece is rendered in fine
+  linework using teal, red, gold, and white — giving it the look of a
+  traditional temple painting scaled up to cover a freestanding wall. A
+  thin white circle frames the central temple like a halo, and a trident
+  symbol sits in the upper right corner. The level of detail is remarkable
+  at this scale, with every scale, flame tip, and architectural ornament
+  individually rendered.
+
+muralInspiration: "Inspired by the Sanskrit concept of 'Sat Chit Ananda' — existence, consciousness, bliss. Painted in collaboration with brother Matt Parks."
+muralAwards: ""
+artistAwards: "BFA, Ringling College of Art and Design; Co-founder/curator, SHINE Mural Festival (2015–2017)"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "User photo with GPS 2026-03-08"
+  - "https://www.palehorsedesign.com/"
+  - "https://www.palehorsedesign.com/"
+  - "https://www.instagram.com/palehorsedesign/"
