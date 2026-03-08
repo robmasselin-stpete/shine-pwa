@@ -14,9 +14,9 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v12';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v13';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
-const IMG_CACHE = 'shine-images-v5'; // Mural images — bump when images change
+const IMG_CACHE = 'shine-images-v6'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
 
 // These files are precached on install — the app works offline immediately
@@ -134,11 +134,17 @@ const MURAL_IMAGES = [
   './images/field/brian-butler-3.jpeg'
 ];
 
-// Install: precache app shell only (fast). Images are cached lazily on
-// first view via the cacheFirstImage fetch handler — no 187MB upfront download.
+// Install: precache shell + all mural images (~16MB total after compression).
+// Images cached individually so one failure doesn't block the rest.
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then(c => c.addAll(SHELL_ASSETS))
+      .then(() => caches.open(IMG_CACHE))
+      .then(cache =>
+        Promise.all(MURAL_IMAGES.map(url =>
+          cache.add(url).catch(err => console.warn('SW: failed to cache', url, err))
+        ))
+      )
       .then(() => self.skipWaiting())
   );
 });
