@@ -10,13 +10,13 @@
  * Cache versioning: bump the version suffix to force a cache refresh on deploy.
  * The activate handler auto-deletes old caches not in the `keep` list.
  *
- * NOTE: index.html currently unregisters all SWs on load (for dev convenience).
- * To enable offline support in production, remove that unregister block.
+ * IMPORTANT: The MURAL_IMAGES list must match the img paths in data.js.
+ * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v6';       // App shell — bump on code changes
+const CACHE_NAME = 'shine-v9';       // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
-const IMG_CACHE = 'shine-images-v3'; // Mural images — bump when images change
+const IMG_CACHE = 'shine-images-v5'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
 
 // These files are precached on install — the app works offline immediately
@@ -33,124 +33,119 @@ const SHELL_ASSETS = [
   './images/icons/icon-512.png'
 ];
 
-// All mural images — precached on install so the gallery works offline.
+// All mural images referenced by data.js — precached on install.
 // When adding a new mural, add its image path here too.
 const MURAL_IMAGES = [
-  './images/murals/2020/2020_SHINE_Mural_Festival_Alex_Yanes.jpg',
-  './images/2022/amy-ilic-volpe.jpg',
-  './images/murals/2022/Imagine-Finished-Wall-Arms-Open-SHINE-Day-5.jpg',
-  './images/murals/2022/James-Bullough-SHINE-Day-9.jpg',
-  './images/murals/2022/Jason-Harvin-SHINE-Day-11.jpg',
-  './images/murals/2022/Jeff-Williams-SHINE-Day-10.jpg',
-  './images/murals/2022/MadC-SHINE-Day-13.jpg',
-  './images/murals/2022/Marina-Capdevila-SHINE-Day-12.jpg',
-  './images/murals/2022/NNEKA_JONES.jpg',
-  './images/murals/2022/Raginald-O_Neal-SHINE-Day-11.jpg',
-  './images/murals/2023/Rhys-Meatyard-20231023-095255-MAR9491-Pano.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_BASK.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Brain_Storm.jpeg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Brian_Butler.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Elle_LeBlanc.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Happy_Mural_Project.png',
-  './images/murals/2020/2020_SHINE_Mural_Festival_IBOMS.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Kenny_Coil_and_Marc_Berenguer.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Lili_Yuan.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Mason_Schwacke.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Nneka_Jones_and_Bianca_Burrows.jpg',
-  './images/murals/2020/2020_SHINE_Mural_Festival_Tatiana_Suarez.jpg',
-  './images/murals/2021/aurailieus.jpg',
-  './images/murals/2021/bakpak-durden.jpg',
-  './images/murals/2021/case-maclaim.jpg',
-  './images/murals/2021/chad-mize.jpg',
-  './images/murals/2021/emily-ding.jpg',
-  './images/murals/2021/gleo.jpg',
-  './images/murals/2021/greg-mike.jpg',
-  './images/murals/2021/iboms.jpg',
-  './images/murals/2021/jared-wright.jpg',
-  './images/murals/2021/jason-harvin.jpg',
-  './images/murals/2021/jenipher-chandley.jpg',
-  './images/murals/2021/jujmo.jpg',
-  './images/murals/2021/leo-gomez.png',
-  './images/murals/2021/michael-fatutoa.jpg',
-  './images/murals/2021/miss-crit.jpg',
-  './images/murals/2021/mwanel-pierre-louis.jpg',
-  './images/murals/2021/nicole-salgar.jpg',
-  './images/murals/2021/reid-jenkins.jpg',
-  './images/murals/2021/ricky-watts.jpg',
-  './images/murals/2021/woes.jpg',
-  './images/murals/2021/ya-la-ford.jpg',
-  './images/murals/2022/123Klan-SHINE-Day-9.jpg',
-  './images/murals/2022/Ashley-Cantero-SHINE-Day-13.jpg',
-  './images/murals/2022/Baghead-Final-Shot.jpg',
-  './images/murals/2022/Ben-Johnston-SHINE-Day-11.jpg',
-  './images/murals/2022/Chad-Mize-and-Friends-SHINE-Day-11.jpg',
-  './images/murals/2022/Dreamweaver-SHINE-Day-12.jpg',
-  './images/murals/2022/Egypt-Hagan-SHINE-Day-9.jpg',
-  './images/murals/2022/Happy-Mural_Project-SHINE-Day-5.jpg',
-  './images/murals/2022/Sydney-Prusso-SHINE-Day-8.jpg',
-  './images/murals/2022/Tasko-SHINE-Day-9.jpg',
-  './images/murals/2022/VITALE_BROS.jpg',
-  './images/murals/2022/Van-Der-Luc-SHINE-Day-10.jpg',
-  './images/murals/2023/Andrea-Wan-20231020-144359-MAR7308.jpg',
-  './images/murals/2023/Bryan-Beyung-20231022-084623-MAR8962-Pano.jpg',
-  './images/murals/2023/Bunnie-Reiss-20231019-181936-MAR7181.jpg',
-  './images/murals/2023/Chris-Dyer-20231021-140845-MAR7909-Pano-Edit.jpg',
-  './images/murals/2023/Dave-Bonzai-20231020-180757-MAR7845-HDR.jpg',
-  './images/murals/2023/Fabstraq-20231022-091127-MAR9128.jpg',
-  './images/murals/2023/GreaterPublicStudio-final-USF.jpg',
-  './images/murals/2023/Hannah-Eddy-20231019-121609-MAR6021-Edit.jpg',
-  './images/murals/2023/Happy-Mural-Project-20231022-090924-MAR9085.jpg',
-  './images/murals/2023/Hoxxoh-20231019-113041-MAR5715-Edit.jpg',
-  './images/murals/2023/Kelly-Quinn-20231020-135933-MAR7301-HDR.jpg',
-  './images/murals/2023/Loretta-Lizzio-20231022-083940-MAR8913-Pano.jpg',
-  './images/murals/2023/Max-Sansing-20231021-180720-MAR8497.jpg',
-  './images/murals/2023/MichaelVasquez_MRapien.jpg',
-  './images/murals/2023/Path-We-Came-Chenlin-Cai-20231022-092309-MAR9266.jpg',
-  './images/murals/2023/Sarah-Shepard-20231021-150335-MAR8268.jpg',
-  './images/murals/2023/The-Artist-Jones-20231020-173744-MAR7818.jpg',
-  './images/murals/2024/Abys-FinalShot-SHINE24.jpg',
-  './images/murals/2024/BrightSpot-YaLaFord-stories.jpg',
-  './images/murals/2024/BrightSpot-Zulu-Stories.jpeg',
-  './images/murals/2024/CristiLopez-FinalShot-SHINE24.jpg',
-  './images/murals/2024/FintanMagee-FinalShot-SHINE2024-Image3.jpg',
-  './images/murals/2024/FrankieG-FinalShot-SHINE24.jpg',
-  './images/murals/2024/GeorgeFBakerIII-FinalShot-SHINE24.jpg',
-  './images/murals/2024/Jarus-FinalShot-SHINE24-Image2.jpg',
-  './images/murals/2024/KrisMandJohnnyVitale-FinalShot-SHINE24.jpg',
-  './images/murals/2024/NaomiHaverland-stories.jpeg',
-  './images/murals/2024/NeSpoon-FinalShot-SHINE24-Image1.jpg',
-  './images/murals/2024/QuinnCale-FinalShot-SHINE24.jpg',
-  './images/murals/2024/StevieShao-FinalShot-SHINE24.jpg',
-  './images/murals/2024/UpandOver-FinalShot-SHINE24.jpg',
-  './images/murals/2024/shephard-mccallister.jpg',
-  './images/murals/2025/aaron-tullo.jpg',
-  './images/murals/2025/amy-ilic-volpe.jpg',
-  './images/murals/2025/brain-the-genius.jpg',
-  './images/murals/2025/cecilia-lueza.jpg',
-  './images/murals/2025/derek-donnelly-1847.jpg',
-  './images/murals/2025/derek-donnelly-hollander.jpg',
-  './images/murals/2025/dreamweaver.jpg',
-  './images/murals/2025/elizabeth-barenis.jpg',
-  './images/murals/2025/isac-gres.jpg',
-  './images/murals/2025/jenipher-chandley.jpg',
-  './images/murals/2025/john-vitale-600.jpg',
-  './images/murals/2025/john-vitale-factory.jpg',
-  './images/murals/2025/karel-garcia.jpg',
-  './images/murals/2025/quinn-cale.jpg',
-  './images/murals/2025/rebekah-lazaridis.jpg',
-  './images/murals/2025/reid-jenkins.jpg',
-  './images/murals/2025/sara-salem.jpg',
-  './images/murals/2025/sio-macleish.jpg',
-  './images/murals/2025/zulu-painter.jpg'
+  './images/murals/2015/shark-toof.jpeg',
+  './images/murals/2016/alex-pardee.jpeg',
+  './images/murals/2017/sarah-sheppard-life-reimagined.jpeg',
+  './images/murals/2017/stephen-palladino.jpeg',
+  './images/murals/2018/daas.jpeg',
+  './images/murals/2018/derek-donnelly-365-million.jpeg',
+  './images/murals/2018/js-signs-point-of-pines.jpeg',
+  './images/murals/2018/notice-us.jpeg',
+  './images/murals/2019/george-rose.jpeg',
+  './images/murals/2019/morning-breath.jpeg',
+  './images/murals/2020/brian-butler.jpeg',
+  './images/murals/2020/iboms.jpeg',
+  './images/murals/2020/kenny-coil-and-marc-berenguer.jpeg',
+  './images/murals/2020/lili-yuan.jpeg',
+  './images/murals/2020/palehorse.jpeg',
+  './images/murals/2021/aurailieus-artist.jpeg',
+  './images/murals/2021/bakpak-durden.jpeg',
+  './images/murals/2021/case-maclaim.jpeg',
+  './images/murals/2021/emily-ding.jpeg',
+  './images/murals/2021/gleo.jpeg',
+  './images/murals/2021/greg-mike.jpeg',
+  './images/murals/2021/jared-wright.jpeg',
+  './images/murals/2021/jason-harvin.jpeg',
+  './images/murals/2021/leo-gomez.jpeg',
+  './images/murals/2021/michael-fatutoa.jpeg',
+  './images/murals/2021/miss-crit.jpeg',
+  './images/murals/2021/mwanel-pierre-louis.jpeg',
+  './images/murals/2021/ricky-watts.jpeg',
+  './images/murals/2021/woes-martin.jpeg',
+  './images/murals/2022/ashley-cantero.jpeg',
+  './images/murals/2022/ben-johnston.jpeg',
+  './images/murals/2022/dreamweaver.jpeg',
+  './images/murals/2022/egypt-hagan.jpeg',
+  './images/murals/2022/imagine.jpeg',
+  './images/murals/2022/james-bullough.jpeg',
+  './images/murals/2022/jeff-williams.jpeg',
+  './images/murals/2022/madc.jpeg',
+  './images/murals/2022/marina-capdevila.jpeg',
+  './images/murals/2022/reginald-oneal.jpeg',
+  './images/murals/2022/sydney-prusso.jpeg',
+  './images/murals/2022/the-happy-mural-project.jpeg',
+  './images/murals/2022/vitale-bros.jpeg',
+  './images/murals/2023/bryan-beyung-james-lee-chiahan.jpeg',
+  './images/murals/2023/bunnie-reiss.jpeg',
+  './images/murals/2023/chenlin-cai.jpeg',
+  './images/murals/2023/chris-dyer.jpeg',
+  './images/murals/2023/fabstraq.jpeg',
+  './images/murals/2023/greater-public-studio.jpeg',
+  './images/murals/2023/hoxxoh.jpeg',
+  './images/murals/2023/loretta-lizzio.jpeg',
+  './images/murals/2023/max-sansing.jpeg',
+  './images/murals/2023/michael-vasquez.jpeg',
+  './images/murals/2023/sarah-sheppard.jpeg',
+  './images/murals/2024/abys.jpeg',
+  './images/murals/2024/dwayne-shepherd-brian-mcallister.jpeg',
+  './images/murals/2024/emmanuel-jarus.jpeg',
+  './images/murals/2024/fintan-magee.jpeg',
+  './images/murals/2024/frankie-gonzalez.jpeg',
+  './images/murals/2024/george-f-baker-iii.jpeg',
+  './images/murals/2024/kris-markovich-johnny-vitale.jpeg',
+  './images/murals/2024/nespoon.jpeg',
+  './images/murals/2024/quinn-cale.jpeg',
+  './images/murals/2024/stevie-shao.jpeg',
+  './images/murals/2024/up-and-over.jpeg',
+  './images/murals/2024/ya-la-ford.jpeg',
+  './images/murals/2024/zulu-painter.jpeg',
+  './images/murals/2025/aaron-tullo.jpeg',
+  './images/murals/2025/amy-ilic-volpe.jpeg',
+  './images/murals/2025/brain-the-genius.jpeg',
+  './images/murals/2025/cecilia-lueza.jpeg',
+  './images/murals/2025/derek-donnelly-1847.jpeg',
+  './images/murals/2025/derek-donnelly-hollander.jpeg',
+  './images/murals/2025/dreamweaver.jpeg',
+  './images/murals/2025/elizabeth-barenis.jpeg',
+  './images/murals/2025/isac-gres.jpeg',
+  './images/murals/2025/jenipher-chandley.jpeg',
+  './images/murals/2025/john-vitale-600.jpeg',
+  './images/murals/2025/john-vitale-factory.jpeg',
+  './images/murals/2025/karel-garcia.jpeg',
+  './images/murals/2025/rebekah-lazaridis.jpeg',
+  './images/murals/2025/reid-jenkins.jpeg',
+  './images/murals/2025/sara-salem.jpeg',
+  './images/murals/2025/zulu-painter.jpeg',
+  './images/murals/commercial/chad-mize-hollander.jpeg',
+  './images/murals/commercial/ernesto-maranje-wildlife-corridor.jpeg',
+  './images/murals/commercial/melanie-posner-hollander.jpeg',
+  './images/murals/commercial/palehorse-bayboro.jpeg',
+  './images/murals/commercial/raisa-nosova-museum-of-motherhood.jpeg',
+  './images/murals/commercial/sarah-sheppard-stronger-together.jpeg',
+  './images/murals/commercial/the-siren.jpeg',
+  './images/murals/commercial/unknown-1498.jpeg',
+  './images/murals/commercial/unknown-1503.jpeg',
+  './images/murals/commercial/unknown-1506.jpeg',
+  './images/murals/pre-shine/chad-mize-twiggy.jpeg',
+  './images/field/brian-butler-2.jpeg',
+  './images/field/brian-butler-3.jpeg'
 ];
 
-// Install: precache shell + all mural images, then immediately activate
+// Install: precache shell (must succeed) + all mural images (best-effort per image).
+// Images are fetched individually so one failure doesn't block the rest.
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    Promise.all([
-      caches.open(CACHE_NAME).then(c => c.addAll(SHELL_ASSETS)),
-      caches.open(IMG_CACHE).then(c => c.addAll(MURAL_IMAGES))
-    ]).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(c => c.addAll(SHELL_ASSETS))
+      .then(() => caches.open(IMG_CACHE))
+      .then(cache =>
+        Promise.all(MURAL_IMAGES.map(url =>
+          cache.add(url).catch(err => console.warn('SW: failed to cache', url, err))
+        ))
+      )
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -167,6 +162,9 @@ self.addEventListener('activate', (e) => {
 // Fetch: route requests to the appropriate caching strategy based on URL
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
+
+  // Skip non-GET requests
+  if (e.request.method !== 'GET') return;
 
   // Google Fonts + Leaflet CDN — cache first (rarely changes)
   if (url.hostname.includes('fonts.googleapis.com') || url.hostname.includes('fonts.gstatic.com') || url.hostname.includes('unpkg.com')) {
@@ -186,13 +184,21 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // Everything else (app shell) — cache first, fallback to index.html for navigation
+  // App shell — cache first, stripping query strings for matching
   e.respondWith(cacheFirst(e.request));
 });
 
-/** Cache-first for app shell. On miss, fetch + cache. Offline navigations get index.html. */
+/** Cache-first for app shell. Strips query strings so ?v=14 matches the precached entry. */
 async function cacheFirst(req) {
-  const c = await caches.match(req);
+  // Try exact match first, then try without query string
+  let c = await caches.match(req);
+  if (!c) {
+    const url = new URL(req.url);
+    if (url.search) {
+      url.search = '';
+      c = await caches.match(url.href);
+    }
+  }
   if (c) return c;
   try {
     const r = await fetch(req);
