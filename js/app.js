@@ -661,36 +661,40 @@ function renderTourLoop() {
   const f1 = wrapIndex(idx + 1, len);
 
   views.tours.innerHTML = `
-    <div class="tour-header">
-      <button class="tour-back" aria-label="Back to tour list">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m15 18-6-6 6-6"/>
-        </svg>
-      </button>
-      <div class="tour-header-title">${state.activeTour.name}</div>
-      <div class="tour-header-counter">${next + 1} of ${len}</div>
-    </div>
-    <div class="tour-cards-above" id="tour-cards-above">
-      ${buildTourCard(stops[f0], f0 + 1, 'faded')}
-      ${buildTourCard(stops[prev], prev + 1, 'active')}
-    </div>
-    <div id="tour-map-container"></div>
-    <div class="tour-segment-info" id="tour-segment-info"></div>
-    <div class="tour-cards-below" id="tour-cards-below">
-      ${buildTourCard(stops[next], next + 1, 'active')}
-      ${buildTourCard(stops[f1], f1 + 1, 'faded')}
-    </div>
-    <div class="tour-nav">
-      <button class="tour-nav-btn" data-dir="-1" aria-label="Previous stop">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m18 15-6-6-6 6"/>
-        </svg>
-      </button>
-      <button class="tour-nav-btn" data-dir="1" aria-label="Next stop">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m6 9 6 6 6-6"/>
-        </svg>
-      </button>
+    <div class="tour-layout">
+      <div class="tour-header">
+        <button class="tour-back" aria-label="Back to tour list">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="tour-header-title">${state.activeTour.name}</div>
+        <div class="tour-header-counter">${next + 1} of ${len}</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-cards-above" id="tour-cards-above">
+          ${buildTourCard(stops[f0], f0 + 1, 'faded')}
+          ${buildTourCard(stops[prev], prev + 1, 'active')}
+        </div>
+        <div id="tour-map-container"></div>
+        <div class="tour-segment-info" id="tour-segment-info"></div>
+        <div class="tour-cards-below" id="tour-cards-below">
+          ${buildTourCard(stops[next], next + 1, 'active')}
+          ${buildTourCard(stops[f1], f1 + 1, 'faded')}
+        </div>
+      </div>
+      <div class="tour-nav">
+        <button class="tour-nav-btn" data-dir="-1" aria-label="Previous stop">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+          </svg>
+        </button>
+        <button class="tour-nav-btn" data-dir="1" aria-label="Next stop">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+      </div>
     </div>
   `;
 
