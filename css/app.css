@@ -22,6 +22,133 @@
 }
 
 /* ========================================
+   Payment Gate
+   ======================================== */
+.gate-page {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  background: var(--bg);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gate-page[hidden] {
+  display: none;
+}
+
+.gate-content {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.gate-hero {
+  background: linear-gradient(135deg, #1E5B8A 0%, #2C7AB5 100%);
+  padding: calc(var(--safe-top) + 48px) 24px 48px;
+  text-align: center;
+  color: #fff;
+}
+
+.gate-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.gate-subtitle {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+.gate-body {
+  flex: 1;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gate-tagline {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text);
+  line-height: 1.4;
+  max-width: 320px;
+}
+
+.gate-features {
+  list-style: none;
+  margin-top: 24px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.gate-features li {
+  padding: 8px 0;
+  padding-left: 28px;
+  position: relative;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.gate-features li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.gate-buy-btn {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 300px;
+  padding: 16px 24px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.15s ease;
+}
+
+.gate-buy-btn:active {
+  background: #164a6e;
+}
+
+.gate-buy-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.gate-buy-sub {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.gate-promo-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ========================================
    Reset & Base
    ======================================== */
 *, *::before, *::after {

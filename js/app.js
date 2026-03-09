@@ -29,6 +29,78 @@ import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
 import { ROUTE_PATHS } from './routes.js';
 
 // =============================================
+// Payment gate — check access before showing app
+// =============================================
+const ACCESS_KEY = 'mural_quest_access';
+const ACCESS_DURATION = 60 * 24 * 60 * 60 * 1000; // 60 days in ms
+
+function hasAccess() {
+  try {
+    const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
+    return data && Date.now() < data.expires;
+  } catch { return false; }
+}
+
+function grantAccess() {
+  localStorage.setItem(ACCESS_KEY, JSON.stringify({ expires: Date.now() + ACCESS_DURATION }));
+}
+
+function showGate() {
+  document.getElementById('gate-page').hidden = false;
+  document.getElementById('app').hidden = true;
+}
+
+function hideGate() {
+  document.getElementById('gate-page').hidden = true;
+  document.getElementById('app').hidden = false;
+}
+
+// Handle Stripe success redirect
+const urlParams = new URLSearchParams(window.location.search);
+const sessionId = urlParams.get('session_id');
+
+if (sessionId) {
+  // Verify the payment with our serverless function
+  fetch(`/.netlify/functions/verify-session?session_id=${sessionId}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.paid) {
+        grantAccess();
+        window.history.replaceState({}, '', '/');
+        hideGate();
+      } else {
+        showGate();
+      }
+    })
+    .catch(() => showGate());
+} else if (hasAccess()) {
+  hideGate();
+} else {
+  showGate();
+}
+
+// Buy button click → create Stripe checkout session
+document.getElementById('gate-buy-btn')?.addEventListener('click', async () => {
+  const btn = document.getElementById('gate-buy-btn');
+  btn.disabled = true;
+  btn.textContent = 'Loading...';
+
+  try {
+    const res = await fetch('/.netlify/functions/create-checkout');
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'Checkout failed');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = 'Get Access — $3.99<span class="gate-buy-sub">2-month pass</span>';
+    alert('Something went wrong. Please try again.');
+  }
+});
+
+// =============================================
 // State — single mutable object drives all UI
 // =============================================
 const state = {

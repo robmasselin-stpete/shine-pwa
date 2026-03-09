@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
   <meta name="theme-color" content="#1E5B8A">
-  <meta name="description" content="Interactive guide to 200+ murals from the SHINE Mural Festival in St. Petersburg, Florida">
+  <meta name="description" content="Self-guided mural tours in St. Petersburg, Florida. Interactive map, GPS directions, artist bios.">
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
@@ -13,7 +13,7 @@
   <!-- iOS PWA -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="SHINE">
+  <meta name="apple-mobile-web-app-title" content="Mural Quest">
   <link rel="apple-touch-icon" href="images/icons/icon-192.png">
 
   <!-- Fonts (CDN with SW caching for offline) -->
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <title>SHINE St. Pete</title>
+  <title>Mural Quest — St. Pete</title>
 </head>
 <body>
 
@@ -40,10 +40,35 @@
   <!-- Install prompt -->
   <div id="install-prompt" class="install-prompt" hidden>
     <div class="install-prompt-inner">
-      <span>Add SHINE to your home screen</span>
+      <span>Add Mural Quest to your home screen</span>
       <div class="install-prompt-actions">
         <button id="install-dismiss" class="btn-text">Not now</button>
         <button id="install-accept" class="btn-primary-sm">Install</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment gate (shown before purchase) -->
+  <div id="gate-page" class="gate-page">
+    <div class="gate-content">
+      <div class="gate-hero">
+        <h1 class="gate-title">MURAL QUEST</h1>
+        <p class="gate-subtitle">St. Petersburg, FL</p>
+      </div>
+      <div class="gate-body">
+        <p class="gate-tagline">Your self-guided tour of St. Pete's world-class street art</p>
+        <ul class="gate-features">
+          <li>Interactive map with 100+ murals</li>
+          <li>5 curated walking & biking tours</li>
+          <li>Artist bios & mural stories</li>
+          <li>GPS directions to every mural</li>
+          <li>Works offline — no signal needed</li>
+        </ul>
+        <button id="gate-buy-btn" class="gate-buy-btn">
+          Get Access — $3.99
+          <span class="gate-buy-sub">2-month pass</span>
+        </button>
+        <p class="gate-promo-note">Promo codes accepted at checkout</p>
       </div>
     </div>
   </div>
@@ -125,7 +150,7 @@
   </div>
 
   <!-- App modules -->
-  <script type="module" src="js/app.js?v=15"></script>
+  <script type="module" src="js/app.js?v=16"></script>
 
   <!-- Service Worker registration -->
   <script>
