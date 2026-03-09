@@ -1,4 +1,7 @@
 {
   "name": "mural-quest",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "stripe": "^17.0.0"
+  }
 }
