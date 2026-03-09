@@ -1015,6 +1015,118 @@ a {
 }
 
 /* ========================================
+   Tour Picker (map overview of all routes)
+   ======================================== */
+.tour-picker-layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--header-height) - var(--tab-height) - var(--safe-top) - var(--safe-bottom));
+}
+
+#tour-picker-map {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Horizontal route selector bar */
+.tour-picker-selector {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.tour-picker-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.tour-selector-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
+}
+
+.tour-selector-btn.active {
+  border-color: var(--tour-color);
+  box-shadow: 0 0 0 1px var(--tour-color);
+}
+
+.tour-selector-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tour-selector-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.tour-selector-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tour-selector-stats {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Start tour button */
+.tour-start-btn {
+  flex-shrink: 0;
+  margin: 0 16px 10px;
+  padding: 12px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Numbered stop markers on picker map */
+.tour-picker-stop {
+  background: none !important;
+  border: none !important;
+}
+
+.tour-picker-stop span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  border: 2px solid #fff;
+}
+
+/* ========================================
    Loop Tours
    ======================================== */
 .tour-header {

@@ -26,6 +26,7 @@
 
 import { murals, YEARS, YEAR_COLORS, CATEGORY_COLORS } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
+import { ROUTE_PATHS } from './routes.js';
 
 // =============================================
 // State — single mutable object drives all UI
@@ -56,8 +57,8 @@ const state = {
 };
 
 // Year buckets for category filtering — update these when adding new festival years
-const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021];
-const VINTAGE_YEARS = [2020, 2019, 2018, 2017, 2016, 2015];
+const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
+const VINTAGE_YEARS = [2019, 2018, 2017, 2016, 2015];
 
 // =============================================
 // DOM refs
@@ -189,8 +190,8 @@ function renderFilterPills() {
 /** Render year sub-pills (2025, 2024...) below the category pills. Only shown for Shine/Vintage. */
 function renderYearSubPills() {
   const f = state.exploreFilter;
-  if (f === 'shine' || f === 'vintage') {
-    const years = f === 'shine' ? SHINE_YEARS : VINTAGE_YEARS;
+  if (f === 'shine') {
+    const years = SHINE_YEARS;
     // Only show years that have murals
     const yearsWithData = years.filter(y => murals.some(m => m.y === y && (f === 'shine' ? m.cat !== 'commercial' : true)));
     yearSubPills.innerHTML = `
@@ -267,6 +268,10 @@ function renderExplore() {
 // =============================================
 let leafletMap = null;
 let tourMap = null; // Second Leaflet instance for tour loop view
+let tourPickerMap = null; // Third Leaflet instance for tour picker overview
+const tourPickerCache = new Map(); // routeId → [[lat,lng],...] cached OSRM coords
+let pickerActiveRoute = 0; // index into ROUTE_DEFS for currently shown route
+let pickerLayers = [];     // current polyline + label on picker map
 const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each mural
 
 // At this zoom level and above, markers switch from colored dots to thumbnail images
@@ -439,9 +444,9 @@ function updateMapMarkers() {
     }
   });
 
-  // Year sub-pills for Shine and Vintage
-  if (tab === 'shine' || tab === 'vintage') {
-    const years = tab === 'shine' ? SHINE_YEARS : VINTAGE_YEARS;
+  // Year sub-pills for Shine only
+  if (tab === 'shine') {
+    const years = SHINE_YEARS;
     const selected = state.activeMapYears;
     yearPillsEl.innerHTML = `
       <button class="year-pill year-sub ${!selected ? 'active' : ''}" data-year="">All</button>
@@ -464,23 +469,27 @@ function updateMapMarkers() {
     yearPillsEl.hidden = true;
   }
 
-  // Legend
+  // Legend — hide for vintage/commercial (no year breakdown)
   if (legendEl) {
-    const shownYears = [...new Set(
-      mapMarkers
-        .filter(({ mural }) => {
-          const catMatch = visibleCats === null || visibleCats.includes(mural.cat);
-          const yearMatch = visibleYears === null || visibleYears.includes(mural.y);
-          return catMatch && yearMatch;
-        })
-        .map(({ mural }) => mural.y)
-    )].sort((a, b) => b - a);
+    if (tab === 'vintage' || tab === 'commercial') {
+      legendEl.innerHTML = `<div class="map-legend-item"><span class="map-legend-dot" style="background:#4285F4"></span>You</div>`;
+    } else {
+      const shownYears = [...new Set(
+        mapMarkers
+          .filter(({ mural }) => {
+            const catMatch = visibleCats === null || visibleCats.includes(mural.cat);
+            const yearMatch = visibleYears === null || visibleYears.includes(mural.y);
+            return catMatch && yearMatch;
+          })
+          .map(({ mural }) => mural.y)
+      )].sort((a, b) => b - a);
 
-    legendEl.innerHTML = shownYears.map(y => {
-      const color = YEAR_COLORS[y] || '#999';
-      const label = y === 0 ? 'Other' : y;
-      return `<div class="map-legend-item"><span class="map-legend-dot" style="background:${color}"></span>${label}</div>`;
-    }).join('') + `<div class="map-legend-item"><span class="map-legend-dot" style="background:#4285F4"></span>You</div>`;
+      legendEl.innerHTML = shownYears.map(y => {
+        const color = YEAR_COLORS[y] || '#999';
+        const label = y === 0 ? 'Other' : y;
+        return `<div class="map-legend-item"><span class="map-legend-dot" style="background:${color}"></span>${label}</div>`;
+      }).join('') + `<div class="map-legend-item"><span class="map-legend-dot" style="background:#4285F4"></span>You</div>`;
+    }
   }
 }
 
@@ -521,12 +530,27 @@ function calcRouteTotalDist(orderedMurals) {
   return total;
 }
 
+// Tour color palette for picker map
+const TOUR_COLORS = {
+  'robs-favs':       '#E53935',
+  'chna-bike':       '#1E88E5',
+  'walking-central': '#43A047',
+  'shine-2025':      '#FB8C00',
+  'shine-2024':      '#8E24AA',
+};
+
 // Tour definitions (same structure as old ROUTE_DEFS)
 const ROUTE_DEFS = [
-  { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'All 2025 murals plus classics along the way',
-    ids: [17, 6, 107, 116, 1, 109, 110, 7, 9, 5, 16, 12, 2, 3, 8, 10, 13, 15, 19] },
-  { id: 'shine-2024', name: 'SHINE 2024', desc: '2024 festival collection', filter: m => m.y === 2024 && m.cat === 'shine' },
-  { id: 'downtown', name: 'Downtown Highlights', desc: 'Best murals within walking distance', filter: m => m.cat !== 'commercial' && haversine(27.7706, -82.6400, m.lat, m.lng) < 2000 },
+  { id: 'robs-favs', name: "Rob's Favorites", desc: '18 hand-picked murals across all festival years',
+    ids: [17, 23, 47, 1, 4, 115, 73, 9, 7, 110, 109, 59, 103, 20, 31, 25, 39, 38] },
+  { id: 'chna-bike', name: 'CHNA Bike Tour', desc: '27-stop bike ride through Crescent Heights & Grand Central',
+    ids: [17, 6, 23, 30, 1, 109, 110, 7, 9, 73, 80, 98, 83, 59, 103, 44, 39, 19, 88, 38, 76, 55, 101, 62, 4, 113, 64] },
+  { id: 'walking-central', name: 'Walking Central Ave', desc: '9-stop walking tour along 1st Ave S & Central Ave',
+    ids: [59, 103, 32, 44, 123, 125, 16, 101, 48] },
+  { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'All 17 SHINE 2025 murals in a geographic loop',
+    ids: [17, 6, 1, 4, 11, 7, 9, 5, 16, 12, 2, 3, 8, 10, 13, 15, 19] },
+  { id: 'shine-2024', name: 'SHINE 2024', desc: 'All 11 SHINE 2024 murals in a geographic loop',
+    ids: [23, 30, 24, 26, 31, 27, 32, 20, 29, 25, 22] },
 ];
 
 function getRouteOrdered(def) {
@@ -570,55 +594,195 @@ function buildTourCard(mural, num, type) {
   `;
 }
 
-/** Render the tour list screen (replaces renderRoutes). */
+/** Render the tour list screen — shows picker map or loop view. */
 function renderTourList() {
   if (state.activeTour) {
     renderTourLoop();
     return;
   }
+  renderTourPicker();
+}
 
-  const routeCards = ROUTE_DEFS.map(def => {
-    const ordered = getRouteOrdered(def);
-    if (ordered.length === 0) return '';
-    const totalDist = calcRouteTotalDist(ordered);
-    const walkMins = Math.round(totalDist / 80);
-    const thumb = ordered[0]?.img || '';
-    return `
-      <div class="route-card" data-route="${def.id}">
-        <img class="route-card-img" src="${thumb}" alt="${def.name}" loading="lazy" onerror="this.style.background='#ddd'">
-        <div class="route-card-body">
-          <div class="route-card-name">${def.name}</div>
-          <div class="route-card-desc">${def.desc}</div>
-          <div class="route-card-stats">${ordered.length} stops · ${formatDistance(totalDist)} · ~${walkMins} min walk</div>
-        </div>
-      </div>
-    `;
-  }).filter(Boolean);
-
-  if (routeCards.length === 0) {
-    views.tours.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">🗺</div>
-        <div class="empty-state-text">No tours available yet.</div>
-      </div>`;
+/** Render the tour picker: full map with one route at a time + selector bar. */
+function renderTourPicker() {
+  // If picker map container still exists, just resize
+  if (tourPickerMap && document.getElementById('tour-picker-map')) {
+    setTimeout(() => tourPickerMap.invalidateSize(), 0);
     return;
   }
 
+  // Destroy stale picker map if container was removed
+  if (tourPickerMap) {
+    tourPickerMap.remove();
+    tourPickerMap = null;
+  }
+
   views.tours.innerHTML = `
-    <div class="routes-header">Loop Tours</div>
-    <div class="routes-list">${routeCards.join('')}</div>
+    <div class="tour-picker-layout">
+      <div id="tour-picker-map"></div>
+      <div class="tour-picker-selector" id="tour-picker-selector">
+        ${ROUTE_DEFS.map((def, i) => {
+          const ordered = getRouteOrdered(def);
+          const color = TOUR_COLORS[def.id] || '#999';
+          const active = i === pickerActiveRoute ? ' active' : '';
+          return `
+            <button class="tour-selector-btn${active}" data-index="${i}" style="--tour-color:${color}">
+              <span class="tour-selector-dot" style="background:${color}"></span>
+              <div class="tour-selector-text">
+                <span class="tour-selector-name">${def.name}</span>
+                <span class="tour-selector-stats">${ordered.length} stops</span>
+              </div>
+            </button>`;
+        }).join('')}
+      </div>
+      <button class="tour-start-btn" id="tour-start-btn">Start Tour</button>
+    </div>
   `;
 
-  views.tours.querySelectorAll('.route-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const def = ROUTE_DEFS.find(r => r.id === card.dataset.route);
-      if (def) openTour(def);
+  // Selector button clicks — switch displayed route
+  views.tours.querySelectorAll('.tour-selector-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.index);
+      if (idx === pickerActiveRoute) return;
+      pickerActiveRoute = idx;
+      // Update active class
+      views.tours.querySelectorAll('.tour-selector-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Scroll active button into view
+      btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      fetchAndShowRoute(pickerActiveRoute);
     });
   });
+
+  // Start tour button
+  document.getElementById('tour-start-btn').addEventListener('click', () => {
+    openTour(ROUTE_DEFS[pickerActiveRoute]);
+  });
+
+  initTourPickerMap();
+}
+
+/** Create the Leaflet map for the tour picker. */
+function initTourPickerMap() {
+  const container = document.getElementById('tour-picker-map');
+  if (!container) return;
+
+  tourPickerMap = L.map(container, {
+    center: [27.7706, -82.6341],
+    zoom: 14,
+    zoomControl: false,
+    attributionControl: false,
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+  }).addTo(tourPickerMap);
+
+  // Show user location
+  if (state.userLat && state.userLng) {
+    L.circleMarker([state.userLat, state.userLng], {
+      radius: 7, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
+    }).addTo(tourPickerMap).bindPopup('You are here');
+  }
+
+  // Fetch active route first, show it immediately, then prefetch the rest
+  setTimeout(() => {
+    if (tourPickerMap) tourPickerMap.invalidateSize();
+    fetchAndShowRoute(pickerActiveRoute).then(() => prefetchRemainingRoutes());
+  }, 50);
+}
+
+/** Load route coords into cache — uses static KML data if available, else OSRM. */
+function loadRouteCoords(def) {
+  if (tourPickerCache.has(def.id)) return Promise.resolve();
+
+  // Use pre-built KML route if available
+  if (ROUTE_PATHS[def.id]) {
+    tourPickerCache.set(def.id, ROUTE_PATHS[def.id]);
+    return Promise.resolve();
+  }
+
+  // Fallback: fetch from OSRM
+  const ordered = getRouteOrdered(def);
+  if (ordered.length < 2) return Promise.resolve();
+
+  const waypoints = ordered.map(m => `${m.lng},${m.lat}`).join(';');
+  const url = `https://router.project-osrm.org/route/v1/driving/${waypoints}?overview=full&geometries=geojson`;
+
+  return fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      if (data.code !== 'Ok' || !data.routes?.[0]) throw new Error('No route');
+      tourPickerCache.set(def.id, data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]));
+    })
+    .catch(() => {
+      tourPickerCache.set(def.id, ordered.map(m => [m.lat, m.lng]));
+    });
+}
+
+/** Fetch a single route into cache and show it on the picker map. */
+function fetchAndShowRoute(idx) {
+  const def = ROUTE_DEFS[idx];
+  return loadRouteCoords(def).then(() => showPickerRoute(idx));
+}
+
+/** Prefetch remaining routes in the background (not the active one). */
+function prefetchRemainingRoutes() {
+  ROUTE_DEFS.forEach((def, i) => {
+    if (i === pickerActiveRoute) return;
+    loadRouteCoords(def);
+  });
+}
+
+/** Show a single route on the picker map by ROUTE_DEFS index. */
+function showPickerRoute(idx) {
+  if (!tourPickerMap) return;
+
+  // Clear previous layers
+  pickerLayers.forEach(layer => layer.removeFrom(tourPickerMap));
+  pickerLayers = [];
+
+  const def = ROUTE_DEFS[idx];
+  const color = TOUR_COLORS[def.id] || '#999';
+  const ordered = getRouteOrdered(def);
+  if (ordered.length < 2) return;
+
+  const coords = tourPickerCache.get(def.id);
+  if (!coords) return;
+
+  // Draw polyline
+  const dashed = ordered.length === coords.length; // fallback = same count as stops
+  const opts = { color, weight: 5, opacity: 0.85 };
+  if (dashed) { opts.weight = 3; opts.opacity = 0.5; opts.dashArray = '8, 8'; }
+  const polyline = L.polyline(coords, opts).addTo(tourPickerMap);
+  polyline.on('click', () => openTour(def));
+  pickerLayers.push(polyline);
+
+  // Stop markers with numbers
+  ordered.forEach((m, i) => {
+    const marker = L.marker([m.lat, m.lng], {
+      icon: L.divIcon({
+        className: 'tour-picker-stop',
+        html: `<span style="background:${color}">${i + 1}</span>`,
+        iconSize: [22, 22],
+        iconAnchor: [11, 11],
+      })
+    }).addTo(tourPickerMap);
+    pickerLayers.push(marker);
+  });
+
+  // Fit bounds
+  tourPickerMap.fitBounds(polyline.getBounds(), { padding: [40, 40], maxZoom: 15 });
 }
 
 /** Open a tour — set state, find start index, render loop view. */
 function openTour(def) {
+  // Destroy picker map before its container gets replaced
+  if (tourPickerMap) {
+    tourPickerMap.remove();
+    tourPickerMap = null;
+  }
+
   const stops = getRouteOrdered(def);
   if (stops.length === 0) return;
 
@@ -833,7 +997,31 @@ function fetchTourSegment() {
 
   const segInfo = document.getElementById('tour-segment-info');
 
-  // Fetch OSRM route
+  // Try static KML path first
+  const routeId = state.activeTour?.id;
+  const fullPath = routeId && ROUTE_PATHS[routeId];
+
+  if (fullPath) {
+    const segment = extractPathSegment(fullPath, fromStop, toStop);
+    if (segment && segment.length >= 2) {
+      // Calculate distance along segment
+      let distMeters = 0;
+      for (let i = 1; i < segment.length; i++) {
+        distMeters += haversine(segment[i-1][0], segment[i-1][1], segment[i][0], segment[i][1]);
+      }
+      const walkMins = Math.max(1, Math.round(distMeters / 80));
+
+      state.tourRoute = L.polyline(segment, {
+        color: '#1E5B8A', weight: 5, opacity: 0.85,
+      }).addTo(tourMap);
+
+      tourMap.fitBounds(state.tourRoute.getBounds(), { padding: [45, 45], maxZoom: 16 });
+      if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
+      return;
+    }
+  }
+
+  // Fallback: fetch from OSRM
   state.tourFetching = true;
   const url = `https://router.project-osrm.org/route/v1/driving/${fromStop.lng},${fromStop.lat};${toStop.lng},${toStop.lat}?overview=full&geometries=geojson`;
 
@@ -841,7 +1029,7 @@ function fetchTourSegment() {
     .then(r => r.json())
     .then(data => {
       state.tourFetching = false;
-      if (!tourMap) return; // Tour closed while fetching
+      if (!tourMap) return;
       if (data.code !== 'Ok' || !data.routes || !data.routes[0]) throw new Error('No route');
 
       const route = data.routes[0];
@@ -854,22 +1042,38 @@ function fetchTourSegment() {
       }).addTo(tourMap);
 
       tourMap.fitBounds(state.tourRoute.getBounds(), { padding: [45, 45], maxZoom: 16 });
-
       if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
     })
     .catch(() => {
       state.tourFetching = false;
       if (!tourMap) return;
-      // Fallback: straight line
       const distMeters = haversine(fromStop.lat, fromStop.lng, toStop.lat, toStop.lng);
       const walkMins = Math.max(1, Math.round((distMeters / 80) * 60 / 60));
       state.tourRoute = L.polyline(
         [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]],
         { color: '#1E5B8A', weight: 3, opacity: 0.5, dashArray: '8, 8' }
       ).addTo(tourMap);
-
       if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
     });
+}
+
+/** Extract the segment of a full path between two stops (nearest-point matching). */
+function extractPathSegment(fullPath, fromStop, toStop) {
+  let fromIdx = 0, toIdx = 0;
+  let fromDist = Infinity, toDist = Infinity;
+
+  for (let i = 0; i < fullPath.length; i++) {
+    const dFrom = (fullPath[i][0] - fromStop.lat) ** 2 + (fullPath[i][1] - fromStop.lng) ** 2;
+    const dTo = (fullPath[i][0] - toStop.lat) ** 2 + (fullPath[i][1] - toStop.lng) ** 2;
+    if (dFrom < fromDist) { fromDist = dFrom; fromIdx = i; }
+    if (dTo < toDist) { toDist = dTo; toIdx = i; }
+  }
+
+  if (fromIdx <= toIdx) {
+    return fullPath.slice(fromIdx, toIdx + 1);
+  }
+  // Reverse segment (going backward on path) — still valid for display
+  return fullPath.slice(toIdx, fromIdx + 1).reverse();
 }
 
 /** Navigate tour: +1 (next) or -1 (prev). Wraps continuously. */
