@@ -337,10 +337,11 @@ function initMap() {
   // Swap between dots and icons on zoom
   leafletMap.on('zoomend', () => swapMarkerStyle());
 
-  // Year legend
+  // Year legend (hidden — kept for possible future use)
   const legendDiv = document.createElement('div');
   legendDiv.className = 'map-legend';
   legendDiv.id = 'map-legend';
+  legendDiv.hidden = true;
   document.getElementById('map-container').appendChild(legendDiv);
 
   state.activeMapTab = 'all';
