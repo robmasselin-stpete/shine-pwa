@@ -977,9 +977,10 @@ function showPickerRoute(idx) {
   const distM = routeDistance(coords);
   const distMi = (distM / 1609.34).toFixed(1);
   const isBike = def.id.includes('bike');
-  const walkMins = Math.round(distM / 80); // ~3 mph walking
-  const bikeMins = Math.round(distM / 200); // ~7.5 mph biking
-  const timeText = isBike ? `~${bikeMins} min by bike` : `~${walkMins} min walk`;
+  const totalMins = isBike ? Math.round(distM / 200) : Math.round(distM / 80);
+  const hrs = Math.floor(totalMins / 60);
+  const mins = totalMins % 60;
+  const timeText = hrs > 0 ? `~${hrs}h ${mins}m ${isBike ? 'bike' : 'walk'}` : `~${mins}m ${isBike ? 'bike' : 'walk'}`;
 
   // Remove old info box
   const oldBox = document.querySelector('.tour-stats-box');
