@@ -180,7 +180,7 @@
   border: 1px solid var(--border);
   font-size: 14px;
   flex: 1;
-  max-width: 220px;
+  max-width: 280px;
 }
 
 .gate-restore-msg {
