@@ -499,8 +499,8 @@ a {
 .mural-card-img {
   width: 100%;
   aspect-ratio: 1;
-  object-fit: contain;
-  background: #1a1a1a;
+  object-fit: cover;
+  background: var(--border);
 }
 
 .mural-card-info {
@@ -669,9 +669,8 @@ a {
 
 .detail-hero {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  background: var(--border);
+  object-fit: contain;
+  background: #1a1a1a;
 }
 
 .detail-body {
@@ -800,8 +799,8 @@ a {
 
 .detail-photo-card img {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  object-fit: contain;
+  background: #1a1a1a;
 }
 
 /* Detail: nearby murals row */
