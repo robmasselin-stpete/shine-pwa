@@ -1376,8 +1376,8 @@ function openDetail(mural) {
           <button class="detail-directions" onclick="startDirections(${mural.id})">
             🚶 Get Directions
           </button>
-          <button class="detail-gmaps-link" onclick="openInGoogleMaps(${mural.id})">
-            Open in Google Maps ↗
+          <button class="detail-gmaps-link" onclick="openInMapsApp(${mural.id})">
+            Open in Maps ↗
           </button>
         </div>
       ` : ''}
@@ -1465,10 +1465,14 @@ function getArtistAliases(name) {
  * Closes the detail overlay, switches to map tab, and draws route.
  * @param {number} muralId - ID of the target mural
  */
-function openGoogleMaps(mural) {
-  const url = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking`;
+function openExternalMaps(mural) {
   sessionStorage.setItem('mq_return_mural', mural.id);
-  window.open(url, '_blank');
+  // Apple Maps on iOS — opens native app directly with turn-by-turn
+  if (isIOS) {
+    window.open(`https://maps.apple.com/?daddr=${mural.lat},${mural.lng}&dirflg=w`, '_blank');
+  } else {
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking`, '_blank');
+  }
 }
 
 function startDirections(muralId) {
@@ -1480,7 +1484,7 @@ function startDirections(muralId) {
 
   // On insecure origins (HTTP), geolocation is blocked — go straight to Google Maps
   if (!window.isSecureContext) {
-    openGoogleMaps(mural);
+    openExternalMaps(mural);
     return;
   }
 
@@ -1514,22 +1518,22 @@ function startDirections(muralId) {
       () => {
         // User denied location — open Google Maps in new tab
         state.directionsMural = null;
-        openGoogleMaps(mural);
+        openExternalMaps(mural);
       },
       { enableHighAccuracy: true }
     );
   } else {
-    openGoogleMaps(mural);
+    openExternalMaps(mural);
   }
 }
 
-function openInGoogleMaps(muralId) {
+function openInMapsApp(muralId) {
   const mural = murals.find(m => m.id === muralId);
-  if (mural) openGoogleMaps(mural);
+  if (mural) openExternalMaps(mural);
 }
 // Expose to onclick handler
 window.startDirections = startDirections;
-window.openInGoogleMaps = openInGoogleMaps;
+window.openInMapsApp = openInMapsApp;
 window.toggleLike = toggleLike;
 
 /**
