@@ -100,6 +100,43 @@ document.getElementById('gate-buy-btn')?.addEventListener('click', async () => {
   }
 });
 
+// Restore access by email
+document.getElementById('gate-restore-btn')?.addEventListener('click', () => {
+  document.getElementById('gate-restore-form').hidden = false;
+  document.getElementById('gate-restore-btn').hidden = true;
+});
+
+document.getElementById('gate-restore-submit')?.addEventListener('click', async () => {
+  const email = document.getElementById('gate-restore-email').value.trim();
+  const msg = document.getElementById('gate-restore-msg');
+  if (!email) return;
+
+  msg.hidden = false;
+  msg.textContent = 'Checking...';
+  msg.className = 'gate-restore-msg';
+
+  try {
+    const res = await fetch('/.netlify/functions/verify-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+    if (data.paid) {
+      grantAccess();
+      msg.textContent = 'Access restored!';
+      msg.className = 'gate-restore-msg success';
+      setTimeout(() => hideGate(), 500);
+    } else {
+      msg.textContent = 'No purchase found for this email.';
+      msg.className = 'gate-restore-msg error';
+    }
+  } catch {
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'gate-restore-msg error';
+  }
+});
+
 // =============================================
 // State — single mutable object drives all UI
 // =============================================

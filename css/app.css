@@ -148,6 +148,45 @@
   color: var(--text-muted);
 }
 
+.gate-restore {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.gate-restore-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.gate-restore-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.gate-restore-form input {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  flex: 1;
+  max-width: 220px;
+}
+
+.gate-restore-msg {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.gate-restore-msg.success { color: #43A047; }
+.gate-restore-msg.error { color: #E53935; }
+
 /* ========================================
    Reset & Base
    ======================================== */
