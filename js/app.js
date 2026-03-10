@@ -924,6 +924,15 @@ function prefetchRemainingRoutes() {
   });
 }
 
+/** Calculate total distance in meters from an array of [lat,lng] coords. */
+function routeDistance(coords) {
+  let total = 0;
+  for (let i = 1; i < coords.length; i++) {
+    total += haversine(coords[i-1][0], coords[i-1][1], coords[i][0], coords[i][1]);
+  }
+  return total;
+}
+
 /** Show a single route on the picker map by ROUTE_DEFS index. */
 function showPickerRoute(idx) {
   if (!tourPickerMap) return;
@@ -963,6 +972,26 @@ function showPickerRoute(idx) {
 
   // Fit bounds
   tourPickerMap.fitBounds(polyline.getBounds(), { padding: [40, 40], maxZoom: 15 });
+
+  // Route stats info box
+  const distM = routeDistance(coords);
+  const distMi = (distM / 1609.34).toFixed(1);
+  const isBike = def.id.includes('bike');
+  const walkMins = Math.round(distM / 80); // ~3 mph walking
+  const bikeMins = Math.round(distM / 200); // ~7.5 mph biking
+  const timeText = isBike ? `~${bikeMins} min by bike` : `~${walkMins} min walk`;
+
+  // Remove old info box
+  const oldBox = document.querySelector('.tour-stats-box');
+  if (oldBox) oldBox.remove();
+
+  const box = document.createElement('div');
+  box.className = 'tour-stats-box';
+  box.innerHTML = `
+    <strong>${def.name}</strong>
+    <span>${ordered.length} stops · ${distMi} mi · ${timeText}</span>
+  `;
+  document.getElementById('tour-picker-map').appendChild(box);
 }
 
 /** Open a tour — set state, find start index, render loop view. */
@@ -1642,7 +1671,7 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
     <div class="directions-controls">
       <button class="directions-toggle ${profile === 'foot' ? 'active' : ''}" data-profile="foot" aria-label="Walking">🚶</button>
       <button class="directions-toggle ${profile === 'car' ? 'active' : ''}" data-profile="car" aria-label="Driving">🚗</button>
-      <a class="directions-gmaps" href="${mapsUrl}" target="_blank" rel="noopener">Open in Maps ↗</a>
+      <button class="directions-gmaps" onclick="window.open('${mapsUrl}','_blank')">Open in Maps ↗</button>
       <button class="directions-close" aria-label="Close directions">✕</button>
     </div>
   `;
