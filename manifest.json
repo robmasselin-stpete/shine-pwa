@@ -1,12 +1,12 @@
 {
-  "name": "SHINE St. Pete Mural Guide",
-  "short_name": "SHINE",
-  "description": "Interactive guide to 200+ murals from the SHINE Mural Festival",
+  "name": "Mural Quest — St. Pete",
+  "short_name": "Mural Quest",
+  "description": "Self-guided mural tours in St. Petersburg, Florida",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#F5F0EB",
-  "theme_color": "#1E5B8A",
+  "background_color": "#F7F4F0",
+  "theme_color": "#0E918C",
   "icons": [
     {
       "src": "images/icons/icon-192.png",

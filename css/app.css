@@ -190,86 +190,87 @@
 /* Install overlay */
 .install-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 9999;
-  background: rgba(0,0,0,0.6);
   display: none;
-  align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 8px 12px;
+  padding-top: calc(8px + env(safe-area-inset-top, 0px));
 }
 
 .install-overlay-content {
   background: var(--bg, #fff);
-  border-radius: 16px;
-  padding: 32px 24px;
-  max-width: 340px;
+  border-radius: 12px;
+  padding: 12px 16px;
   width: 100%;
-  text-align: center;
+  max-width: 400px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
 .install-overlay-title {
   font-family: var(--font-display);
-  font-size: 20px;
-  margin-bottom: 6px;
+  font-size: 15px;
+  margin-bottom: 4px;
 }
 
 .install-overlay-sub {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 24px;
+  display: none;
 }
 
 .install-steps {
-  text-align: left;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .install-step {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 10px 0;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 13px;
+  line-height: 1.3;
 }
 
 .install-step + .install-step {
-  border-top: 1px solid var(--border, #eee);
+  border-top: none;
 }
 
 .install-step-num {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: var(--primary, #1E5B8A);
+  background: var(--accent, #0E918C);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .install-step span {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 13px;
+  line-height: 1.3;
 }
 
 .install-share-icon {
   display: inline-block;
   vertical-align: middle;
   margin: 0 2px;
-  color: var(--primary, #1E5B8A);
+  color: var(--accent, #0E918C);
 }
 
 .install-overlay-dismiss {
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
-  padding: 8px;
+  padding: 4px 0;
 }
 
 /* ========================================
