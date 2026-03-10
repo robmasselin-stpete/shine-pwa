@@ -125,7 +125,7 @@ document.getElementById('gate-buy-btn')?.addEventListener('click', async () => {
     }
   } catch (err) {
     btn.disabled = false;
-    btn.innerHTML = 'Get Access — $3.99<span class="gate-buy-sub">2-month pass</span>';
+    btn.innerHTML = 'Get Access — $4.99<span class="gate-buy-sub">2-month pass</span>';
     alert('Something went wrong. Please try again.');
   }
 });

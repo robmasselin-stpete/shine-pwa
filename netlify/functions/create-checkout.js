@@ -21,7 +21,7 @@ exports.handler = async (event) => {
             name: 'Mural Quest — St. Pete',
             description: '2-month access to self-guided mural tours',
           },
-          unit_amount: 399,
+          unit_amount: 499,
         },
         quantity: 1,
       }],
