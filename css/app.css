@@ -199,6 +199,10 @@
   padding: 24px;
 }
 
+.install-overlay[hidden] {
+  display: none;
+}
+
 .install-overlay-content {
   background: var(--bg, #fff);
   border-radius: 16px;
