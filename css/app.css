@@ -1655,8 +1655,7 @@ a {
 /* Tour nav buttons — pinned to bottom */
 .tour-nav {
   display: flex;
-  justify-content: center;
-  gap: 24px;
+  justify-content: space-between;
   padding: 8px 16px 12px;
   flex-shrink: 0;
   background: var(--bg);
