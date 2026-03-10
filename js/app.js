@@ -57,26 +57,29 @@ function hideGate() {
 
 // Install-to-home-screen prompt
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
 function showInstallPrompt() {
-  if (isStandalone) return; // already installed
+  if (isStandalone) return;
   const overlay = document.getElementById('install-overlay');
   if (!overlay) return;
 
-  if (isIOS) {
-    document.getElementById('install-ios').hidden = false;
-    document.getElementById('install-android').hidden = true;
+  // Show the right instructions — default to iOS since most users are mobile Safari
+  const iosEl = document.getElementById('install-ios');
+  const androidEl = document.getElementById('install-android');
+  if (isIOS || (!isIOS && !(/android/i.test(navigator.userAgent)))) {
+    iosEl.style.display = 'block';
+    androidEl.style.display = 'none';
   } else {
-    document.getElementById('install-ios').hidden = true;
-    document.getElementById('install-android').hidden = false;
+    iosEl.style.display = 'none';
+    androidEl.style.display = 'block';
   }
-  overlay.hidden = false;
+  overlay.style.display = 'flex';
 }
 
 function hideInstallPrompt() {
   const overlay = document.getElementById('install-overlay');
-  if (overlay) overlay.hidden = true;
+  if (overlay) overlay.style.display = 'none';
 }
 
 document.getElementById('install-overlay-dismiss')?.addEventListener('click', hideInstallPrompt);
