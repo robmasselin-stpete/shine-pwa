@@ -1628,7 +1628,9 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
   const lineNote = straightLine ? ' (straight line)' : '';
 
   const mural = state.directionsMural;
-  const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=${profile === 'foot' ? 'walking' : 'driving'}`;
+  const mapsUrl = isIOS
+    ? `https://maps.apple.com/?daddr=${mural.lat},${mural.lng}&dirflg=${profile === 'foot' ? 'w' : 'd'}`
+    : `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=${profile === 'foot' ? 'walking' : 'driving'}`;
 
   const bar = document.createElement('div');
   bar.className = 'directions-bar';
@@ -1640,7 +1642,7 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
     <div class="directions-controls">
       <button class="directions-toggle ${profile === 'foot' ? 'active' : ''}" data-profile="foot" aria-label="Walking">🚶</button>
       <button class="directions-toggle ${profile === 'car' ? 'active' : ''}" data-profile="car" aria-label="Driving">🚗</button>
-      <a class="directions-gmaps" href="${gmapsUrl}" target="_blank" rel="noopener">Google Maps ↗</a>
+      <a class="directions-gmaps" href="${mapsUrl}" target="_blank" rel="noopener">Open in Maps ↗</a>
       <button class="directions-close" aria-label="Close directions">✕</button>
     </div>
   `;
