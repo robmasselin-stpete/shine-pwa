@@ -2,19 +2,19 @@
    SHINE PWA — Design Tokens
    ======================================== */
 :root {
-  --bg: #F5F0EB;
+  --bg: #F7F4F0;
   --bg-card: #FFFFFF;
-  --text: #2C2016;
-  --text-muted: #7A6E62;
-  --accent: #1E5B8A;
-  --accent-light: #E8F0F6;
-  --border: #E0D8CF;
-  --shadow: 0 1px 3px rgba(44, 32, 22, 0.08);
-  --shadow-lg: 0 4px 12px rgba(44, 32, 22, 0.12);
-  --radius: 10px;
-  --radius-sm: 6px;
-  --font-display: 'Space Mono', monospace;
-  --font-body: 'DM Sans', sans-serif;
+  --text: #2B2B2B;
+  --text-muted: #7A7A7A;
+  --accent: #2A9D8F;
+  --accent-light: #E2F5F2;
+  --border: #E4DDD6;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.10);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font-display: 'Quicksand', sans-serif;
+  --font-body: 'Outfit', sans-serif;
   --tab-height: 56px;
   --header-height: 52px;
   --safe-top: env(safe-area-inset-top, 0px);
@@ -727,6 +727,40 @@ a {
   font-size: 13px;
 }
 
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.like-btn:active {
+  transform: scale(0.95);
+}
+
+.like-btn.liked {
+  color: #E53935;
+  border-color: #E53935;
+  background: #FFF0F0;
+}
+
+.like-btn.liked .like-heart {
+  fill: #E53935;
+}
+
+.like-count {
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .detail-bio {
   margin-top: 16px;
   font-size: 14px;
@@ -744,12 +778,36 @@ a {
   margin-bottom: 6px;
 }
 
+.detail-impressions {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.detail-impression {
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.detail-impression:last-child {
+  border-bottom: none;
+}
+
+.detail-directions-group {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .detail-directions {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 16px;
   width: 100%;
   padding: 12px;
   background: var(--accent);
@@ -759,6 +817,16 @@ a {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
+}
+
+.detail-gmaps-link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+  padding: 4px;
 }
 
 /* Detail: field photos horizontal scroller */

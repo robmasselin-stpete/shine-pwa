@@ -25,6 +25,11 @@ muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
+# ── Impressions (crowd-sourced quotes, no attribution) ──
+impressions: []
+# - "The colors are insane in person"
+# - "This one stopped me in my tracks"
+
 # ── Provenance (not exported to data.js) ──
 source: "manual"               # detail-card | claude-enhanced | manual | legacy
 sourceNotes: ""

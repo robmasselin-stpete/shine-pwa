@@ -103,7 +103,7 @@ if (sessionId) {
       }
     })
     .catch(() => showGate());
-} else if (hasAccess()) {
+} else if (hasAccess() || location.hostname === 'localhost') {
   hideGate();
 } else {
   showGate();
@@ -166,6 +166,54 @@ document.getElementById('gate-restore-submit')?.addEventListener('click', async 
     msg.className = 'gate-restore-msg error';
   }
 });
+
+// =============================================
+// Favorites / Likes
+// =============================================
+const LIKES_KEY = 'mural_quest_likes';
+const myLikes = new Set(JSON.parse(localStorage.getItem(LIKES_KEY) || '[]'));
+let likeCounts = {};
+
+function saveLikes() {
+  localStorage.setItem(LIKES_KEY, JSON.stringify([...myLikes]));
+}
+
+function hasLiked(muralId) {
+  return myLikes.has(muralId);
+}
+
+async function fetchLikeCounts() {
+  try {
+    const res = await fetch('/.netlify/functions/like-mural');
+    if (res.ok) likeCounts = await res.json();
+  } catch { /* offline — counts stay at 0 */ }
+}
+
+async function toggleLike(muralId) {
+  if (hasLiked(muralId)) return; // one like per device
+  myLikes.add(muralId);
+  saveLikes();
+  likeCounts[muralId] = (likeCounts[muralId] || 0) + 1;
+
+  // Update UI immediately
+  const btn = document.getElementById('like-btn');
+  if (btn) {
+    btn.classList.add('liked');
+    btn.querySelector('.like-count').textContent = likeCounts[muralId] || '';
+  }
+
+  // Send to backend
+  try {
+    await fetch('/.netlify/functions/like-mural', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ muralId }),
+    });
+  } catch { /* offline — local state is saved, server will be behind */ }
+}
+
+// Fetch counts on load
+fetchLikeCounts();
 
 // =============================================
 // State — single mutable object drives all UI
@@ -296,7 +344,9 @@ function getFilteredMurals() {
       m.a.toLowerCase().includes(q) ||
       (m.loc && m.loc.toLowerCase().includes(q)) ||
       (m.t && m.t.toLowerCase().includes(q)) ||
-      (m.bldg && m.bldg.toLowerCase().includes(q))
+      (m.bldg && m.bldg.toLowerCase().includes(q)) ||
+      (m.desc && m.desc.toLowerCase().includes(q)) ||
+      (m.imp && m.imp.some(i => i.toLowerCase().includes(q)))
     );
   }
   return list;
@@ -1298,6 +1348,11 @@ function openDetail(mural) {
         <span>${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</span>
       </div>
 
+      <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
+        <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="${hasLiked(mural.id) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="like-count">${likeCounts[mural.id] || ''}</span>
+      </button>
+
       ${mural.bio ? `
         <div class="detail-bio">
           <div class="detail-bio-label">About the Artist</div>
@@ -1305,17 +1360,26 @@ function openDetail(mural) {
         </div>
       ` : ''}
 
-      ${mural.desc ? `
-        <div class="detail-bio">
-          <div class="detail-bio-label">About This Mural</div>
-          ${mural.desc}
+      ${''}<!-- desc kept in data for search -->
+
+      ${mural.imp && mural.imp.length > 0 ? `
+        <div class="detail-impressions">
+          <div class="detail-bio-label">What People Say</div>
+          ${mural.imp.slice(0, 3).map(q => `
+            <div class="detail-impression">"${q}"</div>
+          `).join('')}
         </div>
       ` : ''}
 
       ${mural.lat && mural.lng ? `
-        <button class="detail-directions" onclick="startDirections(${mural.id})">
-          🚶 Get Directions
-        </button>
+        <div class="detail-directions-group">
+          <button class="detail-directions" onclick="startDirections(${mural.id})">
+            🚶 Get Directions
+          </button>
+          <button class="detail-gmaps-link" onclick="openInGoogleMaps(${mural.id})">
+            Open in Google Maps ↗
+          </button>
+        </div>
       ` : ''}
 
       ${photos.length > 0 ? `
@@ -1401,17 +1465,22 @@ function getArtistAliases(name) {
  * Closes the detail overlay, switches to map tab, and draws route.
  * @param {number} muralId - ID of the target mural
  */
+function openGoogleMaps(mural) {
+  const url = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking`;
+  sessionStorage.setItem('mq_return_mural', mural.id);
+  window.open(url, '_blank');
+}
+
 function startDirections(muralId) {
   const mural = murals.find(m => m.id === muralId);
   if (!mural) return;
 
-  const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=walking`;
+  // Save state so we can return here
+  sessionStorage.setItem('mq_return_mural', muralId);
 
-  // On insecure origins (HTTP), geolocation is blocked and window.open gets
-  // killed by popup blockers in async callbacks. Detect this synchronously
-  // during the click handler and navigate directly to Google Maps.
+  // On insecure origins (HTTP), geolocation is blocked — go straight to Google Maps
   if (!window.isSecureContext) {
-    window.location.href = gmapsUrl;
+    openGoogleMaps(mural);
     return;
   }
 
@@ -1443,18 +1512,25 @@ function startDirections(muralId) {
         fetchAndDrawRoute();
       },
       () => {
-        // User denied location — redirect to Google Maps
+        // User denied location — open Google Maps in new tab
         state.directionsMural = null;
-        window.location.href = gmapsUrl;
+        openGoogleMaps(mural);
       },
       { enableHighAccuracy: true }
     );
   } else {
-    window.location.href = gmapsUrl;
+    openGoogleMaps(mural);
   }
+}
+
+function openInGoogleMaps(muralId) {
+  const mural = murals.find(m => m.id === muralId);
+  if (mural) openGoogleMaps(mural);
 }
 // Expose to onclick handler
 window.startDirections = startDirections;
+window.openInGoogleMaps = openInGoogleMaps;
+window.toggleLike = toggleLike;
 
 /**
  * Fetch route from OSRM and draw it on the map.
@@ -1627,3 +1703,12 @@ function handleDeepLink() {
 renderFilterPills();
 renderExplore();
 handleDeepLink();
+
+// Restore mural detail after returning from Google Maps
+const returnMural = sessionStorage.getItem('mq_return_mural');
+if (returnMural) {
+  sessionStorage.removeItem('mq_return_mural');
+  const mid = parseInt(returnMural, 10);
+  const m = murals.find(mu => mu.id === mid);
+  if (m) showDetail(m);
+}

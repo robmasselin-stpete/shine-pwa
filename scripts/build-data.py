@@ -44,6 +44,7 @@ EXPORT_FIELDS = [
     'lat', 'lng', 'year', 'category', 'instagram', 'artistBio',
     'img', 'basedIn',
     'muralDescription', 'muralInspiration', 'muralAwards', 'artistAwards',
+    'impressions',
 ]
 
 # Provenance fields — stripped from output
@@ -200,6 +201,11 @@ def mural_to_js(m):
     bio = js_string_escape((m.get('artistBio', '') or '').strip())
     desc = js_string_escape((m.get('muralDescription', '') or '').strip())
 
+    # Impressions — list of strings
+    raw_imp = m.get('impressions') or []
+    imp_items = ','.join(f"'{js_string_escape(s)}'" for s in raw_imp if s)
+    imp_str = f"[{imp_items}]" if imp_items else '[]'
+
     lat_str = str(lat) if lat is not None else 'null'
     lng_str = str(lng) if lng is not None else 'null'
 
@@ -216,6 +222,7 @@ def mural_to_js(m):
         f"ig:'{instagram}',"
         f"bio:'{bio}',"
         f"desc:'{desc}',"
+        f"imp:{imp_str},"
         f"img:'{img}',"
         f"from:'{based_in}'}}"
     )
@@ -234,7 +241,7 @@ def generate_data_js(murals, config):
     lines.append('// To make changes, edit the YAML source files and run: python3 scripts/build-data.py')
     lines.append('//')
     lines.append('// Schema: id, a(artist), t(title), loc(address), bldg(building),')
-    lines.append('//   lat, lng, y(year), cat(category), ig(instagram), bio, desc(muralDescription), img, from(basedIn)')
+    lines.append('//   lat, lng, y(year), cat(category), ig(instagram), bio, desc(muralDescription), imp(impressions), img, from(basedIn)')
     lines.append('')
 
     # Sort: year desc, then artist alpha
