@@ -1,8 +1,16 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
 exports.handler = async (event) => {
   try {
-    const origin = event.headers.origin || event.headers.referer?.replace(/\/$/, '') || 'https://legendarybonbon.com';
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      return {
+        statusCode: 500,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'Stripe key not configured' }),
+      };
+    }
+
+    const stripe = require('stripe')(key);
+    const origin = event.headers.origin || event.headers.referer?.replace(/\/$/, '') || 'https://legendary-bonbon-a5b20a.netlify.app';
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],

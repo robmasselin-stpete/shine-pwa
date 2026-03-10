@@ -1,5 +1,3 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
 exports.handler = async (event) => {
   const sessionId = event.queryStringParameters?.session_id;
 
@@ -12,6 +10,16 @@ exports.handler = async (event) => {
   }
 
   try {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      return {
+        statusCode: 500,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'Stripe key not configured' }),
+      };
+    }
+
+    const stripe = require('stripe')(key);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     return {
       statusCode: 200,
