@@ -55,6 +55,32 @@ function hideGate() {
   document.getElementById('app').hidden = false;
 }
 
+// Install-to-home-screen prompt
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+function showInstallPrompt() {
+  if (isStandalone) return; // already installed
+  const overlay = document.getElementById('install-overlay');
+  if (!overlay) return;
+
+  if (isIOS) {
+    document.getElementById('install-ios').hidden = false;
+    document.getElementById('install-android').hidden = true;
+  } else {
+    document.getElementById('install-ios').hidden = true;
+    document.getElementById('install-android').hidden = false;
+  }
+  overlay.hidden = false;
+}
+
+function hideInstallPrompt() {
+  const overlay = document.getElementById('install-overlay');
+  if (overlay) overlay.hidden = true;
+}
+
+document.getElementById('install-overlay-dismiss')?.addEventListener('click', hideInstallPrompt);
+
 // Handle Stripe success redirect
 const urlParams = new URLSearchParams(window.location.search);
 const sessionId = urlParams.get('session_id');
@@ -68,6 +94,7 @@ if (sessionId) {
         grantAccess();
         window.history.replaceState({}, '', '/');
         hideGate();
+        showInstallPrompt();
       } else {
         showGate();
       }
@@ -126,7 +153,7 @@ document.getElementById('gate-restore-submit')?.addEventListener('click', async 
       grantAccess();
       msg.textContent = 'Access restored!';
       msg.className = 'gate-restore-msg success';
-      setTimeout(() => hideGate(), 500);
+      setTimeout(() => { hideGate(); showInstallPrompt(); }, 500);
     } else {
       msg.textContent = 'No purchase found for this email.';
       msg.className = 'gate-restore-msg error';
