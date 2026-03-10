@@ -1069,6 +1069,7 @@ function renderTourLoop() {
       </div>
       <div class="tour-nav">
         <button class="tour-nav-btn" data-dir="-1" aria-label="Previous stop">
+          <span class="tour-nav-label">Last Mural</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="m18 15-6-6-6 6"/>
           </svg>
@@ -1077,6 +1078,7 @@ function renderTourLoop() {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="m6 9 6 6 6-6"/>
           </svg>
+          <span class="tour-nav-label">Next Mural</span>
         </button>
       </div>
     </div>
