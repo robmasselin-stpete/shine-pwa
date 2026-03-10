@@ -172,15 +172,18 @@
   gap: 8px;
   margin-top: 10px;
   justify-content: center;
+  max-width: 320px;
+  width: 100%;
 }
 
 .gate-restore-form input {
   padding: 8px 12px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  font-size: 14px;
+  font-size: 13px;
   flex: 1;
-  max-width: 280px;
+  min-width: 0;
+  width: 100%;
 }
 
 .gate-restore-msg {
