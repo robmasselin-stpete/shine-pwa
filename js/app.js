@@ -94,21 +94,27 @@ function showRestorePage() {
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
 const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
+const isAndroid = /android/i.test(navigator.userAgent);
+
 function showInstallPrompt() {
   if (isStandalone) return;
   const overlay = document.getElementById('install-overlay');
   if (!overlay) return;
 
-  // Show the right instructions — default to iOS since most users are mobile Safari
+  // Show the right platform instructions
   const iosEl = document.getElementById('install-ios');
   const androidEl = document.getElementById('install-android');
-  if (isIOS || (!isIOS && !(/android/i.test(navigator.userAgent)))) {
-    iosEl.style.display = 'block';
-    androidEl.style.display = 'none';
-  } else {
+  if (isAndroid) {
     iosEl.style.display = 'none';
     androidEl.style.display = 'block';
+  } else {
+    iosEl.style.display = 'block';
+    androidEl.style.display = 'none';
   }
+
+  // Start on step 1 (full-screen why)
+  document.getElementById('install-step1').style.display = '';
+  document.getElementById('install-step2').style.display = 'none';
   overlay.style.display = 'flex';
 }
 
@@ -117,7 +123,24 @@ function hideInstallPrompt() {
   if (overlay) overlay.style.display = 'none';
 }
 
+// Step 1 → Step 2: "Add Now" transitions to compact reminder
+document.getElementById('install-add-now')?.addEventListener('click', () => {
+  document.getElementById('install-step1').style.display = 'none';
+  const overlay = document.getElementById('install-overlay');
+  // Switch overlay from full-screen to transparent so toolbar is visible
+  overlay.style.background = 'none';
+  overlay.style.alignItems = 'flex-start';
+  overlay.style.pointerEvents = 'none';
+  const step2 = document.getElementById('install-step2');
+  step2.style.display = 'block';
+  step2.style.pointerEvents = 'auto';
+});
+
+// Skip button
 document.getElementById('install-overlay-dismiss')?.addEventListener('click', hideInstallPrompt);
+
+// Done button on step 2
+document.getElementById('install-step2-done')?.addEventListener('click', hideInstallPrompt);
 
 // Handle Stripe success redirect
 const urlParams = new URLSearchParams(window.location.search);
@@ -573,6 +596,7 @@ function initMap() {
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '\u00a9 OpenStreetMap \u00a9 CARTO',
     maxZoom: 19,
+    keepBuffer: 6,
   }).addTo(leafletMap);
 
   // Create both dot markers and icon markers for each mural
@@ -618,9 +642,11 @@ function initMap() {
   renderMapCatPills();
   updateMapMarkers();
 
-  // User location
+  // User location — only show if within 50 miles of St. Pete
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(pos => {
+      const dist = haversine(pos.coords.latitude, pos.coords.longitude, 27.7706, -82.6341);
+      if (dist > 80467) return; // 50 miles — too far, skip location dot
       state.userLat = pos.coords.latitude;
       state.userLng = pos.coords.longitude;
       L.circleMarker([state.userLat, state.userLng], {
