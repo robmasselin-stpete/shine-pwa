@@ -312,7 +312,7 @@
   align-items: flex-start;
   justify-content: center;
   background: linear-gradient(160deg, #0E918C 0%, #1B4965 100%);
-  padding: calc(var(--safe-top) + 40px) 24px 24px;
+  padding: calc(var(--safe-top) + 20px) 24px 24px;
 }
 
 .install-walkthrough {
@@ -322,14 +322,14 @@
 }
 
 .install-wt-top {
-  margin-bottom: 28px;
+  margin-bottom: 10px;
 }
 
 .install-wt-logo {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  margin: 0 auto 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  margin: 0 auto 6px;
   display: block;
 }
 
@@ -342,7 +342,7 @@
   font-size: 28px;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
 .install-wt-sub {
@@ -353,7 +353,7 @@
 .install-big-steps {
   width: 100%;
   max-width: 340px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .install-step-num {
@@ -387,8 +387,8 @@
 .install-big-step {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 0;
+  gap: 12px;
+  padding: 8px 0;
 }
 
 .install-big-step + .install-big-step {
@@ -397,15 +397,15 @@
 
 .install-big-num {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(255,255,255,0.2);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   font-family: var(--font-display);
 }
