@@ -60,17 +60,35 @@ function idbLoad() {
   })).catch(() => null);
 }
 
+// Cookie fallback — most reliable across Safari/PWA boundary
+function setCookieAccess(expires) {
+  const d = new Date(expires);
+  document.cookie = `mq_access=${expires};expires=${d.toUTCString()};path=/;SameSite=Lax`;
+}
+
+function getCookieAccess() {
+  const match = document.cookie.match(/mq_access=(\d+)/);
+  if (match) {
+    const expires = parseInt(match[1], 10);
+    if (Date.now() < expires) return { expires };
+  }
+  return null;
+}
+
 function hasAccess() {
   try {
     const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
-    return data && Date.now() < data.expires;
-  } catch { return false; }
+    if (data && Date.now() < data.expires) return true;
+  } catch {}
+  // Check cookie as fallback
+  return !!getCookieAccess();
 }
 
 function grantAccess() {
   const data = { expires: Date.now() + ACCESS_DURATION };
   try { localStorage.setItem(ACCESS_KEY, JSON.stringify(data)); } catch {}
   idbSave(data);
+  setCookieAccess(data.expires);
 }
 
 function showGate() {
