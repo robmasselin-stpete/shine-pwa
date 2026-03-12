@@ -109,14 +109,14 @@
 .gate-buy-btn {
   margin-top: 16px;
   width: 100%;
-  max-width: 300px;
-  padding: 14px 24px;
+  max-width: 320px;
+  padding: 18px 28px;
   background: var(--accent);
   color: #fff;
-  border: 2px solid #fff;
+  border: 3px solid #fff;
   border-radius: var(--radius);
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -389,6 +389,7 @@
   color: var(--text, #1a1a2e);
 }
 
+.install-dots-icon,
 .install-share-icon {
   display: inline-block;
   vertical-align: middle;
@@ -481,6 +482,7 @@
   padding: 14px 18px;
   width: 100%;
   max-width: 400px;
+  border: 3px solid var(--accent, #0E918C);
   box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
