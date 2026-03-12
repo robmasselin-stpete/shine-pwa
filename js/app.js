@@ -34,6 +34,32 @@ import { ROUTE_PATHS } from './routes.js';
 const ACCESS_KEY = 'mural_quest_access';
 const ACCESS_DURATION = 60 * 24 * 60 * 60 * 1000; // 60 days in ms
 
+// IndexedDB fallback — persists across Safari/PWA boundary
+function idbOpen() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open('mural_quest', 1);
+    req.onupgradeneeded = () => req.result.createObjectStore('kv');
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function idbSave(data) {
+  idbOpen().then(db => {
+    const tx = db.transaction('kv', 'readwrite');
+    tx.objectStore('kv').put(data, ACCESS_KEY);
+  }).catch(() => {});
+}
+
+function idbLoad() {
+  return idbOpen().then(db => new Promise((resolve) => {
+    const tx = db.transaction('kv', 'readonly');
+    const req = tx.objectStore('kv').get(ACCESS_KEY);
+    req.onsuccess = () => resolve(req.result || null);
+    req.onerror = () => resolve(null);
+  })).catch(() => null);
+}
+
 function hasAccess() {
   try {
     const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
@@ -42,7 +68,9 @@ function hasAccess() {
 }
 
 function grantAccess() {
-  localStorage.setItem(ACCESS_KEY, JSON.stringify({ expires: Date.now() + ACCESS_DURATION }));
+  const data = { expires: Date.now() + ACCESS_DURATION };
+  localStorage.setItem(ACCESS_KEY, JSON.stringify(data));
+  idbSave(data);
 }
 
 function showGate() {
@@ -52,7 +80,14 @@ function showGate() {
 
 function hideGate() {
   document.getElementById('gate-page').hidden = true;
+  document.getElementById('restore-page').hidden = true;
   document.getElementById('app').hidden = false;
+}
+
+function showRestorePage() {
+  document.getElementById('restore-page').hidden = false;
+  document.getElementById('gate-page').hidden = true;
+  document.getElementById('app').hidden = true;
 }
 
 // Install-to-home-screen prompt
@@ -106,7 +141,20 @@ if (sessionId) {
 } else if (hasAccess() || location.hostname === 'localhost') {
   hideGate();
 } else {
-  showGate();
+  // localStorage empty — try IndexedDB fallback before showing gate/restore
+  idbLoad().then(data => {
+    if (data && Date.now() < data.expires) {
+      // Found valid access in IndexedDB — sync to localStorage and enter
+      localStorage.setItem(ACCESS_KEY, JSON.stringify(data));
+      hideGate();
+    } else if (isStandalone) {
+      showRestorePage();
+    } else {
+      showGate();
+    }
+  }).catch(() => {
+    isStandalone ? showRestorePage() : showGate();
+  });
 }
 
 // Buy button click → create Stripe checkout session
@@ -164,6 +212,38 @@ document.getElementById('gate-restore-submit')?.addEventListener('click', async 
   } catch {
     msg.textContent = 'Something went wrong. Try again.';
     msg.className = 'gate-restore-msg error';
+  }
+});
+
+// Standalone restore page (dedicated screen)
+document.getElementById('restore-submit')?.addEventListener('click', async () => {
+  const email = document.getElementById('restore-email').value.trim();
+  const msg = document.getElementById('restore-msg');
+  if (!email) return;
+
+  msg.hidden = false;
+  msg.textContent = 'Checking...';
+  msg.className = 'restore-msg';
+
+  try {
+    const res = await fetch('/.netlify/functions/verify-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+    if (data.paid) {
+      grantAccess();
+      msg.textContent = 'Access restored!';
+      msg.className = 'restore-msg success';
+      setTimeout(() => hideGate(), 500);
+    } else {
+      msg.textContent = 'No purchase found for this email.';
+      msg.className = 'restore-msg error';
+    }
+  } catch {
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'restore-msg error';
   }
 });
 

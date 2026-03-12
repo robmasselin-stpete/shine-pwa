@@ -81,6 +81,21 @@
     </div>
   </div>
 
+  <!-- Standalone restore screen (shown when PWA opens without access) -->
+  <div id="restore-page" class="restore-page" hidden>
+    <div class="restore-content">
+      <h1 class="restore-title">MURAL QUEST</h1>
+      <h2 class="restore-headline">Verify Your Access</h2>
+      <p class="restore-sub">Enter the email you used to purchase.<br>We'll look it up and get you right in.</p>
+      <div class="restore-form">
+        <input id="restore-email" type="email" placeholder="your@email.com" autocomplete="email">
+        <button id="restore-submit" class="restore-btn">Verify & Enter</button>
+      </div>
+      <p id="restore-msg" class="restore-msg" hidden></p>
+      <p class="restore-reassure">Your purchase is safe — this just confirms your email.</p>
+    </div>
+  </div>
+
   <!-- Install to home screen overlay -->
   <div id="install-overlay" class="install-overlay">
     <div class="install-overlay-content">
