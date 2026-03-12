@@ -309,10 +309,10 @@
   inset: 0;
   z-index: 9999;
   display: none;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: linear-gradient(160deg, #0E918C 0%, #1B4965 100%);
-  padding: 24px;
+  padding: calc(var(--safe-top) + 40px) 24px 24px;
 }
 
 .install-walkthrough {
@@ -419,6 +419,13 @@
 .install-big-text strong {
   color: #fff;
   font-weight: 700;
+}
+
+.install-dots-icon-lg {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 3px;
+  color: #fff;
 }
 
 .install-share-icon-lg {

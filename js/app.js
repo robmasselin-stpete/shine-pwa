@@ -75,6 +75,17 @@ function getCookieAccess() {
   return null;
 }
 
+// Store customer email in cookie for auto-restore across Safari/PWA boundary
+function setEmailCookie(email) {
+  const d = new Date(Date.now() + ACCESS_DURATION);
+  document.cookie = `mq_email=${encodeURIComponent(email)};expires=${d.toUTCString()};path=/;SameSite=Lax`;
+}
+
+function getEmailCookie() {
+  const match = document.cookie.match(/mq_email=([^;]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
 function hasAccess() {
   try {
     const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
@@ -106,6 +117,28 @@ function showRestorePage() {
   document.getElementById('restore-page').style.display = 'flex';
   document.getElementById('gate-page').hidden = true;
   document.getElementById('app').hidden = true;
+}
+
+// Auto-restore access by email (silent, no UI)
+function autoRestoreByEmail(email) {
+  fetch('/.netlify/functions/verify-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email }),
+  })
+    .then(r => r.json())
+    .then(data => {
+      if (data.paid) {
+        grantAccess();
+        setEmailCookie(email);
+        hideGate();
+      } else {
+        isStandalone ? showRestorePage() : showGate();
+      }
+    })
+    .catch(() => {
+      isStandalone ? showRestorePage() : showGate();
+    });
 }
 
 // Install-to-home-screen prompt
@@ -152,6 +185,7 @@ if (sessionId) {
     .then(data => {
       if (data.paid) {
         grantAccess();
+        if (data.email) setEmailCookie(data.email);
         // Only strip session_id from URL if storage actually worked
         if (hasAccess()) {
           window.history.replaceState({}, '', '/');
@@ -172,13 +206,24 @@ if (sessionId) {
       // Found valid access in IndexedDB — sync to localStorage and enter
       localStorage.setItem(ACCESS_KEY, JSON.stringify(data));
       hideGate();
-    } else if (isStandalone) {
-      showRestorePage();
     } else {
-      showGate();
+      // Try auto-restore using stored email cookie
+      const savedEmail = getEmailCookie();
+      if (savedEmail) {
+        autoRestoreByEmail(savedEmail);
+      } else if (isStandalone) {
+        showRestorePage();
+      } else {
+        showGate();
+      }
     }
   }).catch(() => {
-    isStandalone ? showRestorePage() : showGate();
+    const savedEmail = getEmailCookie();
+    if (savedEmail) {
+      autoRestoreByEmail(savedEmail);
+    } else {
+      isStandalone ? showRestorePage() : showGate();
+    }
   });
 }
 
@@ -227,6 +272,7 @@ document.getElementById('gate-restore-submit')?.addEventListener('click', async 
     const data = await res.json();
     if (data.paid) {
       grantAccess();
+      setEmailCookie(email);
       msg.textContent = 'Access restored!';
       msg.className = 'gate-restore-msg success';
       setTimeout(() => { hideGate(); showInstallPrompt(); }, 500);
@@ -259,9 +305,16 @@ document.getElementById('restore-submit')?.addEventListener('click', async () =>
     const data = await res.json();
     if (data.paid) {
       grantAccess();
-      msg.textContent = 'Access restored!';
+      setEmailCookie(email);
+      msg.textContent = 'Access restored! Opening app...';
       msg.className = 'restore-msg success';
-      setTimeout(() => hideGate(), 500);
+      setTimeout(() => {
+        // Directly hide restore page and show app
+        document.getElementById('restore-page').style.display = 'none';
+        document.getElementById('gate-page').hidden = true;
+        document.getElementById('app').hidden = false;
+        showInstallPrompt();
+      }, 800);
     } else {
       msg.textContent = 'No purchase found for this email.';
       msg.className = 'restore-msg error';

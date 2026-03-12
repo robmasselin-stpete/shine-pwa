@@ -21,10 +21,11 @@ exports.handler = async (event) => {
 
     const stripe = require('stripe')(key);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const email = session.customer_details?.email || '';
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ paid: session.payment_status === 'paid' }),
+      body: JSON.stringify({ paid: session.payment_status === 'paid', email }),
     };
   } catch (err) {
     return {
