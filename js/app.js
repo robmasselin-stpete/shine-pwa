@@ -130,9 +130,6 @@ function showInstallPrompt() {
     androidEl.style.display = 'none';
   }
 
-  // Start on step 1 (full-screen why)
-  document.getElementById('install-step1').style.display = '';
-  document.getElementById('install-step2').style.display = 'none';
   overlay.style.display = 'flex';
 }
 
@@ -141,24 +138,8 @@ function hideInstallPrompt() {
   if (overlay) overlay.style.display = 'none';
 }
 
-// Step 1 → Step 2: "Add Now" transitions to compact reminder
-document.getElementById('install-add-now')?.addEventListener('click', () => {
-  document.getElementById('install-step1').style.display = 'none';
-  const overlay = document.getElementById('install-overlay');
-  // Switch overlay from full-screen to transparent so toolbar is visible
-  overlay.style.background = 'none';
-  overlay.style.alignItems = 'flex-start';
-  overlay.style.pointerEvents = 'none';
-  const step2 = document.getElementById('install-step2');
-  step2.style.display = 'block';
-  step2.style.pointerEvents = 'auto';
-});
-
 // Skip button
 document.getElementById('install-overlay-dismiss')?.addEventListener('click', hideInstallPrompt);
-
-// Done button on step 2
-document.getElementById('install-step2-done')?.addEventListener('click', hideInstallPrompt);
 
 // Handle Stripe success redirect
 const urlParams = new URLSearchParams(window.location.search);
