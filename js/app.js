@@ -69,7 +69,7 @@ function hasAccess() {
 
 function grantAccess() {
   const data = { expires: Date.now() + ACCESS_DURATION };
-  localStorage.setItem(ACCESS_KEY, JSON.stringify(data));
+  try { localStorage.setItem(ACCESS_KEY, JSON.stringify(data)); } catch {}
   idbSave(data);
 }
 
@@ -153,7 +153,10 @@ if (sessionId) {
     .then(data => {
       if (data.paid) {
         grantAccess();
-        window.history.replaceState({}, '', '/');
+        // Only strip session_id from URL if storage actually worked
+        if (hasAccess()) {
+          window.history.replaceState({}, '', '/');
+        }
         hideGate();
         showInstallPrompt();
       } else {
