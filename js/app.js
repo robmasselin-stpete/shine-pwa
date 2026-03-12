@@ -80,12 +80,12 @@ function showGate() {
 
 function hideGate() {
   document.getElementById('gate-page').hidden = true;
-  document.getElementById('restore-page').hidden = true;
+  document.getElementById('restore-page').style.display = 'none';
   document.getElementById('app').hidden = false;
 }
 
 function showRestorePage() {
-  document.getElementById('restore-page').hidden = false;
+  document.getElementById('restore-page').style.display = 'flex';
   document.getElementById('gate-page').hidden = true;
   document.getElementById('app').hidden = true;
 }

@@ -199,7 +199,7 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   background: linear-gradient(160deg, #0E918C 0%, #1B4965 100%);
