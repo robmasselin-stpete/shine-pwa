@@ -113,6 +113,7 @@ const MURAL_IMAGES = [
   './images/murals/2025/isac-gres.jpeg',
   './images/murals/2025/jenipher-chandley.jpeg',
   './images/murals/2025/john-vitale-600.jpeg',
+  './images/murals/2025/john-vitale-601.jpeg',
   './images/murals/2025/john-vitale-factory.jpeg',
   './images/murals/2025/karel-garcia.jpeg',
   './images/murals/2025/rebekah-lazaridis.jpeg',

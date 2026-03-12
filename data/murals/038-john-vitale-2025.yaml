@@ -1,0 +1,52 @@
+# John Vitale — 2025
+
+# ── Required ──
+id: 129
+artist: John Vitale
+year: 2025
+lat: 27.77164167
+lng: -82.64233333
+address: 601 1st Ave N
+category: shine
+img: "images/murals/2025/john-vitale-601.jpeg"
+
+# ── Optional ──
+title: ""
+building: The Sage
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  John Vitale, co-founder of the iconic Vitale Brothers, has been painting
+  walls across Tampa Bay since 1992. The Vitale Bros played a major role in
+  establishing St. Petersburg as a world-class street art destination and
+  are among the most prolific muralists in the city's history. John also
+  founded Overspray Art Space in Gulfport, where he hosts spray paint
+  workshops and live art events. A recurring SHINE artist with work in 2015,
+  2019, 2022, and 2024, he returned for SHINE Origins 2025 to paint on the
+  600 block where the mural movement began — coming full circle after more
+  than three decades of public art.
+
+muralDescription: |
+  Orange blossoms and ripe oranges painted on the vertical columns and edges
+  of the sage-green Sage building. White flowers with yellow centers sit
+  among deep green leaves and bright blue accents, with whole and halved
+  oranges tucked between them. The design wraps the structural columns of
+  the building, turning the architecture itself into a tropical citrus
+  garden. The style is clean and illustrative with bold outlines, giving
+  the building a fresh Florida feel that nods to the state's citrus heritage.
+  Adjacent to Marina Capdevila's 2022 SHINE mural on the front face of the
+  same building.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2015, 2019, 2022, 2024, and 2025 Origins festival artist"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "Photo by Rob Asselin, GPS from EXIF"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/"
+  - "https://vitalebrothers.com/"
+  - "https://stpeteartsalliance.org/shine-2025"
