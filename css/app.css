@@ -46,9 +46,21 @@
 
 .gate-hero {
   background: linear-gradient(135deg, #0E918C 0%, #2A9D8F 100%);
-  padding: calc(var(--safe-top) + 24px) 24px 20px;
-  text-align: center;
+  padding: calc(var(--safe-top) + 16px) 24px 16px;
   color: #fff;
+}
+
+.gate-hero-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+}
+
+.gate-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
 }
 
 .gate-title {
@@ -56,13 +68,15 @@
   font-size: 28px;
   font-weight: 700;
   letter-spacing: 4px;
+  text-align: left;
 }
 
 .gate-subtitle {
-  font-size: 16px;
+  font-size: 14px;
   opacity: 0.85;
-  margin-top: 4px;
+  margin-top: 2px;
   letter-spacing: 1px;
+  text-align: left;
 }
 
 .gate-body {
@@ -111,25 +125,25 @@
   width: 100%;
   max-width: 320px;
   padding: 18px 28px;
-  background: var(--accent);
+  background: linear-gradient(180deg, #2A9D8F 0%, #0E918C 100%);
   color: #fff;
   border: 3px solid #fff;
-  border-radius: var(--radius);
+  border-radius: 16px;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.5px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  transition: background 0.15s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  gap: 6px;
+  transition: transform 0.15s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .gate-buy-btn:active {
-  background: #164a6e;
+  transform: scale(0.97);
 }
 
 .gate-buy-btn:disabled {
@@ -311,17 +325,16 @@
   margin-bottom: 28px;
 }
 
+.install-wt-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  margin: 0 auto 12px;
+  display: block;
+}
+
 .install-wt-check {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-  font-size: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
+  display: none;
 }
 
 .install-wt-title {
@@ -343,13 +356,15 @@
   padding: 20px 24px;
   text-align: left;
   margin-bottom: 24px;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 .install-wt-card-title {
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
-  color: var(--text, #1a1a2e);
+  color: #0E918C;
   margin-bottom: 16px;
   text-align: center;
 }
@@ -361,8 +376,8 @@
 .install-step {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 0;
+  gap: 10px;
+  padding: 6px 0;
 }
 
 .install-step + .install-step {
@@ -371,21 +386,21 @@
 
 .install-step-num {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--accent, #0E918C);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .install-step span {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.3;
   color: var(--text, #1a1a2e);
 }
 
@@ -478,8 +493,8 @@
 
 .install-step2-card {
   background: var(--bg, #fff);
-  border-radius: 12px;
-  padding: 14px 18px;
+  border-radius: 10px;
+  padding: 10px 14px;
   width: 100%;
   max-width: 400px;
   border: 3px solid var(--accent, #0E918C);
@@ -488,20 +503,20 @@
 
 .install-step2-title {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .install-step2-done {
-  margin-top: 8px;
+  margin-top: 4px;
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 11px;
   text-decoration: underline;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 2px 0;
 }
 
 /* ========================================
