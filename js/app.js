@@ -936,7 +936,7 @@ const TOUR_COLORS = {
 // Neighborhood walking routes + bike tour
 const ROUTE_DEFS = [
   { id: 'downtown-north', name: 'Downtown North', desc: 'Hollander to Sara Salem — 17 stops through the waterfront & 600 block',
-    ids: [6, 107, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 73, 11, 24, 17] },
+    ids: [6, 107, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 73, 11, 24] },
   { id: 'methodist-town', name: 'Methodist Town', desc: 'Matt Kress to Derek Donnelly — 14 stops through the MLK & 1st Ave N corridor',
     ids: [119, 80, 75, 120, 89, 83, 98, 34, 4, 112, 108, 113, 60, 115] },
   { id: 'tropicana-field', name: 'Tropicana Field', desc: 'Dream Weaver to Illsol — 10 stops around the stadium district',
