@@ -639,10 +639,16 @@ function initMap() {
     return;
   }
 
+  const routeKeyHtml = ROUTE_DEFS.filter(d => d.id !== 'robs-favs').map(def => {
+    const color = TOUR_COLORS[def.id] || '#999';
+    return `<span class="route-key-item"><span class="route-key-line" style="background:${color}"></span>${def.name}</span>`;
+  }).join('');
+
   views.map.innerHTML = `
     <div class="map-filter-bar">
       <div class="filter-pills" id="map-cat-pills"></div>
       <div class="filter-pills" id="map-year-pills" hidden></div>
+      <div class="route-key" id="map-route-key">${routeKeyHtml}</div>
     </div>
     <div id="map-container"></div>
   `;
@@ -747,8 +753,8 @@ function drawRoutePolylines() {
       const coords = tourPickerCache.get(def.id);
       if (!coords || coords.length < 2) return;
       const dashed = coords.length === getRouteOrdered(def).length;
-      const opts = { color, weight: 4, opacity: 0.6 };
-      if (dashed) opts.dashArray = '8 6';
+      const opts = { color, weight: 2, opacity: 0.35 };
+      if (dashed) opts.dashArray = '6 4';
       const line = L.polyline(coords, opts);
       // Start hidden — updateRoutePolylineVisibility will show if zoomed in
       routePolylines.push(line);
