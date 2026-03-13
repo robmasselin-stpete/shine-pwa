@@ -171,8 +171,8 @@
     <!-- Main content area — swapped by tab navigation -->
     <main id="main-content" class="main-content">
       <!-- Tab views rendered here by app.js -->
-      <div id="view-explore" class="view" data-view="explore"></div>
-      <div id="view-map" class="view" data-view="map" hidden></div>
+      <div id="view-explore" class="view" data-view="explore" hidden></div>
+      <div id="view-map" class="view" data-view="map"></div>
       <div id="view-tours" class="view" data-view="tours" hidden></div>
     </main>
 
@@ -190,14 +190,14 @@
 
     <!-- Bottom tab bar -->
     <nav id="tab-bar" class="tab-bar">
-      <button class="tab active" data-tab="explore" aria-label="Explore">
+      <button class="tab" data-tab="explore" aria-label="Explore">
         <svg class="tab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
           <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
         </svg>
         <span class="tab-label">Explore</span>
       </button>
-      <button class="tab" data-tab="map" aria-label="Map">
+      <button class="tab active" data-tab="map" aria-label="Map">
         <svg class="tab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m3 7 6-3 6 3 6-3v13l-6 3-6-3-6 3Z"/><path d="m9 4v13"/><path d="m15 7v13"/>
         </svg>
@@ -214,7 +214,7 @@
   </div>
 
   <!-- App modules -->
-  <script type="module" src="js/app.js?v=19"></script>
+  <script type="module" src="js/app.js?v=21"></script>
 
   <!-- Service Worker registration -->
   <script>

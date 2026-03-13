@@ -149,6 +149,9 @@ const isAndroid = /android/i.test(navigator.userAgent);
 
 function showInstallPrompt() {
   if (isStandalone) return;
+  // Snooze for 3 days after dismiss
+  const dismissed = localStorage.getItem('mq_install_dismissed');
+  if (dismissed && Date.now() - Number(dismissed) < 3 * 24 * 60 * 60 * 1000) return;
   const overlay = document.getElementById('install-overlay');
   if (!overlay) return;
 
@@ -169,6 +172,7 @@ function showInstallPrompt() {
 function hideInstallPrompt() {
   const overlay = document.getElementById('install-overlay');
   if (overlay) overlay.style.display = 'none';
+  localStorage.setItem('mq_install_dismissed', Date.now());
 }
 
 // Skip button
@@ -377,7 +381,7 @@ fetchLikeCounts();
 // State — single mutable object drives all UI
 // =============================================
 const state = {
-  tab: 'explore',
+  tab: 'map',
   searchQuery: '',
   exploreFilter: null,  // null=all, 'shine', 'vintage', 'commercial'
   exploreYear: null,    // null=all years in filter, or specific year number
@@ -444,7 +448,7 @@ function switchTab(tab) {
 
   if (tab !== 'map') clearDirections();
   if (tab !== 'tours' && state.activeTour) closeTour();
-  if (tab === 'explore') renderExplore();
+  if (tab === 'explore') { renderFilterPills(); renderExplore(); }
   if (tab === 'map') initMap();
   if (tab === 'tours') renderTourList();
 }
@@ -620,6 +624,7 @@ const tourPickerCache = new Map(); // routeId → [[lat,lng],...] cached OSRM co
 let pickerActiveRoute = 0; // index into ROUTE_DEFS for currently shown route
 let pickerLayers = [];     // current polyline + label on picker map
 const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each mural
+const routePolylines = []; // Route polylines on the main map
 
 // At this zoom level and above, markers switch from colored dots to thumbnail images
 const ICON_ZOOM_THRESHOLD = 15;
@@ -682,8 +687,11 @@ function initMap() {
     mapMarkers.push({ dot, imgMarker, mural: m, visible: false });
   });
 
-  // Swap between dots and icons on zoom
-  leafletMap.on('zoomend', () => swapMarkerStyle());
+  // Draw neighborhood route polylines (behind markers, visible at zoom >= 14)
+  drawRoutePolylines();
+
+  // Swap between dots and icons on zoom, and toggle route polylines
+  leafletMap.on('zoomend', () => { swapMarkerStyle(); updateRoutePolylineVisibility(); });
 
   // Year legend (hidden — kept for possible future use)
   const legendDiv = document.createElement('div');
@@ -726,6 +734,35 @@ function swapMarkerStyle() {
       imgMarker.removeFrom(leafletMap);
       dot.addTo(leafletMap);
     }
+  });
+}
+
+const ROUTE_POLYLINE_ZOOM = 14; // show route lines at this zoom and above
+
+/** Load coords for all routes and draw polylines on the main map. */
+function drawRoutePolylines() {
+  ROUTE_DEFS.forEach(def => {
+    const color = TOUR_COLORS[def.id] || '#999';
+    loadRouteCoords(def).then(() => {
+      const coords = tourPickerCache.get(def.id);
+      if (!coords || coords.length < 2) return;
+      const dashed = coords.length === getRouteOrdered(def).length;
+      const opts = { color, weight: 4, opacity: 0.6 };
+      if (dashed) opts.dashArray = '8 6';
+      const line = L.polyline(coords, opts);
+      // Start hidden — updateRoutePolylineVisibility will show if zoomed in
+      routePolylines.push(line);
+      updateRoutePolylineVisibility();
+    });
+  });
+}
+
+/** Show/hide route polylines based on zoom level. */
+function updateRoutePolylineVisibility() {
+  const show = leafletMap.getZoom() >= ROUTE_POLYLINE_ZOOM;
+  routePolylines.forEach(line => {
+    if (show && !leafletMap.hasLayer(line)) line.addTo(leafletMap);
+    if (!show && leafletMap.hasLayer(line)) line.removeFrom(leafletMap);
   });
 }
 
@@ -883,25 +920,28 @@ function calcRouteTotalDist(orderedMurals) {
 
 // Tour color palette for picker map
 const TOUR_COLORS = {
-  'robs-favs':       '#E53935',
-  'chna-bike':       '#1E88E5',
-  'walking-central': '#43A047',
-  'shine-2025':      '#FB8C00',
-  'shine-2024':      '#8E24AA',
+  'downtown-north':  '#E53935',
+  'methodist-town':  '#1E88E5',
+  'tropicana-field': '#43A047',
+  'central-ave':     '#FB8C00',
+  'chna-bike':       '#8E24AA',
+  'robs-favs':       '#00897B',
 };
 
-// Tour definitions (same structure as old ROUTE_DEFS)
+// Neighborhood walking routes + bike tour
 const ROUTE_DEFS = [
-  { id: 'robs-favs', name: "Rob's Favorites", desc: '18 hand-picked murals across all festival years',
-    ids: [17, 23, 47, 1, 4, 115, 73, 9, 7, 110, 109, 59, 103, 20, 31, 25, 39, 38] },
+  { id: 'downtown-north', name: 'Downtown North', desc: 'Hollander to Sara Salem — 17 stops through the waterfront & 600 block',
+    ids: [6, 107, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 73, 11, 24, 17] },
+  { id: 'methodist-town', name: 'Methodist Town', desc: 'Matt Kress to Derek Donnelly — 14 stops through the MLK & 1st Ave N corridor',
+    ids: [119, 80, 75, 120, 89, 83, 98, 34, 4, 112, 108, 113, 60, 115] },
+  { id: 'tropicana-field', name: 'Tropicana Field', desc: 'Dream Weaver to Illsol — 10 stops around the stadium district',
+    ids: [59, 103, 32, 20, 52, 44, 123, 87, 16, 125] },
+  { id: 'central-ave', name: 'Central Ave', desc: 'Michael Vasquez to IBOMS — 9 stops along Grand Central',
+    ids: [48, 122, 62, 55, 76, 71, 88, 38, 101] },
   { id: 'chna-bike', name: 'CHNA Bike Tour', desc: '27-stop bike ride through Crescent Heights & Grand Central',
     ids: [17, 6, 23, 30, 1, 109, 110, 7, 9, 73, 80, 98, 83, 59, 103, 44, 39, 19, 88, 38, 76, 55, 101, 62, 4, 113, 64] },
-  { id: 'walking-central', name: 'Walking Central Ave', desc: '9-stop walking tour along 1st Ave S & Central Ave',
-    ids: [59, 103, 32, 44, 123, 125, 16, 101, 48] },
-  { id: 'shine-2025', name: 'SHINE 2025 Origins', desc: 'All 17 SHINE 2025 murals in a geographic loop',
-    ids: [17, 6, 1, 4, 11, 7, 9, 5, 16, 12, 2, 3, 8, 10, 13, 15, 19] },
-  { id: 'shine-2024', name: 'SHINE 2024', desc: 'All 11 SHINE 2024 murals in a geographic loop',
-    ids: [23, 30, 24, 26, 31, 27, 32, 20, 29, 25, 22] },
+  { id: 'robs-favs', name: "Rob's Favorites", desc: '18 hand-picked murals across all festival years',
+    ids: [17, 23, 47, 1, 4, 115, 73, 9, 7, 110, 109, 59, 103, 20, 31, 25, 39, 38] },
 ];
 
 function getRouteOrdered(def) {
@@ -1899,8 +1939,8 @@ function handleDeepLink() {
 // =============================================
 // Init
 // =============================================
-renderFilterPills();
-renderExplore();
+// Map is the default tab — explore renders lazily on first visit
+initMap();
 handleDeepLink();
 
 // Restore mural detail after returning from Google Maps

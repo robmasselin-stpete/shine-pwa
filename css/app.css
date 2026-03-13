@@ -384,12 +384,23 @@
   color: var(--accent, #0E918C);
 }
 
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .install-big-step {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 8px 0;
+  opacity: 0;
+  animation: fadeSlideIn 0.4s ease forwards;
 }
+
+.install-big-step:nth-child(1) { animation-delay: 0.15s; }
+.install-big-step:nth-child(2) { animation-delay: 0.3s; }
+.install-big-step:nth-child(3) { animation-delay: 0.45s; }
 
 .install-big-step + .install-big-step {
   border-top: 1px solid rgba(255,255,255,0.15);
