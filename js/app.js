@@ -930,12 +930,13 @@ const TOUR_COLORS = {
   'methodist-town':  '#1E88E5',
   'tropicana-field': '#43A047',
   'central-ave':     '#FB8C00',
+  'arts-district':   '#F06292',
   'chna-bike':       '#8E24AA',
 };
 
 // Neighborhood walking routes + bike tour
 const ROUTE_DEFS = [
-  { id: 'downtown-north', name: 'Downtown North', desc: 'Hollander to Sara Salem — 17 stops through the waterfront & 600 block',
+  { id: 'downtown-north', name: 'Downtown North', desc: 'Hollander to Fintan Magee — 16 stops through the waterfront & 600 block',
     ids: [6, 107, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 73, 11, 24] },
   { id: 'methodist-town', name: 'Methodist Town', desc: 'Matt Kress to Derek Donnelly — 14 stops through the MLK & 1st Ave N corridor',
     ids: [119, 80, 75, 120, 89, 83, 98, 34, 4, 112, 108, 113, 60, 115] },
@@ -943,6 +944,8 @@ const ROUTE_DEFS = [
     ids: [59, 103, 32, 20, 52, 44, 123, 87, 16, 125] },
   { id: 'central-ave', name: 'Central Ave', desc: 'Michael Vasquez to IBOMS — 9 stops along Grand Central',
     ids: [48, 122, 62, 55, 76, 71, 88, 38, 101] },
+  { id: 'arts-district', name: 'Arts District', desc: 'Gleo to Ernesto Maranje — 20 stops through the Warehouse Arts District & Pinellas Trail',
+    ids: [79, 50, 121, 93, 29, 12, 25, 39, 46, 37, 2, 3, 8, 10, 13, 15, 19, 41, 126, 127] },
   { id: 'chna-bike', name: 'CHNA Bike Tour', desc: '27-stop bike ride through Crescent Heights & Grand Central',
     ids: [17, 6, 23, 30, 1, 109, 110, 7, 9, 73, 80, 98, 83, 59, 103, 44, 39, 19, 88, 38, 76, 55, 101, 62, 4, 113, 64] },
 ];
