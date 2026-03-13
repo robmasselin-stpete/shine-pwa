@@ -753,7 +753,7 @@ function drawRoutePolylines() {
       const coords = tourPickerCache.get(def.id);
       if (!coords || coords.length < 2) return;
       const dashed = coords.length === getRouteOrdered(def).length;
-      const opts = { color, weight: 1.5, opacity: 0.2 };
+      const opts = { color, weight: 2.5, opacity: 0.35 };
       if (dashed) opts.dashArray = '4 4';
       const line = L.polyline(coords, opts);
       // Start hidden — updateRoutePolylineVisibility will show if zoomed in
