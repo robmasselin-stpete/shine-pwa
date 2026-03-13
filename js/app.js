@@ -639,7 +639,7 @@ function initMap() {
     return;
   }
 
-  const routeKeyHtml = ROUTE_DEFS.filter(d => d.id !== 'robs-favs').map(def => {
+  const routeKeyHtml = ROUTE_DEFS.map(def => {
     const color = TOUR_COLORS[def.id] || '#999';
     return `<span class="route-key-item"><span class="route-key-line" style="background:${color}"></span>${def.name}</span>`;
   }).join('');
@@ -931,7 +931,6 @@ const TOUR_COLORS = {
   'tropicana-field': '#43A047',
   'central-ave':     '#FB8C00',
   'chna-bike':       '#8E24AA',
-  'robs-favs':       '#00897B',
 };
 
 // Neighborhood walking routes + bike tour
@@ -946,8 +945,6 @@ const ROUTE_DEFS = [
     ids: [48, 122, 62, 55, 76, 71, 88, 38, 101] },
   { id: 'chna-bike', name: 'CHNA Bike Tour', desc: '27-stop bike ride through Crescent Heights & Grand Central',
     ids: [17, 6, 23, 30, 1, 109, 110, 7, 9, 73, 80, 98, 83, 59, 103, 44, 39, 19, 88, 38, 76, 55, 101, 62, 4, 113, 64] },
-  { id: 'robs-favs', name: "Rob's Favorites", desc: '18 hand-picked murals across all festival years',
-    ids: [17, 23, 47, 1, 4, 115, 73, 9, 7, 110, 109, 59, 103, 20, 31, 25, 39, 38] },
 ];
 
 function getRouteOrdered(def) {
