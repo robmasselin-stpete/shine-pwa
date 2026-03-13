@@ -62,24 +62,22 @@ def douglas_peucker(points, epsilon):
 
 
 def parse_kml(filepath):
-    """Extract the first LineString coordinates from a KML file."""
+    """Extract all LineString coordinates from a KML file and merge them."""
     tree = ET.parse(filepath)
     root = tree.getroot()
 
-    # Find first LineString
+    all_coords = []
     for elem in root.iter(f'{KML_NS}LineString'):
         coords_text = elem.find(f'{KML_NS}coordinates').text.strip()
-        coords = []
         for line in coords_text.split('\n'):
             line = line.strip().rstrip(',')
             if not line:
                 continue
             parts = line.split(',')
             lng, lat = float(parts[0]), float(parts[1])
-            coords.append([lat, lng])  # Leaflet uses [lat, lng]
-        return coords
+            all_coords.append([lat, lng])  # Leaflet uses [lat, lng]
 
-    return []
+    return all_coords
 
 
 def main():
