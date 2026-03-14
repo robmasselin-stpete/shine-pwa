@@ -309,7 +309,7 @@
   inset: 0;
   z-index: 9999;
   display: none;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   background: linear-gradient(160deg, #0E918C 0%, #1B4965 100%);
   padding: calc(var(--safe-top) + 20px) 24px 24px;
@@ -322,15 +322,21 @@
 }
 
 .install-wt-top {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+}
+
+.install-wt-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .install-wt-logo {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  margin: 0 auto 6px;
-  display: block;
+  flex-shrink: 0;
 }
 
 .install-wt-check {
@@ -348,6 +354,7 @@
 .install-wt-sub {
   font-size: 15px;
   color: rgba(255,255,255,0.8);
+  margin-bottom: 12px;
 }
 
 .install-big-steps {

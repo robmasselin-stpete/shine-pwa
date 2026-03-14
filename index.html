@@ -95,11 +95,11 @@
   <!-- Full-screen install walkthrough -->
   <div id="install-overlay" class="install-overlay">
     <div class="install-walkthrough">
-      <div class="install-wt-top">
+      <div class="install-wt-top install-wt-top-row">
         <img src="images/icons/icon-192.png" alt="Mural Quest" class="install-wt-logo">
         <h1 class="install-wt-title">You're In!</h1>
-        <p class="install-wt-sub">Start with step ① at the bottom</p>
       </div>
+      <p class="install-wt-sub">Start with step 1</p>
 
       <!-- iOS big steps (reversed: 3→2→1 top-to-bottom so share sheet reveals them in order) -->
       <div id="install-ios" class="install-big-steps" style="display:none">
@@ -109,11 +109,13 @@
         </div>
         <div class="install-big-step" style="animation-delay: 0.3s">
           <span class="install-big-num">2</span>
-          <span class="install-big-text">Scroll down — tap <strong>Add to Home Screen</strong></span>
+          <span class="install-big-text">Scroll down below icons to <strong>Add to Home Screen</strong></span>
         </div>
         <div class="install-big-step" style="animation-delay: 0.15s">
           <span class="install-big-num">1</span>
-          <span class="install-big-text">Tap
+          <span class="install-big-text">Tap the
+            <svg class="install-dots-icon-lg" width="28" height="10" viewBox="0 0 28 10" fill="currentColor"><circle cx="5" cy="5" r="2.5"/><circle cx="14" cy="5" r="2.5"/><circle cx="23" cy="5" r="2.5"/></svg>
+            and click
             <svg class="install-share-icon-lg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
             <strong>Share</strong>
           </span>
