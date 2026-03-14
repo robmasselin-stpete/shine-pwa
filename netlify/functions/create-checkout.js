@@ -27,6 +27,11 @@ exports.handler = async (event) => {
       }],
       mode: 'payment',
       allow_promotion_codes: true,
+      custom_text: {
+        submit: {
+          message: 'Enter your email above — this is how we verify your access. Then click Continue.',
+        },
+      },
       success_url: `${origin}?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: origin,
     });
