@@ -247,8 +247,36 @@ document.getElementById('gate-buy-btn')?.addEventListener('click', async () => {
     }
   } catch (err) {
     btn.disabled = false;
-    btn.innerHTML = 'Click Here to Get Access<span class="gate-buy-sub">$4.99 or Promo Code</span>';
+    btn.innerHTML = 'Click Here to Purchase<span class="gate-buy-sub">$4.99</span>';
     alert('Something went wrong. Please try again.');
+  }
+});
+
+// Promo code redemption (client-side)
+const VALID_PROMOS = ['MURAL'];
+
+document.getElementById('gate-promo-submit')?.addEventListener('click', () => {
+  const code = (document.getElementById('gate-promo-code').value || '').trim().toUpperCase();
+  const email = (document.getElementById('gate-promo-email').value || '').trim();
+  const msg = document.getElementById('gate-promo-msg');
+
+  msg.hidden = false;
+
+  if (!code || !email) {
+    msg.textContent = 'Enter a promo code and your email.';
+    msg.className = 'gate-promo-msg error';
+    return;
+  }
+
+  if (VALID_PROMOS.includes(code)) {
+    grantAccess();
+    setEmailCookie(email);
+    msg.textContent = 'Welcome in!';
+    msg.className = 'gate-promo-msg success';
+    setTimeout(() => { hideGate(); showInstallPrompt(); }, 500);
+  } else {
+    msg.textContent = 'Invalid promo code.';
+    msg.className = 'gate-promo-msg error';
   }
 });
 
