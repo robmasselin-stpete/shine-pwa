@@ -87,12 +87,12 @@ function getEmailCookie() {
 }
 
 function hasAccess() {
-  try {
-    const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
-    if (data && Date.now() < data.expires) return true;
-  } catch {}
-  // Check cookie as fallback
-  return !!getCookieAccess();
+  return true; // DEV: bypass gate — everyone gets in
+  // try {
+  //   const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
+  //   if (data && Date.now() < data.expires) return true;
+  // } catch {}
+  // return !!getCookieAccess();
 }
 
 function grantAccess() {
