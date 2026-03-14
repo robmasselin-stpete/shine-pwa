@@ -448,6 +448,7 @@
 
 .install-big-step + .install-big-step {
   border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: 19px;
 }
 
 .install-big-step:last-child {
