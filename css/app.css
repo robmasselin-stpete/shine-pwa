@@ -446,33 +446,6 @@
   color: #fff;
 }
 
-/* Share-sheet-active hint (top of screen, visible above share sheet) */
-.install-share-hint {
-  text-align: center;
-  padding-top: 4px;
-}
-
-.install-share-hint-arrow {
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 4px;
-  animation: bounceDown 1.2s ease-in-out infinite;
-}
-
-.install-share-hint-text {
-  font-size: 22px;
-  color: #fff;
-  line-height: 1.5;
-}
-
-.install-share-hint-text strong {
-  font-weight: 700;
-}
-
-@keyframes bounceDown {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-
 .install-wt-skip {
   background: none;
   border: none;

@@ -98,26 +98,25 @@
       <div class="install-wt-top">
         <img src="images/icons/icon-192.png" alt="Mural Quest" class="install-wt-logo">
         <h1 class="install-wt-title">You're In!</h1>
-        <p class="install-wt-sub">Complete installation in 3 easy steps:</p>
+        <p class="install-wt-sub">Start with step ① at the bottom</p>
       </div>
 
-      <!-- iOS big steps -->
+      <!-- iOS big steps (reversed: 3→2→1 top-to-bottom so share sheet reveals them in order) -->
       <div id="install-ios" class="install-big-steps" style="display:none">
-        <div class="install-big-step">
-          <span class="install-big-num">1</span>
-          <span class="install-big-text">Click
-            <svg class="install-dots-icon-lg" width="28" height="10" viewBox="0 0 28 10" fill="currentColor"><circle cx="5" cy="5" r="2.5"/><circle cx="14" cy="5" r="2.5"/><circle cx="23" cy="5" r="2.5"/></svg>
-            — tap <strong>Share</strong>
-            <svg class="install-share-icon-lg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-          </span>
-        </div>
-        <div class="install-big-step">
-          <span class="install-big-num">2</span>
-          <span class="install-big-text">Tap <strong>Add to Home Screen</strong></span>
-        </div>
-        <div class="install-big-step">
+        <div class="install-big-step" style="animation-delay: 0.45s">
           <span class="install-big-num">3</span>
           <span class="install-big-text">Tap <strong>Add</strong></span>
+        </div>
+        <div class="install-big-step" style="animation-delay: 0.3s">
+          <span class="install-big-num">2</span>
+          <span class="install-big-text">Scroll down — tap <strong>Add to Home Screen</strong></span>
+        </div>
+        <div class="install-big-step" style="animation-delay: 0.15s">
+          <span class="install-big-num">1</span>
+          <span class="install-big-text">Tap
+            <svg class="install-share-icon-lg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            <strong>Share</strong>
+          </span>
         </div>
       </div>
 
@@ -131,14 +130,6 @@
           <span class="install-big-num">2</span>
           <span class="install-big-text">Tap <strong>Add to Home Screen</strong></span>
         </div>
-      </div>
-
-      <!-- Shown when iOS share sheet is open (replaces steps) -->
-      <div id="install-share-hint" class="install-share-hint" style="display:none">
-        <svg class="install-share-hint-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m6 9 6 6 6-6"/>
-        </svg>
-        <p class="install-share-hint-text">Scroll down and tap<br><strong>Add to Home Screen</strong></p>
       </div>
 
       <button id="install-overlay-dismiss" class="install-wt-skip">Skip — I'll use the browser</button>

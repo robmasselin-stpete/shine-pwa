@@ -167,56 +167,9 @@ function showInstallPrompt() {
   }
 
   overlay.style.display = 'flex';
-
-  // iOS: detect share sheet open via blur/focus to swap visible instructions
-  if (!isAndroid) setupShareSheetHint(overlay);
-}
-
-let _shareHintCleanup = null;
-
-function setupShareSheetHint(overlay) {
-  if (_shareHintCleanup) _shareHintCleanup();
-
-  const wtTop = overlay.querySelector('.install-wt-top');
-  const iosSteps = document.getElementById('install-ios');
-  const shareHint = document.getElementById('install-share-hint');
-  const skipBtn = document.getElementById('install-overlay-dismiss');
-  let blurTimer = null;
-
-  function onBlur() {
-    if (overlay.style.display === 'none') return;
-    // Small delay — share sheet animation takes a moment
-    blurTimer = setTimeout(() => {
-      wtTop.style.display = 'none';
-      iosSteps.style.display = 'none';
-      skipBtn.style.display = 'none';
-      shareHint.style.display = 'block';
-    }, 150);
-  }
-
-  function onFocus() {
-    clearTimeout(blurTimer);
-    if (overlay.style.display === 'none') return;
-    // Revert to normal steps
-    wtTop.style.display = '';
-    iosSteps.style.display = 'block';
-    skipBtn.style.display = '';
-    shareHint.style.display = 'none';
-  }
-
-  window.addEventListener('blur', onBlur);
-  window.addEventListener('focus', onFocus);
-
-  _shareHintCleanup = () => {
-    clearTimeout(blurTimer);
-    window.removeEventListener('blur', onBlur);
-    window.removeEventListener('focus', onFocus);
-    _shareHintCleanup = null;
-  };
 }
 
 function hideInstallPrompt() {
-  if (_shareHintCleanup) _shareHintCleanup();
   const overlay = document.getElementById('install-overlay');
   if (overlay) overlay.style.display = 'none';
   localStorage.setItem('mq_install_dismissed', Date.now());
