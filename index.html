@@ -95,21 +95,11 @@
   <!-- Full-screen install walkthrough -->
   <div id="install-overlay" class="install-overlay">
     <div class="install-walkthrough">
-      <div class="install-wt-top install-wt-top-row">
-        <img src="images/icons/icon-192.png" alt="Mural Quest" class="install-wt-logo">
-        <h1 class="install-wt-title">You're In!</h1>
-      </div>
-      <p class="install-wt-sub">Start with step 1</p>
-
-      <!-- iOS big steps (reversed: 3→2→1 top-to-bottom so share sheet reveals them in order) -->
+      <!-- iOS steps at the top (2→1 top-to-bottom so share sheet reveals them in order) -->
       <div id="install-ios" class="install-big-steps" style="display:none">
-        <div class="install-big-step" style="animation-delay: 0.45s">
-          <span class="install-big-num">3</span>
-          <span class="install-big-text">Tap <strong>Add</strong></span>
-        </div>
         <div class="install-big-step" style="animation-delay: 0.3s">
           <span class="install-big-num">2</span>
-          <span class="install-big-text">Scroll down below icons to <strong>Add to Home Screen</strong></span>
+          <span class="install-big-text">Scroll far below to <strong>Add to Home Screen</strong> — click <strong>Add</strong></span>
         </div>
         <div class="install-big-step" style="animation-delay: 0.15s">
           <span class="install-big-num">1</span>
@@ -120,6 +110,11 @@
             <strong>Share</strong>
           </span>
         </div>
+      </div>
+
+      <div class="install-wt-hero">
+        <img src="images/icons/icon-192.png" alt="Mural Quest" class="install-wt-logo">
+        <h1 class="install-wt-title">You're In!</h1>
       </div>
 
       <!-- Android big steps -->
