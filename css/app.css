@@ -450,6 +450,11 @@
   border-top: 1px solid rgba(255,255,255,0.15);
 }
 
+.install-big-step:last-child {
+  margin-top: 28px;
+  border-top: none;
+}
+
 .install-big-num {
   flex-shrink: 0;
   width: 36px;
