@@ -655,7 +655,7 @@ const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each m
 const routePolylines = []; // Route polylines on the main map
 
 // At this zoom level and above, markers switch from colored dots to thumbnail images
-const ICON_ZOOM_THRESHOLD = 18;
+const ICON_ZOOM_THRESHOLD = 17;
 
 /**
  * Initialize the Leaflet map (runs once) or just resize it on subsequent tab visits.
@@ -669,7 +669,7 @@ function initMap() {
 
   const routeKeyHtml = ROUTE_DEFS.map(def => {
     const color = TOUR_COLORS[def.id] || '#999';
-    return `<span class="route-key-item"><span class="route-key-line" style="background:${color}"></span>${def.name}</span>`;
+    return `<span class="route-key-item" data-route="${def.id}"><span class="route-key-line" style="background:${color}"></span>${def.name}</span>`;
   }).join('');
 
   views.map.innerHTML = `
@@ -723,6 +723,21 @@ function initMap() {
 
   // Draw neighborhood route polylines (behind markers, visible at zoom >= 14)
   drawRoutePolylines();
+
+  // Route key toggle handlers
+  document.querySelectorAll('.route-key-item[data-route]').forEach(el => {
+    el.addEventListener('click', () => {
+      const id = el.dataset.route;
+      if (hiddenRoutes.has(id)) {
+        hiddenRoutes.delete(id);
+        el.classList.remove('route-key-off');
+      } else {
+        hiddenRoutes.add(id);
+        el.classList.add('route-key-off');
+      }
+      updateRoutePolylineVisibility();
+    });
+  });
 
   // Swap between dots and icons on zoom, and toggle route polylines
   leafletMap.on('zoomend', () => { swapMarkerStyle(); updateRoutePolylineVisibility(); });
@@ -784,17 +799,20 @@ function drawRoutePolylines() {
       const opts = { color, weight: 2.5, opacity: 0.55 };
       if (dashed) opts.dashArray = '4 4';
       const line = L.polyline(coords, opts);
-      // Start hidden — updateRoutePolylineVisibility will show if zoomed in
+      line._routeId = def.id;
       routePolylines.push(line);
       updateRoutePolylineVisibility();
     });
   });
 }
 
-/** Show/hide route polylines based on zoom level. */
+const hiddenRoutes = new Set(); // Route IDs toggled off by user
+
+/** Show/hide route polylines based on zoom level and user toggles. */
 function updateRoutePolylineVisibility() {
-  const show = leafletMap.getZoom() >= ROUTE_POLYLINE_ZOOM;
+  const zoomOk = leafletMap.getZoom() >= ROUTE_POLYLINE_ZOOM;
   routePolylines.forEach(line => {
+    const show = zoomOk && !hiddenRoutes.has(line._routeId);
     if (show && !leafletMap.hasLayer(line)) line.addTo(leafletMap);
     if (!show && leafletMap.hasLayer(line)) line.removeFrom(leafletMap);
   });
