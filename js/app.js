@@ -148,8 +148,7 @@ const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform 
 const isAndroid = /android/i.test(navigator.userAgent);
 
 function showInstallPrompt() {
-  // DEV: skip isStandalone check but keep dismiss working
-  // if (isStandalone) return;
+  if (isStandalone) return; // Already installed — skip
   if (sessionStorage.getItem('mq_install_seen')) return;
   const overlay = document.getElementById('install-overlay');
   if (!overlay) return;
