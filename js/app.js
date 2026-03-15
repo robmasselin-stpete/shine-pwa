@@ -148,7 +148,8 @@ const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform 
 const isAndroid = /android/i.test(navigator.userAgent);
 
 function showInstallPrompt() {
-  if (isStandalone) return;
+  // DEV: isStandalone check disabled for testing
+  // if (isStandalone) return;
   // DEV: snooze disabled for testing
   // const dismissed = localStorage.getItem('mq_install_dismissed');
   // if (dismissed && Date.now() - Number(dismissed) < 3 * 24 * 60 * 60 * 1000) return;
