@@ -149,9 +149,9 @@ const isAndroid = /android/i.test(navigator.userAgent);
 
 function showInstallPrompt() {
   if (isStandalone) return;
-  // Snooze for 3 days after dismiss
-  const dismissed = localStorage.getItem('mq_install_dismissed');
-  if (dismissed && Date.now() - Number(dismissed) < 3 * 24 * 60 * 60 * 1000) return;
+  // DEV: snooze disabled for testing
+  // const dismissed = localStorage.getItem('mq_install_dismissed');
+  // if (dismissed && Date.now() - Number(dismissed) < 3 * 24 * 60 * 60 * 1000) return;
   const overlay = document.getElementById('install-overlay');
   if (!overlay) return;
 
@@ -203,6 +203,7 @@ if (sessionId) {
     .catch(() => showGate());
 } else if (hasAccess() || location.hostname === 'localhost') {
   hideGate();
+  showInstallPrompt();
 } else {
   // localStorage empty — try IndexedDB fallback before showing gate/restore
   idbLoad().then(data => {
