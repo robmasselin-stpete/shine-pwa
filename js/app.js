@@ -148,11 +148,9 @@ const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform 
 const isAndroid = /android/i.test(navigator.userAgent);
 
 function showInstallPrompt() {
-  // DEV: isStandalone check disabled for testing
+  // DEV: skip isStandalone check but keep dismiss working
   // if (isStandalone) return;
-  // DEV: snooze disabled for testing
-  // const dismissed = localStorage.getItem('mq_install_dismissed');
-  // if (dismissed && Date.now() - Number(dismissed) < 3 * 24 * 60 * 60 * 1000) return;
+  if (sessionStorage.getItem('mq_install_seen')) return;
   const overlay = document.getElementById('install-overlay');
   if (!overlay) return;
 
@@ -173,6 +171,7 @@ function showInstallPrompt() {
 function hideInstallPrompt() {
   const overlay = document.getElementById('install-overlay');
   if (overlay) overlay.style.display = 'none';
+  sessionStorage.setItem('mq_install_seen', '1');
   localStorage.setItem('mq_install_dismissed', Date.now());
 }
 
