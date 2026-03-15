@@ -63,6 +63,17 @@
   border-radius: 12px;
 }
 
+.gate-hero-tagline {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
 .gate-title {
   font-family: var(--font-display);
   font-size: 28px;
@@ -589,6 +600,7 @@ a {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
+  font-style: italic;
   letter-spacing: 2px;
   color: var(--accent);
 }
@@ -597,6 +609,15 @@ a {
   font-size: 12px;
   color: var(--text-muted);
   letter-spacing: 0.5px;
+}
+
+.header-tagline {
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 /* ========================================
@@ -768,58 +789,85 @@ a {
    Map View
    ======================================== */
 .map-filter-bar {
-  padding: 6px 16px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  padding: 4px 10px 6px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
-/* Route key bar on map */
-.route-key {
+/* Route toggle bar — bottom of map */
+.route-key-section {
+  position: relative;
+  z-index: 1000;
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 4px 10px 6px;
+}
+
+.route-key-title,
+.map-section-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  padding: 0 2px 3px;
+}
+
+.route-key-bar {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 6px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 4px 0 2px;
 }
 
-.route-key::-webkit-scrollbar {
+.route-key-bar::-webkit-scrollbar {
   display: none;
 }
 
 .route-key-item {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  color: var(--text-muted);
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
   white-space: nowrap;
   flex-shrink: 0;
   cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: opacity 0.2s;
+  padding: 5px 10px;
+  border-radius: 16px;
+  border: 2px solid var(--route-color, #999);
+  background: rgba(255,255,255,0.9);
+  transition: border-color 0.2s;
 }
 
 .route-key-item:active {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .route-key-item.route-key-off {
-  opacity: 0.3;
-  text-decoration: line-through;
+  border-color: #d0d0d0;
 }
 
 .route-key-line {
-  width: 14px;
-  height: 2px;
-  border-radius: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   flex-shrink: 0;
+}
+
+#view-map {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--header-height) - var(--tab-height) - var(--safe-top) - var(--safe-bottom));
 }
 
 #map-container {
   width: 100%;
-  height: calc(100dvh - var(--header-height) - var(--tab-height) - var(--safe-top) - var(--safe-bottom) - 80px);
+  flex: 1;
+  min-height: 0;
 }
 
 .map-legend {
@@ -1291,6 +1339,10 @@ a {
 /* ========================================
    Install Prompt
    ======================================== */
+.install-prompt[hidden] {
+  display: none !important;
+}
+
 .install-prompt {
   position: fixed;
   bottom: calc(var(--tab-height) + var(--safe-bottom) + 8px);
@@ -1819,165 +1871,115 @@ a {
   height: calc(100dvh - var(--header-height) - var(--tab-height) - var(--safe-top) - var(--safe-bottom));
 }
 
-.tour-body {
-  flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Tour stop cards */
-.tour-cards-above,
-.tour-cards-below {
-  padding: 0 16px;
-}
-
-.tour-cards-above {
-  padding-top: 6px;
-}
-
-.tour-cards-below {
-  padding-bottom: 4px;
-}
-
-.tour-stop-card {
+/* Tour carousel — horizontal prev/current/next layout */
+.tour-carousel {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  padding: 6px;
-  margin-bottom: 4px;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-.tour-stop-card:active {
-  transform: scale(0.98);
-}
-
-.tour-stop-card.faded {
-  opacity: 0.4;
-}
-
-.tour-stop-img {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  object-fit: cover;
+  gap: 4px;
+  padding: 6px 6px 4px;
   flex-shrink: 0;
-  background: var(--border);
+  overflow: hidden;
 }
 
-.tour-stop-body {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  min-width: 0;
-}
-
-.tour-stop-num {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
+.tour-arrow {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.15s ease;
+}
+
+.tour-arrow:active {
+  transform: scale(0.85);
+}
+
+.tour-arrow-mid {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.tour-carousel-card {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tour-carousel-img-wrap {
+  position: relative;
+}
+
+.tour-carousel-num {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-.tour-stop-card.faded .tour-stop-num {
-  background: var(--text-muted);
-}
-
-.tour-stop-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.tour-stop-artist {
-  font-weight: 700;
-  font-size: 13px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.tour-stop-loc {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-top: 1px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Tour map */
-#tour-map-container {
-  width: calc(100% - 32px);
-  height: 200px;
-  margin: 6px 16px;
+.tour-carousel-img {
+  width: 100%;
+  aspect-ratio: 5/4;
+  object-fit: cover;
   border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  background: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.tour-carousel-card:active .tour-carousel-img {
+  opacity: 0.85;
+}
+
+.tour-carousel-caption {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.tour-carousel-sub {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 9px;
 }
 
 .tour-segment-info {
   text-align: center;
   font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent);
-  padding: 2px 16px 4px;
-  min-height: 18px;
-}
-
-/* Tour nav buttons — pinned to bottom */
-.tour-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 16px 12px;
-  flex-shrink: 0;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-}
-
-.tour-nav-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  color: var(--text);
-}
-
-.tour-nav-btn svg {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  padding: 13px;
-  box-shadow: var(--shadow-lg);
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.tour-nav-label {
-  font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--accent);
+  padding: 4px 16px;
+  flex-shrink: 0;
+  min-height: 20px;
 }
 
-.tour-nav-btn:active svg {
-  transform: scale(0.92);
-  background: #164a6e;
+/* Tour map — fills remaining space */
+.tour-map-full {
+  flex: 1;
+  min-height: 200px;
+}
+
+#tour-map-container {
+  width: 100%;
+  height: 100%;
 }
 
 /* Tour map thumbnail pins */
@@ -2025,7 +2027,7 @@ a {
 }
 
 .tour-pin.from .tour-pin-num {
-  background: var(--text-muted);
+  background: #000;
 }
 
 .tour-pin.to {
@@ -2035,5 +2037,5 @@ a {
 }
 
 .tour-pin.to .tour-pin-num {
-  background: var(--accent);
+  background: #000;
 }

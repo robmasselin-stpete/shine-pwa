@@ -656,6 +656,7 @@ const routePolylines = []; // Route polylines on the main map
 // At this zoom level and above, markers switch from colored dots to thumbnail images
 const ICON_ZOOM_THRESHOLD = 17;
 
+
 /**
  * Initialize the Leaflet map (runs once) or just resize it on subsequent tab visits.
  * Creates two marker types per mural (dot + image icon) and sets up category/year filtering.
@@ -668,21 +669,25 @@ function initMap() {
 
   const routeKeyHtml = ROUTE_DEFS.map(def => {
     const color = TOUR_COLORS[def.id] || '#999';
-    return `<span class="route-key-item" data-route="${def.id}"><span class="route-key-line" style="background:${color}"></span>${def.name}</span>`;
+    return `<span class="route-key-item route-key-off" data-route="${def.id}" style="--route-color:${color}"><span class="route-key-line" style="background:${color}"></span>${def.name}</span>`;
   }).join('');
 
   views.map.innerHTML = `
     <div class="map-filter-bar">
+      <span class="map-section-title">Murals</span>
       <div class="filter-pills" id="map-cat-pills"></div>
       <div class="filter-pills" id="map-year-pills" hidden></div>
-      <div class="route-key" id="map-route-key">${routeKeyHtml}</div>
     </div>
     <div id="map-container"></div>
+    <div class="route-key-section">
+      <span class="route-key-title">Tour Routes</span>
+      <div class="route-key-bar" id="map-route-key">${routeKeyHtml}</div>
+    </div>
   `;
 
   leafletMap = L.map('map-container', {
     center: [27.7706, -82.6341],
-    zoom: 14,
+    zoom: 13,
     zoomControl: false,
   });
 
@@ -739,7 +744,10 @@ function initMap() {
   });
 
   // Swap between dots and icons on zoom, and toggle route polylines
-  leafletMap.on('zoomend', () => { swapMarkerStyle(); updateRoutePolylineVisibility(); });
+  leafletMap.on('zoomend', () => {
+    swapMarkerStyle(); updateRoutePolylineVisibility();
+  });
+
 
   // Year legend (hidden — kept for possible future use)
   const legendDiv = document.createElement('div');
@@ -785,7 +793,7 @@ function swapMarkerStyle() {
   });
 }
 
-const ROUTE_POLYLINE_ZOOM = 14; // show route lines at this zoom and above
+const ROUTE_POLYLINE_ZOOM = 13; // show route lines at this zoom and above
 
 /** Load coords for all routes and draw polylines on the main map. */
 function drawRoutePolylines() {
@@ -805,7 +813,7 @@ function drawRoutePolylines() {
   });
 }
 
-const hiddenRoutes = new Set(); // Route IDs toggled off by user
+let hiddenRoutes = new Set(); // Populated after ROUTE_DEFS is defined
 
 /** Show/hide route polylines based on zoom level and user toggles. */
 function updateRoutePolylineVisibility() {
@@ -994,6 +1002,9 @@ const ROUTE_DEFS = [
   { id: 'chna-bike', name: 'CHNA Bike Tour', desc: '27-stop bike ride through Crescent Heights & Grand Central',
     ids: [17, 6, 23, 30, 1, 109, 110, 7, 9, 73, 80, 98, 83, 59, 103, 44, 39, 19, 88, 38, 76, 55, 101, 62, 4, 113, 64] },
 ];
+
+// All routes off by default
+hiddenRoutes = new Set(ROUTE_DEFS.map(d => d.id));
 
 function getRouteOrdered(def) {
   if (def.ids) {
@@ -1284,17 +1295,14 @@ function closeTour() {
   state.tourFetching = false;
 }
 
-/** Render the full tour loop view: header, cards, map, nav. */
+/** Render the full tour loop view: header, carousel, map. */
 function renderTourLoop() {
   const stops = state.tourStops;
   const len = stops.length;
   const idx = state.tourIndex;
 
-  // 4 cards: idx-2 faded, idx-1 active (previous), idx active (next), idx+1 faded
-  const f0 = wrapIndex(idx - 2, len);
-  const prev = wrapIndex(idx - 1, len);
-  const next = wrapIndex(idx, len);
-  const f1 = wrapIndex(idx + 1, len);
+  const curr = idx;
+  const next = wrapIndex(idx + 1, len);
 
   views.tours.innerHTML = `
     <div class="tour-layout">
@@ -1305,34 +1313,43 @@ function renderTourLoop() {
           </svg>
         </button>
         <div class="tour-header-title">${state.activeTour.name}</div>
-        <div class="tour-header-counter">${next + 1} of ${len}</div>
+        <div class="tour-header-counter">${curr + 1} of ${len}</div>
       </div>
-      <div class="tour-body">
-        <div class="tour-cards-above" id="tour-cards-above">
-          ${buildTourCard(stops[f0], f0 + 1, 'faded')}
-          ${buildTourCard(stops[prev], prev + 1, 'active')}
-        </div>
-        <div id="tour-map-container"></div>
-        <div class="tour-segment-info" id="tour-segment-info"></div>
-        <div class="tour-cards-below" id="tour-cards-below">
-          ${buildTourCard(stops[next], next + 1, 'active')}
-          ${buildTourCard(stops[f1], f1 + 1, 'faded')}
-        </div>
-      </div>
-      <div class="tour-nav">
-        <button class="tour-nav-btn" data-dir="-1" aria-label="Previous stop">
-          <span class="tour-nav-label">Last Mural</span>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m18 15-6-6-6 6"/>
+      <div class="tour-carousel">
+        <button class="tour-arrow tour-arrow-prev" data-dir="-1" aria-label="Previous">
+          <svg width="28" height="36" viewBox="0 0 28 36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20,4 6,18 20,32"/>
           </svg>
         </button>
-        <button class="tour-nav-btn" data-dir="1" aria-label="Next stop">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m6 9 6 6 6-6"/>
+        <div class="tour-carousel-card" data-id="${stops[curr].id}">
+          <div class="tour-carousel-img-wrap">
+            <img class="tour-carousel-img" src="${stops[curr].img || ''}" alt="${stops[curr].a}" onerror="this.style.background='#ddd'">
+            <span class="tour-carousel-num">${curr + 1}</span>
+          </div>
+          <div class="tour-carousel-caption">${stops[curr].a}<br><span class="tour-carousel-sub">${stops[curr].bldg || stops[curr].loc || ''} · ${stops[curr].y || ''}</span></div>
+        </div>
+        <div class="tour-arrow-mid" aria-hidden="true">
+          <svg width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6,2 2,10 6,18"/>
+            <line x1="2" y1="10" x2="22" y2="10"/>
+            <polyline points="18,2 22,10 18,18"/>
           </svg>
-          <span class="tour-nav-label">Next Mural</span>
+        </div>
+        <div class="tour-carousel-card" data-id="${stops[next].id}">
+          <div class="tour-carousel-img-wrap">
+            <img class="tour-carousel-img" src="${stops[next].img || ''}" alt="${stops[next].a}" onerror="this.style.background='#ddd'">
+            <span class="tour-carousel-num">${next + 1}</span>
+          </div>
+          <div class="tour-carousel-caption">${stops[next].a}<br><span class="tour-carousel-sub">${stops[next].bldg || stops[next].loc || ''} · ${stops[next].y || ''}</span></div>
+        </div>
+        <button class="tour-arrow tour-arrow-next" data-dir="1" aria-label="Next">
+          <svg width="28" height="36" viewBox="0 0 28 36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="8,4 22,18 8,32"/>
+          </svg>
         </button>
       </div>
+      <div class="tour-segment-info" id="tour-segment-info"></div>
+      <div id="tour-map-container" class="tour-map-full"></div>
     </div>
   `;
 
@@ -1342,13 +1359,13 @@ function renderTourLoop() {
     renderTourList();
   });
 
-  // Nav buttons
-  views.tours.querySelectorAll('.tour-nav-btn').forEach(btn => {
+  // Arrow buttons
+  views.tours.querySelectorAll('.tour-arrow').forEach(btn => {
     btn.addEventListener('click', () => navigateTour(Number(btn.dataset.dir)));
   });
 
   // Card tap → detail
-  views.tours.querySelectorAll('.tour-stop-card').forEach(card => {
+  views.tours.querySelectorAll('.tour-carousel-card').forEach(card => {
     card.addEventListener('click', () => {
       const mural = murals.find(m => m.id === Number(card.dataset.id));
       if (mural) openDetail(mural);
@@ -1368,26 +1385,27 @@ function renderTourCards() {
   const len = stops.length;
   const idx = state.tourIndex;
 
-  const f0 = wrapIndex(idx - 2, len);
-  const prev = wrapIndex(idx - 1, len);
-  const next = wrapIndex(idx, len);
-  const f1 = wrapIndex(idx + 1, len);
+  const curr = idx;
+  const next = wrapIndex(idx + 1, len);
 
-  const aboveEl = document.getElementById('tour-cards-above');
-  const belowEl = document.getElementById('tour-cards-below');
   const counterEl = views.tours.querySelector('.tour-header-counter');
+  if (counterEl) counterEl.textContent = `${curr + 1} of ${len}`;
 
-  if (aboveEl) aboveEl.innerHTML = buildTourCard(stops[f0], f0 + 1, 'faded') + buildTourCard(stops[prev], prev + 1, 'active');
-  if (belowEl) belowEl.innerHTML = buildTourCard(stops[next], next + 1, 'active') + buildTourCard(stops[f1], f1 + 1, 'faded');
-  if (counterEl) counterEl.textContent = `${next + 1} of ${len}`;
+  // Update carousel cards
+  const cards = views.tours.querySelectorAll('.tour-carousel-card');
+  if (cards.length >= 2) {
+    cards[0].dataset.id = stops[curr].id;
+    cards[0].querySelector('.tour-carousel-img').src = stops[curr].img || '';
+    cards[0].querySelector('.tour-carousel-img').alt = stops[curr].a;
+    cards[0].querySelector('.tour-carousel-num').textContent = curr + 1;
+    cards[0].querySelector('.tour-carousel-caption').innerHTML = `${stops[curr].a}<br><span class="tour-carousel-sub">${stops[curr].bldg || stops[curr].loc || ''} · ${stops[curr].y || ''}</span>`;
 
-  // Re-attach card tap listeners
-  views.tours.querySelectorAll('.tour-stop-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const mural = murals.find(m => m.id === Number(card.dataset.id));
-      if (mural) openDetail(mural);
-    });
-  });
+    cards[1].dataset.id = stops[next].id;
+    cards[1].querySelector('.tour-carousel-num').textContent = next + 1;
+    cards[1].querySelector('.tour-carousel-img').src = stops[next].img || '';
+    cards[1].querySelector('.tour-carousel-img').alt = stops[next].a;
+    cards[1].querySelector('.tour-carousel-caption').innerHTML = `${stops[next].a}<br><span class="tour-carousel-sub">${stops[next].bldg || stops[next].loc || ''} · ${stops[next].y || ''}</span>`;
+  }
 
   fetchTourSegment();
 }
@@ -1436,8 +1454,8 @@ function fetchTourSegment() {
   const len = stops.length;
   const idx = state.tourIndex;
 
-  const fromStop = stops[wrapIndex(idx - 1, len)];
-  const toStop = stops[wrapIndex(idx, len)];
+  const fromStop = stops[idx];
+  const toStop = stops[wrapIndex(idx + 1, len)];
 
   // Clear previous route and markers
   if (state.tourRoute) { state.tourRoute.removeFrom(tourMap); state.tourRoute = null; }
@@ -1445,8 +1463,8 @@ function fetchTourSegment() {
   state.tourMarkers = [];
 
   // Thumbnail + number markers for from/to
-  const fromNum = wrapIndex(idx - 1, len) + 1;
-  const toNum = wrapIndex(idx, len) + 1;
+  const fromNum = idx + 1;
+  const toNum = wrapIndex(idx + 1, len) + 1;
   const fromMarker = L.marker([fromStop.lat, fromStop.lng], {
     icon: L.divIcon({
       className: 'tour-map-pin',
@@ -1463,11 +1481,9 @@ function fetchTourSegment() {
   }).addTo(tourMap);
   state.tourMarkers = [fromMarker, toMarker];
 
-  // Fit bounds with room for user dot
-  const boundsPoints = [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]];
-  if (state.userLat && state.userLng) boundsPoints.push([state.userLat, state.userLng]);
-  const bounds = L.latLngBounds(boundsPoints);
-  tourMap.fitBounds(bounds, { padding: [45, 45], maxZoom: 16 });
+  // Fit bounds to just the two stops
+  const bounds = L.latLngBounds([[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]]);
+  tourMap.fitBounds(bounds, { padding: [30, 30], maxZoom: 19 });
 
   const segInfo = document.getElementById('tour-segment-info');
 
@@ -1475,22 +1491,24 @@ function fetchTourSegment() {
   const routeId = state.activeTour?.id;
   const fullPath = routeId && ROUTE_PATHS[routeId];
 
+  const isBike = routeId && routeId.includes('bike');
+  const speed = isBike ? 200 : 80; // meters per minute
+  const mode = isBike ? 'bike' : 'walk';
+
   if (fullPath) {
     const segment = extractPathSegment(fullPath, fromStop, toStop);
     if (segment && segment.length >= 2) {
-      // Calculate distance along segment
       let distMeters = 0;
       for (let i = 1; i < segment.length; i++) {
         distMeters += haversine(segment[i-1][0], segment[i-1][1], segment[i][0], segment[i][1]);
       }
-      const walkMins = Math.max(1, Math.round(distMeters / 80));
+      const mins = Math.max(1, Math.round(distMeters / speed));
 
       state.tourRoute = L.polyline(segment, {
         color: '#1E5B8A', weight: 5, opacity: 0.85,
       }).addTo(tourMap);
 
-      tourMap.fitBounds(state.tourRoute.getBounds(), { padding: [45, 45], maxZoom: 16 });
-      if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
+      if (segInfo) segInfo.innerHTML = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
       return;
     }
   }
@@ -1509,25 +1527,24 @@ function fetchTourSegment() {
       const route = data.routes[0];
       const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
       const distMeters = route.distance;
-      const walkMins = Math.max(1, Math.round((distMeters / 80) * 60 / 60));
+      const mins = Math.max(1, Math.round(distMeters / speed));
 
       state.tourRoute = L.polyline(coords, {
         color: '#1E5B8A', weight: 5, opacity: 0.85,
       }).addTo(tourMap);
 
-      tourMap.fitBounds(state.tourRoute.getBounds(), { padding: [45, 45], maxZoom: 16 });
-      if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
+      if (segInfo) segInfo.innerHTML = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
     })
     .catch(() => {
       state.tourFetching = false;
       if (!tourMap) return;
       const distMeters = haversine(fromStop.lat, fromStop.lng, toStop.lat, toStop.lng);
-      const walkMins = Math.max(1, Math.round((distMeters / 80) * 60 / 60));
+      const mins = Math.max(1, Math.round(distMeters / speed));
       state.tourRoute = L.polyline(
         [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]],
         { color: '#1E5B8A', weight: 3, opacity: 0.5, dashArray: '8, 8' }
       ).addTo(tourMap);
-      if (segInfo) segInfo.innerHTML = `<span>${formatDistance(distMeters)} · ~${walkMins} min walk</span>`;
+      if (segInfo) segInfo.innerHTML = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
     });
 }
 
