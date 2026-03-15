@@ -69,11 +69,12 @@ def parse_kml(filepath):
     all_coords = []
     for elem in root.iter(f'{KML_NS}LineString'):
         coords_text = elem.find(f'{KML_NS}coordinates').text.strip()
-        for line in coords_text.split('\n'):
-            line = line.strip().rstrip(',')
-            if not line:
+        # Split by whitespace (handles both newline-separated and space-separated)
+        for token in coords_text.split():
+            token = token.strip().rstrip(',')
+            if not token:
                 continue
-            parts = line.split(',')
+            parts = token.split(',')
             lng, lat = float(parts[0]), float(parts[1])
             all_coords.append([lat, lng])  # Leaflet uses [lat, lng]
 
