@@ -946,10 +946,25 @@ a {
   box-shadow: var(--shadow-lg);
 }
 
+.detail-hero-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  cursor: zoom-in;
+}
+.detail-hero-wrap.zoomed {
+  cursor: zoom-out;
+}
 .detail-hero {
   width: 100%;
   object-fit: contain;
   background: #1a1a1a;
+  transition: transform 0.25s ease;
+  transform-origin: center center;
+  touch-action: pan-x pan-y;
+}
+.detail-hero-wrap.zoomed .detail-hero {
+  transform: scale(2.5);
 }
 
 .detail-body {

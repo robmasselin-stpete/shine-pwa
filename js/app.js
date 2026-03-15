@@ -87,12 +87,11 @@ function getEmailCookie() {
 }
 
 function hasAccess() {
-  return true; // DEV: bypass gate — everyone gets in
-  // try {
-  //   const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
-  //   if (data && Date.now() < data.expires) return true;
-  // } catch {}
-  // return !!getCookieAccess();
+  try {
+    const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
+    if (data && Date.now() < data.expires) return true;
+  } catch {}
+  return !!getCookieAccess();
 }
 
 function grantAccess() {
@@ -1620,7 +1619,9 @@ function openDetail(mural) {
   );
 
   detailContent.innerHTML = `
-    <img class="detail-hero" src="${mural.img || ''}" alt="${mural.a}" onerror="this.style.display='none'">
+    <div class="detail-hero-wrap">
+      <img class="detail-hero" src="${mural.img || ''}" alt="${mural.a}" onerror="this.parentElement.style.display='none'">
+    </div>
     <div class="detail-body">
       <div class="detail-artist">${mural.a}</div>
       ${mural.t ? `<div class="detail-title">${mural.t}</div>` : ''}
@@ -1718,6 +1719,52 @@ function openDetail(mural) {
       if (m) openDetail(m);
     });
   });
+
+  // Tap-to-zoom on hero image
+  const heroWrap = detailContent.querySelector('.detail-hero-wrap');
+  if (heroWrap) {
+    const heroImg = heroWrap.querySelector('.detail-hero');
+    let panX = 0, panY = 0, startX = 0, startY = 0, dragging = false;
+
+    heroWrap.addEventListener('click', (e) => {
+      if (dragging) return;
+      if (heroWrap.classList.contains('zoomed')) {
+        heroWrap.classList.remove('zoomed');
+        heroImg.style.transform = '';
+        panX = 0; panY = 0;
+      } else {
+        // Zoom toward tap point
+        const rect = heroWrap.getBoundingClientRect();
+        const pctX = ((e.clientX - rect.left) / rect.width) * 100;
+        const pctY = ((e.clientY - rect.top) / rect.height) * 100;
+        heroImg.style.transformOrigin = `${pctX}% ${pctY}%`;
+        panX = 0; panY = 0;
+        heroWrap.classList.add('zoomed');
+      }
+    });
+
+    // Drag to pan when zoomed
+    heroWrap.addEventListener('touchstart', (e) => {
+      if (!heroWrap.classList.contains('zoomed') || e.touches.length !== 1) return;
+      dragging = false;
+      startX = e.touches[0].clientX - panX;
+      startY = e.touches[0].clientY - panY;
+    }, { passive: true });
+
+    heroWrap.addEventListener('touchmove', (e) => {
+      if (!heroWrap.classList.contains('zoomed') || e.touches.length !== 1) return;
+      e.preventDefault();
+      dragging = true;
+      panX = e.touches[0].clientX - startX;
+      panY = e.touches[0].clientY - startY;
+      heroImg.style.transform = `scale(2.5) translate(${panX / 2.5}px, ${panY / 2.5}px)`;
+    }, { passive: false });
+
+    heroWrap.addEventListener('touchend', () => {
+      // Small delay so click handler can check dragging flag
+      setTimeout(() => { dragging = false; }, 50);
+    });
+  }
 
   detailPage.scrollTop = 0;
 }
