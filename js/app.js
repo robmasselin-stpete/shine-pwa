@@ -655,7 +655,7 @@ const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each m
 const routePolylines = []; // Route polylines on the main map
 
 // At this zoom level and above, markers switch from colored dots to thumbnail images
-const ICON_ZOOM_THRESHOLD = 17;
+const ICON_ZOOM_THRESHOLD = 18;
 
 /**
  * Initialize the Leaflet map (runs once) or just resize it on subsequent tab visits.
