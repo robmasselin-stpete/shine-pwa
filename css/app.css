@@ -2,7 +2,7 @@
    SHINE PWA — Design Tokens
    ======================================== */
 :root {
-  --bg: #F7F4F0;
+  --bg: #FFFFFF;
   --bg-card: #FFFFFF;
   --text: #2B2B2B;
   --text-muted: #7A7A7A;
@@ -600,7 +600,7 @@ a {
 
 .header-title {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   font-style: italic;
   letter-spacing: 2px;
