@@ -806,7 +806,7 @@ a {
   z-index: 10;
   background: #fff;
   border-top: 1px solid rgba(0,0,0,0.08);
-  padding: 4px 10px calc(var(--safe-bottom) + 6px);
+  padding: 4px 10px 6px;
   flex-shrink: 0;
 }
 
