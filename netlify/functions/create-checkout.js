@@ -19,7 +19,7 @@ exports.handler = async (event) => {
           currency: 'usd',
           product_data: {
             name: 'Mural Quest — St. Pete',
-            description: '2-month access to self-guided mural tours',
+            description: 'Access to self-guided mural tours in St. Pete',
           },
           unit_amount: 499,
         },

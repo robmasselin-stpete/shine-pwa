@@ -32,7 +32,8 @@ import { ROUTE_PATHS } from './routes.js';
 // Payment gate — check access before showing app
 // =============================================
 const ACCESS_KEY = 'mural_quest_access';
-const ACCESS_DURATION = 1 * 24 * 60 * 60 * 1000; // 1 day in ms
+const ACCESS_DURATION = 2 * 24 * 60 * 60 * 1000; // 2 days — Stripe purchases
+const PROMO_DURATION = 3 * 24 * 60 * 60 * 1000;  // 3 days — promo codes
 
 // IndexedDB fallback — persists across Safari/PWA boundary
 function idbOpen() {
@@ -76,8 +77,8 @@ function getCookieAccess() {
 }
 
 // Store customer email in cookie for auto-restore across Safari/PWA boundary
-function setEmailCookie(email) {
-  const d = new Date(Date.now() + ACCESS_DURATION);
+function setEmailCookie(email, duration = ACCESS_DURATION) {
+  const d = new Date(Date.now() + duration);
   document.cookie = `mq_email=${encodeURIComponent(email)};expires=${d.toUTCString()};path=/;SameSite=Lax`;
 }
 
@@ -94,8 +95,8 @@ function hasAccess() {
   return !!getCookieAccess();
 }
 
-function grantAccess() {
-  const data = { expires: Date.now() + ACCESS_DURATION };
+function grantAccess(duration = ACCESS_DURATION) {
+  const data = { expires: Date.now() + duration };
   try { localStorage.setItem(ACCESS_KEY, JSON.stringify(data)); } catch {}
   idbSave(data);
   setCookieAccess(data.expires);
@@ -262,8 +263,14 @@ document.getElementById('gate-buy-btn')?.addEventListener('click', async () => {
   }
 });
 
-// Promo code redemption (client-side)
-const VALID_PROMOS = ['MURAL'];
+// Promo code redemption (client-side) — 50 five-letter codes, 3-day access
+const VALID_PROMOS = [
+  'SHINE', 'MURAL', 'PAINT', 'BRUSH', 'COLOR', 'BLOOM', 'SPARK', 'FLAME', 'OCEAN', 'BEACH',
+  'CORAL', 'WHALE', 'CRANE', 'HERON', 'LOTUS', 'SUNNY', 'STORM', 'CLOUD', 'LIGHT', 'DREAM',
+  'MAGIC', 'GRACE', 'BRAVE', 'PRIDE', 'PEARL', 'CROWN', 'ROYAL', 'TIGER', 'EAGLE', 'RAVEN',
+  'GHOST', 'LUNAR', 'SOLAR', 'NORTH', 'SOUTH', 'URBAN', 'FRESH', 'VIVID', 'FLASH', 'SWIFT',
+  'DELTA', 'HAVEN', 'CREST', 'BLAZE', 'PULSE', 'DRIFT', 'GLEAM', 'PRISM', 'FROST', 'STONE',
+];
 
 document.getElementById('gate-promo-submit')?.addEventListener('click', () => {
   const code = (document.getElementById('gate-promo-code').value || '').trim().toUpperCase();
@@ -279,8 +286,8 @@ document.getElementById('gate-promo-submit')?.addEventListener('click', () => {
   }
 
   if (VALID_PROMOS.includes(code)) {
-    grantAccess();
-    setEmailCookie(email);
+    grantAccess(PROMO_DURATION);
+    setEmailCookie(email, PROMO_DURATION);
     msg.textContent = 'Welcome in!';
     msg.className = 'gate-promo-msg success';
     setTimeout(() => { hideGate(); showInstallPrompt(); }, 500);
