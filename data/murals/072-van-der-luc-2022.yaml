@@ -4,31 +4,39 @@
 id: 72
 artist: Van Der Luc
 year: 2022
-lat: 27.7583
-lng: -82.651
-address: 602 24th St. S.
+lat: 27.76381167
+lng: -82.66553667
+address: 602 24th St S
 category: shine
-img: "images/murals/2022/Van-Der-Luc-SHINE-Day-10.jpg"
+img: images/murals/2022/van-der-luc.jpeg
 
 # ── Optional ──
-title: ""
+title: "Tank School"
 building: Allums Auto
 instagram: van_der_luc_
-basedIn: Florida
+basedIn: "Bogota, Colombia"
 
 artistBio: |
-  Born and raised in Bogota, Colombia, Van Der Luc is a self-taught painter and
-  multimedia artist. Currently living in St. Petersburg and working at Studios
-  at 5663, his work explores thought provoking topics related with the
-  environment, nature, geo politics and technology. Van Der Luc has
-  participated in many group exhibitions and other museum curated shows
-  throughout Tampa Bay.
+  Lucas Franco, who goes by Van Der Luc, is a self-taught painter and multimedia artist originally from Bogota, Colombia. Now based in the St. Petersburg area, he works out of Studios at 5663, a shared artist space in Pinellas Park's Pinellas Arts Village. His art tackles big-picture subjects — the environment, nature, geopolitics, and technology — but delivers them through a whimsical, surrealist lens that's playful rather than preachy. Think polar bears hauling robots through sunny landscapes, drones delivering art supplies, and bird skeletons wandering past boxes of honey. He has shown work in numerous group exhibitions and museum-curated shows across the Tampa Bay region. In 2019, he was selected as an emerging artist for SHINE Mural Festival's REVEAL: EMERGE live painting event at Station House, and by 2022 he was tapped as a full SHINE mural artist, painting "Tank School" on the side of Allums Auto in St. Petersburg's Warehouse Arts District.
 
-muralDescription: ""
+muralDescription: |
+  A large whimsical mural on a bright blue sky background covering the full side of Allums Auto. A massive white polar bear strides across a green grassy landscape, carrying a robot passenger who holds a black umbrella studded with stars. The robot sits atop the bear with a first-aid kit satchel, a potted plant, and a box labeled "Honey" strapped to the bear's back. A skeletal bird — just bones and a long beak — perches behind the robot. A swarm of bees buzzes on the right side, and in the upper left, a drone delivers a cardboard box labeled "Art Supplies." Power lines and distant utility poles dot the horizon. Signed "VAN DER LUC" in angular hand-lettered type in the upper right corner. The piece blends environmental and technological themes with a storybook charm.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1610.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - instagram.com/van_der_luc_
+  - stpeterising.com (SHINE 2022 lineup, mural title "Tank School")
+  - tampabay.com (SHINE 2022 coverage)
+  - barbarapicci.com (real name Lucas Franco confirmed)
+  - graffitistreet.com (SHINE 2022 coverage)
+  - stpetecatalyst.com (SHINE 2022 roster)
+  - ilovetheburg.com (SHINE 2019 REVEAL: EMERGE)
+  - creativepinellas.org (SHINE 2022 murals)
+  - studios5663.com (studio location)

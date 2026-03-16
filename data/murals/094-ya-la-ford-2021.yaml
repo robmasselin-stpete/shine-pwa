@@ -4,30 +4,45 @@
 id: 94
 artist: "Ya La'Ford"
 year: 2021
-lat: 27.7738
-lng: -82.6296
-address: 330 Beach Dr. NE.
+lat: 27.77573
+lng: -82.632255
+address: 330 Beach Dr NE
 category: shine
-img: "images/murals/2021/ya-la-ford.jpg"
+img: images/murals/2021/ya-la-ford.jpeg
 
 # ── Optional ──
-title: ""
-building: "Smith & Associates Real Estate"
+title: "Love Shines"
+building: Smith & Associates Real Estate
 instagram: yalaford
-basedIn: "Tampa Bay, FL"
+basedIn: "Tampa, FL"
 
 artistBio: |
-  Maintaining her studio work in both Tampa Bay and New York, Ya La'Ford is a
-  professor, visual painter, installation artist and muralist, with a MFA from
-  The Art Institute of Boston and a Juris Doctor law degree from the University
-  of Florida for good measure. Her work can be seen across the country from the
-  Boston Public Library to the Dr. Carter G. Woodson African American Museum.
+  Ya La'Ford grew up in the Bronx as a first-generation American with Jamaican roots — her grandfather was John Dunkley, widely considered one of Jamaica's most important painters. She earned a BFA in Painting (cum laude) from Florida State University, a law degree (cum laude) from the University of Florida, and an MFA in Interdisciplinary Arts (with honors) from the Art Institute of Boston at Lesley University. Based in Tampa, she also keeps studio spaces in the Bronx and Jamaica, plus a property in Maine where she's developing a 30-acre immersive installation. Her signature style leans heavily on intricate geometric line patterns — dense, angular, interlocking shapes that fill large-scale murals and installations. She works across painting, sculpture, video, sound, and mixed media, often grinding sand, shells, and rocks into her canvases. The late Maya Angelou was a personal mentor. Her client list includes Nike (a painting installation at their headquarters), the NFL (she created 75 individual artworks for Super Bowl LV team owners in Tampa), McLaren Racing, the Toronto Blue Jays, the Tampa Bay Rays, and the Orlando Magic. Her permanent collections include the Bill & Melinda Gates Foundation and the Vinik Family Foundation. She has shown at the Tampa Museum of Art, the John and Mable Ringling Museum of Art, the Baker Museum, and the Orlando Museum of Art, and has done residencies in Bangkok, Beijing, and Cairo. In 2025, Visit Tampa Bay commissioned an immersive installation for the London Art Fair, and she had her largest solo exhibition, "Survey the West: A Cross-Continental Reflection," at The James Museum in St. Petersburg.
 
-muralDescription: ""
+muralDescription: |
+  A bold graphic mural on a charcoal-gray wall featuring a large heart filled with Ya La'Ford's signature intricate geometric line pattern — dense, angular, interlocking shapes in bright orange-red. The words "Love Shines" are written across the heart in flowing white neon-style script, with a small illuminated element at the top. The heart is centered on the wall with clean negative space around it, creating a striking contrast between the dark background and the vibrant pattern. Signed "Ya La'ford @yalaford" in white at the bottom. An orange Smith & Associates plaque with the mural's backstory is mounted to the lower right. The piece was part of "The Love Line Project," one of three SHINE 2021 Bright Spots community projects — the phrase "Love Shines" was voted on by the public.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1495.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - yalaford.com (about, press)
+  - instagram.com/yalaford
+  - kcontemporaryart.com/artist/ya-laford
+  - galeriemyrtis.net/ya-laford-biography
+  - drewmarcgallery.com/artist/ya-laford
+  - cnbc.com (career profile)
+  - aboutherculture.com (activism, heritage)
+  - fox13news.com (Tampa artist profile)
+  - stpetecatalyst.com (LOCAL-ish interview, SHINE 2021 lineup)
+  - cltampa.com (Blue SUNnel vandalism, SHINE 2021 context)
+  - paradisenewsfl.com (2021 SHINE artists)
+  - registrytampabay.com (Super Bowl commission)
+  - londonartfair.co.uk (2025 installation)
+  - pammportraits.org (John Dunkley connection)
+  - tampabay.com (SHINE 2021 announcement)

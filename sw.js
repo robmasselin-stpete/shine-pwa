@@ -14,9 +14,9 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v18';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v19';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
-const IMG_CACHE = 'shine-images-v6'; // Mural images — bump when images change
+const IMG_CACHE = 'shine-images-v7'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
 
 // These files are precached on install — the app works offline immediately
@@ -120,6 +120,17 @@ const MURAL_IMAGES = [
   './images/murals/2025/reid-jenkins.jpeg',
   './images/murals/2025/sara-salem.jpeg',
   './images/murals/2025/zulu-painter.jpeg',
+  './images/murals/2020/tatiana-suarez.jpeg',
+  './images/murals/2021/jenipher-chandley.jpeg',
+  './images/murals/2021/nicole-salgar.jpeg',
+  './images/murals/2021/ya-la-ford.jpeg',
+  './images/murals/2022/123klan.jpeg',
+  './images/murals/2022/van-der-luc.jpeg',
+  './images/murals/2023/artist-jones.jpeg',
+  './images/murals/2023/dave-bonzai.jpeg',
+  './images/murals/2023/hannah-eddy.jpeg',
+  './images/murals/2023/kelly-quinn.jpeg',
+  './images/murals/2024/cristi-lopez.jpeg',
   './images/murals/commercial/chad-mize-hollander.jpeg',
   './images/murals/commercial/ernesto-maranje-wildlife-corridor.jpeg',
   './images/murals/commercial/melanie-posner-hollander.jpeg',

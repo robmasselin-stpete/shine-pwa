@@ -4,29 +4,45 @@
 id: 40
 artist: Dave Bonzai
 year: 2023
-lat: 27.7706
-lng: -82.6552
+lat: 27.77131167
+lng: -82.65097
 address: 1229 Central Ave
 category: shine
-img: "images/murals/2023/Dave-Bonzai-20231020-180757-MAR7845-HDR.jpg"    # TODO: needs-photo
+img: images/murals/2023/dave-bonzai.jpeg
 
 # ── Optional ──
-title: Sunshine City
-building: "Cappa & Cappa"
+title: "Sunshine City"
+building: Cappa & Cappa
 instagram: davebonzai
 basedIn: "London, England"
 
 artistBio: |
-  Bonzai is a full time Artist with over twenty years experience in Street /
-  mural art. Bringing together his knowledge of letterforms and spray paint
-  through street art and a process of understanding of how chrome reflects, he
-  has perfected a style that has become known as 'Liquid Chrome'.
+  Dave Bonzai is a full-time street artist and muralist originally from Southampton on the south coast of England, now based in London. He got into graffiti as a teenager around age 14, swept up in the first wave of hip-hop culture to reach the UK. He traveled to Paris in 1990 when the French graffiti scene was at its peak, and credits the book Subway Art as a formative influence. He spent the late '90s painting letters and hip-hop characters before gradually evolving into the large-scale mural work he does today. Bonzai is best known for his signature "Liquid Chrome" technique, which he began developing around 2016. Using only spray paint — layering primarily black, white, and grey — he creates lettering and imagery that looks like molten, reflective metal dripping off walls. The effect is hyper-realistic and unmistakable. Notable projects include a permanent piece at the STRAAT Museum in Amsterdam (the world's largest street art museum), a collaboration with Triumph Motorcycles at their Factory Visitor Experience in Hinckley, and work with legendary underground comics artist Mark Bode in Derry, Northern Ireland. He has over twenty years of professional experience and regularly travels internationally to paint and exhibit.
 
-muralDescription: ""
+muralDescription: |
+  A striking mural on the side of Cappa & Cappa on Central Avenue featuring the words "Sunshine City" in Bonzai's signature Liquid Chrome technique — the script lettering appears to be made of dripping, reflective molten metal, rendered entirely with spray paint in shades of silver, white, and grey. The chrome text floats over a tropical sunset scene of palm tree silhouettes against a gradient sky of deep purple, hot pink, and fiery red. A green geometric tree shape with horizontal stripes rises behind the lettering, and sharp diagonal lines in pink and white cut across the black background, giving the piece a retro synthwave energy. Signed "@DaBonzai" in the lower right corner. Bonzai described it as "a modern piece with a retro twist that the people of St Pete could relate to."
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1588.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - instagram.com/davebonzai
+  - facebook.com/thedavebonzai
+  - woodstreetwalls.co.uk/bonzai
+  - barbarapicci.com (Dave Bonzai @ Derry)
+  - inspiringcity.com (Dave Bonzai profile)
+  - galaxyofart.wordpress.com (Artist of the moment)
+  - stpetecatalyst.com (SHINE 2023 murals)
+  - stpeterising.com (SHINE 2023 preview)
+  - beseeingyou.world (Street Art in Florida)
+  - facebook.com/shineonstpete (making of Sunshine City video)
+  - straatmuseum.com (STRAAT Museum collection)
+  - triumphmotorcycles.com (Triumph x Bonzai collaboration)
+  - upsidegallery.co.uk/bonzai
+  - extramuralactivity.com (Liquid Chrome Shamrock)
+  - streetartcities.com (Southend piece)

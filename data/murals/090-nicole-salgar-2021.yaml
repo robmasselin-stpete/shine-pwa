@@ -4,35 +4,47 @@
 id: 90
 artist: Nicole Salgar
 year: 2021
-lat: 27.7583
-lng: -82.6497
-address: 615 23rd St. S.
+lat: 27.764745
+lng: -82.66452
+address: 615 23rd St S
 category: shine
-img: "images/murals/2021/nicole-salgar.jpg"
+img: images/murals/2021/nicole-salgar.jpeg
 
 # ── Optional ──
-title: ""
+title: "The Commuter"
 building: Cimco Tile
 instagram: nmsalgar
-basedIn: "Miami, FL"
+basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Nicole Salgar is a multi-media visual artist from Miami, FL. Influenced by
-  her Latin roots and passion for horror, sci-fi and folk art, Nicole has
-  traveled to Cuba, Europe, South America and along the east coast
-  collaborating on mural projects with local communities. Often using muralism
-  as a meditative and healing practice, she invites viewers to challenge their
-  perspectives and assumptions which may arise from her ambiguous motifs.
-  Nicole finds that experimentation is the key to creation and without it,
-  nothing truly effective has the chance to reveal itself. Through her creative
-  business NS/CB, she's worked with a variety of clients including Starbucks,
-  Tanqueray, Lulu Lemon, Steven Madden and Bacardi.
+  Nicole Salgar is a Cuban-Colombian visual artist and muralist who grew up in Miami. She attended Design & Architecture Senior High (DASH), then headed to New York City to study fashion design at the Fashion Institute of Technology, earning her bachelor's degree with a focus on tailoring. She spent about seven years in the fashion industry designing for Ralph Lauren and other major labels before pivoting to art full-time. Her mural career kicked off in 2013 with a collaboration on the Centre-Fuge Public Art Project on Manhattan's Lower East Side, and she went on to co-found NS/CB studio, producing research-driven murals across the U.S. and internationally. Her style draws on Latin American folk art, indigenous imagery, mythology, cinema, and the cultures she encounters while traveling — she gravitates toward vivid colors with contrasting accents and often paints large-scale female portraits that function as "gatekeepers to other dimensions," blending surreal and symbolic elements into figurative work. Through residencies and festivals, she has painted walls in Israel, Mexico, Spain, Cuba, Puerto Rico, and across the United States. Her commercial client list includes Starbucks, Absolut, Tanqueray, Steve Madden, Lululemon, and Bacardi. She painted "Viaje Despierto" at Disney Springs for Hispanic Heritage Month in 2024, and in 2025 was one of thirteen artists selected to paint directly on the gallery walls of the Dali Museum in St. Petersburg for their first-ever murals exhibition, "Outside In: New Murals Inspired by Dali." She relocated from Miami to St. Petersburg in December 2023.
 
-muralDescription: ""
+muralDescription: |
+  A large-scale mural covering the entire side wall of Cimco Tile in a striking limited palette of muted reds, teals, greens, and pinks. The left side features a photorealistic portrait of a young woman gazing directly at the viewer with an intense, contemplative expression. Her face is rendered in soft green and warm tones, with horizontal red striped shadows — like light through blinds — falling across her forehead and the wall behind her. Lush tropical leaves in deep reds and teals frame her face and extend across the right side of the wall, interwoven with chain-link fence imagery and bold geometric red shapes. A large flower blooms on the far right, wrapping around the building's roll-up door. Signed "ns" on the left side. The piece explores themes of parallel dimensions and transformation, with the subject serving as a gatekeeper between worlds.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1605.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - instagram.com/nmsalgar
+  - linkedin.com/in/nicole-salgar
+  - st-artnow.com/nicole-salgar-about
+  - floridarama.art/artist/nicole-salgar
+  - morivermurals.org/artists/nicole-salgar
+  - nectarsunglasses.com (Nicole Salgar artist feature)
+  - jitneybooks.com/nicole-salgar (Dali Museum interview)
+  - smokymountains.org (Walls for Women - Senderos)
+  - streetartnyc.org (SHINE 2021 coverage)
+  - stpetecatalyst.com (SHINE 2021 diary, Dali Outside In, FloridaRAMA)
+  - stpeterising.com (SHINE 2021 coverage)
+  - clickorlando.com (Disney Springs Hispanic Heritage Month)
+  - createcultivate.com (How to Be an Artist interview)
+  - thedali.org (Outside In press release)
+  - artsy.net/artist/nicole-salgar
+  - miamiopen.com (2022 Miami Open Murals)
+  - pleasantpeninsula.org (2025 Pleasant Peninsula festival)

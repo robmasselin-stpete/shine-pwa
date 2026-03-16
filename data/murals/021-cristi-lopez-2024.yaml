@@ -4,30 +4,41 @@
 id: 21
 artist: Cristi López
 year: 2024
-lat: 27.7382
-lng: -82.6485
-address: 2655 Fairfield Ave South
+lat: 27.764125
+lng: -82.66988333
+address: 2655 Fairfield Ave S
 category: shine
-img: "images/murals/2024/CristiLopez-FinalShot-SHINE24.jpg"    # TODO: needs-photo
+img: images/murals/2024/cristi-lopez.jpeg
 
 # ── Optional ──
-title: ""
+title: "Moo"
 building: Groove Haven
 instagram: cristi.lopez.s
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Cristi López (b. 1993) is an artist and mental health advocate splitting time
-  between Tampa Bay and Chicago. She graduated from Ringling College of Art and
-  Design in 2016 with a BFA in Illustration. Her work explores mental health,
-  latinidad, and femininity. Through her intensely personal imagery, she hopes
-  that others will recognize themselves. To be portrayed is to be seen.
+  Cristi Lopez is a first-generation Dominican-American artist born in 1993. Her parents immigrated from the Dominican Republic and the family settled first in New England before moving to Florida. She earned her BFA in Illustration from Ringling College of Art and Design in Sarasota in 2016, then relocated to Chicago, where she completed a Drawing & Painting residency at Lillstreet Art Center. After several years building her career in Chicago, she moved back to Florida and is now based in St. Petersburg. Her art blends surrealism, folk traditions, and figurative painting into richly layered compositions that draw from the Vienna Secession, Klimt and Schiele, Dominican artist Candido Bido, Ukiyo-e, Catholic iconography, and Dominican folk art. She paints powerful female figures surrounded by animals, tropical imagery, and allegorical objects, exploring themes of mental health, femininity, cultural identity, and faith. She has been open about living with OCD, and much of her work channels intrusive thoughts into visual storytelling. Her exhibition history includes 10 Corso Como in Milan, the Zhou B Art Center in Chicago, and two solo shows at VSG Contemporary (formerly A Very Serious Gallery) in Chicago: "Unravel: Portraits of My Obsessions" (2023) and "Anima: The Feral Femme" (2024). She has painted murals for Google's Chicago headquarters, the University of Florida Arts in Medicine program, and the St. Pete Pier's fifth anniversary celebration in 2025. She received an Individual Artist Grant from the St. Pete Arts Alliance in 2025.
 
-muralDescription: ""
+muralDescription: |
+  A large surrealist mural on the side of Groove Haven on a pale blue sky background. A central female figure with dark hair, green eyeshadow, rosy cheeks, and red lips gazes outward, wearing a pearl necklace and dark clothing. She holds a large maroon sphere with a single eye painted on it — a recurring motif in Lopez's work. Behind her, a full white moon glows against the horizon where a turquoise ocean meets the sky. Green tropical fern fronds frame the left side, while small white goats balance on a red clothesline to the right. A blue monkey sits among decorative green mandala patterns at the lower right. The composition blends Dominican folk art, Catholic iconography, and surrealist symbolism into a dreamlike tropical scene. Signed "Cristi López 24" in the lower right corner. Lopez described the piece as "a love letter to my visual and cultural influences."
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1615.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - cristilopezart.com (about, exhibitions, paintings)
+  - instagram.com/cristi.lopez.s
+  - sanpedrogazette.com (artist profile, Sept 2025)
+  - madeofmillions.com (two interviews on OCD and art)
+  - artworldchicago.org/cristi-lopez
+  - softwatergallery.com/artist/christi-lopez
+  - vsgcontemporary.com (Unravel exhibition)
+  - stpeterising.com (SHINE 2024 coverage)
+  - stpetecatalyst.com (SHINE 2024, Pier mural)
+  - celebrate5years.com/art (PierFest murals)
+  - wttw.com (Chicago arts coverage)

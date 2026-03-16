@@ -4,33 +4,47 @@
 id: 53
 artist: 123Klan
 year: 2022
-lat: 27.7693
-lng: -82.6497
-address: 128 20th St. S.
+lat: 27.769805
+lng: -82.66030833
+address: 128 20th St S
 category: shine
-img: "images/murals/2022/123Klan-SHINE-Day-9.jpg"
+img: images/murals/2022/123klan.jpeg
 
 # ── Optional ──
-title: ""
-building: "Tri-J Towing"
+title: "Libre et Sauvage"
+building: Tri-J Towing
 instagram: 123klan
-basedIn: "Los Angeles, CA"
+basedIn: "Venice Beach, CA"
 
 artistBio: |
-  123Klan is a French graffiti crew, composed of husband and wife team Scien
-  and Klor, who have dominated the street art scene for more than 25 years. By
-  shifting the boundaries of their two favorite disciplines, graffiti art and
-  graphic design, 123KLAN have advanced the graffiti aesthetics and infused a
-  healthy dose of new ideas into current graphic design. Now living in Los
-  Angeles, 123Klan's bold character design and iconography has helped them
-  establish a client list from Sony to Scion to KidRobot, while holding true to
-  their graffiti roots.
+  123Klan is a husband-and-wife graffiti crew made up of Scien (Sebastien) and Klor (Carole), who started tagging together in 1992 in the tiny town of Bray-Dunes in northern France. The name comes from their old zip code — 59123 — which they first turned into "123Kings" as a joke about being the only writers in town, then shortened to 123Klan. By the mid-90s they were experimenting with graphic design alongside their graffiti, becoming some of the earliest artists to fuse vector illustration with spraypaint lettering. Their style is instantly recognizable: sharp-angled letterforms, acid-bright color palettes, and cartoon characters with a manga-meets-hip-hop edge. They relocated to Montreal in 2007 and set up a proper studio, then around 2022 moved again to Venice Beach in Los Angeles. Over three decades they have built a massive client roster — Nike, Adidas, Coca-Cola, Stussy, Carhartt, Vans, Sony, Marvel, Netflix, MTV, ESPN, Kidrobot, Nasdaq, and Lamborghini among them. They designed a special Adidas Stan Smith for the "End to End Project," created Fellastar art toys with Kidrobot, and run their own streetwear label, Bandit1sm. Their motto — "Style is the Message" — sums up three decades of treating graffiti as a legitimate design language. They have painted walls and shown in galleries across Tokyo, Berlin, New York, Sao Paulo, Sydney, Singapore, Marrakech, and dozens of other cities. This is their second SHINE mural — they first painted in St. Pete for SHINE 2015.
 
-muralDescription: ""
+muralDescription: |
+  A large mural on the side of Tri-J Towing in 123Klan's signature cartoon-graffiti style on a lavender background. The central figure is a cowboy outlaw character in a dark fedora with an arrow pierced through it, wearing an open Hawaiian shirt with a tropical print, rendered in their angular vector-meets-spraypaint aesthetic. To his left, a ghost-like figure with X'd-out eyes holds a flag, surrounded by cacti, a skull, and bold graffiti-style lettering reading "123" and "Go." The text "Libre et Sauvage" ("Free and Wild") runs across the bottom — a recurring 123Klan motif representing the untamed spirit of graffiti culture. Bullet hole details and crossed arrows anchor the composition at the base. The palette is muted pastels — lavender, sage green, rust, and navy — a departure from their typical acid brights.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1601.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - 123klan.com (about, shop, blog)
+  - en.wikipedia.org/wiki/123Klan
+  - instagram.com/123klan
+  - sprayseemo.com/123klan
+  - empiresevenstudios.com (2025 exhibition)
+  - colab-gallery.com/123-klan
+  - soldart.com/a/123klan
+  - indieground.net (featured artist)
+  - muralfestival.com/artist/123klan
+  - stpeterising.com (SHINE 2022 lineup)
+  - graffitistreet.com (SHINE 2022 coverage)
+  - tampabay.com (SHINE 2022)
+  - artsy.net (Libre et Sauvage works)
+  - singulart.com (Libre et Sauvage 2017)
+  - hypebeast.com (Stan Smith x 123Klan)
+  - creativebloq.com/123klan
+  - montanacolors.com/123-klan

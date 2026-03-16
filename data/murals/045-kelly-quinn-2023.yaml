@@ -4,30 +4,44 @@
 id: 45
 artist: Kelly Quinn
 year: 2023
-lat: 27.7736
-lng: -82.676
+lat: 27.77203833
+lng: -82.66821333
 address: 2553 1st Ave N
 category: shine
-img: "images/murals/2023/Kelly-Quinn-20231020-135933-MAR7301-HDR.jpg"    # TODO: needs-photo
+img: images/murals/2023/kelly-quinn.jpeg
 
 # ── Optional ──
-title: Mangrove Connections
+title: "Mangrove Connections"
 building: LPL Financial
-instagram: canvasofthewild
+instagram: kellyofthewild
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Growing up as an artist at the edge of the Everglades headwaters, Kelly is
-  passionate about protecting Florida's natural ecosystems and developing
-  creative avenues that support environmental education. As the Art Director
-  for Canvas of the Wild, she creates large-scale murals and educational
-  displays.
+  Kelly Quinn is a Florida-born wildlife artist, illustrator, and muralist who grew up near Kissimmee at the edge of the Everglades headwaters, surrounded by cypress wetlands and conservation land. She got serious about art at Harrison School for the Arts in Lakeland, then earned her degree from the University of Florida College of Fine Arts in 2016. After graduating, she moved to the Tampa Bay area and launched her personal brand, Kelly of the Wild. She served as artist-in-residence at The Florida Aquarium, where she live-painted for guests, ran art classes, and collaborated on scientific illustrations — including a mural featuring six endangered shark species during Shark Week coverage on ABC. In 2018, she co-founded Canvas of the Wild with Blake Wheeler, a creative design and production studio focused on STEAM education. As art director, she designs large-scale interactive murals, scientific infographics, animations, and educational coloring books for museums, science organizations, and researchers. Her conservation work has earned real recognition: she was named Artist of the Year by the International SeaKeepers Society in 2021 and 2022, and the Oceanic Preservation Society's Featured Artist for 2022. Major projects include the Crystal River mural for the Florida Wildlife Corridor Foundation, the Sea of Connections interactive mural campaign with the Oceanic Preservation Society in Miami, and this "Mangrove Connections" mural for SHINE 2023. She is an avid scuba diver who has painted reefs she has visited in the Florida Keys and Southeast Asia.
 
-muralDescription: ""
+muralDescription: |
+  A nature-focused mural on a black background depicting the mangrove ecosystem of Tampa Bay. A central mangrove tree with tangled brown roots and dense green foliage spans the full height of the wall, with a large golden sun glowing behind it. Blue ocean waves splash outward on both sides. Above the canopy, a pink roseate spoonbill takes flight on the left while a brown pelican perches on the right. Below the waterline, the mangrove roots reveal an underwater world — a smalltooth sawfish (an endangered Florida species), a dolphin, a snook, a red snapper, and smaller fish swim among the roots. The piece was created in collaboration with the Oceanic Preservation Society to celebrate the 50th anniversary of the Endangered Species Act, and includes interactive NFC-tag technology linking viewers to a digital knowledge base about each species depicted.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1613.jpeg). User photo replaces stock image.
+  Instagram corrected from @canvasofthewild to @kellyofthewild (personal handle).
+  Sources consulted:
+  - kellyofthewild.com (bio, portfolio)
+  - canvasofthewild.com (about, interactive murals)
+  - instagram.com/kellyofthewild
+  - linkedin.com/in/kellyofthewild
+  - esa50.org (Mangrove Connections mural page)
+  - artsyshark.com (featured artist 2018)
+  - xray-mag.com (Kelly Quinn portfolio)
+  - nrdc.org (Gulf Whale Artist Series)
+  - stpetecatalyst.com (SHINE 2023 murals)
+  - floridawildlifecorridor.org (Crystal River mural)
+  - opsociety.org (Sea of Connections)
+  - sharks4kids.com (Shark Week interview)
+  - abcactionnews.com (coloring book coverage)

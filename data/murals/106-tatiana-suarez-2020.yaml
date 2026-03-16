@@ -4,35 +4,46 @@
 id: 106
 artist: Tatiana Suarez
 year: 2020
-lat: 27.7718
-lng: -82.6327
+lat: 27.76938833
+lng: -82.63242167
 address: 250 2nd Ave SE
 category: shine
-img: images/murals/2020/2020_SHINE_Mural_Festival_Tatiana_Suarez.jpg
+img: images/murals/2020/tatiana-suarez.jpeg
 
 # ── Optional ──
-title: ""
+title: "Mangroves and Manatees"
 building: St. Petersburg Sailing Center
 instagram: tatunga
-basedIn: "Miami, Florida"
+basedIn: "Miami, FL"
 
 artistBio: |
-  Born and raised in Miami, Tatiana Suarez's work draws you into a surreal,
-  creamy, and ethereal world filled with doe-eyed figures ornamented by
-  unexpected colors and elements. On both canvas and walls, Suarez's work is
-  rich with symbols from her Brazilian and El Salvadorian heritage, juxtaposing
-  the beautiful with the exotic to create enchanted narratives. The natural
-  mythology and folklore from her respective parent cultures influence her
-  work, from the indigenous face paint and adornment used to the rich and
-  tropical color palettes of the South American landscape. Tati is a headlining
-  muralist, having participated in Sea Walls projects around the world and
-  other notable festivals like POWWOW!
+  Tatiana Suarez is a Miami-born pop surrealist painter and muralist with Brazilian and El Salvadorian roots. She earned a BFA in Illustration and Design from the University of Miami in 2005, worked briefly in advertising, and then pivoted to painting full-time. Her signature style features dreamy, doe-eyed female figures floating in lush, surreal worlds filled with tropical plants, insects, and animals — drawing heavily from indigenous mythology, Brazilian folklore, and South American visual traditions. She works in oil on wood panels for gallery pieces and uses spray paint with a grid-transfer system for her large-scale murals. On the gallery side, she's shown at Spoke Art in San Francisco, Corey Helford Gallery and Thinkspace Projects in Los Angeles, and GGA Gallery in Miami. Her mural resume includes Wynwood Walls (2016–2021), Pow! Wow! Hawaii, Long Beach Walls at the Museum of Latin American Art, and Sea Walls: Artists for Oceans projects in Cozumel, Mexico and St. Petersburg, Florida. Commercial collaborations include Netflix, L'Oreal, Reebok, Secret Deodorant, and JanSport. She is represented by Bernstein & Andriulli for commercial mural work.
 
-muralDescription: ""
+muralDescription: |
+  A building-wrap mural covering the entire facade of the St. Petersburg Sailing Center in muted greens, teals, and warm browns. A young woman with flowing auburn hair swims among Florida manatees, her hand resting gently on a large manatee in the foreground. Schools of striped sheepshead fish swim to the right, while teal mangrove leaves and sea plants fill the left side and edges. Bubbles drift upward throughout the composition. The palette is naturalistic and subdued — deep greens, sage, and sandy tones — giving the whole piece an underwater, dreamlike quality. Signed "Tati 2020 @tatunga" in the lower right corner. Painted for SHINE x Sea Walls 2020, sponsored by Ocean Conservancy, the mural highlights the fragile mangrove and manatee ecosystems of Florida's coast.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1584.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - tatisuarez.com/about
+  - instagram.com/tatunga
+  - spoke-art.com/collections/tatiana-suarez
+  - ggagallery.com/artist/tatiana-suarez
+  - thewynwoodwalls.com/artists/tatiana-suarez
+  - ba-reps.com/mural-art/tatiana-suarez
+  - thinkspaceprojects.com/artists/tatiana-suarez
+  - seawalls.org/mural/mangroves-and-manatees
+  - seawalls.org/activation/st-petersburg
+  - longbeachwalls.com/tatiana-suarez
+  - powwowhawaii.com/participants/tatiana-suarez
+  - wowxwow.com/artist-interview/tatiana-suarez-ai
+  - miamiartzine.com (Talking With Miami Artist Tatiana Suarez)
+  - artsy.net/artist/tatiana-suarez
+  - stpeterising.com (SHINE 2020 lineup)
+  - tampabay.com (SHINE 2020 all-Florida artists)

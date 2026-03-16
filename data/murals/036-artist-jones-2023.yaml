@@ -4,11 +4,11 @@
 id: 36
 artist: Artist Jones
 year: 2023
-lat: 27.7728
-lng: -82.6377
+lat: 27.77346167
+lng: -82.63773333
 address: 350 2nd Ave N
 category: shine
-img: "images/murals/2023/The-Artist-Jones-20231020-173744-MAR7818.jpg"    # TODO: needs-photo
+img: images/murals/2023/artist-jones.jpeg
 
 # ── Optional ──
 title: ""
@@ -17,16 +17,28 @@ instagram: theartistjones
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Artist Jones paints vibrate-colored portraits of powerful black and brown
-  people in their greatness because it is what she is meant to do. The artist's
-  works are explorations of the stories and hidden influences of character and
-  legacy for each subject.
+  Tracey "Artist" Jones is a multidisciplinary artist and muralist originally from Coatesville, Pennsylvania. Art runs in her blood — she's the great-great-granddaughter of Ida Ella Ruth Jones, a celebrated African American folk painter from Chester County who completed over 300 works in her 70s and 80s. Tracey's father nurtured her artistic interests from age six, and by fifteen she was already selling her own artwork. She attended Arcadia University on a basketball scholarship, studying graphic design, and after graduating spent over eighteen years in the field before pivoting to painting full-time. She moved to Tampa Bay over a decade ago and has built a serious presence there. Her work blends her graphic design eye for composition with fine art techniques, heavily influenced by culture, color, and storytelling — she cites Kehinde Wiley and DJ Black Coffee as major inspirations. Her brand collaborations include work with Outback, the Tampa Bay Buccaneers, Walmart, and the Tampa Bay Lightning, for whom she designed the 2025 Pride Night puck. Her first mural in the Tampa Bay area was the SHINE Unity Project piece at Brookwood Florida in 2022, a three-wall mural reading "Always Forward Together." In 2023, she was selected as one of six local artists for the main SHINE Mural Festival, painting this full building wrap on the PSTA Ticket Office at Williams Park. In 2025, she was honored as one of 16 women muralists in the "We Built This City: Women Artists of SHINE" exhibition at Morean Arts Center.
 
-muralDescription: ""
+muralDescription: |
+  A vibrant full building wrap covering every surface of the small PSTA Ticket Office at Williams Park. The mural is a patchwork of bold, densely layered abstract patterns — oversized fan-shaped leaves in hot pink and sky blue, swirling navy spirals, lime green tiger stripes, red-orange organic shapes, yellow leopard spots, teal swirls, and geometric black-and-white dashes and lines. The patterns collide and overlap in irregular blocks, creating a quilt-like effect that draws from African textile traditions and graphic design. The saturated color palette — pink, blue, green, orange, yellow, navy, and teal — wraps seamlessly around corners and over utility boxes, transforming the entire structure into a single vibrant artwork. Signed "@theartist jones" in white at the bottom left.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1583.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - instagram.com/theartistjones
+  - canvasrebel.com/meet-tracey-jones (education, career, painting transition)
+  - newsbosses.com/artists/tracey-jones (Coatesville hometown, early career)
+  - nhl.com/lightning (Arcadia University, great-great-grandmother, influences, Pride puck)
+  - bayareastreetcollective.com/collections/artist-jones (prints, artist statement)
+  - creativepinellas.org (SHINE Unity Project 2022, Brookwood mural)
+  - stpetecatalyst.com (SHINE 2023 murals, local artist selection)
+  - ilovetheburg.com (SHINE 2023 photos, We Built This City exhibition)
+  - stpeterising.com (SHINE 2023 coverage)
+  - paradisenewsfl.com (SHINE 2023)
+  - en.wikipedia.org/wiki/Ida_E._Jones_(painter) (ancestor)

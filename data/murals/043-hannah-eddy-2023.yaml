@@ -4,28 +4,44 @@
 id: 43
 artist: Hannah Eddy
 year: 2023
-lat: 27.7823
-lng: -82.6567
+lat: 27.772705
+lng: -82.64938333
 address: 1019 Arlington Ave N
 category: shine
-img: "images/murals/2023/Hannah-Eddy-20231019-121609-MAR6021-Edit.jpg"    # TODO: needs-photo
+img: images/murals/2023/hannah-eddy.jpeg
 
 # ── Optional ──
-title: With Flying Colors
+title: "With Flying Colors"
 building: CASA Support Center
 instagram: hannaheddyart
-basedIn: Nevada
+basedIn: "Reno, NV"
 
 artistBio: |
-  Hannah Eddy is an artist and muralist based in Reno, NV best known for her
-  colorful, bold, and imaginative work. Her art encourages an appreciation for
-  nature, connection, and community.
+  Hannah Eddy is a muralist, illustrator, and painter based in Reno, Nevada. She grew up on the coast of Maine, picked up a skateboard at age four, and got hooked on board sports early. She studied oil painting at the University of Colorado Boulder, where she also competed on the snowboard team. After college, she started doing design work for snowboard and skate companies, then gradually moved into painting murals after a professional snowboarder friend brought her to a mural festival — she has described that experience as basically getting "mural school for a week" from the other artists there. Her work is pop-surrealist and heavily illustration-driven: bold outlines, punchy color palettes, funky cartoon characters, hand-lettered phrases, and lots of plants, animals, and nature imagery. She likes to blow up tiny things — bees, snails, flowers — to make people notice what they usually walk past. A lot of her pieces deal with environmental themes and climate awareness, but she keeps the tone playful rather than preachy. She has painted murals across the country and partnered with brands including Patagonia, Dakine, GNU Snowboards, Sierra Nevada Brewing, Hydroflask, and CamelBak. She is a member of the Protect Our Winters Creative Alliance. She and her husband Tim Eddy run DoRadical, a media platform focused on sustainability and conscious living, and they co-authored Pow and Chow, a plant-based cookbook that raised money for Protect Our Winters.
 
-muralDescription: ""
+muralDescription: |
+  A wide, whimsical mural covering the full side of the CASA Support Center on a soft mint green background. The scene is a dense tropical ecosystem rendered in bold black outlines with playful, illustration-style fills in blues, greens, purples, oranges, and pinks. A large green tree frog sits center-left among oversized leaves and flowers, while a purple heron or crane flies to the right carrying a flower in its beak — a nod to the traditional peace dove, reimagined with Florida wildlife. Snakes wind through the foliage, insects hover between blooms, and cartoon raindrops fall from stylized clouds. The left side bursts with warmer tones — orange, yellow, and pink — while the right side fades to line-art outlines on the mint base, as if the color is still spreading. The piece was designed to create a positive, lighthearted, and welcoming atmosphere for CASA's mission as a domestic violence support center.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1510.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - hannaheddyart.com (about, murals, portfolio)
+  - instagram.com/hannaheddyart
+  - blackstrap.com (Meet Our Artist interview)
+  - southwestcontemporary.com (paints life and death in technicolor)
+  - sierranevada.com (The Mural Life of Hannah Eddy)
+  - thetahoeweekly.com (Creative Inclinations interview)
+  - hiheyhellomagazine.com (artist, activist, snowboarder)
+  - yeahgirlmedia.com (creating positive change interview)
+  - changingtidesfoundation.org (featured artist)
+  - protectourwinters.org (Creative Alliance profile)
+  - abvgallery.com (artist spotlight)
+  - stpetecatalyst.com (SHINE 2023 murals)
+  - gnu.com (Earth Surfin' interview)
+  - doradical.com (media platform)

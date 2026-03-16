@@ -4,32 +4,43 @@
 id: 84
 artist: Jenipher Chandley
 year: 2021
-lat: 27.7583
-lng: -82.6497
-address: 625 23rd St. S.
+lat: 27.763825
+lng: -82.66455833
+address: 625 23rd St S
 category: shine
-img: "images/murals/2021/jenipher-chandley.jpg"
+img: images/murals/2021/jenipher-chandley.jpeg
 
 # ── Optional ──
-title: ""
+title: "Be-you-tiful!"
 building: Cimco Tile
 instagram: jenipherchandley
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Based in St. Petersburg, FL, Jenipher Chandley is a representational artist
-  whose work explores the relationship between nature and the human condition,
-  focusing on themes of strength, beauty, loss, pain, and ultimately,
-  resilience. Jenipher holds degrees in Interior and Graphic Design and has
-  shown her work in hundreds of shows and charitable events, while curating
-  exhibitions throughout the Tampa Bay area and supporting fellow artists
-  through teaching and mentorship.
+  Jenipher Chandley is a St. Petersburg native who has been making art her whole life but really planted her flag in the local scene starting in 2011. After coming through a difficult period of economic hardship and domestic abuse, she rallied fellow artists and started hosting impromptu painting sessions on Central Avenue — an effort that evolved into a long-running weekly meetup and rotating exhibition space, now based at Bar@548. She studied Interior Design and Graphic Design at IADT Tampa, and works primarily in oils, painting figurative pieces with threads of surrealism and symbolism woven in. Love, resilience, and the divine feminine are recurring themes — she paints women as embodiments of both vulnerability and strength. She is a member of the Portrait Society of America and the National Association of Women Artists, runs Studio Gallery 104 at the ArtsXchange campus in St. Pete's Warehouse Arts District, and hosts free Wednesday night art meetups open to anyone. Among her career highlights: a 2023 Creative Pinellas Emerging Artist grant, the Local Artist Spotlight at the Gasparilla Festival of the Arts in Tampa, a featured exhibition at American Stage Theater, and inclusion in the "We Built This City: Women Artists of SHINE" group show at the Morean Arts Center. She has painted two murals for SHINE — this piece at Cimco Tile for SHINE 2021, and "Stronger Together" at 31st St & 7th Ave S for SHINE Origins 2025.
 
-muralDescription: ""
+muralDescription: |
+  A vibrant mural on the side of Cimco Tile featuring oversized lemons, halved citrus slices, and white orange blossoms scattered across a deep navy blue background. The lemons glow in warm yellows and oranges, their green leaves curling between the fruit in multiple shades of sage and emerald. A large cross-section of a lemon dominates the center of the wall, painted around a small door. The words "Be-you-tiful!" appear in flowing white script on the left side. Signed "@JenipherChand" in the lower right corner. The bold, graphic botanical style and uplifting message make it a standout on the 23rd Street corridor.
+
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo (IMG_1609.jpeg). User photo replaces stock image.
+  Sources consulted:
+  - jenipherchandley.com (homepage, about, statement, portfolio, press)
+  - instagram.com/jenipherchandley
+  - creativepinellas.org/artist/jenipher-chandley
+  - theartisanmagazine.com (The Original - Jenipher Chandley)
+  - fox13news.com (SHINE Mural Festival coverage)
+  - stpetecatalyst.com (SHINE 2021 class, SHINE diary, SHINE 2025)
+  - stpeterising.com (SHINE 2021 coverage)
+  - paradisenewsfl.com (2021 SHINE Artists)
+  - ilovetheburg.com (We Built This City exhibition, SHINE Origins)
+  - tbnweekly.com (Morean Arts Center exhibitions)
+  - tampabay.com (SHINE 2021 announcement)
+  - registrytampabay.com (SHINE 2021 World Tour)
+  - gasparillaarts.com (Local Artist Spotlight)
