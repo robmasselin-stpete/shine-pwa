@@ -1,0 +1,63 @@
+# Melanie Posner — 2026 (in progress)
+
+# ── Required ──
+id: 139
+artist: Melanie Posner
+year: 2026
+lat: 27.77069167
+lng: -82.666
+address: 2200 block Central Ave
+category: commercial
+img: images/murals/commercial/melanie-posner-irina.jpeg
+
+# ── Optional ──
+title: "Iryna"
+building: ""
+instagram: therealmelpoz
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  Melanie Posner is a fine artist and muralist from Philadelphia who earned her
+  BFA in Painting from the University of Tampa in 2016. She specializes in
+  vibrant, photorealistic paintings of women. Her clients include Walt Disney
+  World (scenic artwork for Star Wars: Galaxy's Edge), Amazon Prime, and TikTok
+  (a 40-foot mural on the LGBT Center of Los Angeles for Pride Month). She also
+  has a SHINE 2018 mural "New Beginnings" at 4139 7th Terrace S. She was a cast
+  member on the reality show Tampa Baes. Now based in Los Angeles.
+
+muralDescription: |
+  A large-scale photorealistic portrait on the side of a warehouse building,
+  still in progress as of March 16, 2026. The mural depicts Iryna Zarutska, a
+  23-year-old Ukrainian refugee who was stabbed and killed on the Charlotte,
+  North Carolina light rail on August 22, 2025, in a random attack. The portrait
+  shows her with flowing golden-blonde hair, gazing gently toward the viewer
+  with a soft, warm expression. A pink hibiscus flower blooms near her shoulder.
+  The background transitions from pale mint green on the left to warm golden
+  yellow on the right. The piece is rendered in Posner's signature photorealistic
+  style with warm, luminous skin tones. Posner was seen painting from a green
+  scissor lift on the day the photo was taken.
+
+muralInspiration: |
+  Iryna Zarutska fled Ukraine during the Russian invasion and resettled in
+  Charlotte, North Carolina. On August 22, 2025, she was stabbed from behind
+  while seated on the Lynx Blue Line light rail at East/West Boulevard station.
+  She was 23 years old. Her death drew international attention and prompted
+  North Carolina to pass "Iryna's Law," a criminal justice package addressing
+  bail and mental health evaluations.
+
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo taken March 16, 2026 while mural was
+  in progress. User met artist Melanie Posner on site; she confirmed the
+  title "Irina" and the subject. Address approximate from GPS — 2200 block
+  of Central Ave area.
+  Sources consulted:
+  - en.wikipedia.org/wiki/Killing_of_Iryna_Zarutska
+  - cnn.com (Iryna Zarutska stabbing coverage)
+  - nbcnews.com (Ukrainian refugee killed on NC transit)
+  - abc11.com (Iryna's Law)
+  - Existing Posner bio from 107-melanie-posner-commercial.yaml

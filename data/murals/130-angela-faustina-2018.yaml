@@ -1,0 +1,40 @@
+# Angela Faustina — 2018
+
+# ── Required ──
+id: 130
+artist: Angela Faustina
+year: 2018
+lat: 27.77148833
+lng: -82.65081667
+address: 1133 Baum Ave N
+category: shine
+img: images/murals/2018/angela-faustina.jpeg
+
+# ── Optional ──
+title: "Citrus Medley"
+building: Green Bench Brewing Company
+instagram: angelafaustina
+basedIn: "Atlanta, GA"
+
+artistBio: |
+  Angela Faustina is a contemporary realism painter born in 1986 who grew up in South Florida. She graduated summa cum laude from New College of Florida in Sarasota in 2009 with concentrations in studio art and history, and also studied at Ringling College of Art and Design and Parsons School of Design in New York. She moved to the Atlanta area in 2015, where she is currently based. Her work focuses on hyperrealistic oil paintings of fruit — macro close-ups of fresh fruit cut open at peak ripeness, rendered in 40 to 60 layers of oil paint. She describes her work as "bright, lively, intimate, and bold." She lives with lupus, and has said the heightened awareness her body demands parallels the magnified, intimate details she captures in her paintings. She has exhibited across North America, Europe, Asia, and Australia over nearly 20 years, and is represented by Signet Contemporary Art in London. She was the book cover artist for Ripe (Scribner Books, 2023) and received a Georgia Visual Artists Grant in 2020. Her public art includes a 346-foot mural in Florence, Alabama in 2021, and she has painted at mural festivals including SHINE (2018), OuterSpace Project in Atlanta, Stacks Squares in Cabbagetown, Babe Walls (2024), and Burnin' Bridges in Chattanooga (2025).
+
+muralDescription: |
+  Two matching wall sections flanking a sliding metal gate at Green Bench Brewing Company, each approximately seven feet high by sixteen feet long. The mural features oversized cross-section slices of citrus fruits — blood oranges, grapefruits, lemons, limes, and navel oranges — painted in vivid reds, purples, magentas, yellows, greens, and oranges against a warm background. The fruit slices are rendered in Faustina's signature hyperrealistic style, showing the detailed membrane structure, seeds, and juice of each variety. The left wall leans toward warmer tones with more blood orange and grapefruit, while the right wall balances warm and cool with prominent lemon and lime slices. Both walls are signed "ANGELA FAUSTINA" at the bottom. She completed the piece in nine days using only a brush — it was her largest work at the time.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  Sources consulted:
+  - angelafaustina.com (about, public art, prints)
+  - instagram.com/angelafaustina
+  - stpeteartsalliance.org (Angela Faustina 2018 SHINE)
+  - abvgallery.com (artist spotlight)
+  - artsatl.org (mouthwatering murals)
+  - canvasrebel.com (meet Angela Faustina)
+  - visitstpeteclearwater.com (EDGE District murals)

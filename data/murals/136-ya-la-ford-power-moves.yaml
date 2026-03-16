@@ -1,0 +1,41 @@
+# Ya La'Ford — commercial
+
+# ── Required ──
+id: 136
+artist: Ya La'Ford
+year: 2022
+lat: 27.76505333
+lng: -82.66333
+address: 569 22nd St S
+category: commercial
+img: images/murals/commercial/ya-la-ford-power-moves.jpeg
+
+# ── Optional ──
+title: ""
+building: Power Moves Electric
+instagram: yalaford
+basedIn: "St. Petersburg, FL"
+
+artistBio: ""
+muralDescription: |
+  A mural covering the front facade of the Power Moves Electric warehouse on 22nd Street South. On a solid black cinder-block wall, three geometric compositions are arranged symmetrically: two matching half-circle forms flanking the sides and a full circle centered above a metal door. Each form is filled with angular, crystalline white linework — interlocking straight-line segments that create a stained-glass or shattered-ice pattern. Subtle accents of pastel blue, pink, and warm gold highlight select segments within the white network. The black background gives the piece a nighttime quality, making the white geometry glow. "Ya La'ford" is signed in white script in the lower right corner. The style is consistent with Ya La'Ford's broader body of work exploring sacred geometry and light refraction.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  Private commercial commission for Power Moves Electric LLC (owner Tre Marshall).
+  Year estimated as 2022 — Power Moves Electric was established April 2021,
+  so the mural could not predate that. No published documentation of this
+  specific commission was found online. Ya La'Ford has extensive ties to the
+  22nd St S corridor (King's Dream Unite at Manhattan Casino, Community Woven
+  at WADA entrance).
+  Sources consulted:
+  - yalaford.com (portfolio)
+  - instagram.com/yalaford
+  - bbb.org (Power Moves Electric LLC profile)
+  - stpeteartsalliance.org (Ya La'Ford)

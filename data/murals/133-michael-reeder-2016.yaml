@@ -1,0 +1,41 @@
+# Michael Reeder — 2016
+
+# ── Required ──
+id: 133
+artist: Michael Reeder
+year: 2016
+lat: 27.77068333
+lng: -82.65647833
+address: 1701 1st Ave S
+category: shine
+img: images/murals/2016/michael-reeder.jpeg
+
+# ── Optional ──
+title: "Beneath the Shell"
+building: FRSTeam by Rogers
+instagram: reederone
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  Michael Reeder is a figurative painter born in Dallas, Texas in 1982. He grew up around local skate and street culture and started painting graffiti young. He earned a BFA in Painting from the School of Visual Arts in New York, then worked at Eyecon Studios in Dallas, a custom mural and design company where he learned large-scale wall painting. He was named Dallas Muralist of the Year and completed a residency at Detroit's Red Bull House of Art in 2016. His work explores identity, ambiguity, and ego — he builds entirely new personas in each painting, working from minimal reference of someone he has never met. His signature style merges photorealistic faces with flat geometric patterns, bold color fields, and graphic textures. Skulls and exposed bone frequently transition into living skin, probing what lies beneath surface identity. He has collaborated with Santa Cruz Skateboards, New Balance, and Specialized Bicycles, and his work has appeared in New American Paintings and HiFructose Magazine. He is represented by Thinkspace Projects in Los Angeles, where he is based.
+
+muralDescription: |
+  A mural on the north side of the FRSTeam by Rogers building, facing the alley between 1st Avenue South and Central Avenue. The left half of the wall is covered in a repeating three-dimensional cube pattern in pink, teal, and gold on a salmon-pink background — an optical illusion that appears to project outward from the wall. The pattern extends over a roll-up garage door. On the right, a photorealistic greyscale human skull emerges from behind the cubes, its jaw and cranium rendered in precise detail. To the far right, a fragment of a living face — just the nose, eyes, and brow — peeks from behind the skull in warm flesh tones. The composition moves left to right from abstraction to death to life, illustrating the title's idea of what exists beneath outward appearances.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  This mural is on the north side of the same FRSTeam by Rogers building
+  that hosts Dasic Fernandez's "Multicolored Lady" on the east side.
+  Sources consulted:
+  - stpeteartsalliance.org (Michael Reeder SHINE 2016)
+  - reederone.com (bio)
+  - thinkspaceprojects.com/artists/michael-reeder
+  - instagram.com/reederone
+  - artshortlist.com (Michael Reeder)
+  - vice.com (Michael Reeder mixed-up paintings)

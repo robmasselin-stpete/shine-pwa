@@ -1,0 +1,46 @@
+# BASK — pre-SHINE (c. 2014)
+
+# ── Required ──
+id: 134
+artist: BASK
+year: 2014
+lat: 27.77102167
+lng: -82.64247167
+address: 648 Central Ave
+category: shine-legacy
+img: images/murals/pre-shine/bask-make-history.jpeg
+
+# ── Optional ──
+title: ""
+building: Times Square Properties
+instagram: knownasbask
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  BASK is the tag name of Ales Hostomsky, a Czech-born artist whose family fled Communist Czechoslovakia in 1984 and settled in St. Petersburg. He grew up in Pinellas County and picked up graffiti as a teenager at Dixie Hollins High School, learning from a California transplant. He dropped out and never had formal art training — everything he knows came from the street. An early arrest for tagging led to community service at the Dali Museum, which he has cited as a turning point. His first solo gallery show was in 1999, and by the early 2000s he was exhibiting at C Pop Gallery in Detroit. BASK stands for "Because Art Should Kill." His style is layered, textural, and mostly monochromatic — he works in black, white, and grey with raw, deconstructed collage compositions that draw parallels between Communist propaganda imagery and American consumer culture. He has painted at POW! WOW! Hawaii and twice at the SHINE Mural Festival (2015 and 2020). In 2012, he decorated the villain's lair set for Iron Man 3, and Robert Downey Jr. bought all the canvases afterward. His work has been collected by Dennis Hopper, Courteney Cox, and David Arquette. He has a studio in Seminole and remains one of St. Pete's most established street artists.
+
+muralDescription: |
+  A roughly 100-foot-long black-and-white collage mural on the east-facing wall of 648 Central Avenue. The piece is a dense retrospective of BASK's graphic vocabulary: overlapping panels of greyscale portraits, faces, figures, and icons rendered in his signature distressed, wheat-paste-influenced style. A salmon-pink geometric panel near the top right provides the only color. On the right side, "BASK" is repeated five times in stacked block letters — alternating black-on-white and white-on-black — with a single red "S" breaking the monochrome. Below the stacked name, "AMERICAN ANIMAL" appears in bold white type. The overall effect is a visual manifesto — layered, gritty, and unapologetically personal.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  NOTE: The user's photo filename said "Make History" but that was BASK's
+  SHINE 2015 mural at 1120 1st Ave N (since removed). This mural is a
+  different piece at 648 Central Ave, commissioned c. 2014 by property owner
+  Maryann Lynch of Times Square Properties. The building housed Foolish Pride
+  Tattoos and later Brutique.
+  Sources consulted:
+  - tampabay.com (BASK profile Nov 2023, Mural pops up Dec 2013)
+  - stpeteartsalliance.org (BASK 2015, BASK 2020)
+  - instagram.com/knownasbask
+  - artsy.net/artist/ales-bask-hostomsky
+  - parlor-gallery.com/artists/bask
+  - firstamendmentgallery.com (BASK Q&A)
+  - findmasa.com (636 Central Ave)
+  - eyesonthestreets.blog (BASK in black and white)

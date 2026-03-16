@@ -1,0 +1,46 @@
+# Sydney Prusso — Fairgrounds
+
+# ── Required ──
+id: 137
+artist: Sydney Prusso
+year: 2021
+lat: 27.76376667
+lng: -82.66975333
+address: 2606 Fairfield Ave S
+category: commercial
+img: images/murals/commercial/sydney-prusso-fairgrounds.jpeg
+
+# ── Optional ──
+title: ""
+building: Fairgrounds St. Pete (FloridaRAMA)
+instagram: sydbloomstudio
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Sydney Prusso is a muralist and designer working under the name Syd Bloom Studio, based in the Tampa Bay area. Her work is self-described as "bold, dreamy, dramatic, colorful, high-contrast, and distinctly flat," blending influences from Japanese anime and pop art. She has painted over 30 murals across six states and has worked with brands including Salesforce, Adobe, Dickies, and Grow Financial. She received a Communication Arts Typography Award in 2022. She painted "Go Outside, Look Inside" for SHINE 2022 at 533 28th St S, and has done commercial mural work throughout the Warehouse Arts District.
+
+muralDescription: |
+  A long horizontal mural covering the side of a low warehouse building in the Fairgrounds / Factory St. Pete complex. The piece is a bold, graphic composition of abstract geometric shapes with hard edges and flat fills in teal, pink, black, maroon, and blue. A large six-pointed teal star dominates the center. To its left, a black field is filled with salmon-pink polka dots. Flowing red and maroon organic shapes weave between diagonal teal stripes and chevrons. Blue teardrop forms, pink arches, and a spiral motif round out the composition on the right. Two small windows are integrated into the design. The style is pop-art influenced with strong graphic sensibility — reminiscent of Memphis Design or 1980s postmodern illustration.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  User identified artist from a web article. Prusso rebranded to Syd Bloom
+  Studio (@sydbloomstudio). Her current style description ("bold, dreamy,
+  dramatic, colorful, high-contrast, and distinctly flat") fits the geometric
+  pop-art style seen in this mural. The Fairgrounds commissioned 60+ artists
+  for their 2021 opening; other known exterior murals include Derek Donnelly,
+  Chad Mize, Zulu Painter, and Ricky Watts.
+  Year estimated as 2021 (Fairgrounds opened September 2021).
+  Sources consulted:
+  - stpeteartsalliance.org (Sydney Prusso 2022, Fairgrounds directory)
+  - eyesonthestreets.blog (Around Fairgrounds, Sydney Prusso tag)
+  - sydbloom.com (about)
+  - floridarama.art
+  - cltampa.com (Fairgrounds artist announcement)
+  - tampabay.com (Fairgrounds opening)

@@ -1,0 +1,45 @@
+# PHYBR — 2024
+
+# ── Required ──
+id: 138
+artist: PHYBR
+year: 2024
+lat: 27.7709
+lng: -82.6578
+address: 1756 Central Ave
+category: commercial
+img: images/murals/commercial/phybr-neon-lunchbox.jpeg
+
+# ── Optional ──
+title: ""
+building: The Neon Lunchbox
+instagram: phybr
+basedIn: "Kansas City, MO"
+
+artistBio: |
+  PHYBR is the tag name of Ken Dushane III, a self-taught muralist originally from the Detroit area. He got into art through graffiti and skateboard culture, studied IT and graphic design, and worked early on in airbrushing, custom car painting, and pinstriping before transitioning to full-time mural work around 2013. He has painted over 250 large-scale murals across the United States. His style fuses modern surrealism, pop aesthetics, hyper-realistic portraiture, and optical illusions. He has served as creative director for A$AP Rocky and done work for Universal Pictures and Tee Grizzley. He taught as adjunct faculty at the College for Creative Studies in Detroit and spent four years as an instructor in Toledo's Young Artists at Work program. He relocated to Kansas City's West Bottoms neighborhood in 2022, where he is currently based.
+
+muralDescription: |
+  An exterior mural on the side of The Neon Lunchbox, an 80s/90s-themed restaurant and cocktail bar at 1756 Central Avenue. The piece is a swirling optical-illusion vortex of hyper-realistic 80s and 90s toys and pop culture icons against a dark background. Items spiral inward toward a central vanishing point: Tom and Jerry mid-chase, a Rubik's cube, a pink-and-black Furby with glowing blue eyes, a grey Beanie Baby elephant with its red TY heart tag, a Game Boy, porcelain dolls, a Tamagotchi, and other childhood artifacts of the era. The rendering is photorealistic — each toy casts its own shadow and catches light as if tumbling through space. The vortex effect creates a sense of being pulled into a nostalgic time warp, matching the restaurant's retro theme.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  Commercial commission, not a SHINE piece. Sponsored by The Neon Lunchbox,
+  The Bayer Home Loan Team, F + S Marketing Strategy, and TTruth.
+  Unveiled June 2024. The Neon Lunchbox opened March 2024 in the former
+  Hideaway Cafe space.
+  User's original filename referenced "the neon lunchbox commercial june 2024."
+  Sources consulted:
+  - openpr.com (PHYBR partners with Neon Lunchbox, June 17 2024)
+  - phybrart.com
+  - instagram.com/phybr
+  - shoutoutla.com (Meet Ken Phybr Dushane)
+  - voyagekc.com (Daily Inspiration Meet Phybr)
+  - findmasa.com/artist/phybr
+  - ilovetheburg.com (Neon Lunchbox St Pete)

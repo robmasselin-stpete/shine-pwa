@@ -1,0 +1,44 @@
+# LOOK the Weird — 2018
+
+# ── Required ──
+id: 135
+artist: LOOK the Weird
+year: 2018
+lat: 27.77086167
+lng: -82.65058833
+address: 1114 Central Ave
+category: shine
+img: images/murals/2018/look-the-weird.jpeg
+
+# ── Optional ──
+title: "Existence is Absurd"
+building: Central Arcade
+instagram: looktheweird
+basedIn: "Berlin, Germany"
+
+artistBio: |
+  LOOK the Weird is the moniker of Lars Wunderlich, a German artist and designer born in 1981 in Neubrandenburg, then part of the GDR. He started painting graffiti in 1996 and studied art at Ernst Moritz Arndt University before earning a graphic design degree from HTW Berlin. He is a co-founding member of The Weird Crew, an internationally recognized collective of about ten Austrian and German character painters that includes Nychos, Low Bros, DXTR, and Frau Isa. His personal work revolves around visual collage and algorithmically generated portrait replications — he deliberately juxtaposes elements from different time periods to produce what he calls "collisions, distortions and glitches." The results sit somewhere between digital corruption and classical figuration. He has exhibited at Urban Spree Galerie in Berlin, Gallery 1:1 in Luxembourg, and the URBAN NATION Museum. He also co-founded the design company PEACHBEACH (2007-2019) and the animation studio KIDZONCOMPUTERS (2020). He works as a senior designer specializing in illustration, motion graphics, and murals, and is based in Berlin.
+
+muralDescription: |
+  A wide mural on the west-facing wall of the Central Arcade building at 1114 Central Avenue, visible to eastbound traffic on 1st Avenue South. The piece is a surreal, dreamlike panorama painted in Wunderlich's signature distortion-collage style. Flowing organic shapes in pink, magenta, teal, mint green, and cream swirl across the wall, evoking melting landscapes and wavy glass. Among the abstract forms, recognizable elements emerge: a figure reading or holding books, rippling striped surfaces, plant-like tendrils, and architectural fragments. The composition references Florida's environment — the piece was inspired by hurricane damage, red tide, and the contradictions of contemporary life in the state. The overall effect is of something familiar viewed through a funhouse mirror: colorful and inviting at a distance, unsettling and thought-provoking up close.
+
+muralInspiration: |
+  "My piece in St. Pete is all about Florida and the environment. I love to provoke questions." — LOOK the Weird
+
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  The mural faces 1st Ave S (west-facing wall), so photo GPS is from
+  the back/side of the building whose front address is 1114 Central Ave.
+  Sources consulted:
+  - stpeteartsalliance.org (LOOK the Weird SHINE 2018)
+  - larswunderlich.myportfolio.com (about)
+  - urbanspree.com/galerie/artists/lars-wunderlich
+  - urban-nation.com/artist/look-the-weird
+  - gallery1to1.com/looktheweird
+  - instagram.com/looktheweird
+  - stpetemuraltour.com (LOOK the Weird)

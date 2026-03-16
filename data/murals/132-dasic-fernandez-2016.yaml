@@ -1,0 +1,42 @@
+# Dasic Fernández — 2016
+
+# ── Required ──
+id: 132
+artist: Dasic Fernández
+year: 2016
+lat: 27.77083667
+lng: -82.656425
+address: 1720 Central Ave
+category: shine
+img: images/murals/2016/dasic-fernandez.jpeg
+
+# ── Optional ──
+title: "Multicolored Lady"
+building: FRSTeam by Rogers
+instagram: dasicfernandez
+basedIn: "New York, NY"
+
+artistBio: |
+  Dasic Fernández is a Chilean muralist born and raised in Rancagua, a small town outside Santiago. He got into graffiti at 14 through Chile's growing hip-hop scene in the 1990s. He studied architecture at the University of Chile but left during his fourth year, realizing he preferred making art outside to sitting in a classroom. His architectural training shows up in the scale and structure of his murals. During his last year of school he traveled extensively to paint — Rio de Janeiro, Buenos Aires, Montevideo, New York, and Miami — and eventually settled in New York, where he joined the Rebel Diaz Arts Collective in the Bronx and contributed to socially conscious public art projects. His signature style features large-scale figurative murals with bold, vivid color that often appears to drip upward, creating a surreal sense of reversed gravity. His subjects are mostly women rendered in layers of blues, purples, magentas, oranges, and golds. Major commissions include a 27-story mural in downtown Miami for Super Bowl LIV in 2020 (the only Latin American artist selected by the NFL and Goldman Global Arts), a mural at Hard Rock Stadium during its 2016 renovation, and dozens of walls across Chile, Argentina, Uruguay, Brazil, Peru, Canada, and the United States. He has exhibited at GGA Gallery in Wynwood and is based in New York with Miami as a second home.
+
+muralDescription: |
+  A 90-by-17-foot mural on the east side of the FRSTeam by Rogers building, facing 17th Street. On a black background, a woman tilts her face upward with her eyes closed and arms spread wide, receiving multicolored rain. Her skin and flowing hair are rendered in dripping layers of blue, purple, magenta, orange, green, and gold — Dasic's signature "inverse drip" style that gives the colors a sense of upward motion. She wears a pale translucent blue sleeveless top that contrasts with the rich colors streaming across her body. White clouds float in the dark sky and white puddles frame the base of the composition. Near each shoulder, a hummingbird hovers — the one on the left sipping a colored raindrop as it falls.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  Note: User's photo shows the colorful woman mural on the east side of the building.
+  Michael Reeder's "Beneath the Shell" is on the north side of the same building.
+  Sources consulted:
+  - stpeteartsalliance.org (Dasic Fernandez SHINE 2016)
+  - dasicfernandez.com (portfolio, about)
+  - instagram.com/dasicfernandez
+  - americasquarterly.org (Arts Innovator profile)
+  - remezcla.com (Super Bowl mural)
+  - isupportstreetart.com (artist profile)
+  - ggagallery.com (Dasic Fernandez)

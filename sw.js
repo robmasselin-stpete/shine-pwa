@@ -14,9 +14,9 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v24';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v25';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
-const IMG_CACHE = 'shine-images-v7'; // Mural images — bump when images change
+const IMG_CACHE = 'shine-images-v8'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
 
 // These files are precached on install — the app works offline immediately
@@ -143,7 +143,17 @@ const MURAL_IMAGES = [
   './images/murals/commercial/unknown-1506.jpeg',
   './images/murals/pre-shine/chad-mize-twiggy.jpeg',
   './images/field/brian-butler-2.jpeg',
-  './images/field/brian-butler-3.jpeg'
+  './images/field/brian-butler-3.jpeg',
+  './images/murals/2018/angela-faustina.jpeg',
+  './images/murals/2019/jimmy-breen-anthony-freese.jpeg',
+  './images/murals/2016/dasic-fernandez.jpeg',
+  './images/murals/2016/michael-reeder.jpeg',
+  './images/murals/pre-shine/bask-make-history.jpeg',
+  './images/murals/2018/look-the-weird.jpeg',
+  './images/murals/commercial/ya-la-ford-power-moves.jpeg',
+  './images/murals/commercial/sydney-prusso-fairgrounds.jpeg',
+  './images/murals/commercial/phybr-neon-lunchbox.jpeg',
+  './images/murals/commercial/melanie-posner-irina.jpeg'
 ];
 
 // Install: precache shell + all mural images (~16MB total after compression).
