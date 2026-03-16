@@ -110,6 +110,10 @@ function hideGate() {
   document.getElementById('gate-page').hidden = true;
   document.getElementById('restore-page').style.display = 'none';
   document.getElementById('app').hidden = false;
+  // Map may have initialized while #app was hidden — fix size
+  setTimeout(() => {
+    if (typeof leafletMap !== 'undefined' && leafletMap) leafletMap.invalidateSize();
+  }, 200);
 }
 
 function showRestorePage() {
@@ -149,6 +153,9 @@ const isAndroid = /android/i.test(navigator.userAgent);
 function showInstallPrompt() {
   if (isStandalone) return; // Already installed — skip
   if (sessionStorage.getItem('mq_install_seen')) return;
+  // 3-day snooze after user dismisses the install overlay
+  const dismissed = Number(localStorage.getItem('mq_install_dismissed') || 0);
+  if (dismissed && Date.now() - dismissed < 3 * 24 * 60 * 60 * 1000) return;
   const overlay = document.getElementById('install-overlay');
   if (!overlay) return;
 
@@ -171,6 +178,10 @@ function hideInstallPrompt() {
   if (overlay) overlay.style.display = 'none';
   sessionStorage.setItem('mq_install_seen', '1');
   localStorage.setItem('mq_install_dismissed', Date.now());
+  // Ensure map resizes correctly after overlay removal
+  if (state.mapReady && leafletMap) {
+    setTimeout(() => leafletMap.invalidateSize(), 150);
+  }
 }
 
 // Skip button
