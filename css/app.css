@@ -530,6 +530,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  background: #fff;
 }
 
 body {
@@ -725,6 +726,7 @@ a {
 .main-content {
   flex: 1;
   overflow-y: auto;
+  background: #fff;
 }
 
 .view {
