@@ -1066,7 +1066,7 @@ function renderTourPicker() {
 
   // Destroy stale picker map if container was removed
   if (tourPickerMap) {
-    tourPickerMap.remove();
+    try { tourPickerMap.remove(); } catch(e) {}
     tourPickerMap = null;
   }
 
