@@ -727,15 +727,13 @@ a {
   flex: 1;
   overflow-y: auto;
   background: #fff;
+  padding-bottom: calc(var(--tab-height) + var(--safe-bottom));
 }
 
 .view {
   min-height: 100%;
 }
 
-#view-explore {
-  padding-bottom: calc(var(--tab-height) + var(--safe-bottom) + 8px);
-}
 
 /* ========================================
    Mural Grid (Explore)
