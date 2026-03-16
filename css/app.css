@@ -871,6 +871,10 @@ a {
   overflow: hidden;
 }
 
+#view-map[hidden] {
+  display: none !important;
+}
+
 #map-container {
   width: 100%;
   flex: 1;
