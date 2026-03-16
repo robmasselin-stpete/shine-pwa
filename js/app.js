@@ -32,8 +32,7 @@ import { ROUTE_PATHS } from './routes.js';
 // Payment gate — check access before showing app
 // =============================================
 const ACCESS_KEY = 'mural_quest_access';
-const ACCESS_DURATION = 2 * 24 * 60 * 60 * 1000; // 2 days — Stripe purchases
-const PROMO_DURATION = 3 * 24 * 60 * 60 * 1000;  // 3 days — promo codes
+const ACCESS_DURATION = 2 * 24 * 60 * 60 * 1000; // 2 days
 
 // IndexedDB fallback — persists across Safari/PWA boundary
 function idbOpen() {
@@ -263,39 +262,8 @@ document.getElementById('gate-buy-btn')?.addEventListener('click', async () => {
   }
 });
 
-// Promo code redemption (client-side) — 50 five-letter codes, 3-day access
-const VALID_PROMOS = [
-  'SHINE', 'MURAL', 'PAINT', 'BRUSH', 'COLOR', 'BLOOM', 'SPARK', 'FLAME', 'OCEAN', 'BEACH',
-  'CORAL', 'WHALE', 'CRANE', 'HERON', 'LOTUS', 'SUNNY', 'STORM', 'CLOUD', 'LIGHT', 'DREAM',
-  'MAGIC', 'GRACE', 'BRAVE', 'PRIDE', 'PEARL', 'CROWN', 'ROYAL', 'TIGER', 'EAGLE', 'RAVEN',
-  'GHOST', 'LUNAR', 'SOLAR', 'NORTH', 'SOUTH', 'URBAN', 'FRESH', 'VIVID', 'FLASH', 'SWIFT',
-  'DELTA', 'HAVEN', 'CREST', 'BLAZE', 'PULSE', 'DRIFT', 'GLEAM', 'PRISM', 'FROST', 'STONE',
-];
-
-document.getElementById('gate-promo-submit')?.addEventListener('click', () => {
-  const code = (document.getElementById('gate-promo-code').value || '').trim().toUpperCase();
-  const email = (document.getElementById('gate-promo-email').value || '').trim();
-  const msg = document.getElementById('gate-promo-msg');
-
-  msg.hidden = false;
-
-  if (!code || !email) {
-    msg.textContent = 'Enter a promo code and your email.';
-    msg.className = 'gate-promo-msg error';
-    return;
-  }
-
-  if (VALID_PROMOS.includes(code)) {
-    grantAccess(PROMO_DURATION);
-    setEmailCookie(email, PROMO_DURATION);
-    msg.textContent = 'Welcome in!';
-    msg.className = 'gate-promo-msg success';
-    setTimeout(() => { hideGate(); showInstallPrompt(); }, 500);
-  } else {
-    msg.textContent = 'Invalid promo code.';
-    msg.className = 'gate-promo-msg error';
-  }
-});
+// Promo codes are handled by Stripe Checkout (allow_promotion_codes)
+// No client-side promo code logic needed.
 
 // Restore access by email
 document.getElementById('gate-restore-btn')?.addEventListener('click', () => {

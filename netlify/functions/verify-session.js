@@ -25,7 +25,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ paid: session.payment_status === 'paid', email }),
+      body: JSON.stringify({ paid: session.payment_status === 'paid' || session.payment_status === 'no_payment_required', email }),
     };
   } catch (err) {
     return {
