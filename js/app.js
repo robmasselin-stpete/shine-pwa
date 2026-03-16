@@ -747,18 +747,8 @@ function initMap() {
   renderMapCatPills();
   updateMapMarkers();
 
-  // User location — only show if within 50 miles of St. Pete
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(pos => {
-      const dist = haversine(pos.coords.latitude, pos.coords.longitude, 27.7706, -82.6341);
-      if (dist > 80467) return; // 50 miles — too far, skip location dot
-      state.userLat = pos.coords.latitude;
-      state.userLng = pos.coords.longitude;
-      L.circleMarker([state.userLat, state.userLng], {
-        radius: 8, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
-      }).addTo(leafletMap).bindPopup('You are here');
-    }, () => {}, { enableHighAccuracy: true });
-  }
+  // User location — deferred until first direction request or manual trigger
+  // (avoids prompting for location permission on app open)
 
   state.mapReady = true;
   setTimeout(() => leafletMap.invalidateSize(), 100);
