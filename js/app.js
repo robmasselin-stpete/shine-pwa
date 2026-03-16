@@ -680,7 +680,7 @@ function initMap() {
     </div>
     <div id="map-container"></div>
     <div class="route-key-section">
-      <span class="route-key-title">Tour Routes</span>
+      <span class="route-key-title">Tour Route Overlays</span>
       <div class="route-key-bar" id="map-route-key">${routeKeyHtml}</div>
     </div>
   `;
