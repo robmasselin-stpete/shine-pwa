@@ -1,0 +1,37 @@
+# Daniel Mrgan — 2016
+
+# ── Required ──
+id: 141
+artist: Daniel Mrgan
+year: 2016
+lat: 27.77058833
+lng: -82.65625833
+address: 1701 1st Ave S
+category: shine
+img: images/murals/2016/daniel-mrgan.jpeg
+
+# ── Optional ──
+title: "A Picnic"
+building: FRSTeam by Rogers
+instagram: danielmrgan
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Daniel Mrgan is a graphic designer and illustrator based in St. Petersburg. He fled armed conflict in Croatia as a young adult and relocated to Pinellas County, where he became an established figure in the Tampa Bay art scene. His illustration work features whimsical, flat-style cartoon characters with bold, limited color palettes and a mid-century children's-book sensibility.
+
+muralDescription: |
+  A 25-by-12-foot mural on the south side of the FRSTeam by Rogers building at 1701 1st Ave S, facing the sidewalk. The piece depicts a whimsical picnic scene starring two cartoon characters named Leon and Olive, rendered in a flat, graphic illustration style using a limited palette of green, gold, red, dark navy, and white. Against a rich green grass background bordered by red trees, Leon reclines reading a book while Olive daydreams at a table with coffee and art supplies. A white text bubble in the upper left reads: "Meanwhile, in a city park, Leon was reading a library book of Latino poetry while Olive daydreamed about her next business venture. They both wondered whether to have another piece of cheese." Playful details fill the scene — a smiling log, a worm in a derby hat, bicycle wheels, a butterfly, and scattered food. The building number "1701" is visible in red at the lower right. The style recalls vintage children's book illustration with bold outlines, flat color fills, and a gentle sense of humor.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  This mural is on the south side of the same FRSTeam by Rogers building
+  that hosts Michael Reeder's "Beneath the Shell" (north side) and
+  Dasic Fernandez's "Multicolored Lady" (east side).
+  Sources consulted:
+  - stpeteartsalliance.org/daniel-mrgan (SHINE 2016)
