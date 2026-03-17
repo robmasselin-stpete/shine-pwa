@@ -1,0 +1,61 @@
+# Cecilia Lueza — "Encounter" (2018, restored 2023)
+
+# ── Required ──
+id: 140
+artist: Cecilia Lueza
+year: 2018
+lat: 27.76556667
+lng: -82.66349167
+address: 2612 22nd St S
+category: commercial
+img: images/murals/commercial/cecilia-lueza-encounter.jpeg
+
+# ── Optional ──
+title: "Encounter"
+building: ArtsXchange
+instagram: cecilialuezaap
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Cecilia Lueza is an Argentine American artist and sculptor who studied fine
+  arts at the University of La Plata in Buenos Aires. After moving to
+  St. Petersburg over two decades ago, she became known for vibrant public art
+  spanning murals, monumental sculptures, painted rooftops, and even street
+  intersections. Her geometric, nature-inspired style has been shown in
+  galleries throughout the US, South America, Spain, and France. A SHINE
+  veteran, Lueza painted "Common Ground" — an entire intersection — for
+  SHINE 2016, "The Blue Hour" for SHINE 2018, and returned again for SHINE
+  2019 and 2025 Origins.
+
+muralDescription: |
+  Two stylized birds face each other on a cinder-block wall at the entrance
+  to the ArtsXchange campus. On the left, a red bird with a dark head faces
+  right, its fanned tail and wing feathers radiating outward in warm geometric
+  wedges of red, orange, pink, magenta, and yellow. On the right, a blue bird
+  faces left, its feathers spreading in cool geometric wedges of deep navy,
+  royal blue, teal, and green. The two birds are silhouetted against a pale
+  sky-blue background, their mirrored poses creating a sense of dialogue or
+  greeting. "LUEZA" is signed in blue at the lower left. The style is Lueza's
+  signature geometric abstraction — each feather rendered as a clean, flat
+  color wedge radiating from a central spiral.
+
+muralInspiration: |
+  Originally painted in 2018, the mural deteriorated over time from fading
+  and nearby construction damage. In April 2023, Lueza restored the piece
+  with funding from a National Endowment for the Arts grant administered
+  through Creative Pinellas. She and ArtsXchange leadership chose restoration
+  over a new design because they remained "very fond of this one."
+
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  GPS from user photo. User photo replaces stock image.
+  Originally painted 2018, restored April 2023. Address approximate
+  from GPS — entrance to ArtsXchange campus on 22nd St S in the
+  Warehouse Arts District.
+  Sources consulted:
+  - stpetecatalyst.com/art-news-new-life-for-bold-mural-artwalk-weekend/
+  - Existing Lueza bio from 004-cecilia-lueza-2025.yaml
