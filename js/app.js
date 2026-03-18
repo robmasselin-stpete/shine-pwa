@@ -1961,9 +1961,6 @@ function openDetail(mural) {
           <button class="detail-directions" onclick="startDirections(${mural.id})">
             🚶 Get Directions
           </button>
-          <button class="detail-gmaps-link" onclick="openInMapsApp(${mural.id})">
-            Open in Maps ↗
-          </button>
         </div>
       ` : ''}
 

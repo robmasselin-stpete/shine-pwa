@@ -1197,14 +1197,19 @@ a {
 
 .detail-hero-wrap {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   background: #1a1a1a;
   cursor: zoom-in;
-  touch-action: none;
+  touch-action: pan-x;
+  display: flex;
+  justify-content: center;
 }
 .detail-hero {
-  width: 100%;
-  object-fit: contain;
+  height: 3cm;
+  width: auto;
+  display: block;
+  min-width: 0;
   background: #1a1a1a;
   transition: transform 0.15s ease;
   transform-origin: center center;
