@@ -920,10 +920,13 @@ function fabFindNearestTourStop() {
       return;
     }
 
-    // Find the nearest mural that's on any tour route
+    // If user has toggled specific routes on, search only those; otherwise search all
+    const activeRoutes = ROUTE_DEFS.filter(d => !hiddenRoutes.has(d.id));
+    const searchRoutes = activeRoutes.length > 0 ? activeRoutes : ROUTE_DEFS;
+
     const tourMuralIds = new Set();
     const muralToRoutes = {};
-    ROUTE_DEFS.forEach(def => {
+    searchRoutes.forEach(def => {
       (def.ids || []).forEach(id => {
         tourMuralIds.add(id);
         if (!muralToRoutes[id]) muralToRoutes[id] = [];
@@ -940,12 +943,15 @@ function fabFindNearestTourStop() {
     const nearest = sorted[0];
     const routes = muralToRoutes[nearest.id] || [];
 
-    showNearestPopup(nearest, routes);
+    const scopeLabel = activeRoutes.length > 0
+      ? activeRoutes.map(r => r.name).join(', ')
+      : 'all routes';
+    showNearestPopup(nearest, routes, scopeLabel);
     leafletMap.setView([nearest.lat, nearest.lng], 16, { animate: true });
   }).catch(() => {});
 }
 
-function showNearestPopup(mural, routes) {
+function showNearestPopup(mural, routes, scopeLabel) {
   dismissNearestPopup();
 
   const distFt = Math.round(mural.dist * 5280);
@@ -954,7 +960,11 @@ function showNearestPopup(mural, routes) {
     : `${mural.dist.toFixed(2)} mi away`;
 
   const routeInfo = routes && routes.length
-    ? `<p>On: ${routes.map(r => r.name).join(', ')}</p>`
+    ? `<p class="nearest-popup-route">On: ${routes.map(r => r.name).join(', ')}</p>`
+    : '';
+
+  const scopeInfo = scopeLabel
+    ? `<p class="nearest-popup-scope">Searching: ${scopeLabel}</p>`
     : '';
 
   const joinBtn = routes && routes.length
@@ -970,6 +980,7 @@ function showNearestPopup(mural, routes) {
       <h4>${mural.a}</h4>
       <p>${distStr}${mural.t ? ' \u2022 ' + mural.t : ''}</p>
       ${routeInfo}
+      ${scopeInfo}
     </div>
     <div class="nearest-popup-actions">
       <button class="nearest-popup-btn primary" onclick="window.dismissNearestPopup();window.startDirections(${mural.id})">Go</button>
@@ -2213,11 +2224,49 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
     window.open(gmapsUrl, '_blank');
   });
 
-  // Close button
-  bar.querySelector('.directions-close').addEventListener('click', () => clearDirections());
+  // Close button → collapse to mini chip (route stays on map)
+  bar.querySelector('.directions-close').addEventListener('click', () => {
+    bar.remove();
+    showDirectionsChip(distMeters, durationSecs, profile);
+  });
 }
 
-/** Remove route polyline, destination marker, and directions bar from the map. */
+/** Persistent mini chip — shows mural name + distance, route stays visible on map. */
+function showDirectionsChip(distMeters, durationSecs, profile) {
+  // Remove any existing chip
+  const existing = document.querySelector('.directions-chip');
+  if (existing) existing.remove();
+
+  const mural = state.directionsMural;
+  if (!mural) return;
+
+  const distText = formatDistance(distMeters);
+  const mins = Math.max(1, Math.round(durationSecs / 60));
+
+  const chip = document.createElement('div');
+  chip.className = 'directions-chip';
+  chip.innerHTML = `
+    <span class="directions-chip-text">${mural.a} · ${distText} · ~${mins} min</span>
+    <button class="directions-chip-close" aria-label="Cancel route">✕</button>
+  `;
+
+  document.getElementById('map-container').appendChild(chip);
+  L.DomEvent.disableClickPropagation(chip);
+
+  // Tap chip text → re-expand full directions bar
+  chip.querySelector('.directions-chip-text').addEventListener('click', () => {
+    chip.remove();
+    showDirectionsBar(distMeters, durationSecs, profile);
+  });
+
+  // X on chip → fully clear directions + route
+  chip.querySelector('.directions-chip-close').addEventListener('click', () => {
+    chip.remove();
+    clearDirections();
+  });
+}
+
+/** Remove route polyline, destination marker, and directions bar/chip from the map. */
 function clearDirections() {
   if (state.directionsRoute) {
     state.directionsRoute.removeFrom(leafletMap);
@@ -2231,6 +2280,8 @@ function clearDirections() {
   state.directionsProfile = 'foot';
   const bar = document.querySelector('.directions-bar');
   if (bar) bar.remove();
+  const chip = document.querySelector('.directions-chip');
+  if (chip) chip.remove();
 }
 
 // =============================================
