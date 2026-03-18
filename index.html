@@ -232,6 +232,14 @@
           });
         })
         .catch(err => console.error('SW registration failed:', err));
+
+      // Reload when the new SW tells us it's ready
+      navigator.serviceWorker.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'SW_UPDATED') {
+          console.log('SW sent update signal — reloading');
+          window.location.reload();
+        }
+      });
     }
 
     // Offline/online indicator

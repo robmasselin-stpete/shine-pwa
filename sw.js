@@ -14,7 +14,7 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v27';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v28';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
 const IMG_CACHE = 'shine-images-v8'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
@@ -173,12 +173,15 @@ self.addEventListener('install', (e) => {
 });
 
 // Activate: delete any old caches not in the current version list
+// Then tell all open tabs to reload so they get fresh files
 self.addEventListener('activate', (e) => {
   const keep = [CACHE_NAME, TILE_CACHE, IMG_CACHE, FONT_CACHE];
   e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => !keep.includes(k)).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
+     .then(() => self.clients.matchAll({ type: 'window' }))
+     .then(clients => clients.forEach(c => c.postMessage({ type: 'SW_UPDATED' })))
   );
 });
 
