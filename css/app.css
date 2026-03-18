@@ -1206,7 +1206,7 @@ a {
   justify-content: center;
 }
 .detail-hero {
-  height: 3cm;
+  height: 25vh;
   width: auto;
   display: block;
   min-width: 0;
