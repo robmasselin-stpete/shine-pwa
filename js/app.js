@@ -87,6 +87,7 @@ function getEmailCookie() {
 }
 
 function hasAccess() {
+  if (['localhost','127.0.0.1'].includes(location.hostname)) return true;
   try {
     const data = JSON.parse(localStorage.getItem(ACCESS_KEY));
     if (data && Date.now() < data.expires) return true;
@@ -210,7 +211,7 @@ if (sessionId) {
       }
     })
     .catch(() => showGate());
-} else if (hasAccess() || location.hostname === 'localhost') {
+} else if (hasAccess() || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   hideGate();
   showInstallPrompt();
 } else {
@@ -747,8 +748,8 @@ function initMap() {
   renderMapCatPills();
   updateMapMarkers();
 
-  // User location — deferred until first direction request or manual trigger
-  // (avoids prompting for location permission on app open)
+  // Floating action buttons (Komoot-style)
+  addMapFabs();
 
   state.mapReady = true;
   setTimeout(() => leafletMap.invalidateSize(), 100);
@@ -800,6 +801,214 @@ function updateRoutePolylineVisibility() {
     if (!show && leafletMap.hasLayer(line)) line.removeFrom(leafletMap);
   });
 }
+
+// ── Map Floating Action Buttons ──────────────────────────────
+
+const DOWNTOWN_CENTER = [27.7676, -82.6403];
+const IN_RANGE_MILES = 10;
+
+let userLocationMarker = null;
+let nearestPopupEl = null;
+
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 3958.8;
+  const dlat = (lat2 - lat1) * Math.PI / 180;
+  const dlon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dlat/2)**2 +
+    Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
+    Math.sin(dlon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function isInRange() {
+  if (!state.userLat) return null; // unknown
+  return haversine(state.userLat, state.userLng, DOWNTOWN_CENTER[0], DOWNTOWN_CENTER[1]) <= IN_RANGE_MILES;
+}
+
+function addMapFabs() {
+  const container = document.getElementById('map-container');
+  const stack = document.createElement('div');
+  stack.className = 'map-fab-stack';
+  stack.innerHTML = `
+    <button class="map-fab" id="fab-location" title="My location">
+      <svg viewBox="0 0 24 24"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+    </button>
+    <button class="map-fab" id="fab-nearest" title="Nearest mural">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    </button>
+    <button class="map-fab" id="fab-nearest-tour" title="Nearest tour stop">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+    </button>
+  `;
+  container.appendChild(stack);
+
+  document.getElementById('fab-location').addEventListener('click', requestAndShowLocation);
+  document.getElementById('fab-nearest').addEventListener('click', fabFindNearestMural);
+  document.getElementById('fab-nearest-tour').addEventListener('click', fabFindNearestTourStop);
+}
+
+function requestAndShowLocation() {
+  if (!window.isSecureContext || !('geolocation' in navigator)) return;
+
+  const fab = document.getElementById('fab-location');
+  fab.classList.add('active');
+
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      state.userLat = pos.coords.latitude;
+      state.userLng = pos.coords.longitude;
+      showUserOnMap();
+      leafletMap.setView([state.userLat, state.userLng], 15, { animate: true });
+      setTimeout(() => fab.classList.remove('active'), 1000);
+    },
+    () => {
+      fab.classList.remove('active');
+    },
+    { enableHighAccuracy: true }
+  );
+}
+
+function showUserOnMap() {
+  if (!state.userLat || !leafletMap) return;
+  if (userLocationMarker) userLocationMarker.remove();
+  userLocationMarker = L.circleMarker([state.userLat, state.userLng], {
+    radius: 8, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
+  }).addTo(leafletMap).bindPopup('You are here');
+}
+
+function ensureLocation() {
+  return new Promise((resolve, reject) => {
+    if (state.userLat && state.userLng) return resolve();
+    if (!window.isSecureContext || !('geolocation' in navigator)) return reject();
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        showUserOnMap();
+        resolve();
+      },
+      reject,
+      { enableHighAccuracy: true }
+    );
+  });
+}
+
+function fabFindNearestMural() {
+  ensureLocation().then(() => {
+    const sorted = murals
+      .filter(m => m.lat && m.lng)
+      .map(m => ({ ...m, dist: haversine(state.userLat, state.userLng, m.lat, m.lng) }))
+      .sort((a, b) => a.dist - b.dist);
+
+    if (!sorted.length) return;
+    const nearest = sorted[0];
+
+    if (!isInRange()) {
+      showOutOfRangePopup();
+      return;
+    }
+
+    showNearestPopup(nearest, null);
+    leafletMap.setView([nearest.lat, nearest.lng], 16, { animate: true });
+  }).catch(() => {});
+}
+
+function fabFindNearestTourStop() {
+  ensureLocation().then(() => {
+    if (!isInRange()) {
+      showOutOfRangePopup();
+      return;
+    }
+
+    // Find the nearest mural that's on any tour route
+    const tourMuralIds = new Set();
+    const muralToRoutes = {};
+    ROUTE_DEFS.forEach(def => {
+      (def.ids || []).forEach(id => {
+        tourMuralIds.add(id);
+        if (!muralToRoutes[id]) muralToRoutes[id] = [];
+        muralToRoutes[id].push(def);
+      });
+    });
+
+    const sorted = murals
+      .filter(m => m.lat && m.lng && tourMuralIds.has(m.id))
+      .map(m => ({ ...m, dist: haversine(state.userLat, state.userLng, m.lat, m.lng) }))
+      .sort((a, b) => a.dist - b.dist);
+
+    if (!sorted.length) return;
+    const nearest = sorted[0];
+    const routes = muralToRoutes[nearest.id] || [];
+
+    showNearestPopup(nearest, routes);
+    leafletMap.setView([nearest.lat, nearest.lng], 16, { animate: true });
+  }).catch(() => {});
+}
+
+function showNearestPopup(mural, routes) {
+  dismissNearestPopup();
+
+  const distFt = Math.round(mural.dist * 5280);
+  const distStr = mural.dist < 0.15
+    ? `${distFt} ft away`
+    : `${mural.dist.toFixed(2)} mi away`;
+
+  const routeInfo = routes && routes.length
+    ? `<p>On: ${routes.map(r => r.name).join(', ')}</p>`
+    : '';
+
+  const joinBtn = routes && routes.length
+    ? `<button class="nearest-popup-btn secondary" onclick="window.joinTourAt(${mural.id})">Join Tour</button>`
+    : '';
+
+  const el = document.createElement('div');
+  el.className = 'nearest-popup';
+  el.innerHTML = `
+    <button class="nearest-popup-close" onclick="this.parentElement.remove()">&times;</button>
+    <img src="${mural.img}" alt="${mural.a}">
+    <div class="nearest-popup-info">
+      <h4>${mural.a}</h4>
+      <p>${distStr}${mural.t ? ' \u2022 ' + mural.t : ''}</p>
+      ${routeInfo}
+    </div>
+    <div class="nearest-popup-actions">
+      <button class="nearest-popup-btn primary" onclick="startDirections(${mural.id})">Go</button>
+      ${joinBtn}
+    </div>
+  `;
+
+  document.getElementById('map-container').appendChild(el);
+  nearestPopupEl = el;
+}
+
+function showOutOfRangePopup() {
+  dismissNearestPopup();
+  const el = document.createElement('div');
+  el.className = 'map-range-banner';
+  el.innerHTML = `
+    <button class="nearest-popup-close" onclick="this.parentElement.remove()">&times;</button>
+    <p>You're not in St. Pete yet!</p>
+    <small>Catch a flight, hop a bus, board a plane, drive a car — get to St. Pete to start exploring murals.</small>
+  `;
+  document.getElementById('map-container').appendChild(el);
+  nearestPopupEl = el;
+}
+
+function dismissNearestPopup() {
+  if (nearestPopupEl) { nearestPopupEl.remove(); nearestPopupEl = null; }
+}
+
+function joinTourAt(muralId) {
+  // Find which route this mural belongs to (pick the first one)
+  for (const def of ROUTE_DEFS) {
+    if (def.ids && def.ids.includes(muralId)) {
+      dismissNearestPopup();
+      openTour(def, muralId);
+      return;
+    }
+  }
+}
+window.joinTourAt = joinTourAt;
 
 /** Render category filter pills for the map view (All/Shine/Vintage/Commercial). */
 function renderMapCatPills() {
@@ -1236,7 +1445,7 @@ function showPickerRoute(idx) {
 }
 
 /** Open a tour — set state, find start index, render loop view. */
-function openTour(def) {
+function openTour(def, startAtMuralId) {
   // Destroy picker map before its container gets replaced
   if (tourPickerMap) {
     tourPickerMap.remove();
@@ -1248,7 +1457,14 @@ function openTour(def) {
 
   state.activeTour = def;
   state.tourStops = stops;
-  state.tourIndex = findNearestTourStop(stops);
+
+  // If a specific mural ID was provided, start there
+  if (startAtMuralId != null) {
+    const idx = stops.findIndex(m => m.id === startAtMuralId);
+    state.tourIndex = idx >= 0 ? idx : findNearestTourStop(stops);
+  } else {
+    state.tourIndex = findNearestTourStop(stops);
+  }
   state.tourMapReady = false;
   state.tourRoute = null;
   state.tourMarkers = [];
@@ -1837,9 +2053,7 @@ function startDirections(muralId) {
       pos => {
         state.userLat = pos.coords.latitude;
         state.userLng = pos.coords.longitude;
-        L.circleMarker([state.userLat, state.userLng], {
-          radius: 8, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
-        }).addTo(leafletMap).bindPopup('You are here');
+        showUserOnMap();
         fetchAndDrawRoute();
       },
       () => {
