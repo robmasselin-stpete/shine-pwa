@@ -1010,9 +1010,15 @@ a {
   box-shadow: var(--shadow-lg);
   padding: 14px 16px;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideUp 0.25s ease-out;
+}
+
+.nearest-popup-top {
+  display: flex;
   align-items: center;
   gap: 12px;
-  animation: slideUp 0.25s ease-out;
 }
 
 @keyframes slideUp {
@@ -1050,17 +1056,17 @@ a {
 .nearest-popup-actions {
   display: flex;
   gap: 8px;
-  flex-shrink: 0;
 }
 
 .nearest-popup-btn {
-  padding: 8px 14px;
+  flex: 1;
+  padding: 10px 12px;
   border-radius: var(--radius-sm);
   border: none;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  white-space: nowrap;
+  text-align: center;
 }
 
 .nearest-popup-btn.primary {

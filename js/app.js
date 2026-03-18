@@ -1049,12 +1049,14 @@ function showNearestPopup(mural, routes, scopeLabel) {
   const el = document.createElement('div');
   el.className = 'nearest-popup';
   el.innerHTML = `
-    <img src="${mural.img}" alt="${mural.a}">
-    <div class="nearest-popup-info">
-      <h4>${mural.a}</h4>
-      <p>${distStr}${mural.t ? ' \u2022 ' + mural.t : ''}</p>
-      ${routeInfo}
-      ${scopeInfo}
+    <div class="nearest-popup-top">
+      <img src="${mural.img}" alt="${mural.a}">
+      <div class="nearest-popup-info">
+        <h4>${mural.a}</h4>
+        <p>${distStr}${mural.t ? ' \u2022 ' + mural.t : ''}</p>
+        ${routeInfo}
+        ${scopeInfo}
+      </div>
     </div>
     <div class="nearest-popup-actions">
       <button class="nearest-popup-btn green" onclick="window.dismissNearestPopup();window.startDirections(${mural.id})">Go To Mural</button>
