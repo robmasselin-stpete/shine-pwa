@@ -764,6 +764,12 @@ function initMap() {
       if (wasHidden) {
         hiddenRoutes.delete(id);
         el.classList.remove('route-key-off');
+        // Zoom to fit the route
+        const rd = ROUTE_PATHS[id];
+        if (rd && rd.path && rd.path.length > 1) {
+          const bounds = L.latLngBounds(rd.path.map(p => [p[0], p[1]]));
+          leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
+        }
       }
 
       updateRoutePolylineVisibility();
