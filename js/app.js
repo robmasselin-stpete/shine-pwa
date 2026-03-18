@@ -656,7 +656,11 @@ function initMap() {
 
   const routeKeyHtml = ROUTE_DEFS.map(def => {
     const color = TOUR_COLORS[def.id] || '#999';
-    return `<span class="route-key-item route-key-off" data-route="${def.id}" style="--route-color:${color}"><span class="route-key-line" style="background:${color}"></span>${def.name}</span>`;
+    const stops = def.ids ? def.ids.length : 0;
+    const rd = ROUTE_PATHS[def.id];
+    const dist = rd && rd.distance ? rd.distance : '';
+    const info = dist ? ` · ${stops} stops · ${dist} mi` : ` · ${stops} stops`;
+    return `<span class="route-key-item route-key-off" data-route="${def.id}" style="--route-color:${color}"><span class="route-key-line" style="background:${color}"></span>${def.name}<span class="route-key-info">${info}</span></span>`;
   }).join('');
 
   views.map.innerHTML = `
@@ -2208,9 +2212,8 @@ function fetchAndDrawRoute() {
 
       leafletMap.fitBounds(state.directionsRoute.getBounds(), { padding: [60, 60] });
 
-      // Estimate time: walking ~80m/min, driving ~500m/min
-      const speed = profile === 'foot' ? 80 : 500;
-      const durationSecs = (distMeters / speed) * 60;
+      // Estimate walk time: ~80m/min
+      const durationSecs = (distMeters / 80) * 60;
       showDirectionsBar(distMeters, durationSecs, profile, true);
     });
 }
@@ -2229,27 +2232,18 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
 
   const distText = formatDistance(distMeters);
   const mins = Math.max(1, Math.round(durationSecs / 60));
-  const modeText = profile === 'foot' ? 'walk' : 'drive';
-  const lineNote = straightLine ? ' (straight line)' : '';
+  const lineNote = straightLine ? ' (est.)' : '';
 
   const mural = state.directionsMural;
-  const mapsUrl = isIOS
-    ? `https://maps.apple.com/?daddr=${mural.lat},${mural.lng}&dirflg=${profile === 'foot' ? 'w' : 'd'}`
-    : `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=${profile === 'foot' ? 'walking' : 'driving'}`;
 
   const bar = document.createElement('div');
   bar.className = 'directions-bar';
   bar.innerHTML = `
     <div class="directions-info">
       <span class="directions-distance">${distText}${lineNote}</span>
-      <span class="directions-time">~${mins} min ${modeText}</span>
+      <span class="directions-time">~${mins} min walk to ${mural.a}</span>
     </div>
-    <div class="directions-controls">
-      <button class="directions-toggle ${profile === 'foot' ? 'active' : ''}" data-profile="foot" aria-label="Walking">🚶</button>
-      <button class="directions-toggle ${profile === 'car' ? 'active' : ''}" data-profile="car" aria-label="Driving">🚗</button>
-      <button class="directions-gmaps" onclick="window.open('${mapsUrl}','_blank')">Open in Maps ↗</button>
-      <button class="directions-close" aria-label="Close directions">✕</button>
-    </div>
+    <button class="directions-close" aria-label="Close directions">✕</button>
   `;
 
   document.getElementById('map-container').appendChild(bar);
@@ -2257,23 +2251,6 @@ function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
   // Prevent Leaflet from eating clicks/touches on the bar
   L.DomEvent.disableClickPropagation(bar);
   L.DomEvent.disableScrollPropagation(bar);
-
-  // Toggle walk/drive
-  bar.querySelectorAll('.directions-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const newProfile = btn.dataset.profile;
-      if (newProfile !== state.directionsProfile) {
-        state.directionsProfile = newProfile;
-        fetchAndDrawRoute();
-      }
-    });
-  });
-
-  // Google Maps link — use explicit handler for iOS Safari
-  bar.querySelector('.directions-gmaps').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.open(gmapsUrl, '_blank');
-  });
 
   // Close button → collapse to mini chip (route stays on map)
   bar.querySelector('.directions-close').addEventListener('click', () => {
