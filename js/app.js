@@ -463,7 +463,7 @@ function switchTab(tab) {
   if (tab !== 'map') clearDirections();
   if (tab !== 'tours' && state.activeTour) closeTour();
   if (tab === 'explore') { renderFilterPills(); renderExplore(); }
-  if (tab === 'map') initMap();
+  if (tab === 'map') { initMap(); flashFabLabels(); }
   if (tab === 'tours') renderTourList();
 }
 
@@ -691,6 +691,14 @@ function initMap() {
     keepBuffer: 6,
   }).addTo(leafletMap);
 
+  // Tap anywhere on map to dismiss nearest popup / out-of-range banner
+  document.getElementById('map-container').addEventListener('click', (e) => {
+    if (e.target.closest('.nearest-popup') || e.target.closest('.map-range-banner') ||
+        e.target.closest('.map-fab-stack') || e.target.closest('.directions-bar') ||
+        e.target.closest('.directions-chip')) return;
+    dismissNearestPopup();
+  });
+
   // Create both dot markers and icon markers for each mural
   murals.forEach(m => {
     if (!m.lat || !m.lng) return;
@@ -903,6 +911,15 @@ function addMapFabs() {
     btn.addEventListener('touchmove', () => clearTimeout(pressTimer));
     btn.addEventListener('mouseenter', showLabels);
   });
+}
+
+function flashFabLabels() {
+  const stack = document.querySelector('.map-fab-stack');
+  if (!stack) return;
+  setTimeout(() => {
+    stack.classList.add('show-labels');
+    setTimeout(() => stack.classList.remove('show-labels'), 1500);
+  }, 300);
 }
 
 function requestAndShowLocation() {
@@ -2373,6 +2390,7 @@ function handleDeepLink() {
 // =============================================
 // Map is the default tab — explore renders lazily on first visit
 initMap();
+flashFabLabels();
 handleDeepLink();
 
 // Restore mural detail after returning from Google Maps
