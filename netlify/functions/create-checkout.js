@@ -13,7 +13,6 @@ exports.handler = async (event) => {
     const origin = event.headers.origin || event.headers.referer?.replace(/\/$/, '') || 'https://legendary-bonbon-a5b20a.netlify.app';
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
       line_items: [{
         price_data: {
           currency: 'usd',
@@ -27,6 +26,7 @@ exports.handler = async (event) => {
       }],
       mode: 'payment',
       allow_promotion_codes: true,
+      payment_method_collection: 'if_required',
       custom_text: {
         submit: {
           message: 'Enter your email above — this is how we verify your access. Then click Continue.',
