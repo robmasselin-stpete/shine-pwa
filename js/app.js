@@ -32,7 +32,7 @@ import { ROUTE_PATHS } from './routes.js';
 // Payment gate — check access before showing app
 // =============================================
 const ACCESS_KEY = 'mural_quest_access';
-const ACCESS_DURATION = 2 * 24 * 60 * 60 * 1000; // 2 days
+const ACCESS_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 // IndexedDB fallback — persists across Safari/PWA boundary
 function idbOpen() {
