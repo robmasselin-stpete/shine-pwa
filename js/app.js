@@ -1057,6 +1057,7 @@ function joinTourAt(muralId) {
   for (const def of ROUTE_DEFS) {
     if (def.ids && def.ids.includes(muralId)) {
       dismissNearestPopup();
+      switchTab('tours');
       openTour(def, muralId);
       return;
     }
