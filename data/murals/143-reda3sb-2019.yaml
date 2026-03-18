@@ -1,0 +1,35 @@
+# Reda3sb — 2019
+
+# ── Required ──
+id: 143
+artist: Reda3sb
+year: 2019
+lat: 27.76918333
+lng: -82.66323833
+address: 131 22nd St S
+category: shine
+img: "images/murals/2019/reda3sb.jpeg"
+
+# ── Optional ──
+title: "Feelings"
+building: "Hell's Bells CrossFit"
+instagram: reda3sb
+basedIn: "Gulfport, FL"
+
+artistBio: |
+  Reda3sb (Ricardo Delgado) is a self-taught urban artist and illustrator originally from Mexico. He started painting graffiti at 17 and spent over a decade honing his craft on the streets before moving to the Tampa Bay area. He was introduced to SHINE by Spanish artist Belin, who painted for the festival in 2018. His work centers on hyper-realistic portraiture rendered entirely in spray paint.
+
+muralDescription: |
+  A panoramic composition of hyper-realistic female faces and features — eyes, lips, a full portrait — arranged across geometric pastel shapes in pink, mint green, and warm peach tones. A blue-toned face gazes out from within a dark inverted triangle at center, flanked by golden circles and spheres. The piece spans the full width of a low-slung commercial building, blending photorealism with abstract geometry.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  Photo by Rob 2026-03-18, GPS from EXIF. New entry (no prior YAML).
+  Sources researched:
+  - https://creativepinellas.org/artist/ricardo-delgado
+  - https://stpeteartsalliance.org/shine (2019 Reda3sb)

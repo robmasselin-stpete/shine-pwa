@@ -1,0 +1,40 @@
+# Vitale Bros — 2019
+
+# ── Required ──
+id: 142
+artist: Vitale Bros
+year: 2019
+lat: 27.76814667
+lng: -82.66021667
+address: 2010 1st Ave S
+category: shine
+img: "images/murals/2019/vitale-bros.jpeg"
+
+# ── Optional ──
+title: "Bait & Switch"
+building: ""
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  The Vitale Brothers — Johnny and Paul — are a St. Petersburg muralist
+  duo who've been part of the local art scene for years. They're known
+  for large-scale character paintings with a playful, pop-culture-heavy
+  approach that makes their walls some of the most photographed in the
+  city.
+
+muralDescription: |
+  A massive underwater scene spanning an entire warehouse wall. A giant orange octopus wraps its tentacles around shipwreck debris on the left, while sharks and a spotted eagle ray swim through turquoise water. A vintage deep-sea diver in a copper helmet explores the wreckage on the right. The text "Just Add Water! Voyage Under the Sea" floats across the center in retro lettering. Created in partnership with Sea Walls: Artists for Oceans and NOAA.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  Photo by Rob 2026-03-18, GPS from EXIF. New entry (no prior YAML).
+  Sources researched:
+  - https://stpeteartsalliance.org/vitale-brothers (SPAA 2019)
+  - https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/
+  - https://vitalebrothers.com/

@@ -1,0 +1,36 @@
+# Gibbs Mural Club — Commercial (St. Petersburg Distillery)
+
+# ── Required ──
+id: 144
+artist: Gibbs High School Mural Club
+year: 0
+lat: 27.7618
+lng: -82.67518667
+address: 800 31st St S
+category: commercial
+img: "images/murals/commercial/gibbs-mural-club-distillery.jpeg"
+
+# ── Optional ──
+title: "Raising Local Spirits"
+building: St. Petersburg Distillery
+instagram: stpetedistillery
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  The Gibbs High School Mural Club is led by art teacher and illustrator Brian McAllister, who donates his time to run the program. Over 13 years the club has grown to 36 students and completed professional-grade murals for organizations including the Morean Arts Center and the Gulf Coast Arts Alliance. McAllister estimates comparable murals would typically cost upwards of $20,000 — the club covers costs through donations for materials and equipment like cranes and paint.
+
+muralDescription: |
+  A massive underwater scene spanning the side of the distillery building along 31st Street. A giant orange octopus wraps its tentacles around the left side, its suckers curling around rum barrels from a sunken ship. Sharks and a spotted eagle ray glide through turquoise water around ghostly gray shipwreck masts and rigging. On the right, a vintage deep-sea diver in a copper helmet explores the wreckage. The title "Voyage Under the Sea" and "Just Add Water!" appear in retro lettering. The concept references St. Pete's rum-running history — sponge divers recovering barrels from sunken sailboats.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes: |
+  Photo by Rob 2026-03-18, GPS from EXIF. New entry (no prior YAML).
+  Sources researched:
+  - https://thegabber.com/gibbs-mural-club-students-tackle-st-pete-walls/
+  - https://stpetersburgdistillery.com/gibbs-high-school-mural-club-unveil-artistic-collaboration-in-st-pete/
+  - https://www.fox13news.com/news/teens-learn-life-lessons-by-painting-larger-than-life-murals-on-downtown-st-pete-buildings

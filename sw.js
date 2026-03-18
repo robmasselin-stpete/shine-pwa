@@ -14,9 +14,9 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v38';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v39';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
-const IMG_CACHE = 'shine-images-v8'; // Mural images — bump when images change
+const IMG_CACHE = 'shine-images-v9'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
 
 // These files are precached on install — the app works offline immediately
@@ -153,7 +153,13 @@ const MURAL_IMAGES = [
   './images/murals/commercial/sydney-prusso-fairgrounds.jpeg',
   './images/murals/commercial/phybr-neon-lunchbox.jpeg',
   './images/murals/commercial/melanie-posner-irina.jpeg',
-  './images/murals/commercial/cecilia-lueza-encounter.jpeg'
+  './images/murals/commercial/cecilia-lueza-encounter.jpeg',
+  './images/murals/2019/vitale-bros.jpeg',
+  './images/murals/2019/reda3sb.jpeg',
+  './images/murals/2021/reid-jenkins-distillery.jpeg',
+  './images/murals/2023/happy-mural-project.jpeg',
+  './images/murals/2023/rhys-meatyard.jpeg',
+  './images/murals/commercial/gibbs-mural-club-distillery.jpeg'
 ];
 
 // Install: precache shell + all mural images (~16MB total after compression).
