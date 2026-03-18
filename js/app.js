@@ -854,6 +854,23 @@ function addMapFabs() {
   document.getElementById('fab-location').addEventListener('click', requestAndShowLocation);
   document.getElementById('fab-nearest').addEventListener('click', fabFindNearestMural);
   document.getElementById('fab-nearest-tour').addEventListener('click', fabFindNearestTourStop);
+
+  // Long-press on any FAB shows labels, auto-hides after 2s
+  let labelTimer = null;
+  let pressTimer = null;
+  const showLabels = () => {
+    clearTimeout(labelTimer);
+    stack.classList.add('show-labels');
+    labelTimer = setTimeout(() => stack.classList.remove('show-labels'), 2000);
+  };
+  stack.querySelectorAll('.map-fab').forEach(btn => {
+    btn.addEventListener('touchstart', () => {
+      pressTimer = setTimeout(showLabels, 400);
+    }, { passive: true });
+    btn.addEventListener('touchend', () => clearTimeout(pressTimer));
+    btn.addEventListener('touchmove', () => clearTimeout(pressTimer));
+    btn.addEventListener('mouseenter', showLabels);
+  });
 }
 
 function requestAndShowLocation() {

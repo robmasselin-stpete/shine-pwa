@@ -906,7 +906,7 @@ a {
 }
 
 .map-fab-label {
-  background: rgba(44, 32, 22, 0.82);
+  background: rgba(44, 32, 22, 0.85);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #fff;
@@ -917,6 +917,14 @@ a {
   white-space: nowrap;
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
   pointer-events: none;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.map-fab-stack.show-labels .map-fab-label {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .map-fab {
