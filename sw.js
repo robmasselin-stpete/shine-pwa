@@ -153,7 +153,8 @@ const MURAL_IMAGES = [
   './images/murals/commercial/ya-la-ford-power-moves.jpeg',
   './images/murals/commercial/sydney-prusso-fairgrounds.jpeg',
   './images/murals/commercial/phybr-neon-lunchbox.jpeg',
-  './images/murals/commercial/melanie-posner-irina.jpeg'
+  './images/murals/commercial/melanie-posner-irina.jpeg',
+  './images/murals/commercial/cecilia-lueza-encounter.jpeg'
 ];
 
 // Install: precache shell + all mural images (~16MB total after compression).

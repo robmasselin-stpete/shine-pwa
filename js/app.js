@@ -965,8 +965,8 @@ const TOUR_COLORS = {
 
 // Neighborhood walking routes + bike tour
 const ROUTE_DEFS = [
-  { id: 'downtown-north', name: 'Downtown North', desc: 'Hollander to Fintan Magee — 16 stops through the waterfront & 600 block',
-    ids: [6, 107, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 73, 11, 24] },
+  { id: 'downtown-north', name: 'Downtown North', desc: 'Hollander to Fintan Magee — 15 stops, 2.1 mi through the waterfront & 600 block',
+    ids: [6, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 115, 73, 24] },
   { id: 'methodist-town', name: 'Methodist Town', desc: 'Matt Kress to Derek Donnelly — 14 stops through the MLK & 1st Ave N corridor',
     ids: [119, 80, 75, 120, 89, 83, 98, 34, 4, 112, 108, 113, 60, 115] },
   { id: 'tropicana-field', name: 'Tropicana Field', desc: 'Dream Weaver to Illsol — 10 stops around the stadium district',
@@ -1125,9 +1125,10 @@ function initTourPickerMap() {
 function loadRouteCoords(def) {
   if (tourPickerCache.has(def.id)) return Promise.resolve();
 
-  // Use pre-built KML route if available
+  // Use pre-built route if available (GPX or KML)
   if (ROUTE_PATHS[def.id]) {
-    tourPickerCache.set(def.id, ROUTE_PATHS[def.id]);
+    const rd = ROUTE_PATHS[def.id];
+    tourPickerCache.set(def.id, rd.path || rd);
     return Promise.resolve();
   }
 
@@ -1463,9 +1464,10 @@ function fetchTourSegment() {
 
   const segInfo = document.getElementById('tour-segment-info');
 
-  // Try static KML path first
+  // Try static route path first (GPX or KML)
   const routeId = state.activeTour?.id;
-  const fullPath = routeId && ROUTE_PATHS[routeId];
+  const rd = routeId && ROUTE_PATHS[routeId];
+  const fullPath = rd && (rd.path || rd);
 
   const isBike = routeId && routeId.includes('bike');
   const speed = isBike ? 200 : 80; // meters per minute
