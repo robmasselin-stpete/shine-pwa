@@ -659,8 +659,8 @@ function initMap() {
     const stops = def.ids ? def.ids.length : 0;
     const rd = ROUTE_PATHS[def.id];
     const dist = rd && rd.distance ? rd.distance : '';
-    const info = dist ? ` · ${stops} stops · ${dist} mi` : ` · ${stops} stops`;
-    return `<span class="route-key-item route-key-off" data-route="${def.id}" style="--route-color:${color}"><span class="route-key-line" style="background:${color}"></span>${def.name}<span class="route-key-info">${info}</span></span>`;
+    const info = dist ? `${stops} stops · ${dist} mi` : `${stops} stops`;
+    return `<span class="route-key-item route-key-off" data-route="${def.id}" style="--route-color:${color}"><span class="route-key-line" style="background:${color}"></span><span class="route-key-text"><span class="route-key-name">${def.name}</span><span class="route-key-info">${info}</span></span></span>`;
   }).join('');
 
   views.map.innerHTML = `
@@ -672,7 +672,10 @@ function initMap() {
     <div id="map-container"></div>
     <div class="route-key-section">
       <span class="route-key-title">Tour Route Overlays</span>
-      <div class="route-key-bar" id="map-route-key">${routeKeyHtml}</div>
+      <div class="route-key-scroll">
+        <div class="route-key-bar" id="map-route-key">${routeKeyHtml}</div>
+        <span class="route-key-arrow">›</span>
+      </div>
     </div>
   `;
 
