@@ -1073,6 +1073,11 @@ a {
   color: var(--text-primary);
 }
 
+.nearest-popup-btn.green {
+  background: #2e7d32;
+  color: #fff;
+}
+
 .nearest-popup-close {
   position: absolute;
   top: 6px;

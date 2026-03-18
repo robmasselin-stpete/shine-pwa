@@ -1043,7 +1043,7 @@ function showNearestPopup(mural, routes, scopeLabel) {
     : '';
 
   const joinBtn = routes && routes.length
-    ? `<button class="nearest-popup-btn secondary" onclick="window.joinTourAt(${mural.id})">Join Tour</button>`
+    ? `<button class="nearest-popup-btn green" onclick="window.joinTourAt(${mural.id})">Join Tour at this Mural</button>`
     : '';
 
   const el = document.createElement('div');
@@ -1057,7 +1057,7 @@ function showNearestPopup(mural, routes, scopeLabel) {
       ${scopeInfo}
     </div>
     <div class="nearest-popup-actions">
-      <button class="nearest-popup-btn primary" onclick="window.dismissNearestPopup();window.startDirections(${mural.id})">Go</button>
+      <button class="nearest-popup-btn green" onclick="window.dismissNearestPopup();window.startDirections(${mural.id})">Go To Mural</button>
       ${joinBtn}
     </div>
   `;
