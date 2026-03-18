@@ -737,13 +737,20 @@ function initMap() {
     el.addEventListener('click', () => {
       if (routeLongPressed) return;
       const id = el.dataset.route;
-      if (hiddenRoutes.has(id)) {
+      const wasHidden = hiddenRoutes.has(id);
+
+      // Single-select: hide all routes first
+      ROUTE_DEFS.forEach(d => hiddenRoutes.add(d.id));
+      document.querySelectorAll('.route-key-item[data-route]').forEach(item => {
+        item.classList.add('route-key-off');
+      });
+
+      // Toggle: if it was hidden, show it; if it was visible, leave all off
+      if (wasHidden) {
         hiddenRoutes.delete(id);
         el.classList.remove('route-key-off');
-      } else {
-        hiddenRoutes.add(id);
-        el.classList.add('route-key-off');
       }
+
       updateRoutePolylineVisibility();
     });
   });
