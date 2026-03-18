@@ -810,7 +810,7 @@ const IN_RANGE_MILES = 10;
 let userLocationMarker = null;
 let nearestPopupEl = null;
 
-function haversine(lat1, lon1, lat2, lon2) {
+function haversineMiles(lat1, lon1, lat2, lon2) {
   const R = 3958.8;
   const dlat = (lat2 - lat1) * Math.PI / 180;
   const dlon = (lon2 - lon1) * Math.PI / 180;
@@ -822,7 +822,7 @@ function haversine(lat1, lon1, lat2, lon2) {
 
 function isInRange() {
   if (!state.userLat) return null; // unknown
-  return haversine(state.userLat, state.userLng, DOWNTOWN_CENTER[0], DOWNTOWN_CENTER[1]) <= IN_RANGE_MILES;
+  return haversineMiles(state.userLat, state.userLng, DOWNTOWN_CENTER[0], DOWNTOWN_CENTER[1]) <= IN_RANGE_MILES;
 }
 
 function addMapFabs() {
@@ -897,7 +897,7 @@ function fabFindNearestMural() {
   ensureLocation().then(() => {
     const sorted = murals
       .filter(m => m.lat && m.lng)
-      .map(m => ({ ...m, dist: haversine(state.userLat, state.userLng, m.lat, m.lng) }))
+      .map(m => ({ ...m, dist: haversineMiles(state.userLat, state.userLng, m.lat, m.lng) }))
       .sort((a, b) => a.dist - b.dist);
 
     if (!sorted.length) return;
@@ -933,7 +933,7 @@ function fabFindNearestTourStop() {
 
     const sorted = murals
       .filter(m => m.lat && m.lng && tourMuralIds.has(m.id))
-      .map(m => ({ ...m, dist: haversine(state.userLat, state.userLng, m.lat, m.lng) }))
+      .map(m => ({ ...m, dist: haversineMiles(state.userLat, state.userLng, m.lat, m.lng) }))
       .sort((a, b) => a.dist - b.dist);
 
     if (!sorted.length) return;
