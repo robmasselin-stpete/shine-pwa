@@ -972,7 +972,7 @@ function showNearestPopup(mural, routes) {
       ${routeInfo}
     </div>
     <div class="nearest-popup-actions">
-      <button class="nearest-popup-btn primary" onclick="startDirections(${mural.id})">Go</button>
+      <button class="nearest-popup-btn primary" onclick="window.dismissNearestPopup();window.startDirections(${mural.id})">Go</button>
       ${joinBtn}
     </div>
   `;
@@ -1009,6 +1009,8 @@ function joinTourAt(muralId) {
   }
 }
 window.joinTourAt = joinTourAt;
+window.dismissNearestPopup = dismissNearestPopup;
+window.startDirections = startDirections;
 
 /** Render category filter pills for the map view (All/Shine/Vintage/Commercial). */
 function renderMapCatPills() {
