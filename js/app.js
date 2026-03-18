@@ -584,9 +584,21 @@ function renderYearSubPills() {
 // =============================================
 // Search
 // =============================================
-searchInput.addEventListener('input', (e) => {
-  state.searchQuery = e.target.value.trim();
+const searchPlaceholder = document.getElementById('search-placeholder');
+searchInput.addEventListener('input', () => {
+  state.searchQuery = (searchInput.textContent || '').trim();
+  if (searchPlaceholder) searchPlaceholder.hidden = state.searchQuery.length > 0;
   renderExplore();
+});
+// Prevent Enter from inserting a newline
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); searchInput.blur(); }
+});
+// Clean pasted text (strip formatting)
+searchInput.addEventListener('paste', (e) => {
+  e.preventDefault();
+  const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+  document.execCommand('insertText', false, text);
 });
 
 // =============================================

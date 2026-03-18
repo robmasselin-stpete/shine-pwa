@@ -610,14 +610,31 @@ a {
   color: var(--text-muted);
 }
 
-.search-input-wrap input {
+.search-input-wrap {
+  position: relative;
+}
+
+.search-editable {
   flex: 1;
   height: 100%;
   outline: none;
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  font-family: inherit;
+  -webkit-user-select: text;
+  user-select: text;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.search-input-wrap input::placeholder {
+.search-placeholder {
+  position: absolute;
+  left: 42px;
   color: var(--text-muted);
+  pointer-events: none;
+  font-size: inherit;
 }
 
 /* ========================================
