@@ -715,9 +715,27 @@ function initMap() {
   // Draw neighborhood route polylines (behind markers, visible at zoom >= 14)
   drawRoutePolylines();
 
-  // Route key toggle handlers
+  // Route key toggle handlers (tap = toggle visibility, long-press = launch tour)
   document.querySelectorAll('.route-key-item[data-route]').forEach(el => {
+    let routePressTimer = null;
+    let routeLongPressed = false;
+
+    el.addEventListener('touchstart', () => {
+      routeLongPressed = false;
+      routePressTimer = setTimeout(() => {
+        routeLongPressed = true;
+        const def = ROUTE_DEFS.find(d => d.id === el.dataset.route);
+        if (def) openTour(def);
+      }, 500);
+    }, { passive: true });
+    el.addEventListener('touchend', (e) => {
+      clearTimeout(routePressTimer);
+      if (routeLongPressed) { e.preventDefault(); return; }
+    });
+    el.addEventListener('touchmove', () => { clearTimeout(routePressTimer); });
+
     el.addEventListener('click', () => {
+      if (routeLongPressed) return;
       const id = el.dataset.route;
       if (hiddenRoutes.has(id)) {
         hiddenRoutes.delete(id);
@@ -861,7 +879,7 @@ function addMapFabs() {
   const showLabels = () => {
     clearTimeout(labelTimer);
     stack.classList.add('show-labels');
-    labelTimer = setTimeout(() => stack.classList.remove('show-labels'), 2000);
+    labelTimer = setTimeout(() => stack.classList.remove('show-labels'), 3500);
   };
   stack.querySelectorAll('.map-fab').forEach(btn => {
     btn.addEventListener('touchstart', () => {
@@ -1000,7 +1018,6 @@ function showNearestPopup(mural, routes, scopeLabel) {
   const el = document.createElement('div');
   el.className = 'nearest-popup';
   el.innerHTML = `
-    <button class="nearest-popup-close" onclick="this.parentElement.remove()">&times;</button>
     <img src="${mural.img}" alt="${mural.a}">
     <div class="nearest-popup-info">
       <h4>${mural.a}</h4>
