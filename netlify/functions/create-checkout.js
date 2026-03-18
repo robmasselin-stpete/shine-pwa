@@ -26,7 +26,6 @@ exports.handler = async (event) => {
       }],
       mode: 'payment',
       allow_promotion_codes: true,
-      payment_method_collection: 'if_required',
       custom_text: {
         submit: {
           message: 'Enter your email above — this is how we verify your access. Then click Continue.',
