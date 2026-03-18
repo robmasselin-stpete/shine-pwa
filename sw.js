@@ -14,7 +14,7 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v30';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v31';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
 const IMG_CACHE = 'shine-images-v8'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
@@ -100,7 +100,6 @@ const MURAL_IMAGES = [
   './images/murals/2024/quinn-cale.jpeg',
   './images/murals/2024/stevie-shao.jpeg',
   './images/murals/2024/up-and-over.jpeg',
-  './images/murals/2024/ya-la-ford.jpeg',
   './images/murals/2024/zulu-painter.jpeg',
   './images/murals/2025/aaron-tullo.jpeg',
   './images/murals/2025/amy-ilic-volpe.jpeg',

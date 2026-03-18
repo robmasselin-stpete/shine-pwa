@@ -1200,20 +1200,15 @@ a {
   overflow: hidden;
   background: #1a1a1a;
   cursor: zoom-in;
-}
-.detail-hero-wrap.zoomed {
-  cursor: zoom-out;
+  touch-action: none;
 }
 .detail-hero {
   width: 100%;
   object-fit: contain;
   background: #1a1a1a;
-  transition: transform 0.25s ease;
+  transition: transform 0.15s ease;
   transform-origin: center center;
-  touch-action: pan-x pan-y;
-}
-.detail-hero-wrap.zoomed .detail-hero {
-  transform: scale(2.5);
+  will-change: transform;
 }
 
 .detail-body {

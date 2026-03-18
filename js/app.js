@@ -2002,48 +2002,88 @@ function openDetail(mural) {
     });
   });
 
-  // Tap-to-zoom on hero image
+  // Pinch-to-zoom + tap-to-zoom + drag-to-pan on hero image
   const heroWrap = detailContent.querySelector('.detail-hero-wrap');
   if (heroWrap) {
     const heroImg = heroWrap.querySelector('.detail-hero');
-    let panX = 0, panY = 0, startX = 0, startY = 0, dragging = false;
+    let scale = 1, panX = 0, panY = 0;
+    let startDist = 0, startScale = 1;
+    let startX = 0, startY = 0, startPanX = 0, startPanY = 0;
+    let dragging = false, pinching = false;
 
+    const applyTransform = () => {
+      heroImg.style.transition = pinching || dragging ? 'none' : 'transform 0.15s ease';
+      heroImg.style.transform = scale <= 1
+        ? ''
+        : `scale(${scale}) translate(${panX / scale}px, ${panY / scale}px)`;
+    };
+
+    const resetZoom = () => {
+      scale = 1; panX = 0; panY = 0;
+      heroImg.style.transition = 'transform 0.2s ease';
+      heroImg.style.transform = '';
+    };
+
+    const pinchDist = (t) => Math.hypot(t[1].clientX - t[0].clientX, t[1].clientY - t[0].clientY);
+
+    // Double-tap to zoom
+    let lastTap = 0;
     heroWrap.addEventListener('click', (e) => {
-      if (dragging) return;
-      if (heroWrap.classList.contains('zoomed')) {
-        heroWrap.classList.remove('zoomed');
-        heroImg.style.transform = '';
-        panX = 0; panY = 0;
+      if (dragging || pinching) return;
+      const now = Date.now();
+      if (now - lastTap < 300) {
+        // Double-tap
+        if (scale > 1) {
+          resetZoom();
+        } else {
+          const rect = heroWrap.getBoundingClientRect();
+          heroImg.style.transformOrigin = `${((e.clientX - rect.left) / rect.width) * 100}% ${((e.clientY - rect.top) / rect.height) * 100}%`;
+          scale = 2.5; panX = 0; panY = 0;
+          applyTransform();
+        }
+        lastTap = 0;
       } else {
-        // Zoom toward tap point
-        const rect = heroWrap.getBoundingClientRect();
-        const pctX = ((e.clientX - rect.left) / rect.width) * 100;
-        const pctY = ((e.clientY - rect.top) / rect.height) * 100;
-        heroImg.style.transformOrigin = `${pctX}% ${pctY}%`;
-        panX = 0; panY = 0;
-        heroWrap.classList.add('zoomed');
+        lastTap = now;
       }
     });
 
-    // Drag to pan when zoomed
     heroWrap.addEventListener('touchstart', (e) => {
-      if (!heroWrap.classList.contains('zoomed') || e.touches.length !== 1) return;
-      dragging = false;
-      startX = e.touches[0].clientX - panX;
-      startY = e.touches[0].clientY - panY;
+      if (e.touches.length === 2) {
+        // Pinch start
+        pinching = true;
+        dragging = false;
+        startDist = pinchDist(e.touches);
+        startScale = scale;
+        heroImg.style.transformOrigin = 'center center';
+      } else if (e.touches.length === 1 && scale > 1) {
+        // Pan start
+        dragging = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startPanX = panX;
+        startPanY = panY;
+      }
     }, { passive: true });
 
     heroWrap.addEventListener('touchmove', (e) => {
-      if (!heroWrap.classList.contains('zoomed') || e.touches.length !== 1) return;
-      e.preventDefault();
-      dragging = true;
-      panX = e.touches[0].clientX - startX;
-      panY = e.touches[0].clientY - startY;
-      heroImg.style.transform = `scale(2.5) translate(${panX / 2.5}px, ${panY / 2.5}px)`;
+      if (e.touches.length === 2 && pinching) {
+        e.preventDefault();
+        const dist = pinchDist(e.touches);
+        scale = Math.max(1, Math.min(5, startScale * (dist / startDist)));
+        if (scale <= 1) { panX = 0; panY = 0; }
+        applyTransform();
+      } else if (e.touches.length === 1 && scale > 1) {
+        e.preventDefault();
+        dragging = true;
+        panX = startPanX + (e.touches[0].clientX - startX);
+        panY = startPanY + (e.touches[0].clientY - startY);
+        applyTransform();
+      }
     }, { passive: false });
 
-    heroWrap.addEventListener('touchend', () => {
-      // Small delay so click handler can check dragging flag
+    heroWrap.addEventListener('touchend', (e) => {
+      if (e.touches.length < 2) pinching = false;
+      if (scale <= 1.05) resetZoom();
       setTimeout(() => { dragging = false; }, 50);
     });
   }
