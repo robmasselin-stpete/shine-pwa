@@ -22,8 +22,9 @@ import xml.etree.ElementTree as ET
 ROUTES_DIR = os.path.join(os.path.dirname(__file__), '..', 'data', 'routes')
 OUTPUT_FILE = os.path.join(os.path.dirname(__file__), '..', 'js', 'routes.js')
 
-# Douglas-Peucker simplification tolerance in degrees (~10m at St. Pete latitude)
-EPSILON = 0.0001
+# Douglas-Peucker simplification tolerance in degrees (~2m at St. Pete latitude)
+# Keep tight to preserve crosswalks and exact walking path
+EPSILON = 0.00002
 
 KML_NS = '{http://www.opengis.net/kml/2.2}'
 GPX_NS = '{http://www.topografix.com/GPX/1/1}'
