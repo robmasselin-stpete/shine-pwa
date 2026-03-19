@@ -19,7 +19,7 @@
   --font-display: 'Quicksand', sans-serif;
   --font-body: 'Outfit', sans-serif;
   --tab-height: 48px;
-  --route-bar-h: 56px;
+  --route-bar-h: 120px;
   --header-height: 0px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -832,7 +832,7 @@ a {
   pointer-events: none;
 }
 
-/* ── Route bar — fixed beige strip above tab bar (map tab only) ── */
+/* ── Route bar — fixed panel above tab bar (map tab only) ── */
 .map-route-bar {
   position: fixed;
   bottom: calc(var(--tab-height) + var(--safe-bottom));
@@ -841,16 +841,16 @@ a {
   z-index: 1100;
   height: var(--route-bar-h);
   display: none;
-  align-items: center;
-  padding: 0 8px;
+  flex-direction: column;
+  padding: 6px 10px;
   background: rgba(245, 242, 237, 0.82);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-top: 0.5px solid rgba(0, 0, 0, 0.08);
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   scrollbar-width: none;
-  gap: 6px;
+  gap: 5px;
 }
 .map-route-bar::-webkit-scrollbar { display: none; }
 .map-route-bar.visible { display: flex; }
@@ -860,6 +860,7 @@ a {
   display: flex;
   align-items: stretch;
   height: 42px;
+  min-height: 42px;
   border-radius: 12px;
   background: rgba(255,255,255,0.92);
   overflow: hidden;
@@ -2373,14 +2374,13 @@ a {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 10px 16px;
+  padding: 10px 20px;
   border-radius: 24px;
   border: none;
   background: var(--teal);
   color: #fff;
   font-family: var(--font-body);
-  font-size: 13px;
-  white-space: nowrap;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(14, 145, 140, 0.3);
