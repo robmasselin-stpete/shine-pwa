@@ -845,7 +845,7 @@ a {
   font-family: var(--font-body);
   font-size: 13px;
   color: var(--text2);
-  margin: 0;
+  margin: 0 0 6px;
   pointer-events: none;
 }
 
@@ -868,11 +868,9 @@ a {
 .map-route-bar.visible { display: flex; }
 .route-bar-title {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
-  color: var(--text2);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: var(--text);
   padding: 0 16px;
   margin: 0;
 }
@@ -1957,6 +1955,7 @@ a {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border);
   cursor: pointer;
   transition: transform 0.15s ease;
 }
