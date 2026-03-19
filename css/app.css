@@ -820,8 +820,12 @@ a {
   left: 0;
   right: 0;
   z-index: 500;
-  padding: calc(var(--safe-top) + 8px) 16px 0;
+  padding: calc(var(--safe-top) + 8px) 16px 8px;
   pointer-events: none;
+  background: rgba(245, 242, 237, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
 }
 
 .map-float-header .filter-pills {
@@ -834,7 +838,6 @@ a {
   font-size: 34px;
   letter-spacing: -0.5px;
   color: var(--text);
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
   margin-bottom: 2px;
   pointer-events: none;
 }
@@ -842,8 +845,7 @@ a {
   font-family: var(--font-body);
   font-size: 14px;
   color: var(--text2);
-  margin: 0 0 8px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
+  margin: 0 0 0;
   pointer-events: none;
 }
 
@@ -1030,7 +1032,7 @@ a {
 #view-map {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--header-height) - var(--tab-height) - var(--route-bar-h) - var(--safe-top) - var(--safe-bottom));
+  height: calc(100vh - var(--header-height) - var(--tab-height) - var(--safe-top) - var(--safe-bottom));
   overflow: hidden;
 }
 
