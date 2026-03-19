@@ -2365,11 +2365,16 @@ function extractPathSegment(fullPath, fromStop, toStop) {
     if (dTo < toDist) { toDist = dTo; toIdx = i; }
   }
 
-  if (fromIdx <= toIdx) {
-    return fullPath.slice(fromIdx, toIdx + 1);
-  }
-  // Reverse segment (going backward on path) — still valid for display
-  return fullPath.slice(toIdx, fromIdx + 1).reverse();
+  // For loop paths, choose the shorter of the two possible segments
+  const len = fullPath.length;
+  const fwd = fromIdx <= toIdx
+    ? fullPath.slice(fromIdx, toIdx + 1)
+    : fullPath.slice(fromIdx).concat(fullPath.slice(0, toIdx + 1));
+  const rev = fromIdx >= toIdx
+    ? fullPath.slice(toIdx, fromIdx + 1).reverse()
+    : fullPath.slice(toIdx).concat(fullPath.slice(0, fromIdx + 1)).reverse();
+
+  return fwd.length <= rev.length ? fwd : rev;
 }
 
 /** Navigate tour: +1 (next) or -1 (prev). Wraps continuously. */
