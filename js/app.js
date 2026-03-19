@@ -866,10 +866,20 @@ function initMap() {
     zoomControl: false,
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  // Base tiles (no labels) — sits below markers
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '\u00a9 OpenStreetMap \u00a9 CARTO',
     maxZoom: 19,
     keepBuffer: 6,
+  }).addTo(leafletMap);
+
+  // Labels-only layer — sits above markers
+  leafletMap.createPane('labels');
+  leafletMap.getPane('labels').style.zIndex = 650;
+  leafletMap.getPane('labels').style.pointerEvents = 'none';
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+    pane: 'labels',
   }).addTo(leafletMap);
 
   // Tap anywhere on map to dismiss nearest popup / out-of-range banner
