@@ -664,7 +664,7 @@ const routePolylines = []; // Route polylines on the main map
 // At this zoom level and above, markers switch from colored dots to thumbnail images
 const ICON_ZOOM_THRESHOLD = 17;
 
-const RB_CARD_H = 47; // 42px card + 5px gap
+const RB_CARD_H = 57; // 52px card + 5px gap
 /** Position route-bar cards so the focused one is centered, others fade. */
 function updateRouteBarPositions() {
   const bar = document.querySelector('.map-route-bar');
@@ -2673,6 +2673,15 @@ function openDetail(mural) {
   }
 
   detailPage.scrollTop = 0;
+
+  // Floating hint — tap image to go back
+  const oldHint = document.querySelector('.detail-back-hint');
+  if (oldHint) oldHint.remove();
+  const hint = document.createElement('div');
+  hint.className = 'detail-back-hint';
+  hint.textContent = 'Tap image to go back';
+  detailPage.appendChild(hint);
+  setTimeout(() => hint.remove(), 2600);
 }
 
 // Back button
