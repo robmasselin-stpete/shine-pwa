@@ -1760,7 +1760,7 @@ function renderTourPicker() {
     <div class="tour-picker-layout">
       <div class="tours-large-title">
         <h1>Loops</h1>
-        <p>Flick to browse · tap Start to go</p>
+        <p>Flip to Browse, Tap Go</p>
       </div>
       <div class="rotary-zone" id="rotary-zone">
         <div class="rotary-track" id="rotary-track">
