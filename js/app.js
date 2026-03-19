@@ -7,7 +7,7 @@
  *   - All UI state lives in the `state` object (line ~20)
  *   - State changes trigger explicit render calls (no reactivity)
  *   - All HTML is rendered via template literals into container divs
- *   - Three tabs: Explore (card grid), Map (Leaflet), Tours (loop tours)
+ *   - Three tabs: Explore (card grid), Map (Leaflet), Loops
  *   - Detail page is a fixed overlay that can appear on top of any tab
  *
  * Data:
@@ -432,7 +432,7 @@ const $$ = (sel) => document.querySelectorAll(sel);
 const views = {
   explore: $('#view-explore'),
   map: $('#view-map'),
-  tours: $('#view-tours'),
+  loops: $('#view-loops'),
 };
 
 const detailPage = $('#detail-page');
@@ -461,10 +461,10 @@ function switchTab(tab) {
   detailPage.hidden = true;
 
   if (tab !== 'map') clearDirections();
-  if (tab !== 'tours' && state.activeTour) closeTour();
+  if (tab !== 'loops' && state.activeTour) closeTour();
   if (tab === 'explore') { renderFilterPills(); renderExplore(); }
   if (tab === 'map') { initMap(); flashFabLabels(); }
-  if (tab === 'tours') renderTourList();
+  if (tab === 'loops') renderTourList();
 }
 
 // =============================================
@@ -704,8 +704,9 @@ function initMap() {
   document.getElementById('map-container').addEventListener('click', (e) => {
     if (e.target.closest('.nearest-popup') || e.target.closest('.map-range-banner') ||
         e.target.closest('.map-fab-stack') || e.target.closest('.directions-bar') ||
-        e.target.closest('.directions-chip')) return;
+        e.target.closest('.directions-chip') || e.target.closest('.map-mural-sheet')) return;
     dismissNearestPopup();
+    closeMapSheet();
   });
 
   // Create both dot markers and icon markers for each mural
@@ -721,7 +722,7 @@ function initMap() {
       weight: 2,
       fillOpacity: 0.9,
     });
-    dot.on('click', () => openDetail(m));
+    dot.on('click', () => openMapSheet(m));
 
     // Image icon marker (zoomed in)
     const icon = L.divIcon({
@@ -731,7 +732,7 @@ function initMap() {
       iconAnchor: [24, 24],
     });
     const imgMarker = L.marker([m.lat, m.lng], { icon });
-    imgMarker.on('click', () => openDetail(m));
+    imgMarker.on('click', () => openMapSheet(m));
 
     mapMarkers.push({ dot, imgMarker, mural: m, visible: false });
   });
@@ -898,8 +899,8 @@ function addMapFabs() {
       </button>
     </div>
     <div class="map-fab-row">
-      <span class="map-fab-label">Nearest Tour Stop</span>
-      <button class="map-fab" id="fab-nearest-tour" title="Nearest tour stop">
+      <span class="map-fab-label">Nearest Loop Stop</span>
+      <button class="map-fab" id="fab-nearest-tour" title="Nearest loop stop">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
       </button>
     </div>
@@ -1105,7 +1106,7 @@ function joinTourAt(muralId) {
   for (const def of ROUTE_DEFS) {
     if (def.ids && def.ids.includes(muralId)) {
       dismissNearestPopup();
-      switchTab('tours');
+      switchTab('loops');
       openTour(def, muralId);
       return;
     }
@@ -1188,7 +1189,7 @@ function updateMapMarkers() {
     yearPillsEl.innerHTML = `
       <button class="year-pill year-sub ${!selected ? 'active' : ''}" data-year="">All</button>
       ${years.map(y => `
-        <button class="year-pill year-sub ${selected && selected.length === 1 && selected[0] === y ? 'active' : ''}" data-year="${y}">
+        <button class="year-pill year-sub ${selected && selected.includes(y) ? 'active' : ''}" data-year="${y}">
           <span class="year-dot" style="background:${YEAR_COLORS[y] || '#999'}"></span>${y}
         </button>
       `).join('')}
@@ -1197,7 +1198,20 @@ function updateMapMarkers() {
     yearPillsEl.querySelectorAll('.year-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         const y = btn.dataset.year;
-        state.activeMapYears = y ? [Number(y)] : null;
+        if (!y) {
+          state.activeMapYears = null;
+        } else {
+          const num = Number(y);
+          if (!state.activeMapYears) state.activeMapYears = [];
+          const idx = state.activeMapYears.indexOf(num);
+          if (idx >= 0) {
+            state.activeMapYears.splice(idx, 1);
+            if (state.activeMapYears.length === 0) state.activeMapYears = null;
+          } else {
+            state.activeMapYears.push(num);
+          }
+        }
+        renderMapCatPills();
         updateMapMarkers();
       });
     });
@@ -1568,10 +1582,10 @@ function renderTourPicker() {
       </div>`;
   }).join('');
 
-  views.tours.innerHTML = `
+  views.loops.innerHTML = `
     <div class="tour-picker-layout">
       <div class="tours-large-title">
-        <h1>Tours</h1>
+        <h1>Loops</h1>
         <p>Flick to browse · tap Start to go</p>
       </div>
       <div class="rotary-zone" id="rotary-zone">
@@ -1823,7 +1837,7 @@ function renderTourLoop() {
   const routeColor = TOUR_COLORS[state.activeTour.id] || '#0E918C';
   const pct = Math.round(((curr + 1) / len) * 100);
 
-  views.tours.innerHTML = `
+  views.loops.innerHTML = `
     <div class="tour-layout">
       <!-- Nav bar -->
       <div class="active-tour-nav">
@@ -1922,30 +1936,30 @@ function renderTourLoop() {
   `;
 
   // Back button
-  views.tours.querySelector('.active-tour-back').addEventListener('click', () => {
+  views.loops.querySelector('.active-tour-back').addEventListener('click', () => {
     closeTour();
     renderTourList();
   });
 
   // Close button
-  views.tours.querySelector('.active-tour-close').addEventListener('click', () => {
+  views.loops.querySelector('.active-tour-close').addEventListener('click', () => {
     closeTour();
     renderTourList();
   });
 
   // Step nav buttons (Prev / Next)
-  views.tours.querySelectorAll('.active-tour-step-btn').forEach(btn => {
+  views.loops.querySelectorAll('.active-tour-step-btn').forEach(btn => {
     btn.addEventListener('click', () => navigateTour(Number(btn.dataset.dir)));
   });
 
   // Current card tap → detail
-  views.tours.querySelector('.active-tour-current')?.addEventListener('click', () => {
-    const mural = murals.find(m => m.id === Number(views.tours.querySelector('.active-tour-current').dataset.id));
+  views.loops.querySelector('.active-tour-current')?.addEventListener('click', () => {
+    const mural = murals.find(m => m.id === Number(views.loops.querySelector('.active-tour-current').dataset.id));
     if (mural) openDetail(mural);
   });
 
   // Next card tap → advance
-  views.tours.querySelector('.active-tour-next')?.addEventListener('click', () => {
+  views.loops.querySelector('.active-tour-next')?.addEventListener('click', () => {
     navigateTour(1);
   });
 
@@ -1981,13 +1995,13 @@ function renderTourCards() {
   const pct = Math.round(((curr + 1) / len) * 100);
 
   // Progress bar + label
-  const fill = views.tours.querySelector('.active-tour-progress-fill');
+  const fill = views.loops.querySelector('.active-tour-progress-fill');
   if (fill) { fill.style.width = pct + '%'; fill.style.background = routeColor; }
-  const label = views.tours.querySelector('.active-tour-progress-label');
+  const label = views.loops.querySelector('.active-tour-progress-label');
   if (label) label.textContent = `${curr + 1} of ${len}`;
 
   // Current card
-  const currentCard = views.tours.querySelector('.active-tour-current');
+  const currentCard = views.loops.querySelector('.active-tour-current');
   if (currentCard) {
     currentCard.dataset.id = stops[curr].id;
     const img = currentCard.querySelector('.active-tour-img');
@@ -2006,7 +2020,7 @@ function renderTourCards() {
   }
 
   // Next card
-  const nextCard = views.tours.querySelector('.active-tour-next');
+  const nextCard = views.loops.querySelector('.active-tour-next');
   if (nextCard) {
     nextCard.dataset.id = stops[next].id;
     const img = nextCard.querySelector('.active-tour-img');
@@ -2192,7 +2206,7 @@ function navigateTour(dir) {
 
 /** Set up vertical swipe on the tour view. */
 function setupTourSwipe() {
-  const el = views.tours;
+  const el = views.loops;
   let startY = 0;
   let startX = 0;
   let swiping = false;
@@ -2226,15 +2240,10 @@ function setupTourSwipe() {
 // =============================================
 
 /**
- * Open the full-screen detail overlay for a mural.
- * Renders: hero image, metadata, bio, walking directions,
- * field photos, 6 nearest murals, and "more by this artist".
- * @param {Object} mural - Mural object from data.js
+ * Build reusable detail body HTML for a mural.
+ * Used by both openDetail() and the map bottom sheet.
  */
-function openDetail(mural) {
-  state.selectedMural = mural;
-  detailPage.hidden = false;
-
+function buildDetailBodyHTML(mural) {
   const photos = fieldPhotos.filter(p => p.muralId === mural.id);
 
   const nearby = murals
@@ -2250,7 +2259,7 @@ function openDetail(mural) {
     )
   );
 
-  detailContent.innerHTML = `
+  return `
     <div class="detail-hero-wrap">
       <img class="detail-hero" src="${mural.img || ''}" alt="${mural.a}" onerror="this.parentElement.style.display='none'">
     </div>
@@ -2341,6 +2350,121 @@ function openDetail(mural) {
       ` : ''}
     </div>
   `;
+}
+
+// =============================================
+// Map mural bottom sheet
+// =============================================
+
+/** Open a bottom sheet on the map for a mural marker tap. */
+function openMapSheet(mural) {
+  dismissNearestPopup();
+  closeMapSheet();
+
+  const el = document.createElement('div');
+  el.className = 'map-mural-sheet compact';
+  el.id = 'map-mural-sheet';
+  el.innerHTML = `
+    <div class="map-sheet-handle"></div>
+    <div class="map-sheet-compact" data-id="${mural.id}">
+      <img src="${mural.img || ''}" alt="${mural.a}">
+      <div class="map-sheet-compact-info">
+        <h4>${mural.a}</h4>
+        <p>${mural.t || mural.loc || ''}</p>
+      </div>
+      <button class="map-sheet-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="map-sheet-expanded">
+      ${buildDetailBodyHTML(mural)}
+    </div>
+  `;
+
+  document.getElementById('map-container').appendChild(el);
+
+  // Close button
+  el.querySelector('.map-sheet-close').addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeMapSheet();
+  });
+
+  // Tap compact card → expand
+  el.querySelector('.map-sheet-compact').addEventListener('click', () => {
+    if (el.classList.contains('compact')) {
+      el.classList.remove('compact');
+      el.classList.add('expanded');
+    }
+  });
+
+  // Wire nearby card clicks in expanded view
+  el.querySelectorAll('.detail-nearby-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const m = murals.find(m => m.id === Number(card.dataset.id));
+      if (m) openMapSheet(m);
+    });
+  });
+
+  setupSheetDrag(el);
+}
+
+/** Close the map mural bottom sheet. */
+function closeMapSheet() {
+  const existing = document.getElementById('map-mural-sheet');
+  if (existing) existing.remove();
+}
+
+/** Set up touch drag gestures on the map sheet. */
+function setupSheetDrag(sheetEl) {
+  let startY = 0;
+  let isDragging = false;
+
+  const handle = sheetEl.querySelector('.map-sheet-handle');
+  const dragTarget = handle || sheetEl;
+
+  dragTarget.addEventListener('touchstart', (e) => {
+    startY = e.touches[0].clientY;
+    isDragging = true;
+  }, { passive: true });
+
+  dragTarget.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    // Prevent map panning while dragging sheet
+    e.stopPropagation();
+  }, { passive: false });
+
+  dragTarget.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    const deltaY = e.changedTouches[0].clientY - startY;
+
+    if (deltaY < -40) {
+      // Swipe up → expand
+      sheetEl.classList.remove('compact');
+      sheetEl.classList.add('expanded');
+    } else if (deltaY > 40) {
+      // Swipe down
+      if (sheetEl.classList.contains('expanded')) {
+        // Collapse back to compact
+        sheetEl.classList.remove('expanded');
+        sheetEl.classList.add('compact');
+      } else {
+        // Dismiss
+        closeMapSheet();
+      }
+    }
+  }, { passive: true });
+}
+
+/**
+ * Open the full-screen detail overlay for a mural.
+ * Renders: hero image, metadata, bio, walking directions,
+ * field photos, 6 nearest murals, and "more by this artist".
+ * @param {Object} mural - Mural object from data.js
+ */
+function openDetail(mural) {
+  state.selectedMural = mural;
+  detailPage.hidden = false;
+
+  detailContent.innerHTML = buildDetailBodyHTML(mural);
 
   detailContent.querySelectorAll('.detail-nearby-card').forEach(card => {
     card.addEventListener('click', () => {

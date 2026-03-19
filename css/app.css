@@ -822,7 +822,7 @@ a {
 /* ── Floating route pills at bottom of map ── */
 .map-route-strip {
   position: absolute;
-  bottom: calc(var(--tab-height) + var(--safe-bottom) + 10px);
+  bottom: calc(var(--tab-height) + var(--safe-bottom) + 4px);
   left: 0;
   right: 0;
   z-index: 500;
@@ -1030,7 +1030,8 @@ a {
 .map-fab-stack {
   position: absolute;
   right: 12px;
-  top: calc(var(--safe-top) + 70px);
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -1221,6 +1222,86 @@ a {
   padding: 4px;
   line-height: 1;
 }
+
+/* ── Map mural bottom sheet ── */
+.map-mural-sheet {
+  position: absolute;
+  bottom: calc(var(--tab-height) + var(--safe-bottom) + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  background: var(--card);
+  border-radius: 18px 18px 0 0;
+  box-shadow: var(--shadow-lg);
+  transition: max-height 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  overflow: hidden;
+  animation: sheetUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.map-mural-sheet.compact { max-height: 100px; }
+.map-mural-sheet.expanded { max-height: 70vh; overflow-y: auto; }
+
+.map-sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.12);
+  margin: 8px auto;
+}
+
+.map-sheet-compact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px 12px;
+  cursor: pointer;
+}
+
+.map-sheet-compact img {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.map-sheet-compact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.map-sheet-compact-info h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.map-sheet-compact-info p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--text2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.map-sheet-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text2);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.map-mural-sheet.expanded .map-sheet-compact { display: none; }
+.map-sheet-expanded { display: none; padding: 0; }
+.map-mural-sheet.expanded .map-sheet-expanded { display: block; }
 
 /* Out-of-range banner */
 .map-range-banner {
