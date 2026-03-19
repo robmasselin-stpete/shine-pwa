@@ -1670,6 +1670,11 @@ function setupRotaryTouch(zone) {
     dragging = true;
   }, { passive: true });
 
+  zone.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    if (!e.target.closest('.rotary-expanded-map')) e.preventDefault();
+  }, { passive: false });
+
   zone.addEventListener('touchend', (e) => {
     if (!dragging) return;
     dragging = false;

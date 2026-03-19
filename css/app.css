@@ -2210,6 +2210,8 @@ a {
   height: calc(100vh - var(--header-height) - var(--tab-height) - var(--safe-top) - var(--safe-bottom));
   overflow: hidden;
   background: #EBE7E1;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 /* ── Rotary zone ── */
