@@ -2292,7 +2292,7 @@ function fetchTourSegment() {
     const b = polyline.getBounds()
       .extend([fromStop.lat, fromStop.lng])
       .extend([toStop.lat, toStop.lng]);
-    tourMap.fitBounds(b, { padding: [40, 40], maxZoom: 17 });
+    tourMap.fitBounds(b, { padding: [40, 40], maxZoom: 18 });
   }
 
   // Try static route path first (GPX or KML)
