@@ -627,10 +627,6 @@ function renderExplore() {
   }
 
   views.explore.innerHTML = `
-    <div class="explore-large-title">
-      <h1>Explore</h1>
-      <p>${murals.length} murals across St. Petersburg</p>
-    </div>
     <div class="mural-grid">
       ${filtered.map(m => `
         <div class="mural-card" data-id="${m.id}">

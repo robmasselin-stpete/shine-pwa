@@ -598,8 +598,17 @@ a {
    Search Bar
    ======================================== */
 .search-bar {
-  padding: calc(var(--safe-top) + 12px) 20px 8px;
+  padding: calc(var(--safe-top) + 8px) 20px 8px;
   background: var(--bg);
+}
+
+.explore-float-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  margin: 0 0 8px;
 }
 
 .search-input-wrap {
@@ -839,6 +848,7 @@ a {
   -webkit-backdrop-filter: blur(24px);
   border-top: 0.5px solid rgba(0, 0, 0, 0.08);
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   gap: 6px;
 }
@@ -846,9 +856,13 @@ a {
 .map-route-bar.visible { display: flex; }
 
 .map-route-bar .route-key-item {
-  font-size: 12px;
-  padding: 5px 12px;
+  flex-shrink: 0;
+  font-size: 11px;
+  padding: 4px 10px;
   border-radius: 14px;
+  border-width: 1.5px;
+  height: 28px;
+  box-sizing: border-box;
 }
 
 /* Route toggle bar — bottom of map (legacy, hidden when floating strip is active) */
