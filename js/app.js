@@ -861,7 +861,7 @@ function initMap() {
   }
 
   leafletMap = L.map('map-container', {
-    center: [27.768, -82.646],
+    center: [27.774, -82.642],
     zoom: 13,
     zoomControl: false,
   });
