@@ -2058,7 +2058,7 @@ function renderTourLoop() {
 
         <div class="active-tour-carousel">
           <!-- Prev mural (left) -->
-          <div class="active-tour-prev" data-id="${stops[prev].id}" ${curr === 0 ? 'hidden' : ''}>
+          <div class="active-tour-prev" data-id="${stops[prev].id}">
             <div class="active-tour-img-wrap">
               <img class="active-tour-img" src="${stops[prev].img || ''}" alt="${stops[prev].a}" onerror="this.style.background='#ddd'">
               <span class="active-tour-num">${prev + 1}</span>
@@ -2085,7 +2085,7 @@ function renderTourLoop() {
           </div>
 
           <!-- Next mural (right) -->
-          <div class="active-tour-next" data-id="${stops[next].id}" ${curr === len - 1 ? 'hidden' : ''}>
+          <div class="active-tour-next" data-id="${stops[next].id}">
             <div class="active-tour-img-wrap">
               <img class="active-tour-img" src="${stops[next].img || ''}" alt="${stops[next].a}" onerror="this.style.background='#ddd'">
               <span class="active-tour-num">${next + 1}</span>
@@ -2182,7 +2182,6 @@ function renderTourCards() {
   // Prev card
   const prevCard = views.loops.querySelector('.active-tour-prev');
   if (prevCard) {
-    prevCard.hidden = curr === 0;
     prevCard.dataset.id = stops[prev].id;
     const img = prevCard.querySelector('.active-tour-img');
     if (img) { img.src = stops[prev].img || ''; img.alt = stops[prev].a; }
@@ -2214,7 +2213,6 @@ function renderTourCards() {
   // Next card
   const nextCard = views.loops.querySelector('.active-tour-next');
   if (nextCard) {
-    nextCard.hidden = curr === len - 1;
     nextCard.dataset.id = stops[next].id;
     const img = nextCard.querySelector('.active-tour-img');
     if (img) { img.src = stops[next].img || ''; img.alt = stops[next].a; }

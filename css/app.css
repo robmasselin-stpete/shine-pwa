@@ -2672,13 +2672,6 @@ a {
   transform: scale(0.97);
 }
 
-/* Keep spacing when hidden at boundaries */
-.active-tour-prev[hidden],
-.active-tour-next[hidden] {
-  display: flex;
-  visibility: hidden;
-}
-
 .active-tour-prev .active-tour-img,
 .active-tour-next .active-tour-img {
   width: 52px;
