@@ -690,7 +690,7 @@ function renderFilterPills() {
   filterPills.innerHTML = `
     <button class="year-pill ${!f ? 'active' : ''}" data-filter="">All</button>
     <button class="year-pill ${isActive('shine') ? 'active' : ''}" data-filter="shine">Shine</button>
-    <button class="year-pill ${isActive('vintage') ? 'active' : ''}" data-filter="vintage">Vintage Shine</button>
+    <button class="year-pill ${isActive('vintage') ? 'active' : ''}" data-filter="vintage">Vintage</button>
     <button class="year-pill ${isActive('commercial') ? 'active' : ''}" data-filter="commercial">Commercial</button>
   `;
   filterPills.querySelectorAll('.year-pill').forEach(btn => {
@@ -861,8 +861,8 @@ function initMap() {
   }
 
   leafletMap = L.map('map-container', {
-    center: [27.7706, -82.6341],
-    zoom: 13,
+    center: [27.764, -82.645],
+    zoom: 13.5,
     zoomControl: false,
   });
 

@@ -678,7 +678,7 @@ a {
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 500;
-  padding: 7px 16px;
+  padding: 7px 14px;
   border-radius: 20px;
   border: 1.5px solid var(--border);
   background: var(--card);
@@ -872,7 +872,7 @@ a {
   font-weight: 700;
   color: var(--text);
   padding: 0 16px;
-  margin: 0;
+  margin: 4px 0 0;
 }
 
 .route-bar-track {
@@ -882,7 +882,7 @@ a {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   gap: 8px;
-  padding: 6px 16px 10px;
+  padding: 4px 16px 8px;
 }
 .route-bar-track::-webkit-scrollbar { display: none; }
 
