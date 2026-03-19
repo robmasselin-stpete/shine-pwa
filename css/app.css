@@ -3035,3 +3035,121 @@ a {
 .tour-pin.to .tour-pin-num {
   background: #000;
 }
+
+/* ========================================
+   Walk Mode — Proximity Banner
+   ======================================== */
+.proximity-banner {
+  position: fixed;
+  bottom: calc(var(--tab-height) + var(--safe-bottom) + 12px);
+  left: 12px;
+  right: 12px;
+  z-index: 1150;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+
+.proximity-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.proximity-banner-img {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--border);
+}
+
+.proximity-banner-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.proximity-banner-artist {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.proximity-banner-title {
+  font-size: 11px;
+  color: var(--text2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.proximity-banner-dist {
+  font-size: 11px;
+  color: var(--teal);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.proximity-banner-view {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--teal);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.proximity-banner-dismiss {
+  font-size: 18px;
+  color: var(--text3);
+  padding: 4px 6px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   Walk Mode — Persistent Pill
+   ======================================== */
+.walk-mode-pill {
+  position: fixed;
+  top: calc(var(--safe-top) + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--teal);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px 6px 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(14, 145, 140, 0.4);
+  white-space: nowrap;
+}
+
+.walk-pill-x {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: 4px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.walk-pill-x:hover {
+  color: #fff;
+}

@@ -417,7 +417,17 @@ const state = {
   tourRoute: null,         // L.polyline on tour map
   tourMarkers: [],         // L.marker array on tour map
   tourFetching: false,
+  // Walk Mode state
+  walkMode: false,
+  walkWatchId: null,
+  walkAlerted: new Set(),
 };
+
+// Walk Mode module-level vars
+let walkAudioCtx = null;
+let proximityBannerEl = null;
+let proximityBannerTimeout = null;
+const PROXIMITY_THRESHOLD = 30.48; // 100 feet in meters
 
 // Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
@@ -490,6 +500,142 @@ function formatDistance(meters) {
   const feet = meters * 3.28084;
   if (feet < 1000) return `${Math.round(feet)} ft`;
   return `${(feet / 5280).toFixed(1)} mi`;
+}
+
+// =============================================
+// Walk Mode — Proximity Alerts
+// =============================================
+
+/** Create or resume AudioContext (must be called from user gesture on iOS). */
+function ensureWalkAudio() {
+  if (!walkAudioCtx) walkAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (walkAudioCtx.state === 'suspended') walkAudioCtx.resume();
+}
+
+/** Play a pleasant two-note ascending chime (C5 → E5) via Web Audio API. */
+function playProximityChime() {
+  if (!walkAudioCtx) return;
+  const now = walkAudioCtx.currentTime;
+  const notes = [523.25, 659.25]; // C5, E5
+
+  notes.forEach((freq, i) => {
+    const osc = walkAudioCtx.createOscillator();
+    const gain = walkAudioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.3, now + i * 0.2);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.2 + 0.3);
+    osc.connect(gain);
+    gain.connect(walkAudioCtx.destination);
+    osc.start(now + i * 0.2);
+    osc.stop(now + i * 0.2 + 0.3);
+  });
+}
+
+/** Toggle Walk Mode on/off. */
+function toggleWalkMode() {
+  state.walkMode = !state.walkMode;
+  const fab = document.getElementById('fab-walk');
+
+  if (state.walkMode) {
+    fab && fab.classList.add('active');
+    showWalkPill();
+    state.walkWatchId = navigator.geolocation.watchPosition(
+      pos => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        checkProximityAlerts();
+      },
+      () => {},
+      { enableHighAccuracy: true, maximumAge: 5000 }
+    );
+  } else {
+    fab && fab.classList.remove('active');
+    if (state.walkWatchId !== null) {
+      navigator.geolocation.clearWatch(state.walkWatchId);
+      state.walkWatchId = null;
+    }
+    state.walkAlerted.clear();
+    removeWalkPill();
+    dismissProximityBanner();
+  }
+}
+
+/** Check all murals for proximity and alert on the first match. */
+function checkProximityAlerts() {
+  if (!state.walkMode || !state.userLat) return;
+  for (const m of murals) {
+    if (state.walkAlerted.has(m.id)) continue;
+    const dist = haversine(state.userLat, state.userLng, m.lat, m.lng);
+    if (dist <= PROXIMITY_THRESHOLD) {
+      state.walkAlerted.add(m.id);
+      playProximityChime();
+      showProximityBanner(m, dist);
+      break;
+    }
+  }
+}
+
+/** Show proximity alert banner above tab bar. */
+function showProximityBanner(mural, dist) {
+  dismissProximityBanner();
+
+  const el = document.createElement('div');
+  el.className = 'proximity-banner';
+  el.innerHTML = `
+    <img class="proximity-banner-img" src="${mural.img || ''}" alt="${mural.a}" onerror="this.style.background='#ddd'">
+    <div class="proximity-banner-info">
+      <div class="proximity-banner-artist">${mural.a}</div>
+      <div class="proximity-banner-title">${mural.t || ''}</div>
+      <div class="proximity-banner-dist">${formatDistance(dist)} away</div>
+    </div>
+    <button class="proximity-banner-view">View</button>
+    <button class="proximity-banner-dismiss">&times;</button>
+  `;
+  document.body.appendChild(el);
+  proximityBannerEl = el;
+
+  // Trigger slide-up animation
+  requestAnimationFrame(() => el.classList.add('visible'));
+
+  el.querySelector('.proximity-banner-view').addEventListener('click', () => {
+    dismissProximityBanner();
+    openDetail(mural);
+  });
+  el.querySelector('.proximity-banner-dismiss').addEventListener('click', () => {
+    dismissProximityBanner();
+  });
+
+  proximityBannerTimeout = setTimeout(dismissProximityBanner, 8000);
+}
+
+/** Dismiss the proximity banner if showing. */
+function dismissProximityBanner() {
+  clearTimeout(proximityBannerTimeout);
+  if (proximityBannerEl) {
+    proximityBannerEl.remove();
+    proximityBannerEl = null;
+  }
+}
+
+/** Show the persistent "Walk Mode ON" pill at top of screen. */
+function showWalkPill() {
+  if (document.querySelector('.walk-mode-pill')) return;
+  const pill = document.createElement('div');
+  pill.className = 'walk-mode-pill';
+  pill.innerHTML = `
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>
+    Walk Mode ON
+    <button class="walk-pill-x" aria-label="Turn off Walk Mode">&times;</button>
+  `;
+  document.body.appendChild(pill);
+  pill.querySelector('.walk-pill-x').addEventListener('click', toggleWalkMode);
+}
+
+/** Remove the Walk Mode pill. */
+function removeWalkPill() {
+  const pill = document.querySelector('.walk-mode-pill');
+  if (pill) pill.remove();
 }
 
 // =============================================
@@ -1006,12 +1152,22 @@ function addMapFabs() {
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
       </button>
     </div>
+    <div class="map-fab-row">
+      <span class="map-fab-label">Walk Mode</span>
+      <button class="map-fab" id="fab-walk" title="Walk Mode">
+        <svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>
+      </button>
+    </div>
   `;
   container.appendChild(stack);
 
   document.getElementById('fab-location').addEventListener('click', requestAndShowLocation);
   document.getElementById('fab-nearest').addEventListener('click', fabFindNearestMural);
   document.getElementById('fab-nearest-tour').addEventListener('click', fabFindNearestTourStop);
+  document.getElementById('fab-walk').addEventListener('click', () => {
+    ensureWalkAudio();
+    toggleWalkMode();
+  });
 
   // Long-press on any FAB shows labels, auto-hides after 2s
   let labelTimer = null;
@@ -1038,6 +1194,9 @@ function flashFabLabels() {
     stack.classList.add('show-labels');
     setTimeout(() => stack.classList.remove('show-labels'), 1500);
   }, 300);
+  // Sync Walk Mode FAB highlight
+  const fabWalk = document.getElementById('fab-walk');
+  if (fabWalk) fabWalk.classList.toggle('active', state.walkMode);
 }
 
 function requestAndShowLocation() {
