@@ -2285,11 +2285,15 @@ function fetchTourSegment() {
   }).addTo(tourMap);
   state.tourMarkers = [fromMarker, toMarker];
 
-  // Fit bounds to just the two stops
-  const bounds = L.latLngBounds([[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]]);
-  tourMap.fitBounds(bounds, { padding: [30, 30], maxZoom: 19 });
-
   const segInfo = document.getElementById('tour-segment-text') || document.getElementById('tour-segment-info');
+
+  /** Fit map to the drawn route + markers so the full segment fills the view. */
+  function fitToRoute(polyline) {
+    const b = polyline.getBounds()
+      .extend([fromStop.lat, fromStop.lng])
+      .extend([toStop.lat, toStop.lng]);
+    tourMap.fitBounds(b, { padding: [40, 40], maxZoom: 17 });
+  }
 
   // Try static route path first (GPX or KML)
   const routeId = state.activeTour?.id;
@@ -2313,6 +2317,7 @@ function fetchTourSegment() {
         color: '#1E5B8A', weight: 5, opacity: 0.85,
       }).addTo(tourMap);
 
+      fitToRoute(state.tourRoute);
       if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
       return;
     }
@@ -2338,6 +2343,7 @@ function fetchTourSegment() {
         color: '#1E5B8A', weight: 5, opacity: 0.85,
       }).addTo(tourMap);
 
+      fitToRoute(state.tourRoute);
       if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
     })
     .catch(() => {
@@ -2349,6 +2355,7 @@ function fetchTourSegment() {
         [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]],
         { color: '#1E5B8A', weight: 3, opacity: 0.5, dashArray: '8, 8' }
       ).addTo(tourMap);
+      fitToRoute(state.tourRoute);
       if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
     });
 }
