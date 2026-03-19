@@ -856,7 +856,7 @@ function initMap() {
   if (!routeBar) {
     routeBar = document.createElement('div');
     routeBar.className = 'map-route-bar visible';
-    routeBar.innerHTML = `<div class="route-bar-track" id="route-bar-track">${routeKeyHtml}</div>`;
+    routeBar.innerHTML = `<div class="route-bar-title">Nav Loop Overlays</div><div class="route-bar-track" id="route-bar-track">${routeKeyHtml}</div>`;
     document.getElementById('app').appendChild(routeBar);
   }
 
