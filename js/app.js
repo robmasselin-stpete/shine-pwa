@@ -1674,9 +1674,6 @@ function setupRotaryTouch(zone) {
     let steps = 0;
     if (Math.abs(dy) > 25) {
       steps = dy < 0 ? 1 : -1;
-      if (Math.abs(velocity) > 0.7 && Math.abs(dy) > 50) {
-        steps *= 2;
-      }
     }
 
     const newIdx = Math.max(0, Math.min(ROUTE_DEFS.length - 1, pickerActiveRoute + steps));
