@@ -397,7 +397,7 @@ fetchLikeCounts();
 const state = {
   tab: 'map',
   searchQuery: '',
-  exploreFilter: null,  // null=all, 'shine', 'vintage', 'commercial'
+  exploreFilter: null,  // null=all, or array e.g. ['shine'], ['shine','commercial']
   exploreYear: null,    // null=all years in filter, or specific year number
   userLat: null,
   userLng: null,
@@ -460,6 +460,10 @@ function switchTab(tab) {
   exploreFilters.hidden = tab !== 'explore';
   detailPage.hidden = true;
 
+  // Show/hide route bar on map tab
+  const routeBar = document.querySelector('.map-route-bar');
+  if (routeBar) routeBar.classList.toggle('visible', tab === 'map');
+
   if (tab !== 'map') clearDirections();
   if (tab !== 'loops' && state.activeTour) closeTour();
   if (tab === 'explore') { renderFilterPills(); renderExplore(); }
@@ -499,13 +503,15 @@ function formatDistance(meters) {
 function getFilteredMurals() {
   let list = murals;
 
-  // Category filter
-  if (state.exploreFilter === 'shine') {
-    list = list.filter(m => m.cat !== 'commercial' && SHINE_YEARS.includes(m.y));
-  } else if (state.exploreFilter === 'vintage') {
-    list = list.filter(m => m.cat !== 'commercial' && (VINTAGE_YEARS.includes(m.y) || m.y === 0));
-  } else if (state.exploreFilter === 'commercial') {
-    list = list.filter(m => m.cat === 'commercial');
+  // Category filter (multi-select array or null=all)
+  const filters = state.exploreFilter;
+  if (filters && filters.length > 0) {
+    list = list.filter(m => {
+      if (filters.includes('shine') && m.cat !== 'commercial' && SHINE_YEARS.includes(m.y)) return true;
+      if (filters.includes('vintage') && m.cat !== 'commercial' && (VINTAGE_YEARS.includes(m.y) || m.y === 0)) return true;
+      if (filters.includes('commercial') && m.cat === 'commercial') return true;
+      return false;
+    });
   }
 
   // Year sub-filter
@@ -533,16 +539,30 @@ function getFilteredMurals() {
 // =============================================
 /** Render the top-level category pills (All/Shine/Vintage/Commercial) and attach click handlers. */
 function renderFilterPills() {
-  const f = state.exploreFilter;
+  const f = state.exploreFilter; // null or array
+  const isActive = (cat) => f && f.includes(cat);
   filterPills.innerHTML = `
     <button class="year-pill ${!f ? 'active' : ''}" data-filter="">All</button>
-    <button class="year-pill ${f === 'shine' ? 'active' : ''}" data-filter="shine">Shine</button>
-    <button class="year-pill ${f === 'vintage' ? 'active' : ''}" data-filter="vintage">Vintage Shine</button>
-    <button class="year-pill ${f === 'commercial' ? 'active' : ''}" data-filter="commercial">Commercial</button>
+    <button class="year-pill ${isActive('shine') ? 'active' : ''}" data-filter="shine">Shine</button>
+    <button class="year-pill ${isActive('vintage') ? 'active' : ''}" data-filter="vintage">Vintage Shine</button>
+    <button class="year-pill ${isActive('commercial') ? 'active' : ''}" data-filter="commercial">Commercial</button>
   `;
   filterPills.querySelectorAll('.year-pill').forEach(btn => {
     btn.addEventListener('click', () => {
-      state.exploreFilter = btn.dataset.filter || null;
+      const cat = btn.dataset.filter;
+      if (!cat) {
+        // "All" clears filter
+        state.exploreFilter = null;
+      } else {
+        // Toggle: add or remove from array
+        let arr = state.exploreFilter ? [...state.exploreFilter] : [];
+        if (arr.includes(cat)) {
+          arr = arr.filter(c => c !== cat);
+        } else {
+          arr.push(cat);
+        }
+        state.exploreFilter = arr.length > 0 ? arr : null;
+      }
       state.exploreYear = null;
       renderFilterPills();
       renderYearSubPills();
@@ -555,10 +575,10 @@ function renderFilterPills() {
 /** Render year sub-pills (2025, 2024...) below the category pills. Only shown for Shine/Vintage. */
 function renderYearSubPills() {
   const f = state.exploreFilter;
-  if (f === 'shine') {
+  if (f && f.includes('shine') && f.length === 1) {
     const years = SHINE_YEARS;
     // Only show years that have murals
-    const yearsWithData = years.filter(y => murals.some(m => m.y === y && (f === 'shine' ? m.cat !== 'commercial' : true)));
+    const yearsWithData = years.filter(y => murals.some(m => m.y === y && m.cat !== 'commercial'));
     yearSubPills.innerHTML = `
       <button class="year-pill year-sub ${!state.exploreYear ? 'active' : ''}" data-year="">All Years</button>
       ${yearsWithData.map(y => `
@@ -682,11 +702,14 @@ function initMap() {
   `;
   mapContainer.appendChild(floatHeader);
 
-  // Floating route pills at bottom
-  const routeStrip = document.createElement('div');
-  routeStrip.className = 'map-route-strip';
-  routeStrip.innerHTML = `<div class="route-key-bar" id="map-route-key">${routeKeyHtml}</div>`;
-  mapContainer.appendChild(routeStrip);
+  // Route bar — fixed beige strip above tab bar (appended to #app, not map container)
+  let routeBar = document.querySelector('.map-route-bar');
+  if (!routeBar) {
+    routeBar = document.createElement('div');
+    routeBar.className = 'map-route-bar visible';
+    routeBar.innerHTML = routeKeyHtml;
+    document.getElementById('app').appendChild(routeBar);
+  }
 
   leafletMap = L.map('map-container', {
     center: [27.7706, -82.6341],
@@ -1427,7 +1450,7 @@ function ensureRotaryMap(i) {
 }
 
 const ROTARY_COMPACT_H = 72;
-const ROTARY_EXPANDED_H = 260;
+const ROTARY_EXPANDED_H = 300;
 const ROTARY_GAP = 10;
 
 /** Calculate Y-offset so the focused card is centered in the zone. */
@@ -1980,6 +2003,12 @@ function renderTourLoop() {
   // Init map
   initTourMap();
 
+  // Zoom to fit entire route on open
+  const allCoords = state.tourStops.filter(s => s.lat && s.lng).map(s => [s.lat, s.lng]);
+  if (tourMap && allCoords.length >= 2) {
+    tourMap.fitBounds(L.latLngBounds(allCoords), { padding: [40, 40], maxZoom: 16 });
+  }
+
   // Swipe support
   setupTourSwipe();
 }
@@ -2497,7 +2526,7 @@ function openDetail(mural) {
 
     const pinchDist = (t) => Math.hypot(t[1].clientX - t[0].clientX, t[1].clientY - t[0].clientY);
 
-    // Double-tap to zoom
+    // Double-tap to zoom, single-tap to go back
     let lastTap = 0;
     heroWrap.addEventListener('click', (e) => {
       if (dragging || pinching) return;
@@ -2515,6 +2544,13 @@ function openDetail(mural) {
         lastTap = 0;
       } else {
         lastTap = now;
+        // Single tap → close detail (unless zoomed/dragging/pinching)
+        setTimeout(() => {
+          if (lastTap === now && scale <= 1 && !dragging && !pinching) {
+            detailPage.hidden = true;
+            state.selectedMural = null;
+          }
+        }, 300);
       }
     });
 

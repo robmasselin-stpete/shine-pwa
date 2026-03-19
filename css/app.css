@@ -18,7 +18,8 @@
   --radius-sm: 10px;
   --font-display: 'Quicksand', sans-serif;
   --font-body: 'Outfit', sans-serif;
-  --tab-height: 56px;
+  --tab-height: 48px;
+  --route-bar-h: 36px;
   --header-height: 0px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -597,7 +598,7 @@ a {
    Search Bar
    ======================================== */
 .search-bar {
-  padding: 12px 20px 8px;
+  padding: calc(var(--safe-top) + 12px) 20px 8px;
   background: var(--bg);
 }
 
@@ -708,7 +709,9 @@ a {
 /* ========================================
    Large Titles
    ======================================== */
-.explore-large-title,
+.explore-large-title {
+  padding: 8px 20px 4px;
+}
 .tours-large-title {
   padding: calc(var(--safe-top) + 8px) 20px 4px;
 }
@@ -812,54 +815,40 @@ a {
 .map-float-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 28px;
+  font-size: 34px;
+  letter-spacing: -0.5px;
   color: var(--text);
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
   margin-bottom: 10px;
   pointer-events: none;
 }
 
-/* ── Floating route pills at bottom of map ── */
-.map-route-strip {
-  position: absolute;
-  bottom: calc(var(--tab-height) + var(--safe-bottom) + 4px);
+/* ── Route bar — fixed beige strip above tab bar (map tab only) ── */
+.map-route-bar {
+  position: fixed;
+  bottom: calc(var(--tab-height) + var(--safe-bottom));
   left: 0;
   right: 0;
-  z-index: 500;
-  padding: 0 16px;
-}
-
-.map-route-strip .route-key-bar {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 4px 0;
-}
-
-.map-route-strip .route-key-bar::-webkit-scrollbar {
+  z-index: 1100;
+  height: var(--route-bar-h);
   display: none;
+  align-items: center;
+  padding: 0 12px;
+  background: rgba(245, 242, 237, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 6px;
 }
+.map-route-bar::-webkit-scrollbar { display: none; }
+.map-route-bar.visible { display: flex; }
 
-.map-route-strip .route-key-item {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 20px;
-  border: 0.5px solid rgba(0, 0, 0, 0.06);
-  box-shadow: var(--shadow);
-  padding: 8px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  transition: all 0.2s;
-}
-
-.map-route-strip .route-key-item:not(.route-key-off) {
-  background: var(--teal);
-  color: #fff;
-  border-color: var(--teal);
+.map-route-bar .route-key-item {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 14px;
 }
 
 /* Route toggle bar — bottom of map (legacy, hidden when floating strip is active) */
@@ -969,7 +958,7 @@ a {
 #view-map {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--header-height) - var(--tab-height) - var(--safe-top) - var(--safe-bottom));
+  height: calc(100vh - var(--header-height) - var(--tab-height) - var(--route-bar-h) - var(--safe-top) - var(--safe-bottom));
   overflow: hidden;
 }
 
@@ -1103,7 +1092,7 @@ a {
 /* Nearest mural popup — bottom sheet style */
 .nearest-popup {
   position: absolute;
-  bottom: calc(var(--tab-height) + var(--safe-bottom) + 10px);
+  bottom: calc(var(--tab-height) + var(--safe-bottom) + var(--route-bar-h) + 10px);
   left: 12px;
   right: 12px;
   z-index: 1001;
@@ -1226,7 +1215,7 @@ a {
 /* ── Map mural bottom sheet ── */
 .map-mural-sheet {
   position: absolute;
-  bottom: calc(var(--tab-height) + var(--safe-bottom) + 4px);
+  bottom: calc(var(--tab-height) + var(--safe-bottom) + var(--route-bar-h) + 4px);
   left: 0;
   right: 0;
   z-index: 1100;
@@ -1306,7 +1295,7 @@ a {
 /* Out-of-range banner */
 .map-range-banner {
   position: absolute;
-  bottom: calc(var(--tab-height) + var(--safe-bottom) + 10px);
+  bottom: calc(var(--tab-height) + var(--safe-bottom) + var(--route-bar-h) + 10px);
   left: 12px;
   right: 12px;
   z-index: 1001;
@@ -1396,20 +1385,7 @@ a {
 }
 
 .detail-back {
-  position: fixed;
-  top: calc(var(--safe-top) + 8px);
-  left: 8px;
-  z-index: 10000;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 50%;
-  box-shadow: var(--shadow-lg);
+  display: none;
 }
 
 .detail-hero-wrap {
@@ -1716,8 +1692,8 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  padding: 6px 0;
+  gap: 1px;
+  padding: 4px 0;
   color: var(--text-muted);
   transition: color 0.15s ease;
 }
@@ -1727,12 +1703,12 @@ a {
 }
 
 .tab-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .tab-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.3px;
 }
@@ -2168,7 +2144,7 @@ a {
 /* ── Rotary route card ── */
 .rotary-card {
   --compact-h: 72px;
-  --expanded-h: 260px;
+  --expanded-h: 300px;
   --card-gap: 10px;
   margin-bottom: var(--card-gap);
   background: var(--card);
