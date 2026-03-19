@@ -2804,40 +2804,7 @@ a {
   gap: 4px;
 }
 
-/* Action buttons */
-.active-tour-actions {
-  display: flex;
-  gap: 8px;
-  padding: 4px 16px 10px;
-}
-
-.active-tour-btn {
-  flex: 1;
-  padding: 12px 8px;
-  border-radius: 12px;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-  transition: transform 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.active-tour-btn:active {
-  transform: scale(0.96);
-}
-
-.active-tour-btn-directions {
-  background: var(--teal);
-  color: #fff;
-}
-
-/* Dots row (centered below action button) */
+/* Dots row (centered below carousel) */
 .active-tour-dots-row {
   display: flex;
   justify-content: center;

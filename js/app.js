@@ -2095,14 +2095,6 @@ function renderTourLoop() {
           </div>
         </div>
 
-        <!-- Action button -->
-        <div class="active-tour-actions">
-          <button class="active-tour-btn active-tour-btn-directions" id="tour-go-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Go To Mural
-          </button>
-        </div>
-
         <!-- Dots -->
         <div class="active-tour-dots-row">
           <div class="active-tour-dots" id="tour-dots">
@@ -2141,13 +2133,6 @@ function renderTourLoop() {
     navigateTour(1);
   });
 
-  // Go To Mural button → directions
-  document.getElementById('tour-go-btn')?.addEventListener('click', () => {
-    const m = stops[state.tourIndex];
-    if (m && m.lat && m.lng) {
-      window.open(`https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking`, '_blank');
-    }
-  });
 
   // Init map
   initTourMap();
