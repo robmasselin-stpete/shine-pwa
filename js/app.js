@@ -614,6 +614,8 @@ searchInput.addEventListener('input', (e) => {
 // =============================================
 /** Render the Explore tab — 2-column card grid of filtered murals. Full innerHTML replace. */
 function renderExplore() {
+  const sub = document.getElementById('explore-subtitle');
+  if (sub) sub.textContent = `${murals.length} murals across St. Petersburg`;
   const filtered = getFilteredMurals();
 
   if (filtered.length === 0) {

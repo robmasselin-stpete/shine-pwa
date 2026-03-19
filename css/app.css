@@ -608,7 +608,14 @@ a {
   font-size: 34px;
   letter-spacing: -0.5px;
   color: var(--text);
-  margin: 0 0 8px;
+  margin: 0;
+}
+
+.explore-subtitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text2);
+  margin: 2px 0 8px;
 }
 
 .search-input-wrap {
