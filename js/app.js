@@ -671,8 +671,10 @@ function initMap() {
     const stops = def.ids ? def.ids.length : 0;
     const rd = ROUTE_PATHS[def.id];
     const dist = rd && rd.distance ? rd.distance : '';
-    const info = dist ? `${stops} stops · ${dist} mi` : `${stops} stops`;
-    return `<span class="route-key-item route-key-off" data-route="${def.id}" style="--route-color:${color}"><span class="route-key-line" style="background:${color}"></span><span class="route-key-text"><span class="route-key-name">${def.name}</span><span class="route-key-info">${info}</span></span></span>`;
+    const isBike = def.id.includes('bike');
+    const timeEst = dist ? (isBike ? '~20 min bike' : '~30 min walk') : '';
+    const meta = [stops + ' stops', dist ? dist + ' mi' : '', timeEst].filter(Boolean).join(' · ');
+    return `<div class="route-bar-card route-key-off" data-route="${def.id}" style="--route-color:${color}"><div class="route-bar-accent" style="background:${color}"></div><div class="route-bar-body"><div class="route-bar-name">${def.name}</div><div class="route-bar-meta">${meta}</div></div></div>`;
   }).join('');
 
   views.map.innerHTML = `
@@ -752,7 +754,7 @@ function initMap() {
   drawRoutePolylines();
 
   // Route key toggle handlers (tap = toggle visibility, long-press = launch tour)
-  document.querySelectorAll('.route-key-item[data-route]').forEach(el => {
+  document.querySelectorAll('.route-bar-card[data-route]').forEach(el => {
     let routePressTimer = null;
     let routeLongPressed = false;
 
@@ -777,7 +779,7 @@ function initMap() {
 
       // Single-select: hide all routes first
       ROUTE_DEFS.forEach(d => hiddenRoutes.add(d.id));
-      document.querySelectorAll('.route-key-item[data-route]').forEach(item => {
+      document.querySelectorAll('.route-bar-card[data-route]').forEach(item => {
         item.classList.add('route-key-off');
       });
 
@@ -1584,7 +1586,7 @@ function renderTourPicker() {
             </div>
             <div>
               <button class="rotary-go-btn" data-index="${i}">
-                Start
+                Start at nearest mural
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </button>
             </div>
