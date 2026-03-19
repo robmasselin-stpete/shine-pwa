@@ -1674,7 +1674,7 @@ function setupRotaryTouch(zone) {
       }
     }
 
-    const newIdx = Math.max(0, Math.min(ROUTE_DEFS.length - 1, pickerActiveRoute + steps));
+    const newIdx = ((pickerActiveRoute + steps) % ROUTE_DEFS.length + ROUTE_DEFS.length) % ROUTE_DEFS.length;
     if (newIdx !== pickerActiveRoute) {
       pickerActiveRoute = newIdx;
       updateRotaryPositions();
@@ -1687,8 +1687,8 @@ function setupRotaryTouch(zone) {
     e.preventDefault();
     clearTimeout(wheelTimeout);
     wheelTimeout = setTimeout(() => {
-      if (e.deltaY > 0 && pickerActiveRoute < ROUTE_DEFS.length - 1) pickerActiveRoute++;
-      else if (e.deltaY < 0 && pickerActiveRoute > 0) pickerActiveRoute--;
+      if (e.deltaY > 0) pickerActiveRoute = (pickerActiveRoute + 1) % ROUTE_DEFS.length;
+      else if (e.deltaY < 0) pickerActiveRoute = (pickerActiveRoute - 1 + ROUTE_DEFS.length) % ROUTE_DEFS.length;
       updateRotaryPositions();
     }, 50);
   }, { passive: false });
