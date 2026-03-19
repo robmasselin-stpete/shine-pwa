@@ -804,7 +804,7 @@ let tourMap = null; // Second Leaflet instance for tour loop view
 let tourPickerMap = null; // Third Leaflet instance for tour picker overview
 const tourPickerCache = new Map(); // routeId → [[lat,lng],...] cached OSRM coords
 let pickerActiveRoute = 0; // index into ROUTE_DEFS for currently shown route
-let routeBarActive = 0;    // index into ROUTE_DEFS for focused route-bar card
+// (routeBarActive removed — horizontal pills don't need focus tracking)
 let pickerLayers = [];     // current polyline + label on picker map
 const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each mural
 const routePolylines = []; // Route polylines on the main map
@@ -812,74 +812,7 @@ const routePolylines = []; // Route polylines on the main map
 // At this zoom level and above, markers switch from colored dots to thumbnail images
 const ICON_ZOOM_THRESHOLD = 17;
 
-const RB_CARD_H = 57; // 52px card + 5px gap
-/** Position route-bar cards so the focused one is centered, others fade. */
-function updateRouteBarPositions() {
-  const bar = document.querySelector('.map-route-bar');
-  const track = document.getElementById('route-bar-track');
-  if (!bar || !track) return;
-  const barH = bar.clientHeight;
-  const centerY = barH / 2;
-  const aboveH = routeBarActive * RB_CARD_H;
-  const offset = centerY - (RB_CARD_H / 2) - aboveH;
-  track.style.transform = `translateY(${offset}px)`;
-
-  track.querySelectorAll('.route-bar-card').forEach((card, i) => {
-    const dist = Math.abs(i - routeBarActive);
-    if (dist === 0) {
-      card.style.opacity = '1';
-      card.style.transform = 'scale(1)';
-    } else if (dist === 1) {
-      card.style.opacity = '0.45';
-      card.style.transform = 'scale(0.95)';
-    } else {
-      card.style.opacity = '0.2';
-      card.style.transform = 'scale(0.9)';
-    }
-  });
-}
-
-/** Set up touch (flick) handling on the route bar. */
-function setupRouteBarTouch(bar) {
-  let touchStartY = 0;
-  let touchStartTime = 0;
-  let dragging = false;
-
-  bar.addEventListener('touchstart', (e) => {
-    touchStartY = e.touches[0].clientY;
-    touchStartTime = Date.now();
-    dragging = true;
-  }, { passive: true });
-
-  bar.addEventListener('touchend', (e) => {
-    if (!dragging) return;
-    dragging = false;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    const dt = Date.now() - touchStartTime;
-    const velocity = dy / dt;
-    let steps = 0;
-    if (Math.abs(dy) > 15) {
-      steps = dy < 0 ? 1 : -1;
-      if (Math.abs(velocity) > 0.7 && Math.abs(dy) > 40) steps *= 2;
-    }
-    const newIdx = Math.max(0, Math.min(ROUTE_DEFS.length - 1, routeBarActive + steps));
-    if (newIdx !== routeBarActive) {
-      routeBarActive = newIdx;
-      updateRouteBarPositions();
-    }
-  }, { passive: true });
-
-  let wheelTimeout;
-  bar.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    clearTimeout(wheelTimeout);
-    wheelTimeout = setTimeout(() => {
-      if (e.deltaY > 0 && routeBarActive < ROUTE_DEFS.length - 1) routeBarActive++;
-      else if (e.deltaY < 0 && routeBarActive > 0) routeBarActive--;
-      updateRouteBarPositions();
-    }, 50);
-  }, { passive: false });
-}
+// (RB_CARD_H, updateRouteBarPositions, setupRouteBarTouch removed — horizontal pills)
 
 /**
  * Initialize the Leaflet map (runs once) or just resize it on subsequent tab visits.
@@ -912,6 +845,7 @@ function initMap() {
   floatHeader.className = 'map-float-header';
   floatHeader.innerHTML = `
     <h1 class="map-float-title">Map</h1>
+    <p class="map-float-subtitle">${murals.length} murals across St. Petersburg</p>
     <div class="filter-pills" id="map-cat-pills"></div>
     <div class="filter-pills" id="map-year-pills" hidden></div>
   `;
@@ -924,8 +858,6 @@ function initMap() {
     routeBar.className = 'map-route-bar visible';
     routeBar.innerHTML = `<div class="route-bar-track" id="route-bar-track">${routeKeyHtml}</div>`;
     document.getElementById('app').appendChild(routeBar);
-    setupRouteBarTouch(routeBar);
-    requestAnimationFrame(() => updateRouteBarPositions());
   }
 
   leafletMap = L.map('map-container', {
@@ -1002,13 +934,6 @@ function initMap() {
     el.addEventListener('click', () => {
       if (routeLongPressed) return;
       const id = el.dataset.route;
-      const idx = ROUTE_DEFS.findIndex(d => d.id === id);
-
-      // Scroll to the tapped card
-      if (idx !== -1 && idx !== routeBarActive) {
-        routeBarActive = idx;
-        updateRouteBarPositions();
-      }
 
       const wasHidden = hiddenRoutes.has(id);
 
@@ -1152,22 +1077,12 @@ function addMapFabs() {
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
       </button>
     </div>
-    <div class="map-fab-row">
-      <span class="map-fab-label">Walk Mode</span>
-      <button class="map-fab" id="fab-walk" title="Walk Mode">
-        <svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>
-      </button>
-    </div>
   `;
   container.appendChild(stack);
 
   document.getElementById('fab-location').addEventListener('click', requestAndShowLocation);
   document.getElementById('fab-nearest').addEventListener('click', fabFindNearestMural);
   document.getElementById('fab-nearest-tour').addEventListener('click', fabFindNearestTourStop);
-  document.getElementById('fab-walk').addEventListener('click', () => {
-    ensureWalkAudio();
-    toggleWalkMode();
-  });
 
   // Long-press on any FAB shows labels, auto-hides after 2s
   let labelTimer = null;
@@ -1194,9 +1109,7 @@ function flashFabLabels() {
     stack.classList.add('show-labels');
     setTimeout(() => stack.classList.remove('show-labels'), 1500);
   }, 300);
-  // Sync Walk Mode FAB highlight
-  const fabWalk = document.getElementById('fab-walk');
-  if (fabWalk) fabWalk.classList.toggle('active', state.walkMode);
+  // Walk Mode FAB removed from UI — sync skipped
 }
 
 function requestAndShowLocation() {

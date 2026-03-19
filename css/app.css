@@ -19,7 +19,7 @@
   --font-display: 'Quicksand', sans-serif;
   --font-body: 'Outfit', sans-serif;
   --tab-height: 48px;
-  --route-bar-h: 150px;
+  --route-bar-h: 68px;
   --header-height: 0px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -835,11 +835,19 @@ a {
   letter-spacing: -0.5px;
   color: var(--text);
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
-  margin-bottom: 10px;
+  margin-bottom: 2px;
+  pointer-events: none;
+}
+.map-float-subtitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text2);
+  margin: 0 0 8px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
   pointer-events: none;
 }
 
-/* ── Route bar — fixed panel above tab bar (map tab only) ── */
+/* ── Route bar — horizontal pill slider above tab bar (map tab only) ── */
 .map-route-bar {
   position: fixed;
   bottom: calc(var(--tab-height) + var(--safe-bottom));
@@ -848,63 +856,68 @@ a {
   z-index: 1100;
   height: var(--route-bar-h);
   display: none;
-  overflow: hidden;
+  align-items: center;
   background: rgba(245, 242, 237, 0.82);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-top: 0.5px solid rgba(0, 0, 0, 0.08);
 }
-.map-route-bar.visible { display: block; }
+.map-route-bar.visible { display: flex; }
 
 .route-bar-track {
   display: flex;
-  flex-direction: column;
-  padding: 0 10px;
-  gap: 5px;
-  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  flex-direction: row;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 8px;
+  padding: 10px 16px;
 }
+.route-bar-track::-webkit-scrollbar { display: none; }
 
-/* Mini loop cards in route bar */
+/* Horizontal loop pills in route bar */
 .route-bar-card {
   display: flex;
-  align-items: stretch;
-  height: 52px;
-  min-height: 52px;
-  border-radius: 14px;
+  align-items: center;
+  height: 46px;
+  border-radius: 23px;
   background: rgba(255,255,255,0.92);
   overflow: hidden;
   flex-shrink: 0;
   cursor: pointer;
   border: 1.5px solid var(--route-color, #999);
-  transition: border-color 0.2s, opacity 0.35s, transform 0.35s;
+  white-space: nowrap;
+  transition: border-color 0.2s, opacity 0.2s;
 }
 .route-bar-card.route-key-off {
   border-color: #d0d0d0;
+  opacity: 0.6;
 }
 .route-bar-card.route-key-off .route-bar-accent {
   opacity: 0.3;
 }
 .route-bar-accent {
   width: 5px;
+  align-self: stretch;
   flex-shrink: 0;
+  border-radius: 23px 0 0 23px;
 }
 .route-bar-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4px 12px 4px 10px;
-  white-space: nowrap;
+  padding: 4px 14px 4px 10px;
 }
 .route-bar-name {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--text);
   line-height: 1.2;
 }
 .route-bar-meta {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 400;
   color: var(--text2);
   line-height: 1.3;
