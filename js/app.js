@@ -1651,8 +1651,6 @@ function setupRotaryTouch(zone) {
   let dragging = false;
 
   zone.addEventListener('touchstart', (e) => {
-    // Don't capture touches on embedded Leaflet maps
-    if (e.target.closest('.rotary-expanded-map')) return;
     touchStartY = e.touches[0].clientY;
     touchStartTime = Date.now();
     dragging = true;
@@ -1660,7 +1658,7 @@ function setupRotaryTouch(zone) {
 
   zone.addEventListener('touchmove', (e) => {
     if (!dragging) return;
-    if (!e.target.closest('.rotary-expanded-map')) e.preventDefault();
+    e.preventDefault();
   }, { passive: false });
 
   zone.addEventListener('touchend', (e) => {

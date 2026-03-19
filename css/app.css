@@ -2359,6 +2359,8 @@ a {
   flex: 1;
   position: relative;
   min-height: 0;
+  touch-action: none;
+  pointer-events: none;
 }
 
 .rotary-expanded-map .leaflet-container {
