@@ -1469,7 +1469,27 @@ a {
 }
 
 .detail-back {
-  display: none;
+  position: fixed;
+  top: calc(var(--safe-top) + 8px);
+  left: 12px;
+  z-index: 10000;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: transform 0.15s;
+}
+
+.detail-back:active {
+  transform: scale(0.9);
 }
 
 .detail-hero-wrap {
@@ -1493,27 +1513,6 @@ a {
   will-change: transform;
 }
 
-.detail-back-hint {
-  position: fixed;
-  top: calc(var(--safe-top) + 12px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 13px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  z-index: 10001;
-  pointer-events: none;
-  animation: hintFade 2.5s ease forwards;
-}
-@keyframes hintFade {
-  0% { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  75% { opacity: 1; }
-  100% { opacity: 0; }
-}
 
 .detail-body {
   padding: 20px;
@@ -2643,19 +2642,84 @@ a {
   margin: 8px auto 0;
 }
 
-/* Current + Next carousel */
+/* Centered 3-card carousel */
 .active-tour-carousel {
   display: flex;
-  align-items: stretch;
-  padding: 12px 16px 8px;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 12px 8px;
 }
 
-/* Current mural card (large, left) */
-.active-tour-current {
-  flex: 2;
+/* Side cards (prev + next) — shared base */
+.active-tour-prev,
+.active-tour-next {
+  flex: 1;
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 10px 8px;
+  cursor: pointer;
+  transition: transform 0.15s;
+  opacity: 0.6;
+  position: relative;
+}
+
+.active-tour-prev:active,
+.active-tour-next:active {
+  transform: scale(0.97);
+}
+
+/* Keep spacing when hidden at boundaries */
+.active-tour-prev[hidden],
+.active-tour-next[hidden] {
+  display: flex;
+  visibility: hidden;
+}
+
+.active-tour-prev .active-tour-img,
+.active-tour-next .active-tour-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+}
+
+.active-tour-prev .active-tour-num,
+.active-tour-next .active-tour-num {
+  min-width: 18px;
+  height: 18px;
+  font-size: 10px;
+  top: -3px;
+  left: -3px;
+  border-radius: 9px;
+  background: var(--text3);
+}
+
+.active-tour-prev .active-tour-artist,
+.active-tour-next .active-tour-artist {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.active-tour-prev-label,
+.active-tour-next-label {
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--text3);
+  margin-top: 6px;
+}
+
+/* Current mural card (center, large) */
+.active-tour-current {
+  flex: 0 0 auto;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   background: var(--bg);
   border-radius: var(--radius);
@@ -2717,8 +2781,9 @@ a {
 }
 
 .active-tour-info {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .active-tour-artist {
@@ -2742,68 +2807,8 @@ a {
   margin-top: 5px;
   display: flex;
   align-items: center;
-  gap: 4px;
-}
-
-/* Connector arrow */
-.active-tour-connector {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  gap: 2px;
-  color: var(--text3);
-}
-
-/* Next mural card (small, right) */
-.active-tour-next {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: var(--bg);
-  border-radius: var(--radius);
-  padding: 10px 8px;
-  cursor: pointer;
-  transition: transform 0.15s;
-  opacity: 0.7;
-  position: relative;
-}
-
-.active-tour-next:active {
-  transform: scale(0.97);
-}
-
-.active-tour-next .active-tour-img {
-  width: 56px;
-  height: 56px;
-  border-radius: 8px;
-}
-
-.active-tour-next .active-tour-num {
-  min-width: 18px;
-  height: 18px;
-  font-size: 10px;
-  top: -3px;
-  left: -3px;
-  border-radius: 9px;
-  background: var(--text3);
-}
-
-.active-tour-next-label {
-  font-size: 8px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  color: var(--text3);
-  margin-top: 6px;
-}
-
-.active-tour-next .active-tour-artist {
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2px;
+  gap: 4px;
 }
 
 /* Action buttons */
@@ -2839,36 +2844,11 @@ a {
   color: #fff;
 }
 
-.active-tour-btn-details {
-  background: var(--teal-light);
-  color: var(--teal-dark);
-}
-
-/* Step navigation (prev / dots / next) */
-.active-tour-step-nav {
+/* Dots row (centered below action button) */
+.active-tour-dots-row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   padding: 0 16px calc(var(--safe-bottom) + 10px);
-}
-
-.active-tour-step-btn {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--teal);
-  padding: 8px 4px;
-  transition: opacity 0.15s;
-}
-
-.active-tour-step-btn:active {
-  opacity: 0.6;
 }
 
 .active-tour-dots {

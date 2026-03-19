@@ -2016,6 +2016,7 @@ function renderTourLoop() {
   const len = stops.length;
   const idx = state.tourIndex;
   const curr = idx;
+  const prev = wrapIndex(idx - 1, len);
   const next = wrapIndex(idx + 1, len);
 
   const routeColor = TOUR_COLORS[state.activeTour.id] || '#0E918C';
@@ -2056,7 +2057,17 @@ function renderTourLoop() {
         <div class="active-tour-handle"></div>
 
         <div class="active-tour-carousel">
-          <!-- Current mural -->
+          <!-- Prev mural (left) -->
+          <div class="active-tour-prev" data-id="${stops[prev].id}" ${curr === 0 ? 'hidden' : ''}>
+            <div class="active-tour-img-wrap">
+              <img class="active-tour-img" src="${stops[prev].img || ''}" alt="${stops[prev].a}" onerror="this.style.background='#ddd'">
+              <span class="active-tour-num">${prev + 1}</span>
+            </div>
+            <span class="active-tour-prev-label">Last</span>
+            <div class="active-tour-artist">${stops[prev].a}</div>
+          </div>
+
+          <!-- Current mural (center) -->
           <div class="active-tour-current" data-id="${stops[curr].id}">
             <div class="active-tour-img-wrap">
               <img class="active-tour-img" src="${stops[curr].img || ''}" alt="${stops[curr].a}" onerror="this.style.background='#ddd'">
@@ -2073,13 +2084,8 @@ function renderTourLoop() {
             </div>
           </div>
 
-          <!-- Connector -->
-          <div class="active-tour-connector">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </div>
-
-          <!-- Next mural -->
-          <div class="active-tour-next" data-id="${stops[next].id}">
+          <!-- Next mural (right) -->
+          <div class="active-tour-next" data-id="${stops[next].id}" ${curr === len - 1 ? 'hidden' : ''}>
             <div class="active-tour-img-wrap">
               <img class="active-tour-img" src="${stops[next].img || ''}" alt="${stops[next].a}" onerror="this.style.background='#ddd'">
               <span class="active-tour-num">${next + 1}</span>
@@ -2089,31 +2095,19 @@ function renderTourLoop() {
           </div>
         </div>
 
-        <!-- Action buttons -->
+        <!-- Action button -->
         <div class="active-tour-actions">
           <button class="active-tour-btn active-tour-btn-directions" id="tour-go-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Go To Mural
           </button>
-          <button class="active-tour-btn active-tour-btn-details" id="tour-details-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-            Mural Details
-          </button>
         </div>
 
-        <!-- Step navigation -->
-        <div class="active-tour-step-nav">
-          <button class="active-tour-step-btn" data-dir="-1">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            Prev
-          </button>
+        <!-- Dots -->
+        <div class="active-tour-dots-row">
           <div class="active-tour-dots" id="tour-dots">
             ${buildTourDots(len, curr, routeColor)}
           </div>
-          <button class="active-tour-step-btn" data-dir="1">
-            Next
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </button>
         </div>
       </div>
     </div>
@@ -2131,9 +2125,9 @@ function renderTourLoop() {
     renderTourList();
   });
 
-  // Step nav buttons (Prev / Next)
-  views.loops.querySelectorAll('.active-tour-step-btn').forEach(btn => {
-    btn.addEventListener('click', () => navigateTour(Number(btn.dataset.dir)));
+  // Prev card tap → go back
+  views.loops.querySelector('.active-tour-prev')?.addEventListener('click', () => {
+    navigateTour(-1);
   });
 
   // Current card tap → detail
@@ -2155,12 +2149,6 @@ function renderTourLoop() {
     }
   });
 
-  // Mural Details button → open detail page
-  document.getElementById('tour-details-btn')?.addEventListener('click', () => {
-    const mural = stops[state.tourIndex];
-    if (mural) openDetail(mural);
-  });
-
   // Init map
   initTourMap();
 
@@ -2180,6 +2168,7 @@ function renderTourCards() {
   const len = stops.length;
   const idx = state.tourIndex;
   const curr = idx;
+  const prev = wrapIndex(idx - 1, len);
   const next = wrapIndex(idx + 1, len);
   const routeColor = TOUR_COLORS[state.activeTour?.id] || '#0E918C';
   const pct = Math.round(((curr + 1) / len) * 100);
@@ -2189,6 +2178,19 @@ function renderTourCards() {
   if (fill) { fill.style.width = pct + '%'; fill.style.background = routeColor; }
   const label = views.loops.querySelector('.active-tour-progress-label');
   if (label) label.textContent = `${curr + 1} of ${len}`;
+
+  // Prev card
+  const prevCard = views.loops.querySelector('.active-tour-prev');
+  if (prevCard) {
+    prevCard.hidden = curr === 0;
+    prevCard.dataset.id = stops[prev].id;
+    const img = prevCard.querySelector('.active-tour-img');
+    if (img) { img.src = stops[prev].img || ''; img.alt = stops[prev].a; }
+    const num = prevCard.querySelector('.active-tour-num');
+    if (num) num.textContent = prev + 1;
+    const artist = prevCard.querySelector('.active-tour-artist');
+    if (artist) artist.textContent = stops[prev].a;
+  }
 
   // Current card
   const currentCard = views.loops.querySelector('.active-tour-current');
@@ -2212,6 +2214,7 @@ function renderTourCards() {
   // Next card
   const nextCard = views.loops.querySelector('.active-tour-next');
   if (nextCard) {
+    nextCard.hidden = curr === len - 1;
     nextCard.dataset.id = stops[next].id;
     const img = nextCard.querySelector('.active-tour-img');
     if (img) { img.src = stops[next].img || ''; img.alt = stops[next].a; }
@@ -2757,15 +2760,6 @@ function openDetail(mural) {
   }
 
   detailPage.scrollTop = 0;
-
-  // Floating hint — tap image to go back
-  const oldHint = document.querySelector('.detail-back-hint');
-  if (oldHint) oldHint.remove();
-  const hint = document.createElement('div');
-  hint.className = 'detail-back-hint';
-  hint.textContent = 'Tap image to go back';
-  detailPage.appendChild(hint);
-  setTimeout(() => hint.remove(), 2600);
 }
 
 // Back button
