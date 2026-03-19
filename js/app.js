@@ -1615,7 +1615,7 @@ const ROTARY_EXPANDED_H = 300;
 const ROTARY_GAP = 10;
 
 /** Calculate Y-offset so the focused card is centered in the zone. */
-function updateRotaryPositions() {
+function updateRotaryPositions(wrapped) {
   const zone = document.getElementById('rotary-zone');
   const track = document.getElementById('rotary-track');
   if (!zone || !track) return;
@@ -1626,11 +1626,23 @@ function updateRotaryPositions() {
   let aboveH = 0;
   for (let i = 0; i < pickerActiveRoute; i++) aboveH += ROTARY_COMPACT_H + ROTARY_GAP;
   const offset = centerY - (ROTARY_EXPANDED_H / 2) - aboveH;
-  track.style.transform = `translateY(${offset}px)`;
+
+  if (wrapped) {
+    // Disable transition, snap instantly, then re-enable for settle
+    track.style.transition = 'none';
+    track.style.transform = `translateY(${offset}px)`;
+    // Force reflow then re-enable transition
+    track.offsetHeight;
+    track.style.transition = '';
+  } else {
+    track.style.transform = `translateY(${offset}px)`;
+  }
 
   const cards = track.querySelectorAll('.rotary-card');
+  const n = ROUTE_DEFS.length;
   cards.forEach((card, i) => {
-    const dist = Math.abs(i - pickerActiveRoute);
+    // Circular distance for near detection
+    const dist = Math.min(Math.abs(i - pickerActiveRoute), n - Math.abs(i - pickerActiveRoute));
     card.classList.remove('compact', 'expanded', 'near');
     if (i === pickerActiveRoute) {
       card.classList.add('expanded');
@@ -1674,10 +1686,12 @@ function setupRotaryTouch(zone) {
       }
     }
 
-    const newIdx = ((pickerActiveRoute + steps) % ROUTE_DEFS.length + ROUTE_DEFS.length) % ROUTE_DEFS.length;
+    const raw = pickerActiveRoute + steps;
+    const newIdx = ((raw % ROUTE_DEFS.length) + ROUTE_DEFS.length) % ROUTE_DEFS.length;
     if (newIdx !== pickerActiveRoute) {
+      const didWrap = raw < 0 || raw >= ROUTE_DEFS.length;
       pickerActiveRoute = newIdx;
-      updateRotaryPositions();
+      updateRotaryPositions(didWrap);
     }
   }, { passive: true });
 
@@ -1687,9 +1701,11 @@ function setupRotaryTouch(zone) {
     e.preventDefault();
     clearTimeout(wheelTimeout);
     wheelTimeout = setTimeout(() => {
+      const prev = pickerActiveRoute;
       if (e.deltaY > 0) pickerActiveRoute = (pickerActiveRoute + 1) % ROUTE_DEFS.length;
       else if (e.deltaY < 0) pickerActiveRoute = (pickerActiveRoute - 1 + ROUTE_DEFS.length) % ROUTE_DEFS.length;
-      updateRotaryPositions();
+      const didWrap = Math.abs(pickerActiveRoute - prev) > 1;
+      updateRotaryPositions(didWrap);
     }, 50);
   }, { passive: false });
 }
