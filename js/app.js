@@ -656,6 +656,7 @@ let tourMap = null; // Second Leaflet instance for tour loop view
 let tourPickerMap = null; // Third Leaflet instance for tour picker overview
 const tourPickerCache = new Map(); // routeId → [[lat,lng],...] cached OSRM coords
 let pickerActiveRoute = 0; // index into ROUTE_DEFS for currently shown route
+let routeBarActive = 0;    // index into ROUTE_DEFS for focused route-bar card
 let pickerLayers = [];     // current polyline + label on picker map
 const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each mural
 const routePolylines = []; // Route polylines on the main map
@@ -663,6 +664,74 @@ const routePolylines = []; // Route polylines on the main map
 // At this zoom level and above, markers switch from colored dots to thumbnail images
 const ICON_ZOOM_THRESHOLD = 17;
 
+const RB_CARD_H = 47; // 42px card + 5px gap
+/** Position route-bar cards so the focused one is centered, others fade. */
+function updateRouteBarPositions() {
+  const bar = document.querySelector('.map-route-bar');
+  const track = document.getElementById('route-bar-track');
+  if (!bar || !track) return;
+  const barH = bar.clientHeight;
+  const centerY = barH / 2;
+  const aboveH = routeBarActive * RB_CARD_H;
+  const offset = centerY - (RB_CARD_H / 2) - aboveH;
+  track.style.transform = `translateY(${offset}px)`;
+
+  track.querySelectorAll('.route-bar-card').forEach((card, i) => {
+    const dist = Math.abs(i - routeBarActive);
+    if (dist === 0) {
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1)';
+    } else if (dist === 1) {
+      card.style.opacity = '0.45';
+      card.style.transform = 'scale(0.95)';
+    } else {
+      card.style.opacity = '0.2';
+      card.style.transform = 'scale(0.9)';
+    }
+  });
+}
+
+/** Set up touch (flick) handling on the route bar. */
+function setupRouteBarTouch(bar) {
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let dragging = false;
+
+  bar.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+    dragging = true;
+  }, { passive: true });
+
+  bar.addEventListener('touchend', (e) => {
+    if (!dragging) return;
+    dragging = false;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    const dt = Date.now() - touchStartTime;
+    const velocity = dy / dt;
+    let steps = 0;
+    if (Math.abs(dy) > 15) {
+      steps = dy < 0 ? 1 : -1;
+      if (Math.abs(velocity) > 0.7 && Math.abs(dy) > 40) steps *= 2;
+    }
+    const newIdx = Math.max(0, Math.min(ROUTE_DEFS.length - 1, routeBarActive + steps));
+    if (newIdx !== routeBarActive) {
+      routeBarActive = newIdx;
+      updateRouteBarPositions();
+    }
+  }, { passive: true });
+
+  let wheelTimeout;
+  bar.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(() => {
+      if (e.deltaY > 0 && routeBarActive < ROUTE_DEFS.length - 1) routeBarActive++;
+      else if (e.deltaY < 0 && routeBarActive > 0) routeBarActive--;
+      updateRouteBarPositions();
+    }, 50);
+  }, { passive: false });
+}
 
 /**
  * Initialize the Leaflet map (runs once) or just resize it on subsequent tab visits.
@@ -700,13 +769,15 @@ function initMap() {
   `;
   mapContainer.appendChild(floatHeader);
 
-  // Route bar — fixed beige strip above tab bar (appended to #app, not map container)
+  // Route bar — fixed panel above tab bar (appended to #app, not map container)
   let routeBar = document.querySelector('.map-route-bar');
   if (!routeBar) {
     routeBar = document.createElement('div');
     routeBar.className = 'map-route-bar visible';
-    routeBar.innerHTML = routeKeyHtml;
+    routeBar.innerHTML = `<div class="route-bar-track" id="route-bar-track">${routeKeyHtml}</div>`;
     document.getElementById('app').appendChild(routeBar);
+    setupRouteBarTouch(routeBar);
+    requestAnimationFrame(() => updateRouteBarPositions());
   }
 
   leafletMap = L.map('map-container', {
@@ -783,6 +854,14 @@ function initMap() {
     el.addEventListener('click', () => {
       if (routeLongPressed) return;
       const id = el.dataset.route;
+      const idx = ROUTE_DEFS.findIndex(d => d.id === id);
+
+      // Scroll to the tapped card
+      if (idx !== -1 && idx !== routeBarActive) {
+        routeBarActive = idx;
+        updateRouteBarPositions();
+      }
+
       const wasHidden = hiddenRoutes.has(id);
 
       // Single-select: hide all routes first
