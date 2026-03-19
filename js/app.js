@@ -607,6 +607,10 @@ function renderExplore() {
   }
 
   views.explore.innerHTML = `
+    <div class="explore-large-title">
+      <h1>Explore</h1>
+      <p>${murals.length} murals across St. Petersburg</p>
+    </div>
     <div class="mural-grid">
       ${filtered.map(m => `
         <div class="mural-card" data-id="${m.id}">
@@ -664,20 +668,25 @@ function initMap() {
   }).join('');
 
   views.map.innerHTML = `
-    <div class="map-filter-bar">
-      <span class="map-section-title">Murals</span>
-      <div class="filter-pills" id="map-cat-pills"></div>
-      <div class="filter-pills" id="map-year-pills" hidden></div>
-    </div>
-    <div id="map-container"></div>
-    <div class="route-key-section">
-      <span class="route-key-title">Tour Route Overlays</span>
-      <div class="route-key-scroll">
-        <div class="route-key-bar" id="map-route-key">${routeKeyHtml}</div>
-        <span class="route-key-arrow">›</span>
-      </div>
-    </div>
+    <div id="map-container" style="position:relative;flex:1;width:100%;min-height:0"></div>
   `;
+
+  // Floating header (over the map, pointer-events pass through)
+  const mapContainer = document.getElementById('map-container');
+  const floatHeader = document.createElement('div');
+  floatHeader.className = 'map-float-header';
+  floatHeader.innerHTML = `
+    <h1 class="map-float-title">Map</h1>
+    <div class="filter-pills" id="map-cat-pills"></div>
+    <div class="filter-pills" id="map-year-pills" hidden></div>
+  `;
+  mapContainer.appendChild(floatHeader);
+
+  // Floating route pills at bottom
+  const routeStrip = document.createElement('div');
+  routeStrip.className = 'map-route-strip';
+  routeStrip.innerHTML = `<div class="route-key-bar" id="map-route-key">${routeKeyHtml}</div>`;
+  mapContainer.appendChild(routeStrip);
 
   leafletMap = L.map('map-container', {
     center: [27.7706, -82.6341],
@@ -1340,63 +1349,264 @@ function renderTourList() {
   renderTourPicker();
 }
 
-/** Render the tour picker: full map with one route at a time + selector bar. */
-function renderTourPicker() {
-  // If picker map container still exists, just resize
-  if (tourPickerMap && document.getElementById('tour-picker-map')) {
-    setTimeout(() => tourPickerMap.invalidateSize(), 0);
+let pickerMiniMaps = {};
+
+/** Destroy all rotary mini-maps. */
+function destroyPickerMiniMaps() {
+  Object.values(pickerMiniMaps).forEach(m => { try { m.remove(); } catch(e) {} });
+  pickerMiniMaps = {};
+}
+
+/** Create or refresh a mini Leaflet map inside a rotary card. */
+function ensureRotaryMap(i) {
+  if (pickerMiniMaps[i]) {
+    pickerMiniMaps[i].invalidateSize();
     return;
   }
 
-  // Destroy stale picker map if container was removed
+  const def = ROUTE_DEFS[i];
+  const container = document.getElementById(`rmap-${i}`);
+  if (!container) return;
+
+  const color = TOUR_COLORS[def.id] || '#999';
+  const ordered = getRouteOrdered(def);
+  if (ordered.length < 2) return;
+
+  // Use cached route coords or fallback to stop coords
+  const coords = tourPickerCache.get(def.id) || ordered.map(m => [m.lat, m.lng]);
+
+  const m = L.map(container, {
+    zoomControl: false,
+    attributionControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    touchZoom: false,
+    keyboard: false,
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+  }).addTo(m);
+
+  // Route polyline
+  const line = L.polyline(coords, { color, weight: 4, opacity: 0.8, lineCap: 'round' }).addTo(m);
+
+  // Stop dots
+  ordered.forEach((s, j) => {
+    L.circleMarker([s.lat, s.lng], {
+      radius: 5, fillColor: color, fillOpacity: 1, color: '#fff', weight: 2,
+    }).addTo(m);
+  });
+
+  // Numbered first & last
+  const mkIcon = (num) => L.divIcon({
+    className: '',
+    html: `<div style="background:${color};color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:Quicksand,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,0.3);border:2px solid #fff">${num}</div>`,
+    iconSize: [20, 20], iconAnchor: [10, 10],
+  });
+  L.marker([ordered[0].lat, ordered[0].lng], { icon: mkIcon(1) }).addTo(m);
+  L.marker([ordered[ordered.length-1].lat, ordered[ordered.length-1].lng], { icon: mkIcon(ordered.length) }).addTo(m);
+
+  m.fitBounds(line.getBounds(), { padding: [20, 20], maxZoom: 15 });
+  pickerMiniMaps[i] = m;
+}
+
+const ROTARY_COMPACT_H = 72;
+const ROTARY_EXPANDED_H = 260;
+const ROTARY_GAP = 10;
+
+/** Calculate Y-offset so the focused card is centered in the zone. */
+function updateRotaryPositions() {
+  const zone = document.getElementById('rotary-zone');
+  const track = document.getElementById('rotary-track');
+  if (!zone || !track) return;
+
+  const zoneH = zone.clientHeight;
+  const centerY = zoneH / 2;
+
+  let aboveH = 0;
+  for (let i = 0; i < pickerActiveRoute; i++) aboveH += ROTARY_COMPACT_H + ROTARY_GAP;
+  const offset = centerY - (ROTARY_EXPANDED_H / 2) - aboveH;
+  track.style.transform = `translateY(${offset}px)`;
+
+  const cards = track.querySelectorAll('.rotary-card');
+  cards.forEach((card, i) => {
+    const dist = Math.abs(i - pickerActiveRoute);
+    card.classList.remove('compact', 'expanded', 'near');
+    if (i === pickerActiveRoute) {
+      card.classList.add('expanded');
+    } else {
+      card.classList.add('compact');
+      if (dist === 1) card.classList.add('near');
+    }
+  });
+
+  // Lazy-init the focused mini-map after transition
+  setTimeout(() => ensureRotaryMap(pickerActiveRoute), 480);
+}
+
+/** Set up touch (flick) handling on the rotary zone. */
+function setupRotaryTouch(zone) {
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let dragging = false;
+
+  zone.addEventListener('touchstart', (e) => {
+    // Don't capture touches on embedded Leaflet maps
+    if (e.target.closest('.rotary-expanded-map')) return;
+    touchStartY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+    dragging = true;
+  }, { passive: true });
+
+  zone.addEventListener('touchend', (e) => {
+    if (!dragging) return;
+    dragging = false;
+
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    const dt = Date.now() - touchStartTime;
+    const velocity = dy / dt;
+
+    let steps = 0;
+    if (Math.abs(dy) > 25) {
+      steps = dy < 0 ? 1 : -1;
+      if (Math.abs(velocity) > 0.7 && Math.abs(dy) > 50) {
+        steps *= 2;
+      }
+    }
+
+    const newIdx = Math.max(0, Math.min(ROUTE_DEFS.length - 1, pickerActiveRoute + steps));
+    if (newIdx !== pickerActiveRoute) {
+      pickerActiveRoute = newIdx;
+      updateRotaryPositions();
+    }
+  }, { passive: true });
+
+  // Mouse wheel for desktop
+  let wheelTimeout;
+  zone.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(() => {
+      if (e.deltaY > 0 && pickerActiveRoute < ROUTE_DEFS.length - 1) pickerActiveRoute++;
+      else if (e.deltaY < 0 && pickerActiveRoute > 0) pickerActiveRoute--;
+      updateRotaryPositions();
+    }, 50);
+  }, { passive: false });
+}
+
+/** Render the tour picker: rotary card layout with lazy mini-maps. */
+function renderTourPicker() {
+  // Destroy any stale picker map / mini-maps
   if (tourPickerMap) {
     try { tourPickerMap.remove(); } catch(e) {}
     tourPickerMap = null;
   }
+  destroyPickerMiniMaps();
+
+  // Prefetch route coords for all routes
+  ROUTE_DEFS.forEach(def => loadRouteCoords(def));
+
+  const cardsHtml = ROUTE_DEFS.map((def, i) => {
+    const ordered = getRouteOrdered(def);
+    const color = TOUR_COLORS[def.id] || '#999';
+    const rd = ROUTE_PATHS[def.id];
+    const dist = rd && rd.distance ? rd.distance + ' mi' : '';
+    const isBike = def.id.includes('bike');
+    const timeEst = dist ? (isBike ? '~20 min bike' : '~30 min walk') : '';
+
+    return `
+      <div class="rotary-card" data-index="${i}">
+        <div class="rotary-compact">
+          <div class="rotary-compact-accent" style="background:${color}"></div>
+          <div class="rotary-compact-body">
+            <div>
+              <div class="rotary-compact-name">${def.name}</div>
+              <div class="rotary-compact-meta">
+                <span>${ordered.length} stops</span>
+                ${dist ? `<span>${dist}</span>` : ''}
+                ${timeEst ? `<span>${timeEst}</span>` : ''}
+              </div>
+            </div>
+            <svg class="rotary-compact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+        </div>
+        <div class="rotary-expanded">
+          <div class="rotary-expanded-map">
+            <div id="rmap-${i}" style="width:100%;height:100%"></div>
+            <div class="rotary-expanded-map-fade"></div>
+          </div>
+          <div class="rotary-expanded-info">
+            <div class="rotary-expanded-accent" style="background:${color}"></div>
+            <div class="rotary-expanded-details">
+              <div class="rotary-expanded-name">${def.name}</div>
+              <div class="rotary-expanded-desc">${def.desc}</div>
+              <div class="rotary-expanded-stats">
+                <span class="rotary-expanded-stat">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                  ${ordered.length} stops
+                </span>
+                ${dist ? `<span class="rotary-expanded-stat">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  ${dist}
+                </span>` : ''}
+                ${timeEst ? `<span class="rotary-expanded-stat">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  ${timeEst}
+                </span>` : ''}
+              </div>
+            </div>
+            <div>
+              <button class="rotary-go-btn" data-index="${i}">
+                Start
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
 
   views.tours.innerHTML = `
     <div class="tour-picker-layout">
-      <div id="tour-picker-map"></div>
-      <div class="tour-picker-selector" id="tour-picker-selector">
-        ${ROUTE_DEFS.map((def, i) => {
-          const ordered = getRouteOrdered(def);
-          const color = TOUR_COLORS[def.id] || '#999';
-          const active = i === pickerActiveRoute ? ' active' : '';
-          return `
-            <button class="tour-selector-btn${active}" data-index="${i}" style="--tour-color:${color}">
-              <span class="tour-selector-dot" style="background:${color}"></span>
-              <div class="tour-selector-text">
-                <span class="tour-selector-name">${def.name}</span>
-                <span class="tour-selector-stats">${ordered.length} stops</span>
-              </div>
-            </button>`;
-        }).join('')}
+      <div class="tours-large-title">
+        <h1>Tours</h1>
+        <p>Flick to browse · tap Start to go</p>
       </div>
-      <button class="tour-start-btn" id="tour-start-btn">Start Tour</button>
+      <div class="rotary-zone" id="rotary-zone">
+        <div class="rotary-track" id="rotary-track">
+          ${cardsHtml}
+        </div>
+      </div>
     </div>
   `;
 
-  // Selector button clicks — switch displayed route
-  views.tours.querySelectorAll('.tour-selector-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = Number(btn.dataset.index);
-      if (idx === pickerActiveRoute) return;
+  // Click to select card or start tour
+  const track = document.getElementById('rotary-track');
+  track.addEventListener('click', (e) => {
+    // Start button
+    const goBtn = e.target.closest('.rotary-go-btn');
+    if (goBtn) {
+      openTour(ROUTE_DEFS[pickerActiveRoute]);
+      return;
+    }
+
+    const card = e.target.closest('.rotary-card');
+    if (!card) return;
+    const idx = Number(card.dataset.index);
+    if (idx !== pickerActiveRoute) {
       pickerActiveRoute = idx;
-      // Update active class
-      views.tours.querySelectorAll('.tour-selector-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      // Scroll active button into view
-      btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      fetchAndShowRoute(pickerActiveRoute);
-    });
+      updateRotaryPositions();
+    }
   });
 
-  // Start tour button
-  document.getElementById('tour-start-btn').addEventListener('click', () => {
-    openTour(ROUTE_DEFS[pickerActiveRoute]);
-  });
+  // Touch flick handling
+  const zone = document.getElementById('rotary-zone');
+  setupRotaryTouch(zone);
 
-  initTourPickerMap();
+  // Initial layout
+  requestAnimationFrame(updateRotaryPositions);
 }
 
 /** Create the Leaflet map for the tour picker. */
@@ -1545,11 +1755,12 @@ function showPickerRoute(idx) {
 
 /** Open a tour — set state, find start index, render loop view. */
 function openTour(def, startAtMuralId) {
-  // Destroy picker map before its container gets replaced
+  // Destroy picker map / rotary mini-maps before container gets replaced
   if (tourPickerMap) {
     tourPickerMap.remove();
     tourPickerMap = null;
   }
+  destroyPickerMiniMaps();
 
   const stops = getRouteOrdered(def);
   if (stops.length === 0) return;
@@ -1578,6 +1789,7 @@ function closeTour() {
     tourMap.remove();
     tourMap = null;
   }
+  destroyPickerMiniMaps();
   state.activeTour = null;
   state.tourStops = [];
   state.tourIndex = 0;
@@ -1587,81 +1799,168 @@ function closeTour() {
   state.tourFetching = false;
 }
 
-/** Render the full tour loop view: header, carousel, map. */
+/** Build HTML for tour step dot indicators. */
+function buildTourDots(len, activeIdx, color) {
+  let html = '';
+  for (let i = 0; i < len; i++) {
+    let cls = 'active-tour-dot';
+    if (i === activeIdx) cls += ' active';
+    else if (i < activeIdx) cls += ' visited';
+    const style = i === activeIdx ? ` style="background:${color}"` : '';
+    html += `<span class="${cls}"${style}></span>`;
+  }
+  return html;
+}
+
+/** Render the full tour loop view: nav bar, map, bottom panel. */
 function renderTourLoop() {
   const stops = state.tourStops;
   const len = stops.length;
   const idx = state.tourIndex;
-
   const curr = idx;
   const next = wrapIndex(idx + 1, len);
 
+  const routeColor = TOUR_COLORS[state.activeTour.id] || '#0E918C';
+  const pct = Math.round(((curr + 1) / len) * 100);
+
   views.tours.innerHTML = `
     <div class="tour-layout">
-      <div class="tour-header">
-        <button class="tour-back" aria-label="Back to tour list">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m15 18-6-6 6-6"/>
-          </svg>
+      <!-- Nav bar -->
+      <div class="active-tour-nav">
+        <button class="active-tour-back" aria-label="Back to tour list">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </button>
-        <div class="tour-header-title">${state.activeTour.name}</div>
-        <div class="tour-header-counter">${curr + 1} of ${len}</div>
-      </div>
-      <div class="tour-carousel">
-        <button class="tour-arrow tour-arrow-prev" data-dir="-1" aria-label="Previous">
-          <svg width="28" height="36" viewBox="0 0 28 36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20,4 6,18 20,32"/>
-          </svg>
-        </button>
-        <div class="tour-carousel-card" data-id="${stops[curr].id}">
-          <div class="tour-carousel-img-wrap">
-            <img class="tour-carousel-img" src="${stops[curr].img || ''}" alt="${stops[curr].a}" onerror="this.style.background='#ddd'">
-            <span class="tour-carousel-num">${curr + 1}</span>
+        <div class="active-tour-nav-info">
+          <div class="active-tour-nav-name">${state.activeTour.name}</div>
+          <div class="active-tour-progress">
+            <div class="active-tour-progress-track">
+              <div class="active-tour-progress-fill" style="width:${pct}%;background:${routeColor}"></div>
+            </div>
+            <span class="active-tour-progress-label">${curr + 1} of ${len}</span>
           </div>
-          <div class="tour-carousel-caption">${stops[curr].a}<br><span class="tour-carousel-sub">${stops[curr].bldg || stops[curr].loc || ''} · ${stops[curr].y || ''}</span></div>
         </div>
-        <div class="tour-arrow-mid" aria-hidden="true">
-          <svg width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6,2 2,10 6,18"/>
-            <line x1="2" y1="10" x2="22" y2="10"/>
-            <polyline points="18,2 22,10 18,18"/>
-          </svg>
-        </div>
-        <div class="tour-carousel-card" data-id="${stops[next].id}">
-          <div class="tour-carousel-img-wrap">
-            <img class="tour-carousel-img" src="${stops[next].img || ''}" alt="${stops[next].a}" onerror="this.style.background='#ddd'">
-            <span class="tour-carousel-num">${next + 1}</span>
-          </div>
-          <div class="tour-carousel-caption">${stops[next].a}<br><span class="tour-carousel-sub">${stops[next].bldg || stops[next].loc || ''} · ${stops[next].y || ''}</span></div>
-        </div>
-        <button class="tour-arrow tour-arrow-next" data-dir="1" aria-label="Next">
-          <svg width="28" height="36" viewBox="0 0 28 36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="8,4 22,18 8,32"/>
-          </svg>
+        <button class="active-tour-close" aria-label="End tour">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
       </div>
-      <div class="tour-segment-info" id="tour-segment-info"></div>
-      <div id="tour-map-container" class="tour-map-full"></div>
+
+      <!-- Map zone -->
+      <div class="active-tour-map-zone">
+        <div id="tour-map-container" style="width:100%;height:100%"></div>
+        <div class="active-tour-segment-badge" id="tour-segment-info">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span id="tour-segment-text">Loading...</span>
+        </div>
+      </div>
+
+      <!-- Bottom panel -->
+      <div class="active-tour-bottom">
+        <div class="active-tour-handle"></div>
+
+        <div class="active-tour-carousel">
+          <!-- Current mural -->
+          <div class="active-tour-current" data-id="${stops[curr].id}">
+            <div class="active-tour-img-wrap">
+              <img class="active-tour-img" src="${stops[curr].img || ''}" alt="${stops[curr].a}" onerror="this.style.background='#ddd'">
+              <span class="active-tour-num" style="background:${routeColor}">${curr + 1}</span>
+              <span class="active-tour-now-label">Now</span>
+            </div>
+            <div class="active-tour-info">
+              <div class="active-tour-artist">${stops[curr].a}</div>
+              ${stops[curr].t ? `<div class="active-tour-title">"${stops[curr].t}"</div>` : ''}
+              <div class="active-tour-address">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                ${stops[curr].bldg || stops[curr].loc || ''}
+              </div>
+            </div>
+          </div>
+
+          <!-- Connector -->
+          <div class="active-tour-connector">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+
+          <!-- Next mural -->
+          <div class="active-tour-next" data-id="${stops[next].id}">
+            <div class="active-tour-img-wrap">
+              <img class="active-tour-img" src="${stops[next].img || ''}" alt="${stops[next].a}" onerror="this.style.background='#ddd'">
+              <span class="active-tour-num">${next + 1}</span>
+            </div>
+            <span class="active-tour-next-label">Next Up</span>
+            <div class="active-tour-artist">${stops[next].a}</div>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="active-tour-actions">
+          <button class="active-tour-btn active-tour-btn-directions" id="tour-go-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Go To Mural
+          </button>
+          <button class="active-tour-btn active-tour-btn-details" id="tour-details-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            Mural Details
+          </button>
+        </div>
+
+        <!-- Step navigation -->
+        <div class="active-tour-step-nav">
+          <button class="active-tour-step-btn" data-dir="-1">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            Prev
+          </button>
+          <div class="active-tour-dots" id="tour-dots">
+            ${buildTourDots(len, curr, routeColor)}
+          </div>
+          <button class="active-tour-step-btn" data-dir="1">
+            Next
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
     </div>
   `;
 
   // Back button
-  views.tours.querySelector('.tour-back').addEventListener('click', () => {
+  views.tours.querySelector('.active-tour-back').addEventListener('click', () => {
     closeTour();
     renderTourList();
   });
 
-  // Arrow buttons
-  views.tours.querySelectorAll('.tour-arrow').forEach(btn => {
+  // Close button
+  views.tours.querySelector('.active-tour-close').addEventListener('click', () => {
+    closeTour();
+    renderTourList();
+  });
+
+  // Step nav buttons (Prev / Next)
+  views.tours.querySelectorAll('.active-tour-step-btn').forEach(btn => {
     btn.addEventListener('click', () => navigateTour(Number(btn.dataset.dir)));
   });
 
-  // Card tap → detail
-  views.tours.querySelectorAll('.tour-carousel-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const mural = murals.find(m => m.id === Number(card.dataset.id));
-      if (mural) openDetail(mural);
-    });
+  // Current card tap → detail
+  views.tours.querySelector('.active-tour-current')?.addEventListener('click', () => {
+    const mural = murals.find(m => m.id === Number(views.tours.querySelector('.active-tour-current').dataset.id));
+    if (mural) openDetail(mural);
+  });
+
+  // Next card tap → advance
+  views.tours.querySelector('.active-tour-next')?.addEventListener('click', () => {
+    navigateTour(1);
+  });
+
+  // Go To Mural button → directions
+  document.getElementById('tour-go-btn')?.addEventListener('click', () => {
+    const m = stops[state.tourIndex];
+    if (m && m.lat && m.lng) {
+      window.open(`https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking`, '_blank');
+    }
+  });
+
+  // Mural Details button → open detail page
+  document.getElementById('tour-details-btn')?.addEventListener('click', () => {
+    const mural = stops[state.tourIndex];
+    if (mural) openDetail(mural);
   });
 
   // Init map
@@ -1671,33 +1970,56 @@ function renderTourLoop() {
   setupTourSwipe();
 }
 
-/** Update just the 4 cards, counter, segment info, and fetch new route segment. */
+/** Update the bottom panel cards, progress, dots, and fetch new route segment. */
 function renderTourCards() {
   const stops = state.tourStops;
   const len = stops.length;
   const idx = state.tourIndex;
-
   const curr = idx;
   const next = wrapIndex(idx + 1, len);
+  const routeColor = TOUR_COLORS[state.activeTour?.id] || '#0E918C';
+  const pct = Math.round(((curr + 1) / len) * 100);
 
-  const counterEl = views.tours.querySelector('.tour-header-counter');
-  if (counterEl) counterEl.textContent = `${curr + 1} of ${len}`;
+  // Progress bar + label
+  const fill = views.tours.querySelector('.active-tour-progress-fill');
+  if (fill) { fill.style.width = pct + '%'; fill.style.background = routeColor; }
+  const label = views.tours.querySelector('.active-tour-progress-label');
+  if (label) label.textContent = `${curr + 1} of ${len}`;
 
-  // Update carousel cards
-  const cards = views.tours.querySelectorAll('.tour-carousel-card');
-  if (cards.length >= 2) {
-    cards[0].dataset.id = stops[curr].id;
-    cards[0].querySelector('.tour-carousel-img').src = stops[curr].img || '';
-    cards[0].querySelector('.tour-carousel-img').alt = stops[curr].a;
-    cards[0].querySelector('.tour-carousel-num').textContent = curr + 1;
-    cards[0].querySelector('.tour-carousel-caption').innerHTML = `${stops[curr].a}<br><span class="tour-carousel-sub">${stops[curr].bldg || stops[curr].loc || ''} · ${stops[curr].y || ''}</span>`;
-
-    cards[1].dataset.id = stops[next].id;
-    cards[1].querySelector('.tour-carousel-num').textContent = next + 1;
-    cards[1].querySelector('.tour-carousel-img').src = stops[next].img || '';
-    cards[1].querySelector('.tour-carousel-img').alt = stops[next].a;
-    cards[1].querySelector('.tour-carousel-caption').innerHTML = `${stops[next].a}<br><span class="tour-carousel-sub">${stops[next].bldg || stops[next].loc || ''} · ${stops[next].y || ''}</span>`;
+  // Current card
+  const currentCard = views.tours.querySelector('.active-tour-current');
+  if (currentCard) {
+    currentCard.dataset.id = stops[curr].id;
+    const img = currentCard.querySelector('.active-tour-img');
+    if (img) { img.src = stops[curr].img || ''; img.alt = stops[curr].a; }
+    const num = currentCard.querySelector('.active-tour-num');
+    if (num) { num.textContent = curr + 1; num.style.background = routeColor; }
+    const artist = currentCard.querySelector('.active-tour-artist');
+    if (artist) artist.textContent = stops[curr].a;
+    const title = currentCard.querySelector('.active-tour-title');
+    if (title) title.textContent = stops[curr].t ? `"${stops[curr].t}"` : '';
+    const addr = currentCard.querySelector('.active-tour-address');
+    if (addr) {
+      const addrText = stops[curr].bldg || stops[curr].loc || '';
+      addr.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${addrText}`;
+    }
   }
+
+  // Next card
+  const nextCard = views.tours.querySelector('.active-tour-next');
+  if (nextCard) {
+    nextCard.dataset.id = stops[next].id;
+    const img = nextCard.querySelector('.active-tour-img');
+    if (img) { img.src = stops[next].img || ''; img.alt = stops[next].a; }
+    const num = nextCard.querySelector('.active-tour-num');
+    if (num) num.textContent = next + 1;
+    const artist = nextCard.querySelector('.active-tour-artist');
+    if (artist) artist.textContent = stops[next].a;
+  }
+
+  // Dots
+  const dotsEl = document.getElementById('tour-dots');
+  if (dotsEl) dotsEl.innerHTML = buildTourDots(len, curr, routeColor);
 
   fetchTourSegment();
 }
@@ -1777,7 +2099,7 @@ function fetchTourSegment() {
   const bounds = L.latLngBounds([[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]]);
   tourMap.fitBounds(bounds, { padding: [30, 30], maxZoom: 19 });
 
-  const segInfo = document.getElementById('tour-segment-info');
+  const segInfo = document.getElementById('tour-segment-text') || document.getElementById('tour-segment-info');
 
   // Try static route path first (GPX or KML)
   const routeId = state.activeTour?.id;
@@ -1801,7 +2123,7 @@ function fetchTourSegment() {
         color: '#1E5B8A', weight: 5, opacity: 0.85,
       }).addTo(tourMap);
 
-      if (segInfo) segInfo.innerHTML = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
+      if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
       return;
     }
   }
@@ -1826,7 +2148,7 @@ function fetchTourSegment() {
         color: '#1E5B8A', weight: 5, opacity: 0.85,
       }).addTo(tourMap);
 
-      if (segInfo) segInfo.innerHTML = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
+      if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
     })
     .catch(() => {
       state.tourFetching = false;
@@ -1837,7 +2159,7 @@ function fetchTourSegment() {
         [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]],
         { color: '#1E5B8A', weight: 3, opacity: 0.5, dashArray: '8, 8' }
       ).addTo(tourMap);
-      if (segInfo) segInfo.innerHTML = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
+      if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
     });
 }
 
