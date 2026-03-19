@@ -595,10 +595,10 @@ a {
 }
 
 /* ========================================
-   Explore Header
+   Search Bar
    ======================================== */
-.explore-header {
-  padding: calc(var(--safe-top) + 8px) 20px 4px;
+.search-bar {
+  padding: calc(var(--safe-top) + 8px) 20px 8px;
   background: var(--bg);
 }
 
@@ -608,7 +608,34 @@ a {
   font-size: 34px;
   letter-spacing: -0.5px;
   color: var(--text);
-  margin: 0;
+  margin: 0 0 8px;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border: none;
+  border-radius: 12px;
+  padding: 0 14px;
+  height: 42px;
+}
+
+.search-icon {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.search-input-wrap input {
+  flex: 1;
+  height: 100%;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-input-wrap input::placeholder {
+  color: var(--text-muted);
 }
 
 /* ========================================

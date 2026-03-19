@@ -146,9 +146,15 @@
       </div>
     </header>
 
-    <!-- Explore header (visible on Explore tab) -->
-    <div id="explore-header" class="explore-header" hidden>
+    <!-- Search bar (visible on Explore tab) -->
+    <div id="search-bar" class="search-bar" hidden>
       <h1 class="explore-float-title">Explore</h1>
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input id="search-input" type="search" placeholder="Search artists, locations, subjects…" autocomplete="off">
+      </div>
     </div>
 
     <!-- Filter pills (visible on Explore tab) -->

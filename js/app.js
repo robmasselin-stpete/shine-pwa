@@ -437,10 +437,11 @@ const views = {
 
 const detailPage = $('#detail-page');
 const detailContent = $('#detail-content');
-const exploreHeader = $('#explore-header');
+const searchBar = $('#search-bar');
 const exploreFilters = $('#explore-filters');
 const filterPills = $('#filter-pills');
 const yearSubPills = $('#year-sub-pills');
+const searchInput = $('#search-input');
 
 // =============================================
 // Tab navigation
@@ -455,7 +456,7 @@ function switchTab(tab) {
   $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   Object.entries(views).forEach(([key, el]) => { el.hidden = key !== tab; });
 
-  exploreHeader.hidden = tab !== 'explore';
+  searchBar.hidden = tab !== 'explore';
   exploreFilters.hidden = tab !== 'explore';
   detailPage.hidden = true;
 
@@ -600,6 +601,13 @@ function renderYearSubPills() {
   }
 }
 
+// =============================================
+// Search
+// =============================================
+searchInput.addEventListener('input', (e) => {
+  state.searchQuery = e.target.value.trim();
+  renderExplore();
+});
 
 // =============================================
 // Explore view (mural grid)
