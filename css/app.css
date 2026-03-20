@@ -2890,9 +2890,13 @@ a {
 
 .active-tour-swipe-hint {
   color: var(--text3);
-  width: 70%;
+  width: 60%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -3px;
+  opacity: 0.5;
 }
 
 .active-tour-dots {
