@@ -2608,29 +2608,8 @@ function extractPathSegment(fullPath, fromStop, toStop) {
 function navigateTour(dir, skipMapFit) {
   const len = state.tourStops.length;
   if (len === 0) return;
-
-  // Slide animation on the carousel
-  const carousel = views.loops.querySelector('.active-tour-carousel');
-  if (carousel) {
-    carousel.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
-    carousel.style.transform = `translateX(${dir > 0 ? '-30' : '30'}px)`;
-    carousel.style.opacity = '0.3';
-    setTimeout(() => {
-      state.tourIndex = wrapIndex(state.tourIndex + dir, len);
-      renderTourCards(skipMapFit);
-      carousel.style.transition = 'none';
-      carousel.style.transform = `translateX(${dir > 0 ? '30' : '-30'}px)`;
-      carousel.style.opacity = '0.3';
-      requestAnimationFrame(() => {
-        carousel.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
-        carousel.style.transform = 'translateX(0)';
-        carousel.style.opacity = '1';
-      });
-    }, 180);
-  } else {
-    state.tourIndex = wrapIndex(state.tourIndex + dir, len);
-    renderTourCards(skipMapFit);
-  }
+  state.tourIndex = wrapIndex(state.tourIndex + dir, len);
+  renderTourCards(skipMapFit);
 }
 
 /** Set up horizontal swipe on the tour bottom panel. */
@@ -2639,23 +2618,30 @@ function setupTourSwipe() {
   if (!el) return;
   let startX = 0;
   let startY = 0;
-  let swiping = false;
+  let locked = null; // 'h' or 'v' once direction is determined
 
   el.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
-    swiping = true;
+    locked = null;
   }, { passive: true });
 
+  el.addEventListener('touchmove', (e) => {
+    if (locked === 'v') return; // vertical scroll, don't interfere
+    const dx = Math.abs(e.touches[0].clientX - startX);
+    const dy = Math.abs(e.touches[0].clientY - startY);
+    if (!locked && (dx > 8 || dy > 8)) {
+      locked = dx > dy ? 'h' : 'v';
+    }
+    if (locked === 'h') e.preventDefault(); // lock horizontal, kill vertical bounce
+  }, { passive: false });
+
   el.addEventListener('touchend', (e) => {
-    if (!swiping) return;
-    swiping = false;
+    if (locked !== 'h') return;
     const dx = e.changedTouches[0].clientX - startX;
-    const dy = e.changedTouches[0].clientY - startY;
-    // Horizontal swipe dominant and > 40px
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      if (dx < 0) navigateTour(1, true);   // swipe left → next
-      else navigateTour(-1, true);          // swipe right → prev
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) navigateTour(1, true);
+      else navigateTour(-1, true);
     }
   }, { passive: true });
 }
