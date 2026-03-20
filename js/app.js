@@ -2018,7 +2018,7 @@ function buildCompassArcHTML() {
     // Parabolic frown curve: center high, edges low
     const norm = (i - mid) / mid; // -1 to 1
     const arcY = Math.round((1 - norm * norm) * 6); // 6 at center, 0 at edges
-    dots += `<span class="compass-dot" data-heat="off" style="--arc-y:${arcY}px"></span>`;
+    dots += `<span class="compass-dot" data-heat="cold" style="--arc-y:${arcY}px"></span>`;
   }
   return `
     <div class="compass-arc" hidden>

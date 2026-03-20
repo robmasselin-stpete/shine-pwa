@@ -2599,6 +2599,7 @@ a {
   min-height: 0;
   overflow: hidden;
   padding-top: 20px;
+  background: var(--bg);
 }
 
 .active-tour-segment-badge {
