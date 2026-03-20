@@ -2889,14 +2889,20 @@ a {
 }
 
 .active-tour-swipe-hint {
-  color: var(--text3);
-  width: 60%;
+  color: var(--text2);
+  width: 70%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  font-size: 20px;
-  font-weight: 300;
-  letter-spacing: -3px;
-  opacity: 0.5;
+}
+
+.swipe-hint-text {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text3);
 }
 
 .active-tour-dots {

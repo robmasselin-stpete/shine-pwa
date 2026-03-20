@@ -2316,8 +2316,9 @@ function renderTourLoop() {
             ${buildTourDots(len, curr, routeColor)}
           </div>
           <div class="active-tour-swipe-hint">
-            <span class="swipe-chevrons-left">‹‹</span>
-            <span class="swipe-chevrons-right">››</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            <span class="swipe-hint-text">swipe to navigate</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
         </div>
       </div>
@@ -2610,35 +2611,31 @@ function navigateTour(dir) {
   renderTourCards();
 }
 
-/** Set up vertical swipe on the tour view. */
+/** Set up horizontal swipe on the tour bottom panel. */
 function setupTourSwipe() {
-  const el = views.loops;
-  let startY = 0;
+  const el = views.loops.querySelector('.active-tour-bottom');
+  if (!el) return;
   let startX = 0;
+  let startY = 0;
   let swiping = false;
 
-  const onTouchStart = (e) => {
-    // Don't capture swipes on the map
-    if (e.target.closest('#tour-map-container')) return;
-    startY = e.touches[0].clientY;
+  el.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
     swiping = true;
-  };
+  }, { passive: true });
 
-  const onTouchEnd = (e) => {
+  el.addEventListener('touchend', (e) => {
     if (!swiping) return;
     swiping = false;
-    const dy = e.changedTouches[0].clientY - startY;
     const dx = e.changedTouches[0].clientX - startX;
-    // Only trigger if vertical swipe is dominant and > 40px
-    if (Math.abs(dy) > 40 && Math.abs(dy) > Math.abs(dx) * 1.5) {
-      if (dy < 0) navigateTour(1);  // swipe up → next
-      else navigateTour(-1);         // swipe down → prev
+    const dy = e.changedTouches[0].clientY - startY;
+    // Horizontal swipe dominant and > 40px
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) navigateTour(1);   // swipe left → next
+      else navigateTour(-1);          // swipe right → prev
     }
-  };
-
-  el.addEventListener('touchstart', onTouchStart, { passive: true });
-  el.addEventListener('touchend', onTouchEnd, { passive: true });
+  }, { passive: true });
 }
 
 // =============================================
