@@ -2269,7 +2269,6 @@ function renderTourLoop() {
 
       <!-- Bottom panel -->
       <div class="active-tour-bottom">
-        <div class="active-tour-handle"></div>
 
         <div class="active-tour-carousel">
           <!-- Prev mural (left) -->
