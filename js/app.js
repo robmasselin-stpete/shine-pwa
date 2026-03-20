@@ -2038,9 +2038,22 @@ function initCompassArc() {
 
   // iOS requires a user gesture to request permission
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    // If previously granted, skip the button
     if (localStorage.getItem('compassGranted')) {
-      startCompassListener(arcEl);
+      // Previously granted — re-request (auto-grants without prompt on iOS)
+      DeviceOrientationEvent.requestPermission().then(perm => {
+        if (perm === 'granted') {
+          startCompassListener(arcEl);
+        } else {
+          // Permission revoked — show button again
+          localStorage.removeItem('compassGranted');
+          btnEl.hidden = false;
+          btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
+        }
+      }).catch(() => {
+        // Needs user gesture — show button
+        btnEl.hidden = false;
+        btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
+      });
     } else {
       btnEl.hidden = false;
       btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
