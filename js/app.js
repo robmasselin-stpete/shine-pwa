@@ -440,7 +440,7 @@ let compassAnimFrame = null;
 let compassSmoothedHeading = null;
 let compassGpsWatchId = null;
 const COMPASS_ARC_DOTS = 21;
-const COMPASS_ARC_SPAN_DEG = 360;
+const COMPASS_ARC_SPAN_DEG = 180;
 
 // Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
@@ -2150,17 +2150,21 @@ function updateCompassArc() {
   // rel: -180..+180, negative = left, positive = right
 
   // Map relative angle to dot index: center (mid) = straight ahead
-  const halfSpan = COMPASS_ARC_SPAN_DEG / 2; // 90
+  // halfSpan = 90° means the arc covers ±90° (180° FOV in front of you)
+  const halfSpan = COMPASS_ARC_SPAN_DEG / 2;
   const dotIdx = Math.round(mid + (rel / halfSpan) * mid);
-  const clampedIdx = Math.max(0, Math.min(COMPASS_ARC_DOTS - 1, dotIdx));
 
-  // Assign heat per dot: 3 green, 2 yellow, rest red
-  dots.forEach((dot, i) => {
-    const diff = Math.abs(i - clampedIdx);
-    if (diff <= 1) dot.dataset.heat = 'hot';
-    else if (diff <= 2) dot.dataset.heat = 'warm';
-    else dot.dataset.heat = 'cold';
-  });
+  // If target is outside the arc's FOV, all dots are red
+  if (dotIdx < -1 || dotIdx > COMPASS_ARC_DOTS) {
+    dots.forEach(d => d.dataset.heat = 'cold');
+  } else {
+    dots.forEach((dot, i) => {
+      const diff = Math.abs(i - dotIdx);
+      if (diff <= 1) dot.dataset.heat = 'hot';
+      else if (diff <= 2) dot.dataset.heat = 'warm';
+      else dot.dataset.heat = 'cold';
+    });
+  }
 
   // Direction label
   if (labelEl) {
