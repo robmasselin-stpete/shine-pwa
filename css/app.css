@@ -2627,7 +2627,7 @@ a {
 /* ── Compass Bearing Arc ── */
 .compass-arc {
   position: absolute;
-  top: 6px;
+  top: -4px;
   left: 0;
   right: 0;
   z-index: 500;
@@ -2673,29 +2673,18 @@ a {
   background: rgba(239, 68, 68, 0.5);
 }
 
-.compass-arc-label {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text);
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-  white-space: nowrap;
-}
-
 .compass-enable-btn {
   position: absolute;
-  top: 6px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 500;
   background: var(--teal);
   border: none;
-  border-radius: 24px;
-  padding: 10px 24px;
+  border-radius: 28px;
+  padding: 14px 32px;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   color: #fff;
   cursor: pointer;
@@ -2890,8 +2879,14 @@ a {
 /* Dots row (centered below carousel) */
 .active-tour-dots-row {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   padding: 0 16px calc(var(--safe-bottom) + 10px);
+}
+
+.active-tour-swipe-hint {
+  color: var(--text3);
 }
 
 .active-tour-dots {

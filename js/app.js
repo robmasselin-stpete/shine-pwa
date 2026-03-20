@@ -910,7 +910,8 @@ function initMap() {
   document.getElementById('map-container').addEventListener('click', (e) => {
     if (e.target.closest('.nearest-popup') || e.target.closest('.map-range-banner') ||
         e.target.closest('.map-fab-stack') || e.target.closest('.directions-bar') ||
-        e.target.closest('.directions-chip') || e.target.closest('.map-mural-sheet')) return;
+        e.target.closest('.directions-chip') || e.target.closest('.map-mural-sheet') ||
+        e.target.closest('.mural-map-icon')) return;
     dismissNearestPopup();
     closeMapSheet();
   });
@@ -2022,7 +2023,6 @@ function buildCompassArcHTML() {
   return `
     <div class="compass-arc" hidden>
       <div class="compass-arc-dots">${dots}</div>
-      <div class="compass-arc-label"></div>
     </div>
     <button class="compass-enable-btn" hidden>Enable Compass</button>
   `;
@@ -2038,8 +2038,13 @@ function initCompassArc() {
 
   // iOS requires a user gesture to request permission
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    btnEl.hidden = false;
-    btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
+    // If previously granted, skip the button
+    if (localStorage.getItem('compassGranted')) {
+      startCompassListener(arcEl);
+    } else {
+      btnEl.hidden = false;
+      btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
+    }
   } else {
     // Android — start directly
     startCompassListener(arcEl);
@@ -2051,6 +2056,7 @@ function requestCompassPermission(arcEl, btnEl) {
   DeviceOrientationEvent.requestPermission().then(perm => {
     if (perm === 'granted') {
       state.compassPermission = true;
+      localStorage.setItem('compassGranted', '1');
       btnEl.hidden = true;
       startCompassListener(arcEl);
     } else {
@@ -2063,10 +2069,6 @@ function requestCompassPermission(arcEl, btnEl) {
 function startCompassListener(arcEl) {
   state.compassAvailable = true;
   arcEl.hidden = false;
-
-  // Show waiting state immediately so user sees the arc
-  const labelEl = arcEl.querySelector('.compass-arc-label');
-  if (labelEl) labelEl.textContent = 'Waiting for signal…';
 
   compassHandler = (e) => {
     // iOS: webkitCompassHeading (0=N, clockwise). Android: 360 - alpha.
@@ -2130,13 +2132,11 @@ function updateCompassArc() {
 
   const dist = haversine(state.userLat, state.userLng, target.lat, target.lng);
   const dots = arcEl.querySelectorAll('.compass-dot');
-  const labelEl = arcEl.querySelector('.compass-arc-label');
   const mid = Math.floor(COMPASS_ARC_DOTS / 2); // 10
 
   // "You're here!" mode
   if (dist < 10) {
     dots.forEach(d => d.dataset.heat = 'hot');
-    if (labelEl) labelEl.textContent = "You're here!";
     return;
   }
 
@@ -2164,16 +2164,6 @@ function updateCompassArc() {
       else if (diff <= 4) dot.dataset.heat = 'warm';
       else dot.dataset.heat = 'cold';
     });
-  }
-
-  // Direction label
-  if (labelEl) {
-    const absRel = Math.abs(rel);
-    const side = rel < 0 ? 'left' : 'right';
-    if (absRel < 10) labelEl.textContent = 'Straight ahead!';
-    else if (absRel < 45) labelEl.textContent = `Slightly ${side}`;
-    else if (absRel < 135) labelEl.textContent = `Turn ${side}`;
-    else labelEl.textContent = `Behind ${side}`;
   }
 }
 
@@ -2311,6 +2301,9 @@ function renderTourLoop() {
         <div class="active-tour-dots-row">
           <div class="active-tour-dots" id="tour-dots">
             ${buildTourDots(len, curr, routeColor)}
+          </div>
+          <div class="active-tour-swipe-hint">
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h14"/><path d="M4 1L1 5l3 4"/><path d="M12 1l3 4-3 4"/></svg>
           </div>
         </div>
       </div>
