@@ -2009,14 +2009,14 @@ function openTour(def, startAtMuralId) {
 // Compass Bearing Arc
 // =============================================
 
-/** Generate compass arc HTML: 21 dots in a smile curve + enable button + label. */
+/** Generate compass arc HTML: 21 dots in a frown curve + enable button + label. */
 function buildCompassArcHTML() {
   let dots = '';
   const mid = Math.floor(COMPASS_ARC_DOTS / 2); // 10
   for (let i = 0; i < COMPASS_ARC_DOTS; i++) {
-    // Parabolic smile curve: edges high, center low
+    // Parabolic frown curve: center high, edges low
     const norm = (i - mid) / mid; // -1 to 1
-    const arcY = Math.round(norm * norm * 6); // 0..6px offset
+    const arcY = Math.round((1 - norm * norm) * 6); // 6 at center, 0 at edges
     dots += `<span class="compass-dot" data-heat="off" style="--arc-y:${arcY}px"></span>`;
   }
   return `
@@ -2246,12 +2246,6 @@ function renderTourLoop() {
         </button>
         <div class="active-tour-nav-info">
           <div class="active-tour-nav-name">${state.activeTour.name}</div>
-          <div class="active-tour-progress">
-            <div class="active-tour-progress-track">
-              <div class="active-tour-progress-fill" style="width:${pct}%;background:${routeColor}"></div>
-            </div>
-            <span class="active-tour-progress-label">${curr + 1} of ${len}</span>
-          </div>
         </div>
         <button class="active-tour-close" aria-label="End tour">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -2375,13 +2369,6 @@ function renderTourCards() {
   const prev = wrapIndex(idx - 1, len);
   const next = wrapIndex(idx + 1, len);
   const routeColor = TOUR_COLORS[state.activeTour?.id] || '#0E918C';
-  const pct = Math.round(((curr + 1) / len) * 100);
-
-  // Progress bar + label
-  const fill = views.loops.querySelector('.active-tour-progress-fill');
-  if (fill) { fill.style.width = pct + '%'; fill.style.background = routeColor; }
-  const label = views.loops.querySelector('.active-tour-progress-label');
-  if (label) label.textContent = `${curr + 1} of ${len}`;
 
   // Prev card
   const prevCard = views.loops.querySelector('.active-tour-prev');
