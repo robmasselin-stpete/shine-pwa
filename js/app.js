@@ -421,6 +421,11 @@ const state = {
   walkMode: false,
   walkWatchId: null,
   walkAlerted: new Set(),
+  // Compass Arc state
+  compassAvailable: false,
+  compassHeading: null,
+  compassWatchId: null,
+  compassPermission: false,
 };
 
 // Walk Mode module-level vars
@@ -428,6 +433,14 @@ let walkAudioCtx = null;
 let proximityBannerEl = null;
 let proximityBannerTimeout = null;
 const PROXIMITY_THRESHOLD = 30.48; // 100 feet in meters
+
+// Compass Arc module-level vars
+let compassHandler = null;
+let compassAnimFrame = null;
+let compassSmoothedHeading = null;
+let compassGpsWatchId = null;
+const COMPASS_ARC_DOTS = 21;
+const COMPASS_ARC_SPAN_DEG = 180;
 
 // Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
@@ -493,6 +506,17 @@ function haversine(lat1, lng1, lat2, lng2) {
   const dLng = toRad(lng2 - lng1);
   const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng/2)**2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+/** Initial bearing from point 1 to point 2 in degrees (0-360). */
+function bearing(lat1, lng1, lat2, lng2) {
+  const toRad = (d) => d * Math.PI / 180;
+  const toDeg = (r) => r * 180 / Math.PI;
+  const dLng = toRad(lng2 - lng1);
+  const y = Math.sin(dLng) * Math.cos(toRad(lat2));
+  const x = Math.cos(toRad(lat1)) * Math.sin(toRad(lat2)) -
+            Math.sin(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.cos(dLng);
+  return (toDeg(Math.atan2(y, x)) + 360) % 360;
 }
 
 /** Format meters as "X ft" or "X.X mi" for display. */
@@ -1981,8 +2005,193 @@ function openTour(def, startAtMuralId) {
   renderTourLoop();
 }
 
+// =============================================
+// Compass Bearing Arc
+// =============================================
+
+/** Generate compass arc HTML: 21 dots in a smile curve + enable button + label. */
+function buildCompassArcHTML() {
+  let dots = '';
+  const mid = Math.floor(COMPASS_ARC_DOTS / 2); // 10
+  for (let i = 0; i < COMPASS_ARC_DOTS; i++) {
+    // Parabolic smile curve: edges high, center low
+    const norm = (i - mid) / mid; // -1 to 1
+    const arcY = Math.round(norm * norm * 6); // 0..6px offset
+    dots += `<span class="compass-dot" data-heat="off" style="--arc-y:${arcY}px"></span>`;
+  }
+  return `
+    <div class="compass-arc" hidden>
+      <div class="compass-arc-dots">${dots}</div>
+      <div class="compass-arc-label"></div>
+    </div>
+    <button class="compass-enable-btn" hidden>Enable Compass</button>
+  `;
+}
+
+/** Init compass arc: check availability, show enable button on iOS or auto-start on Android. */
+function initCompassArc() {
+  if (!window.DeviceOrientationEvent) return;
+
+  const arcEl = views.loops.querySelector('.compass-arc');
+  const btnEl = views.loops.querySelector('.compass-enable-btn');
+  if (!arcEl || !btnEl) return;
+
+  // iOS requires a user gesture to request permission
+  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    btnEl.hidden = false;
+    btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
+  } else {
+    // Android — start directly
+    startCompassListener(arcEl);
+  }
+}
+
+/** iOS permission flow — must be called from a user gesture. */
+function requestCompassPermission(arcEl, btnEl) {
+  DeviceOrientationEvent.requestPermission().then(perm => {
+    if (perm === 'granted') {
+      state.compassPermission = true;
+      btnEl.hidden = true;
+      startCompassListener(arcEl);
+    }
+  }).catch(() => {});
+}
+
+/** Attach deviceorientation listener + start GPS for compass. */
+function startCompassListener(arcEl) {
+  state.compassAvailable = true;
+  arcEl.hidden = false;
+
+  compassHandler = (e) => {
+    // iOS: webkitCompassHeading (0=N, clockwise). Android: 360 - alpha.
+    let heading = e.webkitCompassHeading != null
+      ? e.webkitCompassHeading
+      : (e.alpha != null ? (360 - e.alpha) % 360 : null);
+    if (heading == null) return;
+
+    // Exponential smoothing to reduce jitter
+    if (compassSmoothedHeading == null) {
+      compassSmoothedHeading = heading;
+    } else {
+      // Handle wrap-around (e.g. 359 → 1)
+      let diff = heading - compassSmoothedHeading;
+      if (diff > 180) diff -= 360;
+      if (diff < -180) diff += 360;
+      compassSmoothedHeading = (compassSmoothedHeading + diff * 0.25 + 360) % 360;
+    }
+    state.compassHeading = compassSmoothedHeading;
+    scheduleArcUpdate();
+  };
+  window.addEventListener('deviceorientation', compassHandler, true);
+
+  ensureGpsForCompass();
+}
+
+/** Start a GPS watcher for compass if walk mode isn't already providing one. */
+function ensureGpsForCompass() {
+  if (state.walkWatchId != null) return; // walk mode is running, piggyback
+  if (compassGpsWatchId != null) return; // already watching
+  compassGpsWatchId = navigator.geolocation.watchPosition(
+    pos => {
+      state.userLat = pos.coords.latitude;
+      state.userLng = pos.coords.longitude;
+      scheduleArcUpdate();
+    },
+    () => {},
+    { enableHighAccuracy: true, maximumAge: 3000 }
+  );
+}
+
+/** Throttle arc updates to rAF. */
+function scheduleArcUpdate() {
+  if (compassAnimFrame) return;
+  compassAnimFrame = requestAnimationFrame(() => {
+    compassAnimFrame = null;
+    updateCompassArc();
+  });
+}
+
+/** Core arc update: compute bearing, map to dots, set heat + label. */
+function updateCompassArc() {
+  const arcEl = views.loops?.querySelector('.compass-arc');
+  if (!arcEl || arcEl.hidden) return;
+  if (state.compassHeading == null || state.userLat == null) return;
+  if (!state.tourStops.length) return;
+
+  // Target = current stop (the one user is navigating to)
+  const target = state.tourStops[state.tourIndex];
+  if (!target || !target.lat || !target.lng) return;
+
+  const dist = haversine(state.userLat, state.userLng, target.lat, target.lng);
+  const dots = arcEl.querySelectorAll('.compass-dot');
+  const labelEl = arcEl.querySelector('.compass-arc-label');
+  const mid = Math.floor(COMPASS_ARC_DOTS / 2); // 10
+
+  // "You're here!" mode
+  if (dist < 10) {
+    dots.forEach(d => d.dataset.heat = 'hot');
+    if (labelEl) labelEl.textContent = "You're here!";
+    return;
+  }
+
+  // Bearing from user to target
+  const targetBearing = bearing(state.userLat, state.userLng, target.lat, target.lng);
+
+  // Relative angle: how far off-center the target is from where user is facing
+  let rel = targetBearing - state.compassHeading;
+  if (rel > 180) rel -= 360;
+  if (rel < -180) rel += 360;
+  // rel: -180..+180, negative = left, positive = right
+
+  // Map relative angle to dot index: center (mid) = straight ahead
+  const halfSpan = COMPASS_ARC_SPAN_DEG / 2; // 90
+  const dotIdx = Math.round(mid + (rel / halfSpan) * mid);
+  const clampedIdx = Math.max(0, Math.min(COMPASS_ARC_DOTS - 1, dotIdx));
+
+  // Assign heat per dot based on distance from the "hot" dot
+  dots.forEach((dot, i) => {
+    const diff = Math.abs(i - clampedIdx);
+    if (diff === 0) dot.dataset.heat = 'hot';
+    else if (diff <= 1) dot.dataset.heat = 'warm';
+    else if (diff <= 3) dot.dataset.heat = 'cool';
+    else if (diff <= 5) dot.dataset.heat = 'cold';
+    else dot.dataset.heat = 'off';
+  });
+
+  // Direction label
+  if (labelEl) {
+    const absRel = Math.abs(rel);
+    const side = rel < 0 ? 'left' : 'right';
+    if (absRel < 10) labelEl.textContent = 'Straight ahead!';
+    else if (absRel < 45) labelEl.textContent = `Slightly ${side}`;
+    else if (absRel < 135) labelEl.textContent = `Turn ${side}`;
+    else labelEl.textContent = `Behind ${side}`;
+  }
+}
+
+/** Stop compass arc: remove listeners, cancel rAF, clear GPS watcher. */
+function stopCompassArc() {
+  if (compassHandler) {
+    window.removeEventListener('deviceorientation', compassHandler, true);
+    compassHandler = null;
+  }
+  if (compassAnimFrame) {
+    cancelAnimationFrame(compassAnimFrame);
+    compassAnimFrame = null;
+  }
+  if (compassGpsWatchId != null) {
+    navigator.geolocation.clearWatch(compassGpsWatchId);
+    compassGpsWatchId = null;
+  }
+  compassSmoothedHeading = null;
+  state.compassAvailable = false;
+  state.compassHeading = null;
+  state.compassPermission = false;
+}
+
 /** Destroy tour mini-map, reset state, show list. */
 function closeTour() {
+  stopCompassArc();
   if (tourMap) {
     tourMap.remove();
     tourMap = null;
@@ -2050,6 +2259,7 @@ function renderTourLoop() {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           <span id="tour-segment-text">Loading...</span>
         </div>
+        ${buildCompassArcHTML()}
       </div>
 
       <!-- Bottom panel -->
@@ -2145,6 +2355,9 @@ function renderTourLoop() {
 
   // Swipe support
   setupTourSwipe();
+
+  // Compass bearing arc
+  initCompassArc();
 }
 
 /** Update the bottom panel cards, progress, dots, and fetch new route segment. */
@@ -2210,6 +2423,9 @@ function renderTourCards() {
   // Dots
   const dotsEl = document.getElementById('tour-dots');
   if (dotsEl) dotsEl.innerHTML = buildTourDots(len, curr, routeColor);
+
+  // Recalculate compass arc for new target
+  if (state.compassAvailable) scheduleArcUpdate();
 
   fetchTourSegment();
 }
