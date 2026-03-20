@@ -2628,8 +2628,8 @@ a {
 .compass-arc {
   position: absolute;
   top: 46px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   z-index: 500;
   pointer-events: none;
   display: flex;
@@ -2643,7 +2643,9 @@ a {
 .compass-arc-dots {
   display: flex;
   align-items: flex-end;
-  gap: 3px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 12px;
 }
 
 .compass-dot {
@@ -2667,16 +2669,8 @@ a {
   box-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
 }
 
-.compass-dot[data-heat="cool"] {
-  background: #F97316;
-}
-
 .compass-dot[data-heat="cold"] {
-  background: #EF4444;
-}
-
-.compass-dot[data-heat="off"] {
-  background: transparent;
+  background: rgba(239, 68, 68, 0.5);
 }
 
 .compass-arc-label {

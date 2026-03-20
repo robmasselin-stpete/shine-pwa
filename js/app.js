@@ -440,7 +440,7 @@ let compassAnimFrame = null;
 let compassSmoothedHeading = null;
 let compassGpsWatchId = null;
 const COMPASS_ARC_DOTS = 21;
-const COMPASS_ARC_SPAN_DEG = 180;
+const COMPASS_ARC_SPAN_DEG = 360;
 
 // Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
@@ -2083,7 +2083,7 @@ function startCompassListener(arcEl) {
       let diff = heading - compassSmoothedHeading;
       if (diff > 180) diff -= 360;
       if (diff < -180) diff += 360;
-      compassSmoothedHeading = (compassSmoothedHeading + diff * 0.25 + 360) % 360;
+      compassSmoothedHeading = (compassSmoothedHeading + diff * 0.6 + 360) % 360;
     }
     state.compassHeading = compassSmoothedHeading;
     scheduleArcUpdate();
@@ -2154,14 +2154,12 @@ function updateCompassArc() {
   const dotIdx = Math.round(mid + (rel / halfSpan) * mid);
   const clampedIdx = Math.max(0, Math.min(COMPASS_ARC_DOTS - 1, dotIdx));
 
-  // Assign heat per dot based on distance from the "hot" dot
+  // Assign heat per dot: 3 green, 2 yellow, rest red
   dots.forEach((dot, i) => {
     const diff = Math.abs(i - clampedIdx);
-    if (diff === 0) dot.dataset.heat = 'hot';
-    else if (diff <= 1) dot.dataset.heat = 'warm';
-    else if (diff <= 3) dot.dataset.heat = 'cool';
-    else if (diff <= 5) dot.dataset.heat = 'cold';
-    else dot.dataset.heat = 'off';
+    if (diff <= 1) dot.dataset.heat = 'hot';
+    else if (diff <= 2) dot.dataset.heat = 'warm';
+    else dot.dataset.heat = 'cold';
   });
 
   // Direction label
