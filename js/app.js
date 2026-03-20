@@ -440,7 +440,7 @@ let compassAnimFrame = null;
 let compassSmoothedHeading = null;
 let compassGpsWatchId = null;
 const COMPASS_ARC_DOTS = 21;
-const COMPASS_ARC_SPAN_DEG = 180;
+const COMPASS_ARC_SPAN_DEG = 90;
 
 // Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
@@ -2083,7 +2083,7 @@ function startCompassListener(arcEl) {
       let diff = heading - compassSmoothedHeading;
       if (diff > 180) diff -= 360;
       if (diff < -180) diff += 360;
-      compassSmoothedHeading = (compassSmoothedHeading + diff * 0.6 + 360) % 360;
+      compassSmoothedHeading = (compassSmoothedHeading + diff * 0.85 + 360) % 360;
     }
     state.compassHeading = compassSmoothedHeading;
     scheduleArcUpdate();
@@ -2161,7 +2161,7 @@ function updateCompassArc() {
     dots.forEach((dot, i) => {
       const diff = Math.abs(i - dotIdx);
       if (diff <= 1) dot.dataset.heat = 'hot';
-      else if (diff <= 2) dot.dataset.heat = 'warm';
+      else if (diff <= 4) dot.dataset.heat = 'warm';
       else dot.dataset.heat = 'cold';
     });
   }
