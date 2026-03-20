@@ -2339,7 +2339,7 @@ function renderTourLoop() {
 
   // Prev card tap → go back
   views.loops.querySelector('.active-tour-prev')?.addEventListener('click', () => {
-    navigateTour(-1);
+    navigateTour(-1, true);
   });
 
   // Current card tap → detail
@@ -2350,7 +2350,7 @@ function renderTourLoop() {
 
   // Next card tap → advance
   views.loops.querySelector('.active-tour-next')?.addEventListener('click', () => {
-    navigateTour(1);
+    navigateTour(1, true);
   });
 
 
@@ -2371,7 +2371,7 @@ function renderTourLoop() {
 }
 
 /** Update the bottom panel cards, progress, dots, and fetch new route segment. */
-function renderTourCards() {
+function renderTourCards(skipMapFit) {
   const stops = state.tourStops;
   const len = stops.length;
   const idx = state.tourIndex;
@@ -2430,7 +2430,7 @@ function renderTourCards() {
   // Recalculate compass arc for new target
   if (state.compassAvailable) scheduleArcUpdate();
 
-  fetchTourSegment();
+  fetchTourSegment(skipMapFit);
 }
 
 /** Create the Leaflet mini-map for the tour. */
@@ -2469,7 +2469,7 @@ function initTourMap() {
 }
 
 /** Fetch OSRM route between last visited stop and first upcoming stop, draw on tour map. */
-function fetchTourSegment() {
+function fetchTourSegment(skipMapFit) {
   if (!tourMap || !state.tourMapReady) return;
   if (state.tourFetching) return;
 
@@ -2508,6 +2508,7 @@ function fetchTourSegment() {
 
   /** Fit map to the drawn route + markers so the full segment fills the view. */
   function fitToRoute(polyline) {
+    if (skipMapFit) return;
     const b = polyline.getBounds()
       .extend([fromStop.lat, fromStop.lng])
       .extend([toStop.lat, toStop.lng]);
@@ -2604,11 +2605,32 @@ function extractPathSegment(fullPath, fromStop, toStop) {
 }
 
 /** Navigate tour: +1 (next) or -1 (prev). Wraps continuously. */
-function navigateTour(dir) {
+function navigateTour(dir, skipMapFit) {
   const len = state.tourStops.length;
   if (len === 0) return;
-  state.tourIndex = wrapIndex(state.tourIndex + dir, len);
-  renderTourCards();
+
+  // Slide animation on the carousel
+  const carousel = views.loops.querySelector('.active-tour-carousel');
+  if (carousel) {
+    carousel.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+    carousel.style.transform = `translateX(${dir > 0 ? '-30' : '30'}px)`;
+    carousel.style.opacity = '0.3';
+    setTimeout(() => {
+      state.tourIndex = wrapIndex(state.tourIndex + dir, len);
+      renderTourCards(skipMapFit);
+      carousel.style.transition = 'none';
+      carousel.style.transform = `translateX(${dir > 0 ? '30' : '-30'}px)`;
+      carousel.style.opacity = '0.3';
+      requestAnimationFrame(() => {
+        carousel.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+        carousel.style.transform = 'translateX(0)';
+        carousel.style.opacity = '1';
+      });
+    }, 180);
+  } else {
+    state.tourIndex = wrapIndex(state.tourIndex + dir, len);
+    renderTourCards(skipMapFit);
+  }
 }
 
 /** Set up horizontal swipe on the tour bottom panel. */
@@ -2632,8 +2654,8 @@ function setupTourSwipe() {
     const dy = e.changedTouches[0].clientY - startY;
     // Horizontal swipe dominant and > 40px
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      if (dx < 0) navigateTour(1);   // swipe left → next
-      else navigateTour(-1);          // swipe right → prev
+      if (dx < 0) navigateTour(1, true);   // swipe left → next
+      else navigateTour(-1, true);          // swipe right → prev
     }
   }, { passive: true });
 }
