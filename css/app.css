@@ -2690,18 +2690,17 @@ a {
   left: 50%;
   transform: translateX(-50%);
   z-index: 500;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--teal);
   border: none;
-  border-radius: 20px;
-  padding: 6px 16px;
+  border-radius: 24px;
+  padding: 10px 24px;
   font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--teal);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
   cursor: pointer;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
+  letter-spacing: 0.02em;
 }
 
 .compass-enable-btn[hidden] { display: none; }

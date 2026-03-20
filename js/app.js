@@ -440,7 +440,7 @@ let compassAnimFrame = null;
 let compassSmoothedHeading = null;
 let compassGpsWatchId = null;
 const COMPASS_ARC_DOTS = 21;
-const COMPASS_ARC_SPAN_DEG = 90;
+const COMPASS_ARC_SPAN_DEG = 140;
 
 // Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
