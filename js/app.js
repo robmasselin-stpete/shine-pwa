@@ -2053,14 +2053,20 @@ function requestCompassPermission(arcEl, btnEl) {
       state.compassPermission = true;
       btnEl.hidden = true;
       startCompassListener(arcEl);
+    } else {
+      console.warn('Compass permission:', perm);
     }
-  }).catch(() => {});
+  }).catch(err => { console.warn('Compass permission error:', err); });
 }
 
 /** Attach deviceorientation listener + start GPS for compass. */
 function startCompassListener(arcEl) {
   state.compassAvailable = true;
   arcEl.hidden = false;
+
+  // Show waiting state immediately so user sees the arc
+  const labelEl = arcEl.querySelector('.compass-arc-label');
+  if (labelEl) labelEl.textContent = 'Waiting for signal…';
 
   compassHandler = (e) => {
     // iOS: webkitCompassHeading (0=N, clockwise). Android: 360 - alpha.

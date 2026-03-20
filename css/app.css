@@ -2636,6 +2636,11 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 8px 14px 6px;
 }
 
 .compass-arc[hidden] { display: none; }
@@ -2685,8 +2690,7 @@ a {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #fff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.85);
   white-space: nowrap;
 }
 
