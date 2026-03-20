@@ -2303,7 +2303,7 @@ function renderTourLoop() {
             ${buildTourDots(len, curr, routeColor)}
           </div>
           <div class="active-tour-swipe-hint">
-            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h14"/><path d="M4 1L1 5l3 4"/><path d="M12 1l3 4-3 4"/></svg>
+            <svg width="100%" height="14" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="none"><path d="M12 7h96"/><path d="M18 2L10 7l8 5"/><path d="M102 2l8 5-8 5"/></svg>
           </div>
         </div>
       </div>

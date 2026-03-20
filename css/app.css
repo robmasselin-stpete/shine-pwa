@@ -2627,7 +2627,7 @@ a {
 /* ── Compass Bearing Arc ── */
 .compass-arc {
   position: absolute;
-  top: -4px;
+  top: -10px;
   left: 0;
   right: 0;
   z-index: 500;
@@ -2887,6 +2887,9 @@ a {
 
 .active-tour-swipe-hint {
   color: var(--text3);
+  width: 70%;
+  display: flex;
+  justify-content: center;
 }
 
 .active-tour-dots {
