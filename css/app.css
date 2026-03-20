@@ -2601,7 +2601,7 @@ a {
 
 .active-tour-segment-badge {
   position: absolute;
-  top: 12px;
+  top: 38px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 500;
@@ -2627,7 +2627,7 @@ a {
 /* ── Compass Bearing Arc ── */
 .compass-arc {
   position: absolute;
-  top: 46px;
+  top: 6px;
   left: 0;
   right: 0;
   z-index: 500;
@@ -2686,7 +2686,7 @@ a {
 
 .compass-enable-btn {
   position: absolute;
-  top: 46px;
+  top: 6px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 500;
