@@ -366,26 +366,20 @@ async function fetchLikeCounts() {
 }
 
 async function toggleLike(muralId) {
-  if (hasLiked(muralId)) return; // one like per device
-  myLikes.add(muralId);
-  saveLikes();
-  likeCounts[muralId] = (likeCounts[muralId] || 0) + 1;
-
-  // Update UI immediately
   const btn = document.getElementById('like-btn');
-  if (btn) {
-    btn.classList.add('liked');
-    btn.querySelector('.like-count').textContent = likeCounts[muralId] || '';
+
+  if (hasLiked(muralId)) {
+    // Unlike
+    myLikes.delete(muralId);
+    saveLikes();
+    if (btn) btn.classList.remove('liked');
+    return;
   }
 
-  // Send to backend
-  try {
-    await fetch('/.netlify/functions/like-mural', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ muralId }),
-    });
-  } catch { /* offline — local state is saved, server will be behind */ }
+  // Like
+  myLikes.add(muralId);
+  saveLikes();
+  if (btn) btn.classList.add('liked');
 }
 
 // Fetch counts on load
@@ -690,17 +684,16 @@ function getFilteredMurals() {
     list = list.filter(m => state.exploreYears.includes(m.y));
   }
 
-  // Search
+  // Search — split into terms, ALL must match (each can match any field)
   if (state.searchQuery) {
-    const q = state.searchQuery.toLowerCase();
-    list = list.filter(m =>
-      m.a.toLowerCase().includes(q) ||
-      (m.loc && m.loc.toLowerCase().includes(q)) ||
-      (m.t && m.t.toLowerCase().includes(q)) ||
-      (m.bldg && m.bldg.toLowerCase().includes(q)) ||
-      (m.desc && m.desc.toLowerCase().includes(q)) ||
-      (m.imp && m.imp.some(i => i.toLowerCase().includes(q)))
-    );
+    const terms = state.searchQuery.toLowerCase().split(/\s+/).filter(Boolean);
+    list = list.filter(m => {
+      const haystack = [
+        m.a, m.loc, m.t, m.bldg, m.desc, m.bio,
+        m.imp ? m.imp.join(' ') : ''
+      ].filter(Boolean).join(' ').toLowerCase();
+      return terms.every(term => haystack.includes(term));
+    });
   }
   return list;
 }
@@ -2830,8 +2823,7 @@ function buildDetailBodyHTML(mural) {
           ${mural.ig ? `<div class="detail-ig"><a href="https://instagram.com/${mural.ig}" target="_blank" rel="noopener">@${mural.ig}</a></div>` : ''}
         </div>
         <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
-          <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="${hasLiked(mural.id) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <span class="like-count">${likeCounts[mural.id] || ''}</span>
+          <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
       </div>
 
