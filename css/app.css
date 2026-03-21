@@ -1637,6 +1637,24 @@ a {
   border-bottom: none;
 }
 
+.detail-range-toast {
+  background: rgba(232, 168, 56, 0.92);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 12px;
+  margin: 0 0 12px;
+  animation: fadeInDown 0.3s ease;
+}
+.detail-range-toast p { font-weight: 600; font-size: 14px; margin: 0 0 2px; }
+.detail-range-toast small { font-size: 12px; opacity: 0.9; }
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .detail-directions-group {
   margin-top: 16px;
   display: flex;
@@ -2150,7 +2168,7 @@ a {
 /* Persistent mini chip — collapsed directions bar */
 .directions-chip {
   position: absolute;
-  top: 12px;
+  top: calc(var(--safe-top) + 52px);
   left: 12px;
   z-index: 1000;
   display: flex;

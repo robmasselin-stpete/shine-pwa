@@ -3085,8 +3085,12 @@ function startDirections(muralId) {
     return;
   }
 
-  // We have location already — go straight to in-app route
+  // We have location already — check range then route
   if (state.userLat && state.userLng) {
+    if (!isInRange()) {
+      showOutOfRangeOnDetail();
+      return;
+    }
     state.directionsMural = mural;
     state.directionsProfile = 'foot';
     detailPage.hidden = true;
@@ -3098,21 +3102,24 @@ function startDirections(muralId) {
 
   // Secure context but no location yet — request it
   if ('geolocation' in navigator) {
-    state.directionsMural = mural;
-    state.directionsProfile = 'foot';
-    detailPage.hidden = true;
-    state.selectedMural = null;
-    switchTab('map');
     navigator.geolocation.getCurrentPosition(
       pos => {
         state.userLat = pos.coords.latitude;
         state.userLng = pos.coords.longitude;
+        if (!isInRange()) {
+          showOutOfRangeOnDetail();
+          return;
+        }
+        state.directionsMural = mural;
+        state.directionsProfile = 'foot';
+        detailPage.hidden = true;
+        state.selectedMural = null;
+        switchTab('map');
         showUserOnMap();
         fetchAndDrawRoute();
       },
       () => {
         // User denied location — open Google Maps in new tab
-        state.directionsMural = null;
         openExternalMaps(mural);
       },
       { enableHighAccuracy: true }
@@ -3120,6 +3127,17 @@ function startDirections(muralId) {
   } else {
     openExternalMaps(mural);
   }
+}
+
+/** Show a brief "get to St Pete" toast on the detail page when user is out of range. */
+function showOutOfRangeOnDetail() {
+  let toast = document.querySelector('.detail-range-toast');
+  if (toast) toast.remove();
+  toast = document.createElement('div');
+  toast.className = 'detail-range-toast';
+  toast.innerHTML = `<p>You're not in St. Pete yet!</p><small>Get to St. Pete to use walking directions.</small>`;
+  detailContent.prepend(toast);
+  setTimeout(() => toast.remove(), 4000);
 }
 
 function openInMapsApp(muralId) {
