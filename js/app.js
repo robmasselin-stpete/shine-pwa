@@ -2840,9 +2840,17 @@ function buildDetailBodyHTML(mural) {
     <div class="detail-body">
       <div class="detail-artist">${mural.a}</div>
       ${mural.t ? `<div class="detail-title">${mural.t}</div>` : ''}
-      <span class="detail-year-badge">${mural.cat === 'commercial' ? 'Commercial' : mural.cat === 'shine-legacy' ? 'Pre-SHINE' : 'SHINE'} ${mural.y || ''}</span>
-      ${mural.from ? `<div class="detail-from">${mural.from}</div>` : ''}
-      ${mural.ig ? `<div class="detail-ig"><a href="https://instagram.com/${mural.ig}" target="_blank" rel="noopener">@${mural.ig}</a></div>` : ''}
+      <div class="detail-meta-row">
+        <div class="detail-meta-left">
+          <span class="detail-year-badge">${mural.cat === 'commercial' ? 'Commercial' : mural.cat === 'shine-legacy' ? 'Pre-SHINE' : 'SHINE'} ${mural.y || ''}</span>
+          ${mural.from ? `<div class="detail-from">${mural.from}</div>` : ''}
+          ${mural.ig ? `<div class="detail-ig"><a href="https://instagram.com/${mural.ig}" target="_blank" rel="noopener">@${mural.ig}</a></div>` : ''}
+        </div>
+        <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
+          <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="${hasLiked(mural.id) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="like-count">${likeCounts[mural.id] || ''}</span>
+        </button>
+      </div>
 
       <div class="detail-nav-bar">
         ${mural.lat && mural.lng ? `
@@ -2857,11 +2865,6 @@ function buildDetailBodyHTML(mural) {
         ` : ''}
         <div class="detail-nav-address">${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</div>
       </div>
-
-      <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
-        <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="${hasLiked(mural.id) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        <span class="like-count">${likeCounts[mural.id] || ''}</span>
-      </button>
 
       ${mural.imp && mural.imp.length > 0 ? `
         <div class="detail-impressions">

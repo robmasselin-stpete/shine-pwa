@@ -1478,6 +1478,23 @@ a {
   margin-top: 6px;
 }
 
+.detail-meta-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.detail-meta-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-meta-row .like-btn {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
 .detail-nav-bar {
   margin-top: 16px;
   margin-left: -20px;
