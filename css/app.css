@@ -820,7 +820,7 @@ a {
   left: 0;
   right: 0;
   z-index: 500;
-  padding: calc(var(--safe-top) + 2px) 16px 6px;
+  padding: calc(var(--safe-top) + 8px) 20px 6px;
   pointer-events: none;
   background: rgba(245, 242, 237, 0.82);
   backdrop-filter: blur(24px);
