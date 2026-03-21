@@ -2035,8 +2035,20 @@ function initCompassArc() {
   // iOS requires a user gesture to request permission
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
     if (localStorage.getItem('compassGranted')) {
-      // Previously granted — start directly, no re-prompt
-      startCompassListener(arcEl);
+      // Previously granted — re-request silently (auto-grants, activates sensor)
+      DeviceOrientationEvent.requestPermission().then(perm => {
+        if (perm === 'granted') {
+          startCompassListener(arcEl);
+        } else {
+          localStorage.removeItem('compassGranted');
+          btnEl.hidden = false;
+          btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
+        }
+      }).catch(() => {
+        // Outside user gesture — show button
+        btnEl.hidden = false;
+        btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
+      });
     } else {
       btnEl.hidden = false;
       btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
@@ -2206,8 +2218,20 @@ function initDetailCompass(mural) {
 
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
     if (localStorage.getItem('compassGranted')) {
-      // Previously granted — start directly, no re-prompt
-      startDetailCompassListener(arcEl, mural);
+      // Previously granted — re-request silently (auto-grants, activates sensor)
+      DeviceOrientationEvent.requestPermission().then(perm => {
+        if (perm === 'granted') {
+          startDetailCompassListener(arcEl, mural);
+        } else {
+          localStorage.removeItem('compassGranted');
+          btnEl.hidden = false;
+          btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
+        }
+      }).catch(() => {
+        // Outside user gesture — show button
+        btnEl.hidden = false;
+        btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
+      });
     } else {
       btnEl.hidden = false;
       btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
