@@ -1480,14 +1480,12 @@ a {
 
 .detail-nav-bar {
   margin-top: 16px;
-  padding: 12px;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
+  margin-left: -20px;
+  margin-right: -20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .detail-compass-wrap {
@@ -1496,7 +1494,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .detail-compass-wrap .compass-arc {
@@ -1509,7 +1507,7 @@ a {
 }
 
 .detail-compass-wrap .compass-arc-dots {
-  padding: 0 8px;
+  padding: 0;
 }
 
 .detail-compass-wrap .compass-dot {
@@ -1533,8 +1531,8 @@ a {
   gap: 6px;
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 600;
-  color: var(--teal);
+  font-weight: 400;
+  color: var(--text2);
 }
 
 .detail-nav-info[hidden] { display: none; }
@@ -1544,11 +1542,11 @@ a {
 }
 
 .detail-nav-address {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  font-family: var(--font-body);
   font-size: 13px;
-  width: 100%;
+  font-weight: 400;
+  color: var(--text2);
+  text-align: center;
 }
 
 .like-btn {

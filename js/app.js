@@ -2855,10 +2855,7 @@ function buildDetailBodyHTML(mural) {
             </div>
           </div>
         ` : ''}
-        <div class="detail-nav-address">
-          <span>📍</span>
-          <span>${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</span>
-        </div>
+        <div class="detail-nav-address">${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</div>
       </div>
 
       <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
