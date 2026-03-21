@@ -2670,6 +2670,8 @@ function fetchTourSegment() {
       iconSize: [48, 48], iconAnchor: [24, 24],
     })
   }).addTo(tourMap);
+  fromMarker.on('click', () => openDetail(fromStop));
+  toMarker.on('click', () => openDetail(toStop));
   state.tourMarkers = [fromMarker, toMarker];
 
   const segInfo = document.getElementById('tour-segment-text') || document.getElementById('tour-segment-info');
