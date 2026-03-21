@@ -1638,21 +1638,27 @@ a {
 }
 
 .detail-range-toast {
-  background: rgba(232, 168, 56, 0.92);
-  backdrop-filter: blur(10px);
-  color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  background: #fff;
+  color: var(--text1);
   text-align: center;
-  padding: 10px 16px;
-  border-radius: 12px;
-  margin: 0 0 12px;
-  animation: fadeInDown 0.3s ease;
+  padding: 24px 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  max-width: 320px;
+  width: calc(100% - 48px);
+  animation: fadeInUp 0.25s ease;
 }
-.detail-range-toast p { font-weight: 600; font-size: 14px; margin: 0 0 2px; }
-.detail-range-toast small { font-size: 12px; opacity: 0.9; }
+.detail-range-toast p { font-weight: 600; font-size: 17px; margin: 0 0 6px; }
+.detail-range-toast small { font-size: 13px; color: var(--text2); line-height: 1.4; }
 
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate(-50%, -46%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 .detail-directions-group {

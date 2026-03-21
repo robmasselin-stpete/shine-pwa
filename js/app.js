@@ -3129,15 +3129,15 @@ function startDirections(muralId) {
   }
 }
 
-/** Show a brief "get to St Pete" toast on the detail page when user is out of range. */
+/** Show a centered "get to St Pete" card on the detail page when user is out of range. */
 function showOutOfRangeOnDetail() {
   let toast = document.querySelector('.detail-range-toast');
   if (toast) toast.remove();
   toast = document.createElement('div');
   toast.className = 'detail-range-toast';
-  toast.innerHTML = `<p>You're not in St. Pete yet!</p><small>Get to St. Pete to use walking directions.</small>`;
-  detailContent.prepend(toast);
-  setTimeout(() => toast.remove(), 4000);
+  toast.innerHTML = `<p>You're not in St. Pete yet!</p><small>Catch a flight, hop a bus, board a plane, drive a car — get to St. Pete to start exploring murals.</small>`;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
 }
 
 function openInMapsApp(muralId) {
