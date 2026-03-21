@@ -435,6 +435,7 @@ let compassSmoothedHeading = null;
 let compassGpsWatchId = null;
 const COMPASS_ARC_DOTS = 21;
 const COMPASS_ARC_SPAN_DEG = 140;
+let compassGrantedThisSession = false;
 
 // Year buckets for category filtering — update these when adding new festival years
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
@@ -2034,21 +2035,9 @@ function initCompassArc() {
 
   // iOS requires a user gesture to request permission
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    if (localStorage.getItem('compassGranted')) {
-      // Previously granted — re-request silently (auto-grants, activates sensor)
-      DeviceOrientationEvent.requestPermission().then(perm => {
-        if (perm === 'granted') {
-          startCompassListener(arcEl);
-        } else {
-          localStorage.removeItem('compassGranted');
-          btnEl.hidden = false;
-          btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
-        }
-      }).catch(() => {
-        // Outside user gesture — show button
-        btnEl.hidden = false;
-        btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
-      });
+    if (compassGrantedThisSession) {
+      // Already granted this session — start directly
+      startCompassListener(arcEl);
     } else {
       btnEl.hidden = false;
       btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
@@ -2064,6 +2053,7 @@ function requestCompassPermission(arcEl, btnEl) {
   DeviceOrientationEvent.requestPermission().then(perm => {
     if (perm === 'granted') {
       state.compassPermission = true;
+      compassGrantedThisSession = true;
       localStorage.setItem('compassGranted', '1');
       btnEl.hidden = true;
       startCompassListener(arcEl);
@@ -2217,21 +2207,9 @@ function initDetailCompass(mural) {
   if (!arcEl || !btnEl) return;
 
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    if (localStorage.getItem('compassGranted')) {
-      // Previously granted — re-request silently (auto-grants, activates sensor)
-      DeviceOrientationEvent.requestPermission().then(perm => {
-        if (perm === 'granted') {
-          startDetailCompassListener(arcEl, mural);
-        } else {
-          localStorage.removeItem('compassGranted');
-          btnEl.hidden = false;
-          btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
-        }
-      }).catch(() => {
-        // Outside user gesture — show button
-        btnEl.hidden = false;
-        btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
-      });
+    if (compassGrantedThisSession) {
+      // Already granted this session — start directly
+      startDetailCompassListener(arcEl, mural);
     } else {
       btnEl.hidden = false;
       btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
@@ -2244,6 +2222,7 @@ function initDetailCompass(mural) {
 function requestDetailCompassPermission(arcEl, btnEl, mural) {
   DeviceOrientationEvent.requestPermission().then(perm => {
     if (perm === 'granted') {
+      compassGrantedThisSession = true;
       localStorage.setItem('compassGranted', '1');
       btnEl.hidden = true;
       startDetailCompassListener(arcEl, mural);
