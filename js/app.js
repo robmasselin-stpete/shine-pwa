@@ -481,6 +481,7 @@ function switchTab(tab) {
 
   searchBar.hidden = tab !== 'explore';
   exploreFilters.hidden = tab !== 'explore';
+  stopDetailCompass();
   detailPage.hidden = true;
 
   // Show/hide route bar on map tab
@@ -910,10 +911,8 @@ function initMap() {
   document.getElementById('map-container').addEventListener('click', (e) => {
     if (e.target.closest('.nearest-popup') || e.target.closest('.map-range-banner') ||
         e.target.closest('.map-fab-stack') || e.target.closest('.directions-bar') ||
-        e.target.closest('.directions-chip') || e.target.closest('.map-mural-sheet') ||
-        e.target.closest('.mural-map-icon')) return;
+        e.target.closest('.directions-chip')) return;
     dismissNearestPopup();
-    closeMapSheet();
   });
 
   // Create both dot markers and icon markers for each mural
@@ -929,7 +928,7 @@ function initMap() {
       weight: 2,
       fillOpacity: 0.9,
     });
-    dot.on('click', () => openMapSheet(m));
+    dot.on('click', () => openDetail(m));
 
     // Image icon marker (zoomed in)
     const icon = L.divIcon({
@@ -939,7 +938,7 @@ function initMap() {
       iconAnchor: [24, 24],
     });
     const imgMarker = L.marker([m.lat, m.lng], { icon });
-    imgMarker.on('click', () => openMapSheet(m));
+    imgMarker.on('click', () => openDetail(m));
 
     mapMarkers.push({ dot, imgMarker, mural: m, visible: false });
   });
@@ -2200,6 +2199,178 @@ function stopCompassArc() {
   state.compassPermission = false;
 }
 
+// =============================================
+// Detail Page Compass (reuses compass infrastructure)
+// =============================================
+
+let detailCompassHandler = null;
+let detailCompassAnimFrame = null;
+let detailCompassGpsWatchId = null;
+let detailCompassSmoothed = null;
+let detailCompassHeading = null;
+
+/** Init compass arc on the detail page, targeting the selected mural. */
+function initDetailCompass(mural) {
+  if (!mural || !mural.lat || !mural.lng) return;
+  if (!window.DeviceOrientationEvent) return;
+
+  const wrap = detailContent.querySelector('.detail-compass-wrap');
+  if (!wrap) return;
+  const arcEl = wrap.querySelector('.compass-arc');
+  const btnEl = wrap.querySelector('.compass-enable-btn');
+  if (!arcEl || !btnEl) return;
+
+  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    if (localStorage.getItem('compassGranted')) {
+      DeviceOrientationEvent.requestPermission().then(perm => {
+        if (perm === 'granted') {
+          startDetailCompassListener(arcEl, mural);
+        } else {
+          localStorage.removeItem('compassGranted');
+          btnEl.hidden = false;
+          btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
+        }
+      }).catch(() => {
+        btnEl.hidden = false;
+        btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
+      });
+    } else {
+      btnEl.hidden = false;
+      btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
+    }
+  } else {
+    startDetailCompassListener(arcEl, mural);
+  }
+}
+
+function requestDetailCompassPermission(arcEl, btnEl, mural) {
+  DeviceOrientationEvent.requestPermission().then(perm => {
+    if (perm === 'granted') {
+      localStorage.setItem('compassGranted', '1');
+      btnEl.hidden = true;
+      startDetailCompassListener(arcEl, mural);
+    }
+  }).catch(err => { console.warn('Detail compass permission error:', err); });
+}
+
+function startDetailCompassListener(arcEl, mural) {
+  arcEl.hidden = false;
+  const infoEl = detailContent.querySelector('.detail-nav-info');
+  if (infoEl) infoEl.hidden = false;
+
+  detailCompassHandler = (e) => {
+    let heading = e.webkitCompassHeading != null
+      ? e.webkitCompassHeading
+      : (e.alpha != null ? (360 - e.alpha) % 360 : null);
+    if (heading == null) return;
+
+    if (detailCompassSmoothed == null) {
+      detailCompassSmoothed = heading;
+    } else {
+      let diff = heading - detailCompassSmoothed;
+      if (diff > 180) diff -= 360;
+      if (diff < -180) diff += 360;
+      detailCompassSmoothed = (detailCompassSmoothed + diff * 0.85 + 360) % 360;
+    }
+    detailCompassHeading = detailCompassSmoothed;
+    scheduleDetailArcUpdate(mural);
+  };
+  window.addEventListener('deviceorientation', detailCompassHandler, true);
+
+  // GPS watcher for detail compass
+  if (detailCompassGpsWatchId == null && state.walkWatchId == null && compassGpsWatchId == null) {
+    detailCompassGpsWatchId = navigator.geolocation.watchPosition(
+      pos => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        scheduleDetailArcUpdate(mural);
+      },
+      () => {},
+      { enableHighAccuracy: true, maximumAge: 3000 }
+    );
+  }
+
+  // Update distance/time immediately if we have a position
+  if (state.userLat && state.userLng) {
+    updateDetailNavInfo(mural);
+  }
+}
+
+function scheduleDetailArcUpdate(mural) {
+  if (detailCompassAnimFrame) return;
+  detailCompassAnimFrame = requestAnimationFrame(() => {
+    detailCompassAnimFrame = null;
+    updateDetailCompass(mural);
+  });
+}
+
+function updateDetailCompass(mural) {
+  const arcEl = detailContent?.querySelector('.compass-arc');
+  if (!arcEl || arcEl.hidden) return;
+  if (detailCompassHeading == null || state.userLat == null) return;
+  if (!mural || !mural.lat || !mural.lng) return;
+
+  const dist = haversine(state.userLat, state.userLng, mural.lat, mural.lng);
+  const dots = arcEl.querySelectorAll('.compass-dot');
+  const mid = Math.floor(COMPASS_ARC_DOTS / 2);
+
+  if (dist < 10) {
+    dots.forEach(d => d.dataset.heat = 'hot');
+    updateDetailNavInfo(mural);
+    return;
+  }
+
+  const targetBearing = bearing(state.userLat, state.userLng, mural.lat, mural.lng);
+  let rel = targetBearing - detailCompassHeading;
+  if (rel > 180) rel -= 360;
+  if (rel < -180) rel += 360;
+
+  const halfSpan = COMPASS_ARC_SPAN_DEG / 2;
+  const dotIdx = Math.round(mid + (rel / halfSpan) * mid);
+
+  if (dotIdx < -1 || dotIdx > COMPASS_ARC_DOTS) {
+    dots.forEach(d => d.dataset.heat = 'cold');
+  } else {
+    dots.forEach((dot, i) => {
+      const diff = Math.abs(i - dotIdx);
+      if (diff <= 1) dot.dataset.heat = 'hot';
+      else if (diff <= 4) dot.dataset.heat = 'warm';
+      else dot.dataset.heat = 'cold';
+    });
+  }
+
+  updateDetailNavInfo(mural);
+}
+
+function updateDetailNavInfo(mural) {
+  if (!state.userLat || !state.userLng || !mural.lat || !mural.lng) return;
+  const dist = haversine(state.userLat, state.userLng, mural.lat, mural.lng);
+  const distEl = detailContent?.querySelector('.detail-nav-dist');
+  const timeEl = detailContent?.querySelector('.detail-nav-time');
+  if (distEl) distEl.textContent = formatDistance(dist);
+  if (timeEl) {
+    const mins = Math.max(1, Math.round(dist / 80));
+    timeEl.textContent = mins < 60 ? `${mins} min walk` : `${(mins / 60).toFixed(1)} hr walk`;
+  }
+}
+
+function stopDetailCompass() {
+  if (detailCompassHandler) {
+    window.removeEventListener('deviceorientation', detailCompassHandler, true);
+    detailCompassHandler = null;
+  }
+  if (detailCompassAnimFrame) {
+    cancelAnimationFrame(detailCompassAnimFrame);
+    detailCompassAnimFrame = null;
+  }
+  if (detailCompassGpsWatchId != null) {
+    navigator.geolocation.clearWatch(detailCompassGpsWatchId);
+    detailCompassGpsWatchId = null;
+  }
+  detailCompassSmoothed = null;
+  detailCompassHeading = null;
+}
+
 /** Destroy tour mini-map, reset state, show list. */
 function closeTour() {
   stopCompassArc();
@@ -2338,7 +2509,7 @@ function renderTourLoop() {
 
   // Prev card tap → go back
   views.loops.querySelector('.active-tour-prev')?.addEventListener('click', () => {
-    navigateTour(-1, true);
+    navigateTour(-1);
   });
 
   // Current card tap → detail
@@ -2349,18 +2520,12 @@ function renderTourLoop() {
 
   // Next card tap → advance
   views.loops.querySelector('.active-tour-next')?.addEventListener('click', () => {
-    navigateTour(1, true);
+    navigateTour(1);
   });
 
 
   // Init map
   initTourMap();
-
-  // Zoom to fit entire route on open
-  const allCoords = state.tourStops.filter(s => s.lat && s.lng).map(s => [s.lat, s.lng]);
-  if (tourMap && allCoords.length >= 2) {
-    tourMap.fitBounds(L.latLngBounds(allCoords), { padding: [40, 40], maxZoom: 16 });
-  }
 
   // Swipe support
   setupTourSwipe();
@@ -2370,7 +2535,7 @@ function renderTourLoop() {
 }
 
 /** Update the bottom panel cards, progress, dots, and fetch new route segment. */
-function renderTourCards(skipMapFit) {
+function renderTourCards() {
   const stops = state.tourStops;
   const len = stops.length;
   const idx = state.tourIndex;
@@ -2429,7 +2594,7 @@ function renderTourCards(skipMapFit) {
   // Recalculate compass arc for new target
   if (state.compassAvailable) scheduleArcUpdate();
 
-  fetchTourSegment(skipMapFit);
+  fetchTourSegment();
 }
 
 /** Create the Leaflet mini-map for the tour. */
@@ -2468,7 +2633,7 @@ function initTourMap() {
 }
 
 /** Fetch OSRM route between last visited stop and first upcoming stop, draw on tour map. */
-function fetchTourSegment(skipMapFit) {
+function fetchTourSegment() {
   if (!tourMap || !state.tourMapReady) return;
   if (state.tourFetching) return;
 
@@ -2507,11 +2672,10 @@ function fetchTourSegment(skipMapFit) {
 
   /** Fit map to the drawn route + markers so the full segment fills the view. */
   function fitToRoute(polyline) {
-    if (skipMapFit) return;
     const b = polyline.getBounds()
       .extend([fromStop.lat, fromStop.lng])
       .extend([toStop.lat, toStop.lng]);
-    tourMap.fitBounds(b, { padding: [40, 40], maxZoom: 18 });
+    tourMap.fitBounds(b, { padding: [60, 60], maxZoom: 17 });
   }
 
   // Try static route path first (GPX or KML)
@@ -2604,11 +2768,11 @@ function extractPathSegment(fullPath, fromStop, toStop) {
 }
 
 /** Navigate tour: +1 (next) or -1 (prev). Wraps continuously. */
-function navigateTour(dir, skipMapFit) {
+function navigateTour(dir) {
   const len = state.tourStops.length;
   if (len === 0) return;
   state.tourIndex = wrapIndex(state.tourIndex + dir, len);
-  renderTourCards(skipMapFit);
+  renderTourCards();
 }
 
 /** Set up horizontal swipe on the tour bottom panel. */
@@ -2639,8 +2803,8 @@ function setupTourSwipe() {
     if (locked !== 'h') return;
     const dx = e.changedTouches[0].clientX - startX;
     if (Math.abs(dx) > 40) {
-      if (dx < 0) navigateTour(1, true);
-      else navigateTour(-1, true);
+      if (dx < 0) navigateTour(1);
+      else navigateTour(-1);
     }
   }, { passive: true });
 }
@@ -2680,9 +2844,21 @@ function buildDetailBodyHTML(mural) {
       ${mural.from ? `<div class="detail-from">${mural.from}</div>` : ''}
       ${mural.ig ? `<div class="detail-ig"><a href="https://instagram.com/${mural.ig}" target="_blank" rel="noopener">@${mural.ig}</a></div>` : ''}
 
-      <div class="detail-address">
-        <span>📍</span>
-        <span>${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</span>
+      <div class="detail-nav-bar">
+        ${mural.lat && mural.lng ? `
+          <div class="detail-compass-wrap">
+            ${buildCompassArcHTML()}
+            <div class="detail-nav-info" hidden>
+              <span class="detail-nav-dist"></span>
+              <span class="detail-nav-sep">·</span>
+              <span class="detail-nav-time"></span>
+            </div>
+          </div>
+        ` : ''}
+        <div class="detail-nav-address">
+          <span>📍</span>
+          <span>${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</span>
+        </div>
       </div>
 
       <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
@@ -2690,21 +2866,19 @@ function buildDetailBodyHTML(mural) {
         <span class="like-count">${likeCounts[mural.id] || ''}</span>
       </button>
 
-      ${mural.bio ? `
-        <div class="detail-bio">
-          <div class="detail-bio-label">About the Artist</div>
-          ${mural.bio}
-        </div>
-      ` : ''}
-
-      ${''}<!-- desc kept in data for search -->
-
       ${mural.imp && mural.imp.length > 0 ? `
         <div class="detail-impressions">
           <div class="detail-bio-label">What People Say</div>
           ${mural.imp.slice(0, 3).map(q => `
             <div class="detail-impression">"${q}"</div>
           `).join('')}
+        </div>
+      ` : ''}
+
+      ${mural.bio ? `
+        <div class="detail-bio">
+          <div class="detail-bio-label">About the Artist</div>
+          ${mural.bio}
         </div>
       ` : ''}
 
@@ -2760,108 +2934,6 @@ function buildDetailBodyHTML(mural) {
       ` : ''}
     </div>
   `;
-}
-
-// =============================================
-// Map mural bottom sheet
-// =============================================
-
-/** Open a bottom sheet on the map for a mural marker tap. */
-function openMapSheet(mural) {
-  dismissNearestPopup();
-  closeMapSheet();
-
-  const el = document.createElement('div');
-  el.className = 'map-mural-sheet compact';
-  el.id = 'map-mural-sheet';
-  el.innerHTML = `
-    <div class="map-sheet-handle"></div>
-    <div class="map-sheet-compact" data-id="${mural.id}">
-      <img src="${mural.img || ''}" alt="${mural.a}">
-      <div class="map-sheet-compact-info">
-        <h4>${mural.a}</h4>
-        <p>${mural.t || mural.loc || ''}</p>
-      </div>
-      <button class="map-sheet-close" aria-label="Close">&times;</button>
-    </div>
-    <div class="map-sheet-expanded">
-      ${buildDetailBodyHTML(mural)}
-    </div>
-  `;
-
-  document.getElementById('map-container').appendChild(el);
-
-  // Close button
-  el.querySelector('.map-sheet-close').addEventListener('click', (e) => {
-    e.stopPropagation();
-    closeMapSheet();
-  });
-
-  // Tap compact card → expand
-  el.querySelector('.map-sheet-compact').addEventListener('click', () => {
-    if (el.classList.contains('compact')) {
-      el.classList.remove('compact');
-      el.classList.add('expanded');
-    }
-  });
-
-  // Wire nearby card clicks in expanded view
-  el.querySelectorAll('.detail-nearby-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const m = murals.find(m => m.id === Number(card.dataset.id));
-      if (m) openMapSheet(m);
-    });
-  });
-
-  setupSheetDrag(el);
-}
-
-/** Close the map mural bottom sheet. */
-function closeMapSheet() {
-  const existing = document.getElementById('map-mural-sheet');
-  if (existing) existing.remove();
-}
-
-/** Set up touch drag gestures on the map sheet. */
-function setupSheetDrag(sheetEl) {
-  let startY = 0;
-  let isDragging = false;
-
-  const handle = sheetEl.querySelector('.map-sheet-handle');
-  const dragTarget = handle || sheetEl;
-
-  dragTarget.addEventListener('touchstart', (e) => {
-    startY = e.touches[0].clientY;
-    isDragging = true;
-  }, { passive: true });
-
-  dragTarget.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    // Prevent map panning while dragging sheet
-    e.stopPropagation();
-  }, { passive: false });
-
-  dragTarget.addEventListener('touchend', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    const deltaY = e.changedTouches[0].clientY - startY;
-
-    if (deltaY < -40) {
-      // Swipe up → expand
-      sheetEl.classList.remove('compact');
-      sheetEl.classList.add('expanded');
-    } else if (deltaY > 40) {
-      // Swipe down
-      if (sheetEl.classList.contains('expanded')) {
-        // Collapse back to compact
-        sheetEl.classList.remove('expanded');
-        sheetEl.classList.add('compact');
-      } else {
-        // Dismiss
-        closeMapSheet();
-      }
-    }
-  }, { passive: true });
 }
 
 /**
@@ -2928,6 +3000,7 @@ function openDetail(mural) {
         // Single tap → close detail (unless zoomed/dragging/pinching)
         setTimeout(() => {
           if (lastTap === now && scale <= 1 && !dragging && !pinching) {
+            stopDetailCompass();
             detailPage.hidden = true;
             state.selectedMural = null;
           }
@@ -2977,10 +3050,14 @@ function openDetail(mural) {
   }
 
   detailPage.scrollTop = 0;
+
+  // Start detail compass
+  initDetailCompass(mural);
 }
 
 // Back button
 $('#detail-back').addEventListener('click', () => {
+  stopDetailCompass();
   detailPage.hidden = true;
   state.selectedMural = null;
 });
