@@ -1504,9 +1504,11 @@ a {
   right: auto;
   z-index: auto;
   pointer-events: none;
+  width: 100%;
 }
 
 .detail-compass-wrap .compass-arc-dots {
+  width: 100%;
   padding: 0 12px;
 }
 
