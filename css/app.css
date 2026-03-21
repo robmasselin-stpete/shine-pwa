@@ -1823,7 +1823,7 @@ a {
    ======================================== */
 .offline-banner {
   position: fixed;
-  top: calc(var(--safe-top) + 14px);
+  top: calc(var(--safe-top) + 8px);
   right: 20px;
   z-index: 10000;
   background: rgba(232, 168, 56, 0.9);
