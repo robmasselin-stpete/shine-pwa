@@ -1507,12 +1507,12 @@ a {
 }
 
 .detail-compass-wrap .compass-arc-dots {
-  padding: 0;
+  padding: 0 12px;
 }
 
 .detail-compass-wrap .compass-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 .detail-compass-wrap .compass-enable-btn {
