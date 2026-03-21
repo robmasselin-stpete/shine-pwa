@@ -2042,21 +2042,8 @@ function initCompassArc() {
   // iOS requires a user gesture to request permission
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
     if (localStorage.getItem('compassGranted')) {
-      // Previously granted — re-request (auto-grants without prompt on iOS)
-      DeviceOrientationEvent.requestPermission().then(perm => {
-        if (perm === 'granted') {
-          startCompassListener(arcEl);
-        } else {
-          // Permission revoked — show button again
-          localStorage.removeItem('compassGranted');
-          btnEl.hidden = false;
-          btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
-        }
-      }).catch(() => {
-        // Needs user gesture — show button
-        btnEl.hidden = false;
-        btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
-      });
+      // Previously granted — start directly, no re-prompt
+      startCompassListener(arcEl);
     } else {
       btnEl.hidden = false;
       btnEl.addEventListener('click', () => requestCompassPermission(arcEl, btnEl));
@@ -2226,18 +2213,8 @@ function initDetailCompass(mural) {
 
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
     if (localStorage.getItem('compassGranted')) {
-      DeviceOrientationEvent.requestPermission().then(perm => {
-        if (perm === 'granted') {
-          startDetailCompassListener(arcEl, mural);
-        } else {
-          localStorage.removeItem('compassGranted');
-          btnEl.hidden = false;
-          btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
-        }
-      }).catch(() => {
-        btnEl.hidden = false;
-        btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
-      });
+      // Previously granted — start directly, no re-prompt
+      startDetailCompassListener(arcEl, mural);
     } else {
       btnEl.hidden = false;
       btnEl.addEventListener('click', () => requestDetailCompassPermission(arcEl, btnEl, mural));
