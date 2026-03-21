@@ -398,7 +398,7 @@ const state = {
   tab: 'map',
   searchQuery: '',
   exploreFilter: null,  // null=all, or array e.g. ['shine'], ['shine','commercial']
-  exploreYear: null,    // null=all years in filter, or specific year number
+  exploreYears: [],     // empty=all years, or array of selected years e.g. [2025, 2024]
   userLat: null,
   userLng: null,
   mapReady: false,
@@ -686,8 +686,8 @@ function getFilteredMurals() {
   }
 
   // Year sub-filter
-  if (state.exploreYear) {
-    list = list.filter(m => m.y === state.exploreYear);
+  if (state.exploreYears.length > 0) {
+    list = list.filter(m => state.exploreYears.includes(m.y));
   }
 
   // Search
@@ -734,7 +734,7 @@ function renderFilterPills() {
         }
         state.exploreFilter = arr.length > 0 ? arr : null;
       }
-      state.exploreYear = null;
+      state.exploreYears = [];
       renderFilterPills();
       renderYearSubPills();
       renderExplore();
@@ -748,12 +748,11 @@ function renderYearSubPills() {
   const f = state.exploreFilter;
   if (f && f.includes('shine') && f.length === 1) {
     const years = SHINE_YEARS;
-    // Only show years that have murals
     const yearsWithData = years.filter(y => murals.some(m => m.y === y && m.cat !== 'commercial'));
+    const sel = state.exploreYears;
     yearSubPills.innerHTML = `
-      <button class="year-pill year-sub ${!state.exploreYear ? 'active' : ''}" data-year="">All Years</button>
       ${yearsWithData.map(y => `
-        <button class="year-pill year-sub ${state.exploreYear === y ? 'active' : ''}" data-year="${y}">
+        <button class="year-pill year-sub ${sel.includes(y) ? 'active' : ''}" data-year="${y}">
           <span class="year-dot" style="background:${YEAR_COLORS[y] || '#999'}"></span>${y}
         </button>
       `).join('')}
@@ -761,7 +760,12 @@ function renderYearSubPills() {
     yearSubPills.hidden = false;
     yearSubPills.querySelectorAll('.year-pill').forEach(btn => {
       btn.addEventListener('click', () => {
-        state.exploreYear = btn.dataset.year ? Number(btn.dataset.year) : null;
+        const y = Number(btn.dataset.year);
+        if (sel.includes(y)) {
+          state.exploreYears = sel.filter(v => v !== y);
+        } else {
+          state.exploreYears = [...sel, y];
+        }
         renderYearSubPills();
         renderExplore();
       });
