@@ -1,0 +1,16 @@
+{
+  "appId": "com.muralquest.stpete",
+  "appName": "Mural Quest",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "Light"
+    },
+    "Keyboard": {
+      "resizeOnFullScreen": true
+    }
+  }
+}

@@ -9,3 +9,8 @@ needs-photo-list.txt
 legacy-fixes/
 fix-legacy-images.sh
 session-handoff.md
+www/
+ios/
+
+# Local Netlify folder
+.netlify

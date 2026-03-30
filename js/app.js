@@ -146,7 +146,15 @@ function autoRestoreByEmail(email) {
 }
 
 // Install-to-home-screen prompt
-const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+const isCapacitor = window.Capacitor?.isNativePlatform?.() ?? false;
+
+// Hide iOS keyboard accessory bar (up/down arrows + checkmark)
+if (isCapacitor) {
+  import('@capacitor/keyboard').then(({ Keyboard }) => {
+    Keyboard.setAccessoryBarVisible({ isVisible: false });
+  }).catch(() => {});
+}
+const isStandalone = isCapacitor || window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
 const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
 const isAndroid = /android/i.test(navigator.userAgent);
@@ -211,7 +219,7 @@ if (sessionId) {
       }
     })
     .catch(() => showGate());
-} else if (hasAccess() || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+} else if (isCapacitor || hasAccess() || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   hideGate();
   showInstallPrompt();
 } else {
@@ -386,6 +394,76 @@ async function toggleLike(muralId) {
 fetchLikeCounts();
 
 // =============================================
+// Seen It Tracking
+// =============================================
+const SEEN_KEY = 'mural_quest_seen';
+const mySeen = new Set(JSON.parse(localStorage.getItem(SEEN_KEY) || '[]'));
+
+function saveSeen() {
+  localStorage.setItem(SEEN_KEY, JSON.stringify([...mySeen]));
+}
+
+function hasSeen(muralId) { return mySeen.has(muralId); }
+
+function toggleSeen(muralId) {
+  if (mySeen.has(muralId)) mySeen.delete(muralId);
+  else mySeen.add(muralId);
+  saveSeen();
+}
+
+function toggleSeenFromDetail(muralId) {
+  toggleSeen(muralId);
+  const btn = document.getElementById('seen-btn');
+  if (btn) btn.classList.toggle('seen', mySeen.has(muralId));
+}
+
+// =============================================
+// Detail Text Size
+// =============================================
+const TEXT_SIZE_KEY = 'mural_quest_text_size';
+const TEXT_SIZES = [
+  { label: 'A', class: '', size: 15 },
+  { label: 'A+', class: 'text-large', size: 18 },
+  { label: 'A++', class: 'text-xl', size: 22 },
+];
+let textSizeIdx = TEXT_SIZES.findIndex(t => t.class === (localStorage.getItem(TEXT_SIZE_KEY) || ''));
+if (textSizeIdx < 0) textSizeIdx = 0;
+
+function cycleTextSize() {
+  textSizeIdx = (textSizeIdx + 1) % TEXT_SIZES.length;
+  const ts = TEXT_SIZES[textSizeIdx];
+  localStorage.setItem(TEXT_SIZE_KEY, ts.class);
+  const body = document.querySelector('.detail-body');
+  if (body) {
+    TEXT_SIZES.forEach(t => { if (t.class) body.classList.remove(t.class); });
+    if (ts.class) body.classList.add(ts.class);
+  }
+  const btn = document.getElementById('text-size-btn');
+  if (btn) btn.textContent = ts.label;
+}
+window.cycleTextSize = cycleTextSize;
+
+// Audio clip player
+let _audioPlayer = null;
+function toggleAudioClip(url) {
+  const btn = document.getElementById('audio-btn');
+  if (_audioPlayer && !_audioPlayer.paused) {
+    _audioPlayer.pause();
+    _audioPlayer.currentTime = 0;
+    _audioPlayer = null;
+    if (btn) btn.classList.remove('playing');
+    return;
+  }
+  _audioPlayer = new Audio(url);
+  if (btn) btn.classList.add('playing');
+  _audioPlayer.play();
+  _audioPlayer.addEventListener('ended', () => {
+    if (btn) btn.classList.remove('playing');
+    _audioPlayer = null;
+  });
+}
+
+// =============================================
 // State — single mutable object drives all UI
 // =============================================
 const state = {
@@ -409,9 +487,11 @@ const state = {
   tourIndex: 0,            // index of first upcoming stop (below the map)
   tourMapReady: false,
   tourRoute: null,         // L.polyline on tour map
+  tourAdjacentRoutes: [],  // L.polyline array for prev/next segments (gray)
   tourMarkers: [],         // L.marker array on tour map
   tourFetching: false,
-  // Walk Mode state
+  tourDirection: 'fwd',
+  // Discover Mode state
   walkMode: false,
   walkWatchId: null,
   walkAlerted: new Set(),
@@ -422,11 +502,21 @@ const state = {
   compassPermission: false,
 };
 
-// Walk Mode module-level vars
+// Discover Mode module-level vars
 let walkAudioCtx = null;
 let proximityBannerEl = null;
 let proximityBannerTimeout = null;
-const PROXIMITY_THRESHOLD = 30.48; // 100 feet in meters
+const RADIUS_OPTIONS = [
+  { ft: 50,  m: 15.24 },
+  { ft: 100, m: 30.48 },
+  { ft: 200, m: 60.96 },
+  { ft: 300, m: 91.44 },
+];
+const RADIUS_KEY = 'mural_quest_walk_radius';
+let walkRadiusIdx = RADIUS_OPTIONS.findIndex(r => r.ft === Number(localStorage.getItem(RADIUS_KEY)));
+if (walkRadiusIdx === -1) walkRadiusIdx = 1; // default 100 ft
+function getProximityThreshold() { return RADIUS_OPTIONS[walkRadiusIdx].m; }
+function getRadiusFt() { return RADIUS_OPTIONS[walkRadiusIdx].ft; }
 
 // Compass Arc module-level vars
 let compassHandler = null;
@@ -483,11 +573,14 @@ function switchTab(tab) {
   const routeBar = document.querySelector('.map-route-bar');
   if (routeBar) routeBar.classList.toggle('visible', tab === 'map');
 
-  if (tab !== 'map') clearDirections();
-  if (tab !== 'loops' && state.activeTour) closeTour();
+  // Directions now open in Apple/Google Maps — no in-app state to clear
+  // Keep active tour alive when switching tabs so user can return to it
   if (tab === 'explore') { renderFilterPills(); renderExplore(); }
   if (tab === 'map') { initMap(); flashFabLabels(); }
-  if (tab === 'loops') renderTourList();
+  if (tab === 'loops') {
+    if (state.activeTour && state.tourStops.length) renderTourLoop();
+    else renderTourList();
+  }
 }
 
 // =============================================
@@ -523,7 +616,7 @@ function formatDistance(meters) {
 }
 
 // =============================================
-// Walk Mode — Proximity Alerts
+// Discover Mode — Proximity Alerts
 // =============================================
 
 /** Create or resume AudioContext (must be called from user gesture on iOS). */
@@ -552,18 +645,84 @@ function playProximityChime() {
   });
 }
 
-/** Toggle Walk Mode on/off. */
-function toggleWalkMode() {
+/** Show the Discover Mode settings dialog. */
+function showDiscoverDialog() {
+  // Remove existing dialog if any
+  const existing = document.querySelector('.discover-dialog-overlay');
+  if (existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'discover-dialog-overlay';
+  overlay.innerHTML = `
+    <div class="discover-dialog">
+      <div class="discover-dialog-header">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--teal)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        Discover Mode
+      </div>
+      <p class="discover-dialog-desc">Get alerted when you're near an unseen mural. Uses GPS and haptic feedback.</p>
+      <div class="discover-dialog-toggle-row">
+        <span>Discover Mode</span>
+        <button class="discover-toggle ${state.walkMode ? 'on' : ''}" id="discover-toggle-btn">
+          <span class="discover-toggle-knob"></span>
+        </button>
+      </div>
+      <div class="discover-dialog-radius-section">
+        <span class="discover-dialog-radius-label">Alert Distance</span>
+        <div class="discover-dialog-radius-options">
+          ${RADIUS_OPTIONS.map((r, i) => `<button class="discover-radius-opt ${i === walkRadiusIdx ? 'active' : ''}" data-idx="${i}">${r.ft} ft</button>`).join('')}
+        </div>
+      </div>
+      <div class="discover-dialog-stats">
+        <span>${mySeen.size} seen</span>
+        <span class="discover-dialog-stats-sep">&middot;</span>
+        <span>${murals.length - mySeen.size} remaining</span>
+      </div>
+      <button class="discover-dialog-done">Done</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  // Close on overlay tap
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.remove();
+  });
+
+  // Toggle button
+  overlay.querySelector('#discover-toggle-btn').addEventListener('click', () => {
+    toggleDiscoverMode();
+    const btn = overlay.querySelector('#discover-toggle-btn');
+    btn.classList.toggle('on', state.walkMode);
+  });
+
+  // Radius options
+  overlay.querySelectorAll('.discover-radius-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      walkRadiusIdx = Number(btn.dataset.idx);
+      localStorage.setItem(RADIUS_KEY, RADIUS_OPTIONS[walkRadiusIdx].ft);
+      overlay.querySelectorAll('.discover-radius-opt').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDiscoverPill();
+    });
+  });
+
+  // Done button
+  overlay.querySelector('.discover-dialog-done').addEventListener('click', () => overlay.remove());
+}
+
+/** Toggle Discover Mode on/off (internal). */
+function toggleDiscoverMode() {
   state.walkMode = !state.walkMode;
-  const fab = document.getElementById('fab-walk');
+  const fab = document.getElementById('fab-discover');
 
   if (state.walkMode) {
+    ensureWalkAudio();
     fab && fab.classList.add('active');
-    showWalkPill();
+    showDiscoverPill();
     state.walkWatchId = navigator.geolocation.watchPosition(
       pos => {
         state.userLat = pos.coords.latitude;
         state.userLng = pos.coords.longitude;
+        updateTourUserLocation();
         checkProximityAlerts();
       },
       () => {},
@@ -576,8 +735,17 @@ function toggleWalkMode() {
       state.walkWatchId = null;
     }
     state.walkAlerted.clear();
-    removeWalkPill();
+    removeDiscoverPill();
     dismissProximityBanner();
+  }
+}
+
+/** Play haptic feedback on native platforms. */
+async function playProximityHaptic() {
+  if (window.Capacitor?.isNativePlatform?.()) {
+    const { Haptics, ImpactStyle } = await import('@capacitor/haptics');
+    await Haptics.impact({ style: ImpactStyle.Heavy });
+    setTimeout(() => Haptics.impact({ style: ImpactStyle.Heavy }), 200);
   }
 }
 
@@ -586,10 +754,12 @@ function checkProximityAlerts() {
   if (!state.walkMode || !state.userLat) return;
   for (const m of murals) {
     if (state.walkAlerted.has(m.id)) continue;
+    if (mySeen.has(m.id)) continue;
     const dist = haversine(state.userLat, state.userLng, m.lat, m.lng);
-    if (dist <= PROXIMITY_THRESHOLD) {
+    if (dist <= getProximityThreshold()) {
       state.walkAlerted.add(m.id);
       playProximityChime();
+      playProximityHaptic();
       showProximityBanner(m, dist);
       break;
     }
@@ -609,8 +779,8 @@ function showProximityBanner(mural, dist) {
       <div class="proximity-banner-title">${mural.t || ''}</div>
       <div class="proximity-banner-dist">${formatDistance(dist)} away</div>
     </div>
-    <button class="proximity-banner-view">View</button>
-    <button class="proximity-banner-dismiss">&times;</button>
+    <button class="proximity-banner-seen">I've Seen It</button>
+    <button class="proximity-banner-view">Let's Go</button>
   `;
   document.body.appendChild(el);
   proximityBannerEl = el;
@@ -621,12 +791,31 @@ function showProximityBanner(mural, dist) {
   el.querySelector('.proximity-banner-view').addEventListener('click', () => {
     dismissProximityBanner();
     openDetail(mural);
+    // Show toast hint about direction lights
+    showDiscoverToast();
   });
-  el.querySelector('.proximity-banner-dismiss').addEventListener('click', () => {
+  el.querySelector('.proximity-banner-seen').addEventListener('click', () => {
+    mySeen.add(mural.id);
+    saveSeen();
     dismissProximityBanner();
   });
 
-  proximityBannerTimeout = setTimeout(dismissProximityBanner, 8000);
+  proximityBannerTimeout = setTimeout(dismissProximityBanner, 12000);
+}
+
+/** Show a brief toast: "Use direction lights to discover mural" */
+function showDiscoverToast() {
+  const existing = document.querySelector('.discover-toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = 'discover-toast';
+  toast.textContent = 'Use direction lights to find this mural';
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('visible'));
+  setTimeout(() => {
+    toast.classList.remove('visible');
+    setTimeout(() => toast.remove(), 400);
+  }, 3500);
 }
 
 /** Dismiss the proximity banner if showing. */
@@ -638,23 +827,36 @@ function dismissProximityBanner() {
   }
 }
 
-/** Show the persistent "Walk Mode ON" pill at top of screen. */
-function showWalkPill() {
-  if (document.querySelector('.walk-mode-pill')) return;
+/** Show the persistent "Discover ON" pill at top of screen. */
+function showDiscoverPill() {
+  if (document.querySelector('.discover-pill')) return;
   const pill = document.createElement('div');
-  pill.className = 'walk-mode-pill';
+  pill.className = 'discover-pill';
   pill.innerHTML = `
-    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>
-    Walk Mode ON
-    <button class="walk-pill-x" aria-label="Turn off Walk Mode">&times;</button>
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+    Discover ON
+    <span class="discover-pill-sep">&middot;</span>
+    <span class="discover-pill-radius">${getRadiusFt()} ft</span>
+    <button class="discover-pill-x" aria-label="Turn off Discover Mode">&times;</button>
   `;
   document.body.appendChild(pill);
-  pill.querySelector('.walk-pill-x').addEventListener('click', toggleWalkMode);
+  pill.querySelector('.discover-pill-x').addEventListener('click', () => {
+    toggleDiscoverMode();
+    // Update dialog toggle if open
+    const toggle = document.querySelector('#discover-toggle-btn');
+    if (toggle) toggle.classList.remove('on');
+  });
 }
 
-/** Remove the Walk Mode pill. */
-function removeWalkPill() {
-  const pill = document.querySelector('.walk-mode-pill');
+/** Update radius display in the discover pill. */
+function updateDiscoverPill() {
+  const span = document.querySelector('.discover-pill-radius');
+  if (span) span.textContent = getRadiusFt() + ' ft';
+}
+
+/** Remove the Discover pill. */
+function removeDiscoverPill() {
+  const pill = document.querySelector('.discover-pill');
   if (pill) pill.remove();
 }
 
@@ -716,17 +918,9 @@ function renderFilterPills() {
     btn.addEventListener('click', () => {
       const cat = btn.dataset.filter;
       if (!cat) {
-        // "All" clears filter
         state.exploreFilter = null;
       } else {
-        // Toggle: add or remove from array
-        let arr = state.exploreFilter ? [...state.exploreFilter] : [];
-        if (arr.includes(cat)) {
-          arr = arr.filter(c => c !== cat);
-        } else {
-          arr.push(cat);
-        }
-        state.exploreFilter = arr.length > 0 ? arr : null;
+        state.exploreFilter = [cat];
       }
       state.exploreYears = [];
       renderFilterPills();
@@ -824,6 +1018,8 @@ function renderExplore() {
 // =============================================
 let leafletMap = null;
 let tourMap = null; // Second Leaflet instance for tour loop view
+let tourUserDot = null; // persistent user location marker on tour map
+let tourUserPulse = null;
 let tourPickerMap = null; // Third Leaflet instance for tour picker overview
 const tourPickerCache = new Map(); // routeId → [[lat,lng],...] cached OSRM coords
 let pickerActiveRoute = 0; // index into ROUTE_DEFS for currently shown route
@@ -833,7 +1029,7 @@ const mapMarkers = []; // Array of { dot, imgMarker, mural, visible } for each m
 const routePolylines = []; // Route polylines on the main map
 
 // At this zoom level and above, markers switch from colored dots to thumbnail images
-const ICON_ZOOM_THRESHOLD = 17;
+const ICON_ZOOM_THRESHOLD = 16;
 
 // (RB_CARD_H, updateRouteBarPositions, setupRouteBarTouch removed — horizontal pills)
 
@@ -879,7 +1075,7 @@ function initMap() {
   if (!routeBar) {
     routeBar = document.createElement('div');
     routeBar.className = 'map-route-bar visible';
-    routeBar.innerHTML = `<div class="route-bar-title">Nav Loop Overlays</div><div class="route-bar-track" id="route-bar-track">${routeKeyHtml}</div>`;
+    routeBar.innerHTML = `<div class="route-bar-title">Tour Overlays</div><div class="route-bar-track" id="route-bar-track">${routeKeyHtml}</div>`;
     document.getElementById('app').appendChild(routeBar);
   }
 
@@ -981,9 +1177,10 @@ function initMap() {
         el.classList.remove('route-key-off');
         // Zoom to fit the route
         const rd = ROUTE_PATHS[id];
-        if (rd && rd.path && rd.path.length > 1) {
-          const bounds = L.latLngBounds(rd.path.map(p => [p[0], p[1]]));
-          leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
+        const allPts = rd?.path || (rd?.segments ? rd.segments.flat() : null);
+        if (allPts && allPts.length > 1) {
+          const bounds = L.latLngBounds(allPts.map(p => [p[0], p[1]]));
+          leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
         }
       }
 
@@ -1014,6 +1211,19 @@ function initMap() {
 
   state.mapReady = true;
   setTimeout(() => leafletMap.invalidateSize(), 100);
+
+  // Persistent user location — always show the blue dot on the map
+  if (window.isSecureContext && 'geolocation' in navigator) {
+    navigator.geolocation.watchPosition(
+      pos => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        showUserOnMap();
+      },
+      () => {},
+      { enableHighAccuracy: true, maximumAge: 10000 }
+    );
+  }
 }
 
 /** Toggle between dot markers (zoomed out) and image markers (zoomed in) based on current zoom. */
@@ -1104,9 +1314,15 @@ function addMapFabs() {
       </button>
     </div>
     <div class="map-fab-row">
-      <span class="map-fab-label">Nearest Loop Stop</span>
-      <button class="map-fab" id="fab-nearest-tour" title="Nearest loop stop">
+      <span class="map-fab-label">Nearest Tour Stop</span>
+      <button class="map-fab" id="fab-nearest-tour" title="Nearest tour stop">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </button>
+    </div>
+    <div class="map-fab-row">
+      <span class="map-fab-label">Discover</span>
+      <button class="map-fab" id="fab-discover" title="Discover nearby murals">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
       </button>
     </div>
   `;
@@ -1115,6 +1331,7 @@ function addMapFabs() {
   document.getElementById('fab-location').addEventListener('click', requestAndShowLocation);
   document.getElementById('fab-nearest').addEventListener('click', fabFindNearestMural);
   document.getElementById('fab-nearest-tour').addEventListener('click', fabFindNearestTourStop);
+  document.getElementById('fab-discover').addEventListener('click', showDiscoverDialog);
 
   // Long-press on any FAB shows labels, auto-hides after 2s
   let labelTimer = null;
@@ -1141,7 +1358,7 @@ function flashFabLabels() {
     stack.classList.add('show-labels');
     setTimeout(() => stack.classList.remove('show-labels'), 1500);
   }, 300);
-  // Walk Mode FAB removed from UI — sync skipped
+  // Discover FAB is self-managed via dialog
 }
 
 function requestAndShowLocation() {
@@ -1168,9 +1385,23 @@ function requestAndShowLocation() {
 function showUserOnMap() {
   if (!state.userLat || !leafletMap) return;
   if (userLocationMarker) userLocationMarker.remove();
-  userLocationMarker = L.circleMarker([state.userLat, state.userLng], {
-    radius: 8, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
-  }).addTo(leafletMap).bindPopup('You are here');
+  if (window._userPulseMarker) window._userPulseMarker.remove();
+  // Pulsing halo ring
+  const pulseIcon = L.divIcon({
+    className: 'user-loc-pulse',
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+  });
+  window._userPulseMarker = L.marker([state.userLat, state.userLng], { icon: pulseIcon, interactive: false }).addTo(leafletMap);
+  // Solid center dot with arrow
+  const dotIcon = L.divIcon({
+    className: 'user-loc-dot',
+    html: '<div class="user-loc-inner"></div>',
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+  });
+  userLocationMarker = L.marker([state.userLat, state.userLng], { icon: dotIcon, zIndexOffset: 1000 })
+    .addTo(leafletMap).bindPopup('You are here');
 }
 
 function ensureLocation() {
@@ -1495,25 +1726,22 @@ const TOUR_COLORS = {
   'tropicana-field': '#43A047',
   'central-ave':     '#FB8C00',
   'arts-district':   '#F06292',
-  'chna-bike':       '#8E24AA',
 };
 
 // Neighborhood walking routes + bike tour
 const ROUTE_DEFS = [
   { id: 'downtown-north', name: 'Downtown North', desc: 'Hollander to Fintan Magee — 15 stops through the waterfront & 600 block',
     ids: [6, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 115, 73, 24] },
-  { id: 'the-edge', name: 'The Edge', desc: 'Matt Kress to Zulu Painter — 13 stops along the Edge District',
-    ids: [119, 80, 75, 120, 57, 135, 40, 130, 89, 83, 98, 43, 34] },
-  { id: 'methodist-town', name: 'Methodist Town', desc: 'Cecilia Lueza to Fintan Magee — 9 stops along MLK Jr corridor',
-    ids: [4, 61, 113, 112, 108, 60, 64, 114, 24] },
-  { id: 'tropicana-field', name: 'Tropicana Field', desc: 'Dream Weaver to Illsol — 10 stops around the stadium district',
-    ids: [59, 103, 32, 20, 52, 44, 123, 87, 16, 125] },
+  { id: 'the-edge', name: 'The Edge', desc: 'Matt Kress to Zulu Painter — 12 stops along the Edge District',
+    ids: [119, 80, 75, 120, 57, 135, 40, 130, 89, 98, 43, 34] },
+  { id: 'methodist-town', name: 'Methodist Town', desc: 'Cecilia Lueza to Jeff Williams — 8 stops along MLK Jr corridor',
+    ids: [4, 61, 113, 112, 108, 24, 114, 64] },
+  { id: 'tropicana-field', name: 'Tropicana Field', desc: 'Dream Weaver to Illsol — 8 stops around the stadium district',
+    ids: [59, 103, 20, 52, 44, 123, 16, 125] },
   { id: 'central-ave', name: 'Central Ave', desc: 'Michael Vasquez to IBOMS — 9 stops along Grand Central',
     ids: [48, 122, 62, 55, 76, 71, 88, 38, 101] },
-  { id: 'arts-district', name: 'Arts District', desc: 'Cecilia Lueza to Gleo — 14 stops through the Warehouse Arts District',
-    ids: [140, 136, 90, 84, 72, 29, 39, 10, 25, 12, 93, 121, 50, 79] },
-  { id: 'chna-bike', name: 'CHNA Bike Tour', desc: '27-stop bike ride through Crescent Heights & Grand Central',
-    ids: [17, 6, 23, 30, 1, 109, 110, 7, 9, 73, 80, 98, 83, 59, 103, 44, 39, 19, 88, 38, 76, 55, 101, 62, 4, 113, 64] },
+  { id: 'arts-district', name: 'Arts District', desc: 'Cecilia Lueza to Gleo — 13 stops through the Warehouse Arts District',
+    ids: [140, 90, 84, 72, 29, 39, 10, 25, 12, 93, 121, 50, 79] },
 ];
 
 // All routes off by default
@@ -1716,7 +1944,7 @@ function setupRotaryTouch(zone) {
   }, { passive: false });
 }
 
-/** Render the tour picker: rotary card layout with lazy mini-maps. */
+/** Render the tour picker: scrollable card list with lazy mini-maps. */
 function renderTourPicker() {
   // Destroy any stale picker map / mini-maps
   if (tourPickerMap) {
@@ -1728,105 +1956,112 @@ function renderTourPicker() {
   // Prefetch route coords for all routes
   ROUTE_DEFS.forEach(def => loadRouteCoords(def));
 
-  const cardsHtml = ROUTE_DEFS.map((def, i) => {
+  function buildCardHtml(def, i, withMap) {
     const ordered = getRouteOrdered(def);
     const color = TOUR_COLORS[def.id] || '#999';
     const rd = ROUTE_PATHS[def.id];
     const dist = rd && rd.distance ? rd.distance + ' mi' : '';
     const isBike = def.id.includes('bike');
     const timeEst = dist ? (isBike ? '~20 min bike' : '~30 min walk') : '';
-
+    const mapSection = withMap
+      ? `<div class="tour-list-card-map"><div id="rmap-${i}" style="width:100%;height:100%"></div><div class="tour-list-card-map-fade"></div></div>`
+      : `<div class="tour-list-card-map" style="background:linear-gradient(135deg, ${color}22 0%, ${color}08 100%)"></div>`;
     return `
-      <div class="rotary-card" data-index="${i}">
-        <div class="rotary-compact">
-          <div class="rotary-compact-accent" style="background:${color}"></div>
-          <div class="rotary-compact-body">
-            <div>
-              <div class="rotary-compact-name">${def.name}</div>
-              <div class="rotary-compact-meta">
-                <span>${ordered.length} stops</span>
-                ${dist ? `<span>${dist}</span>` : ''}
-                ${timeEst ? `<span>${timeEst}</span>` : ''}
-              </div>
+      <div class="tour-list-card" data-index="${i}">
+        ${mapSection}
+        <div class="tour-list-card-info">
+          <div class="tour-list-card-accent" style="background:${color}"></div>
+          <div class="tour-list-card-details">
+            <div class="tour-list-card-name">${def.name}</div>
+            <div class="tour-list-card-desc">${def.desc}</div>
+            <div class="tour-list-card-stats">
+              <span class="tour-list-card-stat">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                ${ordered.length} stops
+              </span>
+              ${dist ? `<span class="tour-list-card-stat">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                ${dist}
+              </span>` : ''}
+              ${timeEst ? `<span class="tour-list-card-stat">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                ${timeEst}
+              </span>` : ''}
             </div>
-            <svg class="rotary-compact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           </div>
-        </div>
-        <div class="rotary-expanded">
-          <div class="rotary-expanded-map">
-            <div id="rmap-${i}" style="width:100%;height:100%"></div>
-            <div class="rotary-expanded-map-fade"></div>
-          </div>
-          <div class="rotary-expanded-info">
-            <div class="rotary-expanded-accent" style="background:${color}"></div>
-            <div class="rotary-expanded-details">
-              <div class="rotary-expanded-name">${def.name}</div>
-              <div class="rotary-expanded-desc">${def.desc}</div>
-              <div class="rotary-expanded-stats">
-                <span class="rotary-expanded-stat">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-                  ${ordered.length} stops
-                </span>
-                ${dist ? `<span class="rotary-expanded-stat">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                  ${dist}
-                </span>` : ''}
-                ${timeEst ? `<span class="rotary-expanded-stat">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                  ${timeEst}
-                </span>` : ''}
-              </div>
-            </div>
-            <div>
-              <button class="rotary-go-btn" data-index="${i}">
-                Go
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-              </button>
-            </div>
+          <div>
+            <button class="tour-list-go-btn" data-index="${i}">
+              Go
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
           </div>
         </div>
       </div>`;
-  }).join('');
+  }
+  const cardsHtml = ROUTE_DEFS.map((def, i) => buildCardHtml(def, i, true)).join('');
+  const cloneHtml = ROUTE_DEFS.map((def, i) => buildCardHtml(def, i, false)).join('');
 
   views.loops.innerHTML = `
     <div class="tour-picker-layout">
       <div class="tours-large-title">
-        <h1>Loops</h1>
-        <p>Flip to Browse, Tap Go</p>
+        <h1>Tours</h1>
+        <p>Scroll to Browse, Tap Go</p>
       </div>
-      <div class="rotary-zone" id="rotary-zone">
-        <div class="rotary-track" id="rotary-track">
-          ${cardsHtml}
-        </div>
+      <div class="tour-list-scroll" id="tour-list-scroll">
+        ${cloneHtml}${cardsHtml}${cloneHtml}
       </div>
     </div>
   `;
 
-  // Click to select card or start tour
-  const track = document.getElementById('rotary-track');
-  track.addEventListener('click', (e) => {
-    // Start button
-    const goBtn = e.target.closest('.rotary-go-btn');
+  // Click to start tour
+  views.loops.addEventListener('click', (e) => {
+    const goBtn = e.target.closest('.tour-list-go-btn');
     if (goBtn) {
-      openTour(ROUTE_DEFS[pickerActiveRoute]);
+      const idx = Number(goBtn.dataset.index);
+      openTour(ROUTE_DEFS[idx]);
       return;
     }
-
-    const card = e.target.closest('.rotary-card');
-    if (!card) return;
-    const idx = Number(card.dataset.index);
-    if (idx !== pickerActiveRoute) {
-      pickerActiveRoute = idx;
-      updateRotaryPositions();
+    const card = e.target.closest('.tour-list-card');
+    if (card) {
+      const idx = Number(card.dataset.index);
+      openTour(ROUTE_DEFS[idx]);
     }
   });
 
-  // Touch flick handling
-  const zone = document.getElementById('rotary-zone');
-  setupRotaryTouch(zone);
+  // Lazy-init mini-maps using IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Number(entry.target.dataset.index);
+        setTimeout(() => ensureRotaryMap(idx), 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '100px' });
 
-  // Initial layout
-  requestAnimationFrame(updateRotaryPositions);
+  views.loops.querySelectorAll('.tour-list-card').forEach(card => observer.observe(card));
+
+  // Infinite scroll — reset to middle copy when near edges
+  const scrollEl = document.getElementById('tour-list-scroll');
+  if (scrollEl) {
+    const resetToMiddle = () => {
+      const totalH = scrollEl.scrollHeight;
+      const oneSetH = totalH / 3;
+      scrollEl.scrollTop = oneSetH;
+    };
+    // Start at middle copy
+    requestAnimationFrame(resetToMiddle);
+
+    scrollEl.addEventListener('scroll', () => {
+      const totalH = scrollEl.scrollHeight;
+      const oneSetH = totalH / 3;
+      if (scrollEl.scrollTop < oneSetH * 0.15) {
+        scrollEl.scrollTop += oneSetH;
+      } else if (scrollEl.scrollTop > oneSetH * 1.85) {
+        scrollEl.scrollTop -= oneSetH;
+      }
+    }, { passive: true });
+  }
 }
 
 /** Create the Leaflet map for the tour picker. */
@@ -1847,9 +2082,9 @@ function initTourPickerMap() {
 
   // Show user location
   if (state.userLat && state.userLng) {
-    L.circleMarker([state.userLat, state.userLng], {
-      radius: 7, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
-    }).addTo(tourPickerMap).bindPopup('You are here');
+    const pos = [state.userLat, state.userLng];
+    L.marker(pos, { icon: L.divIcon({ className: 'user-loc-pulse', iconSize: [40,40], iconAnchor: [20,20] }), interactive: false }).addTo(tourPickerMap);
+    L.marker(pos, { icon: L.divIcon({ className: 'user-loc-dot', html: '<div class="user-loc-inner"></div>', iconSize: [18,18], iconAnchor: [9,9] }), zIndexOffset: 1000 }).addTo(tourPickerMap).bindPopup('You are here');
   }
 
   // Fetch active route first, show it immediately, then prefetch the rest
@@ -1863,11 +2098,14 @@ function initTourPickerMap() {
 function loadRouteCoords(def) {
   if (tourPickerCache.has(def.id)) return Promise.resolve();
 
-  // Use pre-built route if available (GPX or KML)
+  // Use pre-built route if available
   if (ROUTE_PATHS[def.id]) {
     const rd = ROUTE_PATHS[def.id];
-    tourPickerCache.set(def.id, rd.path || rd);
-    return Promise.resolve();
+    const coords = rd.path || (rd.segments ? rd.segments.flat() : null);
+    if (coords) {
+      tourPickerCache.set(def.id, coords);
+      return Promise.resolve();
+    }
   }
 
   // Fallback: fetch from OSRM
@@ -1987,6 +2225,7 @@ function openTour(def, startAtMuralId) {
 
   state.activeTour = def;
   state.tourStops = stops;
+  state.tourDirection = 'fwd';
 
   // If a specific mural ID was provided, start there
   if (startAtMuralId != null) {
@@ -2019,8 +2258,11 @@ function buildCompassArcHTML() {
   }
   return `
     <div class="compass-arc" hidden>
+      <span class="compass-arrow compass-arrow-left" hidden>&larr;</span>
       <div class="compass-arc-dots">${dots}</div>
+      <span class="compass-arrow compass-arrow-right" hidden>&rarr;</span>
     </div>
+    <div class="compass-cal-hint" hidden>Compass calibrating — accuracy improves as you walk</div>
     <button class="compass-enable-btn" hidden>Enable Compass</button>
   `;
 }
@@ -2068,6 +2310,15 @@ function startCompassListener(arcEl) {
   state.compassAvailable = true;
   arcEl.hidden = false;
 
+  // Show calibration hint, fade out after 6s
+  const hint = arcEl.parentElement?.querySelector('.compass-cal-hint');
+  if (hint) {
+    hint.hidden = false;
+    hint.style.opacity = '1';
+    setTimeout(() => { hint.style.opacity = '0'; }, 12000);
+    setTimeout(() => { hint.hidden = true; }, 13000);
+  }
+
   compassHandler = (e) => {
     // iOS: webkitCompassHeading (0=N, clockwise). Android: 360 - alpha.
     let heading = e.webkitCompassHeading != null
@@ -2075,15 +2326,15 @@ function startCompassListener(arcEl) {
       : (e.alpha != null ? (360 - e.alpha) % 360 : null);
     if (heading == null) return;
 
-    // Exponential smoothing to reduce jitter
+    // Exponential smoothing to reduce jitter (lower = smoother)
+    const ALPHA = 0.3;
     if (compassSmoothedHeading == null) {
       compassSmoothedHeading = heading;
     } else {
-      // Handle wrap-around (e.g. 359 → 1)
       let diff = heading - compassSmoothedHeading;
       if (diff > 180) diff -= 360;
       if (diff < -180) diff += 360;
-      compassSmoothedHeading = (compassSmoothedHeading + diff * 0.85 + 360) % 360;
+      compassSmoothedHeading = (compassSmoothedHeading + diff * ALPHA + 360) % 360;
     }
     state.compassHeading = compassSmoothedHeading;
     scheduleArcUpdate();
@@ -2095,16 +2346,17 @@ function startCompassListener(arcEl) {
 
 /** Start a GPS watcher for compass if walk mode isn't already providing one. */
 function ensureGpsForCompass() {
-  if (state.walkWatchId != null) return; // walk mode is running, piggyback
+  if (state.walkWatchId != null) return; // discover mode is running, piggyback
   if (compassGpsWatchId != null) return; // already watching
   compassGpsWatchId = navigator.geolocation.watchPosition(
     pos => {
       state.userLat = pos.coords.latitude;
       state.userLng = pos.coords.longitude;
+      updateTourUserLocation();
       scheduleArcUpdate();
     },
     () => {},
-    { enableHighAccuracy: true, maximumAge: 3000 }
+    { enableHighAccuracy: true, maximumAge: 0 }
   );
 }
 
@@ -2117,51 +2369,52 @@ function scheduleArcUpdate() {
   });
 }
 
-/** Core arc update: compute bearing, map to dots, set heat + label. */
+/** Core HUD update: compute bearing, translate indicator bar toward target mural. */
 function updateCompassArc() {
-  const arcEl = views.loops?.querySelector('.compass-arc');
+  const arcEl = views.loops.querySelector('.compass-arc');
   if (!arcEl || arcEl.hidden) return;
   if (state.compassHeading == null || state.userLat == null) return;
   if (!state.tourStops.length) return;
 
-  // Target = current stop (the one user is navigating to)
-  const target = state.tourStops[state.tourIndex];
+  const tLen = state.tourStops.length;
+  const tIdx = state.tourIndex;
+  const targetIdx = state.tourDirection === 'fwd'
+    ? wrapIndex(tIdx + 1, tLen)
+    : wrapIndex(tIdx - 1, tLen);
+  const target = state.tourStops[targetIdx];
   if (!target || !target.lat || !target.lng) return;
 
   const dist = haversine(state.userLat, state.userLng, target.lat, target.lng);
-  const dots = arcEl.querySelectorAll('.compass-dot');
-  const mid = Math.floor(COMPASS_ARC_DOTS / 2); // 10
-
-  // "You're here!" mode
-  if (dist < 10) {
-    dots.forEach(d => d.dataset.heat = 'hot');
-    return;
-  }
-
-  // Bearing from user to target
   const targetBearing = bearing(state.userLat, state.userLng, target.lat, target.lng);
 
-  // Relative angle: how far off-center the target is from where user is facing
+  // Relative angle: positive = target to right, negative = left
   let rel = targetBearing - state.compassHeading;
   if (rel > 180) rel -= 360;
   if (rel < -180) rel += 360;
-  // rel: -180..+180, negative = left, positive = right
 
-  // Map relative angle to dot index: center (mid) = straight ahead
-  // halfSpan = 90° means the arc covers ±90° (180° FOV in front of you)
-  const halfSpan = COMPASS_ARC_SPAN_DEG / 2;
-  const dotIdx = Math.round(mid + (rel / halfSpan) * mid);
+  // Translate the entire bar so the green chevron points toward the target
+  // When target is to the right (rel > 0), shift bar left so chevron moves right
+  const bar = arcEl.querySelector('.hud-indicator-bar');
+  if (bar) {
+    const clampedRel = Math.max(-90, Math.min(90, rel));
+    const halfBarWidth = bar.offsetWidth / 2;
+    const offset = (clampedRel / 90) * halfBarWidth * 0.6;
+    bar.style.transform = `translateX(${offset}px)`;
+  }
 
-  // If target is outside the arc's FOV, all dots are red
-  if (dotIdx < -1 || dotIdx > COMPASS_ARC_DOTS) {
-    dots.forEach(d => d.dataset.heat = 'cold');
-  } else {
-    dots.forEach((dot, i) => {
-      const diff = Math.abs(i - dotIdx);
-      if (diff <= 1) dot.dataset.heat = 'hot';
-      else if (diff <= 4) dot.dataset.heat = 'warm';
-      else dot.dataset.heat = 'cold';
-    });
+  // Show directional arrows when target is off-screen (beyond ±90°)
+  const leftArrow = arcEl.querySelector('.hud-offscreen-left');
+  const rightArrow = arcEl.querySelector('.hud-offscreen-right');
+  if (leftArrow) leftArrow.hidden = rel >= -90;
+  if (rightArrow) rightArrow.hidden = rel <= 90;
+
+  // Update distance/time
+  const distEl = document.getElementById('tour-nav-dist');
+  const timeEl = document.getElementById('tour-nav-time');
+  if (distEl) distEl.textContent = formatDistance(dist);
+  if (timeEl) {
+    const mins = Math.max(1, Math.round(dist / 80));
+    timeEl.textContent = mins < 60 ? `${mins} min walk` : `${(mins / 60).toFixed(1)} hr walk`;
   }
 }
 
@@ -2208,7 +2461,6 @@ function initDetailCompass(mural) {
 
   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
     if (compassGrantedThisSession) {
-      // Already granted this session — start directly
       startDetailCompassListener(arcEl, mural);
     } else {
       btnEl.hidden = false;
@@ -2235,19 +2487,29 @@ function startDetailCompassListener(arcEl, mural) {
   const infoEl = detailContent.querySelector('.detail-nav-info');
   if (infoEl) infoEl.hidden = false;
 
+  // Show calibration hint, fade out after 6s
+  const hint = arcEl.parentElement?.querySelector('.compass-cal-hint');
+  if (hint) {
+    hint.hidden = false;
+    hint.style.opacity = '1';
+    setTimeout(() => { hint.style.opacity = '0'; }, 12000);
+    setTimeout(() => { hint.hidden = true; }, 13000);
+  }
+
   detailCompassHandler = (e) => {
     let heading = e.webkitCompassHeading != null
       ? e.webkitCompassHeading
       : (e.alpha != null ? (360 - e.alpha) % 360 : null);
     if (heading == null) return;
 
+    const ALPHA = 0.3;
     if (detailCompassSmoothed == null) {
       detailCompassSmoothed = heading;
     } else {
       let diff = heading - detailCompassSmoothed;
       if (diff > 180) diff -= 360;
       if (diff < -180) diff += 360;
-      detailCompassSmoothed = (detailCompassSmoothed + diff * 0.85 + 360) % 360;
+      detailCompassSmoothed = (detailCompassSmoothed + diff * ALPHA + 360) % 360;
     }
     detailCompassHeading = detailCompassSmoothed;
     scheduleDetailArcUpdate(mural);
@@ -2263,7 +2525,7 @@ function startDetailCompassListener(arcEl, mural) {
         scheduleDetailArcUpdate(mural);
       },
       () => {},
-      { enableHighAccuracy: true, maximumAge: 3000 }
+      { enableHighAccuracy: true, maximumAge: 0 }
     );
   }
 
@@ -2282,39 +2544,30 @@ function scheduleDetailArcUpdate(mural) {
 }
 
 function updateDetailCompass(mural) {
-  const arcEl = detailContent?.querySelector('.compass-arc');
+  const arcEl = detailContent?.querySelector('.detail-compass-arc');
   if (!arcEl || arcEl.hidden) return;
   if (detailCompassHeading == null || state.userLat == null) return;
   if (!mural || !mural.lat || !mural.lng) return;
-
-  const dist = haversine(state.userLat, state.userLng, mural.lat, mural.lng);
-  const dots = arcEl.querySelectorAll('.compass-dot');
-  const mid = Math.floor(COMPASS_ARC_DOTS / 2);
-
-  if (dist < 10) {
-    dots.forEach(d => d.dataset.heat = 'hot');
-    updateDetailNavInfo(mural);
-    return;
-  }
 
   const targetBearing = bearing(state.userLat, state.userLng, mural.lat, mural.lng);
   let rel = targetBearing - detailCompassHeading;
   if (rel > 180) rel -= 360;
   if (rel < -180) rel += 360;
 
-  const halfSpan = COMPASS_ARC_SPAN_DEG / 2;
-  const dotIdx = Math.round(mid + (rel / halfSpan) * mid);
-
-  if (dotIdx < -1 || dotIdx > COMPASS_ARC_DOTS) {
-    dots.forEach(d => d.dataset.heat = 'cold');
-  } else {
-    dots.forEach((dot, i) => {
-      const diff = Math.abs(i - dotIdx);
-      if (diff <= 1) dot.dataset.heat = 'hot';
-      else if (diff <= 4) dot.dataset.heat = 'warm';
-      else dot.dataset.heat = 'cold';
-    });
+  // Translate the HUD bar so the green chevron points toward the mural
+  const bar = arcEl.querySelector('.hud-indicator-bar');
+  if (bar) {
+    const clampedRel = Math.max(-90, Math.min(90, rel));
+    const halfBarWidth = bar.offsetWidth / 2;
+    const offset = (clampedRel / 90) * halfBarWidth * 0.6;
+    bar.style.transform = `translateX(${offset}px)`;
   }
+
+  // Show directional arrows when target is off-screen (beyond ±90°)
+  const leftArrow = arcEl.querySelector('.hud-offscreen-left');
+  const rightArrow = arcEl.querySelector('.hud-offscreen-right');
+  if (leftArrow) leftArrow.hidden = rel >= -90;
+  if (rightArrow) rightArrow.hidden = rel <= 90;
 
   updateDetailNavInfo(mural);
 }
@@ -2361,6 +2614,7 @@ function closeTour() {
   state.tourIndex = 0;
   state.tourMapReady = false;
   state.tourRoute = null;
+  state.tourAdjacentRoutes = [];
   state.tourMarkers = [];
   state.tourFetching = false;
 }
@@ -2408,64 +2662,93 @@ function renderTourLoop() {
       <!-- Map zone -->
       <div class="active-tour-map-zone">
         <div id="tour-map-container" style="width:100%;height:100%"></div>
-        <div class="active-tour-segment-badge" id="tour-segment-info">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          <span id="tour-segment-text">Loading...</span>
+        <div class="tour-hud-overlay">
+          <div class="compass-arc tour-compass-arc" hidden>
+            <span class="hud-offscreen hud-offscreen-left" hidden>&larr;</span>
+            <div class="hud-indicator-bar">${(() => {
+              let segs = '';
+              const TICKS = 81;
+              const MID = Math.floor(TICKS / 2);
+              for (let i = 0; i < TICKS; i++) {
+                const norm = (i - MID) / MID;
+                const arcY = Math.round((1 - norm * norm) * 28);
+                if (i === MID) {
+                  segs += '<div class="hud-chevron" style="margin-bottom:' + arcY + 'px"><svg width="36" height="16" viewBox="0 0 36 16"><path d="M2,15 L18,2 L34,15" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+                } else {
+                  const d = Math.abs(i - MID);
+                  const cls = d <= 3 ? 'hud-tick warm' : d <= 9 ? 'hud-tick hot' : d <= 19 ? 'hud-tick faint' : d <= 29 ? 'hud-tick faint2' : (i % 5 === 0 ? 'hud-tick major' : 'hud-tick');
+                  segs += '<span class="' + cls + '" style="margin-bottom:' + arcY + 'px"></span>';
+                }
+              }
+              return segs;
+            })()}</div>
+            <span class="hud-offscreen hud-offscreen-right" hidden>&rarr;</span>
+          </div>
+          <div class="hud-info">
+            <span class="hud-dist" id="tour-nav-dist"></span>
+            <span class="hud-sep">&middot;</span>
+            <span class="hud-time" id="tour-nav-time"></span>
+          </div>
+          <button class="compass-enable-btn" hidden>Enable Compass</button>
+          <div class="compass-cal-hint" hidden>Compass calibrating — accuracy improves as you walk</div>
         </div>
-        ${buildCompassArcHTML()}
       </div>
 
       <!-- Bottom panel -->
       <div class="active-tour-bottom">
 
         <div class="active-tour-carousel">
-          <!-- Prev mural (left) -->
-          <div class="active-tour-prev" data-id="${stops[prev].id}">
-            <div class="active-tour-img-wrap">
-              <img class="active-tour-img" src="${stops[prev].img || ''}" alt="${stops[prev].a}" onerror="this.style.background='#ddd'">
-              <span class="active-tour-num">${prev + 1}</span>
+          <!-- Prev -->
+          <div class="tour-card tour-card-prev${state.tourDirection === 'back' ? ' tour-card-active' : ' tour-card-inactive'}" data-id="${stops[prev].id}">
+            <span class="tour-card-label">Next</span>
+            <div class="tour-card-img-wrap">
+              <img class="tour-card-img" src="${stops[prev].img || ''}" alt="${stops[prev].a}" onerror="this.style.background='#ddd'">
+              <span class="tour-card-num">${prev + 1}</span>
             </div>
-            <span class="active-tour-prev-label">Last</span>
-            <div class="active-tour-artist">${stops[prev].a}</div>
+            <div class="tour-card-artist">${stops[prev].a}</div>
           </div>
 
-          <!-- Current mural (center) -->
-          <div class="active-tour-current" data-id="${stops[curr].id}">
-            <div class="active-tour-img-wrap">
-              <img class="active-tour-img" src="${stops[curr].img || ''}" alt="${stops[curr].a}" onerror="this.style.background='#ddd'">
-              <span class="active-tour-num" style="background:${routeColor}">${curr + 1}</span>
-              <span class="active-tour-now-label">Now</span>
+          <!-- Back chevron -->
+          <button class="tour-dir-btn tour-dir-back${state.tourDirection === 'back' ? ' active' : ''}" aria-label="Reverse">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+
+          <!-- Now -->
+          <div class="tour-card tour-card-now" data-id="${stops[curr].id}">
+            <span class="tour-card-label tour-card-label-now">Now</span>
+            <div class="tour-card-img-wrap tour-card-img-now">
+              <img class="tour-card-img" src="${stops[curr].img || ''}" alt="${stops[curr].a}" onerror="this.style.background='#ddd'">
+              <span class="tour-card-num tour-card-num-now">${curr + 1}</span>
             </div>
-            <div class="active-tour-info">
-              <div class="active-tour-artist">${stops[curr].a}</div>
-              ${stops[curr].t ? `<div class="active-tour-title">"${stops[curr].t}"</div>` : ''}
-              <div class="active-tour-address">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                ${stops[curr].bldg || stops[curr].loc || ''}
-              </div>
-            </div>
+            <div class="tour-card-artist">${stops[curr].a}</div>
           </div>
 
-          <!-- Next mural (right) -->
-          <div class="active-tour-next" data-id="${stops[next].id}">
-            <div class="active-tour-img-wrap">
-              <img class="active-tour-img" src="${stops[next].img || ''}" alt="${stops[next].a}" onerror="this.style.background='#ddd'">
-              <span class="active-tour-num">${next + 1}</span>
+          <!-- Fwd chevron -->
+          <button class="tour-dir-btn tour-dir-fwd${state.tourDirection === 'fwd' ? ' active' : ''}" aria-label="Forward">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+
+          <!-- Next -->
+          <div class="tour-card tour-card-next${state.tourDirection === 'fwd' ? ' tour-card-active' : ' tour-card-inactive'}" data-id="${stops[next].id}">
+            <span class="tour-card-label">Next</span>
+            <div class="tour-card-img-wrap">
+              <img class="tour-card-img" src="${stops[next].img || ''}" alt="${stops[next].a}" onerror="this.style.background='#ddd'">
+              <span class="tour-card-num">${next + 1}</span>
             </div>
-            <span class="active-tour-next-label">Next Up</span>
-            <div class="active-tour-artist">${stops[next].a}</div>
+            <div class="tour-card-artist">${stops[next].a}</div>
           </div>
         </div>
 
-        <!-- Dots -->
-        <div class="active-tour-dots-row">
-          <div class="active-tour-dots" id="tour-dots">
-            ${buildTourDots(len, curr, routeColor)}
-          </div>
-          <div class="active-tour-swipe-hint">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-            <span class="swipe-hint-text">swipe to navigate</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        <!-- Thumbnail strip (infinite) -->
+        <div class="tour-thumb-strip-wrap">
+          <div class="tour-thumb-strip" id="tour-thumb-strip">
+            ${[...stops, ...stops, ...stops].map((s, i) => {
+              const realIdx = i % len;
+              const isCurr = realIdx === curr;
+              return `<div class="tour-thumb${isCurr ? ' active' : ''}" data-idx="${realIdx}" data-copy="${Math.floor(i / len)}"${isCurr ? ' style="border-color:var(--teal)"' : ''}>
+              <img src="${s.img || ''}" alt="${s.a}" onerror="this.style.background='#ddd'">
+            </div>`;
+            }).join('')}
           </div>
         </div>
       </div>
@@ -2484,28 +2767,54 @@ function renderTourLoop() {
     renderTourList();
   });
 
-  // Prev card tap → go back
-  views.loops.querySelector('.active-tour-prev')?.addEventListener('click', () => {
-    navigateTour(-1);
+  // Direction toggle — just flip direction flag, no array reversal
+  views.loops.querySelector('.tour-dir-fwd')?.addEventListener('click', () => {
+    state.tourDirection = 'fwd';
+    renderTourCards();
+  });
+  views.loops.querySelector('.tour-dir-back')?.addEventListener('click', () => {
+    state.tourDirection = 'back';
+    renderTourCards();
   });
 
-  // Current card tap → detail
-  views.loops.querySelector('.active-tour-current')?.addEventListener('click', () => {
-    const mural = murals.find(m => m.id === Number(views.loops.querySelector('.active-tour-current').dataset.id));
-    if (mural) openDetail(mural);
+  // All 3 cards tap → detail
+  views.loops.querySelectorAll('.tour-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const mural = murals.find(m => m.id === Number(card.dataset.id));
+      if (mural) openDetail(mural);
+    });
   });
 
-  // Next card tap → advance
-  views.loops.querySelector('.active-tour-next')?.addEventListener('click', () => {
-    navigateTour(1);
-  });
 
+  // Thumbnail strip tap handlers + infinite scroll
+  const strip = document.getElementById('tour-thumb-strip');
+  if (strip) {
+    strip.addEventListener('click', (e) => {
+      const thumb = e.target.closest('.tour-thumb');
+      if (!thumb) return;
+      const idx = parseInt(thumb.dataset.idx, 10);
+      if (!isNaN(idx) && idx !== state.tourIndex) {
+        state.tourIndex = idx;
+        renderTourCards();
+      }
+    });
+    // Scroll to middle copy (copy=1) of active thumb
+    const middleActive = strip.querySelector('.tour-thumb.active[data-copy="1"]');
+    if (middleActive) setTimeout(() => middleActive.scrollIntoView({ inline: 'center', block: 'nearest' }), 50);
+    // Reset to middle copy when scrolling near edges
+    strip.addEventListener('scrollend', () => {
+      const thumbW = 56; // 48 + 8 gap
+      const oneSetW = stops.length * thumbW;
+      if (strip.scrollLeft < thumbW * 2) {
+        strip.scrollLeft += oneSetW;
+      } else if (strip.scrollLeft > oneSetW * 2 - strip.clientWidth) {
+        strip.scrollLeft -= oneSetW;
+      }
+    });
+  }
 
   // Init map
   initTourMap();
-
-  // Swipe support
-  setupTourSwipe();
 
   // Compass bearing arc
   initCompassArc();
@@ -2519,54 +2828,62 @@ function renderTourCards() {
   const curr = idx;
   const prev = wrapIndex(idx - 1, len);
   const next = wrapIndex(idx + 1, len);
-  const routeColor = TOUR_COLORS[state.activeTour?.id] || '#0E918C';
+  const dir = state.tourDirection;
+
+  // Helper to populate a card
+  function fillCard(card, stop, num) {
+    if (!card) return;
+    card.dataset.id = stop.id;
+    const img = card.querySelector('.tour-card-img');
+    if (img) { img.src = stop.img || ''; img.alt = stop.a; }
+    const numEl = card.querySelector('.tour-card-num');
+    if (numEl) numEl.textContent = num;
+    const artist = card.querySelector('.tour-card-artist');
+    if (artist) artist.textContent = stop.a;
+  }
+
+  // Now card
+  fillCard(views.loops.querySelector('.tour-card-now'), stops[curr], curr + 1);
 
   // Prev card
-  const prevCard = views.loops.querySelector('.active-tour-prev');
-  if (prevCard) {
-    prevCard.dataset.id = stops[prev].id;
-    const img = prevCard.querySelector('.active-tour-img');
-    if (img) { img.src = stops[prev].img || ''; img.alt = stops[prev].a; }
-    const num = prevCard.querySelector('.active-tour-num');
-    if (num) num.textContent = prev + 1;
-    const artist = prevCard.querySelector('.active-tour-artist');
-    if (artist) artist.textContent = stops[prev].a;
-  }
-
-  // Current card
-  const currentCard = views.loops.querySelector('.active-tour-current');
-  if (currentCard) {
-    currentCard.dataset.id = stops[curr].id;
-    const img = currentCard.querySelector('.active-tour-img');
-    if (img) { img.src = stops[curr].img || ''; img.alt = stops[curr].a; }
-    const num = currentCard.querySelector('.active-tour-num');
-    if (num) { num.textContent = curr + 1; num.style.background = routeColor; }
-    const artist = currentCard.querySelector('.active-tour-artist');
-    if (artist) artist.textContent = stops[curr].a;
-    const title = currentCard.querySelector('.active-tour-title');
-    if (title) title.textContent = stops[curr].t ? `"${stops[curr].t}"` : '';
-    const addr = currentCard.querySelector('.active-tour-address');
-    if (addr) {
-      const addrText = stops[curr].bldg || stops[curr].loc || '';
-      addr.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${addrText}`;
-    }
-  }
+  const prevCard = views.loops.querySelector('.tour-card-prev');
+  fillCard(prevCard, stops[prev], prev + 1);
 
   // Next card
-  const nextCard = views.loops.querySelector('.active-tour-next');
+  const nextCard = views.loops.querySelector('.tour-card-next');
+  fillCard(nextCard, stops[next], next + 1);
+
+  // Apply active/inactive classes based on direction
+  if (prevCard) {
+    prevCard.classList.toggle('tour-card-active', dir === 'back');
+    prevCard.classList.toggle('tour-card-inactive', dir !== 'back');
+  }
   if (nextCard) {
-    nextCard.dataset.id = stops[next].id;
-    const img = nextCard.querySelector('.active-tour-img');
-    if (img) { img.src = stops[next].img || ''; img.alt = stops[next].a; }
-    const num = nextCard.querySelector('.active-tour-num');
-    if (num) num.textContent = next + 1;
-    const artist = nextCard.querySelector('.active-tour-artist');
-    if (artist) artist.textContent = stops[next].a;
+    nextCard.classList.toggle('tour-card-active', dir === 'fwd');
+    nextCard.classList.toggle('tour-card-inactive', dir !== 'fwd');
   }
 
-  // Dots
-  const dotsEl = document.getElementById('tour-dots');
-  if (dotsEl) dotsEl.innerHTML = buildTourDots(len, curr, routeColor);
+  // Chevron active state
+  views.loops.querySelector('.tour-dir-back')?.classList.toggle('active', dir === 'back');
+  views.loops.querySelector('.tour-dir-fwd')?.classList.toggle('active', dir === 'fwd');
+
+  // Thumbnail strip (infinite) — rebuild from current stops order
+  const strip = document.getElementById('tour-thumb-strip');
+  if (strip) {
+    strip.innerHTML = [...stops, ...stops, ...stops].map((s, i) => {
+      const realIdx = i % len;
+      const copyIdx = Math.floor(i / len);
+      const isCurr = realIdx === curr;
+      return `<div class="tour-thumb${isCurr ? ' active' : ''}" data-idx="${realIdx}" data-copy="${copyIdx}"${isCurr ? ' style="border-color:var(--teal)"' : ''}>
+        <img src="${s.img || ''}" alt="${s.a}" onerror="this.style.background='#ddd'">
+      </div>`;
+    }).join('');
+    // Scroll to center the active thumb in the middle copy
+    const midActive = strip.querySelector('.tour-thumb.active[data-copy="1"]');
+    if (midActive) {
+      midActive.scrollIntoView({ behavior: 'instant', inline: 'center', block: 'nearest' });
+    }
+  }
 
   // Recalculate compass arc for new target
   if (state.compassAvailable) scheduleArcUpdate();
@@ -2598,152 +2915,241 @@ function initTourMap() {
   // Prevent swipe from scrolling the map
   L.DomEvent.disableScrollPropagation(container);
 
-  // Show user location on tour map
+  // Show user location on tour map (persistent — updated by GPS watcher)
+  tourUserDot = null;
+  tourUserPulse = null;
   if (state.userLat && state.userLng) {
-    L.circleMarker([state.userLat, state.userLng], {
-      radius: 7, fillColor: '#4285F4', color: '#fff', weight: 3, fillOpacity: 1,
-    }).addTo(tourMap).bindPopup('You are here');
+    const pos = [state.userLat, state.userLng];
+    tourUserPulse = L.marker(pos, { icon: L.divIcon({ className: 'user-loc-pulse', iconSize: [40,40], iconAnchor: [20,20] }), interactive: false }).addTo(tourMap);
+    tourUserDot = L.marker(pos, { icon: L.divIcon({ className: 'user-loc-dot', html: '<div class="user-loc-inner"></div>', iconSize: [18,18], iconAnchor: [9,9] }), zIndexOffset: 1000 }).addTo(tourMap).bindPopup('You are here');
   }
 
   state.tourMapReady = true;
   fetchTourSegment();
 }
 
-/** Fetch OSRM route between last visited stop and first upcoming stop, draw on tour map. */
+/** Update user location marker on tour map. */
+function updateTourUserLocation() {
+  if (!tourMap || !state.userLat || !state.userLng) return;
+  const pos = [state.userLat, state.userLng];
+  if (tourUserDot) {
+    tourUserDot.setLatLng(pos);
+    tourUserPulse.setLatLng(pos);
+  } else {
+    tourUserPulse = L.marker(pos, { icon: L.divIcon({ className: 'user-loc-pulse', iconSize: [40,40], iconAnchor: [20,20] }), interactive: false }).addTo(tourMap);
+    tourUserDot = L.marker(pos, { icon: L.divIcon({ className: 'user-loc-dot', html: '<div class="user-loc-inner"></div>', iconSize: [18,18], iconAnchor: [9,9] }), zIndexOffset: 1000 }).addTo(tourMap).bindPopup('You are here');
+  }
+}
+
+/** Extract a segment of a continuous path between two stops.
+ *  Finds nearest path point to each stop, then slices the path between them.
+ *  For loop paths, always walks forward (wrapping around if needed). */
+function extractPathSegment(path, fromStop, toStop) {
+  if (!path || path.length < 2) return [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]];
+
+  function nearestIdx(lat, lng) {
+    let best = 0, bestD = Infinity;
+    for (let i = 0; i < path.length; i++) {
+      const d = (path[i][0] - lat) ** 2 + (path[i][1] - lng) ** 2;
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    return best;
+  }
+
+  const fromIdx = nearestIdx(fromStop.lat, fromStop.lng);
+  let toIdx = nearestIdx(toStop.lat, toStop.lng);
+
+  if (fromIdx <= toIdx) {
+    return path.slice(fromIdx, toIdx + 1);
+  }
+  // Wrap around for loop paths
+  return path.slice(fromIdx).concat(path.slice(0, toIdx + 1));
+}
+
+/** Draw walking routes for both directions on tour map. Active = teal, inactive = gray. */
 function fetchTourSegment() {
   if (!tourMap || !state.tourMapReady) return;
-  if (state.tourFetching) return;
 
   const stops = state.tourStops;
   const len = stops.length;
   const idx = state.tourIndex;
+  const dir = state.tourDirection;
 
-  const fromStop = stops[idx];
-  const toStop = stops[wrapIndex(idx + 1, len)];
+  const nowStop = stops[idx];
+  const fwdStop = stops[wrapIndex(idx + 1, len)];
+  const bwdStop = stops[wrapIndex(idx - 1, len)];
 
-  // Clear previous route and markers
+  // Clear previous route, arrows, adjacent routes, and markers
   if (state.tourRoute) { state.tourRoute.removeFrom(tourMap); state.tourRoute = null; }
+  if (state.tourArrows) { state.tourArrows.forEach(a => a.removeFrom(tourMap)); }
+  state.tourArrows = [];
+  state.tourAdjacentRoutes.forEach(r => r.removeFrom(tourMap));
+  state.tourAdjacentRoutes = [];
   state.tourMarkers.forEach(m => m.removeFrom(tourMap));
   state.tourMarkers = [];
 
-  // Thumbnail + number markers for from/to
-  const fromNum = idx + 1;
-  const toNum = wrapIndex(idx + 1, len) + 1;
-  const fromMarker = L.marker([fromStop.lat, fromStop.lng], {
-    icon: L.divIcon({
-      className: 'tour-map-pin',
-      html: `<div class="tour-pin from"><img src="${fromStop.img || ''}" alt="${fromStop.a}"><span class="tour-pin-num">${fromNum}</span></div>`,
-      iconSize: [40, 40], iconAnchor: [20, 20],
-    })
-  }).addTo(tourMap);
-  const toMarker = L.marker([toStop.lat, toStop.lng], {
-    icon: L.divIcon({
-      className: 'tour-map-pin',
-      html: `<div class="tour-pin to"><img src="${toStop.img || ''}" alt="${toStop.a}"><span class="tour-pin-num">${toNum}</span></div>`,
-      iconSize: [48, 48], iconAnchor: [24, 24],
-    })
-  }).addTo(tourMap);
-  fromMarker.on('click', () => openDetail(fromStop));
-  toMarker.on('click', () => openDetail(toStop));
-  state.tourMarkers = [fromMarker, toMarker];
-
-  const segInfo = document.getElementById('tour-segment-text') || document.getElementById('tour-segment-info');
-
-  /** Fit map to the drawn route + markers so the full segment fills the view. */
-  function fitToRoute(polyline) {
-    const b = polyline.getBounds()
-      .extend([fromStop.lat, fromStop.lng])
-      .extend([toStop.lat, toStop.lng]);
-    tourMap.fitBounds(b, { padding: [60, 60], maxZoom: 17 });
-  }
-
-  // Try static route path first (GPX or KML)
   const routeId = state.activeTour?.id;
-  const rd = routeId && ROUTE_PATHS[routeId];
-  const fullPath = rd && (rd.path || rd);
-
   const isBike = routeId && routeId.includes('bike');
   const speed = isBike ? 200 : 80; // meters per minute
   const mode = isBike ? 'bike' : 'walk';
 
-  if (fullPath) {
-    const segment = extractPathSegment(fullPath, fromStop, toStop);
-    if (segment && segment.length >= 2) {
-      let distMeters = 0;
-      for (let i = 1; i < segment.length; i++) {
-        distMeters += haversine(segment[i-1][0], segment[i-1][1], segment[i][0], segment[i][1]);
+  const rd = routeId && ROUTE_PATHS[routeId];
+  const segments = rd?.segments;
+  const hasSegments = segments && segments.length === len;
+
+  /** Resolve a forward segment from segIdx → segIdx+1. */
+  function resolveFwdSegment(segIdx) {
+    const from = stops[segIdx];
+    const to = stops[wrapIndex(segIdx + 1, len)];
+    if (!from || !to) return null;
+    if (hasSegments && segments[segIdx]) return segments[segIdx];
+    if (rd?.path || rd?.segments) {
+      const fullPath = rd.path || rd.segments.flat();
+      const extracted = extractPathSegment(fullPath, from, to);
+      if (extracted) return extracted;
+    }
+    return [[from.lat, from.lng], [to.lat, to.lng]];
+  }
+
+  /** Resolve a backward segment from segIdx → segIdx-1 (reversed forward segment). */
+  function resolveBwdSegment(segIdx) {
+    const from = stops[segIdx];
+    const prevIdx = wrapIndex(segIdx - 1, len);
+    const to = stops[prevIdx];
+    if (!from || !to) return null;
+    // The backward segment is the reverse of the forward segment from prevIdx → segIdx
+    if (hasSegments && segments[prevIdx]) return [...segments[prevIdx]].reverse();
+    if (rd?.path || rd?.segments) {
+      const fullPath = rd.path || rd.segments.flat();
+      const extracted = extractPathSegment(fullPath, to, from);
+      if (extracted) return [...extracted].reverse();
+    }
+    return [[from.lat, from.lng], [to.lat, to.lng]];
+  }
+
+  /** Add direction arrows along a polyline. */
+  function addRouteArrows(polyline, color) {
+    const latlngs = polyline.getLatLngs();
+    if (latlngs.length < 2) return;
+    const INTERVAL = 50;
+    let accum = 0;
+    for (let i = 1; i < latlngs.length; i++) {
+      const d = latlngs[i - 1].distanceTo(latlngs[i]);
+      accum += d;
+      if (accum >= INTERVAL) {
+        accum = 0;
+        const dy = latlngs[i].lat - latlngs[i - 1].lat;
+        const dx = latlngs[i].lng - latlngs[i - 1].lng;
+        const angle = Math.atan2(dx, dy) * 180 / Math.PI;
+        const arrow = L.marker(latlngs[i], {
+          icon: L.divIcon({
+            className: 'route-arrow',
+            html: `<div style="transform:rotate(${angle}deg);color:${color}">▲</div>`,
+            iconSize: [12, 12],
+            iconAnchor: [6, 6],
+          }),
+          interactive: false,
+        }).addTo(tourMap);
+        state.tourArrows.push(arrow);
       }
-      const mins = Math.max(1, Math.round(distMeters / speed));
-
-      state.tourRoute = L.polyline(segment, {
-        color: '#1E5B8A', weight: 5, opacity: 0.85,
-      }).addTo(tourMap);
-
-      fitToRoute(state.tourRoute);
-      if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
-      return;
     }
   }
 
-  // Fallback: fetch from OSRM
-  state.tourFetching = true;
-  const url = `https://router.project-osrm.org/route/v1/driving/${fromStop.lng},${fromStop.lat};${toStop.lng},${toStop.lat}?overview=full&geometries=geojson`;
+  // Resolve both segments
+  const fwdSeg = resolveFwdSegment(idx);
+  const bwdSeg = resolveBwdSegment(idx);
 
-  fetch(url)
-    .then(r => r.json())
-    .then(data => {
-      state.tourFetching = false;
-      if (!tourMap) return;
-      if (data.code !== 'Ok' || !data.routes || !data.routes[0]) throw new Error('No route');
+  // Determine active/inactive
+  const activeSeg = dir === 'fwd' ? fwdSeg : bwdSeg;
+  const inactiveSeg = dir === 'fwd' ? bwdSeg : fwdSeg;
+  const activeStop = dir === 'fwd' ? fwdStop : bwdStop;
+  const inactiveStop = dir === 'fwd' ? bwdStop : fwdStop;
+  const activeNum = dir === 'fwd' ? wrapIndex(idx + 1, len) + 1 : wrapIndex(idx - 1, len) + 1;
+  const inactiveNum = dir === 'fwd' ? wrapIndex(idx - 1, len) + 1 : wrapIndex(idx + 1, len) + 1;
 
-      const route = data.routes[0];
-      const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
-      const distMeters = route.distance;
-      const mins = Math.max(1, Math.round(distMeters / speed));
-
-      state.tourRoute = L.polyline(coords, {
-        color: '#1E5B8A', weight: 5, opacity: 0.85,
-      }).addTo(tourMap);
-
-      fitToRoute(state.tourRoute);
-      if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
-    })
-    .catch(() => {
-      state.tourFetching = false;
-      if (!tourMap) return;
-      const distMeters = haversine(fromStop.lat, fromStop.lng, toStop.lat, toStop.lng);
-      const mins = Math.max(1, Math.round(distMeters / speed));
-      state.tourRoute = L.polyline(
-        [[fromStop.lat, fromStop.lng], [toStop.lat, toStop.lng]],
-        { color: '#1E5B8A', weight: 3, opacity: 0.5, dashArray: '8, 8' }
-      ).addTo(tourMap);
-      fitToRoute(state.tourRoute);
-      if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
-    });
-}
-
-/** Extract the segment of a full path between two stops (nearest-point matching). */
-function extractPathSegment(fullPath, fromStop, toStop) {
-  let fromIdx = 0, toIdx = 0;
-  let fromDist = Infinity, toDist = Infinity;
-
-  for (let i = 0; i < fullPath.length; i++) {
-    const dFrom = (fullPath[i][0] - fromStop.lat) ** 2 + (fullPath[i][1] - fromStop.lng) ** 2;
-    const dTo = (fullPath[i][0] - toStop.lat) ** 2 + (fullPath[i][1] - toStop.lng) ** 2;
-    if (dFrom < fromDist) { fromDist = dFrom; fromIdx = i; }
-    if (dTo < toDist) { toDist = dTo; toIdx = i; }
+  // Draw inactive segment first (renders behind)
+  const inactiveHasPrecise = inactiveSeg && inactiveSeg.length > 2;
+  const inactiveStyle = inactiveHasPrecise
+    ? { color: '#9CA3AF', weight: 3, opacity: 0.4 }
+    : { color: '#9CA3AF', weight: 3, opacity: 0.4, dashArray: '6, 8' };
+  if (inactiveSeg) {
+    const inactiveRoute = L.polyline(inactiveSeg, inactiveStyle).addTo(tourMap);
+    state.tourAdjacentRoutes.push(inactiveRoute);
   }
 
-  // For loop paths, choose the shorter of the two possible segments
-  const len = fullPath.length;
-  const fwd = fromIdx <= toIdx
-    ? fullPath.slice(fromIdx, toIdx + 1)
-    : fullPath.slice(fromIdx).concat(fullPath.slice(0, toIdx + 1));
-  const rev = fromIdx >= toIdx
-    ? fullPath.slice(toIdx, fromIdx + 1).reverse()
-    : fullPath.slice(toIdx).concat(fullPath.slice(0, fromIdx + 1)).reverse();
+  // Inactive destination pin (smaller, gray)
+  if (inactiveStop) {
+    const inactiveMarker = L.marker([inactiveStop.lat, inactiveStop.lng], {
+      icon: L.divIcon({
+        className: 'tour-map-pin',
+        html: `<div class="tour-pin adjacent"><img src="${inactiveStop.img || ''}" alt="${inactiveStop.a}"><span class="tour-pin-num">${inactiveNum}</span></div>`,
+        iconSize: [32, 32], iconAnchor: [16, 16],
+      })
+    }).addTo(tourMap);
+    inactiveMarker.on('click', () => openDetail(inactiveStop));
+    state.tourAdjacentRoutes.push(inactiveMarker);
+  }
 
-  return fwd.length <= rev.length ? fwd : rev;
+  // NOW pin (teal, 40px, centered)
+  const nowMarker = L.marker([nowStop.lat, nowStop.lng], {
+    icon: L.divIcon({
+      className: 'tour-map-pin',
+      html: `<div class="tour-pin from"><img src="${nowStop.img || ''}" alt="${nowStop.a}"><span class="tour-pin-num">${idx + 1}</span></div>`,
+      iconSize: [40, 40], iconAnchor: [20, 20],
+    })
+  }).addTo(tourMap);
+  nowMarker.on('click', () => openDetail(nowStop));
+
+  // Active destination pin (larger, papaya border)
+  const activeMarker = L.marker([activeStop.lat, activeStop.lng], {
+    icon: L.divIcon({
+      className: 'tour-map-pin',
+      html: `<div class="tour-pin to"><img src="${activeStop.img || ''}" alt="${activeStop.a}"><span class="tour-pin-num">${activeNum}</span></div>`,
+      iconSize: [48, 48], iconAnchor: [24, 24],
+    })
+  }).addTo(tourMap);
+  activeMarker.on('click', () => openDetail(activeStop));
+  state.tourMarkers = [nowMarker, activeMarker];
+
+  // Draw active segment (teal with arrows)
+  const activeHasPrecise = activeSeg && activeSeg.length > 2;
+  const activeStyle = activeHasPrecise
+    ? { color: '#0E918C', weight: 5, opacity: 0.85 }
+    : { color: '#0E918C', weight: 4, opacity: 0.7, dashArray: '8, 12' };
+
+  let distMeters = 0;
+  if (activeSeg) {
+    for (let i = 1; i < activeSeg.length; i++) {
+      distMeters += haversine(activeSeg[i-1][0], activeSeg[i-1][1], activeSeg[i][0], activeSeg[i][1]);
+    }
+  }
+  const mins = Math.max(1, Math.round(distMeters / speed));
+
+  if (activeSeg) {
+    state.tourRoute = L.polyline(activeSeg, activeStyle).addTo(tourMap);
+    addRouteArrows(state.tourRoute, '#0E918C');
+  }
+
+  // Fit map to include both directions + all pins
+  const allPoints = [];
+  if (activeSeg) activeSeg.forEach(p => allPoints.push(p));
+  if (inactiveSeg) inactiveSeg.forEach(p => allPoints.push(p));
+  allPoints.push([nowStop.lat, nowStop.lng]);
+  allPoints.push([activeStop.lat, activeStop.lng]);
+  if (inactiveStop) allPoints.push([inactiveStop.lat, inactiveStop.lng]);
+  if (allPoints.length >= 2) {
+    const bounds = L.latLngBounds(allPoints);
+    tourMap.fitBounds(bounds, { padding: [60, 60], maxZoom: 19 });
+  }
+
+  const segInfo = document.getElementById('tour-segment-text') || document.getElementById('tour-segment-info');
+  if (segInfo) segInfo.textContent = `${formatDistance(distMeters)} · ~${mins} min ${mode}`;
+
+  // Also populate the compass package distance/time
+  const tourDistEl = document.getElementById('tour-nav-dist');
+  const tourTimeEl = document.getElementById('tour-nav-time');
+  if (tourDistEl) tourDistEl.textContent = formatDistance(distMeters);
+  if (tourTimeEl) tourTimeEl.textContent = `~${mins} min ${mode}`;
 }
 
 /** Navigate tour: +1 (next) or -1 (prev). Wraps continuously. */
@@ -2754,39 +3160,6 @@ function navigateTour(dir) {
   renderTourCards();
 }
 
-/** Set up horizontal swipe on the tour bottom panel. */
-function setupTourSwipe() {
-  const el = views.loops.querySelector('.active-tour-bottom');
-  if (!el) return;
-  let startX = 0;
-  let startY = 0;
-  let locked = null; // 'h' or 'v' once direction is determined
-
-  el.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    locked = null;
-  }, { passive: true });
-
-  el.addEventListener('touchmove', (e) => {
-    if (locked === 'v') return; // vertical scroll, don't interfere
-    const dx = Math.abs(e.touches[0].clientX - startX);
-    const dy = Math.abs(e.touches[0].clientY - startY);
-    if (!locked && (dx > 8 || dy > 8)) {
-      locked = dx > dy ? 'h' : 'v';
-    }
-    if (locked === 'h') e.preventDefault(); // lock horizontal, kill vertical bounce
-  }, { passive: false });
-
-  el.addEventListener('touchend', (e) => {
-    if (locked !== 'h') return;
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) {
-      if (dx < 0) navigateTour(1);
-      else navigateTour(-1);
-    }
-  }, { passive: true });
-}
 
 // =============================================
 // Detail page
@@ -2797,6 +3170,7 @@ function setupTourSwipe() {
  * Used by both openDetail() and the map bottom sheet.
  */
 function buildDetailBodyHTML(mural) {
+  const muralTours = ROUTE_DEFS.filter(r => r.ids && r.ids.includes(mural.id));
   const photos = fieldPhotos.filter(p => p.muralId === mural.id);
 
   const nearby = murals
@@ -2816,7 +3190,7 @@ function buildDetailBodyHTML(mural) {
     <div class="detail-hero-wrap">
       <img class="detail-hero" src="${mural.img || ''}" alt="${mural.a}" onerror="this.parentElement.style.display='none'">
     </div>
-    <div class="detail-body">
+    <div class="detail-body ${TEXT_SIZES[textSizeIdx].class}">
       <div class="detail-artist">${mural.a}</div>
       ${mural.t ? `<div class="detail-title">${mural.t}</div>` : ''}
       <div class="detail-meta-row">
@@ -2825,24 +3199,86 @@ function buildDetailBodyHTML(mural) {
           ${mural.from ? `<div class="detail-from">${mural.from}</div>` : ''}
           ${mural.ig ? `<div class="detail-ig"><a href="https://instagram.com/${mural.ig}" target="_blank" rel="noopener">@${mural.ig}</a></div>` : ''}
         </div>
-        <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
-          <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
+        <div class="detail-action-btns">
+          ${mural.aud ? `<div class="detail-action-item">
+            <button id="audio-btn" class="audio-btn" onclick="toggleAudioClip('${mural.aud}')">
+              <svg class="audio-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            </button>
+            <span class="detail-action-label">Listen</span>
+          </div>` : ''}
+          <div class="detail-action-item">
+            <button id="seen-btn" class="seen-btn ${hasSeen(mural.id) ? 'seen' : ''}" onclick="toggleSeenFromDetail(${mural.id})">
+              <svg class="seen-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <span class="detail-action-label">Seen</span>
+          </div>
+          <div class="detail-action-item">
+            <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
+              <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <span class="detail-action-label">FAV</span>
+          </div>
+          <div class="detail-action-item">
+            <button id="text-size-btn" class="text-size-btn" onclick="cycleTextSize()">
+              <span class="text-size-letter">A+</span>
+            </button>
+            <span class="detail-action-label">Font</span>
+          </div>
+        </div>
       </div>
 
       <div class="detail-nav-bar">
         ${mural.lat && mural.lng ? `
-          <div class="detail-compass-wrap">
-            ${buildCompassArcHTML()}
-            <div class="detail-nav-info" hidden>
-              <span class="detail-nav-dist"></span>
-              <span class="detail-nav-sep">·</span>
-              <span class="detail-nav-time"></span>
+          <div class="detail-compass-wrap detail-hud-wrap">
+            <div class="compass-arc detail-compass-arc detail-hud-arc" id="detail-compass-arc" hidden>
+              <span class="hud-offscreen hud-offscreen-left" hidden>&larr;</span>
+              <div class="hud-indicator-bar">${(() => {
+                let segs = '';
+                const TICKS = 81;
+                const MID = Math.floor(TICKS / 2);
+                for (let i = 0; i < TICKS; i++) {
+                  const norm = (i - MID) / MID;
+                  const arcY = Math.round((1 - norm * norm) * 28);
+                  if (i === MID) {
+                    segs += '<div class="hud-chevron" style="margin-bottom:' + arcY + 'px"><svg width="36" height="16" viewBox="0 0 36 16"><path d="M2,15 L18,2 L34,15" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+                  } else {
+                    const d = Math.abs(i - MID);
+                    const cls = d <= 3 ? 'hud-tick warm' : d <= 9 ? 'hud-tick hot' : d <= 19 ? 'hud-tick faint' : d <= 29 ? 'hud-tick faint2' : (i % 5 === 0 ? 'hud-tick major' : 'hud-tick');
+                    segs += '<span class="' + cls + '" style="margin-bottom:' + arcY + 'px"></span>';
+                  }
+                }
+                return segs;
+              })()}</div>
+              <span class="hud-offscreen hud-offscreen-right" hidden>&rarr;</span>
             </div>
+            <div class="detail-nav-live hud-info detail-hud-info">
+              <span class="detail-nav-dist hud-dist"></span>
+              <span class="detail-nav-sep hud-sep">&middot;</span>
+              <span class="detail-nav-time hud-time"></span>
+            </div>
+            <div class="detail-nav-address">${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</div>
+            <button class="compass-enable-btn" hidden>Enable Compass</button>
+            <div class="compass-cal-hint" hidden>Compass calibrating — accuracy improves as you walk</div>
           </div>
-        ` : ''}
-        <div class="detail-nav-address">${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</div>
+        ` : `
+          <div class="detail-nav-live">
+            <span class="detail-nav-dist"></span>
+            <span class="detail-nav-sep">&middot;</span>
+            <span class="detail-nav-time"></span>
+          </div>
+          <div class="detail-nav-address">${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</div>
+        `}
       </div>
+
+      ${muralTours.length > 0 ? `
+        <div class="detail-tour-dropdown">
+          <div class="detail-bio-label">On These Tour Routes</div>
+          <select class="detail-tour-select" data-mural-id="${mural.id}">
+            <option value="">Choose a Tour Route\u2026</option>
+            ${muralTours.map(r => `<option value="${r.id}">${r.name}</option>`).join('')}
+          </select>
+        </div>
+      ` : ''}
 
       ${mural.imp && mural.imp.length > 0 ? `
         <div class="detail-impressions">
@@ -2853,6 +3289,20 @@ function buildDetailBodyHTML(mural) {
         </div>
       ` : ''}
 
+      ${mural.desc ? `
+        <div class="detail-bio detail-bio-hidden" aria-hidden="true">
+          <div class="detail-bio-label">About the Mural</div>
+          ${mural.desc}
+        </div>
+      ` : ''}
+
+      ${mural.insp ? `
+        <div class="detail-bio">
+          <div class="detail-bio-label">Inspiration</div>
+          ${mural.insp}
+        </div>
+      ` : ''}
+
       ${mural.bio ? `
         <div class="detail-bio">
           <div class="detail-bio-label">About the Artist</div>
@@ -2860,13 +3310,20 @@ function buildDetailBodyHTML(mural) {
         </div>
       ` : ''}
 
-      ${mural.lat && mural.lng ? `
-        <div class="detail-directions-group">
-          <button class="detail-directions" onclick="startDirections(${mural.id})">
-            🚶 Get Directions
-          </button>
+      ${mural.aaw ? `
+        <div class="detail-bio">
+          <div class="detail-bio-label">Artist Awards</div>
+          ${mural.aaw}
         </div>
       ` : ''}
+
+      ${mural.maw ? `
+        <div class="detail-bio">
+          <div class="detail-bio-label">Mural Awards</div>
+          ${mural.maw}
+        </div>
+      ` : ''}
+
 
       ${photos.length > 0 ? `
         <div class="detail-section">
@@ -3027,6 +3484,20 @@ function openDetail(mural) {
     });
   }
 
+  const tourSelect = detailContent.querySelector('.detail-tour-select');
+  if (tourSelect) {
+    tourSelect.addEventListener('change', (e) => {
+      const def = ROUTE_DEFS.find(r => r.id === e.target.value);
+      if (!def) return;
+      const muralId = Number(tourSelect.dataset.muralId);
+      stopDetailCompass();
+      detailPage.hidden = true;
+      state.selectedMural = null;
+      switchTab('loops');
+      openTour(def, muralId);
+    });
+  }
+
   detailPage.scrollTop = 0;
 
   // Start detail compass
@@ -3075,58 +3546,8 @@ function openExternalMaps(mural) {
 function startDirections(muralId) {
   const mural = murals.find(m => m.id === muralId);
   if (!mural) return;
-
-  // Save state so we can return here
   sessionStorage.setItem('mq_return_mural', muralId);
-
-  // On insecure origins (HTTP), geolocation is blocked — go straight to Google Maps
-  if (!window.isSecureContext) {
-    openExternalMaps(mural);
-    return;
-  }
-
-  // We have location already — check range then route
-  if (state.userLat && state.userLng) {
-    if (!isInRange()) {
-      showOutOfRangeOnDetail();
-      return;
-    }
-    state.directionsMural = mural;
-    state.directionsProfile = 'foot';
-    detailPage.hidden = true;
-    state.selectedMural = null;
-    switchTab('map');
-    fetchAndDrawRoute();
-    return;
-  }
-
-  // Secure context but no location yet — request it
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        state.userLat = pos.coords.latitude;
-        state.userLng = pos.coords.longitude;
-        if (!isInRange()) {
-          showOutOfRangeOnDetail();
-          return;
-        }
-        state.directionsMural = mural;
-        state.directionsProfile = 'foot';
-        detailPage.hidden = true;
-        state.selectedMural = null;
-        switchTab('map');
-        showUserOnMap();
-        fetchAndDrawRoute();
-      },
-      () => {
-        // User denied location — open Google Maps in new tab
-        openExternalMaps(mural);
-      },
-      { enableHighAccuracy: true }
-    );
-  } else {
-    openExternalMaps(mural);
-  }
+  openExternalMaps(mural);
 }
 
 /** Show a centered "get to St Pete" card on the detail page when user is out of range. */
@@ -3148,173 +3569,7 @@ function openInMapsApp(muralId) {
 window.startDirections = startDirections;
 window.openInMapsApp = openInMapsApp;
 window.toggleLike = toggleLike;
-
-/**
- * Fetch route from OSRM and draw it on the map.
- * Falls back to a straight line if OSRM fails.
- */
-function fetchAndDrawRoute() {
-  const mural = state.directionsMural;
-  if (!mural) return;
-
-  // Save profile before clearDirections resets it
-  const profile = state.directionsProfile === 'car' ? 'car' : 'foot';
-
-  clearDirections();
-  state.directionsMural = mural;
-  state.directionsProfile = profile;
-  // OSRM public server only has the 'driving' profile — use it for route
-  // geometry (streets are the same), then compute walk/drive time from distance
-  const url = `https://router.project-osrm.org/route/v1/driving/${state.userLng},${state.userLat};${mural.lng},${mural.lat}?overview=full&geometries=geojson`;
-
-  // Add destination marker
-  state.directionsMarker = L.marker([mural.lat, mural.lng], {
-    icon: L.divIcon({
-      className: 'directions-dest-icon',
-      html: `<div style="width:32px;height:32px;background:var(--accent,#1E5B8A);border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;">📍</div>`,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16],
-    })
-  }).addTo(leafletMap);
-
-  fetch(url)
-    .then(r => r.json())
-    .then(data => {
-      if (data.code !== 'Ok' || !data.routes || !data.routes[0]) throw new Error('No route');
-
-      const route = data.routes[0];
-      const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
-      const distMeters = route.distance;
-      // Compute time from distance: walking ~80m/min, driving uses OSRM estimate
-      const durationSecs = profile === 'foot'
-        ? (distMeters / 80) * 60
-        : route.duration;
-
-      state.directionsRoute = L.polyline(coords, {
-        color: '#1E5B8A',
-        weight: 5,
-        opacity: 0.8,
-      }).addTo(leafletMap);
-
-      leafletMap.fitBounds(state.directionsRoute.getBounds(), { padding: [60, 60] });
-      showDirectionsBar(distMeters, durationSecs, profile);
-    })
-    .catch(() => {
-      // Fallback: straight line
-      const coords = [
-        [state.userLat, state.userLng],
-        [mural.lat, mural.lng],
-      ];
-      const distMeters = haversine(state.userLat, state.userLng, mural.lat, mural.lng);
-
-      state.directionsRoute = L.polyline(coords, {
-        color: '#1E5B8A',
-        weight: 4,
-        opacity: 0.6,
-        dashArray: '8, 8',
-      }).addTo(leafletMap);
-
-      leafletMap.fitBounds(state.directionsRoute.getBounds(), { padding: [60, 60] });
-
-      // Estimate walk time: ~80m/min
-      const durationSecs = (distMeters / 80) * 60;
-      showDirectionsBar(distMeters, durationSecs, profile, true);
-    });
-}
-
-/**
- * Show directions info bar at bottom of map.
- * @param {number} distMeters - Route distance in meters
- * @param {number} durationSecs - Estimated travel time in seconds
- * @param {string} profile - 'foot' or 'car'
- * @param {boolean} straightLine - True if using fallback straight-line estimate
- */
-function showDirectionsBar(distMeters, durationSecs, profile, straightLine) {
-  // Remove any existing bar
-  const existing = document.querySelector('.directions-bar');
-  if (existing) existing.remove();
-
-  const distText = formatDistance(distMeters);
-  const mins = Math.max(1, Math.round(durationSecs / 60));
-  const lineNote = straightLine ? ' (est.)' : '';
-
-  const mural = state.directionsMural;
-
-  const bar = document.createElement('div');
-  bar.className = 'directions-bar';
-  bar.innerHTML = `
-    <div class="directions-info">
-      <span class="directions-distance">${distText}${lineNote}</span>
-      <span class="directions-time">~${mins} min walk to ${mural.a}</span>
-    </div>
-    <button class="directions-close" aria-label="Close directions">✕</button>
-  `;
-
-  document.getElementById('map-container').appendChild(bar);
-
-  // Prevent Leaflet from eating clicks/touches on the bar
-  L.DomEvent.disableClickPropagation(bar);
-  L.DomEvent.disableScrollPropagation(bar);
-
-  // Close button → collapse to mini chip (route stays on map)
-  bar.querySelector('.directions-close').addEventListener('click', () => {
-    bar.remove();
-    showDirectionsChip(distMeters, durationSecs, profile);
-  });
-}
-
-/** Persistent mini chip — shows mural name + distance, route stays visible on map. */
-function showDirectionsChip(distMeters, durationSecs, profile) {
-  // Remove any existing chip
-  const existing = document.querySelector('.directions-chip');
-  if (existing) existing.remove();
-
-  const mural = state.directionsMural;
-  if (!mural) return;
-
-  const distText = formatDistance(distMeters);
-  const mins = Math.max(1, Math.round(durationSecs / 60));
-
-  const chip = document.createElement('div');
-  chip.className = 'directions-chip';
-  chip.innerHTML = `
-    <span class="directions-chip-text">${mural.a} · ${distText} · ~${mins} min</span>
-    <button class="directions-chip-close" aria-label="Cancel route">✕</button>
-  `;
-
-  document.getElementById('map-container').appendChild(chip);
-  L.DomEvent.disableClickPropagation(chip);
-
-  // Tap chip text → re-expand full directions bar
-  chip.querySelector('.directions-chip-text').addEventListener('click', () => {
-    chip.remove();
-    showDirectionsBar(distMeters, durationSecs, profile);
-  });
-
-  // X on chip → fully clear directions + route
-  chip.querySelector('.directions-chip-close').addEventListener('click', () => {
-    chip.remove();
-    clearDirections();
-  });
-}
-
-/** Remove route polyline, destination marker, and directions bar/chip from the map. */
-function clearDirections() {
-  if (state.directionsRoute) {
-    state.directionsRoute.removeFrom(leafletMap);
-    state.directionsRoute = null;
-  }
-  if (state.directionsMarker) {
-    state.directionsMarker.removeFrom(leafletMap);
-    state.directionsMarker = null;
-  }
-  state.directionsMural = null;
-  state.directionsProfile = 'foot';
-  const bar = document.querySelector('.directions-bar');
-  if (bar) bar.remove();
-  const chip = document.querySelector('.directions-chip');
-  if (chip) chip.remove();
-}
+window.toggleSeenFromDetail = toggleSeenFromDetail;
 
 // =============================================
 // URL deep linking (?mural=ID)

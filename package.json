@@ -1,7 +1,17 @@
 {
   "name": "mural-quest",
   "private": true,
+  "scripts": {
+    "cap:copy": "rsync -a --exclude node_modules --exclude ios --exclude www --exclude .git --exclude .claude --exclude '*.avif' --exclude legacy-fixes --exclude __pycache__ . www/",
+    "cap:sync": "npm run cap:copy && npx cap sync"
+  },
   "dependencies": {
+    "@capacitor/cli": "^8.2.0",
+    "@capacitor/core": "^8.2.0",
+    "@capacitor/haptics": "^8.0.1",
+    "@capacitor/ios": "^8.2.0",
+    "@capacitor/keyboard": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.1",
     "@netlify/blobs": "^8.0.0",
     "stripe": "^17.0.0"
   }

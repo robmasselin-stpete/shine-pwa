@@ -200,6 +200,10 @@ def mural_to_js(m):
     # Separate bio and mural description fields
     bio = js_string_escape((m.get('artistBio', '') or '').strip())
     desc = js_string_escape((m.get('muralDescription', '') or '').strip())
+    audio = js_string_escape(m.get('audio', '') or '')
+    mural_insp = js_string_escape((m.get('muralInspiration', '') or '').strip())
+    mural_awards = js_string_escape((m.get('muralAwards', '') or '').strip())
+    artist_awards = js_string_escape((m.get('artistAwards', '') or '').strip())
 
     # Impressions — list of strings
     raw_imp = m.get('impressions') or []
@@ -224,7 +228,11 @@ def mural_to_js(m):
         f"desc:'{desc}',"
         f"imp:{imp_str},"
         f"img:'{img}',"
-        f"from:'{based_in}'}}"
+        f"from:'{based_in}',"
+        f"aud:'{audio}',"
+        f"insp:'{mural_insp}',"
+        f"maw:'{mural_awards}',"
+        f"aaw:'{artist_awards}'}}"
     )
 
 
