@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mockup — Map Tab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #F5F2ED;
+      --card: #FFFFFF;
+      --text: #1C1C1E;
+      --text2: #8E8E93;
+      --teal: #0E918C;
+      --teal-light: #E2F5F2;
+      --coral: #FF6B6B;
+      --border: #E4DDD6;
+      --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+      --radius: 14px;
+      --font-display: 'Quicksand', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --safe-top: env(safe-area-inset-top, 20px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      max-width: 430px;
+      margin: 0 auto;
+      height: 100dvh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Map fills everything ── */
+    #map {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* ── Floating header ── */
+    .map-header {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      padding: calc(var(--safe-top) + 8px) 16px 0;
+    }
+    .map-title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .map-title-bar h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--text);
+      text-shadow: 0 1px 3px rgba(255,255,255,0.7);
+    }
+    .locate-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 0.5px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      color: var(--teal);
+    }
+
+    /* ── Floating search ── */
+    .map-search {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--text2);
+      box-shadow: var(--shadow);
+      border: 0.5px solid rgba(0,0,0,0.06);
+    }
+    .map-search svg { opacity: 0.4; flex-shrink: 0; }
+
+    /* ── Route pills strip ── */
+    .route-strip {
+      position: absolute;
+      bottom: calc(74px + var(--safe-bottom));
+      left: 0; right: 0;
+      z-index: 500;
+      padding: 0 16px 8px;
+    }
+    .route-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 4px 0;
+    }
+    .route-pills::-webkit-scrollbar { display: none; }
+    .route-pill {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      border: 0.5px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .route-pill.active {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+    .route-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Bottom sheet (mural detail) ── */
+    .bottom-sheet {
+      position: absolute;
+      bottom: calc(66px + var(--safe-bottom));
+      left: 12px; right: 12px;
+      z-index: 600;
+      background: var(--card);
+      border-radius: 18px 18px 14px 14px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      animation: sheetUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    @keyframes sheetUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .sheet-handle {
+      width: 36px; height: 4px;
+      border-radius: 2px;
+      background: rgba(0,0,0,0.12);
+      margin: 8px auto 4px;
+    }
+    .sheet-body {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 16px 12px;
+    }
+    .sheet-img {
+      width: 72px; height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .sheet-info { flex: 1; min-width: 0; }
+    .sheet-artist {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .sheet-title {
+      font-size: 13px;
+      color: var(--text2);
+      margin-top: 1px;
+    }
+    .sheet-address {
+      font-size: 12px;
+      color: var(--text2);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .sheet-buttons {
+      display: flex;
+      gap: 8px;
+      padding: 0 16px 16px;
+    }
+    .sheet-btn {
+      flex: 1;
+      padding: 11px 8px;
+      border-radius: 12px;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.15s;
+    }
+    .sheet-btn:active { transform: scale(0.96); }
+    .sheet-btn-primary {
+      background: var(--teal);
+      color: #fff;
+    }
+    .sheet-btn-secondary {
+      background: var(--teal-light);
+      color: var(--teal);
+    }
+
+    /* ── Tab bar ── */
+    .tab-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      z-index: 700;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0 calc(var(--safe-bottom) + 6px);
+      background: rgba(245, 242, 237, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 0.5px solid rgba(0,0,0,0.08);
+    }
+    .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 16px;
+      color: var(--text2);
+      transition: color 0.2s;
+    }
+    .tab.active { color: var(--teal); }
+    .tab svg { width: 22px; height: 22px; }
+    .tab span {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    /* Hide Leaflet attribution for cleaner mockup */
+    .leaflet-control-attribution { display: none !important; }
+    .leaflet-control-zoom { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <!-- Floating header -->
+  <div class="map-header">
+    <div class="map-title-bar">
+      <h1>Map</h1>
+      <button class="locate-btn" aria-label="My location">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M2 12h2"/><path d="M20 12h2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="map-search">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Search murals…
+    </div>
+  </div>
+
+  <!-- Route pills -->
+  <div class="route-strip">
+    <div class="route-pills">
+      <div class="route-pill active">
+        <span class="route-dot" style="background:#E53935"></span>
+        Central Ave
+      </div>
+      <div class="route-pill">
+        <span class="route-dot" style="background:#1E88E5"></span>
+        The Edge
+      </div>
+      <div class="route-pill">
+        <span class="route-dot" style="background:#7B1FA2"></span>
+        Methodist Town
+      </div>
+      <div class="route-pill">
+        <span class="route-dot" style="background:#F9A825"></span>
+        Arts District
+      </div>
+      <div class="route-pill">
+        <span class="route-dot" style="background:#43A047"></span>
+        Tropicana Field
+      </div>
+      <div class="route-pill">
+        <span class="route-dot" style="background:#FB8C00"></span>
+        CHNA Bike
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom sheet -->
+  <div class="bottom-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-body">
+      <img class="sheet-img" src="../images/murals/2024/fintan-magee.jpeg" alt="">
+      <div class="sheet-info">
+        <div class="sheet-artist">Fintan Magee</div>
+        <div class="sheet-title">"The Weight of Water"</div>
+        <div class="sheet-address">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          600 Block Central Ave
+        </div>
+      </div>
+    </div>
+    <div class="sheet-buttons">
+      <button class="sheet-btn sheet-btn-primary">Go To Mural</button>
+      <button class="sheet-btn sheet-btn-secondary">Join Tour Here</button>
+    </div>
+  </div>
+
+  <!-- Tab bar -->
+  <nav class="tab-bar">
+    <button class="tab" aria-label="Explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+      </svg>
+      <span>Explore</span>
+    </button>
+    <button class="tab active" aria-label="Map">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 7 6-3 6 3 6-3v13l-6 3-6-3-6 3Z"/><path d="m9 4v13"/><path d="m15 7v13"/>
+      </svg>
+      <span>Map</span>
+    </button>
+    <button class="tab" aria-label="Tours">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>
+      </svg>
+      <span>Tours</span>
+    </button>
+  </nav>
+
+  <script>
+    // Initialize map centered on St. Pete downtown
+    const map = L.map('map', {
+      zoomControl: false,
+      attributionControl: false
+    }).setView([27.773, -82.640], 15);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19
+    }).addTo(map);
+
+    // Sample mural markers (teal dots)
+    const murals = [
+      [27.7710, -82.6365, 'Case Maclaim'],
+      [27.7725, -82.6380, 'Emily Ding'],
+      [27.7695, -82.6350, 'Greg Mike'],
+      [27.7740, -82.6400, 'Ricky Watts'],
+      [27.7705, -82.6340, 'NeSpoon'],
+      [27.7680, -82.6370, 'Fintan Magee'],
+      [27.7750, -82.6355, 'Gleo'],
+      [27.7720, -82.6420, 'Derek Donnelly'],
+      [27.7690, -82.6390, 'Sara Salem'],
+      [27.7735, -82.6375, 'Brain the Genius'],
+      [27.7675, -82.6345, 'Stevie Shao'],
+      [27.7715, -82.6410, 'Isac Gres'],
+      [27.7700, -82.6360, 'Abys'],
+      [27.7745, -82.6385, 'Quinn Cale'],
+    ];
+
+    // Draw a sample route polyline (Central Ave-ish)
+    const routePath = [
+      [27.7680, -82.6370],
+      [27.7695, -82.6363],
+      [27.7705, -82.6355],
+      [27.7710, -82.6365],
+      [27.7720, -82.6375],
+      [27.7725, -82.6380],
+      [27.7735, -82.6375],
+      [27.7740, -82.6385],
+    ];
+
+    L.polyline(routePath, {
+      color: '#E53935',
+      weight: 4,
+      opacity: 0.7,
+      dashArray: '8, 6',
+      lineCap: 'round'
+    }).addTo(map);
+
+    murals.forEach(([lat, lng, name]) => {
+      L.circleMarker([lat, lng], {
+        radius: 7,
+        fillColor: '#0E918C',
+        fillOpacity: 0.9,
+        color: '#fff',
+        weight: 2
+      }).addTo(map);
+    });
+  </script>
+
+</body>
+</html>

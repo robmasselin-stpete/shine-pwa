@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mockup — Tours Tab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #F5F2ED;
+      --card: #FFFFFF;
+      --text: #1C1C1E;
+      --text2: #8E8E93;
+      --text3: #AEAEB2;
+      --teal: #0E918C;
+      --teal-light: #E2F5F2;
+      --coral: #FF6B6B;
+      --border: #E4DDD6;
+      --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.10);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --font-display: 'Quicksand', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --safe-top: env(safe-area-inset-top, 20px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Status bar spacer ── */
+    .status-bar {
+      height: calc(var(--safe-top) + 8px);
+      min-height: 28px;
+    }
+
+    /* ── Large title ── */
+    .large-title {
+      padding: 8px 20px 4px;
+    }
+    .large-title h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+    .large-title .subtitle {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text2);
+      margin-top: 2px;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+      padding: 24px 20px 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    /* ── Hero route card ── */
+    .hero-card {
+      margin: 12px 20px 0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .hero-card:active { transform: scale(0.98); }
+
+    .hero-map {
+      width: 100%;
+      height: 180px;
+      position: relative;
+    }
+    .hero-map-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%);
+      z-index: 10;
+    }
+    .hero-card-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 20;
+      padding: 16px 18px;
+      color: #fff;
+    }
+    .hero-card-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .hero-card-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 4px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    .hero-card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── Route list cards ── */
+    .route-list {
+      padding: 8px 20px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .route-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .route-card:active {
+      transform: scale(0.98);
+      box-shadow: var(--shadow-lg);
+    }
+    .route-color-bar {
+      width: 4px;
+      height: 48px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .route-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .route-card-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .route-card-desc {
+      font-size: 13px;
+      color: var(--text2);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .route-card-stats {
+      display: flex;
+      gap: 14px;
+      margin-top: 6px;
+    }
+    .route-stat {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text3);
+    }
+    .route-stat svg { opacity: 0.5; }
+    .route-card-arrow {
+      color: var(--text3);
+      flex-shrink: 0;
+    }
+
+    /* ── Tour mode preview strip ── */
+    .tour-preview {
+      margin: 0 20px;
+      padding: 14px 16px;
+      background: var(--teal);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(14, 145, 140, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .tour-preview:active { transform: scale(0.98); }
+    .tour-preview-pulse {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 2s ease infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+    .tour-preview-text {
+      flex: 1;
+    }
+    .tour-preview-label {
+      font-size: 11px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .tour-preview-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      margin-top: 1px;
+    }
+    .tour-preview-arrow {
+      opacity: 0.7;
+    }
+
+    /* ── Tab bar ── */
+    .tab-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0 calc(var(--safe-bottom) + 6px);
+      background: rgba(245, 242, 237, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 0.5px solid rgba(0,0,0,0.08);
+    }
+    .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 16px;
+      color: var(--text2);
+      transition: color 0.2s;
+    }
+    .tab.active { color: var(--teal); }
+    .tab svg { width: 22px; height: 22px; }
+    .tab span {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    /* Leaflet overrides */
+    .leaflet-control-attribution, .leaflet-control-zoom { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div class="status-bar"></div>
+
+  <div class="large-title">
+    <h1>Tours</h1>
+    <p class="subtitle">6 curated walking routes</p>
+  </div>
+
+  <!-- Active tour indicator (shown when a tour is in progress) -->
+  <div style="padding: 16px 0 0">
+    <div class="tour-preview">
+      <span class="tour-preview-pulse"></span>
+      <div class="tour-preview-text">
+        <div class="tour-preview-label">Currently touring</div>
+        <div class="tour-preview-name">Central Avenue — Stop 4 of 9</div>
+      </div>
+      <svg class="tour-preview-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+  </div>
+
+  <div class="section-header">Featured</div>
+
+  <!-- Hero card with mini map -->
+  <div class="hero-card">
+    <div class="hero-map" id="hero-map">
+      <div class="hero-map-overlay"></div>
+    </div>
+    <div class="hero-card-info">
+      <div class="hero-card-name">Central Avenue</div>
+      <div class="hero-card-meta">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+          9 murals
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          1.7 mi
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          ~35 min
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">All Routes</div>
+
+  <div class="route-list">
+
+    <div class="route-card">
+      <div class="route-color-bar" style="background: #1E88E5"></div>
+      <div class="route-card-info">
+        <div class="route-card-name">The Edge</div>
+        <div class="route-card-desc">Edge District — downtown's creative corridor</div>
+        <div class="route-card-stats">
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            13 murals
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            1.0 mi
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~25 min
+          </span>
+        </div>
+      </div>
+      <svg class="route-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+
+    <div class="route-card">
+      <div class="route-color-bar" style="background: #7B1FA2"></div>
+      <div class="route-card-info">
+        <div class="route-card-name">Methodist Town</div>
+        <div class="route-card-desc">Historic neighborhood between 1st Ave & MLK</div>
+        <div class="route-card-stats">
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            9 murals
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            1.1 mi
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~25 min
+          </span>
+        </div>
+      </div>
+      <svg class="route-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+
+    <div class="route-card">
+      <div class="route-color-bar" style="background: #F9A825"></div>
+      <div class="route-card-info">
+        <div class="route-card-name">Arts District</div>
+        <div class="route-card-desc">Warehouse arts core — Central to 1st Ave S</div>
+        <div class="route-card-stats">
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            14 murals
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            1.4 mi
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~30 min
+          </span>
+        </div>
+      </div>
+      <svg class="route-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+
+    <div class="route-card">
+      <div class="route-color-bar" style="background: #43A047"></div>
+      <div class="route-card-info">
+        <div class="route-card-name">Tropicana Field</div>
+        <div class="route-card-desc">South side circuit around the Trop</div>
+        <div class="route-card-stats">
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            10 murals
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            1.6 mi
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~35 min
+          </span>
+        </div>
+      </div>
+      <svg class="route-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+
+    <div class="route-card">
+      <div class="route-color-bar" style="background: #FB8C00"></div>
+      <div class="route-card-info">
+        <div class="route-card-name">CHNA Bike Tour</div>
+        <div class="route-card-desc">Crescent Heights neighborhood by bike</div>
+        <div class="route-card-stats">
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            12 murals
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            3.2 mi
+          </span>
+          <span class="route-stat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~20 min
+          </span>
+        </div>
+      </div>
+      <svg class="route-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+
+  </div>
+
+  <!-- Tab bar -->
+  <nav class="tab-bar">
+    <button class="tab" aria-label="Explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+      </svg>
+      <span>Explore</span>
+    </button>
+    <button class="tab" aria-label="Map">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 7 6-3 6 3 6-3v13l-6 3-6-3-6 3Z"/><path d="m9 4v13"/><path d="m15 7v13"/>
+      </svg>
+      <span>Map</span>
+    </button>
+    <button class="tab active" aria-label="Tours">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>
+      </svg>
+      <span>Tours</span>
+    </button>
+  </nav>
+
+  <script>
+    // Hero card mini-map
+    const heroMap = L.map('hero-map', {
+      zoomControl: false,
+      attributionControl: false,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      touchZoom: false
+    }).setView([27.771, -82.638], 15);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19
+    }).addTo(heroMap);
+
+    // Sample Central Ave route
+    const route = [
+      [27.7698, -82.6410],
+      [27.7703, -82.6395],
+      [27.7710, -82.6378],
+      [27.7715, -82.6365],
+      [27.7722, -82.6350],
+      [27.7728, -82.6340],
+      [27.7735, -82.6328],
+      [27.7740, -82.6315],
+      [27.7748, -82.6300],
+    ];
+
+    L.polyline(route, {
+      color: '#E53935',
+      weight: 3.5,
+      opacity: 0.8,
+      lineCap: 'round'
+    }).addTo(heroMap);
+
+    route.forEach(([lat, lng], i) => {
+      L.circleMarker([lat, lng], {
+        radius: 5,
+        fillColor: '#E53935',
+        fillOpacity: 1,
+        color: '#fff',
+        weight: 1.5
+      }).addTo(heroMap);
+    });
+  </script>
+
+</body>
+</html>

@@ -42,6 +42,10 @@ muralInspiration: |
 muralAwards: ""
 artistAwards: "Multiple Best of the Bay winner (Creative Loafing Tampa Bay)"
 
+furtherWork:
+  - name: "Saint Paint Arts"
+    url: "https://www.saintpaintarts.com"
+
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes: "Enhanced from photo + detail card data, 2026-03-05"

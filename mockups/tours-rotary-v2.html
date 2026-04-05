@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>Mockup — Tours Rotary v2 (Expand on Focus)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #F5F2ED;
+      --card: #FFFFFF;
+      --text: #1C1C1E;
+      --text2: #8E8E93;
+      --text3: #AEAEB2;
+      --teal: #0E918C;
+      --teal-dark: #0A706C;
+      --teal-light: #E2F5F2;
+      --border: #E4DDD6;
+      --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-lg: 0 6px 24px rgba(0,0,0,0.14);
+      --radius: 16px;
+      --font-display: 'Quicksand', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --safe-top: env(safe-area-inset-top, 20px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+      --compact-h: 72px;
+      --expanded-h: 260px;
+      --card-gap: 10px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      max-width: 430px;
+      margin: 0 auto;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Header ── */
+    .tours-header {
+      flex-shrink: 0;
+      padding: calc(var(--safe-top) + 8px) 20px 12px;
+    }
+    .tours-header h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+    .tours-header .sub {
+      font-size: 14px;
+      color: var(--text2);
+      margin-top: 2px;
+    }
+
+    /* ── Rotary zone ── */
+    .rotary-zone {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .rotary-zone::before,
+    .rotary-zone::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 70px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .rotary-zone::before {
+      top: 0;
+      background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+    }
+    .rotary-zone::after {
+      bottom: 0;
+      background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+    }
+
+    .rotary-track {
+      position: absolute;
+      left: 0; right: 0;
+      will-change: transform;
+      transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+      padding: 0 16px;
+    }
+
+    /* ── Route card ── */
+    .route-card {
+      margin-bottom: var(--card-gap);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+      position: relative;
+    }
+
+    /* Compact (non-focused) */
+    .route-card.compact {
+      height: var(--compact-h);
+      opacity: 0.55;
+      transform: scale(0.95);
+    }
+    .route-card.compact.near {
+      opacity: 0.7;
+      transform: scale(0.97);
+    }
+
+    /* Expanded (focused) */
+    .route-card.expanded {
+      height: var(--expanded-h);
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ── Compact layout: color bar + name + stats in one row ── */
+    .card-compact {
+      display: flex;
+      align-items: center;
+      height: var(--compact-h);
+      transition: opacity 0.3s;
+    }
+    .route-card.expanded .card-compact {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .compact-accent {
+      width: 4px;
+      height: 100%;
+      flex-shrink: 0;
+    }
+    .compact-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px 0 14px;
+      min-width: 0;
+    }
+    .compact-left {
+      min-width: 0;
+    }
+    .compact-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .compact-meta {
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: 2px;
+      display: flex;
+      gap: 10px;
+    }
+    .compact-arrow {
+      color: var(--text3);
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    /* ── Expanded layout: map top + info bottom ── */
+    .card-expanded {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.35s 0.1s;
+    }
+    .route-card.expanded .card-expanded {
+      opacity: 1;
+      pointer-events: auto;
+      position: relative;
+    }
+
+    .expanded-map {
+      flex: 1;
+      position: relative;
+      min-height: 0;
+    }
+    .expanded-map .leaflet-container {
+      width: 100%;
+      height: 100%;
+    }
+    .expanded-map-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40px;
+      background: linear-gradient(to top, var(--card) 0%, transparent 100%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .expanded-info {
+      padding: 8px 16px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .expanded-accent {
+      width: 4px;
+      height: 44px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .expanded-details {
+      flex: 1;
+      min-width: 0;
+    }
+    .expanded-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--text);
+    }
+    .expanded-desc {
+      font-size: 13px;
+      color: var(--text2);
+      margin-top: 1px;
+      line-height: 1.3;
+    }
+    .expanded-stats {
+      display: flex;
+      gap: 14px;
+      margin-top: 6px;
+    }
+    .expanded-stat {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text3);
+    }
+    .expanded-stat svg { opacity: 0.5; }
+
+    .expanded-go {
+      flex-shrink: 0;
+    }
+    .go-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 20px;
+      border-radius: 24px;
+      border: none;
+      background: var(--teal);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(14,145,140,0.3);
+      transition: transform 0.15s;
+    }
+    .go-btn:active { transform: scale(0.94); }
+
+    /* ── Tab bar ── */
+    .tab-bar {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0 calc(var(--safe-bottom) + 6px);
+      background: rgba(245, 242, 237, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 0.5px solid rgba(0,0,0,0.08);
+      z-index: 20;
+    }
+    .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 16px;
+      color: var(--text2);
+    }
+    .tab.active { color: var(--teal); }
+    .tab svg { width: 22px; height: 22px; }
+    .tab span {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    /* Leaflet cleanup */
+    .leaflet-control-attribution, .leaflet-control-zoom { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div class="tours-header">
+    <h1>Tours</h1>
+    <p class="sub">Flick to browse · tap Start to go</p>
+  </div>
+
+  <div class="rotary-zone" id="rotary-zone">
+    <div class="rotary-track" id="rotary-track"></div>
+  </div>
+
+  <nav class="tab-bar">
+    <button class="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>Explore</span></button>
+    <button class="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 6-3 6 3 6-3v13l-6 3-6-3-6 3Z"/><path d="m9 4v13"/><path d="m15 7v13"/></svg><span>Map</span></button>
+    <button class="tab active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg><span>Tours</span></button>
+  </nav>
+
+  <script>
+    const routes = [
+      {
+        name: 'Central Avenue',
+        desc: 'The heart of St. Pete — art row along Central',
+        color: '#E53935',
+        stops: 9, dist: '1.7 mi', time: '~35 min',
+        center: [27.7720, -82.6355], zoom: 15,
+        path: [[27.7698,-82.6410],[27.7703,-82.6395],[27.7710,-82.6378],[27.7715,-82.6365],[27.7722,-82.6350],[27.7728,-82.6340],[27.7735,-82.6328],[27.7740,-82.6315],[27.7748,-82.6300]],
+      },
+      {
+        name: 'The Edge',
+        desc: 'Edge District — downtown\'s creative corridor',
+        color: '#1E88E5',
+        stops: 13, dist: '1.0 mi', time: '~25 min',
+        center: [27.770, -82.650], zoom: 15,
+        path: [[27.7675,-82.6540],[27.7685,-82.6525],[27.7695,-82.6510],[27.7700,-82.6495],[27.7710,-82.6480],[27.7715,-82.6470],[27.7720,-82.6460]],
+      },
+      {
+        name: 'Methodist Town',
+        desc: 'Historic neighborhood between 1st Ave & MLK',
+        color: '#7B1FA2',
+        stops: 9, dist: '1.1 mi', time: '~25 min',
+        center: [27.767, -82.645], zoom: 15,
+        path: [[27.7645,-82.6480],[27.7655,-82.6470],[27.7665,-82.6460],[27.7675,-82.6445],[27.7680,-82.6430]],
+      },
+      {
+        name: 'Arts District',
+        desc: 'Warehouse arts core — Central to 1st Ave S',
+        color: '#F9A825',
+        stops: 14, dist: '1.4 mi', time: '~30 min',
+        center: [27.769, -82.638], zoom: 15,
+        path: [[27.7670,-82.6410],[27.7680,-82.6400],[27.7690,-82.6385],[27.7695,-82.6370],[27.7700,-82.6360],[27.7710,-82.6350]],
+      },
+      {
+        name: 'Tropicana Field',
+        desc: 'South side circuit around the Trop',
+        color: '#43A047',
+        stops: 10, dist: '1.6 mi', time: '~35 min',
+        center: [27.768, -82.653], zoom: 15,
+        path: [[27.7660,-82.6560],[27.7668,-82.6545],[27.7675,-82.6530],[27.7680,-82.6515],[27.7690,-82.6505]],
+      },
+      {
+        name: 'CHNA Bike Tour',
+        desc: 'Crescent Heights by bike — longer loop',
+        color: '#FB8C00',
+        stops: 12, dist: '3.2 mi', time: '~20 min bike',
+        center: [27.780, -82.645], zoom: 14,
+        path: [[27.7770,-82.6490],[27.7785,-82.6475],[27.7800,-82.6455],[27.7810,-82.6440],[27.7820,-82.6420],[27.7815,-82.6405]],
+      },
+    ];
+
+    const track = document.getElementById('rotary-track');
+    const zone = document.getElementById('rotary-zone');
+    let currentIndex = 0;
+    const miniMaps = {};
+
+    // Build cards
+    routes.forEach((r, i) => {
+      const card = document.createElement('div');
+      card.className = 'route-card';
+      card.dataset.index = i;
+
+      card.innerHTML = `
+        <!-- Compact view -->
+        <div class="card-compact">
+          <div class="compact-accent" style="background:${r.color}"></div>
+          <div class="compact-body">
+            <div class="compact-left">
+              <div class="compact-name">${r.name}</div>
+              <div class="compact-meta">
+                <span>${r.stops} stops</span>
+                <span>${r.dist}</span>
+                <span>${r.time}</span>
+              </div>
+            </div>
+            <svg class="compact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+        </div>
+
+        <!-- Expanded view -->
+        <div class="card-expanded">
+          <div class="expanded-map">
+            <div id="emap-${i}" style="width:100%;height:100%"></div>
+            <div class="expanded-map-fade"></div>
+          </div>
+          <div class="expanded-info">
+            <div class="expanded-accent" style="background:${r.color}"></div>
+            <div class="expanded-details">
+              <div class="expanded-name">${r.name}</div>
+              <div class="expanded-desc">${r.desc}</div>
+              <div class="expanded-stats">
+                <span class="expanded-stat">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                  ${r.stops} stops
+                </span>
+                <span class="expanded-stat">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  ${r.dist}
+                </span>
+                <span class="expanded-stat">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  ${r.time}
+                </span>
+              </div>
+            </div>
+            <div class="expanded-go">
+              <button class="go-btn">
+                Start
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      track.appendChild(card);
+    });
+
+    // Create mini map only for focused card (lazy init)
+    function ensureMap(i) {
+      if (miniMaps[i]) {
+        miniMaps[i].invalidateSize();
+        return;
+      }
+
+      const r = routes[i];
+      const container = document.getElementById(`emap-${i}`);
+      if (!container) return;
+
+      const m = L.map(container, {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        touchZoom: false,
+        keyboard: false,
+      }).setView(r.center, r.zoom);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19
+      }).addTo(m);
+
+      // Route line
+      L.polyline(r.path, {
+        color: r.color,
+        weight: 4,
+        opacity: 0.8,
+        lineCap: 'round'
+      }).addTo(m);
+
+      // Stop dots
+      r.path.forEach(([lat, lng], j) => {
+        L.circleMarker([lat, lng], {
+          radius: 5,
+          fillColor: r.color,
+          fillOpacity: 1,
+          color: '#fff',
+          weight: 2,
+        }).addTo(m);
+      });
+
+      // Number the first and last
+      const startIcon = L.divIcon({
+        className: '',
+        html: `<div style="background:${r.color};color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:Quicksand,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,0.3);border:2px solid #fff">1</div>`,
+        iconSize: [20, 20],
+        iconAnchor: [10, 10],
+      });
+      const endIcon = L.divIcon({
+        className: '',
+        html: `<div style="background:${r.color};color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:Quicksand,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,0.3);border:2px solid #fff">${r.stops}</div>`,
+        iconSize: [20, 20],
+        iconAnchor: [10, 10],
+      });
+      L.marker(r.path[0], { icon: startIcon }).addTo(m);
+      L.marker(r.path[r.path.length - 1], { icon: endIcon }).addTo(m);
+
+      miniMaps[i] = m;
+    }
+
+    // ─── Layout calculation ───
+    const COMPACT_H = 72;
+    const EXPANDED_H = 260;
+    const GAP = 10;
+
+    function getTotalOffset(focusIdx) {
+      // Sum heights of all cards before focusIdx
+      let sum = 0;
+      for (let i = 0; i < focusIdx; i++) {
+        sum += COMPACT_H + GAP;
+      }
+      return sum;
+    }
+
+    function updatePositions() {
+      const zoneH = zone.clientHeight;
+      const centerY = zoneH / 2;
+
+      // Offset track so focused card center aligns with zone center
+      const aboveH = getTotalOffset(currentIndex);
+      const offset = centerY - (EXPANDED_H / 2) - aboveH;
+
+      track.style.transform = `translateY(${offset}px)`;
+
+      const cards = track.querySelectorAll('.route-card');
+      cards.forEach((card, i) => {
+        const dist = Math.abs(i - currentIndex);
+
+        card.classList.remove('compact', 'expanded', 'near');
+
+        if (i === currentIndex) {
+          card.classList.add('expanded');
+        } else {
+          card.classList.add('compact');
+          if (dist === 1) card.classList.add('near');
+        }
+      });
+
+      // Init or refresh the focused map after transition
+      setTimeout(() => ensureMap(currentIndex), 480);
+    }
+
+    requestAnimationFrame(updatePositions);
+    window.addEventListener('resize', updatePositions);
+
+    // ─── Touch handling ───
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    let dragging = false;
+
+    zone.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+      dragging = true;
+    }, { passive: true });
+
+    zone.addEventListener('touchend', (e) => {
+      if (!dragging) return;
+      dragging = false;
+
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      const dt = Date.now() - touchStartTime;
+      const velocity = dy / dt;
+
+      let steps = 0;
+      if (Math.abs(dy) > 25) {
+        steps = dy < 0 ? 1 : -1;
+        if (Math.abs(velocity) > 0.7 && Math.abs(dy) > 50) {
+          steps *= 2;
+        }
+      }
+
+      currentIndex = Math.max(0, Math.min(routes.length - 1, currentIndex + steps));
+      updatePositions();
+    }, { passive: true });
+
+    // Click to select
+    track.addEventListener('click', (e) => {
+      const card = e.target.closest('.route-card');
+      if (!card) return;
+
+      // Don't intercept Start button
+      if (e.target.closest('.go-btn')) {
+        alert(`Starting tour: ${routes[currentIndex].name}`);
+        return;
+      }
+
+      const idx = Number(card.dataset.index);
+      if (idx !== currentIndex) {
+        currentIndex = idx;
+        updatePositions();
+      }
+    });
+
+    // Mouse wheel for desktop
+    let wheelTimeout;
+    zone.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        if (e.deltaY > 0 && currentIndex < routes.length - 1) currentIndex++;
+        else if (e.deltaY < 0 && currentIndex > 0) currentIndex--;
+        updatePositions();
+      }, 50);
+    }, { passive: false });
+  </script>
+
+</body>
+</html>

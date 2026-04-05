@@ -19,10 +19,10 @@
   <!-- Fonts (CDN with SW caching for offline) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
 
   <!-- App styles -->
-  <link rel="stylesheet" href="css/app.css?v=118">
+  <link rel="stylesheet" href="css/app.css?v=119">
 
   <!-- Leaflet (map) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -188,6 +188,12 @@
       </div>
     </div>
 
+    <!-- Help overlay -->
+    <div id="help-overlay" class="help-overlay" hidden>
+      <div class="help-backdrop"></div>
+      <div id="help-annotations" class="help-annotations"></div>
+    </div>
+
     <!-- Bottom tab bar -->
     <nav id="tab-bar" class="tab-bar">
       <button class="tab" data-tab="explore" aria-label="Explore">
@@ -209,12 +215,20 @@
         </svg>
         <span class="tab-label">Tour Murals</span>
       </button>
+      <button class="tab" id="tab-help" aria-label="Help">
+        <svg class="tab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <span class="tab-label">Cheat Sheet</span>
+      </button>
     </nav>
 
   </div>
 
   <!-- App modules -->
-  <script type="module" src="js/app.js?v=123"></script>
+  <script type="module" src="js/app.js?v=124"></script>
 
   <!-- Service Worker registration -->
   <script>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mockup — Explore Tab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #F5F2ED;
+      --card: #FFFFFF;
+      --text: #1C1C1E;
+      --text2: #8E8E93;
+      --teal: #0E918C;
+      --teal-light: #E2F5F2;
+      --coral: #FF6B6B;
+      --border: #E4DDD6;
+      --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.10);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --font-display: 'Quicksand', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --safe-top: env(safe-area-inset-top, 20px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Status bar spacer ── */
+    .status-bar {
+      height: calc(var(--safe-top) + 8px);
+      min-height: 28px;
+    }
+
+    /* ── Large title area ── */
+    .large-title {
+      padding: 8px 20px 4px;
+    }
+    .large-title h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+    .large-title .subtitle {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text2);
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    /* ── Search bar ── */
+    .search-wrap {
+      padding: 12px 20px 8px;
+    }
+    .search-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,0,0,0.04);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 16px;
+      color: var(--text2);
+    }
+    .search-pill svg { opacity: 0.4; flex-shrink: 0; }
+
+    /* ── Filter pills ── */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      padding: 8px 20px 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .pill {
+      flex-shrink: 0;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pill.active {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+
+    /* ── Mural grid ── */
+    .mural-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 8px 20px 120px;
+    }
+    .mural-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .mural-card:active {
+      transform: scale(0.97);
+      box-shadow: var(--shadow-lg);
+    }
+    .mural-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+    .mural-card-info {
+      padding: 10px 12px 12px;
+    }
+    .mural-card-artist {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .mural-card-title {
+      font-size: 12px;
+      color: var(--text2);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .mural-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    /* ── Tab bar ── */
+    .tab-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0 calc(var(--safe-bottom) + 6px);
+      background: rgba(245, 242, 237, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 0.5px solid rgba(0,0,0,0.08);
+    }
+    .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 16px;
+      color: var(--text2);
+      transition: color 0.2s;
+    }
+    .tab.active { color: var(--teal); }
+    .tab svg { width: 22px; height: 22px; }
+    .tab span {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-bar"></div>
+
+  <div class="large-title">
+    <h1>Explore</h1>
+    <p class="subtitle">123 murals across St. Petersburg</p>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-pill">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Search artists, locations, subjects…
+    </div>
+  </div>
+
+  <div class="filter-row">
+    <div class="pill active">All</div>
+    <div class="pill">2025</div>
+    <div class="pill">2024</div>
+    <div class="pill">2023</div>
+    <div class="pill">2022</div>
+    <div class="pill">2021</div>
+    <div class="pill">2020</div>
+    <div class="pill">2019</div>
+    <div class="pill">Commercial</div>
+  </div>
+
+  <div class="mural-grid">
+
+    <div class="mural-card">
+      <img src="../images/murals/2025/cecilia-lueza.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Cecilia Lueza</div>
+        <div class="mural-card-title">Chromatic Pulse</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2025/brain-the-genius.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Brain the Genius</div>
+        <div class="mural-card-title">Untitled</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2025/isac-gres.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Isac Gres</div>
+        <div class="mural-card-title">Tropical Reverb</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2025/sara-salem.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Sara Salem</div>
+        <div class="mural-card-title">Harmony in Bloom</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2025/derek-donnelly-hollander.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Derek Donnelly</div>
+        <div class="mural-card-title">Hollander Hotel</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2025/karel-garcia.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Karel Garcia</div>
+        <div class="mural-card-title">Untitled</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2024/fintan-magee.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Fintan Magee</div>
+        <div class="mural-card-title">The Weight of Water</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2024
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2024/nespoon.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">NeSpoon</div>
+        <div class="mural-card-title">Lacework</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2024
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2024/emmanuel-jarus.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Emmanuel Jarus</div>
+        <div class="mural-card-title">Portrait Study</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2024
+        </div>
+      </div>
+    </div>
+
+    <div class="mural-card">
+      <img src="../images/murals/2024/stevie-shao.jpeg" alt="">
+      <div class="mural-card-info">
+        <div class="mural-card-artist">Stevie Shao</div>
+        <div class="mural-card-title">Untitled</div>
+        <div class="mural-card-meta">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          2024
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tab bar -->
+  <nav class="tab-bar">
+    <button class="tab active" aria-label="Explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+      </svg>
+      <span>Explore</span>
+    </button>
+    <button class="tab" aria-label="Map">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 7 6-3 6 3 6-3v13l-6 3-6-3-6 3Z"/><path d="m9 4v13"/><path d="m15 7v13"/>
+      </svg>
+      <span>Map</span>
+    </button>
+    <button class="tab" aria-label="Tours">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>
+      </svg>
+      <span>Tours</span>
+    </button>
+  </nav>
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>Mockup — Tours Rotary Picker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #F5F2ED;
+      --card: #FFFFFF;
+      --text: #1C1C1E;
+      --text2: #8E8E93;
+      --text3: #AEAEB2;
+      --teal: #0E918C;
+      --teal-dark: #0A706C;
+      --teal-light: #E2F5F2;
+      --border: #E4DDD6;
+      --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-lg: 0 6px 20px rgba(0,0,0,0.12);
+      --radius: 16px;
+      --font-display: 'Quicksand', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --safe-top: env(safe-area-inset-top, 20px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+      --card-height: 160px;
+      --card-gap: 14px;
+      --card-step: calc(var(--card-height) + var(--card-gap));
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      max-width: 430px;
+      margin: 0 auto;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Header ── */
+    .tours-header {
+      flex-shrink: 0;
+      padding: calc(var(--safe-top) + 8px) 20px 0;
+    }
+    .tours-header h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+    .tours-header .sub {
+      font-size: 14px;
+      color: var(--text2);
+      margin-top: 2px;
+    }
+
+    /* ── Rotary scroll zone ── */
+    .rotary-zone {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      /* Fade edges */
+    }
+
+    /* Top/bottom fade masks */
+    .rotary-zone::before,
+    .rotary-zone::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 80px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .rotary-zone::before {
+      top: 0;
+      background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+    }
+    .rotary-zone::after {
+      bottom: 0;
+      background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+    }
+
+    /* The scroll track */
+    .rotary-track {
+      position: absolute;
+      left: 0; right: 0;
+      /* Vertically centered: offset so middle card lands at center */
+      will-change: transform;
+      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+      padding: 0 20px;
+    }
+
+    /* Individual route card */
+    .route-card {
+      height: var(--card-height);
+      margin-bottom: var(--card-gap);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+                  opacity 0.4s ease,
+                  box-shadow 0.4s ease;
+      transform-origin: center center;
+      position: relative;
+    }
+
+    /* States: focused vs not */
+    .route-card.focused {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-lg);
+      opacity: 1;
+    }
+    .route-card.near {
+      transform: scale(0.94);
+      opacity: 0.6;
+    }
+    .route-card.far {
+      transform: scale(0.86);
+      opacity: 0.3;
+    }
+
+    /* Route color accent stripe */
+    .route-accent {
+      width: 5px;
+      flex-shrink: 0;
+    }
+
+    /* Mini map preview */
+    .route-map-preview {
+      width: 130px;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .route-map-preview .leaflet-container {
+      width: 100%;
+      height: 100%;
+    }
+    .route-map-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--card) 100%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Route info */
+    .route-info {
+      flex: 1;
+      padding: 16px 16px 14px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+    .route-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .route-desc {
+      font-size: 13px;
+      color: var(--text2);
+      margin-top: 3px;
+      line-height: 1.3;
+    }
+    .route-stats {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .route-stat {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text3);
+    }
+    .route-stat svg { opacity: 0.5; }
+
+    /* Go button (appears on focused card) */
+    .route-go-wrap {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      z-index: 5;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    .route-card.focused .route-go-wrap {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+    .route-go-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 24px;
+      border: none;
+      background: var(--teal);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(14,145,140,0.35);
+      transition: transform 0.15s;
+    }
+    .route-go-btn:active { transform: scale(0.94); }
+
+    /* ── Selection indicator (center line) ── */
+    .rotary-indicator {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      right: 12px;
+      height: calc(var(--card-height) + 12px);
+      transform: translateY(-50%);
+      border: 2px solid var(--teal);
+      border-radius: 20px;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.2;
+    }
+
+    /* ── Tab bar ── */
+    .tab-bar {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0 calc(var(--safe-bottom) + 6px);
+      background: rgba(245, 242, 237, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 0.5px solid rgba(0,0,0,0.08);
+      z-index: 20;
+    }
+    .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 16px;
+      color: var(--text2);
+    }
+    .tab.active { color: var(--teal); }
+    .tab svg { width: 22px; height: 22px; }
+    .tab span {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    /* Leaflet overrides */
+    .leaflet-control-attribution, .leaflet-control-zoom { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Header ═══ -->
+  <div class="tours-header">
+    <h1>Tours</h1>
+    <p class="sub">Flick to browse · tap to start</p>
+  </div>
+
+  <!-- ═══ Rotary Scroll Zone ═══ -->
+  <div class="rotary-zone" id="rotary-zone">
+    <div class="rotary-indicator"></div>
+    <div class="rotary-track" id="rotary-track">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+
+  <!-- ═══ Tab bar ═══ -->
+  <nav class="tab-bar">
+    <button class="tab" aria-label="Explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+      </svg>
+      <span>Explore</span>
+    </button>
+    <button class="tab" aria-label="Map">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 7 6-3 6 3 6-3v13l-6 3-6-3-6 3Z"/><path d="m9 4v13"/><path d="m15 7v13"/>
+      </svg>
+      <span>Map</span>
+    </button>
+    <button class="tab active" aria-label="Tours">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>
+      </svg>
+      <span>Tours</span>
+    </button>
+  </nav>
+
+  <script>
+    // ─── Route data ───
+    const routes = [
+      {
+        name: 'Central Avenue',
+        desc: 'The heart of St. Pete — art row along Central',
+        color: '#E53935',
+        stops: 9, dist: '1.7 mi', time: '~35 min',
+        center: [27.772, -82.637], zoom: 15,
+        path: [[27.7698,-82.6410],[27.7703,-82.6395],[27.7710,-82.6378],[27.7715,-82.6365],[27.7722,-82.6350],[27.7728,-82.6340],[27.7735,-82.6328],[27.7740,-82.6315],[27.7748,-82.6300]],
+      },
+      {
+        name: 'The Edge',
+        desc: 'Edge District — downtown\'s creative corridor',
+        color: '#1E88E5',
+        stops: 13, dist: '1.0 mi', time: '~25 min',
+        center: [27.770, -82.650], zoom: 15,
+        path: [[27.768,-82.653],[27.769,-82.651],[27.770,-82.649],[27.771,-82.648],[27.772,-82.646],[27.771,-82.644]],
+      },
+      {
+        name: 'Methodist Town',
+        desc: 'Historic neighborhood between 1st Ave & MLK',
+        color: '#7B1FA2',
+        stops: 9, dist: '1.1 mi', time: '~25 min',
+        center: [27.767, -82.645], zoom: 15,
+        path: [[27.765,-82.648],[27.766,-82.646],[27.767,-82.644],[27.768,-82.643],[27.769,-82.641]],
+      },
+      {
+        name: 'Arts District',
+        desc: 'Warehouse arts core — Central to 1st Ave S',
+        color: '#F9A825',
+        stops: 14, dist: '1.4 mi', time: '~30 min',
+        center: [27.769, -82.638], zoom: 15,
+        path: [[27.767,-82.641],[27.768,-82.639],[27.769,-82.637],[27.770,-82.636],[27.771,-82.634]],
+      },
+      {
+        name: 'Tropicana Field',
+        desc: 'South side circuit around the Trop',
+        color: '#43A047',
+        stops: 10, dist: '1.6 mi', time: '~35 min',
+        center: [27.768, -82.653], zoom: 15,
+        path: [[27.766,-82.655],[27.767,-82.654],[27.768,-82.653],[27.769,-82.651],[27.770,-82.650]],
+      },
+      {
+        name: 'CHNA Bike Tour',
+        desc: 'Crescent Heights by bike — longer loop',
+        color: '#FB8C00',
+        stops: 12, dist: '3.2 mi', time: '~20 min bike',
+        center: [27.780, -82.645], zoom: 14,
+        path: [[27.778,-82.648],[27.779,-82.646],[27.780,-82.644],[27.781,-82.643],[27.782,-82.641]],
+      },
+    ];
+
+    // ─── Build cards ───
+    const track = document.getElementById('rotary-track');
+    const zone = document.getElementById('rotary-zone');
+
+    routes.forEach((r, i) => {
+      const card = document.createElement('div');
+      card.className = 'route-card';
+      card.dataset.index = i;
+      card.innerHTML = `
+        <div class="route-accent" style="background:${r.color}"></div>
+        <div class="route-map-preview">
+          <div id="rmap-${i}"></div>
+          <div class="route-map-fade"></div>
+        </div>
+        <div class="route-info">
+          <div class="route-name">${r.name}</div>
+          <div class="route-desc">${r.desc}</div>
+          <div class="route-stats">
+            <span class="route-stat">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+              ${r.stops} stops
+            </span>
+            <span class="route-stat">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              ${r.dist}
+            </span>
+            <span class="route-stat">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              ${r.time}
+            </span>
+          </div>
+        </div>
+        <div class="route-go-wrap">
+          <button class="route-go-btn">
+            Start
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      `;
+      track.appendChild(card);
+    });
+
+    // ─── Mini maps ───
+    const miniMaps = [];
+    routes.forEach((r, i) => {
+      const m = L.map(`rmap-${i}`, {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        touchZoom: false,
+        keyboard: false,
+      }).setView(r.center, r.zoom);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19
+      }).addTo(m);
+
+      L.polyline(r.path, {
+        color: r.color,
+        weight: 3,
+        opacity: 0.8,
+        lineCap: 'round'
+      }).addTo(m);
+
+      r.path.forEach(([lat, lng]) => {
+        L.circleMarker([lat, lng], {
+          radius: 4,
+          fillColor: r.color,
+          fillOpacity: 1,
+          color: '#fff',
+          weight: 1.5,
+        }).addTo(m);
+      });
+
+      miniMaps.push(m);
+    });
+
+    // ─── Rotary scroll logic ───
+    let currentIndex = 0;
+    const cardHeight = 160;
+    const cardGap = 14;
+    const cardStep = cardHeight + cardGap;
+
+    function updatePositions() {
+      const zoneH = zone.clientHeight;
+      const centerY = zoneH / 2;
+      const offset = centerY - (cardHeight / 2) - (currentIndex * cardStep);
+
+      track.style.transform = `translateY(${offset}px)`;
+
+      const cards = track.querySelectorAll('.route-card');
+      cards.forEach((card, i) => {
+        const dist = Math.abs(i - currentIndex);
+        card.classList.remove('focused', 'near', 'far');
+        if (dist === 0) card.classList.add('focused');
+        else if (dist === 1) card.classList.add('near');
+        else card.classList.add('far');
+      });
+
+      // Invalidate focused mini map size
+      setTimeout(() => miniMaps[currentIndex]?.invalidateSize(), 450);
+    }
+
+    // Initial position
+    requestAnimationFrame(updatePositions);
+    window.addEventListener('resize', updatePositions);
+
+    // ─── Touch / flick handling ───
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    let dragging = false;
+
+    zone.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+      dragging = true;
+    }, { passive: true });
+
+    zone.addEventListener('touchend', (e) => {
+      if (!dragging) return;
+      dragging = false;
+
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      const dt = Date.now() - touchStartTime;
+      const velocity = dy / dt; // px/ms
+
+      // Flick detection: fast swipe moves more steps
+      let steps = 0;
+      if (Math.abs(dy) > 30) {
+        steps = dy < 0 ? 1 : -1;
+        // Fast flick → 2 steps
+        if (Math.abs(velocity) > 0.8 && Math.abs(dy) > 60) {
+          steps *= 2;
+        }
+      }
+
+      currentIndex = Math.max(0, Math.min(routes.length - 1, currentIndex + steps));
+      updatePositions();
+    }, { passive: true });
+
+    // ─── Click to select ───
+    track.addEventListener('click', (e) => {
+      const card = e.target.closest('.route-card');
+      if (!card) return;
+      const idx = Number(card.dataset.index);
+      if (idx !== currentIndex) {
+        currentIndex = idx;
+        updatePositions();
+      }
+    });
+
+    // ─── Mouse wheel (for desktop testing) ───
+    let wheelTimeout;
+    zone.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        if (e.deltaY > 0 && currentIndex < routes.length - 1) currentIndex++;
+        else if (e.deltaY < 0 && currentIndex > 0) currentIndex--;
+        updatePositions();
+      }, 50);
+    }, { passive: false });
+  </script>
+
+</body>
+</html>

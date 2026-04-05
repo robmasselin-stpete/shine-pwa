@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>Mockup — Active Tour (Stepwise)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #F5F2ED;
+      --card: #FFFFFF;
+      --text: #1C1C1E;
+      --text2: #8E8E93;
+      --text3: #AEAEB2;
+      --teal: #0E918C;
+      --teal-dark: #0A706C;
+      --teal-light: #E2F5F2;
+      --coral: #FF6B6B;
+      --route-red: #E53935;
+      --border: #E4DDD6;
+      --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --font-display: 'Quicksand', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --safe-top: env(safe-area-inset-top, 20px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      max-width: 430px;
+      margin: 0 auto;
+      height: 100dvh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ══════════════════════════════════════
+       TOP: Tour nav bar
+       ══════════════════════════════════════ */
+    .tour-nav {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: calc(var(--safe-top) + 6px) 16px 10px;
+      background: var(--card);
+      border-bottom: 0.5px solid rgba(0,0,0,0.06);
+      z-index: 10;
+    }
+    .tour-nav-back {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .tour-nav-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .tour-nav-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tour-nav-progress {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .progress-track {
+      flex: 1;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--route-red);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .progress-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text2);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .tour-nav-close {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.05);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text2);
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       MAP: fills middle zone
+       ══════════════════════════════════════ */
+    .tour-map-zone {
+      flex: 1;
+      position: relative;
+      min-height: 0;
+    }
+    #tour-map {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Segment info floating over map */
+    .segment-badge {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .segment-badge svg { color: var(--teal); }
+
+    /* ══════════════════════════════════════
+       BOTTOM: Mural carousel card
+       ══════════════════════════════════════ */
+    .tour-bottom {
+      flex-shrink: 0;
+      background: var(--card);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Drag handle */
+    .tour-bottom-handle {
+      width: 36px;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(0,0,0,0.12);
+      margin: 8px auto 0;
+    }
+
+    /* Current + Next carousel */
+    .tour-carousel {
+      display: flex;
+      align-items: stretch;
+      padding: 12px 16px 8px;
+      gap: 12px;
+    }
+
+    /* Current mural — larger, left side */
+    .tour-card-current {
+      flex: 2;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 10px;
+      cursor: pointer;
+      transition: transform 0.15s;
+      position: relative;
+    }
+    .tour-card-current:active { transform: scale(0.98); }
+
+    .tour-card-img-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .tour-card-img {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      display: block;
+    }
+    .tour-card-num {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 11px;
+      background: var(--route-red);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .tour-card-now-label {
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--teal);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 1px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .tour-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .tour-card-artist {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .tour-card-title {
+      font-size: 12px;
+      color: var(--text2);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .tour-card-address {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Connector arrow between cards */
+    .tour-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      gap: 2px;
+      color: var(--text3);
+    }
+    .tour-connector-dist {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--teal);
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      letter-spacing: 0.5px;
+    }
+
+    /* Next mural — smaller, right side */
+    .tour-card-next {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 10px 8px;
+      cursor: pointer;
+      transition: transform 0.15s;
+      opacity: 0.7;
+      position: relative;
+    }
+    .tour-card-next:active { transform: scale(0.97); }
+    .tour-card-next .tour-card-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+    }
+    .tour-card-next .tour-card-num {
+      min-width: 18px;
+      height: 18px;
+      font-size: 10px;
+      top: -3px;
+      left: -3px;
+      border-radius: 9px;
+      background: var(--text3);
+    }
+    .tour-card-next-label {
+      font-size: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: var(--text3);
+      margin-top: 6px;
+    }
+    .tour-card-next .tour-card-artist {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    /* Action buttons row */
+    .tour-actions {
+      display: flex;
+      gap: 8px;
+      padding: 4px 16px 10px;
+    }
+    .tour-btn {
+      flex: 1;
+      padding: 12px 8px;
+      border-radius: 12px;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .tour-btn:active { transform: scale(0.96); }
+    .tour-btn-directions {
+      background: var(--teal);
+      color: #fff;
+    }
+    .tour-btn-details {
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+
+    /* Prev/Next nav arrows */
+    .tour-step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px calc(var(--safe-bottom) + 10px);
+    }
+    .tour-step-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--teal);
+      padding: 8px 4px;
+      transition: opacity 0.15s;
+    }
+    .tour-step-btn:active { opacity: 0.6; }
+    .tour-step-btn.disabled { color: var(--text3); pointer-events: none; }
+    .tour-step-dots {
+      display: flex;
+      gap: 5px;
+    }
+    .tour-step-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.3s;
+    }
+    .tour-step-dot.active {
+      background: var(--route-red);
+      width: 18px;
+      border-radius: 3px;
+    }
+    .tour-step-dot.visited {
+      background: var(--text3);
+    }
+
+    /* Leaflet overrides */
+    .leaflet-control-attribution, .leaflet-control-zoom { display: none !important; }
+
+    /* Tour map pin styles */
+    .tpin { background: none !important; border: none !important; }
+    .tpin-inner {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .tpin-inner img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .tpin-num {
+      position: absolute;
+      top: 0; left: 0;
+      min-width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      border-radius: 0 0 6px 0;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(0,0,0,0.7);
+    }
+    .tpin-current .tpin-inner {
+      width: 52px; height: 52px;
+      border: 3px solid #fff;
+      border-radius: 10px;
+    }
+    .tpin-next .tpin-inner {
+      width: 44px; height: 44px;
+      border: 2px solid #fff;
+      border-radius: 8px;
+    }
+    .tpin-other .tpin-inner {
+      width: 28px; height: 28px;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 6px;
+      opacity: 0.5;
+    }
+    .tpin-user {
+      background: none !important;
+      border: none !important;
+    }
+    .tpin-user-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #4285F4;
+      border: 3px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Tour Nav Bar ═══ -->
+  <div class="tour-nav">
+    <button class="tour-nav-back" aria-label="Back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="tour-nav-info">
+      <div class="tour-nav-name">Central Avenue</div>
+      <div class="tour-nav-progress">
+        <div class="progress-track">
+          <div class="progress-fill" style="width: 44%"></div>
+        </div>
+        <span class="progress-label">4 of 9</span>
+      </div>
+    </div>
+    <button class="tour-nav-close" aria-label="End tour">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+
+  <!-- ═══ Map Zone ═══ -->
+  <div class="tour-map-zone">
+    <div id="tour-map"></div>
+
+    <!-- Floating segment info -->
+    <div class="segment-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      0.2 mi · ~3 min walk
+    </div>
+  </div>
+
+  <!-- ═══ Bottom Card Panel ═══ -->
+  <div class="tour-bottom">
+    <div class="tour-bottom-handle"></div>
+
+    <!-- Mural carousel: current + next -->
+    <div class="tour-carousel">
+
+      <!-- Current mural (large) -->
+      <div class="tour-card-current">
+        <div class="tour-card-img-wrap">
+          <img class="tour-card-img" src="../images/murals/2024/fintan-magee.jpeg" alt="Fintan Magee">
+          <span class="tour-card-num">4</span>
+          <span class="tour-card-now-label">Now</span>
+        </div>
+        <div class="tour-card-info">
+          <div class="tour-card-artist">Fintan Magee</div>
+          <div class="tour-card-title">"The Weight of Water"</div>
+          <div class="tour-card-address">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            600 Block Central Ave
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector -->
+      <div class="tour-connector">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+
+      <!-- Next mural (small) -->
+      <div class="tour-card-next">
+        <div class="tour-card-img-wrap">
+          <img class="tour-card-img" src="../images/murals/2024/nespoon.jpeg" alt="NeSpoon">
+          <span class="tour-card-num">5</span>
+        </div>
+        <span class="tour-card-next-label">Next Up</span>
+        <div class="tour-card-artist">NeSpoon</div>
+      </div>
+
+    </div>
+
+    <!-- Action buttons -->
+    <div class="tour-actions">
+      <button class="tour-btn tour-btn-directions">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Go To Mural
+      </button>
+      <button class="tour-btn tour-btn-details">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        Mural Details
+      </button>
+    </div>
+
+    <!-- Step navigation -->
+    <div class="tour-step-nav">
+      <button class="tour-step-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Prev
+      </button>
+
+      <!-- Dot indicators -->
+      <div class="tour-step-dots">
+        <span class="tour-step-dot visited"></span>
+        <span class="tour-step-dot visited"></span>
+        <span class="tour-step-dot visited"></span>
+        <span class="tour-step-dot active"></span>
+        <span class="tour-step-dot"></span>
+        <span class="tour-step-dot"></span>
+        <span class="tour-step-dot"></span>
+        <span class="tour-step-dot"></span>
+        <span class="tour-step-dot"></span>
+      </div>
+
+      <button class="tour-step-btn">
+        Next
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ─── Tour Map ───
+    const map = L.map('tour-map', {
+      zoomControl: false,
+      attributionControl: false,
+    }).setView([27.7710, -82.6365], 16);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19
+    }).addTo(map);
+
+    // Route stops (Central Ave sample)
+    const stops = [
+      { lat: 27.7698, lng: -82.6410, num: 1, name: 'Stop 1', img: '../images/murals/2021/case-maclaim.jpeg' },
+      { lat: 27.7703, lng: -82.6395, num: 2, name: 'Stop 2', img: '../images/murals/2021/emily-ding.jpeg' },
+      { lat: 27.7710, lng: -82.6378, num: 3, name: 'Stop 3', img: '../images/murals/2021/greg-mike.jpeg' },
+      { lat: 27.7715, lng: -82.6365, num: 4, name: 'Fintan Magee', img: '../images/murals/2024/fintan-magee.jpeg' },
+      { lat: 27.7722, lng: -82.6350, num: 5, name: 'NeSpoon', img: '../images/murals/2024/nespoon.jpeg' },
+      { lat: 27.7728, lng: -82.6340, num: 6, name: 'Stop 6', img: '../images/murals/2021/gleo.jpeg' },
+      { lat: 27.7735, lng: -82.6328, num: 7, name: 'Stop 7', img: '../images/murals/2021/ricky-watts.jpeg' },
+      { lat: 27.7740, lng: -82.6315, num: 8, name: 'Stop 8', img: '../images/murals/2022/james-bullough.jpeg' },
+      { lat: 27.7748, lng: -82.6300, num: 9, name: 'Stop 9', img: '../images/murals/2022/marina-capdevila.jpeg' },
+    ];
+
+    const currentIdx = 3; // Stop 4 (Fintan Magee)
+    const nextIdx = 4;    // Stop 5 (NeSpoon)
+
+    // Full route polyline (faded)
+    const fullRoute = stops.map(s => [s.lat, s.lng]);
+    L.polyline(fullRoute, {
+      color: '#E53935',
+      weight: 3,
+      opacity: 0.25,
+      lineCap: 'round'
+    }).addTo(map);
+
+    // Active segment (current → next, bold)
+    L.polyline([
+      [stops[currentIdx].lat, stops[currentIdx].lng],
+      [stops[nextIdx].lat, stops[nextIdx].lng],
+    ], {
+      color: '#E53935',
+      weight: 5,
+      opacity: 0.85,
+      lineCap: 'round'
+    }).addTo(map);
+
+    // Walked path (darker, behind current)
+    const walkedPath = stops.slice(0, currentIdx + 1).map(s => [s.lat, s.lng]);
+    L.polyline(walkedPath, {
+      color: '#E53935',
+      weight: 3.5,
+      opacity: 0.5,
+      lineCap: 'round'
+    }).addTo(map);
+
+    // Draw all stop markers
+    stops.forEach((stop, i) => {
+      let cls = 'tpin-other';
+      if (i === currentIdx) cls = 'tpin-current';
+      else if (i === nextIdx) cls = 'tpin-next';
+
+      const size = i === currentIdx ? [52, 52] : i === nextIdx ? [44, 44] : [28, 28];
+      const anchor = [size[0]/2, size[1]/2];
+
+      L.marker([stop.lat, stop.lng], {
+        icon: L.divIcon({
+          className: `tpin ${cls}`,
+          html: `<div class="tpin-inner"><img src="${stop.img}" alt="${stop.name}"><span class="tpin-num">${stop.num}</span></div>`,
+          iconSize: size,
+          iconAnchor: anchor,
+        }),
+        zIndexOffset: i === currentIdx ? 100 : i === nextIdx ? 50 : 0,
+      }).addTo(map);
+    });
+
+    // Simulated user location dot
+    L.marker([27.7712, -82.6368], {
+      icon: L.divIcon({
+        className: 'tpin-user',
+        html: '<div class="tpin-user-dot"></div>',
+        iconSize: [16, 16],
+        iconAnchor: [8, 8],
+      }),
+      zIndexOffset: 200,
+    }).addTo(map);
+
+    // Fit to current + next stops
+    map.fitBounds([
+      [stops[currentIdx].lat, stops[currentIdx].lng],
+      [stops[nextIdx].lat, stops[nextIdx].lng],
+    ], { padding: [60, 60], maxZoom: 17 });
+  </script>
+
+</body>
+</html>

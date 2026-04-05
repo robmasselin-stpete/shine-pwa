@@ -44,7 +44,7 @@ EXPORT_FIELDS = [
     'lat', 'lng', 'year', 'category', 'instagram', 'artistBio',
     'img', 'basedIn',
     'muralDescription', 'muralInspiration', 'muralAwards', 'artistAwards',
-    'impressions',
+    'impressions', 'furtherWork',
 ]
 
 # Provenance fields — stripped from output
@@ -210,6 +210,14 @@ def mural_to_js(m):
     imp_items = ','.join(f"'{js_string_escape(s)}'" for s in raw_imp if s)
     imp_str = f"[{imp_items}]" if imp_items else '[]'
 
+    # Further Work — list of {name, url}
+    raw_gal = m.get('furtherWork') or []
+    gal_items = ','.join(
+        f"{{name:'{js_string_escape(g.get('name',''))}',url:'{js_string_escape(g.get('url',''))}'}}"
+        for g in raw_gal if g
+    )
+    gal_str = f"[{gal_items}]" if gal_items else 'null'
+
     lat_str = str(lat) if lat is not None else 'null'
     lng_str = str(lng) if lng is not None else 'null'
 
@@ -232,7 +240,8 @@ def mural_to_js(m):
         f"aud:'{audio}',"
         f"insp:'{mural_insp}',"
         f"maw:'{mural_awards}',"
-        f"aaw:'{artist_awards}'}}"
+        f"aaw:'{artist_awards}',"
+        f"fw:{gal_str}}}"
     )
 
 

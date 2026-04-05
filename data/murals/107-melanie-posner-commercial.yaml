@@ -39,6 +39,10 @@ muralInspiration: ""
 muralAwards: ""
 artistAwards: "SHINE 2018 festival artist; scenic artist for Walt Disney World Star Wars: Galaxy's Edge"
 
+furtherWork:
+  - name: "melanieposner.com"
+    url: "https://www.melanieposner.com"
+
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:

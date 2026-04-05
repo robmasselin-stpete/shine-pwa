@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mural Route Editor</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a1a; color: #eee; }
+
+#toolbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: #222; padding: 8px 12px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  border-bottom: 1px solid #444;
+}
+#toolbar select, #toolbar button, #toolbar input {
+  padding: 6px 12px; border-radius: 6px; border: 1px solid #555;
+  background: #333; color: #eee; font-size: 13px; cursor: pointer;
+}
+#toolbar button:hover { background: #444; }
+#toolbar button.primary { background: #0d7; color: #000; border-color: #0d7; font-weight: 600; }
+#toolbar button.danger { background: #e53935; color: #fff; border-color: #e53935; }
+#toolbar button.active { background: #1E88E5; color: #fff; border-color: #1E88E5; }
+#add-poi.active { background: #FFA726; color: #000; border-color: #FFA726; }
+#add-commercial.active { background: #AB47BC; color: #fff; border-color: #AB47BC; }
+#toolbar .spacer { flex: 1; }
+#toolbar .info { font-size: 12px; color: #aaa; }
+#toolbar .mode-label { font-size: 11px; color: #f90; font-weight: 600; }
+
+#map { position: fixed; top: 48px; bottom: 0; left: 0; right: 0; }
+
+#sidebar {
+  position: fixed; top: 48px; right: 0; bottom: 0; width: 360px; z-index: 1000;
+  background: rgba(30,30,30,0.95); overflow-y: auto; padding: 12px;
+  border-left: 1px solid #444; display: none;
+}
+#sidebar.open { display: block; }
+#sidebar h3 { font-size: 14px; margin-bottom: 8px; color: #0d7; }
+#sidebar .section-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 6px; }
+
+.stop-item {
+  padding: 8px; margin-bottom: 3px; border-radius: 6px;
+  background: #2a2a2a; border: 1px solid #444; font-size: 12px;
+  display: flex; align-items: center; gap: 6px;
+  cursor: grab; user-select: none;
+}
+.stop-item:hover { background: #333; }
+.stop-item.selected { border-color: #0d7; background: #1a3a2a; }
+.stop-item.drag-over { border-color: #1E88E5; border-style: dashed; }
+.stop-item .num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #555; color: #fff; display: flex; align-items: center;
+  justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0;
+}
+.stop-item .name { flex: 1; font-size: 12px; line-height: 1.3; }
+.stop-item .name small { color: #888; display: block; font-size: 10px; }
+.stop-item .coords { font-size: 9px; color: #888; font-family: monospace; }
+.stop-item .moved { color: #f90; font-size: 9px; }
+.stop-item .remove-btn {
+  width: 20px; height: 20px; border-radius: 50%; border: none;
+  background: #e53935; color: #fff; font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; opacity: 0.6;
+}
+.stop-item .remove-btn:hover { opacity: 1; }
+
+.available-item {
+  padding: 6px 8px; margin-bottom: 2px; border-radius: 4px;
+  background: #252525; border: 1px solid #333; font-size: 11px;
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
+}
+.available-item:hover { background: #333; border-color: #0d7; }
+.available-item .add-btn {
+  color: #0d7; font-weight: 700; font-size: 16px; flex-shrink: 0;
+}
+
+#output {
+  position: fixed; bottom: 0; left: 0; right: 360px; z-index: 1000;
+  background: #111; border-top: 1px solid #444; display: none; padding: 8px;
+}
+#output.open { display: block; }
+#output textarea {
+  width: 100%; height: 150px; background: #1a1a1a; color: #0d7;
+  border: 1px solid #444; border-radius: 4px; padding: 8px;
+  font-family: monospace; font-size: 11px; resize: vertical;
+}
+
+.leaflet-popup-content { color: #333; font-size: 13px; }
+.popup-add-btn { background: #0d7; color: #000; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 4px; }
+.popup-remove-btn { background: #e53935; color: #fff; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 4px; }
+
+#new-route-dialog {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  z-index: 2000; background: #2a2a2a; border: 1px solid #555; border-radius: 12px;
+  padding: 24px; display: none; min-width: 300px;
+}
+#new-route-dialog.open { display: block; }
+#new-route-dialog input {
+  width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #555;
+  background: #333; color: #eee; font-size: 14px; margin: 8px 0;
+}
+#new-route-dialog .btn-row { display: flex; gap: 8px; margin-top: 12px; }
+#new-route-dialog button { flex: 1; padding: 8px; border-radius: 6px; border: none; cursor: pointer; font-size: 14px; }
+#new-route-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none;
+}
+#new-route-overlay.open { display: block; }
+
+.search-box {
+  width: 100%; padding: 6px 8px; border-radius: 4px; border: 1px solid #444;
+  background: #222; color: #eee; font-size: 12px; margin-bottom: 8px;
+}
+
+.poi-item {
+  padding: 8px; margin-bottom: 3px; border-radius: 6px;
+  background: #2a2a2a; border: 1px solid #444; font-size: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.poi-item:hover { background: #333; }
+.poi-item .poi-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #FFA726; font-size: 14px;
+}
+.poi-item .poi-label {
+  flex: 1; background: none; border: none; border-bottom: 1px solid #555;
+  color: #eee; font-size: 12px; padding: 2px 0; font-family: inherit;
+}
+.poi-item .poi-label:focus { border-color: #FFA726; outline: none; }
+.poi-item .poi-coords { font-size: 9px; color: #888; font-family: monospace; }
+.poi-item .remove-btn { background: #e53935; }
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <select id="route-select"><option value="">— Select Route —</option></select>
+  <button id="btn-new-route">+ New Route</button>
+  <button id="show-all">All Murals</button>
+  <button id="toggle-sidebar">Stops</button>
+  <button id="toggle-paths" class="active">Paths</button>
+  <button id="add-poi">+ POI</button>
+  <button id="add-commercial">+ Commercial</button>
+  <span class="spacer"></span>
+  <span class="mode-label" id="mode-label"></span>
+  <span class="info" id="status"></span>
+  <button class="primary" id="copy-changes">Export Changes</button>
+</div>
+
+<div id="map"></div>
+<div id="sidebar"></div>
+<div id="output"><textarea id="output-text" readonly></textarea></div>
+
+<div id="new-route-overlay"></div>
+<div id="new-route-dialog">
+  <h3 style="color:#0d7;margin-bottom:4px">New Route</h3>
+  <p style="font-size:12px;color:#aaa">Give your route a name and ID</p>
+  <input id="new-route-name" placeholder="Route name (e.g. Warehouse District)">
+  <input id="new-route-id" placeholder="Route ID (e.g. warehouse-district)">
+  <div class="btn-row">
+    <button style="background:#555;color:#eee" id="new-route-cancel">Cancel</button>
+    <button style="background:#0d7;color:#000;font-weight:600" id="new-route-create">Create</button>
+  </div>
+</div>
+
+<script type="module">
+import { murals } from '../js/data.js';
+import { ROUTE_PATHS } from '../js/routes.js';
+
+console.log('ROUTE_PATHS loaded:', Object.keys(ROUTE_PATHS));
+
+// ── Route definitions (editable copy) ──
+const ROUTE_DEFS = [
+  { id: 'downtown-north', name: 'Downtown North',
+    ids: [6, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 115, 73, 24] },
+  { id: 'the-edge', name: 'The Edge',
+    ids: [119, 80, 75, 120, 57, 135, 40, 130, 89, 98, 43, 34] },
+  { id: 'methodist-town', name: 'Methodist Town',
+    ids: [4, 108, 61, 60, 24, 114, 64] },
+  { id: 'tropicana-field', name: 'Tropicana Field',
+    ids: [59, 103, 20, 52, 44, 123, 16, 125] },
+  { id: 'central-ave', name: 'Central Ave',
+    ids: [48, 122, 62, 55, 76, 71, 88, 38, 101] },
+  { id: 'arts-district', name: 'Arts District',
+    ids: [140, 90, 84, 72, 29, 39, 10, 25, 12, 93, 121, 50, 79] },
+];
+
+// ── State ──
+const muralById = {};
+murals.forEach(m => { muralById[m.id] = m; });
+
+const originalPos = {};
+const changes = {};
+let routeMarkers = [];
+let bgMarkers = [];
+let routeLine = null;
+let selectedRoute = null;
+let dragSrcIdx = null;
+
+// ── Path editing state ──
+const editPaths = JSON.parse(JSON.stringify(ROUTE_PATHS)); // deep copy for editing
+const pathDirty = {};  // routeId → true if modified
+let pathPolylines = [];
+let pathVertexMarkers = [];
+let showPaths = true;
+
+// ── POI state ──
+// Types: 'poi' = local point of interest, 'commercial' = sponsor/ad
+const pois = [];  // [{ id, lat, lng, label, type: 'poi'|'commercial' }]
+let poiMarkers = [];
+let poiMode = false;   // 'poi' | 'commercial' | false
+let poiNextId = 1;
+
+// ── Map ──
+const map = L.map('map').setView([27.771, -82.649], 15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 20, attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+// ── Dropdown ──
+const sel = document.getElementById('route-select');
+function populateDropdown() {
+  sel.innerHTML = '<option value="">— Select Route —</option>';
+  ROUTE_DEFS.forEach(def => {
+    const opt = document.createElement('option');
+    opt.value = def.id;
+    opt.textContent = `${def.name} (${def.ids.length} stops)`;
+    sel.appendChild(opt);
+  });
+}
+populateDropdown();
+
+// ── Icons ──
+function makeIcon(color, label, size = 28) {
+  return L.divIcon({
+    className: '',
+    html: `<div style="
+      width:${size}px;height:${size}px;border-radius:50%;
+      background:${color};border:2px solid #fff;
+      color:#fff;font-size:${size < 24 ? 8 : 11}px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 2px 6px rgba(0,0,0,0.4);
+    ">${label}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size/2, size/2],
+  });
+}
+
+// ── Clear helpers ──
+function clearRouteMarkers() {
+  routeMarkers.forEach(m => map.removeLayer(m));
+  routeMarkers = [];
+  if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
+  clearPaths();
+}
+
+function clearBgMarkers() {
+  bgMarkers.forEach(m => map.removeLayer(m));
+  bgMarkers = [];
+}
+
+// ── Show route stops ──
+function showRoute(defId, fitBounds = true) {
+  clearRouteMarkers();
+  clearBgMarkers();
+  const def = ROUTE_DEFS.find(d => d.id === defId);
+  if (!def) return;
+  selectedRoute = def;
+
+  const bounds = [];
+
+  // Route stop markers (red, draggable)
+  def.ids.forEach((id, i) => {
+    const m = muralById[id];
+    if (!m || !m.lat || !m.lng) return;
+    const pos = changes[id] || { lat: m.lat, lng: m.lng };
+    if (!originalPos[id]) originalPos[id] = { lat: m.lat, lng: m.lng };
+
+    const marker = L.marker([pos.lat, pos.lng], {
+      draggable: true, icon: makeIcon('#E53935', i + 1),
+    }).addTo(map);
+    marker.muralId = id;
+
+    marker.bindPopup(() => {
+      const p = changes[id] || { lat: m.lat, lng: m.lng };
+      const div = document.createElement('div');
+      div.innerHTML = `<b>${i+1}. ${m.a}</b><br>${m.t || ''}<br>
+        <small>${p.lat.toFixed(6)}, ${p.lng.toFixed(6)}</small>
+        ${changes[id] ? '<br><em style="color:#f90">moved</em>' : ''}`;
+      const btn = document.createElement('button');
+      btn.className = 'popup-remove-btn';
+      btn.textContent = 'Remove from route';
+      btn.onclick = () => { removeStop(i); marker.closePopup(); };
+      div.appendChild(btn);
+      return div;
+    });
+
+    marker.on('dragend', () => {
+      const ll = marker.getLatLng();
+      changes[id] = { lat: parseFloat(ll.lat.toFixed(6)), lng: parseFloat(ll.lng.toFixed(6)) };
+      updateRouteLine();
+      updateSidebar();
+      updateStatus();
+    });
+
+    routeMarkers.push(marker);
+    bounds.push([pos.lat, pos.lng]);
+  });
+
+  // Background markers (gray, small) — murals NOT on this route
+  const routeIdSet = new Set(def.ids);
+  murals.forEach(m => {
+    if (!m.lat || !m.lng || routeIdSet.has(m.id)) return;
+    const pos = changes[m.id] || { lat: m.lat, lng: m.lng };
+    const marker = L.marker([pos.lat, pos.lng], {
+      icon: makeIcon('#555', m.id, 20),
+    }).addTo(map);
+    marker.muralId = m.id;
+
+    marker.bindPopup(() => {
+      const div = document.createElement('div');
+      div.innerHTML = `<b>#${m.id} ${m.a}</b><br>${m.t || ''}<br>
+        <small>${pos.lat.toFixed(6)}, ${pos.lng.toFixed(6)}</small>`;
+      const btn = document.createElement('button');
+      btn.className = 'popup-add-btn';
+      btn.textContent = 'Add to route';
+      btn.onclick = () => { addStop(m.id); marker.closePopup(); };
+      div.appendChild(btn);
+      return div;
+    });
+
+    bgMarkers.push(marker);
+  });
+
+  updateRouteLine();
+  showRoutePaths(defId);
+  renderPOIs();
+  if (fitBounds && bounds.length) map.fitBounds(bounds, { padding: [60, 60] });
+  updateSidebar();
+  updateStatus();
+  if (!poiMode) document.getElementById('mode-label').textContent = '';
+}
+
+function updateRouteLine() {
+  if (routeLine) map.removeLayer(routeLine);
+  if (!selectedRoute) return;
+  const pts = selectedRoute.ids.map(id => {
+    const m = muralById[id];
+    if (!m) return null;
+    const p = changes[id] || { lat: m.lat, lng: m.lng };
+    return [p.lat, p.lng];
+  }).filter(Boolean);
+  if (pts.length > 1) {
+    routeLine = L.polyline(pts, { color: '#E53935', weight: 2, opacity: 0.5, dashArray: '6,6' }).addTo(map);
+  }
+}
+
+// ── Path rendering ──
+function clearPaths() {
+  pathPolylines.forEach(p => map.removeLayer(p));
+  pathPolylines = [];
+  pathVertexMarkers.forEach(m => map.removeLayer(m));
+  pathVertexMarkers = [];
+}
+
+function showRoutePaths(routeId) {
+  clearPaths();
+  if (!showPaths) return;
+  const pathData = editPaths[routeId] || ROUTE_PATHS[routeId];
+  if (!pathData || !pathData.segments) { console.warn('No path data for', routeId, Object.keys(editPaths)); return; }
+
+  pathData.segments.forEach((seg, segIdx) => {
+    if (seg.length < 2) return;
+    // Draw polyline for this segment
+    const latlngs = seg.map(pt => [pt[0], pt[1]]);
+    const polyline = L.polyline(latlngs, {
+      color: '#1E88E5', weight: 3, opacity: 0.8,
+    }).addTo(map);
+    pathPolylines.push(polyline);
+
+    // Draggable vertex markers for each point
+    seg.forEach((pt, ptIdx) => {
+      const vtx = L.marker([pt[0], pt[1]], {
+        draggable: true,
+        icon: L.divIcon({
+          className: '',
+          html: `<div style="
+            width:8px;height:8px;border-radius:50%;
+            background:#1E88E5;border:1.5px solid #fff;
+            box-shadow:0 1px 3px rgba(0,0,0,0.4);
+          "></div>`,
+          iconSize: [8, 8], iconAnchor: [4, 4],
+        }),
+      }).addTo(map);
+
+      vtx.on('dragend', () => {
+        const ll = vtx.getLatLng();
+        editPaths[routeId].segments[segIdx][ptIdx] = [
+          parseFloat(ll.lat.toFixed(5)), parseFloat(ll.lng.toFixed(5))
+        ];
+        pathDirty[routeId] = true;
+        // Redraw this segment's polyline
+        const newLatlngs = editPaths[routeId].segments[segIdx].map(p => [p[0], p[1]]);
+        polyline.setLatLngs(newLatlngs);
+        updateStatus();
+      });
+
+      pathVertexMarkers.push(vtx);
+    });
+  });
+}
+
+// ── POI markers ──
+const POI_COLORS = { poi: '#FFA726', commercial: '#AB47BC' };
+const POI_SYMBOLS = { poi: '★', commercial: '$' };
+const POI_LABELS = { poi: 'POI', commercial: 'Ad' };
+
+function makePOIIcon(type) {
+  const color = POI_COLORS[type] || POI_COLORS.poi;
+  const sym = POI_SYMBOLS[type] || POI_SYMBOLS.poi;
+  return L.divIcon({
+    className: '',
+    html: `<div style="
+      width:22px;height:22px;
+      background:${color};border:2px solid #fff;
+      border-radius:4px;transform:rotate(45deg);
+      box-shadow:0 2px 6px rgba(0,0,0,0.4);
+      display:flex;align-items:center;justify-content:center;
+    "><span style="transform:rotate(-45deg);font-size:11px;color:#fff;font-weight:700">${sym}</span></div>`,
+    iconSize: [22, 22], iconAnchor: [11, 11],
+  });
+}
+
+function clearPOIMarkers() {
+  poiMarkers.forEach(m => map.removeLayer(m));
+  poiMarkers = [];
+}
+
+function renderPOIs() {
+  clearPOIMarkers();
+  pois.forEach((poi) => {
+    const marker = L.marker([poi.lat, poi.lng], {
+      draggable: true, icon: makePOIIcon(poi.type),
+    }).addTo(map);
+    marker.poiId = poi.id;
+
+    marker.bindPopup(() => {
+      const typeLabel = POI_LABELS[poi.type] || 'POI';
+      const color = POI_COLORS[poi.type] || POI_COLORS.poi;
+      const div = document.createElement('div');
+      div.innerHTML = `<b style="color:${color}">${typeLabel}: ${poi.label || '(untitled)'}</b><br>
+        <small>${poi.lat.toFixed(6)}, ${poi.lng.toFixed(6)}</small>`;
+      const inp = document.createElement('input');
+      inp.type = 'text'; inp.value = poi.label;
+      inp.placeholder = poi.type === 'commercial' ? 'Sponsor name...' : 'Label...';
+      inp.style.cssText = 'width:100%;margin:4px 0;padding:4px;font-size:12px;';
+      inp.addEventListener('input', () => { poi.label = inp.value; updateSidebar(); });
+      div.appendChild(inp);
+      const btn = document.createElement('button');
+      btn.className = 'popup-remove-btn';
+      btn.textContent = 'Remove';
+      btn.onclick = () => { removePOI(poi.id); marker.closePopup(); };
+      div.appendChild(btn);
+      return div;
+    });
+
+    marker.on('dragend', () => {
+      const ll = marker.getLatLng();
+      poi.lat = parseFloat(ll.lat.toFixed(6));
+      poi.lng = parseFloat(ll.lng.toFixed(6));
+      updateSidebar();
+      updateStatus();
+    });
+
+    poiMarkers.push(marker);
+  });
+}
+
+function addPOI(lat, lng, type) {
+  const id = `poi-${poiNextId++}`;
+  pois.push({ id, lat: parseFloat(lat.toFixed(6)), lng: parseFloat(lng.toFixed(6)), label: '', type });
+  renderPOIs();
+  updateSidebar();
+  updateStatus();
+  // Open popup for the new marker so user can label it
+  const newMarker = poiMarkers[poiMarkers.length - 1];
+  if (newMarker) setTimeout(() => newMarker.openPopup(), 100);
+}
+
+function removePOI(poiId) {
+  const idx = pois.findIndex(p => p.id === poiId);
+  if (idx >= 0) pois.splice(idx, 1);
+  renderPOIs();
+  updateSidebar();
+  updateStatus();
+}
+
+function togglePOIMode(type) {
+  if (poiMode === type) {
+    poiMode = false;
+    document.getElementById('add-poi').classList.remove('active');
+    document.getElementById('add-commercial').classList.remove('active');
+    document.getElementById('mode-label').textContent = '';
+    map.getContainer().style.cursor = '';
+  } else {
+    poiMode = type;
+    document.getElementById('add-poi').classList.toggle('active', type === 'poi');
+    document.getElementById('add-commercial').classList.toggle('active', type === 'commercial');
+    const label = type === 'commercial' ? 'Click map to place commercial pin' : 'Click map to place POI pin';
+    document.getElementById('mode-label').textContent = label;
+    map.getContainer().style.cursor = 'crosshair';
+  }
+}
+
+// Map click — place POI when in placement mode
+map.on('click', (e) => {
+  if (!poiMode) return;
+  addPOI(e.latlng.lat, e.latlng.lng, poiMode);
+});
+
+// ── Add/Remove stops ──
+function addStop(muralId, atIndex) {
+  if (!selectedRoute) return;
+  if (selectedRoute.ids.includes(muralId)) return;
+  if (atIndex !== undefined) {
+    selectedRoute.ids.splice(atIndex, 0, muralId);
+  } else {
+    selectedRoute.ids.push(muralId);
+  }
+  showRoute(selectedRoute.id, false);
+}
+
+function removeStop(idx) {
+  if (!selectedRoute) return;
+  selectedRoute.ids.splice(idx, 1);
+  showRoute(selectedRoute.id, false);
+}
+
+function moveStop(fromIdx, toIdx) {
+  if (!selectedRoute) return;
+  const ids = selectedRoute.ids;
+  const [moved] = ids.splice(fromIdx, 1);
+  ids.splice(toIdx, 0, moved);
+  showRoute(selectedRoute.id, false);
+}
+
+// ── Show all murals ──
+function showAllMurals() {
+  clearRouteMarkers();
+  clearBgMarkers();
+  selectedRoute = null;
+
+  const bounds = [];
+  murals.forEach(m => {
+    if (!m.lat || !m.lng) return;
+    const pos = changes[m.id] || { lat: m.lat, lng: m.lng };
+    if (!originalPos[m.id]) originalPos[m.id] = { lat: m.lat, lng: m.lng };
+
+    const marker = L.marker([pos.lat, pos.lng], {
+      draggable: true, icon: makeIcon('#666', m.id),
+    }).addTo(map);
+    marker.muralId = m.id;
+    marker.bindPopup(`<b>#${m.id} ${m.a}</b><br>${m.t || ''}<br>
+      <small>${pos.lat.toFixed(6)}, ${pos.lng.toFixed(6)}</small>`);
+    marker.on('dragend', () => {
+      const ll = marker.getLatLng();
+      changes[m.id] = { lat: parseFloat(ll.lat.toFixed(6)), lng: parseFloat(ll.lng.toFixed(6)) };
+      updateStatus();
+    });
+    bgMarkers.push(marker);
+    bounds.push([pos.lat, pos.lng]);
+  });
+
+  renderPOIs();
+  if (bounds.length) map.fitBounds(bounds, { padding: [40, 40] });
+  document.getElementById('sidebar').classList.remove('open');
+  if (!poiMode) document.getElementById('mode-label').textContent = 'All murals — drag to move';
+  sel.value = '';
+  updateStatus();
+}
+
+// ── Sidebar ──
+function updateSidebar() {
+  const sb = document.getElementById('sidebar');
+  if (!selectedRoute) { sb.classList.remove('open'); return; }
+  sb.classList.add('open');
+
+  const stops = selectedRoute.ids.map(id => muralById[id]).filter(Boolean);
+  const routeIdSet = new Set(selectedRoute.ids);
+  const available = murals.filter(m => m.lat && m.lng && !routeIdSet.has(m.id));
+
+  let html = `<h3>${selectedRoute.name} — ${stops.length} stops</h3>`;
+  html += `<div class="section-label">Route stops (drag to reorder)</div>`;
+
+  stops.forEach((m, i) => {
+    const moved = !!changes[m.id];
+    const pos = changes[m.id] || { lat: m.lat, lng: m.lng };
+    html += `<div class="stop-item" draggable="true" data-idx="${i}" data-id="${m.id}">
+      <span class="num">${i+1}</span>
+      <span class="name">${m.a}<small>${m.t || ''}</small></span>
+      <span class="coords">${pos.lat.toFixed(5)}, ${pos.lng.toFixed(5)}</span>
+      ${moved ? '<span class="moved">moved</span>' : ''}
+      <button class="remove-btn" data-idx="${i}" title="Remove">&times;</button>
+    </div>`;
+  });
+
+  // POI section
+  const poiList = pois.filter(p => p.type === 'poi');
+  const comList = pois.filter(p => p.type === 'commercial');
+  if (poiList.length) {
+    html += `<div class="section-label">Local POIs (${poiList.length})</div>`;
+    poiList.forEach(poi => {
+      html += `<div class="poi-item" data-poi="${poi.id}">
+        <span class="poi-icon">★</span>
+        <input class="poi-label" value="${poi.label}" placeholder="Label..." data-poi="${poi.id}">
+        <span class="poi-coords">${poi.lat.toFixed(5)}, ${poi.lng.toFixed(5)}</span>
+        <button class="remove-btn" data-poi-rm="${poi.id}" title="Remove">&times;</button>
+      </div>`;
+    });
+  }
+  if (comList.length) {
+    html += `<div class="section-label">Commercial (${comList.length})</div>`;
+    comList.forEach(poi => {
+      html += `<div class="poi-item" data-poi="${poi.id}">
+        <span class="poi-icon" style="color:#AB47BC">$</span>
+        <input class="poi-label" value="${poi.label}" placeholder="Sponsor..." data-poi="${poi.id}">
+        <span class="poi-coords">${poi.lat.toFixed(5)}, ${poi.lng.toFixed(5)}</span>
+        <button class="remove-btn" data-poi-rm="${poi.id}" title="Remove">&times;</button>
+      </div>`;
+    });
+  }
+
+  html += `<div class="section-label">Available murals (click to add)</div>`;
+  html += `<input class="search-box" id="search-available" placeholder="Search artist or title...">`;
+  html += `<div id="available-list">`;
+  available.forEach(m => {
+    html += `<div class="available-item" data-id="${m.id}">
+      <span class="add-btn">+</span>
+      <span>#${m.id} ${m.a} ${m.t ? '— ' + m.t : ''}</span>
+    </div>`;
+  });
+  html += `</div>`;
+
+  sb.innerHTML = html;
+
+  // Click stop → zoom
+  sb.querySelectorAll('.stop-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-btn')) return;
+      const idx = parseInt(el.dataset.idx);
+      const marker = routeMarkers[idx];
+      if (marker) { map.setView(marker.getLatLng(), 18); marker.openPopup(); }
+    });
+  });
+
+  // Remove button
+  sb.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      removeStop(parseInt(btn.dataset.idx));
+    });
+  });
+
+  // Add available
+  sb.querySelectorAll('.available-item').forEach(el => {
+    el.addEventListener('click', () => addStop(parseInt(el.dataset.id)));
+  });
+
+  // Search filter
+  const searchInput = sb.querySelector('#search-available');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase();
+      sb.querySelectorAll('.available-item').forEach(el => {
+        el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  // POI label editing
+  sb.querySelectorAll('.poi-label').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const poi = pois.find(p => p.id === inp.dataset.poi);
+      if (poi) poi.label = inp.value;
+    });
+  });
+
+  // POI remove
+  sb.querySelectorAll('[data-poi-rm]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      removePOI(btn.dataset.poiRm);
+    });
+  });
+
+  // POI click to zoom
+  sb.querySelectorAll('.poi-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+      const poi = pois.find(p => p.id === el.dataset.poi);
+      const marker = poiMarkers.find(m => m.poiId === poi?.id);
+      if (poi && marker) { map.setView([poi.lat, poi.lng], 18); marker.openPopup(); }
+    });
+  });
+
+  // Drag-to-reorder
+  sb.querySelectorAll('.stop-item[draggable]').forEach(el => {
+    el.addEventListener('dragstart', (e) => {
+      dragSrcIdx = parseInt(el.dataset.idx);
+      e.dataTransfer.effectAllowed = 'move';
+      el.style.opacity = '0.4';
+    });
+    el.addEventListener('dragend', () => { el.style.opacity = ''; });
+    el.addEventListener('dragover', (e) => { e.preventDefault(); el.classList.add('drag-over'); });
+    el.addEventListener('dragleave', () => { el.classList.remove('drag-over'); });
+    el.addEventListener('drop', (e) => {
+      e.preventDefault();
+      el.classList.remove('drag-over');
+      const toIdx = parseInt(el.dataset.idx);
+      if (dragSrcIdx !== null && dragSrcIdx !== toIdx) {
+        moveStop(dragSrcIdx, toIdx);
+      }
+      dragSrcIdx = null;
+    });
+  });
+}
+
+// ── Status ──
+function updateStatus() {
+  const n = Object.keys(changes).length;
+  const p = Object.keys(pathDirty).length;
+  const q = pois.length;
+  const parts = [];
+  if (n) parts.push(`${n} mural(s) moved`);
+  if (p) parts.push(`${p} path(s) edited`);
+  if (q) parts.push(`${q} POI(s)`);
+  document.getElementById('status').textContent = parts.join(', ');
+}
+
+// ── Export ──
+function exportChanges() {
+  let output = '';
+
+  // GPS changes
+  const entries = Object.entries(changes);
+  if (entries.length) {
+    output += '# ═══ GPS Position Updates ═══\n';
+    output += '# Update lat/lng in each YAML file\n\n';
+    entries.forEach(([id, pos]) => {
+      const m = muralById[id];
+      const orig = originalPos[id] || {};
+      const dLat = ((pos.lat - (orig.lat||pos.lat)) * 111139).toFixed(1);
+      const dLng = ((pos.lng - (orig.lng||pos.lng)) * 111139 * Math.cos(pos.lat * Math.PI / 180)).toFixed(1);
+      const pad = id.toString().padStart(3, '0');
+      output += `# ${m?.a || '?'} — ${m?.t || ''} (id: ${id})\n`;
+      output += `# moved ${dLat}m N, ${dLng}m E\n`;
+      output += `# file: data/murals/${pad}-*.yaml\n`;
+      output += `lat: ${pos.lat}\nlng: ${pos.lng}\n\n`;
+    });
+  }
+
+  // Route definitions
+  output += '# ═══ Route Definitions ═══\n';
+  output += '# Replace ROUTE_DEFS in js/app.js\n\n';
+  ROUTE_DEFS.forEach(def => {
+    output += `# ${def.name}\n`;
+    output += `{ id: '${def.id}', name: '${def.name}',\n`;
+    output += `  ids: [${def.ids.join(', ')}] },\n\n`;
+  });
+
+  // Path changes
+  const dirtyRoutes = Object.keys(pathDirty);
+  if (dirtyRoutes.length) {
+    output += '# ═══ Path Changes ═══\n';
+    output += '# Replace matching entries in ROUTE_PATHS (js/routes.js)\n\n';
+    dirtyRoutes.forEach(routeId => {
+      const data = editPaths[routeId];
+      output += `"${routeId}":${JSON.stringify(data)},\n\n`;
+    });
+  }
+
+  // POIs
+  if (pois.length) {
+    const poiList = pois.filter(p => p.type === 'poi');
+    const comList = pois.filter(p => p.type === 'commercial');
+    output += '# ═══ Points of Interest ═══\n';
+    output += '# Proximity-triggered, independent of routes\n\n';
+    if (poiList.length) {
+      output += '# Local POIs\n';
+      poiList.forEach(p => {
+        output += `{ id: "${p.id}", lat: ${p.lat}, lng: ${p.lng}, label: "${p.label}", type: "poi" },\n`;
+      });
+      output += '\n';
+    }
+    if (comList.length) {
+      output += '# Commercial / Sponsor\n';
+      comList.forEach(p => {
+        output += `{ id: "${p.id}", lat: ${p.lat}, lng: ${p.lng}, label: "${p.label}", type: "commercial" },\n`;
+      });
+      output += '\n';
+    }
+  }
+
+  const out = document.getElementById('output');
+  const ta = document.getElementById('output-text');
+  ta.value = output;
+  out.classList.add('open');
+  ta.select();
+  try { navigator.clipboard.writeText(output); } catch(e) {}
+}
+
+// ── New route dialog ──
+function showNewRouteDialog() {
+  document.getElementById('new-route-overlay').classList.add('open');
+  document.getElementById('new-route-dialog').classList.add('open');
+  document.getElementById('new-route-name').value = '';
+  document.getElementById('new-route-id').value = '';
+  document.getElementById('new-route-name').focus();
+}
+
+function hideNewRouteDialog() {
+  document.getElementById('new-route-overlay').classList.remove('open');
+  document.getElementById('new-route-dialog').classList.remove('open');
+}
+
+function createNewRoute() {
+  const name = document.getElementById('new-route-name').value.trim();
+  let id = document.getElementById('new-route-id').value.trim();
+  if (!name) { alert('Enter a route name'); return; }
+  if (!id) id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+  if (ROUTE_DEFS.find(d => d.id === id)) { alert('Route ID already exists'); return; }
+
+  ROUTE_DEFS.push({ id, name, ids: [] });
+  populateDropdown();
+  sel.value = id;
+  showRoute(id);
+  hideNewRouteDialog();
+}
+
+// ── Event listeners ──
+sel.addEventListener('change', () => { if (sel.value) showRoute(sel.value); });
+document.getElementById('show-all').addEventListener('click', showAllMurals);
+document.getElementById('toggle-sidebar').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+document.getElementById('toggle-paths').addEventListener('click', () => {
+  showPaths = !showPaths;
+  document.getElementById('toggle-paths').classList.toggle('active', showPaths);
+  if (selectedRoute) {
+    if (showPaths) showRoutePaths(selectedRoute.id);
+    else clearPaths();
+  }
+});
+document.getElementById('add-poi').addEventListener('click', () => togglePOIMode('poi'));
+document.getElementById('add-commercial').addEventListener('click', () => togglePOIMode('commercial'));
+document.getElementById('copy-changes').addEventListener('click', exportChanges);
+document.getElementById('btn-new-route').addEventListener('click', showNewRouteDialog);
+document.getElementById('new-route-cancel').addEventListener('click', hideNewRouteDialog);
+document.getElementById('new-route-overlay').addEventListener('click', hideNewRouteDialog);
+document.getElementById('new-route-create').addEventListener('click', createNewRoute);
+document.getElementById('new-route-name').addEventListener('input', (e) => {
+  const id = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+  document.getElementById('new-route-id').value = id;
+});
+
+// ── Auto-save to localStorage ──
+function saveState() {
+  localStorage.setItem('route-editor-changes', JSON.stringify(changes));
+  localStorage.setItem('route-editor-routes', JSON.stringify(ROUTE_DEFS));
+  // Only save dirty paths
+  const dirtyPaths = {};
+  Object.keys(pathDirty).forEach(id => { dirtyPaths[id] = editPaths[id]; });
+  localStorage.setItem('route-editor-paths', JSON.stringify(dirtyPaths));
+  // POIs
+  localStorage.setItem('route-editor-pois', JSON.stringify(pois));
+  localStorage.setItem('route-editor-poi-next', poiNextId);
+}
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('route-editor-changes') || '{}');
+    Object.assign(changes, saved);
+    const savedRoutes = JSON.parse(localStorage.getItem('route-editor-routes') || 'null');
+    if (savedRoutes) {
+      ROUTE_DEFS.length = 0;
+      savedRoutes.forEach(r => ROUTE_DEFS.push(r));
+      populateDropdown();
+    }
+    const savedPaths = JSON.parse(localStorage.getItem('route-editor-paths') || 'null');
+    if (savedPaths) {
+      Object.entries(savedPaths).forEach(([id, data]) => {
+        editPaths[id] = data;
+        pathDirty[id] = true;
+      });
+    }
+    const savedPOIs = JSON.parse(localStorage.getItem('route-editor-pois') || 'null');
+    if (savedPOIs) {
+      pois.length = 0;
+      savedPOIs.forEach(p => pois.push(p));
+    }
+    const savedNextId = parseInt(localStorage.getItem('route-editor-poi-next'));
+    if (savedNextId) poiNextId = savedNextId;
+  } catch(e) {}
+}
+
+// Save on every change
+const origShowRoute = showRoute;
+const _saveWrap = (fn) => (...args) => { fn(...args); saveState(); };
+// Periodic save
+setInterval(saveState, 5000);
+
+// Load saved state
+loadState();
+if (Object.keys(changes).length) {
+  document.getElementById('status').textContent = `Restored ${Object.keys(changes).length} change(s) from last session`;
+}
+
+// Start with downtown-north
+sel.value = 'downtown-north';
+showRoute('downtown-north');
+</script>
+</body>
+</html>

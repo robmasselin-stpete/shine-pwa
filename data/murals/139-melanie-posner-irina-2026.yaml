@@ -48,6 +48,10 @@ muralInspiration: |
 muralAwards: ""
 artistAwards: ""
 
+furtherWork:
+  - name: "melanieposner.com"
+    url: "https://www.melanieposner.com"
+
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes: |

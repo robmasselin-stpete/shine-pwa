@@ -43,6 +43,10 @@ muralInspiration: ""
 muralAwards: ""
 artistAwards: "SHINE 2025 Operations Lead; multiple Best of the Bay winner; AARP commissioned artist"
 
+furtherWork:
+  - name: "Saint Paint Arts"
+    url: "https://www.saintpaintarts.com"
+
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:

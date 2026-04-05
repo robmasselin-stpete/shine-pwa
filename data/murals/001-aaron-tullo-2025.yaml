@@ -37,6 +37,10 @@ muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 
+furtherWork:
+  - name: "aaronjamestullo.com"
+    url: "https://www.aaronjamestullo.com"
+
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
