@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mural YAML Editor</title>
+<script src="https://cdn.jsdelivr.net/npm/exif-js@2.3.0/exif.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a1a; color: #eee; }
+
+#toolbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: #222; padding: 8px 12px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  border-bottom: 1px solid #444;
+}
+#toolbar select, #toolbar button, #toolbar input {
+  padding: 6px 12px; border-radius: 6px; border: 1px solid #555;
+  background: #333; color: #eee; font-size: 13px; cursor: pointer;
+}
+#toolbar button:hover { background: #444; }
+#toolbar button.primary { background: #0d7; color: #000; border-color: #0d7; font-weight: 600; }
+#toolbar button.danger { background: #e53935; color: #fff; border-color: #e53935; }
+#toolbar .spacer { flex: 1; }
+#toolbar .info { font-size: 12px; color: #aaa; }
+#search-box {
+  padding: 6px 10px; border-radius: 6px; border: 1px solid #555;
+  background: #333; color: #eee; font-size: 13px; width: 200px;
+}
+
+#content {
+  margin-top: 52px; padding: 16px;
+  display: flex; gap: 16px; height: calc(100vh - 52px);
+}
+
+/* Left: mural list */
+#mural-list {
+  width: 280px; flex-shrink: 0; overflow-y: auto;
+  background: #222; border-radius: 8px; border: 1px solid #444;
+}
+.mural-item {
+  padding: 8px 12px; border-bottom: 1px solid #333;
+  cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 8px;
+}
+.mural-item:hover { background: #2a2a2a; }
+.mural-item.selected { background: #1a3a2a; border-left: 3px solid #0d7; }
+.mural-item .id { color: #888; font-size: 11px; font-family: monospace; min-width: 28px; }
+.mural-item .name { flex: 1; }
+.mural-item .year { color: #666; font-size: 11px; }
+.mural-item .modified { color: #f90; font-size: 10px; margin-left: 4px; }
+
+/* Right: editor */
+#editor {
+  flex: 1; overflow-y: auto; background: #222; border-radius: 8px;
+  border: 1px solid #444; padding: 16px; display: none;
+}
+#editor.open { display: block; }
+
+#editor h2 { font-size: 18px; color: #0d7; margin-bottom: 16px; }
+
+.field-group {
+  margin-bottom: 16px;
+}
+.field-group label {
+  display: block; font-size: 11px; color: #888; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 4px;
+}
+.field-group input, .field-group select {
+  width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #555;
+  background: #2a2a2a; color: #eee; font-size: 14px;
+}
+.field-group textarea {
+  width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #555;
+  background: #2a2a2a; color: #eee; font-size: 13px; font-family: inherit;
+  min-height: 60px; resize: vertical; line-height: 1.5;
+  overflow: hidden;
+}
+.field-row {
+  display: flex; gap: 12px;
+}
+.field-row .field-group { flex: 1; }
+
+.field-group input:focus, .field-group textarea:focus, .field-group select:focus {
+  outline: none; border-color: #0d7;
+}
+
+.section-title {
+  font-size: 12px; color: #0d7; text-transform: uppercase; letter-spacing: 1px;
+  margin: 24px 0 12px; padding-bottom: 4px; border-bottom: 1px solid #333;
+}
+
+/* Image preview */
+.img-preview {
+  max-width: 200px; max-height: 150px; border-radius: 8px; margin-bottom: 8px;
+  border: 2px solid #444;
+}
+
+/* Further work links */
+.fw-entry { display: flex; gap: 8px; margin-bottom: 6px; align-items: center; }
+.fw-entry input { flex: 1; }
+.fw-entry button { flex-shrink: 0; }
+
+/* Photo drop zone */
+.photo-drop {
+  border: 2px dashed #555; border-radius: 12px; padding: 20px;
+  text-align: center; color: #888; font-size: 14px; margin-bottom: 16px;
+  cursor: pointer; transition: border-color 0.2s, background 0.2s;
+  min-height: 80px; display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px;
+}
+.photo-drop.dragover { border-color: #0d7; background: rgba(0, 221, 119, 0.05); }
+.photo-drop img {
+  max-width: 100%; max-height: 300px; border-radius: 8px; margin-top: 8px;
+}
+.photo-drop .gps-info { font-size: 12px; color: #0d7; font-weight: 600; }
+.photo-drop .no-gps { font-size: 12px; color: #f90; }
+
+/* Output panel */
+#output {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+  background: #111; border-top: 1px solid #444; display: none; padding: 8px;
+}
+#output.open { display: block; }
+#output-bar { display: flex; gap: 8px; margin-bottom: 8px; }
+#output-bar button { padding: 8px 16px; border-radius: 6px; border: none; font-size: 14px; font-weight: 600; cursor: pointer; color: #fff; }
+#output textarea {
+  width: 100%; height: 200px; background: #1a1a1a; color: #0d7;
+  border: 1px solid #444; border-radius: 4px; padding: 8px;
+  font-family: monospace; font-size: 11px; resize: vertical;
+}
+
+/* Raw YAML tab */
+#raw-yaml {
+  display: none; width: 100%; min-height: 400px; padding: 8px;
+  border-radius: 6px; border: 1px solid #555; background: #1a1a1a;
+  color: #0d7; font-family: monospace; font-size: 12px; resize: vertical;
+  line-height: 1.5;
+}
+#raw-yaml.open { display: block; }
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <input type="text" id="search-box" placeholder="Search artist or title...">
+  <button id="btn-new-mural" style="background:#FFA726;color:#000;border-color:#FFA726;font-weight:600">+ New Mural</button>
+  <span class="spacer"></span>
+  <span class="info" id="status"></span>
+  <button id="toggle-raw">Raw YAML</button>
+  <button class="primary" id="btn-export">Export Changes</button>
+  <button class="primary" id="btn-export-current" style="background:#1E88E5;border-color:#1E88E5">Export This Mural</button>
+</div>
+
+<div id="content">
+  <div id="mural-list"></div>
+  <div id="editor">
+    <h2 id="editor-title"></h2>
+    <img class="img-preview" id="img-preview" src="" alt="" style="display:none">
+
+    <div class="photo-drop" id="photo-drop">
+      <span>📷 Drop a photo here or tap to select</span>
+      <input type="file" id="photo-input" accept="image/*" style="display:none">
+    </div>
+
+    <div class="section-title">Identity</div>
+    <div class="field-row">
+      <div class="field-group"><label>Artist</label><input id="f-artist" type="text"></div>
+      <div class="field-group"><label>ID</label><input id="f-id" type="text" readonly style="color:#666"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Title</label><input id="f-title" type="text"></div>
+      <div class="field-group"><label>Year</label><input id="f-year" type="number"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Category</label>
+        <select id="f-category">
+          <option value="shine">SHINE</option>
+          <option value="commercial">Commercial</option>
+          <option value="vintage">Vintage</option>
+        </select>
+      </div>
+      <div class="field-group"><label>Image Path</label><input id="f-img" type="text"></div>
+    </div>
+
+    <div class="section-title">Location</div>
+    <div class="field-row">
+      <div class="field-group"><label>Address</label><input id="f-address" type="text"></div>
+      <div class="field-group"><label>Building</label><input id="f-building" type="text"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Latitude</label><input id="f-lat" type="text"></div>
+      <div class="field-group"><label>Longitude</label><input id="f-lng" type="text"></div>
+    </div>
+
+    <div class="section-title">Artist Info</div>
+    <div class="field-row">
+      <div class="field-group"><label>Instagram</label><input id="f-instagram" type="text"></div>
+      <div class="field-group"><label>Based In</label><input id="f-basedin" type="text"></div>
+    </div>
+    <div class="field-group"><label>Artist Bio</label><textarea id="f-bio"></textarea></div>
+
+    <div class="section-title">Mural Info</div>
+    <div class="field-group"><label>Mural Description</label><textarea id="f-desc"></textarea></div>
+    <div class="field-group"><label>Mural Inspiration</label><textarea id="f-insp" style="min-height:60px"></textarea></div>
+    <div class="field-group"><label>Mural Awards</label><input id="f-maw" type="text"></div>
+    <div class="field-group"><label>Artist Awards</label><input id="f-aaw" type="text"></div>
+
+    <div class="section-title">Further Work Links</div>
+    <div id="fw-links"></div>
+    <button id="add-fw" style="margin-top:6px;padding:4px 10px;border-radius:4px;border:1px solid #555;background:#333;color:#eee;cursor:pointer">+ Add Link</button>
+
+    <div class="section-title">Provenance</div>
+    <div class="field-group"><label>Source</label><input id="f-source" type="text"></div>
+    <div class="field-group"><label>Source Notes (one URL per line)</label><textarea id="f-sourcenotes" style="min-height:80px"></textarea></div>
+
+    <div class="section-title" style="margin-top:24px"></div>
+    <textarea id="raw-yaml" readonly></textarea>
+  </div>
+</div>
+
+<div id="output">
+  <div id="output-bar">
+    <button id="copy-btn" onclick="copyOutput()" style="background:#0d7;color:#000">📋 Copy to Clipboard</button>
+    <button onclick="document.getElementById('output').classList.remove('open')" style="background:#555">Close</button>
+  </div>
+  <textarea id="output-text" readonly></textarea>
+</div>
+
+<script type="module">
+import { murals } from '../js/data.js';
+
+// ── State ──
+let yamlCache = {}; // filename → raw YAML string
+let currentFile = null;
+let currentMural = null;
+let modifications = {}; // filename → modified YAML string
+let showRaw = false;
+
+// ── Build file index from murals ──
+const muralFiles = murals.map(m => {
+  const pad = m.id.toString().padStart(3, '0');
+  return { id: m.id, artist: m.a, title: m.t || '', year: m.y || 0, img: m.img, pad };
+}).sort((a, b) => a.id - b.id);
+
+// ── Render mural list ──
+function renderList(filter = '') {
+  const list = document.getElementById('mural-list');
+  const q = filter.toLowerCase();
+  list.innerHTML = muralFiles
+    .filter(m => !q || m.artist.toLowerCase().includes(q) || m.title.toLowerCase().includes(q) || String(m.id).includes(q))
+    .map(m => `
+      <div class="mural-item${currentMural?.id === m.id ? ' selected' : ''}" data-id="${m.id}">
+        <span class="id">${m.pad}</span>
+        <span class="name">${m.artist}${m.title ? ' — ' + m.title : ''}</span>
+        <span class="year">${m.year || ''}</span>
+        ${modifications[m.id] ? '<span class="modified">●</span>' : ''}
+      </div>
+    `).join('');
+
+  list.querySelectorAll('.mural-item').forEach(el => {
+    el.addEventListener('click', () => loadMural(Number(el.dataset.id)));
+  });
+}
+
+// ── Simple YAML parser (handles our format) ──
+function parseYaml(text) {
+  const obj = {};
+  let currentKey = null;
+  let multilineValue = '';
+  let inMultiline = false;
+
+  text.split('\n').forEach(line => {
+    if (inMultiline) {
+      if (line.startsWith('  ') || line === '') {
+        multilineValue += (multilineValue ? '\n' : '') + line.replace(/^  /, '');
+        return;
+      } else {
+        obj[currentKey] = multilineValue.trim();
+        inMultiline = false;
+      }
+    }
+
+    if (line.startsWith('#') || line.trim() === '') return;
+
+    // Array items under furtherWork / sourceNotes
+    if (line.startsWith('  - ')) {
+      if (!obj[currentKey]) obj[currentKey] = [];
+      const val = line.replace(/^  - /, '').trim();
+      if (val.startsWith('name:')) {
+        // furtherWork entry
+        const nameMatch = val.match(/name:\s*"([^"]*)"/);
+        obj[currentKey].push({ partial: true, name: nameMatch?.[1] || '' });
+      } else if (val.startsWith('url:')) {
+        const urlMatch = val.match(/url:\s*"([^"]*)"/);
+        const last = obj[currentKey][obj[currentKey].length - 1];
+        if (last?.partial) { last.url = urlMatch?.[1] || ''; delete last.partial; }
+      } else {
+        obj[currentKey].push(val.replace(/^"|"$/g, ''));
+      }
+      return;
+    }
+
+    const match = line.match(/^(\w+):\s*(.*)/);
+    if (match) {
+      currentKey = match[1];
+      let val = match[2].trim();
+      if (val === '|') {
+        inMultiline = true;
+        multilineValue = '';
+      } else if (val === '' || val === '[]') {
+        obj[currentKey] = val === '[]' ? [] : '';
+      } else {
+        obj[currentKey] = val.replace(/^"|"$/g, '');
+      }
+    }
+  });
+
+  if (inMultiline) obj[currentKey] = multilineValue.trim();
+  return obj;
+}
+
+// ── YAML file index ──
+let fileIndex = null;
+async function getFileIndex() {
+  if (fileIndex) return fileIndex;
+  const resp = await fetch('../data/murals/_index.json');
+  fileIndex = await resp.json();
+  return fileIndex;
+}
+
+async function findYamlFile(id) {
+  const idx = await getFileIndex();
+  return idx[id] || null;
+}
+
+// ── Load mural ──
+async function loadMural(id) {
+  const filename = await findYamlFile(id);
+  if (!filename) { alert('YAML file not found for id ' + id); return; }
+
+  currentFile = filename;
+  currentMural = muralFiles.find(m => m.id === id);
+
+  let yaml;
+  if (modifications[id]) {
+    yaml = modifications[id];
+  } else if (yamlCache[filename]) {
+    yaml = yamlCache[filename];
+  } else {
+    const resp = await fetch(`../data/murals/${filename}`);
+    yaml = await resp.text();
+    yamlCache[filename] = yaml;
+  }
+
+  const data = parseYaml(yaml);
+  populateForm(data, yaml);
+  renderList(document.getElementById('search-box').value);
+
+  document.getElementById('editor').classList.add('open');
+}
+
+// ── Populate form ──
+function populateForm(data, rawYaml) {
+  document.getElementById('editor-title').textContent = `${data.artist || ''}${data.title ? ' — ' + data.title : ''}`;
+
+  const img = document.getElementById('img-preview');
+  if (data.img) { img.src = '../' + data.img.replace(/^"|"$/g, ''); img.style.display = ''; }
+  else { img.style.display = 'none'; }
+
+  document.getElementById('f-id').value = data.id || '';
+  document.getElementById('f-artist').value = data.artist || '';
+  document.getElementById('f-title').value = data.title || '';
+  document.getElementById('f-year').value = data.year || '';
+  document.getElementById('f-category').value = data.category || 'shine';
+  document.getElementById('f-img').value = data.img || '';
+  document.getElementById('f-address').value = data.address || '';
+  document.getElementById('f-building').value = data.building || '';
+  document.getElementById('f-lat').value = data.lat || '';
+  document.getElementById('f-lng').value = data.lng || '';
+  document.getElementById('f-instagram').value = data.instagram || '';
+  document.getElementById('f-basedin').value = data.basedIn || '';
+  document.getElementById('f-bio').value = data.artistBio || '';
+  document.getElementById('f-desc').value = data.muralDescription || '';
+  document.getElementById('f-insp').value = data.muralInspiration || '';
+  document.getElementById('f-maw').value = data.muralAwards || '';
+  document.getElementById('f-aaw').value = data.artistAwards || '';
+  document.getElementById('f-source').value = data.source || '';
+  document.getElementById('f-sourcenotes').value = Array.isArray(data.sourceNotes) ? data.sourceNotes.join('\n') : '';
+
+  // Auto-resize all textareas to fit content
+  setTimeout(() => {
+    document.querySelectorAll('#editor textarea').forEach(ta => {
+      ta.style.height = 'auto';
+      ta.style.height = ta.scrollHeight + 'px';
+    });
+  }, 0);
+
+  // Further work links
+  const fwDiv = document.getElementById('fw-links');
+  const fwData = Array.isArray(data.furtherWork) ? data.furtherWork : [];
+  renderFwLinks(fwData);
+
+  // Raw YAML
+  document.getElementById('raw-yaml').value = rawYaml;
+}
+
+function renderFwLinks(links) {
+  const fwDiv = document.getElementById('fw-links');
+  fwDiv.innerHTML = links.map((l, i) => `
+    <div class="fw-entry">
+      <input class="fw-name" data-idx="${i}" placeholder="Label" value="${l.name || ''}">
+      <input class="fw-url" data-idx="${i}" placeholder="URL" value="${l.url || ''}">
+      <button class="danger" onclick="removeFw(${i})" style="padding:4px 8px;border-radius:4px;border:none;cursor:pointer;color:#fff;background:#e53935">✕</button>
+    </div>
+  `).join('');
+}
+
+window.removeFw = (idx) => {
+  const names = document.querySelectorAll('.fw-name');
+  const urls = document.querySelectorAll('.fw-url');
+  const links = [];
+  names.forEach((n, i) => { if (i !== idx) links.push({ name: n.value, url: urls[i].value }); });
+  renderFwLinks(links);
+};
+
+document.getElementById('add-fw').addEventListener('click', () => {
+  const names = document.querySelectorAll('.fw-name');
+  const urls = document.querySelectorAll('.fw-url');
+  const links = [];
+  names.forEach((n, i) => links.push({ name: n.value, url: urls[i].value }));
+  links.push({ name: '', url: '' });
+  renderFwLinks(links);
+});
+
+// ── Generate YAML from form ──
+function generateYaml() {
+  const q = (v) => v.includes(':') || v.includes('#') || v.includes('"') ? `"${v}"` : v;
+  const multiline = (v) => v ? '|\n' + v.split('\n').map(l => '  ' + l).join('\n') : '""';
+
+  const artist = document.getElementById('f-artist').value;
+  const year = document.getElementById('f-year').value;
+  const title = document.getElementById('f-title').value;
+
+  let y = `# ${artist} — ${year}\n\n`;
+  y += `# ── Required ──\n`;
+  y += `id: ${document.getElementById('f-id').value}\n`;
+  y += `artist: ${artist}\n`;
+  y += `year: ${year}\n`;
+  y += `lat: ${document.getElementById('f-lat').value}\n`;
+  y += `lng: ${document.getElementById('f-lng').value}\n`;
+  y += `address: ${document.getElementById('f-address').value}\n`;
+  y += `category: ${document.getElementById('f-category').value}\n`;
+  y += `img: "${document.getElementById('f-img').value}"\n`;
+
+  y += `\n# ── Optional ──\n`;
+  y += `title: "${title}"\n`;
+  y += `building: ${document.getElementById('f-building').value || ''}\n`;
+  y += `instagram: ${document.getElementById('f-instagram').value || ''}\n`;
+  y += `basedIn: "${document.getElementById('f-basedin').value || ''}"\n`;
+
+  y += `\nartistBio: ${multiline(document.getElementById('f-bio').value)}\n`;
+  y += `\nmuralDescription: ${multiline(document.getElementById('f-desc').value)}\n`;
+  y += `\nmuralInspiration: ${document.getElementById('f-insp').value ? multiline(document.getElementById('f-insp').value) : '""'}\n`;
+  y += `muralAwards: "${document.getElementById('f-maw').value}"\n`;
+  y += `artistAwards: "${document.getElementById('f-aaw').value}"\n`;
+
+  // Further work
+  const fwNames = document.querySelectorAll('.fw-name');
+  const fwUrls = document.querySelectorAll('.fw-url');
+  if (fwNames.length) {
+    y += `\nfurtherWork:\n`;
+    fwNames.forEach((n, i) => {
+      if (n.value || fwUrls[i].value) {
+        y += `  - name: "${n.value}"\n    url: "${fwUrls[i].value}"\n`;
+      }
+    });
+  } else {
+    y += `\nfurtherWork:\n`;
+  }
+
+  // Provenance
+  y += `\n# ── Provenance (not exported to data.js) ──\n`;
+  y += `source: "${document.getElementById('f-source').value}"\n`;
+  const notes = document.getElementById('f-sourcenotes').value.trim();
+  if (notes) {
+    y += `sourceNotes:\n`;
+    notes.split('\n').filter(l => l.trim()).forEach(l => {
+      y += `  - "${l.trim()}"\n`;
+    });
+  } else {
+    y += `sourceNotes:\n`;
+  }
+
+  return y;
+}
+
+// ── Save (store modification) ──
+function saveCurrent() {
+  if (!currentMural) return;
+  const yaml = generateYaml();
+  modifications[currentMural.id] = yaml;
+  document.getElementById('raw-yaml').value = yaml;
+  updateStatus();
+  renderList(document.getElementById('search-box').value);
+}
+
+// Auto-save on any field change
+document.getElementById('editor').addEventListener('input', () => {
+  if (currentMural) saveCurrent();
+});
+
+// ── Export ──
+function exportAll() {
+  const ids = Object.keys(modifications);
+  if (!ids.length) { alert('No modifications to export'); return; }
+  let output = `# ═══ Modified YAML Files ═══\n# ${ids.length} file(s) changed\n\n`;
+  ids.forEach(id => {
+    const m = muralFiles.find(f => f.id === Number(id));
+    output += `# ──── ${m?.pad}-${m?.artist.toLowerCase().replace(/\s+/g,'-')}.yaml ────\n`;
+    output += modifications[id] + '\n\n';
+  });
+  showOutput(output);
+}
+
+function exportCurrent() {
+  if (!currentMural) { alert('Select a mural first'); return; }
+  saveCurrent();
+  const yaml = modifications[currentMural.id];
+  if (!yaml) { alert('No changes to export'); return; }
+  const m = currentMural;
+  let output = `# ──── ${m.pad}-${m.artist.toLowerCase().replace(/\s+/g,'-')}.yaml ────\n`;
+  output += yaml;
+  showOutput(output);
+}
+
+function showOutput(text) {
+  document.getElementById('output-text').value = text;
+  document.getElementById('output').classList.add('open');
+  try { navigator.clipboard.writeText(text); } catch(e) {}
+}
+
+window.copyOutput = () => {
+  const ta = document.getElementById('output-text');
+  const btn = document.getElementById('copy-btn');
+  ta.select();
+  ta.setSelectionRange(0, ta.value.length);
+  navigator.clipboard.writeText(ta.value).then(() => {
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = '📋 Copy to Clipboard'; }, 2000);
+  }).catch(() => {
+    document.execCommand('copy');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = '📋 Copy to Clipboard'; }, 2000);
+  });
+};
+
+function updateStatus() {
+  const n = Object.keys(modifications).length;
+  document.getElementById('status').textContent = n ? `${n} mural(s) modified` : '';
+}
+
+// ── Toggle raw YAML ──
+document.getElementById('toggle-raw').addEventListener('click', () => {
+  showRaw = !showRaw;
+  document.getElementById('raw-yaml').classList.toggle('open', showRaw);
+  document.getElementById('toggle-raw').style.background = showRaw ? '#1E88E5' : '#333';
+  document.getElementById('toggle-raw').style.color = showRaw ? '#fff' : '#eee';
+});
+
+// ── Search ──
+document.getElementById('search-box').addEventListener('input', (e) => {
+  renderList(e.target.value);
+});
+
+// ── Wire buttons ──
+document.getElementById('btn-export').addEventListener('click', exportAll);
+document.getElementById('btn-export-current').addEventListener('click', exportCurrent);
+
+// ── Auto-resize textareas ──
+function autoResize(ta) {
+  ta.style.height = 'auto';
+  ta.style.height = ta.scrollHeight + 'px';
+}
+document.getElementById('editor').addEventListener('input', (e) => {
+  if (e.target.tagName === 'TEXTAREA') autoResize(e.target);
+});
+
+// ── New Mural ──
+document.getElementById('btn-new-mural').addEventListener('click', () => {
+  // Find next available ID
+  const usedIds = muralFiles.map(m => m.id);
+  let nextId = 1;
+  while (usedIds.includes(nextId)) nextId++;
+
+  // Create blank mural entry
+  const newMural = { id: nextId, artist: '', title: '', year: new Date().getFullYear(), img: '', pad: nextId.toString().padStart(3, '0') };
+  muralFiles.push(newMural);
+  muralFiles.sort((a, b) => a.id - b.id);
+
+  currentMural = newMural;
+  currentFile = `${newMural.pad}-new-mural-${newMural.year}.yaml`;
+
+  const blankData = {
+    id: nextId, artist: '', year: newMural.year, lat: '', lng: '',
+    address: '', category: 'shine', img: '', title: '', building: '',
+    instagram: '', basedIn: '', artistBio: '', muralDescription: '',
+    muralInspiration: '', muralAwards: '', artistAwards: '', source: 'claude-enhanced',
+    sourceNotes: [], furtherWork: []
+  };
+
+  populateForm(blankData, '# New mural — fill in fields and export');
+  document.getElementById('editor').classList.add('open');
+  document.getElementById('f-artist').focus();
+  renderList(document.getElementById('search-box').value);
+});
+
+// ── Photo drop/select ──
+const dropZone = document.getElementById('photo-drop');
+const photoInput = document.getElementById('photo-input');
+
+dropZone.addEventListener('click', () => photoInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) handlePhoto(file);
+});
+photoInput.addEventListener('change', (e) => {
+  if (e.target.files[0]) handlePhoto(e.target.files[0]);
+});
+
+function handlePhoto(file) {
+  // Show preview
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    dropZone.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+
+    // Try to extract GPS from EXIF
+    const img = new Image();
+    img.onload = () => {
+      try {
+        EXIF.getData(img, function() {
+          const lat = EXIF.getTag(this, 'GPSLatitude');
+          const latRef = EXIF.getTag(this, 'GPSLatitudeRef');
+          const lng = EXIF.getTag(this, 'GPSLongitude');
+          const lngRef = EXIF.getTag(this, 'GPSLongitudeRef');
+
+          if (lat && lng) {
+            const latDec = (lat[0] + lat[1]/60 + lat[2]/3600) * (latRef === 'S' ? -1 : 1);
+            const lngDec = (lng[0] + lng[1]/60 + lng[2]/3600) * (lngRef === 'W' ? -1 : 1);
+            document.getElementById('f-lat').value = latDec.toFixed(6);
+            document.getElementById('f-lng').value = lngDec.toFixed(6);
+            dropZone.innerHTML += `<div class="gps-info">📍 GPS found: ${latDec.toFixed(6)}, ${lngDec.toFixed(6)}</div>`;
+            if (currentMural) saveCurrent();
+          } else {
+            dropZone.innerHTML += `<div class="no-gps">⚠ No GPS data — export to Files app first, or I'll extract it from your Mac</div>`;
+          }
+        });
+      } catch(e) {
+        dropZone.innerHTML += `<div class="no-gps">⚠ Could not read EXIF</div>`;
+      }
+    };
+    img.src = e.target.result;
+
+    // Suggest image path from artist name
+    const artist = document.getElementById('f-artist').value;
+    const year = document.getElementById('f-year').value;
+    if (artist && !document.getElementById('f-img').value) {
+      const kebab = artist.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+      document.getElementById('f-img').value = `images/murals/${year}/${kebab}.jpeg`;
+      if (currentMural) saveCurrent();
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Init ──
+renderList();
+</script>
+</body>
+</html>

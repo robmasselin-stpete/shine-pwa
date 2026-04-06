@@ -88,6 +88,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   font-family: monospace; font-size: 11px; resize: vertical;
 }
 
+#output-bar { display: flex; gap: 8px; margin-bottom: 8px; }
+#output-bar button { padding: 8px 16px; border-radius: 6px; border: none; font-size: 14px; font-weight: 600; cursor: pointer; color: #fff; }
+#copy-btn { background: #0d7; color: #000 !important; }
+#copy-btn.copied { background: #4CAF50; }
+
 .leaflet-popup-content { color: #333; font-size: 13px; }
 .popup-add-btn { background: #0d7; color: #000; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 4px; }
 .popup-remove-btn { background: #e53935; color: #fff; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 4px; }
@@ -144,15 +149,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   <button id="toggle-paths" class="active">Paths</button>
   <button id="add-poi">+ POI</button>
   <button id="add-commercial">+ Commercial</button>
+  <button id="delete-point" class="danger" style="display:none">Delete Point</button>
+  <button id="undo-btn" style="display:none;background:#FFA726;color:#000;border-color:#FFA726" onclick="doUndo()">Undo</button>
   <span class="spacer"></span>
   <span class="mode-label" id="mode-label"></span>
   <span class="info" id="status"></span>
-  <button class="primary" id="copy-changes">Export Changes</button>
+  <button class="primary" id="copy-changes">Export All</button>
+  <button class="primary" id="copy-current" style="background:#1E88E5;border-color:#1E88E5" onclick="exportCurrentRoute()">Export Route</button>
 </div>
 
 <div id="map"></div>
 <div id="sidebar"></div>
-<div id="output"><textarea id="output-text" readonly></textarea></div>
+<div id="output"><div id="output-bar"><button id="copy-btn" onclick="copyOutput()">📋 Copy to Clipboard</button><button onclick="document.getElementById('output').classList.remove('open')" style="background:#555">Close</button></div><textarea id="output-text" readonly></textarea></div>
 
 <div id="new-route-overlay"></div>
 <div id="new-route-dialog">
@@ -181,7 +189,7 @@ const ROUTE_DEFS = [
   { id: 'methodist-town', name: 'Methodist Town',
     ids: [4, 108, 61, 60, 24, 114, 64] },
   { id: 'tropicana-field', name: 'Tropicana Field',
-    ids: [59, 103, 20, 52, 44, 123, 16, 125] },
+    ids: [59, 103, 20, 52, 44, 123, 16, 125, 18, 131] },
   { id: 'central-ave', name: 'Central Ave',
     ids: [48, 122, 62, 55, 76, 71, 88, 38, 101] },
   { id: 'arts-district', name: 'Arts District',
@@ -219,6 +227,22 @@ const map = L.map('map').setView([27.771, -82.649], 15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 20, attribution: '&copy; OpenStreetMap'
 }).addTo(map);
+
+// ── User location ──
+let userDot = null, userPulse = null;
+if (navigator.geolocation) {
+  navigator.geolocation.watchPosition(pos => {
+    const latlng = [pos.coords.latitude, pos.coords.longitude];
+    if (userDot) {
+      userDot.setLatLng(latlng);
+      userPulse.setLatLng(latlng);
+    } else {
+      userPulse = L.circleMarker(latlng, { radius: 18, fillColor: '#4285F4', fillOpacity: 0.2, color: '#4285F4', weight: 1, opacity: 0.4, interactive: false }).addTo(map);
+      userDot = L.circleMarker(latlng, { radius: 7, fillColor: '#4285F4', fillOpacity: 1, color: '#fff', weight: 3, interactive: false }).addTo(map);
+      map.setView(latlng, 16);
+    }
+  }, () => {}, { enableHighAccuracy: true, maximumAge: 5000 });
+}
 
 // ── Dropdown ──
 const sel = document.getElementById('route-select');
@@ -366,8 +390,71 @@ function clearPaths() {
   pathVertexMarkers = [];
 }
 
+let selectedVertex = null; // { routeId, segIdx, ptIdx, marker }
+const undoStack = []; // { routeId, segments: deep copy }
+
+function pushUndo(routeId) {
+  undoStack.push({ routeId, segments: JSON.parse(JSON.stringify(editPaths[routeId].segments)) });
+  document.getElementById('undo-btn').style.display = '';
+}
+
+function doUndo() {
+  if (!undoStack.length) return;
+  const { routeId, segments } = undoStack.pop();
+  editPaths[routeId].segments = segments;
+  pathDirty[routeId] = true;
+  selectVertex(null);
+  if (selectedRoute?.id === routeId) showRoutePaths(routeId);
+  updateStatus();
+  if (!undoStack.length) document.getElementById('undo-btn').style.display = 'none';
+}
+
+function selectVertex(info) {
+  // Deselect previous
+  if (selectedVertex && selectedVertex.marker) {
+    selectedVertex.marker.getElement()?.querySelector('div')?.style.setProperty('background', '#1E88E5');
+    selectedVertex.marker.getElement()?.querySelector('div')?.style.setProperty('width', '8px');
+    selectedVertex.marker.getElement()?.querySelector('div')?.style.setProperty('height', '8px');
+  }
+  selectedVertex = info;
+  if (info) {
+    info.marker.getElement()?.querySelector('div')?.style.setProperty('background', '#e53935');
+    info.marker.getElement()?.querySelector('div')?.style.setProperty('width', '12px');
+    info.marker.getElement()?.querySelector('div')?.style.setProperty('height', '12px');
+    document.getElementById('delete-point').style.display = '';
+  } else {
+    document.getElementById('delete-point').style.display = 'none';
+  }
+}
+
+function deleteSelectedVertex() {
+  if (!selectedVertex) return;
+  const { routeId, segIdx, ptIdx } = selectedVertex;
+  const seg = editPaths[routeId].segments[segIdx];
+  if (seg.length <= 2) { alert('Segment must have at least 2 points'); return; }
+  pushUndo(routeId);
+  seg.splice(ptIdx, 1);
+  pathDirty[routeId] = true;
+  selectVertex(null);
+  showRoutePaths(routeId);
+  updateStatus();
+}
+
+document.getElementById('delete-point').addEventListener('click', deleteSelectedVertex);
+document.addEventListener('keydown', (e) => {
+  if ((e.key === 'Delete' || e.key === 'Backspace') && selectedVertex && !e.target.matches('input,textarea,select')) {
+    e.preventDefault();
+    deleteSelectedVertex();
+  }
+  if (e.key === 'z' && (e.metaKey || e.ctrlKey) && !e.target.matches('input,textarea,select')) {
+    e.preventDefault();
+    doUndo();
+  }
+});
+
 function showRoutePaths(routeId) {
   clearPaths();
+  selectVertex(null);
   if (!showPaths) return;
   const pathData = editPaths[routeId] || ROUTE_PATHS[routeId];
   if (!pathData || !pathData.segments) { console.warn('No path data for', routeId, Object.keys(editPaths)); return; }
@@ -380,6 +467,24 @@ function showRoutePaths(routeId) {
       color: '#1E88E5', weight: 3, opacity: 0.8,
     }).addTo(map);
     pathPolylines.push(polyline);
+
+    // Click on polyline to add a point at that location
+    polyline.on('click', (e) => {
+      L.DomEvent.stopPropagation(e);
+      const clickPt = [parseFloat(e.latlng.lat.toFixed(5)), parseFloat(e.latlng.lng.toFixed(5))];
+      // Find nearest segment edge to insert after
+      let bestIdx = 0, bestDist = Infinity;
+      for (let i = 0; i < seg.length - 1; i++) {
+        const mid = [(seg[i][0]+seg[i+1][0])/2, (seg[i][1]+seg[i+1][1])/2];
+        const d = Math.hypot(clickPt[0]-mid[0], clickPt[1]-mid[1]);
+        if (d < bestDist) { bestDist = d; bestIdx = i + 1; }
+      }
+      pushUndo(routeId);
+      seg.splice(bestIdx, 0, clickPt);
+      pathDirty[routeId] = true;
+      showRoutePaths(routeId);
+      updateStatus();
+    });
 
     // Draggable vertex markers for each point
     seg.forEach((pt, ptIdx) => {
@@ -396,6 +501,12 @@ function showRoutePaths(routeId) {
         }),
       }).addTo(map);
 
+      vtx.on('click', (e) => {
+        L.DomEvent.stopPropagation(e);
+        selectVertex({ routeId, segIdx, ptIdx, marker: vtx });
+      });
+
+      vtx.on('dragstart', () => pushUndo(routeId));
       vtx.on('dragend', () => {
         const ll = vtx.getLatLng();
         editPaths[routeId].segments[segIdx][ptIdx] = [
@@ -810,6 +921,72 @@ function exportChanges() {
   out.classList.add('open');
   ta.select();
   try { navigator.clipboard.writeText(output); } catch(e) {}
+}
+
+function exportCurrentRoute() {
+  const currentRoute = selectedRoute?.id;
+  if (!currentRoute) { alert('Select a route first'); return; }
+  const def = ROUTE_DEFS.find(d => d.id === currentRoute);
+  if (!def) return;
+  let output = '';
+
+  // GPS changes for murals on this route only
+  const routeIds = new Set(def.ids.map(String));
+  const entries = Object.entries(changes).filter(([id]) => routeIds.has(id));
+  if (entries.length) {
+    output += '# ═══ GPS Position Updates ═══\n';
+    output += '# Update lat/lng in each YAML file\n\n';
+    entries.forEach(([id, pos]) => {
+      const m = muralById[id];
+      const orig = originalPos[id] || {};
+      const dLat = ((pos.lat - (orig.lat||pos.lat)) * 111139).toFixed(1);
+      const dLng = ((pos.lng - (orig.lng||pos.lng)) * 111139 * Math.cos(pos.lat * Math.PI / 180)).toFixed(1);
+      const pad = id.toString().padStart(3, '0');
+      output += `# ${m?.a || '?'} — ${m?.t || ''} (id: ${id})\n`;
+      output += `# moved ${dLat}m N, ${dLng}m E\n`;
+      output += `# file: data/murals/${pad}-*.yaml\n`;
+      output += `lat: ${pos.lat}\nlng: ${pos.lng}\n\n`;
+    });
+  }
+
+  // Route definition for this route
+  output += '# ═══ Route Definition ═══\n\n';
+  output += `# ${def.name}\n`;
+  output += `{ id: '${def.id}', name: '${def.name}',\n`;
+  output += `  ids: [${def.ids.join(', ')}] },\n\n`;
+
+  // Path changes for this route
+  if (pathDirty[currentRoute]) {
+    output += '# ═══ Path Changes ═══\n\n';
+    output += `"${currentRoute}":${JSON.stringify(editPaths[currentRoute])},\n\n`;
+  }
+
+  const out = document.getElementById('output');
+  const ta = document.getElementById('output-text');
+  ta.value = output;
+  out.classList.add('open');
+  ta.select();
+  try { navigator.clipboard.writeText(output); } catch(e) {}
+}
+
+document.getElementById('copy-current').addEventListener('click', exportCurrentRoute);
+
+function copyOutput() {
+  const ta = document.getElementById('output-text');
+  const btn = document.getElementById('copy-btn');
+  ta.select();
+  ta.setSelectionRange(0, ta.value.length); // iOS needs this
+  navigator.clipboard.writeText(ta.value).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy to Clipboard'; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    // Fallback for older Safari
+    document.execCommand('copy');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy to Clipboard'; btn.classList.remove('copied'); }, 2000);
+  });
 }
 
 // ── New route dialog ──
