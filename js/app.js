@@ -512,7 +512,8 @@ function toggleDiscoverMode() {
   }
 }
 
-let bearingDetentArmed = true; // re-arms when user deviates >3° from target
+let bearingDetentArmed = true;
+let bearingDetentCooldown = 0; // timestamp of last haptic fire
 
 /**
  * Haptic via CHHapticEngine vibrate — UIImpactFeedbackGenerator doesn't fire
@@ -530,9 +531,10 @@ function hapticVibrate(durationMs) {
  * Re-arms after deviating past 15°, with a 3-second cooldown to prevent buzzing.
  */
 function playBearingHaptic(absRel) {
-  if (absRel > 5) { bearingDetentArmed = true; return; }
-  if (absRel <= 3 && bearingDetentArmed) {
+  if (absRel > 15) { bearingDetentArmed = true; return; }
+  if (absRel <= 3 && bearingDetentArmed && Date.now() - bearingDetentCooldown > 1000) {
     bearingDetentArmed = false;
+    bearingDetentCooldown = Date.now();
     hapticVibrate(300);
   }
 }
