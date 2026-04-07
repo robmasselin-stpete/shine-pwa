@@ -1122,11 +1122,6 @@ function addMapFabs() {
   stack.className = 'map-fab-stack';
   stack.innerHTML = `
     <div class="map-fab-row">
-      <button class="map-fab" id="fab-location" title="My location">
-        <svg viewBox="0 0 24 24"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
-      </button>
-    </div>
-    <div class="map-fab-row">
       <button class="map-fab" id="fab-nearest" title="Nearest mural">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
       </button>
@@ -1144,7 +1139,6 @@ function addMapFabs() {
   `;
   container.appendChild(stack);
 
-  document.getElementById('fab-location').addEventListener('click', requestAndShowLocation);
   document.getElementById('fab-nearest').addEventListener('click', fabFindNearestMural);
   document.getElementById('fab-nearest-tour').addEventListener('click', fabFindNearestTourStop);
   document.getElementById('fab-discover').addEventListener('click', showDiscoverDialog);
@@ -3923,16 +3917,6 @@ function getHelpAnnotations() {
       text: 'Colored dots are\nmurals — zoom\nand tap one!',
       color: '#FFD600',
       top: '60%', left: '6%'
-    },
-    {
-      text: 'Find yourself',
-      color: '#FFFFFF',
-      top: '24%', left: '53%',
-      arrowSvg: `<svg width="50" height="30" viewBox="0 0 50 30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-        <path d="M2 10 C16 12, 32 16, 46 18"/>
-        <line x1="38" y1="12" x2="46" y2="18"/><line x1="40" y1="26" x2="46" y2="18"/>
-      </svg>`,
-      arrowOffset: { top: -5, left: 74 }
     },
     {
       text: 'Nearest mural',
