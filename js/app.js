@@ -533,20 +533,21 @@ function hapticIgnition() {
   setTimeout(() => hapticVibrate(200), 170);
 }
 
-/** Lightsaber clash: sharp hit [50, 20, 150] */
-function hapticClash() {
-  hapticVibrate(50);
-  setTimeout(() => hapticVibrate(150), 70);
-}
-
 /** Heartbeat: two quick beats [100, 50, 100] */
 function hapticHeartbeat() {
   hapticVibrate(100);
   setTimeout(() => hapticVibrate(100), 150);
 }
 
+/** Collision: strong impact [100, 50, 100] */
+function hapticCollision() {
+  hapticVibrate(100);
+  setTimeout(() => hapticVibrate(100), 150);
+  setTimeout(() => hapticVibrate(200), 350);
+}
+
 /**
- * Bearing detent: clash when compass locks onto target (±3°).
+ * Bearing detent: heartbeat when compass locks onto target (±3°).
  * Re-arms after deviating past 15°, with 250ms cooldown.
  */
 function playBearingHaptic(absRel) {
@@ -554,12 +555,12 @@ function playBearingHaptic(absRel) {
   if (absRel <= 3 && bearingDetentArmed && Date.now() - bearingDetentCooldown > 250) {
     bearingDetentArmed = false;
     bearingDetentCooldown = Date.now();
-    hapticClash();
+    hapticHeartbeat();
   }
 }
 
 function playArrivalHaptic() {
-  hapticHeartbeat();
+  hapticCollision();
 }
 
 /** Play haptic feedback on native platforms. */
