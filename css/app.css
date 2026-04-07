@@ -3442,7 +3442,7 @@ a {
 .tour-action-btn[hidden] { display: none; }
 .tour-action-line1,
 .tour-action-line2 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   font-family: var(--font-display);
   line-height: 1.2;

@@ -2987,9 +2987,9 @@ function renderTourLoop() {
               </div>
               <div class="tour-nav-instruction" hidden>
                 <ul class="tour-mode-bullets tour-mode-bullets-nav">
-                  <li>Follow the compass bearing</li>
+                  <li>Compass points to next mural</li>
                   <li>Sense the direction with vibrations</li>
-                  <li>Zoom the map</li>
+                  <li>Move and Zoom the Map</li>
                   <li>Next Mural automatically pops up on Arrival</li>
                 </ul>
               </div>
@@ -2999,7 +2999,7 @@ function renderTourLoop() {
             <div class="tour-right-zone">
               <div class="tour-right-explore">
                 <ul class="tour-mode-bullets">
-                  <li>Click Mural detail page</li>
+                  <li>Click Mural for Detail page</li>
                   <li>Artist info and awards</li>
                   <li>Nearby murals</li>
                 </ul>
