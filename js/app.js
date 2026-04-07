@@ -2969,45 +2969,57 @@ function renderTourLoop() {
 
       <!-- Bottom panel -->
       <div class="active-tour-bottom">
-        <div class="tour-bottom-row">
-          <!-- Left: current mural -->
-          <div class="tour-stop-card tour-stop-current" data-id="">
-            <div class="tour-stop-img-wrap">
-              <img class="tour-stop-img" src="" alt="" onerror="this.style.background='#ddd'">
-              <span class="tour-stop-num"></span>
-            </div>
-            <div class="tour-stop-artist"></div>
+        <div class="tour-bottom-row" data-state="arrived">
+          <!-- Mode header -->
+          <div class="tour-mode-header">
+            <span class="tour-mode-label">Explore Mural</span>
           </div>
 
-          <!-- Center: chevrons + action button -->
-          <div class="tour-center-zone">
-            <svg class="tour-chevron tour-chevron-left" viewBox="0 0 28 48"><polygon points="2,24 26,2 26,46" fill="currentColor"/></svg>
-            <div class="tour-center-col">
-              <svg class="tour-chevron tour-chevron-up" viewBox="0 0 48 28"><polygon points="24,2 46,26 2,26" fill="currentColor"/></svg>
-              <button class="tour-action-btn">
-                <span class="tour-action-line1"></span>
-                <span class="tour-action-line2"></span>
-                <span class="tour-action-line3"></span>
-              </button>
+          <div class="tour-bottom-content">
+            <!-- Left zone: mural image (explore) or compass+instruction (navigating) -->
+            <div class="tour-left-zone">
+              <div class="tour-stop-card tour-stop-main" data-id="">
+                <div class="tour-stop-img-wrap">
+                  <img class="tour-stop-img" src="" alt="" onerror="this.style.background='#ddd'">
+                  <span class="tour-stop-num"></span>
+                </div>
+              </div>
+              <div class="tour-nav-instruction" hidden>
+                <div class="tour-nav-text">Follow the compass bearing.<br>Next mural comes up on arrival.</div>
+              </div>
             </div>
-            <svg class="tour-chevron tour-chevron-right" viewBox="0 0 28 48"><polygon points="26,24 2,2 2,46" fill="currentColor"/></svg>
+
+            <!-- Right zone: action button + detail link (explore) or mural image (navigating) -->
+            <div class="tour-right-zone">
+              <div class="tour-right-explore">
+                <button class="tour-action-btn">
+                  <span class="tour-action-line1">Next</span>
+                  <span class="tour-action-line2">Mural</span>
+                </button>
+                <div class="tour-detail-link">
+                  <span>View Mural<br>Detail File</span>
+                  <svg viewBox="0 0 24 14" class="tour-detail-arrow"><polygon points="0,7 20,0 20,14" fill="currentColor"/></svg>
+                </div>
+              </div>
+              <div class="tour-stop-card tour-stop-dest" data-id="" hidden>
+                <div class="tour-stop-img-wrap">
+                  <img class="tour-stop-img" src="" alt="" onerror="this.style.background='#ddd'">
+                  <span class="tour-stop-num"></span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Right: next mural -->
-          <div class="tour-stop-card tour-stop-next" data-id="">
-            <div class="tour-stop-img-wrap">
-              <img class="tour-stop-img" src="" alt="" onerror="this.style.background='#ddd'">
-              <span class="tour-stop-num"></span>
-            </div>
-            <div class="tour-stop-artist"></div>
-          </div>
-        </div>
+          <!-- Artist name -->
+          <div class="tour-stop-artist"></div>
 
-        <div class="tour-progress-row">
-          <div class="tour-progress-track">
-            <div class="tour-progress-fill"></div>
+          <!-- Progress bar -->
+          <div class="tour-progress-row">
+            <div class="tour-progress-track">
+              <div class="tour-progress-fill"></div>
+            </div>
+            <span class="tour-progress-label"></span>
           </div>
-          <span class="tour-progress-label"></span>
         </div>
       </div>
     </div>
@@ -3032,7 +3044,7 @@ function renderTourLoop() {
     renderTourBottom();
   });
 
-  // Action button — transition from arrived → walking
+  // Action button — "Next Mural" transitions from arrived → walking
   views.loops.querySelector('.tour-action-btn')?.addEventListener('click', () => {
     if (!state.tourWalking) {
       state.tourWalking = true;
@@ -3042,16 +3054,23 @@ function renderTourLoop() {
     }
   });
 
-  // Current card tap → open mural detail
-  views.loops.querySelector('.tour-stop-current')?.addEventListener('click', () => {
-    const id = Number(views.loops.querySelector('.tour-stop-current').dataset.id);
+  // Main mural card tap → open mural detail
+  views.loops.querySelector('.tour-stop-main')?.addEventListener('click', () => {
+    const id = Number(views.loops.querySelector('.tour-stop-main').dataset.id);
     const mural = murals.find(m => m.id === id);
     if (mural) openDetail(mural);
   });
 
-  // Next card tap → open mural detail
-  views.loops.querySelector('.tour-stop-next')?.addEventListener('click', () => {
-    const id = Number(views.loops.querySelector('.tour-stop-next').dataset.id);
+  // Destination mural card tap → open mural detail
+  views.loops.querySelector('.tour-stop-dest')?.addEventListener('click', () => {
+    const id = Number(views.loops.querySelector('.tour-stop-dest').dataset.id);
+    const mural = murals.find(m => m.id === id);
+    if (mural) openDetail(mural);
+  });
+
+  // "View Mural Detail File" link → open current mural detail
+  views.loops.querySelector('.tour-detail-link')?.addEventListener('click', () => {
+    const id = Number(views.loops.querySelector('.tour-stop-main').dataset.id);
     const mural = murals.find(m => m.id === id);
     if (mural) openDetail(mural);
   });
@@ -3073,7 +3092,7 @@ function renderTourLoop() {
   initCompassArc();
 }
 
-/** Update the two-card bottom panel for arrived/walking state. */
+/** Update the bottom panel for explore/navigating state. */
 function renderTourBottom() {
   const stops = state.tourStops;
   const len = stops.length;
@@ -3085,7 +3104,7 @@ function renderTourBottom() {
   const walking = state.tourWalking;
 
   // Helper to fill a stop card
-  function fillStop(sel, stop, num) {
+  function fillCard(sel, stop, num) {
     const card = views.loops.querySelector(sel);
     if (!card) return;
     card.dataset.id = stop.id;
@@ -3093,53 +3112,41 @@ function renderTourBottom() {
     if (img) { img.src = stop.img || ''; img.alt = stop.a; }
     const numEl = card.querySelector('.tour-stop-num');
     if (numEl) numEl.textContent = num;
-    const artist = card.querySelector('.tour-stop-artist');
-    if (artist) artist.textContent = stop.a;
-  }
-
-  fillStop('.tour-stop-current', stops[currIdx], currIdx + 1);
-  fillStop('.tour-stop-next', stops[nextIdx], nextIdx + 1);
-
-  // Toggle active/dimmed classes
-  const currCard = views.loops.querySelector('.tour-stop-current');
-  const nextCard = views.loops.querySelector('.tour-stop-next');
-  if (currCard) {
-    currCard.classList.toggle('active', !walking);
-    currCard.classList.toggle('dimmed', walking);
-  }
-  if (nextCard) {
-    nextCard.classList.toggle('active', walking);
-    nextCard.classList.toggle('dimmed', !walking);
   }
 
   // Set data-state on bottom row for CSS theming
   const row = views.loops.querySelector('.tour-bottom-row');
   if (row) row.dataset.state = walking ? 'walking' : 'arrived';
 
-  // Chevrons: arrived = left visible; walking = right + up visible
-  const chevL = views.loops.querySelector('.tour-chevron-left');
-  const chevR = views.loops.querySelector('.tour-chevron-right');
-  const chevU = views.loops.querySelector('.tour-chevron-up');
-  if (chevL) chevL.classList.toggle('visible', !walking);
-  if (chevR) chevR.classList.toggle('visible', walking);
-  if (chevU) chevU.classList.toggle('visible', walking);
+  // Mode header
+  const modeLabel = views.loops.querySelector('.tour-mode-label');
+  if (modeLabel) modeLabel.textContent = walking ? 'Navigating to Next Mural' : 'Explore Mural';
 
-  // Action button text
-  const line1 = views.loops.querySelector('.tour-action-line1');
-  const line2 = views.loops.querySelector('.tour-action-line2');
-  const line3 = views.loops.querySelector('.tour-action-line3');
-  if (line1) line1.textContent = walking ? "Follow the" : "You're";
-  if (line2) line2.textContent = walking ? "Compass" : "Here!";
-  if (line3) { line3.textContent = walking ? "" : "Click to continue"; line3.hidden = walking; }
+  // Artist name
+  const artistEl = views.loops.querySelector('.active-tour-bottom .tour-stop-artist');
+  if (artistEl) artistEl.textContent = walking ? stops[nextIdx].a : stops[currIdx].a;
 
-  // Pulse the action button after 10s in arrived mode
-  const actionBtn = views.loops.querySelector('.tour-action-btn');
-  if (actionBtn) {
-    actionBtn.classList.remove('pulse');
-    clearTimeout(actionBtn._pulseTimer);
-    if (!walking) {
-      actionBtn._pulseTimer = setTimeout(() => actionBtn.classList.add('pulse'), 10000);
-    }
+  if (walking) {
+    // Navigating: show instruction on left, destination mural on right
+    const mainCard = views.loops.querySelector('.tour-stop-main');
+    const destCard = views.loops.querySelector('.tour-stop-dest');
+    const navInstr = views.loops.querySelector('.tour-nav-instruction');
+    const actionBtn = views.loops.querySelector('.tour-action-btn');
+    const exploreZone = views.loops.querySelector('.tour-right-explore');
+    if (mainCard) mainCard.hidden = true;
+    if (destCard) { destCard.hidden = false; fillCard('.tour-stop-dest', stops[nextIdx], nextIdx + 1); }
+    if (navInstr) navInstr.hidden = false;
+    if (exploreZone) exploreZone.hidden = true;
+  } else {
+    // Explore: show current mural on left, Next Mural button + detail link on right
+    const mainCard = views.loops.querySelector('.tour-stop-main');
+    const destCard = views.loops.querySelector('.tour-stop-dest');
+    const navInstr = views.loops.querySelector('.tour-nav-instruction');
+    const exploreZone = views.loops.querySelector('.tour-right-explore');
+    if (mainCard) { mainCard.hidden = false; fillCard('.tour-stop-main', stops[currIdx], currIdx + 1); }
+    if (destCard) destCard.hidden = true;
+    if (navInstr) navInstr.hidden = true;
+    if (exploreZone) exploreZone.hidden = false;
   }
 
   // Progress bar

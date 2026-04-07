@@ -3253,46 +3253,68 @@ a {
   position: relative;
   z-index: 10;
   overflow: hidden;
-  padding: 0 8px;
+  padding: 0 12px;
 }
 
-.active-tour-handle {
-  width: 36px;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(0, 0, 0, 0.12);
-  margin: 8px auto 0;
-}
-
-/* ── Two-card bottom panel (arrived / walking) ── */
+/* ── Bottom panel layout ── */
 .tour-bottom-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 16px 8px 8px;
+  padding: 12px 4px 4px;
 }
 
-/* Stop card (left = current, right = next) */
-.tour-stop-card {
+/* Mode header */
+.tour-mode-header {
+  margin-bottom: 8px;
+}
+.tour-mode-label {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--teal);
+  transition: color 0.3s;
+}
+.tour-bottom-row[data-state="walking"] .tour-mode-label {
+  color: #FF7043;
+}
+
+/* Content row: left + right zones side by side */
+.tour-bottom-content {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tour-left-zone {
+  flex: 0 0 62%;
+  display: flex;
   align-items: center;
-  cursor: pointer;
-  transition: opacity 0.3s, filter 0.3s;
-  flex: 0 1 auto;
   min-width: 0;
+}
+
+.tour-right-zone {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+/* ── Mural card ── */
+.tour-stop-card {
+  cursor: pointer;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 .tour-stop-card:active { transform: scale(0.96); }
 
 .tour-stop-img-wrap {
   position: relative;
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 18px;
   overflow: hidden;
-  border: 3px solid var(--border);
+  border: 4px solid var(--teal);
   background: #e8e4de;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .tour-stop-img {
@@ -3306,208 +3328,148 @@ a {
   position: absolute;
   top: -3px;
   left: -3px;
-  min-width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  background: var(--text3);
+  min-width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: var(--teal);
   color: #fff;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5px;
+  padding: 0 6px;
   font-family: var(--font-body);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: background 0.3s;
 }
 
-.tour-stop-artist {
-  font-size: 11px;
-  font-weight: 600;
-  text-align: center;
+/* Explore state — teal border */
+.tour-bottom-row[data-state="arrived"] .tour-stop-img-wrap {
+  border-color: var(--teal);
+}
+.tour-bottom-row[data-state="arrived"] .tour-stop-num {
+  background: var(--teal);
+}
+
+/* Navigating state — orange border on destination card */
+.tour-bottom-row[data-state="walking"] .tour-stop-img-wrap {
+  border-color: #FF7043;
+}
+.tour-bottom-row[data-state="walking"] .tour-stop-num {
+  background: #FF7043;
+}
+
+/* Artist name */
+.active-tour-bottom .tour-stop-artist {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
   margin-top: 4px;
   color: var(--text1);
   font-family: var(--font-body);
   line-height: 1.2;
-  max-width: 130px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding-right: 4px;
 }
 
-/* Inactive card — smaller but fully visible */
-.tour-stop-card.dimmed {
-  opacity: 1;
-  filter: none;
-}
-.tour-stop-card.dimmed .tour-stop-img-wrap {
-  box-shadow: none;
-}
-/* Current stop keeps teal border when dimmed (walking state) */
-.tour-bottom-row[data-state="walking"] .tour-stop-current.dimmed .tour-stop-img-wrap {
-  border-color: var(--teal);
-}
-.tour-bottom-row[data-state="walking"] .tour-stop-current.dimmed .tour-stop-num {
-  background: var(--teal);
-}
-/* Next stop keeps orange border when dimmed (arrived state) */
-.tour-bottom-row[data-state="arrived"] .tour-stop-next.dimmed .tour-stop-img-wrap {
-  border-color: #FF7043;
-}
-.tour-bottom-row[data-state="arrived"] .tour-stop-next.dimmed .tour-stop-num {
-  background: #FF7043;
-}
-
-/* ── Arrived state: current card is BIG with teal theme ── */
-.tour-bottom-row[data-state="arrived"] .tour-stop-current .tour-stop-img-wrap {
-  width: 110px;
-  height: 110px;
-  border-radius: 16px;
-  border-color: var(--teal);
-  border-width: 4px;
-  box-shadow: 0 0 16px rgba(14, 145, 140, 0.4);
-}
-.tour-bottom-row[data-state="arrived"] .tour-stop-current .tour-stop-num {
-  background: var(--teal);
-  min-width: 26px;
-  height: 26px;
-  font-size: 14px;
-}
-/* Next card in arrived state — orange border hint */
-.tour-bottom-row[data-state="arrived"] .tour-stop-next .tour-stop-img-wrap {
-  border-color: #FF7043;
-}
-.tour-bottom-row[data-state="arrived"] .tour-stop-next .tour-stop-num {
-  background: #FF7043;
-}
-
-/* ── Walking state: destination card is BIG with orange theme ── */
-.tour-bottom-row[data-state="walking"] .tour-stop-next .tour-stop-img-wrap {
-  width: 110px;
-  height: 110px;
-  border-radius: 16px;
-  border-color: #FF7043;
-  border-width: 4px;
-  box-shadow: 0 0 16px rgba(255, 112, 67, 0.4);
-}
-.tour-bottom-row[data-state="walking"] .tour-stop-next .tour-stop-num {
-  background: #FF7043;
-  min-width: 26px;
-  height: 26px;
-  font-size: 14px;
-}
-
-/* Center zone: chevrons + circular action button */
-.tour-center-zone {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  flex-shrink: 0;
-}
-.tour-center-col {
-  position: relative;
+/* Right explore column: button on top, detail link below */
+.tour-right-explore {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 0 2px;
+  gap: 8px;
+  width: 100%;
+  align-self: flex-start;
 }
+.tour-right-explore[hidden] { display: none; }
 
-/* Chevrons — wide flat triangles (2:1 width-to-height ratio) */
-.tour-chevron {
-  visibility: hidden;
-  transition: visibility 0.2s;
+/* Detail file link */
+.tour-detail-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--teal);
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour-detail-link:active { opacity: 0.7; }
+.tour-detail-arrow {
+  width: 20px;
+  height: 12px;
+  color: var(--teal);
   flex-shrink: 0;
 }
-.tour-chevron.visible {
-  visibility: visible;
-}
 
-.tour-chevron-left,
-.tour-chevron-right {
-  width: 16px;
-  height: 28px;
-}
-
-/* Arrived: teal left chevron (matches button color) */
-.tour-chevron-left { color: var(--teal); }
-
-/* Walking: orange side + up chevrons (matches button/card color) */
-.tour-chevron-right { color: #FF7043; }
-.tour-chevron-up {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 4px;
-  width: 40px;
-  height: 22px;
-  color: #FF7043;
-}
-
-/* Circular action button — base */
+/* ── Next Mural button (explore mode) ── */
 .tour-action-btn {
-  width: 118px;
-  height: 118px;
-  border-radius: 50%;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: 18px;
   border: 4px solid var(--teal);
-  background: rgba(14, 145, 140, 0.08);
-  color: var(--text1);
+  background: var(--teal);
+  color: #fff;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  transition: background 0.2s, transform 0.15s, border-color 0.2s, color 0.2s;
+  gap: 4px;
+  transition: background 0.2s, transform 0.15s;
   -webkit-tap-highlight-color: transparent;
 }
 .tour-action-btn:active {
   transform: scale(0.95);
 }
+.tour-action-btn[hidden] { display: none; }
 .tour-action-line1,
 .tour-action-line2 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   font-family: var(--font-display);
   line-height: 1.2;
 }
-.tour-action-line3 {
-  font-size: 12px;
-  font-weight: 600;
+
+/* ── Navigation instruction (walking mode) ── */
+.tour-nav-instruction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+}
+.tour-nav-instruction[hidden] { display: none; }
+
+.tour-nav-text {
   font-family: var(--font-body);
-  line-height: 1;
-  opacity: 0.8;
-}
-.tour-action-line3[hidden] { display: none; }
-
-/* Pulse animation on arrived button after 10s delay */
-@keyframes tour-btn-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-.tour-action-btn.pulse {
-  animation: tour-btn-pulse 1.5s ease-in-out infinite;
-}
-.tour-action-btn.pulse:active {
-  animation: none;
-  transform: scale(0.95);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #FF7043;
 }
 
-/* Walking state — orange rim, light orange fill */
-.tour-bottom-row[data-state="walking"] .tour-action-btn {
-  border-color: #FF7043;
-  border-width: 4px;
-  background: rgba(255, 112, 67, 0.1);
-  color: var(--text1);
-  cursor: default;
+.tour-nav-instruction {
+  align-self: flex-start;
 }
 
-/* Tour progress bar — below cards in bottom panel */
+/* Navigating layout: instruction left, mural right */
+.tour-bottom-row[data-state="walking"] .tour-left-zone {
+  flex: 1;
+}
+.tour-bottom-row[data-state="walking"] .tour-right-zone {
+  flex: 0 0 50%;
+}
+
+/* Tour progress bar */
 .tour-progress-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 2px 20px 12px;
+  padding: 6px 4px 12px;
 }
 .tour-progress-track {
   flex: 1;
