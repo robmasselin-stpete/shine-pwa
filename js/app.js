@@ -527,25 +527,36 @@ function hapticVibrate(durationMs) {
 }
 
 /**
- * Bearing detent: single strong blip when compass crosses target heading (±3°).
- * Re-arms after deviating past 15°, with a 3-second cooldown to prevent buzzing.
+ * Lightsaber ignition: escalating pulse chain that feels like powering up.
+ */
+function hapticIgnition() {
+  hapticVibrate(40);
+  setTimeout(() => hapticVibrate(60), 80);
+  setTimeout(() => hapticVibrate(100), 180);
+  setTimeout(() => hapticVibrate(200), 320);
+}
+
+/**
+ * Bearing detent: lightsaber ignition burst when compass locks onto target (±3°).
+ * Re-arms after deviating past 15°, with 1s cooldown to prevent buzzing.
  */
 function playBearingHaptic(absRel) {
   if (absRel > 15) { bearingDetentArmed = true; return; }
   if (absRel <= 3 && bearingDetentArmed && Date.now() - bearingDetentCooldown > 1000) {
     bearingDetentArmed = false;
     bearingDetentCooldown = Date.now();
-    hapticVibrate(300);
+    hapticIgnition();
   }
 }
 
 function playArrivalHaptic() {
-  hapticVibrate(300);
+  hapticIgnition();
+  setTimeout(() => hapticVibrate(300), 600);
 }
 
 /** Play haptic feedback on native platforms. */
 function playProximityHaptic() {
-  hapticVibrate(300);
+  hapticIgnition();
 }
 
 /** Check all murals for proximity and alert on the first match. */
