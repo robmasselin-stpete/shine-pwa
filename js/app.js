@@ -2968,6 +2968,7 @@ function renderTourLoop() {
       </div>
 
       <!-- Bottom panel -->
+      <div class="tour-divider-line tour-divider-top"></div>
       <div class="active-tour-bottom">
         <div class="tour-bottom-row" data-state="arrived">
           <!-- Mode header -->
@@ -2985,21 +2986,27 @@ function renderTourLoop() {
                 </div>
               </div>
               <div class="tour-nav-instruction" hidden>
-                <div class="tour-nav-text">Follow the compass bearing.<br>Next mural comes up on arrival.</div>
+                <ul class="tour-mode-bullets tour-mode-bullets-nav">
+                  <li>Follow the compass bearing</li>
+                  <li>Sense the direction with vibrations</li>
+                  <li>Zoom the map</li>
+                  <li>Next Mural automatically pops up on Arrival</li>
+                </ul>
               </div>
             </div>
 
-            <!-- Right zone: action button + detail link (explore) or mural image (navigating) -->
+            <!-- Right zone: bullets + button (explore) or mural image (navigating) -->
             <div class="tour-right-zone">
               <div class="tour-right-explore">
+                <ul class="tour-mode-bullets">
+                  <li>Click Mural detail page</li>
+                  <li>Artist info and awards</li>
+                  <li>Nearby murals</li>
+                </ul>
                 <button class="tour-action-btn">
-                  <span class="tour-action-line1">Next</span>
-                  <span class="tour-action-line2">Mural</span>
+                  <span class="tour-action-line1">Navigate to</span>
+                  <span class="tour-action-line2">Next Mural</span>
                 </button>
-                <div class="tour-detail-link">
-                  <span>View Mural<br>Detail File</span>
-                  <svg viewBox="0 0 24 14" class="tour-detail-arrow"><polygon points="0,7 20,0 20,14" fill="currentColor"/></svg>
-                </div>
               </div>
               <div class="tour-stop-card tour-stop-dest" data-id="" hidden>
                 <div class="tour-stop-img-wrap">
@@ -3022,6 +3029,7 @@ function renderTourLoop() {
           </div>
         </div>
       </div>
+      <div class="tour-divider-line tour-divider-bottom"></div>
     </div>
   `;
 
@@ -3068,12 +3076,6 @@ function renderTourLoop() {
     if (mural) openDetail(mural);
   });
 
-  // "View Mural Detail File" link → open current mural detail
-  views.loops.querySelector('.tour-detail-link')?.addEventListener('click', () => {
-    const id = Number(views.loops.querySelector('.tour-stop-main').dataset.id);
-    const mural = murals.find(m => m.id === id);
-    if (mural) openDetail(mural);
-  });
 
   // Reverse button (in nav bar) — toggle direction
   views.loops.querySelector('.tour-reverse-nav-btn')?.addEventListener('click', () => {
@@ -3117,10 +3119,13 @@ function renderTourBottom() {
   // Set data-state on bottom row for CSS theming
   const row = views.loops.querySelector('.tour-bottom-row');
   if (row) row.dataset.state = walking ? 'walking' : 'arrived';
+  views.loops.querySelectorAll('.tour-divider-line').forEach(el => {
+    el.classList.toggle('walking', walking);
+  });
 
   // Mode header
   const modeLabel = views.loops.querySelector('.tour-mode-label');
-  if (modeLabel) modeLabel.textContent = walking ? 'Navigating to Next Mural' : 'Explore Mural';
+  if (modeLabel) modeLabel.textContent = walking ? 'Navigating to Next Mural' : 'Explore the Mural';
 
   // Artist name
   const artistEl = views.loops.querySelector('.active-tour-bottom .tour-stop-artist');

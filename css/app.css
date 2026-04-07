@@ -2975,6 +2975,7 @@ a {
   overflow: hidden;
   padding-top: 0;
   background: var(--bg);
+  margin-bottom: -1px;
 }
 
 .active-tour-segment-badge {
@@ -3254,6 +3255,22 @@ a {
   z-index: 10;
   overflow: hidden;
   padding: 0 12px;
+  margin-top: 0;
+  padding-top: 12px;
+  border-radius: 0;
+}
+
+/* Divider lines above/below bottom panel */
+.tour-divider-line {
+  height: 4px;
+  background: var(--teal);
+  width: 100%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 11;
+}
+.tour-divider-line.walking {
+  background: #FF7043;
 }
 
 /* ── Bottom panel layout ── */
@@ -3279,7 +3296,7 @@ a {
 /* Content row: left + right zones side by side */
 .tour-bottom-content {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 10px;
 }
 
@@ -3364,43 +3381,42 @@ a {
 .active-tour-bottom .tour-stop-artist {
   font-size: 14px;
   font-weight: 700;
-  text-align: right;
+  text-align: left;
   margin-top: 4px;
   color: var(--text1);
   font-family: var(--font-body);
   line-height: 1.2;
+  padding-left: 4px;
+}
+.tour-bottom-row[data-state="walking"] .tour-stop-artist {
+  text-align: right;
+  padding-left: 0;
   padding-right: 4px;
 }
 
-/* Right explore column: button on top, detail link below */
+/* Right explore column: bullets on top, button at bottom */
 .tour-right-explore {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 8px;
   width: 100%;
-  align-self: flex-start;
+  height: 100%;
 }
 .tour-right-explore[hidden] { display: none; }
 
-/* Detail file link */
-.tour-detail-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
+/* Mode bullet points */
+.tour-mode-bullets {
+  margin: 0;
+  padding: 0 0 0 18px;
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
+  line-height: 1.5;
   color: var(--teal);
-  line-height: 1.4;
-  -webkit-tap-highlight-color: transparent;
 }
-.tour-detail-link:active { opacity: 0.7; }
-.tour-detail-arrow {
-  width: 20px;
-  height: 12px;
-  color: var(--teal);
-  flex-shrink: 0;
+.tour-mode-bullets-nav {
+  color: #FF7043;
 }
 
 /* ── Next Mural button (explore mode) ── */
@@ -3444,16 +3460,13 @@ a {
 }
 .tour-nav-instruction[hidden] { display: none; }
 
-.tour-nav-text {
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #FF7043;
-}
-
 .tour-nav-instruction {
   align-self: flex-start;
+  padding-top: 0;
+}
+
+.tour-bottom-row[data-state="walking"] .tour-bottom-content {
+  align-items: flex-start;
 }
 
 /* Navigating layout: instruction left, mural right */
