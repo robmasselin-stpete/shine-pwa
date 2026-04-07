@@ -539,13 +539,19 @@ function hapticClash() {
   setTimeout(() => hapticVibrate(150), 70);
 }
 
+/** Heartbeat: two quick beats [100, 50, 100] */
+function hapticHeartbeat() {
+  hapticVibrate(100);
+  setTimeout(() => hapticVibrate(100), 150);
+}
+
 /**
  * Bearing detent: clash when compass locks onto target (±3°).
- * Re-arms after deviating past 15°, with 1s cooldown.
+ * Re-arms after deviating past 15°, with 250ms cooldown.
  */
 function playBearingHaptic(absRel) {
   if (absRel > 15) { bearingDetentArmed = true; return; }
-  if (absRel <= 3 && bearingDetentArmed && Date.now() - bearingDetentCooldown > 1000) {
+  if (absRel <= 3 && bearingDetentArmed && Date.now() - bearingDetentCooldown > 250) {
     bearingDetentArmed = false;
     bearingDetentCooldown = Date.now();
     hapticClash();
@@ -553,8 +559,7 @@ function playBearingHaptic(absRel) {
 }
 
 function playArrivalHaptic() {
-  hapticIgnition();
-  setTimeout(() => hapticClash(), 400);
+  hapticHeartbeat();
 }
 
 /** Play haptic feedback on native platforms. */
