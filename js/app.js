@@ -551,7 +551,7 @@ function hapticCollision() {
  * Re-arms after deviating past 15°, with 250ms cooldown.
  */
 function playBearingHaptic(absRel) {
-  if (absRel > 15) { bearingDetentArmed = true; return; }
+  if (absRel > 10) { bearingDetentArmed = true; return; }
   if (absRel <= 3 && bearingDetentArmed && Date.now() - bearingDetentCooldown > 250) {
     bearingDetentArmed = false;
     bearingDetentCooldown = Date.now();
