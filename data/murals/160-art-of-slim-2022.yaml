@@ -1,0 +1,104 @@
+# Art of Slim — Dreams to Reality (2022)
+
+# ── Required ──
+id: 160
+artist: Art of Slim
+year: 2022
+lat: 27.77396
+lng: -82.646858
+address: "226 Dr MLK Jr St N"
+category: commercial
+img: "images/murals/commercial/art-of-slim-dreams-to-reality.jpeg"
+
+# ── Optional ──
+title: "Dreams to Reality"
+building: ""
+instagram: artofslim
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  When he finished his three-wall mural for Air Masters in Seminole Heights, he
+  started crying and hugged his dog.
+
+  Austin "Slim" Gee — Art of Slim — is a St. Petersburg-based spray paint
+  specialist and muralist. He held an artist-in-residence at Parc at Wesley
+  Chapel near Tampa for two years (2021-2022), where American Landmark
+  Apartments gave him free housing and studio space in exchange for community
+  art programming — his term was extended a second year due to popularity.
+  Before Tampa Bay he painted anti-litter murals in Columbia, South Carolina for
+  PalmettoPride.
+
+  His largest piece is a three-wall mural spanning the Air Masters warehouse in
+  Seminole Heights, depicting Tampa's aviation history, wildlife, sports, and
+  community — it took just over two months and Tampa Mayor Jane Castor attended
+  the ribbon-cutting in October 2025.
+
+searchBio: |
+  When he finished his three-wall mural for Air Masters in Seminole Heights, he
+  started crying and hugged his dog.
+
+  Austin "Slim" Gee — Art of Slim — is a St. Petersburg-based spray paint
+  specialist, graphic designer, acrylic painter, and illustrator. His Instagram
+  bio reads "Spray Paint Specialist." He is a full-time mural artist who accepts
+  commissions. He has possible South Carolina roots (803 area code on his
+  website).
+
+  He held an artist-in-residence at Parc at Wesley Chapel (American Landmark
+  Apartments, 5561 Post Oak Blvd, Wesley Chapel, Tampa, FL) for two years
+  (2021-2022), receiving no-cost housing and studio space in exchange for
+  community art programming including "Sketch and Sip" events and children's art
+  classes. His term was extended a second year due to popularity. He painted a
+  large-scale heron mural at the clubhouse inspired by local wildlife.
+
+  Known murals include "Dreams to Reality" (2022, St. Petersburg — cartoon kid
+  on skateboard, commercial commission), the Air Masters of Tampa Bay mural
+  (unveiled October 2025, Seminole Heights, Tampa — spans three warehouse walls
+  depicting aviation history, wildlife, sports, and community; took two months;
+  Mayor Jane Castor attended ribbon-cutting), "Saluda In Bloom" (March 2019,
+  Candi Lane, Columbia, SC — anti-litter awareness mural for One Columbia and
+  PalmettoPride), and "Love Not Litter Extension" (2020, same location, with
+  Taylor Renee).
+
+  Clients include Air Masters of Tampa Bay, American Landmark Apartments, One
+  Columbia / PalmettoPride, and Palmetto Outdoor Center. He is a member of
+  several music festival production teams and arts alliances in Tampa Bay.
+
+  Instagram: @artofslim. Website: slimgee.com.
+
+searchMuralDescription: |
+  A cartoon boy in a blue baseball cap and light blue hoodie rides a skateboard
+  through a swirling purple vortex, arms outstretched, tongue out in excitement.
+  The skateboard has blue wheels and a smiley face sticker. Paint splatters in
+  teal, purple, pink, and green burst across the background. "DREAMS TO REALITY"
+  is lettered in bold white and purple at the bottom left. Signed "@ArtOfSlim
+  '22" in the lower right. A "No Parking Any Time" sign is integrated into the
+  left edge of the composition. The style is animated and energetic — cartoon
+  character design with graffiti influences.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited (PASS). 10/11 claims independently verified by primary/secondary sources. 'Dreams to Reality' title not corroborated online but matches Rob's photo signature."
+sourceNotes:
+  - "https://www.slimgee.com/"
+  - "https://www.artistsalapts.com/austin-slim-gee"
+  - "https://www.artistsalapts.com/blog/talking-murals-with-austin-slim-gee"
+  - "https://www.citybiz.co/article/263256/american-landmark-apartment-selects-2022-artist-in-residence-for-tampa-community/"
+  - "https://www.fox13news.com/news/new-mural-seminole-heights-signals-bright-future-tampa"
+  - "https://acprosite.com/air-masters-of-tampa-bay-unveils-tribute-to-the-seminole-heights-neighborhood-in-tampa/"
+  - "https://colatoday.6amcity.com/columbia-murals"
+  - "https://www.palmettopride.org/public-art-to-prevent-litter-mural-completed-in-columbia-sc/"
+  - "https://www.abccolumbia.com/2019/03/15/palmetto-pride-unveils-art-mural-to-show-efforts-in-reducing-litter-crime-rate-in-columbia-communities/"
+  - "Photo by Rob 2026-04-16, GPS from EXIF. Artist: @ArtOfSlim, signed on wall with '22. Commercial mural, not a SHINE piece."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "10/11 verified. The 'Dreams to Reality' title (2022) is unverified online but matches Rob's photo of the wall signature; not contradicted."

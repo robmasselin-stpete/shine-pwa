@@ -17,27 +17,74 @@ instagram: reidmjenkins
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Reid Jenkins is a St. Petersburg native who holds a BFA from Maryland
-  Institute College of Art and is a graduate of the P.C.C.A program at Gibbs
-  High School. His work spans murals, canvas paintings, and tattoos — he
-  currently tattoos at Fabled Trade Tattoo Company in Lealman and maintains
-  a studio at the Arts Exchange in the Warehouse Arts District. Jenkins aims
-  to paint the human experience and capture the small moments that many
-  forget to appreciate. He painted a SHINE mural in 2021 and returned for
-  SHINE Origins 2025 with this botanical piece at Founders Pro.
+  He painted his two daughters in sunflowers on the side of a distillery. His
+  son Syre shows up in murals across the rest of the city.
 
-muralDescription: |
-  Two large-scale portraits of young women — the artist's daughters — surrounded by lush greenery, golden sunflowers, and cascading white jasmine vines against a deep purple and teal background. A yellow butterfly floats between the figures. Painted across the facade of St. Petersburg Distillery.
+  Reid Jenkins is a St. Petersburg native. He graduated from the Pinellas County
+  Center for the Arts at Gibbs High School — the same program that produced
+  Derek Donnelly — then earned a BFA from the Maryland Institute College of Art.
+  He tattoos at Fabled Trade Tattoo Company, a queer-owned studio in the Lealman
+  area, and keeps a studio at the ArtsXchange in the Warehouse Arts District.
+
+  His murals tend toward photorealistic portraiture and botanicals. For SHINE
+  2021 he painted at St. Pete Distillery — the daughters, the sunflowers, and a
+  yellow butterfly between them on a deep teal wall. He has noted that roughly a
+  third of mural pay goes to supplies alone. He collaborated with Iboms and Zulu
+  Painter on "Imagine Gas Plant & Laurel Park" at Campbell Park Recreational
+  Center, and painted the cheetah with geometric 90s-inspired colors at Star
+  Booty Salon on 16th Street South.
+
+  For SHINE Origins 2025, he painted a botanical piece at Founders Pro using a
+  projection method for the outline.
+
+searchBio: |
+  He paints the people seldom seen in the 'Burg. He also tattoos them.
+
+  Reid Jenkins is a St. Petersburg native. He graduated from the Pinellas County
+  Center for the Arts (PCCA) program at Gibbs High School, then earned a BFA
+  from the Maryland Institute College of Art (MICA). He is a muralist, painter,
+  illustrator, and tattoo artist. He tattoos at Fabled Trade Tattoo Company
+  (formerly Ink Werkz Tattoo Studio), a queer-owned studio at 4195 54th Ave N in
+  the Lealman area of St. Petersburg. He keeps a studio at the ArtsXchange in
+  the Warehouse Arts District.
+
+  His aim is to "paint the human experience and the experience of those seldom
+  seen in the 'Burg," focusing on capturing small, overlooked moments. His work
+  tends toward photorealistic portraiture and botanicals. He has noted that
+  roughly 33% of mural pay goes to supplies alone. He supports MIZE Gallery,
+  COVE in Pinellas Park, Woodfield Fine Art, and d-gallerie.
+
+  For SHINE 2021, he painted at the St. Pete Distillery — portraits of his two
+  daughters with sunflowers and greenery. He collaborated with Iboms and Zulu
+  Painter on "Imagine Gas Plant & Laurel Park" at Campbell Park Recreational
+  Center. Other murals include the large cheetah with geometric 90s-inspired
+  colors at Star Booty Salon (1741 16th St S). He exhibited in "Renew," a group
+  show with Bekky Beukes at Mergeculture, Tampa (February 2022).
+
+  For SHINE Origins 2025, he painted a botanical piece at Founders Pro, using a
+  projection method for the outline. Instagram: @reidmjenkins.
+
+searchMuralDescription: |
+  Two large-scale portraits of young women — the artist's daughters — surrounded
+  by lush greenery, golden sunflowers, and cascading white jasmine vines against
+  a deep purple and teal background. A yellow butterfly floats between the
+  figures. Painted across the facade of St. Petersburg Distillery.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2021 selected artist; SHINE Origins 2025 selected artist"
+furtherWork: []
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: |
-  Photo by Rob 2026-03-18, GPS from EXIF. Instagram corrected to @reidmjenkins.
-  Sources researched:
-  - https://ilovetheburg.com/muralist-reid-jenkins/
-  - https://stpetecatalyst.com/meet-the-shine-mural-festival-class-of-21/
-  - https://stpeteartsalliance.org/shine (2021 Reid Jenkins)
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-03 — New hook anchored to this wall: his two daughters in sunflowers on the side of a distillery, with Syre (his son in other walls) as the rhyme. Body adds the painted yellow butterfly + teal wall details."
+sourceNotes:
+  - "Photo by Rob 2026-03-18, GPS from EXIF. Instagram corrected to @reidmjenkins."
+  - "https://ilovetheburg.com/muralist-reid-jenkins/"
+  - "https://stpetecatalyst.com/meet-the-shine-mural-festival-class-of-21/"
+  - "https://stpeteartsalliance.org/shine (2021 Reid Jenkins)"
+  - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://luciwest.com/photos-from-shine-origins-mural-festival-2025/"

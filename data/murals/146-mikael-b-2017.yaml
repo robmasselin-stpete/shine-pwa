@@ -1,0 +1,120 @@
+# Mikael B — 2017
+
+# ── Required ──
+id: 146
+artist: Mikael B
+year: 2017
+lat: 27.772337
+lng: -82.650497
+address: "1123 1st Ave N"
+category: shine
+img: "images/murals/2017/mikael-b.jpeg"
+
+# ── Optional ──
+title: "Inner Visions"
+building: ""
+instagram: mikaelb
+basedIn: "Copenhagen / Los Angeles"
+
+artistBio: |
+  He titled this wall "Inner Visions." Crystals erupt from a turbulent sea. "I
+  want to keep dreams alive."
+
+  Mikael B was tagging in Copenhagen at fifteen under the name KETS. By 2014,
+  his abstract world map "Vibrant World" had crashed his website with a million
+  Facebook views. He paints for Nike and Bentley, shows alongside Banksy and
+  Kaws at Taglialatella Galleries, and runs the Mikael B Foundation, which
+  builds schools in Cambodia. He shifted toward pure abstraction in 2017, paints
+  multiple canvases at once, and uses four-meter ladders to view them from
+  above.
+
+  The graphic-design sensibility is underneath: sharp geometric crystal forms
+  colliding with fluid organic energy, references from Baroque to Cubism, spray
+  paint and acrylic. He has painted Wynwood Walls (2022), the ArtShare Building
+  in Downtown LA (9,300 sq ft, Certificate of Recognition from the City of LA),
+  and Google's Santa Monica HQ.
+
+  For SHINE 2017 he painted at 1123 1st Avenue North in the Edge District. The
+  crystals erupting from the blue sea — that's him.
+
+searchBio: |
+  He started painting graffiti at fifteen in Copenhagen under the name KETS. He
+  co-founded a design agency, moved to LA, and in 2014 his abstract world map
+  "Vibrant World" crashed his website with a million Facebook views.
+
+  Mikael Brandrup — Mikael B — was born June 5, 1984 in Holbaek, Denmark, raised
+  on Tuse Naes west of Copenhagen. Non-identical twin brother Morten Brandrup
+  became his manager. He started graffiti at age 15 (2000) under the name KETS
+  in Copenhagen's Sydhavnen scene, immersed in hip-hop culture. He attended
+  Copenhagen Technical School for graphic and web design, left his internship
+  early to pursue entrepreneurship. In 2008 he co-founded design agency Identity
+  Provided with Morten and Mickie Storm (clients: Steen & Stroem, Chiquita). He
+  moved to Los Angeles in 2013; the agency merged with MeyerBukdahl in 2014. His
+  abstract world map "Vibrant World" (2014) went viral with approximately one
+  million Facebook views.
+
+  His style fuses Wildstyle graffiti lettering with graphic design sensibility —
+  references from Baroque to Cubism expressed through spray paint and acrylic.
+  In 2017 he shifted toward pure abstraction and gestural painting. He paints
+  multiple pieces simultaneously and uses four-meter ladders to view canvases
+  from above. He describes himself as a painter, muralist, sculptor,
+  print-master, and designer.
+
+  Notable murals: "Vivid Rhythms" (2018, ArtShare Building, Downtown LA, 9,300
+  sq ft — Certificate of Recognition from City of LA), "Everything Starts With
+  Nothing" (2022, Wynwood Walls), "Room for Reflection" (2019, Artscape
+  Festival, Sweden), "Moment of Clarity" (2021, West Hollywood), and Google
+  headquarters in Santa Monica (with Bumblebee). Solo exhibitions (most sold
+  out): "Just Be" (Copenhagen, 2016), "Reality Shift" (Gregorio Escalante
+  Gallery, LA, 2017), "Never Tomorrow" (Copenhagen, 2018), "Flow State" (Maddox
+  Gallery, West Hollywood, 2021), "The Evolution of Everything" (Copenhagen,
+  2022). Represented by Taglialatella Galleries (New York, Paris, Toronto, Palm
+  Beach) — work shown alongside Kaws, Banksy, Jeff Koons, and Damien Hirst.
+
+  Clients include Nike/Jordan Brand, American Express, Bentley, Google,
+  LinkedIn, Heineken, Mercedes-Benz, Chase, The Black Eyed Peas, and Topps
+  (Project 70 baseball cards). He founded the Mikael B Foundation (2017) to
+  build schools in Cambodia and is an ambassador for Red Cross Denmark.
+  Published monographs: "Infinite Universes" (2016) and "Never Tomorrow" (2018).
+  Featured in LA Times, Hi-Fructose, and Cultured Magazine.
+
+  For SHINE 2017 he painted "Inner Visions" at 1123 1st Avenue North in St.
+  Petersburg — spiky triangular bursts of purple, white, and orange with
+  gold-tipped points emerging from a turbulent blue sea. Quote: "With Inner
+  Visions I want to keep dreams alive."
+
+  Instagram: @mikaelb. Website: mikael-b.com.
+
+searchMuralDescription: |
+  A long horizontal mural on a dark-toned wall in the Edge District. The
+  composition features a dynamic collision of sharp, faceted geometric crystal
+  forms — angular star shapes and prismatic shards in icy whites, pale blues,
+  warm corals, and deep burgundy — interwoven with sweeping brushstroke-like
+  curves in dark olive, black, and pink. Misty teal and aqua clouds billow along
+  the bottom edge, and paint splatters dot the surface. The overall effect
+  suggests crystals erupting from a turbulent atmospheric field. The palette
+  moves between cool icy blues on the left and warm sunset pinks and corals on
+  the right. "PRIVATE PROPERTY" signs are mounted on the wall surface.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Wynwood Walls 2022; Certificate of Recognition from City of Los Angeles (2018); Red Cross Denmark ambassador"
+
+furtherWork:
+  - name: "mikael-b.com"
+    url: "https://shop.mikael-b.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "GPS from Rob's photo IMG_1961.jpeg taken April 8, 2026"
+  - "SHINE 2017 festival piece"
+  - "https://en.wikipedia.org/wiki/Mikael_Brandrup"
+  - "https://shop.mikael-b.com/the-artist/"
+  - "https://thewynwoodwalls.com/artists/mikael-b/"
+  - "https://blog.molotow.com/introducing-mikael-brandrup-aka-kets-x-interview-photos/"
+  - "https://www.culturedmag.com/article/2022/12/05/mikael-b-denmark-artist-graffiti/"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "16 April 2026 — Full research, bio rewrite with hook, searchBio added"
+  - "2026-05-03 — Display bio punched up: hook anchored to wall ('He titled this wall Inner Visions...') with the artist's own quote, then a fast-moving body that weaves credentials (KETS origin, Vibrant World viral moment, Nike/Bentley clients, Banksy/Kaws gallery context, Cambodia foundation) into prose rather than resume bullets. Closes back on this wall in the Edge District."

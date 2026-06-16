@@ -8,7 +8,7 @@ lat: 27.7455
 lng: -82.7032
 address: 4301 13th Ave. S.
 category: shine
-img: images/murals/2022/NNEKA_JONES.jpg
+img: ""  # needs Rob photo — stock removed 2026-05-12
 
 # ── Optional ──
 title: ""
@@ -17,19 +17,118 @@ instagram: artyouhungry
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Nneka Jones is a contemporary multidisciplinary artist who enjoys working in
-  mixed media, embroidery, textiles and paint exploring both large-scale mural
-  work and small-scale, intimate pieces. The Trinidadian born artist produces
-  thought-provoking artwork that comments on social and environmental
-  injustice; strongly advocating for the protection of women and girls of
-  color. These are often topics that as a society, we feel uncomfortable
-  addressing but are necessary for positive change.
+  TIME Magazine used her embroidered American flag on its cover. She was twenty.
 
-muralDescription: ""
+  Nneka Jones was born in Trinidad and Tobago, where she placed first in the
+  Caribbean for Art and Design Examinations before moving to the United States
+  in 2016. She earned her BFA with a minor in marketing from the University of
+  Tampa in 2020. A professor challenged her to "paint without paint" — she
+  turned to embroidery, a skill learned from her mother in Trinidad.
+
+  Her work addresses systemic injustice, sexual abuse, and human trafficking
+  through realistic embroidered portraits and mixed media. Her "Targets" series
+  incorporates condoms. TIME commissioned her embroidered flag for its August
+  2020 cover on "The New American Revolution." She keynoted Adobe MAX that
+  October. She won the Gasparilla Emerging Artist Award (2019) and Best of Show
+  with a $15,000 prize at Gasparilla (2022). For SHINE 2022, she painted in St.
+  Petersburg.
+
+searchBio: |
+  TIME Magazine used her embroidered American flag on its cover. She was twenty.
+
+  Nneka Jones was born in Trinidad and Tobago and lived in Port of Spain. She
+  attended primary school at Newtown Girls' RC and went on to Bishop Anstey High
+  School. Before leaving the Caribbean, she placed first in the Caribbean for
+  Art and Design Examinations. She moved to the United States in 2016 to
+  continue her art education and enrolled at the University of Tampa, where she
+  studied under professor Chris Valle. In an experimental painting class, Valle
+  told her to "paint without paint." She turned to thread, a skill she had
+  practiced as a child helping her mother thread needles and manipulate fabric
+  in Trinidad. She graduated from the University of Tampa in 2020 with a BFA and
+  a minor in marketing.
+
+  Her practice covers embroidery, mixed media, paint, public art, and
+  large-scale murals. She works mainly on stretched canvas and cotton fabric,
+  and uses monk's cloth as a substrate for large-scale pieces. She plans
+  portraits by collaging source images digitally in Photoshop, prints the
+  collage as a reference, and transfers sketched details to the canvas with
+  pencil and carbon paper. She begins almost every piece at the eyes, then works
+  section by section from center to outer edges. For oversized portraits she
+  uses a punch needle technique with a combination of yarn and embroidery
+  thread. She does not use a tufting gun or sewing machine.
+
+  Her subject matter focuses on systemic injustice, sexual abuse, human
+  trafficking, and the protection and celebration of girls and women of color.
+  The Targets series uses condoms as part of the medium and masks the faces of
+  young girls and women behind bullseyes, scopes, and dartboards as a comment on
+  sex trafficking and sexual abuse. Pieces in this body of work include Shooting
+  Range Target (2019), Colorblind Target (2019), Dartboard Target (2019), Biggie
+  Embroidered (2019), Colorblind Shooting Range (2020), and Red Light (2020).
+  Later works include Unzipped (2020, embroidery thread, zipper, and fabric
+  swatches), Destroy the Myth (2021), New Era (2022), Modern Renaissance (2022),
+  Retrospect: Between You and Me (2023), Blueprint Reconstructed I (2023), and
+  Blueprint Reconstructed II (2023). Her piece Special Delivery – Unzipped is in
+  the permanent collection at Tampa's Ferman Center for the Arts.
+
+  In 2019, while still a student, she won the Emerging Artist Award at the
+  Gasparilla Festival of the Arts. It was the first time she had shown her work
+  in public; she sold her first two pieces at that festival to buyers who
+  remained clients. In 2022 she won Best of Show and a $15,000 prize at the 52nd
+  Gasparilla Festival of the Arts for Modern Renaissance, a mixed media piece
+  that was also purchased at the festival.
+
+  In June 2020, during the Black Lives Matter protests, TIME magazine
+  international art director Victor Williams reached out to her after seeing a
+  painted portrait of George Floyd she had posted on Instagram. He commissioned
+  her in August for the cover of TIME's August 31–September 7 special issue,
+  "The New American Revolution," a series with conversations and essays produced
+  with recording artist and producer Pharrell Williams about a more equitable
+  future for Black Americans. Her cover was a hand-embroidered American flag
+  with black thread stitched onto raw canvas, the white stripes and stars left
+  as bare canvas. She left the flag intentionally unfinished and tucked the
+  needle she had used into the last stripe to indicate the revolution was a work
+  in progress. In October 2020 she was the keynote speaker at Adobe MAX.
+
+  Her work has been acquired by the Tampa Museum of Art, Florida Craft Art
+  Gallery, the Ferman Center for the Arts, and many public and private
+  collectors. She showed new work at the University of Tampa's Ferman Center for
+  the Arts in early 2021. She painted the mural History Starts Here at Tampa's
+  Gwen Miller Community Center. For SHINE 2022 she painted in St. Petersburg.
+
+  Growing up she was aware of successful male Caribbean artists such as Jackie
+  Hinkson and James Armstrong, but rarely saw women artists with the same reach.
+  Her high school art teachers mentored her along the way. She has cited the
+  dearth of female role models as the reason she committed to becoming the role
+  model she had searched for, and her work centers identity across cultures and
+  within oneself, often returning to the gaze and eyes of the figures she
+  stitches or paints.
+
+  She has been covered by ARTnews, Tampa Bay Times, Trinidad and Tobago Newsday,
+  Creative Loafing Tampa, ilovetheburg.com, Colossal, Flamingo Magazine,
+  TextileArtist.org, and Fox 13 Tampa Bay. She shares much of her work on
+  Instagram and sells prints through her shop.
+
+searchMuralDescription: ""
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "TIME Magazine cover artist (2020); Adobe MAX keynote (2020); Gasparilla Emerging Artist (2019); Gasparilla Best of Show $15K (2022); SHINE 2022"
+
+furtherWork:
+  - name: "artyouhungry.com"
+    url: "https://www.artyouhungry.com/nneka-jones"
+
+# revisionLog removed to exclude from build until Rob's photo available
+
+status: research  # no Rob photo yet — exclude from app until photographed
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Migrated from data.js 2026-03-05"
+  - "https://en.wikipedia.org/wiki/Nneka_Jones"
+  - "https://gasparillaarts.com/an-emerging-artist-success-story-nneka-jones/"
+  - "https://www.textileartist.org/nneka-jones-stitching-social-justice/"
+  - "https://www.thisiscolossal.com/2020/06/nneka-jones-target-embroidery/"
+revisionLog:
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-12 — Marked status: research; removed SPAA stock photo. Pending Rob photo."

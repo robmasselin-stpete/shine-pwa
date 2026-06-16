@@ -1,0 +1,89 @@
+# Chris Dyer — Overspray totem (Gulfport)
+
+# ── Required ──
+id: 207
+artist: Chris Dyer
+year: 0
+lat: 27.75088
+lng: -82.70128
+address: "5013 20th Ave S, Unit F, Gulfport"
+category: commercial
+img: "images/murals/commercial/chris-dyer-overspray-totem.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Overspray"
+instagram: chris_dyer
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Same vocabulary in compressed form: an all-seeing eye in a flame-tipped
+  teardrop, geometric wings, ceremonial folds, a meditating figure at the
+  base. Painted on a tall narrow side wall at Overspray, the Vitale Bros'
+  graffiti shop in Gulfport. Signed "CHRIS DYER '25" across the top.
+
+  Chris Dyer was born in Ottawa in 1979, moved to Lima, Peru at four, and
+  returned to Canada at seventeen. He studied illustration at Dawson College
+  in Montreal and trained under visionary masters Alex Grey, Robert Venosa,
+  and Amanda Sage. His style fuses psychedelic imagery, Incan and
+  pre-Columbian influences, sacred geometry, and 1980s skate culture.
+
+  He founded the Positive Creations brand in 2003 — clothing, tapestries,
+  books, skateboards, footwear. He has been art director at Creation
+  Skateboards and designed over a hundred commercial skateboard graphics for
+  Santa Cruz, Deathwish, and Think. He has painted in forty-five countries
+  including a mural in the Bob Marley Museum. He lives in a purple house in
+  Gulfport with his partner Paulina Casati.
+
+searchBio: |
+  Chris Dyer — see full bio on his other entries (ids 39, 182, 186). This is
+  a 2025 wall on the side of Overspray, the Vitale Bros' street-art shop and
+  graffiti school in Gulfport. Vertical narrow composition: a flame-tipped
+  teardrop with a single blue/orange eye at center, geometric chevron wings,
+  cascading ceremonial folds in pink, magenta, teal, and gold, and a small
+  seated meditating figure at the base. Signed "CHRIS DYER '25" in purple
+  graffiti tag across the top.
+
+  Born in Ottawa 1979, raised in Lima, Peru. Studied illustration at Dawson
+  College, Montreal. Trained under Alex Grey, Robert Venosa, and Amanda Sage.
+  Founded Positive Creations in 2003. Has painted in forty-five countries
+  including the Bob Marley Museum. Designed over a hundred skateboard
+  graphics for Santa Cruz, Deathwish, and Think. Sold out 5,555 NFTs in 2021.
+  Lives in a purple house in Gulfport with Paulina Casati.
+
+searchMuralDescription: |
+  A tall narrow vertical mural on the side of a single-story white cinder
+  block building. The composition is symmetrical and totemic, stacked from
+  top to bottom. At the top, a red-and-yellow flame-tipped teardrop shape
+  cradles a wall-mounted utility box and security camera. Below it, a green
+  teardrop with a central blue-and-orange single eye sits inside a pink lotus
+  petal, flanked by yellow chevron wings. Below the eye, a vertical stack of
+  ceremonial folds and totemic forms: gold-and-pink chevrons, magenta zigzag
+  patterns, teal triangles, mandala-style flowers, and at the base a small
+  blue figure seated cross-legged in meditation. Color palette is saturated
+  visionary — magenta, teal, gold, green, blue, purple — outlined in heavy
+  black graphic lines. Signed at the very top in purple wildstyle lettering:
+  "CHRIS DYER '25."
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "positivecreations.ca"
+    url: "https://positivecreations.ca"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-14 — New mural added by Rob: fourth Chris Dyer in Mural Quest, a 2025 visionary totem on the side of Overspray in Gulfport. GPS from photo IMG_0291.jpeg EXIF (27.75088, -82.70128). Signed 'CHRIS DYER 25' top. Address pending exact street number."
+sourceNotes:
+  - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0291.jpeg)"
+  - "Signed 'CHRIS DYER 25' visible at top of mural"
+  - "https://chrisdyerart.com/"
+  - "https://www.instagram.com/chris_dyer/"
+verification:
+  date: 2026-05-14
+  method: on-wall signature + Rob photo with EXIF GPS
+  status: pass
+  notes: "Attribution authoritative — 'CHRIS DYER 25' tag visible at top of mural. Location is Overspray (Vitale Bros' graffiti shop) in Gulfport — same building hosts Vitale Bros and BASK walls (ids 208, 209)."

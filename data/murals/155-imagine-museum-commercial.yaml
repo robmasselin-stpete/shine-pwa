@@ -1,0 +1,62 @@
+# Unknown Artist — Imagine Museum
+
+# ── Required ──
+id: 155
+artist: Unknown
+year: 0
+lat: 27.771278
+lng: -82.659781
+address: "611 Central Ave"
+category: commercial
+img: "images/murals/commercial/imagine-museum-train.jpeg"
+
+# ── Optional ──
+title: ""
+building: Imagine Museum
+instagram: ""
+basedIn: ""
+
+artistBio: |
+  Artist unknown. A monochromatic photorealistic steam locomotive mural on the
+  side of a building at 611 Central Avenue — a private commercial commission
+  that does not appear in any SHINE festival records or public art databases.
+
+searchBio: |
+  Artist unknown. A monochromatic photorealistic steam locomotive numbered 611
+  on the side of a building at 611 Central Avenue in St. Petersburg's Central
+  Arts District, near The Cider Press Cafe and The Hyppo. This is a privately
+  commissioned commercial mural with no public attribution found. It does not
+  appear in SHINE/SPAA records, FindMASA, PixelStix, Visit St Pete Clearwater,
+  Creative Pinellas, or the city's public art collection. Note: this building is
+  near but distinct from the Imagine Museum at 1901 Central Ave (which has the
+  Pantonio fish mural on different walls).
+
+searchMuralDescription: |
+  A monochromatic photorealistic mural covering the side wall of the Imagine
+  Museum on Central Avenue. A steam locomotive — numbered 611 — appears to crash
+  through the building wall, bursting through bricks and debris in dramatic
+  forced perspective. The entire piece is rendered in shades of gray, black, and
+  white with extraordinary detail — the engine's headlight, steam valves, and
+  wheel mechanisms are precisely depicted. Shattered building facade fragments,
+  scattered bricks, and architectural elements frame the locomotive. The
+  building itself has bright blue trim along the base, contrasting with the
+  monochrome mural above.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+status: research  # unidentified artist — kept for ongoing research, not exported
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "GPS from Rob's photo, IMG_1617.jpeg"
+  - "Building identified by Rob as near the Imagine Museum"
+  - "Artist unknown — extensive search (25+ queries) found no attribution"
+  - "611 Central Ave is on the 600 block, not at the Imagine Museum (1901 Central)"
+  - "Not in SHINE/SPAA, FindMASA, PixelStix, or city public art databases"

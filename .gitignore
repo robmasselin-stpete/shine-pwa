@@ -3,6 +3,7 @@ node_modules/
 __pycache__/
 *.pyc
 mural-catalog.pdf
+data/source-cache/
 needs-photo-list.txt
 .claude/
 *.avif
@@ -11,6 +12,13 @@ fix-legacy-images.sh
 session-handoff.md
 www/
 ios/
+
+# ASC build/signing scripts with hardcoded account identifiers (public repo — keep local only)
+assets/wip/mq_build.sh
+assets/wip/mq_submit.py
+assets/wip/asc_query.py
+assets/wip/ExportOptions-manual.plist
+*.p8
 
 # Local Netlify folder
 .netlify

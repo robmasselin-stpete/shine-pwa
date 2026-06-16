@@ -1,0 +1,83 @@
+# Unknown — More Loves
+
+# ── Required ──
+id: 193
+artist: Unknown
+year: 0
+lat: 27.771072
+lng: -82.655563
+address: "1628 Central Ave"
+category: commercial
+img: "images/murals/commercial/chris-dyer-more-loves.jpeg"
+
+# ── Optional ──
+title: "More Loves"
+building: ""
+instagram: ""
+basedIn: ""
+
+fieldNotes:
+  - 'Wall is signed "Chris Dyer" in pink graffiti lettering at the top'
+  - "Attribution to the visionary artist Chris Dyer is unverified — no public source documents this wall as his work, and the Tiki-totem style does not match his known catalog (visionary cosmic figures, sacred geometry mandalas, shamanistic patterning)"
+  - 'Title "More Loves" hand-lettered in green across the bottom plinth'
+
+artistBio: |
+  Wall signed "Chris Dyer" but attribution unverified. No public source
+  documents this wall as work by the visionary Peruvian-Canadian artist Chris
+  Dyer (@chris_dyer, of Gulfport via Montreal and Lima), and the Tiki-totem
+  style on this wall does not match his documented catalog. "Chris Dyer" is a
+  common name; this may be a different artist by the same name, an early-career
+  piece, or an imitation. Listed here as Unknown until the attribution can be
+  confirmed.
+
+searchBio: |
+  Wall at 1628 Central Avenue, St. Petersburg. Signed "Chris Dyer" in pink
+  graffiti lettering across the top, with "More Loves" hand-lettered in green
+  across the bottom plinth. Attribution unverified — no public source
+  (positivecreations.ca, FindMASA, SHINE Arts Alliance, The Gabber, Creative
+  Pinellas, Wikipedia) documents this wall as work by the well-known visionary
+  Peruvian-Canadian artist Chris Dyer (born Ottawa 1979, based in Gulfport since
+  ~2022, @chris_dyer on Instagram). His documented St. Pete / Gulfport walls are
+  different locations: the SHINE 2023 "sPEACEship" at 2875 7th Ave S, the
+  Drunken Taco patio crocodile in Gulfport, and a piece at the Zaza Smoke Shop
+  at 49th Street and 22nd Avenue South. The Tiki-totem style on this wall
+  (skulls perched at the crown, third eye with rays, large teardrop eyes flanked
+  by stars, lightning bolt down the bridge of the nose, wide-fanged mouth
+  opening over a fiery heart in a pink-and-yellow halo, layered scrollwork in
+  pink/yellow/green/blue/orange) does not match the visionary Chris Dyer's
+  documented catalog. Could be a different artist by the same name, an
+  early-career piece, or an imitation. Listed here as Unknown until confirmed —
+  recommend DM-ing @chris_dyer directly for attribution.
+
+searchMuralDescription: |
+  A tall narrow mural on the side of a Central Avenue building, signed "Chris
+  Dyer" in pink graffiti lettering across the top and "More Loves" in green
+  hand-lettering across the bottom plinth. The composition centers on a totemic
+  Tiki-style figure: two skulls perched at the crown, a third eye with rays at
+  the forehead, two large teardrop-shaped eyes flanked by stars, a lightning
+  bolt running down the bridge of the nose, and a wide-fanged mouth opening over
+  a fiery heart suspended in a pink-and-yellow halo. Layered scrollwork in pink,
+  yellow, green, blue, and orange surrounds the central figure. Painted on a
+  pale-grey horizontal-plank wall.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+status: research  # unidentified artist — kept for ongoing research, not exported
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "29 April 2026 — New mural added, GPS from Rob's photo IMG_0220 taken 2026-04-29"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-03 — DOWNGRADED attribution: Chris Dyer canonical bio removed. Per Rob's gut and a verification pass: style does not match documented Chris Dyer catalog (Tiki-totem vs his usual visionary cosmic / sacred-geometry work); 1628 Central is not in any of his documented St. Pete/Gulfport locations; signature is the only evidence. Could be a different Chris Dyer, early-career piece, or imitation. Artist field set to Unknown. File renamed 193-chris-dyer-more-loves.yaml → 193-unknown-more-loves.yaml. Recommend DM-ing @chris_dyer for confirmation."
+sourceNotes:
+  - "Photo by Rob 2026-04-29, GPS from EXIF. Title 'More Loves' visible on mural; signature 'Chris Dyer' at top — but attribution to visionary artist Chris Dyer is unverified."
+verification:
+  date: 2026-05-03
+  method: targeted-attribution-check
+  status: needs-review
+  notes: "Attribution downgraded from Chris Dyer to Unknown after verification pass found no documentation of this wall in Chris Dyer's portfolio (positivecreations.ca), FindMASA, SHINE Arts Alliance, or any press. Style mismatch with his documented work. Signature is the only evidence."

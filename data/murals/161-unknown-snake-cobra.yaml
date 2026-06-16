@@ -1,0 +1,55 @@
+# Unknown Artist — Snake/Cobra Mural
+
+# ── Required ──
+id: 161
+artist: Unknown
+year: 0
+lat: 27.773955
+lng: -82.646957
+address: "226 Dr MLK Jr St N"
+category: commercial
+img: "images/murals/commercial/unknown-snake-cobra.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: ""
+basedIn: ""
+
+artistBio: |
+  Artist unknown. A cobra bursting out of a gold ring on a teal wall, flanked by
+  cartoon hands and pink graffiti faces. Signed on the right side but difficult
+  to read — possibly "@H_Mase" or similar.
+
+searchBio: |
+  Artist unknown. A mural on a teal commercial building in St. Petersburg, FL,
+  near Planet Retro Records. A blue-gray cobra with red eyes and dripping fangs
+  bursts out of a gold ring at center. Black wavy arms with white cartoon gloved
+  hands extend from either side. Pink graffiti-style angry faces flank the
+  composition on both edges. Signed on the right side — signature partially
+  legible. Commercial mural, not a SHINE piece.
+
+searchMuralDescription: |
+  A blue-gray cobra with red-orange eyes and dripping fangs bursts out of a gold
+  ring at center of a teal wall. Black wavy snake-like arms extend from both
+  sides, ending in white cartoon gloved hands — one pointing, others grasping.
+  Pink graffiti-style faces with angry expressions appear on both edges of the
+  composition. The building has four windows above the mural. The style blends
+  graffiti character design with cartoon illustration.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+status: research  # unidentified artist — kept for ongoing research, not exported
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-16, GPS from EXIF"
+  - "Artist unknown — signed on right side, partially legible"
+  - "Near Planet Retro Records"

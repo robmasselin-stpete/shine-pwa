@@ -3,15 +3,15 @@
    ======================================== */
 :root {
   /* ── New design tokens ── */
-  --bg: #E5E0D6;
-  --card: #FFFFFF;
+  --bg: #F7F4EF;
+  --card: #F7F4EF;
   --text: #1C1C1E;
   --text2: #8E8E93;
   --text3: #AEAEB2;
   --teal: #0E918C;
   --teal-dark: #0A706C;
   --teal-light: #E2F5F2;
-  --border: #E4DDD6;
+  --border: #E8E3DC;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.14);
   --radius: 14px;
@@ -616,6 +616,23 @@ a {
   background: var(--bg);
 }
 
+.tab-title-row {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.tab-title-row h1 {
+  flex: 1;
+}
+.tab-logo {
+  height: 91px;
+  width: auto;
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
 .explore-float-title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -627,9 +644,9 @@ a {
 
 .explore-subtitle {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text2);
-  margin: 2px 0 8px;
+  margin: -8px 0 6px;
 }
 
 .search-input-wrap {
@@ -864,9 +881,9 @@ a {
 }
 .map-float-subtitle {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text2);
-  margin: 0 0 6px;
+  margin: -8px 0 4px;
   pointer-events: none;
 }
 
@@ -1064,8 +1081,6 @@ a {
   flex-direction: column;
   height: calc(100vh - var(--tab-height) - var(--safe-bottom));
   overflow: hidden;
-  border-top: 0.5px solid rgba(0, 0, 0, 0.08);
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
 }
 
 #view-map[hidden] {
@@ -1156,44 +1171,6 @@ a {
   box-shadow: 0 0 6px rgba(0,0,0,0.35);
 }
 
-/* Edge arrow for off-screen user on tour mini-maps */
-.picker-user-arrow {
-  position: absolute;
-  z-index: 800;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  transform: translate(-50%, -50%);
-  animation: edge-pulse 2s ease-in-out infinite;
-}
-.picker-user-arrow-tip {
-  display: block;
-  width: 0;
-  height: 0;
-  border-left: 10px solid #4285F4;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  flex-shrink: 0;
-  filter: drop-shadow(0 0 3px rgba(66, 133, 244, 0.6));
-}
-.picker-user-arrow-label {
-  position: absolute;
-  white-space: nowrap;
-  font-size: 9px;
-  font-weight: 700;
-  font-family: var(--font-display);
-  color: #4285F4;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 2px 5px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-}
-@keyframes edge-pulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.4; }
-}
 
 /* ========================================
    Map Floating Action Buttons (Komoot-style)
@@ -1201,7 +1178,7 @@ a {
 .map-fab-stack {
   position: absolute;
   right: 12px;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   z-index: 1000;
   display: flex;
@@ -1269,6 +1246,98 @@ a {
   width: 22px;
   height: 22px;
   fill: currentColor;
+}
+
+/* POI map marker — small gray diamond */
+.poi-map-icon { background: transparent; border: none; }
+.poi-diamond {
+  width: 22px;
+  height: 22px;
+  background: #4a4a4a;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  transform: rotate(45deg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.poi-glyph {
+  transform: rotate(-45deg);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+}
+
+/* POI popup card — same shell as nearest-popup, distinct content layout */
+.poi-popup-image {
+  width: calc(100% + 32px);
+  margin: -16px -16px 10px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 18px 18px 0 0;
+  display: block;
+}
+.poi-popup-headline {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 4px 0 8px;
+  line-height: 1.3;
+}
+.poi-popup .poi-popup-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 6px;
+}
+.poi-popup-type {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--accent);
+}
+.poi-popup h4 { margin: 0; font-size: 17px; font-weight: 700; }
+.poi-popup-addr { margin: 0 0 6px; font-size: 13px; color: var(--muted, #666); }
+.poi-popup-desc { margin: 6px 0; font-size: 14px; line-height: 1.4; color: var(--text); }
+.poi-popup-hours { margin: 4px 0; font-size: 12px; color: var(--muted, #666); }
+.poi-popup-linked { margin-top: 12px; }
+.poi-popup-linked-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted, #666);
+  margin-bottom: 6px;
+}
+.poi-popup-linked-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.poi-popup-linked-card {
+  flex-shrink: 0;
+  width: 72px;
+  cursor: pointer;
+}
+.poi-popup-linked-card img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  background: #ddd;
+}
+.poi-popup-linked-name {
+  font-size: 11px;
+  margin-top: 3px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Nearest mural popup — bottom sheet style */
@@ -1547,6 +1616,20 @@ a {
   display: block;
   background: #1a1a1a;
 }
+.detail-original-wrap {
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.detail-original-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.5);
+  padding: 8px 0 4px;
+  background: #1a1a1a;
+}
 
 /* Fullscreen lightbox overlay */
 .photo-lightbox {
@@ -1648,6 +1731,35 @@ a {
   margin-top: 4px;
 }
 
+.mural-card.mural-gone .mural-card-img {
+  filter: grayscale(0.7) opacity(0.6);
+}
+
+.detail-hero-wrap {
+  position: relative;
+}
+.detail-gone-banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 16px;
+}
+
+.detail-not-on-tour {
+  font-size: 12px;
+  font-family: var(--font-body);
+  color: var(--text2);
+  margin-top: 4px;
+  font-style: italic;
+}
+
 .detail-year-badge {
   display: inline-block;
   font-family: var(--font-display);
@@ -1672,38 +1784,47 @@ a {
   margin-top: 6px;
 }
 
-.detail-fw { margin-top: 8px; }
+.detail-fw { margin-top: 8px; position: relative; }
 
 .detail-fw-btn {
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--accent);
-  opacity: 0.5;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
-.detail-fw-btn:disabled {
-  cursor: default;
-}
-.detail-fw-btn.open { opacity: 1; }
 
 .detail-fw-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   margin-top: 6px;
-  padding-left: 4px;
+  padding-left: 12px;
+  border-left: 2px solid var(--border);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.2s ease, margin 0.25s ease;
+}
+.detail-fw-list.open {
+  max-height: 200px;
+  opacity: 1;
 }
 .detail-fw-list a {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--accent);
   text-decoration: none;
+  font-family: var(--font-body);
+  padding: 4px 0;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
 }
-.detail-fw-list a:active { opacity: 0.7; }
+.detail-fw-list a:active { opacity: 0.6; }
 
 .detail-meta-row {
   display: flex;
@@ -1929,6 +2050,45 @@ a {
   margin-bottom: 6px;
 }
 
+.detail-sources {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted, #888);
+}
+.detail-sources summary {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  padding: 4px 0;
+}
+.detail-sources summary::-webkit-details-marker { display: none; }
+.detail-sources summary::after {
+  content: ' ›';
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.detail-sources[open] summary::after {
+  transform: rotate(90deg);
+}
+.detail-sources ul {
+  margin: 6px 0 0;
+  padding: 0 0 0 4px;
+  list-style: none;
+}
+.detail-sources li {
+  margin: 2px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.detail-sources a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border, #ddd);
+  text-underline-offset: 2px;
+}
+.detail-sources a:active { color: var(--accent); }
+
 /* GoTo / Tour — navigating active state */
 .detail-goto-pill.navigating {
   color: var(--teal);
@@ -1980,24 +2140,10 @@ a {
 
 .goto-map-zone {
   position: relative;
-  height: 55vh;
+  height: 50vh;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
-  margin: 12px -20px -20px;
-  touch-action: none;
-}
-
-.goto-map-spin {
-  position: absolute;
-  /* 142% = √2 × 100% so rotated square fully covers the visible zone */
-  width: 142%;
-  height: 142%;
-  top: 50%;
-  left: 50%;
-  transform-origin: center center;
-  margin-top: -71%;   /* half of 142% */
-  margin-left: -71%;
-  will-change: transform;
+  margin: 0 -20px -20px;
   transition: transform 0.15s linear;
 }
 
@@ -2861,28 +3007,49 @@ a {
 
 /* ── Tour nav bar (top) ── */
 .active-tour-nav {
-  flex-shrink: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: calc(var(--safe-top) + 2px) 20px 8px;
+  background: rgba(247, 244, 239, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  pointer-events: none;
+}
+.active-tour-nav button,
+.active-tour-nav-row1,
+.active-tour-nav-row2 {
+  pointer-events: auto;
+}
+.active-tour-nav-row1 {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: calc(var(--safe-top) + 2px) 20px 8px;
-  background: var(--card);
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
-  z-index: 10;
+}
+.active-tour-nav-row2 {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .active-tour-back {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: var(--bg);
-  border: none;
+  background: #fff;
+  border: 1.5px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: var(--text);
   flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .active-tour-nav-info {
@@ -2899,6 +3066,7 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 1px 4px rgba(255,255,255,0.8);
 }
 
 .tour-skip-btn {
@@ -2974,8 +3142,13 @@ a {
   min-height: 0;
   overflow: hidden;
   padding-top: 0;
-  background: var(--bg);
+  background: #f2efe9;
+  margin-top: -1px;
   margin-bottom: -1px;
+}
+.active-tour-map-zone.explore-dimmed #tour-map-container {
+  filter: grayscale(0.8) opacity(0.4);
+  transition: filter 0.3s;
 }
 
 .active-tour-segment-badge {
@@ -3108,7 +3281,7 @@ a {
 /* Tour HUD overlay — transparent on map, no blur */
 .tour-hud-overlay {
   position: absolute;
-  top: 0;
+  top: calc(var(--safe-top) + 95px);
   left: 0;
   right: 0;
   z-index: 500;
@@ -3249,20 +3422,90 @@ a {
 .active-tour-bottom {
   flex-shrink: 0;
   background: var(--card);
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.18), 0 -1px 6px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 10;
-  overflow: hidden;
+  overflow-y: auto;
   padding: 0 12px;
-  margin-top: 0;
-  padding-top: 12px;
-  border-radius: 0;
+  padding-top: 8px;
+  max-height: 32vh;
+  overflow: hidden;
+  padding-bottom: 4px;
+  transition: max-height 0.3s ease;
+}
+.active-tour-bottom.explore-expanded {
+  max-height: 65vh;
+  min-height: 50vh;
+  overflow-y: auto;
+}
+
+/* ── Explore expanded: stacked layout ── */
+.active-tour-bottom.explore-expanded .tour-bottom-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Explore expanded: vertical stacked layout ── */
+.active-tour-bottom.explore-expanded .tour-bottom-content {
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Left zone: image + artist name stacked vertically */
+.active-tour-bottom.explore-expanded .tour-left-zone {
+  flex: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+}
+.active-tour-bottom.explore-expanded .tour-stop-img-wrap {
+  aspect-ratio: 3 / 2;
+  border-width: 2px;
+  border-radius: 16px;
+}
+.active-tour-bottom.explore-expanded .tour-stop-artist {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  padding-right: 4px;
+  text-align: right;
+}
+
+/* Explore: image full width, then field notes + button row */
+.active-tour-bottom.explore-expanded .tour-right-zone {
+  flex: none;
+  width: 100%;
+}
+.active-tour-bottom.explore-expanded .tour-right-explore {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0 0 0;
+}
+.tour-field-notes-zone {
+  flex: 1;
+  min-width: 0;
+}
+.active-tour-bottom.explore-expanded .tour-action-btn {
+  flex: 0 0 auto;
+  padding: 16px 20px;
+  border-radius: 16px;
+  width: auto;
+  min-width: 140px;
+}
+.active-tour-bottom.explore-expanded .tour-action-btn .tour-action-line1 {
+  font-size: 15px;
+}
+.active-tour-bottom.explore-expanded .tour-action-btn .tour-action-line2 {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 /* Divider lines above/below bottom panel */
 .tour-divider-line {
-  height: 4px;
+  height: 2px;
   background: var(--teal);
   width: 100%;
   flex-shrink: 0;
@@ -3270,7 +3513,7 @@ a {
   z-index: 11;
 }
 .tour-divider-line.walking {
-  background: #FF7043;
+  background: #E8736C;
 }
 
 /* ── Bottom panel layout ── */
@@ -3282,15 +3525,22 @@ a {
 .tour-mode-header {
   margin-bottom: 8px;
 }
+.tour-mode-header-outer {
+  padding: 4px 12px 2px;
+}
 .tour-mode-label {
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 700;
   color: var(--teal);
   transition: color 0.3s;
+  white-space: nowrap;
 }
-.tour-bottom-row[data-state="walking"] .tour-mode-label {
-  color: #FF7043;
+.tour-mode-label.walking-label {
+  color: #E8736C;
+}
+.tour-mode-label.arrived-label {
+  color: #E8736C;
 }
 
 /* Content row: left + right zones side by side */
@@ -3325,10 +3575,10 @@ a {
 .tour-stop-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
-  border-radius: 18px;
+  aspect-ratio: 3 / 2;
+  border-radius: 14px;
   overflow: hidden;
-  border: 4px solid var(--teal);
+  border: 2px solid var(--teal);
   background: #e8e4de;
   transition: border-color 0.3s;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
@@ -3371,10 +3621,10 @@ a {
 
 /* Navigating state — orange border on destination card */
 .tour-bottom-row[data-state="walking"] .tour-stop-img-wrap {
-  border-color: #FF7043;
+  border-color: #E8736C;
 }
 .tour-bottom-row[data-state="walking"] .tour-stop-num {
-  background: #FF7043;
+  background: #E8736C;
 }
 
 /* Artist name */
@@ -3392,6 +3642,7 @@ a {
   text-align: right;
   padding-left: 0;
   padding-right: 4px;
+  margin-top: 2px;
 }
 
 /* Right explore column: bullets on top, button at bottom */
@@ -3408,23 +3659,61 @@ a {
 /* Mode bullet points */
 .tour-mode-bullets {
   margin: 0;
-  padding: 0 0 0 18px;
+  padding: 0 0 0 14px;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--teal);
 }
 .tour-mode-bullets-nav {
-  color: #FF7043;
+  color: #E8736C;
+}
+
+.tour-field-notes {
+  margin-bottom: 8px;
+}
+.tour-field-notes-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.tour-nav-instruction .tour-field-notes-title,
+.tour-nav-instruction .tour-field-notes-list {
+  color: #E8736C;
+}
+.tour-nav-instruction .tour-field-notes-list {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.tour-right-explore .tour-field-notes-title,
+.tour-right-explore .tour-field-notes-list {
+  color: var(--teal);
+}
+.tour-right-explore .tour-field-notes-list {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.tour-field-notes-list {
+  margin: 0;
+  padding: 0 0 0 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text);
 }
 
 /* ── Next Mural button (explore mode) ── */
 .tour-action-btn {
   width: 100%;
-  aspect-ratio: 2 / 1;
-  border-radius: 18px;
-  border: 4px solid var(--teal);
+  padding: 10px 0;
+  border-radius: 14px;
+  border: 3px solid var(--teal);
   background: var(--teal);
   color: #fff;
   cursor: pointer;
@@ -3440,6 +3729,30 @@ a {
   transform: scale(0.95);
 }
 .tour-action-btn[hidden] { display: none; }
+
+/* "I'm Here" arrival acknowledgment button */
+.tour-arrived-btn {
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 12px;
+  border-radius: 14px;
+  border: none;
+  background: #E8736C;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  animation: arrive-pulse 1.5s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour-arrived-btn:active { transform: scale(0.95); }
+.tour-arrived-btn[hidden] { display: none; }
+@keyframes arrive-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.5); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 112, 67, 0); }
+}
 .tour-action-line1,
 .tour-action-line2 {
   font-size: 16px;
@@ -3511,6 +3824,7 @@ a {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 /* Tour map — fills remaining space */
@@ -3562,9 +3876,9 @@ a {
 }
 
 .tour-pin.from {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--teal);
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--teal);
 }
 
 .tour-pin.from .tour-pin-num {
@@ -3574,11 +3888,11 @@ a {
 .tour-pin.to {
   width: 48px;
   height: 48px;
-  border: 3px solid #FF7043;
+  border: 2px solid #E8736C;
 }
 
 .tour-pin.to .tour-pin-num {
-  background: #FF7043;
+  background: #E8736C;
 }
 
 .tour-pin.adjacent {
@@ -4123,7 +4437,7 @@ a {
   pointer-events: none;
 }
 
-.help-annotations { position: absolute; inset: 0; top: var(--safe-top); pointer-events: none; }
+.help-annotations { position: absolute; inset: 0; pointer-events: none; }
 
 .help-ann {
   position: absolute;
@@ -4139,11 +4453,11 @@ a {
 
 .help-label {
   font-family: var(--font-hand);
-  font-size: 26px; font-weight: 700; line-height: 1.2;
+  font-size: 37px; font-weight: 700; line-height: 1.2;
   text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-  white-space: pre-line;
+  white-space: pre;
 }
-.help-label-lg { font-size: 34px; }
+.help-label-lg { font-size: 37px; }
 
 .help-arrow { pointer-events: none; }
 .help-arrow svg { display: block; }

@@ -4,8 +4,8 @@
 id: 25
 artist: Frankie Gonzalez
 year: 2024
-lat: 27.764116
-lng: -82.666734
+lat: 27.763343
+lng: -82.668439
 address: 2606 Fairfield Ave South
 category: shine
 img: "images/murals/2024/frankie-gonzalez.jpeg"
@@ -16,21 +16,98 @@ building: FloridaRAMA
 instagram: frankieg_art
 basedIn: "Tampa, FL"
 
-artistBio: |
-  Francisco "Frankie G" Gonzalez is a Miami-born, Tampa-based mixed-media artist
-  whose work blends comic, urban, and traditional painting techniques into bold,
-  culture-infused compositions rooted in his Cuban and Danish heritage. After
-  attending the Atlanta College of Art, he spent nine years in Salt Lake City
-  before returning to Florida to pursue art full-time. He combines spray paint
-  and latex to create figurative subjects juxtaposed with street art and pop art
-  elements. His public commissions include "Tampa's LIGHT" at Tampa Fire Rescue
-  Headquarters and projects for the cities of Tampa, Clearwater, Largo, and
-  St. Petersburg. Commercial clients include ESPN, the Tampa Bay Buccaneers,
-  Norwegian Cruise Lines, and Ducati. He also runs mural camps in local schools
-  and works with Habitat for Humanity and the Down Syndrome Foundation of
-  Florida.
+fieldNotes:
+  - "Nine years in corporate shipping before art"
+  - "Self-taught, learned watching friends paint"
+  - "Local St. Pete artist"
 
-muralDescription: |
+artistBio: |
+  He spent nine years in corporate shipping before coming back to paint.
+  Twenty-five days after hand surgery, he painted Tom Brady.
+
+  Francisco "Frankie G" Gonzalez was born in Miami to parents from Denmark and
+  Cuba. He started drawing comic book scenes as a kid, began painting seriously
+  at fifteen, and attended the Atlanta College of Art. After school he landed in
+  Salt Lake City and spent nine years in corporate transportation before
+  returning to Florida, quitting the desk, and going full-time on art. He took a
+  part-time job at a Tampa art store to learn the local scene while rebuilding.
+
+  His style blends traditional painting techniques with spray paint and latex —
+  bold lines, vivid colors, compositions rooted in Latin heritage that range
+  from realism to pop art. He orchestrates mural camps with local schools and
+  aspiring young artists, and partners with Habitat for Humanity and the Down
+  Syndrome Foundation of Florida.
+
+  Clients include ESPN, the Tampa Bay Buccaneers, the Miami Heat, Norwegian
+  Cruise Lines, the Houston Astros, Ducati, and PODS Moving & Storage. He
+  painted "Tampa's LIGHT" at Tampa Fire Rescue headquarters — a visual timeline
+  of the department's 128-year history — and two murals for the Pinellas County
+  Tax Collector.
+
+  For SHINE 2024, he painted at FloridaRAMA on Fairfield Avenue South.
+
+searchBio: |
+  He spent nine years in corporate shipping before coming back to paint.
+  Twenty-five days after hand surgery, he painted Tom Brady.
+
+  Francisco "Frankie G" Gonzalez was born and raised in Miami, Florida, to
+  parents who migrated from Denmark and Cuba at a young age. He started drawing
+  as early as he can remember, began painting seriously around age fifteen
+  during high school, and after graduating attended the Atlanta College of Art.
+  He moved to Salt Lake City, Utah and lived there roughly nine years, falling
+  into a corporate job in the shipping and transportation industry. Despite
+  success in that field, he was unfulfilled and relocated to Tampa, Florida,
+  where he has reinvented his career as an artist working with galleries,
+  private collectors, and high-profile clients.
+
+  After leaving corporate America in Tampa, he found himself with no immediate
+  support behind his work and took a part-time job at a local art store to
+  understand the city's arts opportunities and reinvest in supplies. Those
+  connections proved instrumental as his career grew. He now identifies as a
+  Hispanic mixed-media artist whose work combines traditional painting methods
+  with an urban art twist, used across paintings, design, and murals. He blends
+  spray paint with latex paint to build cohesive designs emphasizing vivid
+  colors and a range of styles from realism to illustration. He juxtaposes
+  figurative subject matter with interpretations of other styles, drawing
+  inspiration from Street Art and Pop Art, building bright, bold colors around
+  subject matter that always carries a narrative — whether a sports icon or
+  something more personal — to create harmony between figures and abstraction.
+
+  His city commission portfolio includes work for the Cities of Tampa,
+  Clearwater, Largo, and St. Petersburg. In February 2023, the City of Tampa
+  Arts & Cultural Affairs Division dedicated "Tampa's LIGHT" — a site-specific
+  mural commissioned at Tampa Fire Rescue headquarters showcasing a visual
+  timeline of Tampa Fire Rescue's 128-year history, honoring the department's
+  core values of integrity, honesty, loyalty, and trust. In December 2024, he
+  installed two murals at the reimagined Pinellas County Tax Collector location
+  at 13025 Starkey Road in Largo, a project produced in partnership with
+  Creative Pinellas and Tax Collector Adam Ross. The Tax Collector's office also
+  runs the Kids Tag Art Pinellas program, which raises funds for local
+  elementary art classrooms.
+
+  Commercial collaborations include ESPN, the Tampa Bay Buccaneers, the Miami
+  Heat, Norwegian Cruise Lines, the Houston Astros, Ducati, PODS Moving &
+  Storage, and Habitat for Humanity. He has painted Super Bowl champion Tom
+  Brady, completed roughly 25 days after hand surgery — a project he cites as
+  the kind of "once seemed impossible" work he aims for. He dedicates time to
+  local schools, orchestrating mural camps with aspiring young artists and
+  community partners to add public art to their communities. He partners with
+  Habitat for Humanity and the Down Syndrome Foundation of Florida to give back
+  through art and empower his community.
+
+  For SHINE 2024 he painted at FloridaRAMA on Fairfield Avenue South in St.
+  Petersburg. He was profiled by VoyageTampa in August 2022 ("Life & Work with
+  Francisco 'Frankie G' Gonzalez") and is featured on Creative Pinellas. His
+  work has been described as boldly lined and culture-infused, with rich color
+  stories and compositions rooted in his Latin heritage and Florida upbringing —
+  a steady presence across Tampa Bay through murals, paintings, sculptural
+  objects, custom apparel, and limited-edition merchandise. He offers payment
+  plans on listed and commissioned work and pushes into high-end spaces and
+  major projects nationwide.
+
+  Website: frankiegart.com. Instagram: @frankieg_art. Facebook: frankiegartwork.
+
+searchMuralDescription: |
   A wide, energetic mural on the side of FloridaRAMA blending photorealism with
   street art. At center, a boy in a baseball cap and tan shirt launches a paper
   airplane, his outstretched arm dissolving into bold black calligraphic strokes
@@ -42,13 +119,21 @@ muralDescription: |
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "SHINE 2024 festival artist; City of Tampa public art commission (Tampa Fire Rescue HQ)"
+artistAwards: "SHINE 2024 selected artist"
+furtherWork:
+  - name: "frankiegart.com"
+    url: "https://www.frankiegart.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_frankie_gonzalez"
   - "https://www.frankiegart.com/"
   - "https://voyagetampa.com/interview/life-work-with-francisco-frankie-g-gonzalez-of-tampa-fl/"
   - "https://creativepinellas.org/artist/frankie-g/"
   - "https://www.tampa.gov/news/tampa-fire-rescue-dedicate-new-mural-tfr-headquarters-115516"
+  - "https://www.frankiegart.com/about"
+  - "https://creativepinellas.org/magazine/frankie-g-brings-vibrant-public-art-to-pinellas-county-tax-collectors-reimagined-space/"

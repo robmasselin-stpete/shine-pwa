@@ -1,0 +1,111 @@
+# Low Bros — 2019
+
+# ── Required ──
+id: 175
+artist: Low Bros
+year: 2019
+lat: 27.778142
+lng: -82.646401
+address: 535 Dr. Martin Luther King Jr. St N
+category: shine
+img: "images/murals/2019/low-bros.jpeg"
+
+# ── Optional ──
+title: "Post Internet Explorers"
+building: ""
+instagram: low_bros
+basedIn: "Hamburg, Germany"
+
+artistBio: |
+  They studied at the University of Applied Sciences in Hamburg and the Berlin
+  University of the Arts. Their roots are in 1980s skate and hip-hop culture.
+
+  Florin Schmidt (born 1982) and Christoph Schmidt (born 1984) are brothers from
+  Hamburg, Germany who formed Low Bros in 2011. They have since rebranded as
+  Christoph Florin. Their style is self-described as "retro-futuristic" —
+  geometric shapes, bold lines, and vivid colors with recurring angular animal
+  characters, especially wolves. They merge digital vector design with analog
+  craft: stencils, masking tape, vinyl foil, acrylic paint, airbrush, and
+  Montana spray cans.
+
+  Their work explores identity in the digital age, post-internet culture,
+  consumerism, and environmental concerns. The tone oscillates between bold
+  geometry and delicate detail — "distinctly bittersweet."
+
+  Solo shows include StolenSpace Gallery (London), Thinkspace Gallery (Los
+  Angeles), Mirus Gallery (San Francisco, Denver), Urban Spree (Berlin), and HD
+  Gallery (Paris). Their work is in the Urban Nation Museum for Urban
+  Contemporary Art in Berlin. They have painted at POW! WOW! Hawaii and
+  festivals worldwide.
+
+  For SHINE 2019, they painted "Post Internet Explorers" in St. Petersburg.
+
+searchBio: |
+  Florin Schmidt (born 1982) and Christoph Schmidt (born 1984) are brothers from
+  Hamburg, Germany. They studied at the University of Applied Sciences (HAW) in
+  Hamburg and the Berlin University of the Arts (UDK). They formed Low Bros in
+  2011 and have since rebranded as Christoph Florin.
+
+  Their style is "retro-futuristic" — geometric shapes, bold lines, vivid
+  colors, recurring angular wolf characters. Process: freehand painting,
+  stencils, masking tape, vinyl foil, acrylic, airbrush, Montana spray cans.
+  Themes: post-internet culture, consumerism, digital identity.
+
+  Solo shows: StolenSpace Gallery (London, 2017), Thinkspace Gallery (Los
+  Angeles, 2015), Mirus Gallery (San Francisco, Denver 2022), Urban Spree
+  (Berlin, 2020), Dom Kultur (Moscow, 2019), HD Gallery (Paris, 2024).
+  Collections: Urban Nation Museum Berlin. Festivals: POW! WOW! Hawaii, SHINE
+  2019 St. Petersburg. Website: christophflorin.com.
+
+  Per the lowbros.de archive site and the active christophflorin.com, the duo's
+  studio is at Bogenstraße 19, 20144 Hamburg, Germany. Hamburg remains their
+  current base. Recent exhibitions under the Christoph Florin rebrand include
+  "Window Views" and "What's Cooking" at H.D. Gallery in Paris (2024), the
+  Knotenpunkt group show at Affenfaust Gallery (2024), "Postalgia" at Mirus
+  Gallery in Denver, "Con.txt" at Urban Spree Gallery in Berlin, and "98
+  Windows" at Mirus Gallery in San Francisco. Art-fair participation includes
+  Urban Art Fair Paris (2022, 2023, with H.D. Gallery), Scope Art Show Miami
+  (2016, 2022), Juxtapoz Clubhouse Miami (2018), Context Art Fair Miami (2017),
+  and Affordable Artfair Hamburg (2022). Additional collections include Art
+  Collection Berlin and private collections across Germany, USA, France,
+  Portugal, Switzerland, Monaco, and Thailand. They received multiple ADC Awards
+  in 2020 — Gold in Room Design; Silver in Exhibition Experience, Spatial
+  Staging, Light, and Product Design; Bronze in Next Level, Spatial Event, and
+  Public Event. Working categories on the active site span Paintings,
+  Sculptures, Projects, and Exhibitions, with named works including "Jet Set"
+  (paintings) and "The Medium is the Message" (sculptures). New Instagram
+  handle: @christoph_florin. Contact: ih@christophflorin.com.
+
+searchMuralDescription: |
+  A wide 120-by-25-foot mural spanning the full length of a commercial building
+  on MLK Street. A chain of yellow x-eyed emoji faces snakes across the wall
+  through a collage of graphic pop-culture and internet-age symbols: a
+  black-and-white barcode, a geometric multi-colored star, a blue circle with a
+  white cross (evoking social media), an American flag fragment with "SPIRIT"
+  text, a smiley face, a megaphone, and abstract geometric shapes in pastel
+  tones. "LOL" appears in blue block letters at the lower right. The palette is
+  muted pastels — sky blue, coral, mint, peach — against a light gray
+  background. The piece comments on the internet's evolution from open-source
+  community to corporate platform dominance.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Urban Nation Museum Berlin collection; international festival artist (POW! WOW!, SHINE 2019)"
+
+furtherWork:
+  - name: "christophflorin.com"
+    url: "https://christophflorin.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "22 April 2026 — New mural added, GPS from Rob's photo"
+  - "2026-05-03 — Appended lowbros.de + christophflorin.com (homepage, /about, /selected-works) findings to searchBio: Hamburg studio address (Bogenstraße 19), recent Christoph Florin rebrand exhibitions (H.D. Gallery Paris, Affenfaust, Mirus Denver, Urban Spree, Mirus SF), art-fair history (Urban Art Fair Paris, Scope Miami, Juxtapoz Clubhouse, Context, Affordable Artfair), Art Collection Berlin + private collections in 7 countries, multiple ADC Awards 2020 (Gold/Silver/Bronze across categories), named works Jet Set + The Medium is the Message, new IG @christoph_florin, contact email. Added 4 URLs to sourceNotes."
+sourceNotes:
+  - "Photo by Rob 2026-04-21, GPS from EXIF"
+  - "https://streetartnews.net/2019/11/post-internet-explorers-low-bros-in-st-petersburg-florida.html"
+  - "https://stpeteartsalliance.org/shine?alias=/2019_SHINE_low_bros"
+  - "https://www.lowbros.de/ (now an archive site; redirects from lowbros.de)"
+  - "https://www.christophflorin.com/"
+  - "https://www.christophflorin.com/about"
+  - "https://www.christophflorin.com/selected-works"

@@ -1,0 +1,111 @@
+# Alyssa Marie — Albert Whitted Airport (yellow Stearman biplane)
+
+# ── Required ──
+id: 211
+artist: Alyssa Marie
+year: 2024
+lat: 27.764316   # Rob-set via route-editor (Albert Whitted hangar, First St S side)
+lng: -82.633739
+address: "Albert Whitted Airport"
+category: commercial
+img: "images/murals/commercial/alyssa-marie-biplane.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Albert Whitted Airport"
+instagram: alyssa.marie.of.the.sea
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  A bright yellow Stearman biplane punches straight out of the hangar wall
+  it's painted on — wings, struts, bracing wires, and a propeller blurred
+  into a translucent disc, all scaled up to read from a moving car on First
+  Street.
+
+  Alyssa Marie is a fine artist from Colorado who moved to St. Petersburg in
+  2017 and opened Alyssa Marie Gallery on Beach Drive NE the next year (it
+  closed in January 2020). Off the festival circuit she's better known as half
+  of The Happy Mural Project — the "Honk if You're Happy" sunflower walls she
+  paints with Braden Everly, a three-time SHINE team.
+
+  Her solo work runs to local and nature scenes — water, birds, the Florida
+  coast — in oil and on walls. The biplane is the outlier: an aircraft instead
+  of wildlife, and it earns the exception.
+
+  Friends of Albert Whitted Airport, the City of St. Petersburg, and the St.
+  Petersburg Arts Alliance commissioned it in 2024, funded by the William and
+  Katherine McMannis charitable fund, and unveiled it that January. A second
+  airport mural by Brian McAllister went up alongside it. The plane bursting
+  from its own hangar turns the building into a picture of what's parked
+  inside.
+
+searchBio: |
+  A bright yellow Stearman biplane punches straight out of the hangar wall
+  it's painted on — wings, struts, bracing wires, and a propeller blurred into
+  a translucent disc, all scaled up to read from a moving car on First Street.
+
+  Alyssa Marie (credited on the airport project as Alyssa Dunlap) is a fine
+  artist from Colorado who relocated to St. Petersburg in 2017. In 2018 she
+  opened Alyssa Marie Gallery on Beach Drive NE in downtown St. Petersburg,
+  where she exhibited her own work; the gallery closed in January 2020 and she
+  shifted to selling paintings of local and nature scenes. With her husband
+  Braden Everly she is half of The Happy Mural Project, the "Honk if You're
+  Happy" sunflower-and-color-by-number walls that have been selected for SHINE
+  three times (2020, 2022, 2023). Her solo subjects run nautical and
+  Florida-coastal — water, birds, the coast — in oil on canvas and scaled up
+  onto walls.
+
+  This wall sits on the hangar facing First Street at Albert Whitted Airport.
+  It depicts a bright yellow Stearman biplane — a classic open-cockpit trainer
+  — emerging head-on from the hangar, propeller rendered as a translucent
+  spinning disc. The piece was commissioned in 2024 through a collaboration
+  between Friends of Albert Whitted Airport, the City of St. Petersburg, and
+  the St. Petersburg Arts Alliance, with funding from the charitable fund of
+  William and Katherine McMannis, and unveiled in January 2024. A companion
+  mural by St. Petersburg muralist and art educator Brian McAllister, titled
+  "Past, Present and Future," went up nearby, visible from the airport
+  restaurant, The Hangar. The murals mark St. Petersburg's aviation heritage —
+  the city is recognized as the birthplace of scheduled commercial airline
+  flight.
+
+  Instagram: @alyssa.marie.of.the.sea. Website: alyssamariegallery.com.
+
+searchMuralDescription: |
+  A large mural on the side of a hangar at Albert Whitted Airport, painted to
+  match the building's own dark, curved-roof silhouette. A bright yellow
+  Stearman-style open-cockpit biplane fills the center, shown nearly head-on
+  and angling forward as if taxiing out of the dark hangar interior. Upper and
+  lower wings are rendered in saturated yellow with white spars; thin white
+  struts and crossed bracing wires connect the wings, and the landing gear and
+  wheels sit below. At the nose, the spinning propeller is painted as a large
+  translucent circular disc, with the engine cowling and prop hub massed dark
+  at its center. The background reads as sky and water in blues, with the real
+  curved roofline of the hangar incorporated into the composition. Painted on
+  the hangar wall facing First Street.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "alyssamariegallery.com"
+    url: "https://alyssamariegallery.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-06-16 — New mural added by Rob: Alyssa Marie yellow Stearman biplane on the Albert Whitted Airport hangar (First St side). Photo from Rob (IMG_7213.jpeg, 2026-05-28). Forwarded photo's EXIF GPS (27.78708, -82.64674) is ~1.5mi N of the airport — bogus, discarded. Rob set final GPS via route-editor: 27.764316, -82.633739 (Albert Whitted hangar, First St S side). Year 2024 (unveiled Jan 2024). Category commercial (commissioned public art via FOAWA/City/SPAA — not a SHINE festival mural). Bio researched fresh; not copied from any site."
+sourceNotes:
+  - "Photo by Rob (forwarded), IMG_7213.jpeg dated 2026-05-28; EXIF GPS unreliable (re-stamped on forward) — GPS to be set manually"
+  - "https://www.stpeteinnovationdistrict.com/blog/albert-whitted-airport-murals"
+  - "https://www.aopa.org/news-and-media/all-news/2024/march/07/art-at-the-airport"
+  - "https://foawa.org/new-murals-unveiled-at-albert-whitted-airport/ (unveiled Jan 2024; McMannis charitable fund; hangar faces First Street; artist credited 'Alyssa Dunlap')"
+  - "https://alyssamariegallery.com/1murals (gallery murals portfolio)"
+  - "https://stpeteartsalliance.org/alyssa-marie-2022 (SPAA artist page)"
+  - "Bio facts (Colorado origin, gallery 2018–Jan 2020, married to Braden Everly, Happy Mural Project, SHINE 2020/2022/2023) cross-checked against reviewed entry data/murals/051-the-happy-mural-project-2023.yaml"
+  - "IG @alyssa.marie.of.the.sea confirmed — same handle used on reviewed entry #071"
+verification:
+  date: 2026-06-16
+  method: web research (innovation district, AOPA, FOAWA, gallery site)
+  status: pass
+  notes: "Attribution and subject corroborated across 4 sources. Surname discrepancy: airport org credits 'Alyssa Dunlap'; gallery/press use 'Alyssa Marie' — display name kept as 'Alyssa Marie' per Rob and majority of sources. GPS NOT verified — placeholder 0/0, Rob to set."

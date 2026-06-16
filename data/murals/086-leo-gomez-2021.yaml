@@ -17,28 +17,100 @@ instagram: leogomezstudio
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Leo Gomez launched his eponymous studio in St. Petersburg in 2017,
-  focusing on hand lettering, sign painting, and large-format murals.
-  His client list runs from Disney Springs and the St. Pete/Clearwater
-  International Airport to local spots like Green Bench Brewing and
-  Tombolo Books.
+  He grew up drawing alongside his grandmother in Bogota. She was a painter. Hip
+  hop got him into graffiti as a teenager.
 
-  His SHINE 2021 piece at Bayfront Health reads "Can't Thank You Enough"
-  in flowing gold script across a deep navy blue wall — a tribute to
-  healthcare workers painted with the precision and flourish of a
-  trained sign painter.
+  Leo Gomez is from Bogota, Colombia, based in St. Petersburg since around 2016.
+  He studied graphic design and trained in hand lettering and typography. His
+  style is bold, clean typography with dreamy color palettes — all hand-drawn
+  before going digital. "Handcrafted Lettering with Soul and Purpose."
 
-muralDescription: |
-  Elegant gold script lettering spelling "Can't Thank You Enough" fills
-  the entire wall of a building adjacent to Bayfront Health. The flowing
-  cursive letterforms are painted on a rich navy blue background, with
-  decorative swashes and flourishes extending from each word. "Leo Gomez
-  Studio" is signed in the upper right corner.
+  Clients include Disney Springs, Starbucks, Publix, the Tampa Bay Lightning,
+  Green Bench Brewing, and Tombolo Books. He designed the Tampa Bay Lightning's
+  Hockey Talks Night limited-edition puck for mental health awareness (2024) and
+  painted signage at the St. Pete/Clearwater International Airport.
+
+  For SHINE, he painted in both 2019 ("Sunshine on my Mind") and 2021.
+
+searchBio: |
+  He grew up drawing alongside his grandmother in Bogota. She was a painter. Hip
+  hop got him into graffiti as a teenager.
+
+  Leo Gomez was born and raised in Bogota, Colombia. Art was a constant from his
+  earliest memories — his grandmother was a painter, and he was always drawing,
+  coloring, or creating something. As a teenager, his love for hip hop pulled
+  him into graffiti and murals, both of which became foundational influences. He
+  studied graphic design and gained his formal grounding in hand lettering and
+  typography there. He has lived in St. Petersburg, Florida since around 2016 —
+  about eight years as of his January 2024 Tampa Bay Lightning interview — and
+  founded Leo Gomez Studio in 2017.
+
+  The studio specializes in murals, sign painting, hand lettering, public art
+  painting, commercial murals, logo design, and custom lettering for both
+  interior and exterior spaces. Every project is hand-drawn before going
+  digital. His own framing of the discipline: "All of my work is hand drawn
+  before being digital. And what I love about doing things by hand is that it's
+  authentic. You can feel it." His style is built around bold, clean typography
+  paired with dreamy color palettes and positive, optimistic messaging. The
+  studio's tagline: "Handcrafted Lettering with Soul and Purpose."
+
+  His client roster runs across food, retail, sports, hospitality, and civic
+  projects. Documented clients include Disney Springs, Starbucks, Publix, the
+  Tampa Bay Lightning, the St. Pete/Clearwater International Airport, Green
+  Bench Brewing, Rusty Bellies, Tombolo Books, Blush Tea and Coffee, Boyd
+  Construction, Black Crow Coffee, Grand Central Brewhouse, Yo Mama's Foods Co,
+  Central Cycling, Intermezzo, the Hollander Hotel, Wild Roots, The Blend Coffee
+  & Wine, Love Food Central Cafe, Brick Street Farms, Book and Bottle, Crossfit
+  9, Northeast Orthodontics, The Body Electric Yoga Co, Creative Pinellas,
+  Hawthorne Bottle Shoppe, and Atlas Body + Home.
+
+  In January 2024 the Tampa Bay Lightning Foundation tapped him to design the
+  limited-edition mystery puck for the team's fourth annual Hockey Talks Night
+  at AMALIE Arena (Lightning vs. Coyotes), focused on mental health awareness.
+  The Lightning Foundation found his work on Instagram. His puck design centered
+  on the message that "it's okay to not feel okay all the time," with a color
+  palette drawn from color psychology to represent inner emotions. He has spoken
+  candidly about why mental health matters to his own practice: "I don't think
+  being an artist is easy. We naturally deal with many things internally and if
+  we're not in a good place that can stop us from reaching our full potential."
+  He was profiled by Thompson Brandes for TampaBayLightning.com under the "Local
+  Artist Spotlight" series on January 24, 2024.
+
+  He has painted signage at the St. Pete/Clearwater International Airport. He is
+  featured on the Creative Pinellas artist roster, posted October 26, 2021,
+  where he describes himself as "a hand lettering artist, muralist, sign
+  painter, designer, and all around lover of hand crafted art" and frames every
+  project as meant "to communicate a positive message and making a difference."
+
+  For the SHINE Mural Festival, he has been a selected artist twice — 2019 with
+  "Sunshine on my Mind" and again in 2021. The studio books projects one to two
+  months in advance, with hand-painted murals and signs typically taking two to
+  seven days to complete depending on scale and access. The studio operates out
+  of St. Petersburg but travels for projects. Murals are priced individually
+  based on size, complexity, and accessibility of the location.
+
+  Outside of lettering and signage, he was experimenting with cement art as of
+  the 2024 Lightning interview. He frames his creative practice around finding
+  balance through working with his hands and through time spent in nature.
+
+  Website: leogomezstudio.com. Instagram: @leogomezstudio.
+
+searchMuralDescription: |
+  Elegant gold script lettering spelling "Can't Thank You Enough" fills the
+  entire wall of a building adjacent to Bayfront Health. The flowing cursive
+  letterforms are painted on a rich navy blue background, with decorative
+  swashes and flourishes extending from each word. "Leo Gomez Studio" is signed
+  in the upper right corner.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
-
+artistAwards: "SHINE 2019 and 2021 selected artist"
+furtherWork:
+  - name: "leogomezstudio.com"
+    url: "https://www.leogomezstudio.com"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
@@ -46,3 +118,5 @@ sourceNotes:
   - "https://www.leogomezstudio.com/about"
   - "https://stpeteartsalliance.org/leo-gomez"
   - "https://www.leogomezstudio.com/murals"
+  - "https://creativepinellas.org/artist/leo-gomez/"
+  - "https://www.nhl.com/lightning/news/local-artist-spotlight-leo-gomez"

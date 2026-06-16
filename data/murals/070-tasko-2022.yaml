@@ -4,11 +4,11 @@
 id: 70
 artist: Tasko
 year: 2022
-lat: 27.763
-lng: -82.667
+lat: 27.766272
+lng: -82.660270
 address: 1960 5th Ave S.
 category: shine
-img: "images/murals/2022/Tasko-SHINE-Day-9.jpg"
+img: "images/murals/2022/tasko.jpeg"
 
 # ── Optional ──
 title: ""
@@ -17,16 +17,110 @@ instagram: the_one_of_many_
 basedIn: "Tampa Bay, FL"
 
 artistBio: |
-  Tasko is a graffiti writer with a passion for letters. He enjoys finding ways
-  to make the letters dance together and become part of the wall. Using a
-  mostly freestyle technique that allows his work to truly fit the surface,
-  every piece he paints is unique to the wall and/or objects he paints.
+  A friend handed him a spray can while skating. He has been writing for fifteen
+  years.
 
-muralDescription: ""
+  Jake Jacquillard — Tasko — is a Tampa Bay graffiti writer and wildstyle
+  specialist. Self-taught, no formal education. His work is "loud, colorful and
+  in your face" — flashy lettering in spray paint with fifteen-plus years of
+  practice. He wants people to see graffiti as art, not vandalism.
+
+  He organized "Letter Headz," a writer event in Pinellas. For SHINE 2018, he
+  was selected as an Open Call artist and painted "St Pete" in 3D graffiti
+  letters. He returned for SHINE 2022 with "The Collective."
+
+searchBio: |
+  A friend handed him a spray can while skating. He has been writing for fifteen
+  years.
+
+  Jake Jacquillard — Tasko — is a Tampa Bay graffiti writer and wildstyle
+  specialist. He picked the name as a kid, starting with "Task" and adding the O
+  after an old homie suggested adding a number when he learned how popular
+  "Task" already was. He did not grow up in an area with much graffiti. He went
+  skating with friends one day, his buddy had a can of paint, and he did "this
+  bubble letter crap" — then started tagging his name everywhere he went. A few
+  years later he saw a wall full of burners and was hooked. He is self-taught,
+  with no formal education in art. He describes his work as "loud, colorful and
+  in your face" — flashy lettering in spray paint with fifteen-plus years of
+  practice. He wants people to see graffiti as art, not vandalism.
+
+  He runs "Letter Headz," a writer event in Pinellas. The first edition was a
+  one-time idea — a show of alphabets from different writers, named after the
+  better of the contenders he had on the table. It had a decent turnout and
+  everyone had fun, so he ran "Letter Headz 2.0" on September 23-24 across two
+  nights at Donnelly Cove Park in Pinellas Park, Florida, with 30 different
+  artists' work on display. The 2.0 theme was open to whatever the artists
+  wanted to rock, but it had to be done on a street sign. Contact for the event
+  is letterheadzfl@gmail.com. He has said he is not yet calling Letter Headz a
+  festival, but he would be lying if he said that is not where he wants it in a
+  few years. He has received support from the local community in running it.
+
+  For SHINE Mural Festival 2018, he was selected as one of five "Open Call"
+  artists — winners of a St. Petersburg Arts Alliance search for the city's
+  finest "unknown" mural artists. Each of the five was assigned a section of the
+  rear wall of an industrial strip at 4139 7th Terrace South. The other Open
+  Call artists that year were California-born Michael Vahl (best known for a
+  lifelike-but-eerie Salvador Dali on Baum Avenue, painted via projection and a
+  combination of spray and drybrush oil), Georgia native Sarah Page (a female
+  astronaut adrift in the universe), St. Pete native Justin Wagher (a Pinellas
+  County Center for the Arts at Gibbs High School graduate, painting a shadowy
+  grey-and-black cityscape of telephone poles and connecting wires), and
+  Philadelphia native and University of Tampa Fine Arts graduate Melanie Posner
+  (working in photo-realistic women's faces with house paint and brushes only).
+  Tasko's contribution was "St Pete" rendered in 3D graffiti letters. He
+  returned to SHINE in 2022 with a piece titled "The Collective."
+
+  He sees both St. Pete and Tampa as having strong art scenes with extremely
+  talented artists, and credits both with leaning toward the street art and
+  mural side of graffiti, with Tampa coming across as grittier on the street
+  stuff. He has said the Tampa Bay scene is no Miami or LA but is doing its
+  thing, with new names appearing every week. He says inspiration comes from
+  wanting to paint a better piece than the last one rather than from any
+  specific city. He is part of the crews DvK and MiB, both of which he has
+  publicly shouted out. He has named Estma as a local writer to watch, citing
+  Estma as one of the few going through the proper phases — handstyles to throws
+  to straights to burners — and has said too many kids skip the most important
+  part of graffiti and try to jump straight to doing pieces, with the lack of
+  foundation showing in their handstyle.
+
+  His goals as stated in his MRCNN Hip Hop interview are to keep painting as
+  much as he can and to progress in the process. Coverage of him includes the
+  St. Pete Catalyst's "SHINE up close: Meet the Open Call artists" by Bill
+  DeYoung (October 9, 2018) and the MRCNN Hip Hop interview "Tampa Bay Writer
+  TASKO" by L. Reed.
+
+  Instagram: @the_one_of_many_ (current working handle, confirmed by Rob —
+  supersedes the @tasko handle listed on the MRCNN contact card). Letter Headz
+  Instagram is also active under the Letter Headz handle.
+
+searchMuralDescription: |
+  A massive wildstyle graffiti piece spanning a long dark wall. Bold,
+  interlocking letterforms fill the composition in a rainbow of colors — deep
+  blue and purple on the left, transitioning through sky blue, burnt orange and
+  red in the center, to mint green, magenta, and gold on the right. The letters
+  are sharp-edged and angular with complex overlapping forms, arrows, and
+  three-dimensional shading. White highlights and pale smoke-like wisps rise
+  from the tops of the letters against the dark navy-black background. Scattered
+  bubbles and organic shapes float in the upper portion. The overall effect is
+  explosive and kinetic.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2018 Open Call; SHINE 2022 selected artist"
 
+furtherWork: []
+
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-03 — Updated Instagram handle reference in searchBio to @the_one_of_many_ (current working handle per Rob); old @tasko handle (from MRCNN) flagged as superseded. IG URL added to sourceNotes."
+  - "2026-05-12 — Confirmed photo is Rob's (iPhone EXIF audit)"
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Migrated from data.js 2026-03-05"
+  - "https://stpeteartsalliance.org/tasko-2022"
+  - "https://stpetecatalyst.com/shine-up-close-meet-the-open-call-artists/"
+  - "https://www.mrcnnlive.com/tampa-bay-area-writer-tasko-spraypaint-artists/"
+  - "https://www.instagram.com/the_one_of_many_/"
+  - "Photo by Rob — confirmed iPhone EXIF audit 2026-05-12"

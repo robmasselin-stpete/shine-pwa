@@ -1,0 +1,71 @@
+# Daniel Barojas — 2017
+
+# ── Required ──
+id: 145
+artist: Daniel Barojas
+year: 2017
+lat: 27.772362
+lng: -82.650755
+address: "1211 1st Ave N"
+category: shine
+img: "images/murals/commercial/daniel-barojas-tlaloc.jpeg"
+
+# ── Optional ──
+title: "Tlaloc"
+building: ""
+instagram: r5imaging
+basedIn: Mexico
+
+artistBio: |
+  He painted Tlaloc, the Aztec god of water and rain, as an offering — an
+  ofrenda — to protect St. Petersburg from drought and storms.
+
+  Daniel "R5" Barojas (also known as Rope5) is a Mexico-born muralist based in
+  St. Petersburg. His work blends traditional cultures, ancient mythologies, and
+  popular fables with urban influences — bold geometric patterns, vibrant color,
+  sharp linework. The Tlaloc face on this wall — green-skinned with spiral eyes
+  and a fanged mouth, framed by interlocking cube patterns and crashing ocean
+  waves — is a representative example.
+
+  He painted this wall for SHINE 2017. He went on to win the 2018 St. Pete Arts
+  Alliance Individual Artist Award and a Creative Pinellas Emerging Artist
+  Award. Signed "@R5Imaging."
+
+searchMuralDescription: |
+  A wide mural on the upper half of a two-story commercial building depicting
+  Tlaloc, the Aztec god of fertility and rain. The central figure is a massive
+  green-faced deity with spiral eyes, fanged mouth, and a golden crown or
+  headdress, rendered in sharp geometric patterns. The face is framed by
+  outstretched wing-like forms filled with interlocking cube patterns in coral,
+  teal, and brown. Crashing ocean waves in deep blues and teals flank both
+  sides. A teal hexagonal cube pattern fills the background. Signed "@R3Imaging"
+  in the lower right. The palette is dominated by teal, coral, green, gold, and
+  deep blue.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "https://r5imaging.com/"
+  - "https://www.instagram.com/r5imaging/"
+  - "https://stpeteartsalliance.org/daniel-r5-barojas"
+  - "https://creativepinellas.org/artist/daniel-barojas/"
+  - "https://monochronicle.com/artist/daniel-barojas/"
+  - "https://stpetemuraltour.com/2017/11/15/daniel-r5-barojas/"
+  - "https://www.artsy.net/artist/daniel-r5-barojas"
+  - "https://www.visitstpeteclearwater.com/article/murals-edge-district"
+  - "GPS from Rob's photo IMG_1960.jpeg taken April 8, 2026. @R5Imaging tag visible on wall. Located in the Edge District."
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "26 April 2026 — Audit: alias was wrong (R3 → R5), Instagram was wrong (r3imaging → r5imaging). Softened Mesoamerican-mythology overgeneralization. Added verified URLs and award credentials."
+  - "2026-05-03 — Reclassified per Rob: this is SHINE 2017 (was tagged 'commercial' with year 0). File renamed 145-daniel-barojas-commercial.yaml → 145-daniel-barojas-2017.yaml. Display bio rewritten with Tlaloc-as-ofrenda hook and SHINE 2017 framing."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "Fixed major alias error (R3 → R5). Bio softened from 'Mesoamerican mythology and pre-Columbian iconography' (overgeneralized from one mural) to broader description of artist's actual style."

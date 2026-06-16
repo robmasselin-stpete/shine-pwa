@@ -1,0 +1,23 @@
+# POI template — copy this and fill in
+# POIs render on the Mural Map only (NOT in the Explore grid).
+# When the user walks within ~30m, a popup card appears.
+
+# ── Required ──
+id: 0                       # numeric, unique across POIs
+name: ""                    # display name, e.g. "Soft Water Studios"
+type: ""                    # studio | gallery | shop | landmark | venue
+lat: 0.0
+lng: 0.0
+
+# ── Optional ──
+address: ""
+building: ""
+website: ""                 # full URL
+instagram: ""               # handle without @
+hours: ""                   # short string, e.g. "Tue-Sat 11-6"
+headline: ""                # one bold line at the top of the card, e.g. "6 mural artists have their studios here"
+image: ""                   # path to a graphic, e.g. "images/pois/soft-water.jpg" — shown above the headline
+description: |              # 1-3 sentences. Same voice as artist bios.
+
+# Mural IDs of artists who work / show here
+linkedMurals: []

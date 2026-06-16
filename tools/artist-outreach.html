@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mural Quest — Artist Outreach</title>
+  <style>
+    :root {
+      --bg: #0e1414;
+      --panel: #182123;
+      --text: #e6edee;
+      --muted: #8b9698;
+      --teal: #1abc9c;
+      --teal-dark: #149178;
+      --border: #2a3537;
+      --sent: #6b7e7f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px;
+    }
+    h1 { margin: 0 0 6px; font-size: 22px; }
+    .stats { color: var(--muted); margin-bottom: 18px; font-size: 14px; }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+    .controls input, .controls select {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .controls input { flex: 1; max-width: 360px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: #1f2a2c;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr.sent { color: var(--sent); }
+    tr.sent strong { color: var(--sent); text-decoration: line-through; }
+    .m { font-size: 12px; line-height: 1.4; }
+    .m + .m { margin-top: 4px; padding-top: 4px; border-top: 1px dashed var(--border); }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .status-pending { color: var(--muted); }
+    .status-sent { color: var(--teal); font-weight: 600; }
+    button {
+      background: var(--teal);
+      color: #0e1414;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: var(--teal-dark); color: #fff; }
+    button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    button.secondary:hover { background: var(--panel); color: var(--text); }
+    /* Modal */
+    #modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
+    }
+    #modal-overlay.hidden { display: none; }
+    .modal {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      width: min(640px, 92vw);
+      padding: 22px;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    }
+    .modal h2 { margin: 0 0 4px; font-size: 18px; }
+    .modal-sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+    .modal textarea {
+      width: 100%;
+      background: #0e1414;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .modal-actions button { padding: 10px 16px; font-size: 13px; }
+    .copy-flash { background: #2ecc71 !important; color: #0e1414 !important; }
+  </style>
+</head>
+<body>
+  <h1>Artist Outreach</h1>
+  <div class="stats">
+    <span id="artist-count">—</span> artists with Instagram ·
+    <span id="sent-count">0</span> sent ·
+    <span id="pending-count">0</span> pending
+  </div>
+  <div class="controls">
+    <input id="search" placeholder="Search artist or location...">
+    <select id="filter-status">
+      <option value="all">All</option>
+      <option value="pending" selected>Pending</option>
+      <option value="sent">Sent</option>
+    </select>
+    <button class="secondary" id="reset-btn" title="Clear all 'sent' marks">Reset Sent</button>
+  </div>
+
+  <table id="artists-table">
+    <thead>
+      <tr>
+        <th style="width:18%">Artist</th>
+        <th style="width:38%">Murals</th>
+        <th style="width:14%">Instagram</th>
+        <th style="width:14%">Website</th>
+        <th style="width:8%">Status</th>
+        <th style="width:8%"></th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="modal-overlay" class="hidden">
+    <div class="modal" onclick="event.stopPropagation()">
+      <h2 id="modal-artist"></h2>
+      <div class="modal-sub" id="modal-sub"></div>
+      <textarea id="modal-message" rows="8"></textarea>
+      <div class="modal-actions">
+        <button id="btn-copy">Copy Message</button>
+        <button id="btn-open-ig" class="secondary">Open Instagram</button>
+        <button id="btn-mark-sent">Mark Sent</button>
+        <button id="btn-cancel" class="secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { murals } from '../js/data.js?v=142';
+
+    // Skip group/unknown attributions
+    const SKIP = new Set(['Various / Unknown', 'Ink Werkz Crew']);
+
+    // Group by artist (must have IG handle)
+    const byArtist = new Map();
+    for (const m of murals) {
+      if (!m.ig) continue;
+      if (SKIP.has(m.a)) continue;
+      if (!byArtist.has(m.a)) byArtist.set(m.a, []);
+      byArtist.get(m.a).push(m);
+    }
+    const artists = [...byArtist.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+
+    // localStorage tracking
+    const STORAGE_KEY = 'mq-outreach-sent';
+    const sent = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+
+    function saveSent() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...sent]));
+      updateCounts();
+    }
+    function updateCounts() {
+      document.getElementById('artist-count').textContent = artists.length;
+      document.getElementById('sent-count').textContent = sent.size;
+      document.getElementById('pending-count').textContent = artists.length - sent.size;
+    }
+
+    function firstName(artistName) {
+      // "Aaron Tullo" -> "Aaron"; "Blake Emory & Guillo Perez III" -> "Blake & Guillo"
+      const parts = artistName.split(/\s*&\s*/);
+      const firsts = parts.map(p => p.trim().split(/\s+/)[0]);
+      return firsts.join(' & ');
+    }
+
+    function joinList(items) {
+      if (items.length === 1) return items[0];
+      if (items.length === 2) return `${items[0]} and ${items[1]}`;
+      return items.slice(0, -1).join(', ') + ', and ' + items[items.length - 1];
+    }
+
+    function buildMessage(artist, ms) {
+      const locations = ms.map(m => {
+        const bldg = m.bldg || '';
+        const loc = m.loc || '';
+        if (bldg && loc) return `${bldg} (${loc})`;
+        return bldg || loc || '';
+      }).filter(Boolean);
+
+      const websites = new Set();
+      for (const m of ms) {
+        if (Array.isArray(m.fw)) {
+          for (const w of m.fw) if (w.url) websites.add(w.url);
+        }
+      }
+      const credit = [`@${ms[0].ig}`, ...websites].join(' · ');
+      const word = ms.length === 1 ? 'mural' : 'murals';
+      const locStr = joinList(locations);
+
+      return `Hey ${firstName(artist)} — I'm Rob, a St. Pete local who just built an app called Mural Quest that features your ${word} at ${locStr}. Launching on the App Store next week. Your work is credited with ${credit}. Happy to send an Apple TestFlight link if you want to check it out before it goes live.`;
+    }
+
+    function render() {
+      const tbody = document.querySelector('#artists-table tbody');
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      const filterStatus = document.getElementById('filter-status').value;
+
+      const rows = artists.filter(([artist, ms]) => {
+        const isSent = sent.has(artist);
+        if (filterStatus === 'pending' && isSent) return false;
+        if (filterStatus === 'sent' && !isSent) return false;
+        if (q) {
+          const hay = [artist, ...ms.map(m => [m.t, m.bldg, m.loc].filter(Boolean).join(' '))].join(' ').toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      tbody.innerHTML = rows.map(([artist, ms]) => {
+        const ig = ms[0].ig;
+        const fw = (ms.flatMap(m => m.fw || []))[0];
+        const muralsList = ms.map(m => {
+          const title = m.t ? `<strong>"${m.t}"</strong> — ` : '';
+          const loc = [m.bldg, m.loc].filter(Boolean).join(', ') || '—';
+          return `<div class="m">${title}${loc}${m.y ? ` <span style="color:var(--muted)">· ${m.y}</span>` : ''}</div>`;
+        }).join('');
+        const isSent = sent.has(artist);
+        return `
+          <tr class="${isSent ? 'sent' : ''}" data-artist="${artist.replace(/"/g, '&quot;')}">
+            <td><strong>${artist}</strong> <span style="color:var(--muted)">(${ms.length})</span></td>
+            <td>${muralsList}</td>
+            <td><a href="https://instagram.com/${ig}" target="_blank">@${ig}</a></td>
+            <td>${fw && fw.url ? `<a href="${fw.url}" target="_blank">${fw.name || 'site'}</a>` : '<span style="color:var(--muted)">—</span>'}</td>
+            <td><span class="${isSent ? 'status-sent' : 'status-pending'}">${isSent ? '✓ Sent' : 'Pending'}</span></td>
+            <td><button class="preview-btn">Preview</button></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Modal logic
+    let currentArtist = null;
+    function openModal(artist) {
+      currentArtist = artist;
+      const ms = byArtist.get(artist);
+      document.getElementById('modal-artist').textContent = artist;
+      document.getElementById('modal-sub').textContent = `${ms.length} mural${ms.length>1?'s':''} · @${ms[0].ig}`;
+      document.getElementById('modal-message').value = buildMessage(artist, ms);
+      document.getElementById('btn-mark-sent').textContent = sent.has(artist) ? 'Unmark Sent' : 'Mark Sent';
+      document.getElementById('modal-overlay').classList.remove('hidden');
+    }
+    function closeModal() {
+      currentArtist = null;
+      document.getElementById('modal-overlay').classList.add('hidden');
+    }
+
+    document.querySelector('#artists-table tbody').addEventListener('click', (e) => {
+      if (e.target.classList.contains('preview-btn')) {
+        const row = e.target.closest('tr');
+        openModal(row.dataset.artist);
+      }
+    });
+
+    document.getElementById('btn-copy').addEventListener('click', async () => {
+      const text = document.getElementById('modal-message').value;
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = document.getElementById('btn-copy');
+        const orig = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copy-flash');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('copy-flash'); }, 1500);
+      } catch (e) {
+        alert('Copy failed: ' + e.message);
+      }
+    });
+
+    document.getElementById('btn-open-ig').addEventListener('click', () => {
+      const ig = byArtist.get(currentArtist)[0].ig;
+      window.open(`https://instagram.com/${ig}`, '_blank');
+    });
+
+    document.getElementById('btn-mark-sent').addEventListener('click', () => {
+      if (sent.has(currentArtist)) sent.delete(currentArtist);
+      else sent.add(currentArtist);
+      saveSent();
+      closeModal();
+      render();
+    });
+
+    document.getElementById('btn-cancel').addEventListener('click', closeModal);
+    document.getElementById('modal-overlay').addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !document.getElementById('modal-overlay').classList.contains('hidden')) closeModal();
+    });
+
+    document.getElementById('search').addEventListener('input', render);
+    document.getElementById('filter-status').addEventListener('change', render);
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      if (confirm(`Clear all ${sent.size} sent marks?`)) {
+        sent.clear();
+        saveSent();
+        render();
+      }
+    });
+
+    updateCounts();
+    render();
+  </script>
+</body>
+</html>

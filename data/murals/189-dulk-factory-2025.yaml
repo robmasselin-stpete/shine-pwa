@@ -1,0 +1,104 @@
+# Dulk — The Factory (2025, Commissioned)
+
+# ── Required ──
+id: 189
+artist: Dulk
+year: 2025
+lat: 27.763100
+lng: -82.669472
+address: 680 28th St S
+category: commercial
+img: "images/murals/commercial/unknown-animals-running.jpeg"
+
+# ── Optional ──
+title: ""
+building: "St. Pete Athletic at The Factory"
+instagram: dulk1
+basedIn: "Valencia, Spain"
+
+fieldNotes:
+  - "Spent time on the Weeki Wachee River studying Florida wildlife before painting"
+  - "National Geographic Expeditions expert"
+  - "Two-sided mural — land animals on one face, underwater manatee on the other"
+
+artistBio: |
+  One side: a Florida panther and a wild boar sprint through vegetation. The
+  other side: a manatee with a flower-headed figure on its back. Before he
+  painted, he went up the Weeki Wachee River with the Florida Wildlife Corridor
+  Foundation to see them in real life.
+
+  Antonio Segura Donat — Dulk — grew up in Valencia, Spain, copying exotic
+  animals from his parents' old encyclopedias. At nineteen, while studying
+  economics at the University of Valencia, a friend dragged him into the
+  graffiti world. Within a year he dropped economics for illustration.
+
+  He builds surreal ecosystems on walls — animals, plants, and invented hybrid
+  creatures layered into dense, dreamlike compositions saturated with color. The
+  scenes look fantastical but are rooted in real ecology; he researches every
+  local ecosystem before painting it.
+
+  His murals span Berlin, Paris, Las Vegas, Miami, and Vancouver. He is a
+  National Geographic Expeditions expert and a Liquitex-sponsored artist. For
+  Las Fallas 2022 in Valencia he built "Protegeix Allò que estimes" (Protect
+  What You Love), a 23-meter polar bear sculpture. The Factory commission was
+  curated by Jenee Priebe of No Good Deeds Art and supported by the Florida
+  Wildlife Corridor Foundation.
+
+searchBio: |
+  Antonio Segura Donat — Dulk — born 1983 in Valencia, Spain. Studied
+  illustration in Valencia after dropping out of an economics degree at the
+  University of Valencia. Surreal nature murals around the world. National
+  Geographic Expeditions expert. Liquitex-sponsored artist. Las Fallas 2022
+  monumental sculpture ("Protegeix Allò que estimes" — 23-meter polar bear).
+  Exhibited at Thinkspace Projects (LA, "Legacy" solo show 2018), Moniker Art
+  Fair (London, 2017).
+
+  St. Pete mural at The Factory commissioned by The Factory St. Pete and St.
+  Pete Athletic, curated by Jenee Priebe of No Good Deeds Art, supported by the
+  Florida Wildlife Corridor Foundation.
+
+  Instagram: @dulk1.
+
+searchMuralDescription: |
+  A two-sided mural wrapping St. Pete Athletic at The Factory campus, visible
+  from the Pinellas Trail. One face shows a Florida panther and wild boar
+  sprinting through stylized vegetation against a warm yellow-orange sky, with
+  birds and leaves in motion. The other face depicts an underwater scene in deep
+  teal — a manatee swimming through the water surrounded by fantastical sea
+  creatures, a flower-headed figure riding on its back, fish schools, and
+  bubbling marine life. Both sides are rendered in Dulk's signature surrealist
+  style with dense layering of real and imagined species.
+
+muralInspiration: "Celebrates Florida's biodiversity — the artist researched native species with the Florida Wildlife Corridor Foundation before painting."
+muralAwards: ""
+artistAwards: "National Geographic Expeditions expert; Liquitex sponsored artist"
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "26 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited; softened 'Valencia School of Art and Design' (exact institution unverified — sources say studied at University of Valencia then switched to illustration); dropped 'Denver' from city list (not in sources); added Las Fallas piece title and details."
+  - "2026-05-03 — New hook anchored to this two-sided wall (panther+boar on land side, manatee+flower-headed figure on water side) and the Weeki Wachee research trip with Florida Wildlife Corridor Foundation. Body tightened: Valencia origin, ecology-research practice, global mural cities, NatGeo + Liquitex + Las Fallas, then The Factory commission with Jenee Priebe of No Good Deeds Art."
+sourceNotes:
+  - "https://dulk.es/about/"
+  - "https://dulk.es/bio/"
+  - "https://www.artsy.net/artist/antonio-segura-donat-dulk"
+  - "https://streetartunitedstates.com/honest-and-candid-interview-with-dulk/"
+  - "https://www.nationalgeographic.com/expeditions/experts/antonio-segura/"
+  - "https://www.expeditions.com/about/expedition-team/antonio-segura"
+  - "https://www.liquitex.com/blogs/special-projects/dulk-valencia-spain"
+  - "https://www.thisiscolossal.com/2022/03/falles-valencia-dulk/"
+  - "https://www.blocal-travel.com/street-art-news/dulk-las-fallas-valencia/"
+  - "https://dulk.es/projects/protegix-allo-que-estimes-falla-municipal-2022/"
+  - "https://thinkspaceprojects.com/shows/moniker-dulk/"
+  - "https://arrestedmotion.com/2018/11/upcoming-dulk-legacy-thinkspace-projects/"
+  - "https://www.tbartspassport.com/when-the-walls-breathe-dulk-brings-a-dream-of-florida-to-life-at-the-factory/"
+  - "https://www.nogooddeedsart.com/"
+  - "Photo by Rob 2026-04-26, GPS from EXIF. Two photos: IMG_0167 (land side) and IMG_0173 (underwater side)."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "13/15 verified. Soft flags: exact art-school name (Valencia School of Art and Design) unverified — sources only confirm 'studied illustration in Valencia.' Denver dropped from city list (not in sources)."

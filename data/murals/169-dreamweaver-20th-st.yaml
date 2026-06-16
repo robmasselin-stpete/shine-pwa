@@ -1,0 +1,83 @@
+# Dreamweaver — 415 20th St S
+
+# ── Required ──
+id: 169
+artist: Dreamweaver
+year: 0
+lat: 27.767103
+lng: -82.660247
+address: 415 20th St S
+category: commercial
+img: "images/murals/commercial/dreamweaver-20th-st.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: dream.weavin
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  She painted her first mural at seven, on her aunt's backyard shed in Waco,
+  Texas. She has not stopped.
+
+  Taylor Smith — Dreamweaver — grew up between Portland, Oregon and just south
+  of Atlanta, born in Dallas. She studied communications and fine art at Georgia
+  College and State University, with a minor in graphic design, graduating in
+  2017. She apprenticed at a tattoo shop at sixteen and spent time doing live
+  painting at music festivals — Electric Daisy Carnival, Okeechobee, Electric
+  Forest — before relocating to Florida around 2019.
+
+  She works almost entirely in spray paint, blending expressive abstraction with
+  realism. Nature runs through everything: wildlife, water, birds, flora. She is
+  left-handed. She has painted an estimated 120 to 150 murals, 15 to 20 in St.
+  Pete alone. She is a resident artist at AER Tampa and a member of Few and Far,
+  an international women's graffiti crew.
+
+  This piece at 415 20th St S wraps the full front of the building in swirling
+  rainbow aerosol flames — flowing ribbons of orange, magenta, teal, green, and
+  purple against a dark background.
+
+searchBio: |
+  Taylor Smith — Dreamweaver / @dream.weavin — born in Dallas, grew up between
+  Portland and south of Atlanta. BFA in Communications and Fine Art from Georgia
+  College and State University (2017), minor in graphic design. Private painting
+  lessons as a kid, apprenticed at a tattoo shop at 16. Live painting at
+  Electric Daisy Carnival (Vegas), Okeechobee, Electric Forest. Relocated to
+  Florida around 2019. Works almost entirely in spray paint — expressive
+  abstraction blended with realism, nature themes. Left-handed. Estimated
+  120-150 murals total, 15-20 in St. Pete. Resident artist at AER Tampa. Member
+  of Few and Far international women's graffiti crew. Also painted for SHINE
+  2022 (id 59) and SHINE 2025 (id 7). Other projects include Clearwater
+  Municipal Parking Garage, sea turtle mural at Coachman Park for Art Oasis
+  2024, and "The Garden Within" in downtown Kissimmee for Osceola Arts.
+
+  This commercial mural at 415 20th St S wraps the full front of a building in
+  swirling rainbow aerosol flames — flowing ribbons of orange, magenta, teal,
+  electric green, and deep purple against a dark purple-black background.
+
+  Instagram: @dream.weavin.
+
+searchMuralDescription: |
+  Swirling ribbons of color wrap the entire front facade of a low commercial
+  building. Flowing aerosol flames in orange, magenta, hot pink, teal, electric
+  green, and deep purple twist and curl against a dark purple-black background.
+  The effect is liquid and luminous — like molten rainbow glass in motion. The
+  piece covers both sides of the building symmetrically, framing a central
+  window and entrance. Plants sit at the base. The bold, fluid style is
+  Dreamweaver's signature aerosol work.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-16, GPS from EXIF"
+  - "Artist: Taylor Smith / Dreamweaver / @dream.weavin"
+  - "Address: 415 20th St S"
+  - "Third Dreamweaver entry — also has SHINE 2025 (id 7) and SHINE 2022 (id 59)"

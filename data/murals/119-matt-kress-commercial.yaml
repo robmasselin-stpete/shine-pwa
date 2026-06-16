@@ -16,30 +16,83 @@ building: Animal Hospital
 instagram: mattkressart
 basedIn: "St. Petersburg, FL"
 
+fieldNotes:
+  - "Air traffic controllers call his airplane 'Skittles'"
+  - "Spray-paints a Beechcraft Bonanza in geometric color"
+  - "Aviation + art — Mooney Anomaly project"
+
 artistBio: |
-  Matt Kress is an Ohio native who studied art and graphic design at
-  Kent State University, spent 16 years in business, then moved to St.
-  Petersburg and went full-time as an artist in 2018. He's since painted
-  30-plus murals nationwide, including a piece for the Tampa Bay
-  Buccaneers. He also created "The Mooney Anomaly," one of the world's
-  first flying artworks, recognized internationally in aviation circles.
+  Air traffic controllers call his airplane "Skittles." He spray-painted a 1967
+  Mooney in forty-five colors — it headlined Sun 'n Fun and Oshkosh and won Best
+  Unique Paint Scheme.
 
-  His dogs-and-cats mural wraps the animal hospital at MLK and 1st
-  Street North with a colorful, geometric pop-art treatment — a Boston
-  terrier, a large dark dog, and a tabby cat rendered in bold color
-  blocks against kaleidoscopic diamond patterns.
+  Matt Kress grew up in Minerva, Ohio, studied painting and graphic design at
+  Kent State, then spent nearly sixteen years in a desk job because he was
+  afraid art wasn't a real career. In 2014 he visited St. Petersburg on a
+  business trip, found a town alive with murals, and moved. His friend Christian
+  McAlhaney of the band Anberlin told him: "I love the art you're doing, but
+  don't forget you're nothing right now. Get your work out there and do some
+  murals."
 
-muralDescription: |
-  A long wall covered with oversized portraits of dogs and cats in a
-  colorful geometric pop-art style. A Boston terrier, a large dark dog,
-  and a tabby cat with prominent whiskers are painted in bold, faceted
-  color blocks — blues, oranges, greens, reds — set against a
-  kaleidoscopic background of intersecting diamond patterns. The style
-  is vibrant and eye-catching from the parking lot.
+  He applied to SHINE 2018 and got his first mural — a pirate ship sponsored by
+  the Tampa Bay Buccaneers. It paid a thousand dollars for two weeks of work.
+  After that the phone started ringing. He has since painted over thirty murals
+  including the seventy-foot sea turtle at Channel Club in Tampa — the tallest
+  mural in the city at the time.
+
+searchBio: |
+  Air traffic controllers call his airplane "Skittles." He spray-painted a 1967
+  Mooney in forty-five colors — it headlined Sun 'n Fun and Oshkosh and won Best
+  Unique Paint Scheme.
+
+  Matt Kress was born and raised in Minerva, Ohio (1994 Minerva High School
+  graduate). He studied art and graphic design at Kent State University,
+  originally enrolling as an architecture student before switching to painting.
+  Inspired by Klimt, Chuck Close, Dali, Picasso, Warhol, and Mondrian. He spent
+  nearly sixteen years in business (ten years at Fastenal in sales, plus process
+  engineering) before moving to St. Petersburg in 2014 and going full-time as an
+  artist at age 43 in 2018.
+
+  His friend Christian McAlhaney (lead guitarist of Anberlin) encouraged him to
+  pursue murals and referenced the SHINE festival. His first mural was "The
+  Voyage" for SHINE 2018 — a 25-foot pirate ship sponsored by the Tampa Bay
+  Buccaneers at 128 20th St S. It paid $1,000 for two weeks. He has since
+  painted 30-plus murals nationwide including the 70-foot sea turtle "Gaspar's
+  Direction" at Channel Club Apartments in Tampa (tallest mural in Tampa at the
+  time, 2022), a Roman goddess Minerva mural in his hometown, and "PiCOWso" — a
+  Picasso-inspired 14-foot fiberglass cow for Minerva Dairy (possibly the
+  world's largest painted art cow).
+
+  "The Mooney Anomaly" is a 1967 Mooney M20F airplane (N3205F) owned by pilot
+  Liam Hawkins, based at Albert Whitted Airport in downtown St. Pete. Kress
+  spray-painted it in 40-45 Montana Colors graffiti cans with an asymmetrical
+  design — no two parts alike. It won Best Unique Paint Scheme at Sun 'n Fun
+  Aerospace Expo in Lakeland and appeared at EAA AirVenture Oshkosh (world's
+  largest airshow, 677,000 attendees). Air traffic controllers nicknamed it
+  "Skittles." Featured in AOPA, Flying Magazine, General Aviation News, and
+  Axios Tampa Bay.
+
+  He exhibits at Red Dot Miami (Art Basel) and Art Santa Fe. Original paintings
+  range $5,000-$20,000. Revenue is approximately 75% murals, 25% originals. He
+  cycles 100 miles weekly on the Pinellas Trail and mentors young artists in
+  Tampa Bay. His motto: "The eye is the lamp of the body."
+
+  Instagram: @mattkressart. Website: mattkress.art.
+
+searchMuralDescription: |
+  A long wall covered with oversized portraits of dogs and cats in a colorful
+  geometric pop-art style. A Boston terrier, a large dark dog, and a tabby cat
+  with prominent whiskers are painted in bold, faceted color blocks — blues,
+  oranges, greens, reds — set against a kaleidoscopic background of intersecting
+  diamond patterns. The style is vibrant and eye-catching from the parking lot.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2018 festival artist; Best Unique Paint Scheme at Sun 'n Fun (Mooney Anomaly); tallest mural in Tampa (Channel Club, 2022)"
+
+furtherWork:
+  - name: "mattkress.art"
+    url: "https://mattkress.art"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
@@ -47,3 +100,10 @@ sourceNotes:
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://mattkress.art/"
   - "https://eyesonthestreets.blog/2022/04/23/at-1st-street-north-mlk/"
+  - "https://www.aopa.org/news-and-media/all-news/2023/february/22/the-mooney-anomaly"
+  - "https://artbusinessnews.com/2024/07/meet-the-artist-matt-kress-the-kress-collection-gallery/"
+  - "https://blog.artstorefronts.com/artist-matt-kress/"
+  - "https://www.axios.com/local/tampa-bay/2024/06/25/mooney-anomaly-plane-mural-st-petersburg"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "16 April 2026 — Full research, bio rewrite with Mooney Anomaly hook, searchBio added"

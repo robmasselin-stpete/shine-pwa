@@ -1,0 +1,119 @@
+# Ashley Cassens — Florida Orange Groves Winery (lorikeet + citrus)
+
+# ── Required ──
+id: 205
+artist: Ashley Cassens
+year: 2026
+lat: 27.75273
+lng: -82.73796
+address: "1500 Pasadena Ave S"
+category: commercial
+img: "images/murals/commercial/ashley-cassens-orange-groves.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Florida Orange Groves Winery"
+instagram: ashley.cassens
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Florida Orange Groves Winery wanted oranges. She gave them oranges — plus a
+  rainbow lorikeet diving past hibiscus, plumeria, monstera leaves, and lime
+  slices at the base. Full Florida palette on cinder block.
+
+  Ashley Cassens is a Tampa-based representational painter and muralist. She
+  grew up in Daytona Beach, earned a BFA from Florida Southern College in 2006
+  and an MFA from Florida Atlantic University in 2017, and taught K-12 art for
+  seven years before going full-time around 2020. Two of her oil paintings
+  ended up licensed to HomeGoods.
+
+  Her studio work is intimate figurative portraiture in layered oil. Her
+  commercial walls run botanical — citrus, blossoms, pollinators, tropical
+  foliage rendered with the same fine-painting eye. Signed lower-left "ASHLEY
+  CASSENS @ashley.cassens."
+
+searchBio: |
+  Florida Orange Groves Winery wanted oranges. She gave them oranges — plus a
+  rainbow lorikeet diving past hibiscus, plumeria, monstera leaves, and lime
+  slices at the base. Full Florida palette on cinder block.
+
+  Ashley Cassens is a Tampa-based representational figure painter and
+  muralist, native Floridian from Daytona Beach. She earned a BFA from Florida
+  Southern College (2006) focused on representational work and traditional oil
+  painting methods, then an MFA from Florida Atlantic University (2017), where
+  she received a Graduate Teaching Assistantship, Provost Fellowship, two
+  Graduate Advisory Board Grants, the Friedland Grant, Rothenberger
+  Scholarship, Ambassador of the Arts Scholarship, and the Women in the Visual
+  Arts Scholarship (twice).
+
+  She taught K-12 art for seven years and was a teaching assistant at FAU
+  before becoming a full-time artist around 2020. She runs Painting
+  Possibilities LLC in Tampa's Northdale area. She is certified in scissor and
+  boom lift safety, insured, and background checked. She charges $25-30 per
+  square foot for murals with a $1,500 minimum.
+
+  Her studio work is intimate figurative portraiture in oil — layered,
+  chromatic paint on canvas and wood panels, often focused on body parts and
+  details of loved ones. Notable series include "Eye Traps" (celebrating women
+  through oil painting and patterned fabrics; two pieces licensed to
+  HomeGoods; shown at Elevation Coffee Roasters, Tampa), "Projection Series"
+  (vibrant portraits exploring experiences filtered through screens), and
+  "Some Place Under Neith" (tiny portraits responding to IBLP cult pamphlets,
+  addressing women's repression).
+
+  Commercial clients include HomeGoods (licensing), Ann Cox Design, Cori Rose
+  Handmade, Creative Pinellas, and various schools, non-profits, national
+  corporations, and private residences. She has been featured on Fox 13 Tampa
+  Bay (January 2023), Creative Loafing Tampa, CanvasRebel Magazine, Artsy
+  Shark, and Daytime TV on News Channel 8. Thumbtack Top Pro 2022-2025.
+
+  This wall at Florida Orange Groves Winery (1500 Pasadena Ave S, South
+  Pasadena) features two large oranges with white citrus blossoms hanging from
+  branches at left, a rainbow lorikeet in mid-flight at center, and a cluster
+  of hibiscus and plumeria flowers on the right — anchored at the base by
+  three sliced limes. The background is a cobalt-to-teal blue wash with
+  lavender silhouette shapes suggesting leaf shadows. Painted on a
+  cinder-block exterior in May 2026.
+
+  Instagram: @ashley.cassens. Website: ashleycassens.com.
+
+searchMuralDescription: |
+  A large exterior mural on a cinder-block wall of Florida Orange Groves
+  Winery in South Pasadena. The composition spreads across the full wall
+  against a cobalt-blue background overlaid with lavender silhouette shapes of
+  oversized leaves and citrus. On the left, two large ripe oranges hang from a
+  brown branch with deep green leaves and white five-petaled citrus blossoms.
+  In the center, a rainbow lorikeet flies in profile with wings fully spread —
+  cobalt-blue head with red eye and orange beak, yellow-and-green underwings,
+  red breast, slate-blue body, and yellow-tipped flight feathers. Behind the
+  bird, dark green monstera leaves with characteristic splits frame the
+  upper-right register. On the right side, a cluster of large flowers fills
+  the wall: a pink-and-teal-streaked hibiscus at the top, a smaller pink
+  hibiscus below it, and a white-and-yellow plumeria bloom to its right. At
+  the bottom-center, three sliced lime halves with visible green segments rest
+  along the base, framed by additional green foliage. Signed in white block
+  lettering at the lower left: "ASHLEY CASSENS" with "@ashley.cassens"
+  beneath.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Provost Fellowship; Women in the Visual Arts Scholarship (x2); Thumbtack Top Pro 2022-2025"
+
+furtherWork:
+  - name: "ashleycassens.com"
+    url: "https://www.ashleycassens.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-14 — New mural added by Rob: second Ashley Cassens, citrus + lorikeet + tropical flowers on Florida Orange Groves Winery in South Pasadena. GPS from photo IMG_0290.jpeg EXIF (27.75273, -82.73796), photo dated 2026-05-13. Year 2026; signed lower-left 'ASHLEY CASSENS @ashley.cassens.' Bio carried over from #153 (Sweet Disposition)."
+sourceNotes:
+  - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0290.jpeg)"
+  - "Signed 'ASHLEY CASSENS @ashley.cassens' lower-left on wall"
+  - "https://www.ashleycassens.com/"
+  - "https://www.instagram.com/ashley.cassens/"
+verification:
+  date: 2026-05-14
+  method: on-wall signature + Rob photo with EXIF GPS
+  status: pass
+  notes: "Attribution authoritative — signature visible in lower-left of mural ('ASHLEY CASSENS @ashley.cassens'). Bio facts pulled from existing verified bio at #153."

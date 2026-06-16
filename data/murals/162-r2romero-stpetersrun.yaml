@@ -1,0 +1,97 @@
+# R2romero — City of STPETERSRUN
+
+# ── Required ──
+id: 162
+artist: R2romero
+year: 0
+lat: 27.773947
+lng: -82.647051
+address: "933 Burlington Ave N"
+category: commercial
+img: "images/murals/commercial/romero-stpetersrun.jpeg"
+
+# ── Optional ──
+title: "City of STPETERSRUN"
+building: ""
+instagram: r2romero
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  He paints portraits on actual cotton-paper banknotes using acrylic paint. He
+  has been doing it since 2015.
+
+  Arturo Romero — R2ROMERO — is a Mexican American artist originally from Santa
+  Ana, California, now based in St. Petersburg. He works across murals,
+  canvases, metal signs, and comic books, mixing fine art, cartoons, and nature.
+  His signature project "$1000 DOLLAR2" turns real banknotes into miniature
+  paintings — subjects range from the Sumerians to Sid Vicious and Fear and
+  Loathing in Las Vegas.
+
+  He has painted in England, Spain, France, the Netherlands, Mexico, and across
+  the US. In St. Petersburg he participated in the 2026 Paint It Pink project,
+  transforming the former Ventnor Apartments with twenty-plus local artists.
+
+searchBio: |
+  He paints portraits on actual cotton-paper banknotes using acrylic paint. He
+  has been doing it since 2015.
+
+  Arturo Romero — R2ROMERO — is a Mexican American artist born and raised in
+  Santa Ana, California, now based in Saint Petersburg, Florida. He works in
+  murals, canvases, metal signs, comic books, and his signature banknote art
+  project "$1000 DOLLAR2" — painting portraits and scenes on actual cotton-paper
+  banknotes using acrylic paint since 2015. His style blends fine art, cartoons,
+  and nature with mystical and pop culture themes. Known banknote subjects
+  include The Sumerians (2023), Chalino Sanchez (2022), Sid Vicious (2022), Fear
+  and Loathing in Las Vegas (2021), and Hunter S. Thompson & Oscar Zeta Acosta
+  (2021).
+
+  He has worked in England, Spain, France, the Netherlands, Mexico, and the
+  United States. Known murals include "Miss Lure" at Osage Alley & 24th St in
+  San Francisco (with Goop Massta, 2016). In St. Petersburg he participated in
+  the 2026 Paint It Pink project on the former Ventnor Apartments. He is listed
+  in the Creative Pinellas artist directory.
+
+  "City of STPETERSRUN" is a surreal folk-art mural near Planet Retro Records
+  featuring a headless figure covered in symbols including "LORD ENKI" and "11
+  33," a gramophone, a crocodile, a life buoy, and a pelican — themes consistent
+  with his Sumerian and mystical body of work.
+
+  Instagram: @r2romero. Website: r2romero.com.
+
+searchMuralDescription: |
+  A surreal composition on a light blue wall. A headless figure stands at
+  center, its body covered in hand-drawn symbols — an all-seeing eye, a heart,
+  palm trees, "LORD ENKI" across the torso, and the number "11 33." The figure
+  wears red shorts and sneakers and holds a globe with a heart over its chest.
+  Scattered around the scene: a gramophone playing a record labeled "RETRO," a
+  green crocodile, a life buoy reading "City of STPETERSRUN," a pelican, a
+  gloved hand with eye symbols, a "Private Property" sign, and a boat. Signed
+  "@romero" in the upper left. The style is folk-art surrealist with a
+  hand-drawn, tattoo-flash quality.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited; corrected Paint It Pink date (2024-2025 → 2026, project was early 2026); removed standalone 'ENKI the water god' banknote subject (not in documented gallery, may be sub-element of The Sumerians); cross-street '4th Ave S' dropped as unverified."
+sourceNotes:
+  - "https://creativepinellas.org/artist/arturo-romero-r2romero/"
+  - "https://banknoteartconcept.com/gallery/r2romero/"
+  - "https://www.streetartsf.com/tag/r2romero/"
+  - "https://www.fox13news.com/news/st-petersburg-showcases-murals-paint-pink-project-transforming-aging-buildings-artwork"
+  - "https://stpeterising.com/home/downtown-st-pete-apartments-painted-pink-before-demolition-makes-way-for-29-story-condo-tower"
+  - "https://hoodline.com/2026/03/downtown-st-pete-s-pink-block-party-sends-doomed-ventnor-packing"
+  - "https://r2romero.com"
+  - "https://www.instagram.com/r2romero/"
+  - "Photo by Rob 2026-04-16, GPS from EXIF. Artist: Romero, signed @romero on wall. Title: City of STPETERSRUN. Near Planet Retro Records area."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "Paint It Pink date was wrong (2024-2025 → 2026). 'ENKI the water god' as standalone banknote subject not in gallery; merged into Sumerians line. 'City of STPETERSRUN' mural details rely on Rob's primary photo observation, not online sources."

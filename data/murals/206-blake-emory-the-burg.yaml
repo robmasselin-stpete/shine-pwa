@@ -1,0 +1,91 @@
+# Blake Emory — "St Pete / The Burg" (16th St S)
+
+# ── Required ──
+id: 206
+artist: Blake Emory
+year: 0
+lat: 27.75665
+lng: -82.65449
+address: "14th Ave S & 16th St S"
+category: commercial
+img: "images/murals/commercial/blake-emory-the-burg.jpeg"
+
+# ── Optional ──
+title: "St Pete / The Burg"
+building: ""
+instagram: emory_blake
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  This one is a different gear for him. A pelican carries a sub sandwich
+  across a Skyway-sunset, sea turtles cross the dunes, a pirate eats peanuts
+  with a parrot, and a hand-painted "I ♥ 16TH ST" road sign anchors the
+  corner. Cursive "St Pete," ornate "The Burg" lettering. Painted on the side
+  of a corner shop at 14th Ave S and 16th St S.
+
+  Blake Emory is a Florida native, born 1983, now based in St. Petersburg.
+  With his brother James — out of Santa Fe — he runs ESP Gallery and the
+  Emory Arts collective. The day job is wide: Neo-Renaissance figure
+  painting, Optic Modernism, sculpture, set design, experimental film. He
+  doesn't pick a lane.
+
+  His murals are scattered across St. Pete in places people don't expect,
+  including a few rooftops. In 2025 the City of St. Petersburg unveiled "Babe
+  Calls the Shot," his life-size bronze of Babe Ruth at the called-shot
+  moment, sited at the St. Petersburg Museum of History on the Pier.
+
+searchBio: |
+  Blake Emory — see full bio on his other entries (ids 194, 202, 203). This
+  is a commercial wall at 14th Ave S & 16th St S, a cartoon-boardwalk
+  composition tying together the Sunshine Skyway, a pelican carrying a sub
+  sandwich, two sea turtles, a beach scene with a pirate and a parrot, and a
+  hand-painted "I ♥ 16TH ST / 14TH AVE" road sign. Cursive "St Pete" upper
+  left and ornate "The Burg" upper right. A wider-appeal commercial
+  commission, very different in tone from his Neo-Renaissance gallery and
+  Cage Brewing work.
+
+  Instagram: @emory_blake. Galleries: ESP Gallery, Marcolina's. Website:
+  emorybrothersart.com.
+
+searchMuralDescription: |
+  A long horizontal commercial mural on the side of a single-story corner
+  shop building. Reading left to right: a Black man with a gray beard, blue
+  cap and bandana sits leaning against the wall at the base. Above him, a
+  large brown pelican with a yellow head soars to the right, gripping a sub
+  sandwich in its bill, a small SHINE-style logo medallion at its feet. The
+  background behind the pelican is a Sunshine Skyway bridge silhouette at
+  golden-hour: pink/orange sky, blue water, the Skyway's twin sails of cable.
+  "St Pete" in white cursive script floats in the upper left. A wooden road
+  sign in the middle reads "14TH AVE / ♥ 16TH ST." Two large green sea
+  turtles cross the sand below the sign. The upper right is dominated by
+  "The Burg" in red-and-blue ornate filigreed lettering with curlicue
+  flourishes. The right third is a beach scene: bright teal-and-blue ocean,
+  pale sand, a sun-bleached wooden table where a pirate (red bandana, tricorn
+  hat, brown coat) feeds a white parrot a peanut from a red can of "Hot
+  Roasted Peanuts." A woman in a red-and-white-polka-dot bikini lounges in a
+  wooden beach chair beside him, looking out at the painter.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "emorybrothersart.com"
+    url: "https://www.emorybrothersart.com"
+  - name: "espgallery.com"
+    url: "https://www.espgallery.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-14 — New mural added by Rob: fourth Blake Emory in Mural Quest, a commercial wall on 16th St S featuring pelican-with-sub, Skyway, sea turtles, pirate, and 'St Pete / The Burg' lettering. GPS from photo IMG_0289.jpeg EXIF (27.75665, -82.65449). Attribution per Rob (in-person artist relationship)."
+sourceNotes:
+  - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0289.jpeg)"
+  - "Attribution per Rob — Rob has met Blake Emory in person and confirmed authorship of his St. Pete walls"
+  - "https://www.emorybrothersart.com/biography"
+  - "https://www.instagram.com/emory_blake/"
+verification:
+  date: 2026-05-14
+  method: Rob in-person artist relationship + on-wall composition cue
+  status: pass
+  notes: "Attribution confirmed by Rob. Style departs from Emory's gallery practice — this is a wider-appeal commercial commission anchored to the corner address (14th Ave S / 16th St S)."

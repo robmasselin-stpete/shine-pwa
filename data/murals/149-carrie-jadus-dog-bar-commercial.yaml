@@ -1,0 +1,112 @@
+# Carrie Jadus — Dog Bar (Awakening Bodhisattva)
+
+# ── Required ──
+id: 149
+artist: Carrie Jadus
+year: 0
+lat: 27.770808
+lng: -82.664828
+address: "23rd St S"
+category: commercial
+img: "images/murals/commercial/carrie-jadus-dog-bar.jpeg"
+
+# ── Optional ──
+title: "Awakening Bodhisattva"
+building: Dog Bar
+instagram: jadusfineart
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  She has a degree in electrical engineering. She worked as a radio-frequency
+  design engineer. Then she quit to paint.
+
+  Carrie Jadus was born in 1976 in Tampa and moved to St. Petersburg at five.
+  She graduated from the Pinellas County Center for the Arts at Gibbs High
+  School, traveled to Europe, fell for Impressionism, and then — detour — earned
+  a BS in Electrical Engineering from USF and designed RF circuits for several
+  years. She creates 200 to 300 pieces annually, working primarily in oils at
+  every scale from notecards to fifty-foot walls.
+
+  Her SHINE 2015 Nikola Tesla portrait is on 22nd Street South. She also painted
+  "Little Miss Sisyphus" — a girl pushing an enormous reflective sphere up a
+  mountain — around the corner from the Tesla. For Grand Central Brewhouse, she
+  painted "Last Call" — six musical icons chosen because "they're all extremely
+  talented and socially conscious." She finished the fifty-by-thirty-foot piece
+  in three weeks.
+
+searchBio: |
+  She has a degree in electrical engineering. She worked as a radio-frequency
+  design engineer. Then she quit to paint.
+
+  Carrie Jadus was born in 1976 in Tampa, FL. Her family moved to St. Petersburg
+  when she was five. She comes from an artistic lineage — family populated with
+  creatives. She attended the Pinellas County Center for the Arts magnet program
+  at Gibbs High School, training across multiple mediums. A post-graduation trip
+  to Europe sparked a fascination with Impressionism. She then earned a BS in
+  Electrical Engineering from the University of South Florida and worked as a
+  radio-frequency design engineer for several years before quitting to pursue
+  art full-time.
+
+  She works primarily in oils, comfortable at every scale from notecards to
+  fifty-foot murals. She occupies "the rich and fertile ground between realism
+  and impressionism" with a "distinctive, soft and subtly subversive style." Key
+  influences: Winslow Homer (storytelling) and Egon Schiele (the human figure).
+  She creates 200-300 pieces annually. She has expanded into large-scale
+  sculpture through collaboration with MGA Sculpture Studio. Licensed as a
+  professional artist since 2016, she uses "the business plan of a Toymaker as a
+  model" — multiple product lines to sustain income.
+
+  Her SHINE 2015 murals include the Nikola Tesla portrait at 22nd St S and 5th
+  Ave S, painted with assistant Tara Radosevich over two weeks, and "Little Miss
+  Sisyphus," a girl pushing an enormous reflective sphere up a mountain. At
+  Grand Central Brewhouse she painted "Last Call" (2020), a 50x30 ft mural of
+  six musical icons: Bob Marley, Bono, Bruce Springsteen, Lady Gaga, Eddie
+  Vedder, and John Legend — chosen because "they're all extremely talented and
+  socially conscious." Heads roughly 8 ft tall, completed in three weeks,
+  commissioned by Kevin Milkey. "Awakening Bodhisattva" at Dog Bar (2020) is a
+  memorial to Bodhi, dog of artist Marianne Wysocki — a double entendre: the dog
+  waking up, and the Buddhist concept of a being who delays nirvana out of
+  compassion.
+
+  She maintains a studio at Soft Water Studios in the Warehouse Arts District.
+  She illustrates for St. Pete Preservation and designed a Kahwa Coffee Art
+  Canister (4th installment) benefiting the St. Petersburg Arts Endowment. Solo
+  series include "Blue Nudes," "Imaginary Friends," and "Grand Portraits"
+  (Einstein, Nina Simone). Instagram: @jadusfineart. Website: carriejadus.com.
+
+searchMuralDescription: |
+  A photorealistic memorial mural covering the side of Dog Bar on Central
+  Avenue. A large dog — Bodhi Kaiser — lies sleeping against a deep blue starry
+  sky, paws curled, eyes closed. The rendering is detailed and luminous, the fur
+  and shadows painted with gallery-level realism. Text at the bottom reads
+  "Awakening Bodhisattva" with "Bodhi Kaiser 2013-2023" and the artist's
+  signature.
+
+muralInspiration: "Memorial to Bodhi Kaiser (2013-2023)."
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited; dropped 'Resonance' title for Tesla mural (sources call it just 'Tesla'); 'Soft Water Gallery' → 'Soft Water Studios'. Note: agent flagged this as Grand Central Brewhouse — verified that the Dog Bar location is correct (the wall faces Dog Bar; Grand Central is on the opposite side of the building)."
+sourceNotes:
+  - "http://www.carriejadus.com/bio.html"
+  - "https://theartisanmagazine.com/carrie-jadus/"
+  - "https://creativepinellas.org/magazine/carrie-jadus/"
+  - "https://stpetecatalyst.com/art-business-business-of-art-carrie-jadus/"
+  - "https://stpetecatalyst.com/hustle/hustle-carrie-jadus/"
+  - "https://dogbarstpete.com/st-pete-is-going-to-the-dogs-2-2-2-2/"
+  - "https://stpeteartsalliance.org/carrie-jadus-tesla/"
+  - "https://stpeteartsalliance.org/carrie-jadus-little-miss-sisyphus/"
+  - "https://kahwacoffee.com/blogs/news/kahwa-releases-fourth-installment-of-artist-canister"
+  - "https://thegabber.com/local-artists-morning-routine-1200-collages/"
+  - "GPS from Rob's photo, at Dog Bar.jpeg. Memorial text on mural: Bodhi Kaiser 2013-2023."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "14/19 verified, 4 cleanups applied. The 'Resonance' title was unsourced — sources call the SHINE 2015 Tesla mural just 'Tesla'. 'Soft Water Gallery' corrected to 'Soft Water Studios.' Bodhi Kaiser dates retained (Rob's photo of mural text is the primary source). Location confirmed correct (Dog Bar side; agent confused Dog Bar blog coverage with the Grand Central side of the same building)."

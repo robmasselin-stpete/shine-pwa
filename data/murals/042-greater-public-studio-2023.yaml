@@ -17,32 +17,65 @@ instagram: greaterpublicstudio
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Greater Public Studio is a Tampa-based creative team that designs
-  large-scale murals and visual environments. Founded with a focus on
-  making public spaces more engaging, GPS has taken on projects ranging
-  from building-sized paintings to immersive installations across Florida
-  and beyond.
+  Some of their walls move when you point a phone at them. The Tampa Bay
+  Buccaneers commissioned one. This one sits on a USF St. Pete campus road.
 
-  Their 2023 SHINE piece at the USF St. Pete campus brought a burst of
-  color to the university district with "Dive Into Discovery," a vibrant
-  scene depicting an imaginative community landscape full of whimsical
-  architectural forms and figures.
+  Greater Public Studio was founded by Jay Giroux in Tampa, Florida. Giroux
+  brings fifteen-plus years across painting, photography, printmaking, digital
+  media, environmental graphics, and installation. The studio provides brand
+  strategy, hand-painted murals, fabrication, installation design, curatorial
+  services, and environmental graphics.
 
-muralDescription: |
-  A colorful, illustrative mural spanning a large wall near the USF St.
-  Pete campus. The composition features a fantastical townscape with
-  stacked buildings, winding paths, and small figures exploring the scene.
-  Bright blues, oranges, and greens fill the design in a style that feels
-  like an oversized storybook illustration.
+  Their work explores incidental gestures and lowbrow symbolism from the urban
+  streetscape, balancing popular culture with high formalism. Recent work
+  emphasizes non-objective forms over representation. Some of their murals
+  include augmented reality layers viewable through the Artivive app.
+
+  Clients include the Tampa Bay Buccaneers (mural at BAR HWRD in Tampa's SoHo
+  District) and venues across Florida. For SHINE 2023, they painted in St.
+  Petersburg.
+
+searchBio: |
+  Three friends bet on themselves in 2017. They opened a studio in Tampa.
+
+  Greater Public Studio was founded by Jay Giroux in Tampa, Florida. Giroux
+  brings fifteen-plus years across painting, photography, printmaking, digital
+  media, environmental graphics, and installation. The studio provides brand
+  strategy, hand-painted murals, fabrication, installation design, curatorial
+  services, and environmental graphics.
+
+  Their work explores incidental gestures and lowbrow symbolism from the urban
+  streetscape, balancing popular culture with high formalism. Recent work
+  emphasizes non-objective forms over representation. Some of their murals
+  include augmented reality layers viewable through the Artivive app.
+
+  Clients include the Tampa Bay Buccaneers (mural at BAR HWRD in Tampa's SoHo
+  District) and venues across Florida. For SHINE 2023, they painted in St.
+  Petersburg.
+
+searchMuralDescription: |
+  A colorful, illustrative mural spanning a large wall near the USF St. Pete
+  campus. The composition features a fantastical townscape with stacked
+  buildings, winding paths, and small figures exploring the scene. Bright blues,
+  oranges, and greens fill the design in a style that feels like an oversized
+  storybook illustration.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2023 selected artist"
+furtherWork:
+  - name: "greaterpublicstudio.com"
+    url: "https://greaterpublicstudio.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Rewrote hook: replaced 'three friends bet on themselves' (also factually fuzzy — bio credits only Jay Giroux). Confirmed via SHINE Alliance + GPS site that AR/Artivive is on the Bucs/BAR HWRD wall, NOT this USF mural — hook now sets up the studio's range without claiming AR for Dive Into Discovery."
 sourceNotes:
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://greaterpublicstudio.com/"
   - "https://greaterpublicstudio.com/gps-your-go-to-mural-painting-company-in-tampa-for-stunning-results/"
   - "https://greaterpublicstudio.com/projects/we-are-the-krewe/"
+  - "https://jaygiroux.com/about/"
+  - "https://greaterpublicstudio.com/lets-go-bucs-gps-x-tampa-bay-bucs-mural-at-bar-hwrd/"

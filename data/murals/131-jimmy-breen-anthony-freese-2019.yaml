@@ -4,8 +4,8 @@
 id: 131
 artist: Jimmy Breen & Anthony Freese
 year: 2019
-lat: 27.7709
-lng: -82.6578
+lat: 27.771298
+lng: -82.65785
 address: 1701 Central Ave
 category: shine
 img: images/murals/2019/jimmy-breen-anthony-freese.jpeg
@@ -16,11 +16,72 @@ building: 1701 Central
 instagram: waxandhive
 basedIn: "St. Petersburg, FL"
 
-artistBio: |
-  Jimmy Breen and Anthony Freese were co-founders of Wax & Hive, a design studio based in St. Petersburg. Both graduated from the USF St. Petersburg graphic design program and collectively had over two decades of professional experience in illustration and graphic design. Their client list included Cardi B, Blake Shelton, Bloomin' Brands, and Hunger & Thirst Group. Breen was also a Senior Illustrator at Warner Music Group, creating artwork for the Grateful Dead, Michael Bublé, Green Day, and Bruno Mars. The two were fixtures in St. Pete's creative scene and known for bold, graphic, pop-art-influenced illustration work that blended tattoo culture, vintage signage, and clean design. They painted "Lucky You" for SHINE 2019 and also completed an interior courtyard mural for the 1701 Central apartment building's 2020 grand opening. Jimmy Breen passed away unexpectedly on June 20, 2022, at the age of 37. He is remembered as one of St. Pete's most prolific and beloved muralists.
+fieldNotes:
+  - "Jimmy Breen designed Grateful Dead album art"
+  - "Anthony Freese — photorealistic murals"
+  - "Cross-generational collaboration"
 
-muralDescription: |
-  An 18-by-42-foot mural on the parking garage of the 1701 Central apartment building, facing I-275 North and visible to highway traffic. The piece is a 3-by-5 grid of panels depicting good luck symbols from cultures around the world, inspired by the idea that "we're all lucky to live in Saint Pete." Each panel features a bold graphic illustration rendered in a pink, blue, yellow, black, and red color scheme. The symbols include: "Good Luck" in black cursive script, a Lincoln penny, a pair of dice, crossed fingers, an anchor, a ladybug, an Italian cornicello on a chain, a Japanese maneki-neko (beckoning cat), a yellow smiley face, a Chinese lucky bat, an anatomical heart, a horseshoe pointing up, a shooting star, a bird on a branch, a hamsa hand with an evil eye, and a four-leaf clover. The style is clean, graphic, and pop-art-influenced with bold black outlines and limited flat color fills.
+artistBio: |
+  Jimmy Breen designed artwork for the Grateful Dead, Michael Bublé, Green Day,
+  and Bruno Mars. He died on June 20, 2022. He was 37.
+
+  Breen and Anthony Freese co-founded Wax & Hive, a design studio in St.
+  Petersburg. Breen graduated from the USF St. Petersburg graphic design
+  program. Together they had over two decades of combined experience in
+  illustration and graphic design. Breen was a Senior Illustrator at Warner
+  Music Group. Freese kept the studio going.
+
+  Their style is bold, graphic, pop-art-influenced — tattoo culture meets
+  vintage signage meets clean design. Their client list ran from Cardi B and
+  Blake Shelton to Bloomin' Brands and Hunger & Thirst Group. They were fixtures
+  in St. Pete's creative scene.
+
+  For SHINE 2019 they painted "Lucky You" on the parking garage of the 1701
+  Central apartment building, facing I-275 — eighteen by forty-two feet, a grid
+  of good luck symbols including a horseshoe, a four-leaf clover, a shooting
+  star, a ladybug, and a smiley face. The premise: "we're all lucky to live in
+  Saint Pete." They followed it with an interior courtyard mural for the
+  building's 2020 grand opening.
+
+  Breen is remembered as one of St. Pete's most prolific and beloved muralists.
+
+searchBio: |
+  Jimmy Breen designed artwork for the Grateful Dead, Michael Bublé, Green Day,
+  and Bruno Mars. He died on June 20, 2022. He was 37.
+
+  Breen and Anthony Freese co-founded Wax & Hive, a design studio in St.
+  Petersburg. Breen graduated from the USF St. Petersburg graphic design
+  program. Together they had over two decades of combined experience in
+  illustration and graphic design. Breen was a Senior Illustrator at Warner
+  Music Group. Freese kept the studio going.
+
+  Their style is bold, graphic, pop-art-influenced — tattoo culture meets
+  vintage signage meets clean design. Their client list ran from Cardi B and
+  Blake Shelton to Bloomin' Brands and Hunger & Thirst Group. They were fixtures
+  in St. Pete's creative scene.
+
+  For SHINE 2019 they painted "Lucky You" on the parking garage of the 1701
+  Central apartment building, facing I-275 — eighteen by forty-two feet, a grid
+  of good luck symbols including a horseshoe, a four-leaf clover, a shooting
+  star, a ladybug, and a smiley face. The premise: "we're all lucky to live in
+  Saint Pete." They followed it with an interior courtyard mural for the
+  building's 2020 grand opening.
+
+  Breen is remembered as one of St. Pete's most prolific and beloved muralists.
+
+searchMuralDescription: |
+  An 18-by-42-foot mural on the parking garage of the 1701 Central apartment
+  building, facing I-275 North and visible to highway traffic. The piece is a
+  3-by-5 grid of panels depicting good luck symbols from cultures around the
+  world, inspired by the idea that "we're all lucky to live in Saint Pete." Each
+  panel features a bold graphic illustration rendered in a pink, blue, yellow,
+  black, and red color scheme. The symbols include: "Good Luck" in black cursive
+  script, a Lincoln penny, a pair of dice, crossed fingers, an anchor, a
+  ladybug, an Italian cornicello on a chain, a Japanese maneki-neko (beckoning
+  cat), a yellow smiley face, a Chinese lucky bat, an anatomical heart, a
+  horseshoe pointing up, a shooting star, a bird on a branch, a hamsa hand with
+  an evil eye, and a four-leaf clover. The style is clean, graphic, and
+  pop-art-influenced with bold black outlines and limited flat color fills.
 
 muralInspiration: ""
 muralAwards: ""
@@ -28,17 +89,24 @@ artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: |
-  GPS from user photo. User photo replaces stock image.
-  Photo originally labeled "the neon lunchbox commercial june 2024" — The Neon Lunchbox
-  is a nearby restaurant at 1756 Central Ave, not related to this mural.
-  Sources consulted:
-  - stpeteartsalliance.org (Jimmy Breen and Anthony Freese 2019)
-  - visitstpeteclearwater.com (Lucky You mural profile)
-  - tampabay.com (Jimmy Breen obituary, July 2022)
-  - thegabber.com (Jimmy Breen memorial)
-  - stpetecatalyst.com (LOCAL-ish Jimmy Breen, The Hustle Anthony Freese)
-  - stpetemuraltour.com (Jimmy Breen)
-  - instagram.com/jimmybreen
-  - instagram.com/anthonyfreese
-  - instagram.com/waxandhive
+sourceNotes:
+  - "https://stpetecatalyst.com/local-ish-meet-artist-jimmy-breen/"
+  - "https://stpetecatalyst.com/st-pete-artist-jimmy-breen-dies-at-37/"
+  - "https://stpetecatalyst.com/artist-jimmy-breens-life-and-work-celebrated-saturday/"
+  - "https://www.tampabay.com/life-culture/arts/2022/07/01/jimmy-breen-lived-a-life-as-colorful-as-the-murals-he-painted-around-st-petersburg/"
+  - "https://thegabber.com/st-pete-muralist-jimmy-breen-dead-but-lives-on/"
+  - "https://bestofgulfport.com/st-pete-muralist-jimmy-breen-dead-but-lives-on/"
+  - "https://www.visitstpeteclearwater.com/profile/lucky-you-jimmy-breen-anthony-freese/10226"
+  - "https://stpeteartsalliance.org/jimmy-breen-and-anthony-freese"
+  - "https://stpetemuraltour.com/2019/12/05/jimmy-breen/"
+  - "https://snbc13.com/jimmy-breen-well-known-shine-2019-artist-passes-away-death/"
+  - "https://nrpgroup.com/communities/1701-central"
+  - "GPS from user photo. Photo originally labeled 'the neon lunchbox commercial june 2024' — The Neon Lunchbox is a nearby restaurant at 1756 Central Ave, not related to this mural."
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "26 April 2026 — Removed unsupported claims (album art → artwork; Freese USF degree unverified; '15 cultures' fabricated). Added verified URLs. Added Michael Bublé per source."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "Sources confirm 'artwork for' (not 'album art for') Grateful Dead/Bublé/Green Day/Bruno Mars; Freese's USF degree is unverified, removed."

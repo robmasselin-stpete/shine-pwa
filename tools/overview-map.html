@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mural Quest — All Routes Overview</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+body { margin: 0; font-family: -apple-system, sans-serif; }
+#map { width: 100vw; height: 100vh; }
+.legend { position: fixed; bottom: 20px; left: 20px; background: rgba(255,255,255,0.95); padding: 12px 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-size: 13px; z-index: 1000; }
+.legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.legend-count { color: #888; font-size: 11px; }
+</style>
+</head><body>
+<div id="map"></div>
+<div class="legend" id="legend"></div>
+<script type="module">
+import { murals } from '../js/data.js';
+import { ROUTE_PATHS } from '../js/routes.js';
+
+const COLORS = {
+  'downtown-north': '#E53935',
+  'the-edge': '#1E88E5',
+  'methodist-town': '#7B1FA2',
+  'tropicana-field': '#43A047',
+  'central-ave': '#FB8C00',
+  'arts-district': '#F06292',
+  'pinellas-trail': '#00897B',
+};
+
+const ROUTES = [
+  { id: 'downtown-north', name: 'Downtown North', ids: [6,116,23,30,1,129,66,109,110,7,9,111,115,73,24] },
+  { id: 'the-edge', name: 'The Edge', ids: [119,80,75,120,57,135,40,130,89,98,43,34] },
+  { id: 'methodist-town', name: 'Methodist Town', ids: [4,108,61,60,24,114,64] },
+  { id: 'tropicana-field', name: 'Tropicana Field', ids: [59,103,163,133,171,138,52,44,123,16,125,131,18] },
+  { id: 'central-ave', name: 'Central Ave', ids: [48,122,62,55,156,173,76,174,71,88,38,151,101] },
+  { id: 'arts-district', name: 'Arts District', ids: [140,136,90,84,72,29,93,121,50,79,167,168] },
+  { id: 'pinellas-trail', name: 'Pinellas Trail', ids: [26,78,32,58,170,168,29,157,8,46,39,166,189,12,25] },
+];
+
+const map = L.map('map').setView([27.770, -82.655], 14);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
+
+// All murals as small gray dots
+const tourIds = new Set(ROUTES.flatMap(r => r.ids));
+murals.forEach(m => {
+  if (!m.lat || !m.lng) return;
+  const onTour = tourIds.has(m.id);
+  L.circleMarker([m.lat, m.lng], {
+    radius: onTour ? 5 : 4,
+    fillColor: onTour ? '#333' : '#E8736C',
+    fillOpacity: onTour ? 0.8 : 0.7,
+    color: '#fff',
+    weight: 1,
+  }).addTo(map).bindPopup(`<b>#${m.id} ${m.a}</b><br>${m.t || ''}`);
+});
+
+// Draw routes
+let legendHtml = `<b>Mural Quest — ${murals.length} murals, ${ROUTES.length} tours</b><br><br>`;
+ROUTES.forEach(route => {
+  const color = COLORS[route.id] || '#999';
+  const rd = ROUTE_PATHS[route.id];
+  if (rd && rd.segments) {
+    rd.segments.forEach(seg => {
+      if (seg.path) L.polyline(seg.path, { color, weight: 3, opacity: 0.7 }).addTo(map);
+    });
+  }
+  // Numbered stop markers
+  const byId = {};
+  murals.forEach(m => { byId[m.id] = m; });
+  route.ids.forEach((id, i) => {
+    const m = byId[id];
+    if (!m) return;
+    L.circleMarker([m.lat, m.lng], {
+      radius: 6, fillColor: color, fillOpacity: 0.9, color: '#fff', weight: 2,
+    }).addTo(map);
+  });
+  legendHtml += `<div class="legend-item"><span class="legend-dot" style="background:${color}"></span>${route.name} <span class="legend-count">(${route.ids.length})</span></div>`;
+});
+
+document.getElementById('legend').innerHTML = legendHtml;
+</script>
+</body></html>

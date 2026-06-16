@@ -17,27 +17,88 @@ instagram: therealmelpoz
 basedIn: "Los Angeles, CA"
 
 artistBio: |
-  Melanie Posner is a fine artist and muralist from Philadelphia who earned her
-  BFA in Painting from the University of Tampa in 2016. She specializes in
-  vibrant, photorealistic paintings of women. Her clients include Walt Disney
-  World (scenic artwork for Star Wars: Galaxy's Edge), Amazon Prime, and TikTok
-  (a 40-foot mural on the LGBT Center of Los Angeles for Pride Month). She also
-  has a SHINE 2018 mural "New Beginnings" at 4139 7th Terrace S. She was a cast
-  member on the reality show Tampa Baes. Now based in Los Angeles.
+  She painted the woman in the red headscarf on the back of the Hollander Hotel
+  in under five days, then went straight to Walt Disney World to paint scenic
+  art for Star Wars: Galaxy's Edge.
 
-muralDescription: |
+  Melanie Posner was born around 1993 in a small town outside Philadelphia. She
+  moved to Tampa in 2013 and earned her BFA in Painting from the University of
+  Tampa in 2016. Her work is photorealistic portraits of women — oversized,
+  expressive eyes set against rainbow palettes, psychedelic paisley backgrounds,
+  and florals. "Painting females and exploring how complex they are kind of
+  helped me figure out myself, and who I was."
+
+  She was a cast member on Amazon Prime's docuseries Tampa Baes (2021), a show
+  about a Tampa Bay lesbian friend group. Amazon commissioned her to paint a
+  mural on a bus that toured the city promoting the show. Her painting "Passion"
+  appears on screen.
+
+  In 2024 she painted a forty-foot mural on the LGBT Center of Los Angeles for
+  TikTok's "Create the Future" campaign. She is now based in Los Angeles.
+
+  Her SHINE 2018 mural "New Beginnings" is a twenty-three by sixty-five foot
+  photorealistic woman lying on her side, one eye peeking through her fingers,
+  on 7th Terrace South.
+
+searchBio: |
+  She painted the woman in the red headscarf on the back of the Hollander Hotel
+  in under five days, then went straight to Walt Disney World to paint scenic
+  art for Star Wars: Galaxy's Edge.
+
+  Melanie "Mel" Posner was born around 1993 in a small town just outside
+  Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
+  the University of Tampa in 2016, where she also studied art therapy. She was
+  previously based in Gulfport, Florida, and is now in Los Angeles.
+
+  Her style is photorealistic portraits of women — oversized, expressive eyes,
+  vibrant rainbow color palettes, psychedelic paisley backgrounds, floral
+  elements. She blends lifelike detail with touches of dreamy surrealism. She
+  works in oil on canvas, collage, prints, and large-scale murals. She sources
+  her subjects from Pinterest, Google, and social media, looking for eyes,
+  story, and confidence. "Working large is just really exciting," she says. "I
+  feel like I'm a little bit more free doing murals." Her stated philosophy:
+  paint strong, confident, independent women to be inspired by them.
+
+  For SHINE 2018, she was one of five local "Open Call" artists. Her mural "New
+  Beginnings" at 4139 7th Terrace South is twenty-three feet high by sixty-five
+  feet long — a photorealistic woman lying horizontally on her side, her hand
+  cupping the right side of her face, one eye peeking through her fingers. She
+  completed it in October 2018.
+
+  Her commercial clients include Walt Disney World (scenic artwork for Star
+  Wars: Galaxy's Edge at Hollywood Studios, Orlando), New Belgium Brewing (the
+  eighteen-foot Hollander Hotel mural of a woman in a red headscarf with a glass
+  of Mural Agua Fresca Cerveza, completed in under five days), Amazon Prime
+  Video (a mural on a promotional bus for Tampa Baes), and TikTok. For TikTok's
+  2024 "Create the Future" campaign, she painted a forty-foot mural on the LGBT
+  Center of Los Angeles at 8745 Santa Monica Blvd in West Hollywood.
+
+  She was a cast member on all eight episodes of Tampa Baes (Amazon Prime Video,
+  2021), a docuseries about a Tampa Bay lesbian friend group produced by 3 Ball
+  Productions and filmed over roughly ten weeks starting April 2021. She
+  described herself as "neutral" and avoiding drama on the show. "My anxiety
+  during filming was up to the roof, my mental health totally depleted. It was
+  very stressful and I will say, I love how the show came out." Her oil painting
+  "Passion" (also called "Summer and Marissa") appears on screen. She worked for
+  years as a bartender at The Honey Pot, a landmark LGBTQ+ club in Ybor City,
+  Tampa.
+
+  She has exhibited at Enigma gallery in downtown St. Petersburg. Instagram:
+  @therealmelpoz. Website: melanieposner.com.
+
+searchMuralDescription: |
   An 18-foot-tall commercial mural on the back entrance of the Hollander Hotel
   near the swimming pool and tiki bar. A confident woman wearing a red head
   scarf and dark sunglasses holds a tall glass of beer, rendered in
   photorealistic style. The background features a bold psychedelic paisley
   pattern in mint green, yellow, and pink with black and white teardrop motifs.
   Signed "Melanie Posner" in the upper right, with "@muralcerveza" and
-  "@therealmelpoz" at the bottom. Commissioned by New Belgium Brewing to
-  promote their Mural Agua Fresca Cerveza summer beer.
+  "@therealmelpoz" at the bottom. Commissioned by New Belgium Brewing to promote
+  their Mural Agua Fresca Cerveza summer beer.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "SHINE 2018 festival artist; scenic artist for Walt Disney World Star Wars: Galaxy's Edge"
+artistAwards: "SHINE 2018 Open Call artist; Walt Disney World Star Wars: Galaxy's Edge scenic artist; Tampa Baes (Amazon Prime, 2021) cast member; TikTok LA Pride campaign (2024)"
 
 furtherWork:
   - name: "melanieposner.com"
@@ -45,8 +106,20 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "10 April 2026 — Deep research, full bio with hook, copied to all 3 Posner files"
 sourceNotes:
   - "https://stpetecatalyst.com/melanie-posner/"
   - "https://www.melanieposner.com/"
   - "https://www.melanieposner.com/murals-portfolio/hollander-hotel"
-  - "https://stpeteartsalliance.org/melanie-posner"
+  - "https://stpeteartsalliance.org/shine?alias=/2018_SHINE_Mural_Melanie_Posner"
+  - "https://outcoast.com/get-to-know-mel-posner-from-tampa-baes/"
+  - "http://watermarkoutnews.com/2021/12/02/tampa-baes-star-melanie-posner-talks-filming-season-one/"
+  - "https://stpetecatalyst.com/amazon-picks-up-docuseries-on-it-lesbians-in-tampa-bay/"
+  - "https://findmasa.com/artist/melanie-posner"
+  - "https://graffiti-artist.net/business-murals/lgbtq_artist/"
+  - "https://www.imdb.com/name/nm12771071/"
+  - "https://www.artsy.net/artist/melanie-posner"
+  - "https://crowsneststpete.com/2018/10/15/mural-festival-shines-down-on-st-petersburg/"
+  - "https://streetartunitedstates.com/highlights-from-the-2018-shine-mural-festival-in-st-petersburg-florida/"

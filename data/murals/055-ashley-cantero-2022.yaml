@@ -4,8 +4,8 @@
 id: 55
 artist: Ashley Cantero
 year: 2022
-lat: 27.771221
-lng: -82.666144
+lat: 27.771255
+lng: -82.666106
 address: 2421 Central Ave.
 category: shine
 img: "images/murals/2022/ashley-cantero.jpeg"
@@ -13,34 +13,104 @@ img: "images/murals/2022/ashley-cantero.jpeg"
 # ── Optional ──
 title: ""
 building: "Fonda Nails & Spa"
-instagram: ashleycantero
+instagram:
 basedIn: "Tampa, FL"
 
-artistBio: |
-  Ashley Cantero is a Tampa native who paints murals, illustrations, and
-  immersive installations steeped in '60s psychedelia, Atomic Age design, and
-  B-movie sci-fi. Her style is built on precise black outlines, bold color
-  blocking, and characters that look like they walked off a drive-in movie
-  poster — UFOs, aliens, and retro femme fatales are recurring motifs. She's
-  a resident artist at Kress Contemporary in Ybor City, where she shares a
-  studio space called DLUANCE with artist Juan Espinosa. Beyond murals, she
-  built dioramas for FloridaRAMA (formerly Fairgrounds St. Pete), including
-  "Swamp Motel" and "Drive-In," and painted an 8-wall retro-futuristic piece
-  called "Cosmic Beams & Sunshine Dreams" for that venue. She was featured in
-  the 2025 exhibition "We Built This City: Women Artists of SHINE" at the
-  Morean Arts Center alongside 15 other Tampa Bay women muralists.
+fieldNotes:
+  - "Work described as 'dark, intricate, sensual'"
+  - "Self-taught — started on skateboards"
+  - "Tampa Bay native"
 
-muralDescription: |
+artistBio: |
+  She describes her work as "dark, intricate, sensual and, at times, humorous."
+  The 1960s psychedelia and Atomic Age design are deliberate.
+
+  Ashley Cantero is a Tampa native — visual artist, muralist, and illustrator.
+  Her style features precise line work and bold female characters with intense
+  emotional energy, drawing from retro charm, the supernatural, and sci-fi. At
+  FloridaRAMA she created immersive 3D diorama installations ("Drive-In," "Swamp
+  Motel") and an eight-wall retro-futuristic mural, "Cosmic Dreams and Sunshine
+  Beams."
+
+  For SHINE 2022, she painted at 2421 Central Avenue.
+
+searchBio: |
+  She describes her work as "dark, intricate, sensual and, at times, humorous."
+  The 1960s psychedelia and Atomic Age design are deliberate.
+
+  Ashley Cantero is a Tampa, Florida native — visual artist, muralist, and
+  illustrator. Her style centers on precise line work and bold, emotionally
+  charged female characters, drawing from 60s psychedelia, Atomic Age design,
+  and Sci-Fi aesthetics. She frames her body of work as a fusion of nostalgia
+  and futurism, ever-evolving across mediums, and she calls herself a standout
+  figure in both traditional and public art spheres. The voice she uses for her
+  own art — "dark, intricate, sensual and, at times, humorous" — is the
+  throughline.
+
+  She has built a presence in both the local Tampa Bay scene and beyond,
+  contributing what she describes as a unique perspective. Her practice spans
+  drawing, painting, mural work, and — newly added through her FloridaRAMA
+  commission — three-dimensional diorama construction. Talking about the
+  FloridaRAMA project she described it as outside her comfort zone: "I haven't
+  built a diorama since elementary school, so this project has taken me a little
+  out of my comfort zone as an artist and has forced me to think outside the
+  box…or within the box in this case! As someone who typically draws and paints,
+  it has been really fun and challenging to take a design and build it."
+
+  At FloridaRAMA — the immersive art experience operated by Fairgrounds Projects
+  Inc. — she contributed a pair of dioramas that lean directly into her
+  retro-futurist vocabulary. "Drive-In" features a Twistee Treat, a retro-style
+  sign, and a drive-in movie theater on a hill. "Swamp Motel" is a swamp-like
+  setting with a lurking alien creature, a hungry alligator, a retro motel, and
+  a honeymooning couple. Both dioramas were built from foam blocks, balsa wood,
+  foam core board, spray foam, felt, fabric, resin, and paint. She also painted
+  the eight-wall retro-futuristic mural "Cosmic Dreams and Sunshine Beams"
+  inside FloridaRAMA.
+
+  For SHINE Mural Festival 2022, she painted at 2421 Central Avenue in St.
+  Petersburg, Florida. SHINE is the curated, invitation-only festival produced
+  by the St. Petersburg Arts Alliance, which has commissioned more than 170
+  murals across its run.
+
+  In October 2025, Cantero was one of 16 muralists featured in "We Built This
+  City: Women Artists of SHINE" at the Morean Arts Center, 719 Central Avenue.
+  The exhibition opened Saturday, October 11, 2025 with a 5:00–8:00 p.m.
+  reception and ran through October 22. The Morean partners with SHINE annually
+  to spotlight muralists who have shaped the festival's legacy. The full roster
+  of featured women artists alongside Cantero: Alyssa Marie, Artist Jones,
+  Elizabeth Barenis, Quinn Cale, Jenipher Chandley, Dreamweaver, Amy Ilic-Volpe,
+  Carrie Jadus, Nneka Jones, Cristi Lopez, Cecilia Lueza, Syd Bloom, Sara Salem,
+  Nicole Salgar, and Sarah Sheppard. Amanda Cooper, Chief Curator at the Morean
+  Arts Center, organized the show. Running concurrently was "The Shooters We
+  Know: Curated by BASK," a street photography exhibition guest-curated by local
+  artist BASK that ran through December 31, 2025. Both exhibitions were free and
+  open to the public Monday through Saturday, 10 a.m. to 5 p.m.
+
+  Her FloridaRAMA artist page links out to her personal site at
+  ashleycantero.com and her Instagram at @ashleycantero, and to a
+  Fairgrounds-published interview, "7 Questions With Fairgrounds St. Pete
+  FloridaRAMA Artist Ashley Cantero." Her personal site at ashleycantero.com
+  lists Home, About, Shop, and Contact sections, with both Facebook and
+  Instagram links from the site footer.
+
+  Website: ashleycantero.com. Instagram: @ashleycantero.
+
+searchMuralDescription: |
   A retro sci-fi scene spanning the full wall — three flying saucers beam up
   figures against a teal background loaded with mid-century diamond shapes and
-  starbursts. A suited figure stands on a vanishing-point highway while a
-  green alien peers out from the right side. The palette is teal, pink, and
-  chartreuse with heavy black outlines giving it a vintage comic book feel.
+  starbursts. A suited figure stands on a vanishing-point highway while a green
+  alien peers out from the right side. The palette is teal, pink, and chartreuse
+  with heavy black outlines giving it a vintage comic book feel.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "Featured in We Built This City: Women Artists of SHINE exhibition, Morean Arts Center (2025)"
-
+artistAwards: "SHINE 2022 selected artist"
+furtherWork:
+  - name: "ashleycantero.com"
+    url: ""
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
@@ -48,3 +118,5 @@ sourceNotes:
   - "https://www.kresscontemporary.com/artists/ashleycantero"
   - "https://www.floridarama.art/artist/ashley-cantero"
   - "https://ilovetheburg.com/two-new-street-art-exhibitions-st-pete/"
+  - "https://ashleycantero.com/about-lac/"
+  - "https://stpeteartsalliance.org/shine?alias=/2022_SHINE_Ashley_Cantero"

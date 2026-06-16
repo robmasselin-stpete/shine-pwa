@@ -4,43 +4,86 @@
 id: 16
 artist: Reid Jenkins
 year: 2025
-lat: 27.770072
-lng: -82.661264
+lat: 27.769997
+lng: -82.661186
 address: 2039 1st Ave S
 category: shine
 img: "images/murals/2025/reid-jenkins.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Ikigai in Bloom"
 building: Founders Pro
-instagram: nighttakesking
+instagram: reidmjenkins
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Reid Jenkins is a St. Petersburg native who holds a BFA from Maryland
-  Institute College of Art and is a graduate of the P.C.C.A program at Gibbs
-  High School. His work spans murals, canvas paintings, and tattoos — he
-  currently tattoos at Fabled Trade Tattoo Company in Lealman and maintains
-  a studio at the Arts Exchange in the Warehouse Arts District. Jenkins aims
-  to paint the human experience and capture the small moments that many
-  forget to appreciate. He painted a SHINE mural in 2021 and returned for
-  SHINE Origins 2025 with this botanical piece at Founders Pro.
+  He paints the people seldom seen in the 'Burg. He also tattoos them.
 
-muralDescription: |
-  A stunning photorealistic botanical mural on the side of a commercial
-  building against a deep black background. An overflowing arrangement of
-  tropical flowers fills the wall — king proteas, red ginger, heliconia,
-  pincushion proteas, orchids, and ferns rendered in rich crimsons, pinks,
-  corals, golds, and greens. The hyperrealistic detail and dramatic dark
-  background give it the feel of a Dutch Golden Age still life painting
-  scaled up to building size.
+  Reid Jenkins is a St. Petersburg native. He graduated from the Pinellas County
+  Center for the Arts at Gibbs High School — the same program that produced
+  Derek Donnelly — then earned a BFA from the Maryland Institute College of Art.
+  He tattoos at Fabled Trade Tattoo Company, a queer-owned studio in the Lealman
+  area, and keeps a studio at the ArtsXchange in the Warehouse Arts District.
+
+  His murals tend toward photorealistic portraiture and botanicals — his SHINE
+  2021 piece at the St. Pete Distillery featured portraits of his two daughters
+  surrounded by sunflowers and greenery. He has noted that roughly a third of
+  mural pay goes to supplies alone. He collaborated with Iboms and Zulu Painter
+  on "Imagine Gas Plant & Laurel Park" at Campbell Park Recreational Center, and
+  painted the cheetah with geometric 90s-inspired colors at Star Booty Salon on
+  16th Street South.
+
+  For SHINE Origins 2025, he painted a botanical piece at Founders Pro using a
+  projection method for the outline.
+
+searchBio: |
+  He paints the people seldom seen in the 'Burg. He also tattoos them.
+
+  Reid Jenkins is a St. Petersburg native. He graduated from the Pinellas County
+  Center for the Arts (PCCA) program at Gibbs High School, then earned a BFA
+  from the Maryland Institute College of Art (MICA). He is a muralist, painter,
+  illustrator, and tattoo artist. He tattoos at Fabled Trade Tattoo Company
+  (formerly Ink Werkz Tattoo Studio), a queer-owned studio at 4195 54th Ave N in
+  the Lealman area of St. Petersburg. He keeps a studio at the ArtsXchange in
+  the Warehouse Arts District.
+
+  His aim is to "paint the human experience and the experience of those seldom
+  seen in the 'Burg," focusing on capturing small, overlooked moments. His work
+  tends toward photorealistic portraiture and botanicals. He has noted that
+  roughly 33% of mural pay goes to supplies alone. He supports MIZE Gallery,
+  COVE in Pinellas Park, Woodfield Fine Art, and d-gallerie.
+
+  For SHINE 2021, he painted at the St. Pete Distillery — portraits of his two
+  daughters with sunflowers and greenery. He collaborated with Iboms and Zulu
+  Painter on "Imagine Gas Plant & Laurel Park" at Campbell Park Recreational
+  Center. Other murals include the large cheetah with geometric 90s-inspired
+  colors at Star Booty Salon (1741 16th St S). He exhibited in "Renew," a group
+  show with Bekky Beukes at Mergeculture, Tampa (February 2022).
+
+  For SHINE Origins 2025, he painted a botanical piece at Founders Pro, using a
+  projection method for the outline. Instagram: @reidmjenkins.
+
+searchMuralDescription: |
+  A stunning photorealistic botanical mural on the side of a commercial building
+  against a deep black background. An overflowing arrangement of tropical
+  flowers fills the wall — king proteas, red ginger, heliconia, pincushion
+  proteas, orchids, and ferns rendered in rich crimsons, pinks, corals, golds,
+  and greens. The hyperrealistic detail and dramatic dark background give it the
+  feel of a Dutch Golden Age still life painting scaled up to building size.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "BFA, Maryland Institute College of Art; SHINE 2021 and 2025 Origins festival artist"
+artistAwards: "SHINE 2021 selected artist; SHINE Origins 2025 selected artist"
+furtherWork: []
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-06-16 — Title set to 'Ikigai in Bloom' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:
   - "https://ilovetheburg.com/muralist-reid-jenkins/"
   - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
+  - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://luciwest.com/photos-from-shine-origins-mural-festival-2025/"

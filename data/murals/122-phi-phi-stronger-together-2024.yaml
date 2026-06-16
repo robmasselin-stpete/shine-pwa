@@ -1,0 +1,106 @@
+# Phi Phi Artland Team — Stronger Together (St. Pete Community Mural 2024)
+
+# ── Required ──
+id: 122
+artist: Phi Phi Artland Team
+year: 2024
+lat: 27.771246
+lng: -82.662994
+address: "Central Ave"
+category: commercial
+img: "images/murals/commercial/phi-phi-stronger-together.jpeg"
+
+# ── Optional ──
+title: "Stronger Together"
+building: "Mikhael's storefront"
+instagram: phi_phi_artland
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Community mural painted over four weekends by Phi Phi Artland team + neighbors"
+  - "Inspired by St. Pete's resilience after Hurricanes Helene and Milton"
+  - "Funded by St. Pete Arts Alliance grant + City of St. Petersburg"
+
+artistBio: |
+  This is a community mural, not the work of a single artist. It was led by Sara
+  Salem — Phi Phi Artland's Head of Fine Arts — who started with a contest to
+  give a free mural to a local storefront. Mikhael's storefront won. After
+  Hurricanes Helene and Milton hit Florida in 2024, Sara wanted the mural to do
+  more than beautify one wall: she wanted it to bring people together in a
+  shared act of creation. She secured a grant from the St. Pete Arts Alliance
+  with backing from the City of St. Petersburg, and the Community Mural Project
+  was born.
+
+  The Phi Phi Artland team — Christianna, Clair, Nadine Allan, Nelia, and Sara —
+  designed a collage of faces in diverse colors, symbolizing unity and the
+  beauty of embracing differences. Each face tells a story; together they
+  reflect the multicultural fabric of St. Petersburg.
+
+  Painting happened over four weekends, each led by a different team artist.
+  Nelia ran weekend one — neighbors, families, and first-time painters laid the
+  foundation. Clair led weekend two, layering color and detail. Christianna, the
+  team's graphic designer, took weekend three, finalizing the layout despite
+  unusually cold Florida weather and switching from scaffolding to ladders for
+  the upper sections; the design picked up extra flowers along the way. Nadine
+  Allan led weekend four — all painting slots fully booked — and the team
+  finished the piece together.
+
+searchBio: |
+  "Stronger Together" is the 2024 St. Pete Community Mural Project — a
+  collaboration led by Sara Salem (Phi Phi Artland's Head of Fine Arts) and
+  painted by the Phi Phi Artland team alongside dozens of community participants
+  over four weekends in late 2024. Funded by a grant from the St. Pete Arts
+  Alliance and supported by the City of St. Petersburg.
+
+  Sara Salem started with a storefront contest to give one local business a free
+  mural. Mikhael's storefront won. After Hurricanes Helene and Milton hit
+  Florida that year, Sara expanded the project to bring the community together
+  in a shared act of creation, securing the grant from St. Pete Arts Alliance.
+
+  The Phi Phi Artland team — Christianna, Clair, Nadine Allan, Nelia, and Sara
+  Salem — designed a collage of faces in diverse colors, symbolizing unity and
+  the beauty of embracing differences. The mural is a celebration of St.
+  Petersburg's multicultural fabric.
+
+  Each weekend was led by a different team artist: - Weekend 1 — Nelia laid the
+  foundation with first-time painters. - Weekend 2 — Clair layered color and
+  detail. - Weekend 3 — Christianna (graphic designer) finalized the layout
+  despite cold weather; flowers added; switched scaffolding to ladders. -
+  Weekend 4 — Nadine Allan led the finishing touches; all slots booked.
+
+  Located near 22nd and Central Ave in downtown St. Petersburg.
+
+  Phi Phi Artland is a St. Petersburg fine-arts and martial-arts studio that
+  also runs community mural projects. Website: phiphiartland.com. Instagram:
+  @phi_phi_artland.
+
+searchMuralDescription: |
+  A wide panoramic mural showing a row of stylized faces in profile, each
+  rendered in different bold color blocks — greens, yellows, purples, pinks,
+  blues, and oranges. The faces overlap and interlock like puzzle pieces,
+  surrounded by tropical leaves, palm fronds, and simple white flowers. The
+  words "Stronger Together!" appear in gold script on the right side. The style
+  is flat and graphic with clean geometric shapes making up each face, giving
+  the whole piece a modern, poster-art quality. It reads as a celebration of
+  community and diversity.
+
+muralInspiration: "Inspired by the resilience of St. Petersburg after Hurricanes Helene and Milton hit Florida in 2024. Led by Sara Salem (Phi Phi Artland's Head of Fine Arts) with a grant from the St. Pete Arts Alliance and support from the City of St. Petersburg."
+muralAwards: ""
+artistAwards: ""
+furtherWork:
+  - name: "phiphiartland.com"
+    url: "https://phiphiartland.com/2024"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed (as Sarah Sheppard)"
+  - "30 April 2026 — Re-attributed: this mural is the 2024 St. Pete Community Mural Project by the Phi Phi Artland Team (led by Sara Salem), NOT Sarah Sheppard. Bio rewritten to describe the collaboration story per phiphiartland.com/2024."
+sourceNotes:
+  - "https://phiphiartland.com/2024"
+  - "User photo with GPS 2026-03-08"
+verification:
+  date: 2026-04-30
+  method: phase2-llm-per-claim
+  status: pass
+  notes: "Re-attribution: previously misattributed to Sarah Sheppard. Source: phiphiartland.com/2024 confirms this is the 2024 St. Pete Community Mural Project led by Sara Salem and the Phi Phi Artland team (Christianna, Clair, Nadine Allan, Nelia, Sara). Mural description ('collage of faces in diverse colors', 'Stronger Together') matches verbatim."

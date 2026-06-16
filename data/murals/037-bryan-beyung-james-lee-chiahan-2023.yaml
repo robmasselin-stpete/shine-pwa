@@ -4,8 +4,8 @@
 id: 37
 artist: "Bryan Beyung & James Lee Chiahan"
 year: 2023
-lat: 27.762889
-lng: -82.673758
+lat: 27.762873
+lng: -82.673696
 address: 2875 7th Ave S
 category: shine
 img: "images/murals/2023/bryan-beyung-james-lee-chiahan.jpeg"
@@ -17,21 +17,113 @@ instagram: bryanbeyung
 basedIn: "Montreal, Canada"
 
 artistBio: |
-  Bryan Beyung (王永財) is a Sino-Cambodian visual artist born in Montreal to a
-  family of Chinese-Cambodian refugees. He studied graphic design at Cégep
-  Marie-Victorin and color theory and muralism at Galería LaRoja in Seville,
-  Spain. His work explores immigration, diasporic heritage, and migratory flows,
-  blending neo-muralism, post-graffiti, and contemporary painting. Notable
-  projects include "The Sea Keeper," the first mural on a Canadian bulk carrier,
-  and public works across the US, Canada, Haiti, France, Morocco, and Cambodia.
-  James Lee Chiahan (李佳翰, b. 1990) is a Taiwanese-Canadian artist from Tainan,
-  Taiwan, now based in Montreal. Largely self-taught in oil painting, he creates
-  emotionally resonant work exploring memory, closeness, and distance. His
-  editorial illustration clients include The New Yorker, The Atlantic, The
-  Washington Post, The New York Times, and Apple. He won the 2024 Canadian
-  Magazine Awards Grand Prize for Cover Art. The two share a studio in Montreal.
+  Bryan Beyung painted a mural on a bulk carrier — the first produced on a cargo
+  ship in Canada. James Lee Chiahan's clients include Apple, The New Yorker, and
+  The New York Times. They paint together.
 
-muralDescription: |
+  Beyung was born in Montreal to a Chinese-Cambodian refugee family. He studied
+  graphic design, started as a graffiti artist as a teenager, and built a
+  practice exploring diasporic heritage through memories and images. His work
+  won the International Corporate Art Awards in Italy. He has painted across the
+  US, Canada, Haiti, France, Morocco, and Cambodia.
+
+  Chiahan was born in 1990 in Tainan, Taiwan, and is self-taught. His oil
+  paintings and charcoal drawings explore the bittersweetness of mundane
+  moments. He won the Canadian Magazine Awards Grand Prize for Cover Art (2024)
+  and was shortlisted for the Jackson's Art Prize. He is represented by
+  Pierre-Francois Ouellette art contemporain in Montreal.
+
+  For SHINE 2023, they collaborated on "When the Sun is Up, the Moon is Absent!"
+
+searchBio: |
+  Bryan Beyung painted a mural on a bulk carrier — the first produced on a cargo
+  ship in Canada. James Lee Chiahan's clients include Apple, The New Yorker, and
+  The New York Times. They paint together.
+
+  Beyung was born in Montreal to a Chinese-Cambodian refugee family. His parents
+  met in a refugee camp on the Thailand-Cambodia border after fleeing the Khmer
+  Rouge regime and arrived in Quebec in 1979. He started as a graffiti artist as
+  a teenager, completed a graphic design diploma at Cégep Marie-Victorin in
+  Montreal in 2006, and later trained in color theory and muralism (2018) and
+  oil painting and muralism (2019) at Galeria LaRoja in Seville, Spain. He works
+  across muralism, painting, and drawing at the intersection of neo-muralism,
+  post-graffiti, and contemporary painting, exploring the diasporic experience
+  and questions of belonging, collective memory, and transmission.
+
+  His public art includes Migration (2014, MU, Montreal), May an Old Song Open a
+  New World (2015, MU, Montreal, with Gene Pendon) near the Chinatown gates at
+  St-Laurent and Rene-Levesque, Men Anpil Chay Pa Lou (2018, L'art de s'unir,
+  Port-au-Prince, Haiti), Passengers (2018, Beyond Walls Festival, Lynn), Gate
+  Keepers (2018, Factory, Phnom Penh), Humankind Odyssey (2019, Mural Festival,
+  Montreal) at Roy and Coloniale featuring a two-storey still life with a yellow
+  mango referencing his childhood family dinners, Trochromatie (2019, Parc
+  Frederic-Back, Montreal), Pedestrians Crossing (2019, Dix30, Brossard), Tale
+  of Ancient Vase (2019, City of Boston), Rocky Beach (2020, MU, Lasalle), Jade
+  et ses homies (2020, Kolab, Saint-Laurent), Mono No Aware (2022, Beyond Walls
+  Festival, Lowell), Etranger (2022, Festival Jidar, Rabat), Jardin interieur
+  (2023, Place Dupuis, Montreal), La boite a jouets (2023, Ruelle Garlanau,
+  Montreal), Stop Bombing Civilians (2024, Festival Mural, Montreal), Little
+  Ghost (2024, Bump Festival, Calgary), Demain l'hiver / Tomorrow's Winter
+  (2024, Montreal), and Casio (2024, Jardin Racine, Racine). His murals can be
+  seen in Calgary, Rabat, St. Petersburg, Boston, Lynn, Lowell, Montreal,
+  Annecy, Phnom Penh, and Port-au-Prince. His work has been featured at La Foire
+  en Art Actuel de Quebec, La Centrale Powerhouse and Pierre-Francois Ouellette
+  art contemporain in Montreal, Forest For The Trees in Seattle, the Urban Art
+  Biennale at the Volklinger Hutte World Cultural Heritage Site in Germany,
+  Antler Gallery in Portland, Open Gallery in Long Beach, Blue Triangle Gallery
+  in Boston, Station 16 in Montreal, Hotel Rosewood in Phnom Penh, Slice of Life
+  Gallery in Vancouver, Anteism Gallery in Montreal, Kbach Gallery in Phnom
+  Penh, and Galerie Michel-Ange in Montreal. He has held residencies at Jardins
+  Racine (Racine), Art by Friends (Annecy, France), Void Projects (Miami), and
+  Paifang E. (Montreal, 2025). He won the International Corporate Art Awards in
+  Italy and received grants from Conseil des arts de Montreal
+  (Recherche-Creation, 2024), the Ministere de la Culture et des communications
+  (Cooperation Quebec-Jalisco, 2024), and CALQ Vivacite (2014, 2023). He
+  co-published Le depanneur chinois d'Hochelaga in 2024 with Angelina Guo and
+  James Lee Chiahan. He has spoken on panels for the CanAsian Arts Network and
+  the Musee des beaux-arts de Montreal. He has been covered by Le Devoir, City
+  News, Arab News, La Presse, The Suburban, CBC News, and the Phnom Penh Post.
+  Website bryanbeyung.com, Instagram @bryanbeyung.
+
+  James Lee Chiahan (Lee Chia-Han) was born in 1990 in Tainan, Taiwan, and is
+  based in Montreal. His mother's side of the family runs roughly twenty
+  generations deep in Taiwan's Anping District, where the Dutch East India
+  Company set up a trading post in 1624; his father comes from a Hakka family
+  with more recent roots in China. He grew up watching Studio Ghibli films and
+  drew detail-oriented illustrations as a child, then went into graphic design
+  in the Toronto area and later Montreal. He is self-taught as a fine artist,
+  working primarily in oil painting and charcoal drawing, lingering in the
+  bittersweetness of mundane moments. He is represented by Pierre-Francois
+  Ouellette art contemporain (PFOAC) in Montreal. His editorial and commercial
+  clients include Apple, The New Yorker, The Atlantic, The Walrus, The
+  Washington Post, and The New York Times — including a commissioned portrait of
+  French author Emmanuel Carrere for a review of his novel Yoga, and a feature
+  illustration for "The Wrong Side of a New Age" in The Walrus. His illustration
+  work has been recognized by American Illustration 43 (2024, 2025), the
+  Canadian Magazine Awards (2024 Grand Prize for Cover Art), Jackson's Art Prize
+  (2024 shortlist), The Society for News Design (2024), and the Society of
+  Illustrators. He has completed murals for BMO (2025, Rene-Levesque and De
+  Bullion, Montreal), Davies Ward Phillips & Vineberg LLP (2024, Montreal), and
+  Montreal's Chinatown (2024, with Bryan Beyung). He participated in
+  Self-portraits of Formosa: Reminiscing the Dutch? at TAIWANfest Toronto and
+  Vancouver TAIWANfest in 2023. Influences include filmmakers Edward Yang and
+  Hou Hsiao-hsien, visual artist James Jean, musician Wu Bai, the Taiwanese band
+  Forests, and Taiwanese-Canadian musician Alex Zhang Hungtai. Website jlee.ca.
+
+  For the 9th edition of SHINE Mural Festival in 2023, Beyung and Chiahan
+  painted "When the Sun is Up, the Moon is Absent!" at 2875 7th Avenue S in St.
+  Petersburg, a 25-by-80-foot wall depicting the Kien family standing on a red
+  dirt road in Site 2, a refugee camp on the Cambodia-Thailand border in 1987,
+  before fate brought them to Boston, Montreal, and finally Bradenton, Florida.
+  The youngest figure is their friend Anhdi, who lives in Bradenton with his
+  wife and three kids; the family helped paint sections of the wall, including a
+  tree and moon based on a drawing by Amelia Kien, age 6, and a bottom-left
+  section and door painted by Annie, Aaden, Adrian, and Amelia Kien, plus June,
+  Zachariah, and Noble. The project was supported by David and Liliana of
+  Artillery Residency, Jenee and the SHINE team, and Void Projects, with
+  polaroids by Ngahuia Fiu and photography by Mark Rapien.
+
+searchMuralDescription: |
   A two-panel mural on the Stewart Moving & Storage building. The left side
   features a large black circle on a golden background containing a white tree
   silhouette and crescent moon — based on a drawing by six-year-old Amelia Kien
@@ -45,10 +137,15 @@ muralDescription: |
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "Beyung: 2017 International Corporate Art Awards (Sea Keeper); Chiahan: 2024 Canadian Magazine Awards Grand Prize for Cover Art; SHINE 2023 festival artists"
+artistAwards: "Beyung: International Corporate Art Awards (Italy); Chiahan: Canadian Magazine Awards Grand Prize (2024), Jackson's Art Prize shortlist, American Illustration 43; SHINE 2023"
+
+furtherWork: []
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
   - "https://stpeteartsalliance.org/bryan-beyung-2023"
   - "https://www.jlee.ca/mural-shine_9"
@@ -56,3 +153,6 @@ sourceNotes:
   - "https://pancouver.ca/james-lee-chiahan-finds-artistic-niche-in-illustrations-for-major-magazines-and-oil-paintings-for-himself/"
   - "https://www.pfoac.com/en/artists/107-james-lee-chiahan/overview/"
   - "https://stpetecatalyst.com/take-a-look-all-the-2023-shine-festival-murals/"
+  - "https://mumtl.org/en/artists/bryan-beyung/"
+  - "https://www.cbc.ca/news/canada/montreal/mural-painter-brings-cambodian-chinese-family-roots-to-montreal-streets-1.5172804"
+  - "https://www.jlee.ca/"

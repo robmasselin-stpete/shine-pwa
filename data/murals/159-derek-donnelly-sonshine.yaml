@@ -1,0 +1,79 @@
+# Derek Donnelly — Sonshine
+
+# ── Required ──
+id: 159
+artist: Derek Donnelly
+year: 0
+lat: 27.774037
+lng: -82.647108
+address: "226 Dr MLK Jr St N"
+category: commercial
+img: "images/murals/commercial/derek-donnelly-sonshine.jpeg"
+
+# ── Optional ──
+title: "Sonshine"
+building: ""
+instagram: derekdonnelly
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  He painted a T-Rex in a Hawaiian shirt going fishing — for AARP. That tells
+  you most of what you need to know about Derek Donnelly.
+
+  A Pinellas County native, Donnelly grew up in Pinellas Park, graduated from
+  the Center for the Arts at Gibbs High School in 2001, and studied graphic
+  design and digital illustration at IADT Tampa. He went full-time on murals in
+  2010. A year later he opened Saint Paint Arts gallery on the 600 block of
+  Central Avenue — not as a vanity project, but as a launchpad. Several artists
+  got their first real exposure there before he closed it in 2014 to focus on
+  walls.
+
+  His style sits at the intersection of illustration and realism — playful
+  without being childish, bold without being loud. His son Syre shows up in
+  murals across the city. "Sonshine" is likely one of those portraits — a
+  monochrome boy in sunglasses reflecting a warm sunset, set against a deep
+  starfield, near Planet Retro Records.
+
+searchBio: |
+  Derek Donnelly — see full bio on his SHINE 2025 entries (ids 5, 6) and SHINE
+  2018 entry (id 115). Pinellas County native, Gibbs High School Center for the
+  Arts (2001), IADT Tampa (graphic design / digital illustration). Full-time
+  muralist since 2010. Founded Saint Paint Arts gallery (2011-2014), COVE
+  gallery (Pinellas Park), Pinellas Arts Village district, and Public Art
+  Project Inc. nonprofit. Clients include Fender Guitars, Tampa Bay Rays, Sirata
+  Beach Resort, and AARP. Multiple Best of the Bay wins. Inaugural Artmaker 2026
+  at Ruth Eckerd Hall. SHINE 2025 artist liaison and operations while producing
+  two murals.
+
+  "Sonshine" is a commercial mural near Planet Retro Records in St. Petersburg.
+  A monochrome portrait of a young boy wearing sunglasses that reflect a warm
+  orange-gold sunset, set against a deep blue-black starfield. Signed "Donnelly"
+  in the upper right corner. Some paint peeling visible as of April 2026. The
+  boy may be his son Syre, who appears in murals across the city.
+
+  Instagram: @derekdonnelly.
+
+searchMuralDescription: |
+  A monochrome portrait of a young boy fills the wall. He wears dark sunglasses
+  whose lenses reflect a warm orange-gold sunset — the only color in the piece.
+  His hair, skin, and clothing are rendered in shades of gray and silver-blue
+  against a deep blue-black starfield background dotted with tiny white stars.
+  The boy gazes slightly upward with a calm expression. "Donnelly" is signed in
+  the upper right. Some paint has peeled from the cheek and forehead, revealing
+  the wall beneath.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-16, GPS from EXIF"
+  - "Artist: Derek Donnelly, signed on wall"
+  - "Title: Sonshine (per Rob)"
+  - "Near Planet Retro Records, north of 600 block"

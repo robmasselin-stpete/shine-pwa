@@ -1,0 +1,112 @@
+# Stonehenge Park — painted pillar cluster
+
+# ── Required ──
+id: 201
+artist: Various / Unknown
+year: 0
+lat: 27.79911
+lng: -82.73740
+address: "2993 Tyrone Blvd N"
+category: commercial
+img: "images/murals/unknown/stonehenge-park-pillars.jpeg"
+
+# ── Optional ──
+title: "Stonehenge Park Pillars"
+building: "Stonehenge Park (Tyrone Blvd overpass on Pinellas Trail)"
+instagram: ""
+basedIn: ""
+
+artistBio: |
+  Stonehenge Park is not on any St. Pete park map. It's an underpass at Tyrone
+  Blvd that 22 artists turned into a kaleidoscope — 21 painted pillars, 10
+  walls, and a name that took.
+
+  The site sits at 2993 Tyrone Blvd N, directly on the Pinellas Trail just north
+  of Tyrone Square Mall. Concrete bridge columns rise out of grass and dirt
+  mounds; the crossbeams above the road deck are striped in safety-orange. Trail
+  riders coast through the shade.
+
+  Frogs, elephants, mermaids, photoreal portraits, neo-surrealist faces, jungle
+  scenes, palm silhouettes. Different styles, different years, different hands.
+  It reads less like a curated gallery and more like a community paint day that
+  kept going.
+
+  No city, county, or Creative Pinellas record documents who organized it, what
+  year it started, or who paid for the paint. Two artists are publicly
+  attributed: James Oleson (the maroon grinning face — Mural Quest #198) and
+  Zulu Painter (three palm silhouettes — #199). Everyone else is unidentified.
+
+  If you painted one of these walls or know who did, email
+  support@muralquest.app — we'll credit you and write a real bio.
+
+searchBio: |
+  Stonehenge Park is not on any St. Pete park map. It's an underpass at Tyrone
+  Blvd that 22 artists turned into a kaleidoscope — 21 painted pillars, 10
+  walls, and a name that took.
+
+  The site sits at 2993 Tyrone Blvd N in St. Petersburg, Florida, directly on
+  the Pinellas Trail just north of Tyrone Square Mall. Concrete bridge columns
+  rise out of grass and dirt mounds. The crossbeams above the road deck are
+  striped in safety-orange. Benches, lighting, and a sidewalk connect the trail
+  through the underpass. Trail riders coast through the shade.
+
+  The painted walls and pillars run the gamut: frogs, elephants, mermaids,
+  photoreal portraits, neo-surrealist faces, jungle scenes, palm silhouettes.
+  Different styles, different years, different hands. It reads less like a
+  curated gallery and more like a community paint day that kept going.
+
+  No city, county, or Creative Pinellas record documents who organized the site,
+  what year it started, or who funded the paint. Stonehenge Park does not appear
+  on the City of St. Petersburg's parks list and is not part of the Creative
+  Pinellas "Pinellas Trail ArtWorks" program (those four commissions are in Palm
+  Harbor and Tarpon Springs). It appears to be an informally named site rather
+  than a chartered city park. The 22-artists / 21-pillars / 10-walls count comes
+  from a Yelp reviewer summary and is treated as approximate.
+
+  Two artists are publicly attributed for specific walls: James Oleson — the
+  maroon neo-surrealist grinning face wall, signed "OL3SON" (Mural Quest #198) —
+  and Zulu Painter — the three palm silhouettes with the green Old-English
+  Stonehenge Park sign, signed "zulupainter" (#199). The jungle-themed
+  entry-sign wall (#200) and the painted pillar cluster (#201) are catalogued
+  with artists unknown.
+
+  If you painted any of these walls or know who did, email
+  support@muralquest.app and we will credit you and write a proper bio.
+
+searchMuralDescription: |
+  A wide view from the south side of Stonehenge Park looking north through the
+  Tyrone Blvd underpass on the Pinellas Trail. The composition is dominated by
+  tall concrete bridge pillars supporting the road deck above. Six painted
+  pillars are visible in this frame. The leftmost pillar shows a stylized blue
+  frog or fish-like creature with big black eyes against a teal-and-green
+  background; a small pink figure with raised arms is painted on the lower band
+  of the same pillar. The next pillar over shows a gray elephant in a crown
+  rendered in a comic-book style, painted on a magenta-purple background. Behind
+  it, the road deck's crossbeams are painted in thick bands of safety-orange
+  alternating with bare gray concrete. In the middle distance, a pillar is
+  painted with a green grimacing face that has a single large open eye and a
+  wide closed mouth. To its right, another pillar is painted bright blue and
+  shows a long-stemmed orange-and-magenta rose with a small ladybug on the stem
+  and water-bubble shapes underneath. Further back, a tall narrow column is
+  painted red-orange and dark blue with a vertical zigzag pattern. Foreground
+  grass and dirt mounds inside the underpass are visible. On the far right, a
+  wider concrete pillar shows a red-haired mermaid with a green tail sitting on
+  a small rock against a bright bubbly blue ocean background. Two large palm
+  trees and pale-green palmettos frame the right side of the frame. Bare grass,
+  dirt, and a paved path run across the foreground.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-04 — New entry added by Rob: cluster of painted pillars at Stonehenge Park under the Tyrone Blvd overpass on the Pinellas Trail. GPS from photo IMG_0261.jpeg EXIF (27.79911, -82.73740). Cataloged as a single placeholder entry pending identification of individual pillar artists. Stonehenge Park research agent dispatched 2026-05-04 — bio to be expanded once research returns."
+sourceNotes:
+  - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0261.jpeg)"
+  - "https://www.yelp.com/biz/stonehenge-park-st-petersburg"
+  - "https://foursquare.com/v/stonehenge-park/51bc88dd498e8d6f75faf8df"
+  - "https://creativepinellas.org/opportunity/pinellas-trail-artworks/"
+  - "https://en.wikipedia.org/wiki/List_of_parks_in_St._Petersburg,_Florida"

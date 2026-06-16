@@ -4,8 +4,8 @@
 id: 123
 artist: DAAS
 year: 2018
-lat: 27.769074
-lng: -82.660209
+lat: 27.769537
+lng: -82.660215
 address: 128 20th St S
 category: shine
 img: "images/murals/2018/daas.jpeg"
@@ -16,44 +16,127 @@ building: Tri-J Towing
 instagram: daas
 basedIn: "Austin, TX"
 
-artistBio: |
-  DAAS is a muralist and painter whose legal name is simply DAAS — not an
-  acronym or alias. He grew up in Jacksonville and St. Petersburg, Florida,
-  and earned an A.A.S. in Graphic Design from Pinellas Technical College in
-  Clearwater. Early in his career he worked as an assistant to an established
-  muralist in Daytona Beach for nearly six years, learning materials, styles,
-  and large-scale application techniques. In 2007 he moved to Osaka, Japan,
-  initially contracted as an artist and performer for Universal Studios Japan.
-  Living in Japan for roughly a decade had a profound effect on his style —
-  exposure to origami and the precision-based mentality of Japanese craftsmen
-  led him to develop his signature geometric faceted technique, which layers
-  angular shapes like a cubist stained glass window to build up recognizable
-  forms from flat color planes. After leaving Japan he settled in Austin,
-  Texas. He's painted walls internationally across the U.S., Japan, China,
-  Italy, Portugal, Jordan, Nepal, and the Dominican Republic. Notable
-  commissions include a 60-foot mural for the Moody Center in Austin, the
-  Van Cliburn Foundation's first-ever commissioned mural ("Chromesthesia")
-  in Fort Worth, two 144-foot tunnel murals at Salt Lake City International
-  Airport, and a series of murals in rural Chinese schools for Nippon Paint's
-  "Color, Way of Love" project. His work has been featured in The New York
-  Times, BBC, and Spoon & Tamago.
+fieldNotes:
+  - "Apprenticed six years under a muralist in Daytona"
+  - "Self-taught turned master craftsman"
+  - "Vivid tropical realism"
 
-muralDescription: |
+artistBio: |
+  He apprenticed six years under a muralist in Daytona Beach. Then he moved to
+  Japan and worked for Universal Studios Osaka.
+
+  DAAS — his legal name — grew up in Jacksonville and St. Petersburg. He earned
+  an associate's in graphic design from Pinellas Technical College. He spent
+  roughly a decade in Osaka, fell in love with the city, and developed a style
+  based on Japanese origami crease patterns — bold, geometrically-inspired
+  murals in vivid color, precision-based.
+
+  He has painted across Japan, China, Nepal, Portugal, Jordan, and Canada.
+  Recent clients include Amazon, PayPal, and Kimpton Hotels. He worked on the
+  Nippon Paint "Color Way of Love" school revitalization project in Shanghai. He
+  is now based in Austin, Texas.
+
+  For SHINE 2018, he painted "We Are Going to Be Friends" — 25 feet by 103 feet,
+  spray paint only, seven days.
+
+searchBio: |
+  He apprenticed six years under a muralist in Daytona Beach. Then he moved to
+  Japan and worked for Universal Studios Osaka.
+
+  DAAS — his legal name — grew up in Jacksonville and St. Petersburg. He earned
+  an A.A.S. in Graphic Design from Pinellas Technical College. After graphic
+  design school he met a locally established muralist in Daytona Beach who hired
+  him as an assistant. They worked together for nearly six years producing
+  murals mainly for commercial clients. That apprenticeship taught him
+  materials, styles, methods, and application, and pulled him toward large-scale
+  work.
+
+  He flew around the world at the behest of Universal Studios Japan, working as
+  an artist and performer. He moved to Japan in 2008, fell in love with Osaka,
+  and decided to make it home. He stayed in Japan for over a decade — by his own
+  count roughly 12 years — before relocating back to the United States. When he
+  arrived in Osaka there was very little street art in the city, and he set out
+  to change that. The more walls he painted and documented, the more recognized
+  he became, and the easier it got to charge a fee. His focus shifted to public
+  art projects funded by cities.
+
+  His style is based on the precise and tender folds of Japanese origami — bold,
+  geometrically-inspired murals in vivid color, precision-based. Living in Japan
+  and being exposed to origami was a major influence, and the precision-based
+  mentality of Japanese craftsmen helped him refine his work and pay attention
+  to small details. Over time the style evolved into something more relaxed and
+  fluid, with a greater variety of dynamic colors and subject matter.
+
+  He has painted across Japan, China, Nepal, Portugal, Jordan, and Canada.
+  Documented locations include Osaka, Tokyo, and Takatsuki in Japan; Chongqing
+  and Shanghai and rural Chengdu and Anhui in China; and across the United
+  States in South Salt Lake City, Utah; Salt Lake City International Airport;
+  Dallas, Austin, San Antonio, Houston, Fort Worth, and Kerrville in Texas;
+  Atlanta, Georgia; Loveland, Colorado; Marion, Illinois; Naples, Clearwater,
+  and Coconut Creek in Florida; Stamford, Connecticut; San Diego, California;
+  Johnson City, Tennessee; Winston-Salem, North Carolina; and water tank
+  commissions in Florida and North Carolina.
+
+  In China he was commissioned by Nippon Paint Co. Ltd. — one of the largest
+  manufacturers of paint in Asia — for the Color Way of Love project, a
+  corporate responsibility program. The program has two parts: Color, Way of
+  Love, which rejuvenates primary schools in rural China, and Color, Way of Love
+  Art + City, which produces large-scale murals in Shanghai. He participated in
+  2017 and 2018, painting elementary schools in remote parts of Chengdu and
+  Anhui. He calls the project one of the most meaningful of his career — it
+  coincided with growing international recognition and his relocation back to
+  the U.S. from Japan, and it gave him direct contact with rural students and
+  locals.
+
+  In 2017 he collaborated with St. Petersburg artist Cecilia Lueza on
+  "Efflugence," a piece for the Crescent Heights Neighborhood Association and
+  the City of St. Petersburg, painted on the side of JWags Saloon at 2312 4th
+  Street North.
+
+  For SHINE 2018 — his first year in the festival — he painted "We Are Going to
+  Be Friends" on the west-facing wall of Tri-J Towing at 125 19th Street S (the
+  wall actually faces 20th Street). 25 feet by 103 feet, spray paint only, seven
+  days. SHINE 2018 ran October 6 through 14 with 37 artists — six international,
+  five national, twenty-six local — across nine wall murals, six Coast Bike
+  Wraps, and twelve Corner Canvas pieces.
+
+  He considers himself a public artist with a dominant focus on muralism. He
+  emphasizes community engagement and how artwork affects the well-being of
+  people who see it daily. Over twenty years as a professional artist he has
+  worked through financial, mental, and spiritual challenges, and credits
+  resilience, craftsmanship, professional relationships, and openness to other
+  people's ideas with sustaining the career. He cites his decision to leave
+  Japan after 12 years and return to the States as the most impactful pivot of
+  his career — driven by a need to remove language and cultural barriers and
+  pursue more public art opportunities.
+
+  Recent clients include Amazon, PayPal, and Kimpton Hotels. Books he credits as
+  influential: "The Artist's Way" by Julia Cameron, "The Artist's Guide to
+  Public Art" by Lynn Basa, "ART/WORK" by Heather Darcy Bhandari and Jonathan
+  Melber, and "Launching Your Art Career" by Alix Sloan.
+
+  He is now based in Austin, Texas. Website: artofdaas.com and artist-daas.com.
+  Instagram: @daas. Twitter: @artist_daas.
+
+searchMuralDescription: |
   A full building-side mural depicting a group of rabbits rendered in DAAS's
   signature geometric faceted style. The bunnies are built from interlocking
-  angular planes of soft grays, whites, lavenders, and pale blues, giving
-  them a fractured, cubist look while remaining clearly recognizable. They
-  sit in green grass along the base of the wall. The background is a
-  patchwork of large triangles in warm tones — golds, olive greens, corals,
-  and tans — creating a quilt-like geometric pattern behind the animals.
-  The DAAS tag appears in blocky letters in the upper right corner. The
-  piece covers the entire side of the Tri-J Towing building on 20th St.
+  angular planes of soft grays, whites, lavenders, and pale blues, giving them a
+  fractured, cubist look while remaining clearly recognizable. They sit in green
+  grass along the base of the wall. The background is a patchwork of large
+  triangles in warm tones — golds, olive greens, corals, and tans — creating a
+  quilt-like geometric pattern behind the animals. The DAAS tag appears in
+  blocky letters in the upper right corner. The piece covers the entire side of
+  the Tri-J Towing building on 20th St.
 
 muralInspiration: "Fourth in an ongoing narrative series featuring a young girl interacting with nature and animals. The previous three murals in the series were painted in Italy and China. The title references the White Stripes song. Completed in 7 days using only spray paint."
 muralAwards: ""
-artistAwards: "Van Cliburn Foundation first-ever mural commission (2022); Salt Lake City International Airport commission (2020); Nippon Paint 'Color, Way of Love' international project (2017–2018)"
+artistAwards: "SHINE 2018 selected artist"
 
 # ── Provenance (not exported to data.js) ──
+furtherWork:
+  - name: "artist-daas.com"
+    url: "https://www.artist-daas.com"
 source: "claude-enhanced"
 sourceNotes:
   - "User photo with GPS 2026-03-08"
@@ -62,3 +145,7 @@ sourceNotes:
   - "https://www.artist-daas.com/"
   - "https://canvasrebel.com/meet-daas/"
   - "https://cliburn.org/mural/"
+  - "https://stpeteartsalliance.org/daas"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

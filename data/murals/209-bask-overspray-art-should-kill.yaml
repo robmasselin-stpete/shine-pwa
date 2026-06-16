@@ -1,0 +1,95 @@
+# BASK — "Because Art Should Kill" (Overspray, Gulfport)
+
+# ── Required ──
+id: 209
+artist: BASK
+year: 0
+lat: 27.75087
+lng: -82.70136
+address: "5013 20th Ave S, Unit F, Gulfport"
+category: commercial
+img: "images/murals/commercial/bask-overspray-art-should-kill.jpeg"
+
+# ── Optional ──
+title: "Because Art Should Kill"
+building: "Overspray"
+instagram: knownasbask
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  His name is the slogan. BASK stands for "Because Art Should Kill," and he
+  painted the full phrase across this wall at Overspray in his signature
+  worn-poster stencil — fluorescent red drip outline, weathered black-and-
+  white figures squaring up to fight beneath two angry slit eyes. The "BASK"
+  tag is tucked between the boxers' feet. Painted at the Vitale Bros'
+  graffiti shop in Gulfport.
+
+  Ales Bask Hostomsky — BASK — fled communist Czechoslovakia as a child and
+  grew up in Florida. His work explores the parallels between state
+  propaganda and American consumerism. He is self-taught, works in mixed
+  media on wood and canvas, and is known for rich textures and anti-iconic
+  imagery deconstructing media.
+
+  His art appeared in Iron Man 3. His work is in the permanent collection of
+  the Jacksonville Museum of Modern Art and the Florida International Museum.
+  He shows at Parlor Gallery in Asbury Park and Signari Gallery. For SHINE,
+  he painted in both 2014 and 2020.
+
+searchBio: |
+  BASK — see full bio on his other entry (id 134). This is a 2026 wall at
+  Overspray in Gulfport — the Vitale Bros' street-art shop and graffiti
+  school. The phrase "BECAUSE ART SHOULD KILL" (which is what the BASK name
+  itself stands for) is painted in red drippy stencil text across a
+  weathered black-and-white tableau of two figures squaring up to fight: one
+  in a striped tank top with stars (vaguely American-flag), one in a
+  patterned skirt with a long braid. Two angry slit eyes peer down from
+  above. The whole composition is framed by a fluorescent red drip outline,
+  in BASK's signature decayed-propaganda-poster style. Small "BASK" tag
+  visible at the bottom between the figures' feet.
+
+  Ales Bask Hostomsky was born in Czechoslovakia (birth year disputed: 1977
+  or 1984) and is self-taught. His work explores the parallels between state
+  propaganda and American consumerism. He works in mixed media on wood and
+  canvas with rich textures and anti-iconic imagery. His art appeared in
+  Iron Man 3. Permanent collection: Jacksonville Museum of Modern Art and
+  the Florida International Museum. He shows at Parlor Gallery (Asbury Park)
+  and Signari Gallery. SHINE artist 2014 and 2020.
+
+  Instagram: @knownasbask.
+
+searchMuralDescription: |
+  A tall vertical mural on a white concrete-block exterior wall, framed in
+  fluorescent red dripping paint. At the top, two angry slit eyes with heavy
+  arched brows peer down at the viewer in distressed black silhouette
+  against the white wall. Below them, a dark gray rectangular block bears
+  the phrase "BECAUSE ART SHOULD KILL" in jagged fluorescent-red stencil
+  lettering, paint visibly dripping. Two stenciled figures stand in front of
+  the block: on the left, a figure in a long-sleeve striped tank top with a
+  star pattern (vaguely American-flag), fists raised in a boxing stance; on
+  the right, a figure in a long patterned skirt with a thick braid, also in
+  a fighting stance. The whole image is rendered in distressed black-and-
+  white aerosol-on-poster aesthetic with heavy paint speckle and weathering.
+  The small "BASK" tag is hidden between the boxers' feet at the bottom.
+
+muralInspiration: "BASK's name itself is an acronym: 'Because Art Should Kill.' This wall paints out the full phrase he goes by."
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "knownasbask.com"
+    url: "https://www.knownasbask.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-14 — New mural added by Rob: second BASK in Mural Quest, the 'BECAUSE ART SHOULD KILL' wall at Overspray in Gulfport. GPS from photo IMG_0293.jpeg EXIF (27.75087, -82.70136). 'BASK' tag visible at bottom. Address pending exact street number."
+sourceNotes:
+  - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0293.jpeg)"
+  - "'BASK' signature tag visible between boxers' feet at bottom of mural"
+  - "https://www.knownasbask.com/"
+  - "https://www.instagram.com/knownasbask/"
+verification:
+  date: 2026-05-14
+  method: on-wall signature + slogan match (BASK = 'Because Art Should Kill')
+  status: pass
+  notes: "Attribution authoritative — 'BASK' tag visible plus the painted phrase is the literal expansion of his name. Same Overspray building as Chris Dyer #207 and Vitale Bros #208."

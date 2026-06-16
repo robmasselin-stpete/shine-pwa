@@ -1,0 +1,84 @@
+# Derek Donnelly — Cultasaurus (Commercial)
+
+# ── Required ──
+id: 177
+artist: Derek Donnelly
+year: 0
+lat: 27.774503
+lng: -82.654687
+address: "269 16th St N"
+category: commercial
+img: "images/murals/commercial/derek-donnelly-cultasaurus.jpeg"
+
+# ── Optional ──
+title: Cultasaurus
+building: ""
+instagram: derekdonnelly
+basedIn: "Pinellas County, FL"
+
+artistBio: |
+  He painted a T-Rex in a Hawaiian shirt going fishing — for AARP. That tells
+  you most of what you need to know about Derek Donnelly.
+
+  A Pinellas County native, Donnelly grew up in Pinellas Park, graduated from
+  the Center for the Arts at Gibbs High School in 2001, and studied graphic
+  design and digital illustration at IADT Tampa. He went full-time on murals in
+  2010. A year later he opened Saint Paint Arts gallery on the 600 block of
+  Central Avenue — not as a vanity project, but as a launchpad. Several artists
+  got their first real exposure there before he closed it in 2014 to focus on
+  walls.
+
+  His style sits at the intersection of illustration and realism — playful
+  without being childish, bold without being loud. His son Syre shows up in
+  murals across the city. So does Florida wildlife. He doesn't separate the
+  personal from the public work. In 2012, when mentor Bill "Woo" Correira died,
+  Donnelly organized the Woomorial — a 40-artist tribute mural on the 600 block
+  that became a landmark. That instinct to build things for other people keeps
+  showing up. He founded COVE gallery in Pinellas Park, helped establish the
+  Pinellas Arts Village district, and started Public Art Project Inc., a
+  nonprofit that pushes public art into places it wouldn't otherwise reach and
+  raised pandemic relief funds for local artists.
+
+  His client list runs from Fender Guitars to the Tampa Bay Rays to Sirata Beach
+  Resort — the first major St. Pete Beach resort to commission a local artist.
+  Multiple Best of the Bay wins. Inaugural Artmaker 2026 at Ruth Eckerd Hall.
+  For SHINE 2025, he wasn't just painting — he ran operations and served as
+  artist liaison for the entire festival while producing two murals of his own.
+
+searchBio: |
+  He painted a T-Rex in a Hawaiian shirt going fishing — for AARP. That tells
+  you most of what you need to know about Derek Donnelly.
+
+  A Pinellas County native from Pinellas Park. Graduated from the Center for the
+  Arts at Gibbs High School in 2001, studied graphic design and digital
+  illustration at IADT Tampa. Full-time muralist since 2010. Founded Saint Paint
+  Arts gallery (2011-2014), COVE gallery in Pinellas Park, Pinellas Arts Village
+  district, and Public Art Project Inc. Clients include Fender Guitars, Tampa
+  Bay Rays, Sirata Beach Resort. Multiple Best of the Bay wins. SHINE 2025
+  artist liaison and operations. Instagram: @derekdonnelly.
+
+searchMuralDescription: |
+  A wild, multi-story mural wrapping the corner of a commercial building. A
+  massive photorealistic T-Rex with jaws wide open dominates the upper half,
+  rendered in detailed brown-orange tones with textured scales and green eyes.
+  Below and around it: a chaotic pop-culture collage against a sky-blue
+  background — green aliens in flying saucers, UFOs, a grinning Slimer-like
+  ghost, a robot in overalls, an Alfred E. Neuman-style figure in a Hawaiian
+  shirt, a gorilla in a sweatshirt, crystal skulls, purple flowers, palm trees,
+  and tropical foliage. The overall effect is a fever dream mashup of B-movies,
+  sci-fi, and Florida kitsch in Donnelly's signature playful illustrative style.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Multiple Best of the Bay wins; Inaugural Artmaker 2026 at Ruth Eckerd Hall; SHINE 2025 artist liaison"
+
+furtherWork:
+  - name: "derekdonnelly.com"
+    url: "https://derekdonnelly.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "22 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-21, GPS from EXIF"
+  - "https://stpetecatalyst.com/muralist-derek-donnelly-wants-art-scene-changes/"

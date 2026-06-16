@@ -4,8 +4,8 @@
 id: 89
 artist: "Mwanel Pierre-Louis"
 year: 2021
-lat: 27.771882
-lng: -82.649894
+lat: 27.771883
+lng: -82.649903
 address: 1100 1st Ave. N.
 category: shine
 img: "images/murals/2021/mwanel-pierre-louis.jpeg"
@@ -16,31 +16,105 @@ building: Green Bench Brewing
 instagram: mwanel1_l
 basedIn: "Miami, FL"
 
-artistBio: |
-  Mwanel Pierre-Louis is a Miami-based painter born in New York to
-  Haitian parents. He studied at New World School of the Arts in Miami
-  and the Art Center College of Design in Pasadena, and has since built a
-  client roster that includes Adidas, Jack Daniel's, Foot Locker, Puma,
-  the Miami Dolphins, and the Florida Panthers. His paintings have shown
-  at Scope Art Fair during Art Basel and at POW!WOW! Hawaii.
+fieldNotes:
+  - "Miami-based painter, born in New York"
+  - "Haitian heritage, figurative work"
+  - "Rich color and cultural storytelling"
 
-  His 2021 SHINE portrait on the side of Green Bench Brewing features a
-  woman with flowing locs against layered washes of warm color. The piece
-  shows his signature approach — photorealistic faces dissolving into
+artistBio: |
+  Stand close: it is a tight portrait of a woman with locs. Step back: the edges
+  have dissolved into pure color. He has built a whole career on that
+  contradiction.
+
+  Mwanel Pierre-Louis was born in New York to Haitian parents and is based in
+  Miami. He attended the New World School of the Arts in Miami and the
+  illustration program at the Art Center College of Design in Pasadena. He calls
+  himself a New Contemporary artist and illustrator, and his work pulls from the
+  cultures of New York, Miami, and Los Angeles — fragmented experiences and pop
+  references stitched together with a strong emphasis on the relationship
+  between subject and color.
+
+  His client roster runs from sports to streetwear to spirits: Adidas, Adidas
+  Originals, Jack Daniel's, Starbucks, Atlantic Records, Epic / Sony Music, Foot
+  Locker, Puma, Equinox, the NBA, the Miami Dolphins, the Florida Panthers, and
+  Formula 1 Miami. He had his first solo with Thinkspace Gallery in Los Angeles
+  in 2019 and has shown with Talon, Antler, Spoke Art, and Nucleus Galleries.
+  His paintings have appeared at Scope Art Fair during Art Basel in Miami and
+  Switzerland, and he participated in POW!WOW! Hawai'i, including the
+  5th-anniversary exhibition "Exploring the New Contemporary Movement" at the
+  Honolulu Museum of Art.
+
+  For SHINE 2021, he painted a woman with flowing locs on the side of Green
+  Bench Brewing — face rendered tight, background falling into warm washes of
+  orange and earth.
+
+searchBio: |
+  Mwanel Pierre-Louis is a Miami-based painter born in New York to Haitian
+  parents. He has lived in and absorbed culture from New York, Miami, and Los
+  Angeles, and his work combines realism and abstraction in a narrative drawn
+  from personal interactions and pop references. His paintings feature
+  juxtapositions of fragmented experiences and a strong emphasis on the
+  relationship between subject and color — photorealistic faces dissolving into
   loose, expressive abstraction around the edges.
 
-muralDescription: |
-  A striking portrait of a woman with long locs dominates the side of
-  Green Bench Brewing. The face is rendered with photorealistic detail
-  while the background dissolves into expressive washes of warm oranges,
-  reds, and earth tones. The contrast between the precise portrait work
-  and the loose, painterly surroundings gives the piece real presence
-  from across the street.
+  He attended the high school program at New World School of the Arts in Miami,
+  Florida, and the illustration program at Art Center College of Design in
+  Pasadena, California. He describes himself as a New Contemporary artist and
+  illustrator.
+
+  His client and brand roster includes Adidas, Adidas Originals, Jack Daniel's,
+  Starbucks, Atlantic Records, Epic / Sony Music Records, Foot Locker, Puma,
+  Equinox, The Fader Magazine, Create Magazine, Hi-Fructose, Supersonic Art,
+  Booooooom, the NBA, Emirates NBA Cup, the NFL's Miami Dolphins, the NHL's
+  Florida Panthers, and Formula 1 Miami. POW!WOW! Hawaii also appears among his
+  listed representation and brand affiliations.
+
+  His paintings have been exhibited at Scope Art Fair during Art Basel in Miami
+  and Switzerland, as well as in New York City. He participated in the 5th
+  annual POW!WOW! Hawaii exhibition "Exploring the New Contemporary Movement" at
+  the Honolulu Museum of Art. In 2019 he had his first solo show with Thinkspace
+  Gallery in Los Angeles, and he has continued showing with galleries including
+  Talon, Antler, Spoke Art, and Nucleus Galleries.
+
+  Documented works on his Thinkspace Projects page include "Thoughts" (2017),
+  acrylic, oil, and aerosol on wood panel, 16" x 16", shown in the curated NYC
+  exhibition "LAX / JFK" at Spoke Art; "Dissect #2" (2017), acrylic on wood
+  panel, 12" x 12", shown at SCOPE Miami Beach 2017; "Bonjour" (2018), acrylic
+  on wood panel, 12" x 12", shown at POW!WOW! Hawai'i 2019 and SCOPE Miami Beach
+  2018; "Union Pt1" (2019), acrylic on wood, 18" x 24", shown in
+  Alchemy(Project); "Untitled 2" (2019) and "Untitled 3" (2019), both acrylic on
+  wood, 12" x 12", also shown in Alchemy(Project); "It's All A Haze" (2020),
+  acrylic on wood panel, 6" x 6", shown in Tapas (Project Room); "I've Seen the
+  Light" (2020), acrylic on wood panel, 12" x 12", shown in The Price of
+  Everything and the Value of Nothing; and "The Conduit" (2022), acrylic on wood
+  panel, 36" tondo, shown in Memories and Manifesting (Gallery II).
+
+  His 2021 SHINE Mural Festival contribution in St. Petersburg, Florida is on
+  the side of Green Bench Brewing. The portrait shows a woman with flowing locs
+  against layered washes of warm color, and demonstrates his signature approach
+  of pairing photorealistic faces with loose, expressive abstraction around the
+  edges.
+
+  His personal website is mwanel.com, which organizes work by year from 2016
+  through 2025 and includes sections for Digital, Murals, Product, Editorial /
+  Commercial, and Video. Contact email listed on his site is
+  mwanelpierrelouis@gmail.com.
+
+searchMuralDescription: |
+  A striking portrait of a woman with long locs dominates the side of Green
+  Bench Brewing. The face is rendered with photorealistic detail while the
+  background dissolves into expressive washes of warm oranges, reds, and earth
+  tones. The contrast between the precise portrait work and the loose, painterly
+  surroundings gives the piece real presence from across the street.
 
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
-
+furtherWork: []
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-02 — Display bio rewritten with hook anchored to this wall ('photorealistic faces that dissolve into pure abstraction at the edges'). Body bulked with Thinkspace solo, gallery shows (Talon/Antler/Spoke Art/Nucleus), POW!WOW! Hawai'i Honolulu Museum exhibition, and full client list."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:

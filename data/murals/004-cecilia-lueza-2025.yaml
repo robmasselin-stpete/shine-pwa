@@ -4,46 +4,141 @@
 id: 4
 artist: Cecilia Lueza
 year: 2025
-lat: 27.774442
-lng: -82.647678
+lat: 27.774478
+lng: -82.64766
 address: 251 10th St N
 category: shine
 img: "images/murals/2025/cecilia-lueza.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Radiance"
 building: Haddy
 instagram: cecilialuezaap
 basedIn: "St. Petersburg, FL"
 
-artistBio: |
-  Cecilia Lueza is an Argentine American artist and sculptor who studied fine
-  arts at the University of La Plata in Buenos Aires. After moving to
-  St. Petersburg over two decades ago, she became known for vibrant public art
-  spanning murals, monumental sculptures, painted rooftops, and even street
-  intersections. Her geometric, nature-inspired style has been shown in
-  galleries throughout the US, South America, Spain, and France. A SHINE
-  veteran, Lueza painted "Common Ground" — an entire intersection — for
-  SHINE 2016, "The Blue Hour" for SHINE 2018, and returned again for SHINE
-  2019 and 2025 Origins.
+fieldNotes:
+  - "Painted an entire intersection with 50 volunteers"
+  - "Argentine-born, trilingual"
+  - "Geometric abstraction + cultural identity"
 
-muralDescription: |
-  A large-scale mural on the side of a commercial building depicting a
-  vividly colored hummingbird in flight, wings spread wide, rendered in
-  iridescent greens, blues, and oranges. The bird hovers against a dynamic
-  background of overlapping translucent circles in gradients of blue, teal,
-  green, and yellow — Lueza's signature geometric style. Signed "LUEZA" in
-  the upper right. The building number 255 is visible at the left edge.
+artistBio: |
+  She painted an entire intersection. Fifty volunteers helped. Then a storm
+  washed it away, so they painted it again.
+
+  Cecilia Lueza was born in 1971 in Posadas, in Argentina's subtropical
+  northeast — a landscape of dense flora and fauna that still runs through
+  everything she makes. She earned her MA in Visual Arts from the National
+  University of La Plata in Buenos Aires, held her first solo exhibition there
+  in 1998, and moved to the United States shortly after. She settled in Pinellas
+  County in 2007.
+
+  Her work spans murals, monumental sculptures, and mixed-media installations,
+  all built on bold geometric patterns, clean lines, and jewel-tone color.
+  Birds, women, and children recur. She was originally a monochromatic painter
+  in Argentina — Florida's light changed that.
+
+  The public art resume is staggering: nearly 60 installations since 2013.
+  Starbucks, the North Carolina Museum of Art, the Atlanta BeltLine, the James
+  Museum, a kinetic angel sculpture in Chattanooga acquired for permanent public
+  display. Her work sits in the Bass Museum of Art, the Museum of Contemporary
+  Art Miami, and the Florida Department of State collection.
+
+  She is a four-time SHINE artist — "Common Ground" in 2016 (the intersection),
+  "Encounter" and "The Blue Hour" in 2018, "The Sky Is the Limit" in 2019, and
+  "Radiance" at the Haddy Factory for SHINE 2025 Origins.
+
+searchBio: |
+  She painted an entire intersection. Fifty volunteers helped. Then a storm
+  washed it away, so they painted it again.
+
+  Cecilia Lueza was born in 1971 in Posadas, Misiones Province, Argentina —
+  subtropical northeast, dense flora and fauna, a landscape that still runs
+  through everything she makes. She earned her MA in Visual Arts (Painting) from
+  the National University of La Plata in Buenos Aires (1990-1994), held her
+  first solo exhibition in Buenos Aires in 1998, and moved to the United States
+  in 1999 after meeting Miami-based artists. She lived in Miami before settling
+  in Pinellas County, Florida in 2007. She cites Georgia O'Keeffe and Francis
+  Bacon as influences.
+
+  Her work spans murals, monumental sculptures, and mixed-media installations —
+  bold geometric patterns, clean lines, jewel-tone color gradations. Birds,
+  women, and children recur. She was originally a monochromatic painter in
+  Argentina; Florida's light and vibrancy changed that. Nature is her primary
+  subject. She calls her art an attempt to embody "universal meaning such as
+  innocence, beauty, freedom."
+
+  The public art resume is staggering: nearly 60 installations since 2013, over
+  20 years as a working public artist. Major murals include "I Am My Own Muse"
+  at the Marriott City Center in Durham NC (2019), "Exuberance" at HCC Dale
+  Mabry Campus in Tampa (2020), "Summertime" in Clearwater (2021, selected from
+  190+ nationwide applicants), "Chromascape" in Jersey City (2021), "The Legend
+  of Ondine" in Lakeland (2022), "The Starbucks Siren" at 3939 4th St N in St.
+  Petersburg (2023), "Life Force" at Arya Residences in St. Petersburg (2024),
+  and "Morning Ritual" at Joffrey's Coffee HQ in Tampa (2026).
+
+  Public sculptures include "Winds of Change" — a kinetic stainless steel angel
+  acquired by the Chattanooga Public Art Commission for permanent display —
+  "Luminarium" at the Arts and Innovation Center in Rockville MD (interactive
+  wall sculptures with fiber optics and LEDs activated by sound), "Time Flies
+  Sundial" at River Terrace Education Campus in Washington DC, multiple school
+  commissions for the DC Department of General Services, "Delta" and "Nova" in
+  Jacksonville, "Dual Nature" in Reno, "Journey of Hope" in Fort Myers, "Nexus"
+  in Tampa, "Caleidoscopio" in Toledo, "Sea Orb" in Jacksonville, and "Golden
+  Hour" at the Orange County Administration Center in Orlando (2026).
+
+  Clients and commissions include Starbucks, the North Carolina Museum of Art
+  (mural for a Frida Kahlo/Diego Rivera exhibition), the Atlanta BeltLine, the
+  City of Atlanta Mayor's Office of Cultural Affairs, the Chattanooga Public Art
+  Commission, Hillsborough Community College, and municipalities in
+  Indianapolis, Clearwater, Fort Myers, and Jacksonville. Her work is in the
+  collections of the Bass Museum of Art Miami, the Museum of Contemporary Art
+  Miami, the Florida Department of State, and 13+ institutional collections.
+  Gallery representation includes Kavachnina Contemporary, Onessimo Fine Art
+  (Palm Beach Gardens), Mary Martin Art Gallery (Naples), and Naomi Silva
+  Gallery (Atlanta).
+
+  Awards include a Tourist Development Council Grant (Miami-Dade, 2011),
+  Professional Development Individual Artist Grant (Pinellas County, 2008),
+  Florida Artist Enhancement Grant (2008), Puffin Foundation Grant (2006),
+  Karrvaz Artist-in-Residency in Spain (2006), and Sculpture Key West People's
+  Choice Award (2006).
+
+  She is a four-time SHINE artist: "Common Ground" (2016) — a street mural at
+  Central Ave and 5th Street outside Florida CraftArt, painted with 50+
+  volunteers, washed away by a storm, painted again; "Encounter" (2018) at the
+  ArtsXchange in the Warehouse Arts District; "The Blue Hour" (2018) at ONE St.
+  Petersburg; "The Sky Is the Limit" (2019) — a 164 x 11 foot ground mural at
+  North Shore Park pier; and "Radiance" (2025) at the Haddy Factory for SHINE
+  Origins. Instagram: @cecilialuezaap. Website: lueza.com.
+
+searchMuralDescription: |
+  A large-scale mural on the side of a commercial building depicting a vividly
+  colored hummingbird in flight, wings spread wide, rendered in iridescent
+  greens, blues, and oranges. The bird hovers against a dynamic background of
+  overlapping translucent circles in gradients of blue, teal, green, and yellow
+  — Lueza's signature geometric style. Signed "LUEZA" in the upper right. The
+  building number 255 is visible at the left edge.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "SHINE 2016, 2018, 2019, and 2025 festival artist; Creative Pinellas featured artist"
+artistAwards: "Sculpture Key West People's Choice Award (2006); Karrvaz Artist-in-Residency, Spain (2006); Florida Artist Enhancement Grant (2008); Creative Pinellas Professional Development Grant (2008); Tourist Development Council Grant, Miami-Dade (2011); four-time SHINE festival artist"
+
+furtherWork:
+  - name: "lueza.com"
+    url: "https://www.lueza.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://www.lueza.com/mural-art/"
   - "https://www.lueza.com/bio/"
   - "https://creativepinellas.org/magazine/cecilia-lueza-colors-our-world/"
   - "https://stpeteartsalliance.org/cecilia-lueza-2/"
   - "https://www.visitstpeteclearwater.com/profile/common-ground-cecilia-lueza/140482"
+  - "https://en.wikipedia.org/wiki/Cecilia_Lueza"
+  - "https://www.lueza.com/public-sculpture/"
+  - "https://canvasrebel.com/meet-cecilia-lueza/"
+  - "https://www.letstalkdurham.com/lets-talk-magazine/cecilia-lueza-artist-at-work"
+  - "https://kavachnina.com/other-collected-artists/cecilia-lueza/"
+  - "https://monochronicle.com/artist/cecilia-lueza-art-projects/"

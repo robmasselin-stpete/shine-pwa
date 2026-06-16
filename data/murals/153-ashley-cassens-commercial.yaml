@@ -1,0 +1,116 @@
+# Ashley Cassens — Sweet Disposition
+
+# ── Required ──
+id: 153
+artist: Ashley Cassens
+year: 2025
+lat: 27.821592
+lng: -82.67115
+address: 2705 54th Ave N
+category: commercial
+img: "images/murals/commercial/ashley-cassens.jpeg"
+
+# ── Optional ──
+title: "Sweet Disposition"
+building: 54th Ave Deli Mart
+instagram: ashley.cassens
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Two of her oil paintings ended up at HomeGoods. She has sixty-two murals under
+  her belt and a five-star rating across forty reviews on Thumbtack.
+
+  Ashley Cassens is a Tampa-based representational figure painter and muralist.
+  She grew up in Daytona Beach, earned a BFA from Florida Southern College in
+  2006, and an MFA from Florida Atlantic University in 2017. She taught K-12 art
+  for seven years before going full-time as an artist around 2020.
+
+  Her studio work is intimate figurative portraiture — layered, chromatic oil
+  paint on canvas and wood panels, often focused on specific body parts and
+  details of people she knows. Her "Eye Traps" series celebrates women through
+  traditional oil painting, patterned fabrics, and fresh color. Her "Some Place
+  Under Neith" series responds to fundamentalist cult pamphlets, addressing
+  women's repression through tiny portrait paintings.
+
+  "Sweet Disposition" wraps the side of 54th Ave Deli Mart in the Lealman area —
+  bold botanical imagery flowing from orange blossoms through a bumblebee in
+  flight to ripe strawberries, commissioned by Creative Pinellas in partnership
+  with the Lealman CRA. She installed it in May 2025.
+
+searchBio: |
+  Two of her oil paintings ended up at HomeGoods. She has sixty-two murals under
+  her belt and a five-star rating across forty reviews on Thumbtack.
+
+  Ashley Cassens is a Tampa-based representational figure painter and muralist,
+  native Floridian from Daytona Beach. She earned a BFA from Florida Southern
+  College (2006) focused on representational work and traditional oil painting
+  methods, then an MFA from Florida Atlantic University (2017), where she
+  received a Graduate Teaching Assistantship, Provost Fellowship, two Graduate
+  Advisory Board Grants, the Friedland Grant, Rothenberger Scholarship,
+  Ambassador of the Arts Scholarship, and the Women in the Visual Arts
+  Scholarship (twice).
+
+  She taught K-12 art for seven years and was a teaching assistant at FAU before
+  becoming a full-time artist around 2020. She runs Painting Possibilities LLC
+  in Tampa's Northdale area. She is certified in scissor and boom lift safety,
+  insured, and background checked. She charges $25-30 per square foot for murals
+  with a $1,500 minimum.
+
+  Her studio work is intimate figurative portraiture in oil — layered, chromatic
+  paint on canvas and wood panels, often focused on body parts and details of
+  loved ones. Notable series include "Eye Traps" (celebrating women through oil
+  painting and patterned fabrics; two pieces licensed to HomeGoods; shown at
+  Elevation Coffee Roasters, Tampa), "Projection Series" (vibrant portraits
+  exploring experiences filtered through screens), and "Some Place Under Neith"
+  (tiny portraits responding to IBLP cult pamphlets, addressing women's
+  repression).
+
+  Commercial clients include HomeGoods (licensing), Ann Cox Design, Cori Rose
+  Handmade, Creative Pinellas, and various schools, non-profits, national
+  corporations, and private residences. She has been featured on Fox 13 Tampa
+  Bay (January 2023), Creative Loafing Tampa, CanvasRebel Magazine, Artsy Shark,
+  and Daytime TV on News Channel 8. Thumbtack Top Pro 2022-2025.
+
+  "Sweet Disposition" at 2705 54th Ave N, St. Petersburg (54th Ave Deli Mart)
+  was commissioned by Creative Pinellas in partnership with the Lealman
+  Community Redevelopment Area, installed May 2025. The mural wraps the side of
+  the building in vivid oranges, blues, greens, and reds — botanical imagery
+  blending orange blossoms, a bumblebee, and strawberries in a contemporary
+  tropical palette. It took approximately two weeks to complete.
+
+  Instagram: @ashley.cassens. Website: ashleycassens.com.
+
+searchMuralDescription: |
+  A wide panoramic mural wrapping the side of a commercial building. The
+  composition flows left to right through bold botanical imagery: orange
+  blossoms with white petals and deep green leaves against a royal blue
+  background on the left, transitioning to a large bumblebee in flight over
+  teal-green leaf patterns at center, then into ripe red strawberries with white
+  flowers against warm gold and green tones on the right. The palette is vivid —
+  deep blues, rich greens, warm golds, and bright reds. "Ashley Cassens" is
+  signed at the far left. The style blends botanical realism with graphic design
+  sensibility.
+
+muralInspiration: "Commissioned by Creative Pinellas in partnership with the Lealman CRA to enhance community visibility."
+muralAwards: ""
+artistAwards: "Provost Fellowship; Women in the Visual Arts Scholarship (x2); Thumbtack Top Pro 2022-2025"
+
+furtherWork:
+  - name: "ashleycassens.com"
+    url: "https://www.ashleycassens.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+  - "16 April 2026 — Full research and bio, Claude-enhanced"
+sourceNotes:
+  - "GPS from Rob's photo, IMG_0023.jpeg"
+  - "Artist and title identified by Rob via Creative Pinellas"
+  - "https://creativepinellas.org/magazine/sweet-disposition/"
+  - "https://www.ashleycassens.com/"
+  - "https://www.instagram.com/ashley.cassens/"
+  - "https://canvasrebel.com/meet-ashley-cassens/"
+  - "https://www.artsyshark.com/2017/12/15/featured-artist-ashley-cassens/"
+  - "https://www.fox13news.com/news/lifelong-artist-turns-her-art-into-full-time-business"
+  - "https://www.thumbtack.com/fl/tampa/art-services/ashley-cassens-art/"

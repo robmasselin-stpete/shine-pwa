@@ -1,0 +1,47 @@
+# Unknown Artist — Central Ave Sleeping Face
+
+# ── Required ──
+id: 173
+artist: Unknown
+year: 0
+lat: 27.771284
+lng: -82.667541
+address: Central Ave
+category: commercial
+img: "images/murals/commercial/unknown-central-ave-sleeping-face.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: ""
+basedIn: ""
+
+artistBio: |
+  Artist unknown. A two-story mural on Central Avenue in St. Petersburg.
+
+searchMuralDescription: |
+  A large two-story mural on a gray building depicting a sleeping female face
+  with closed eyes and flowing pink-coral hair that cascades in waves across the
+  wall. The hair transforms into dark gray-blue ocean waves at the left side. A
+  small white origami paper boat carries two small figures (drawn in a cartoon
+  style contrasting with the painterly surroundings) through the pink waves near
+  the center. The overall palette is soft pinks, grays, and teals. The piece
+  wraps around multiple windows and shutters integrated into the composition.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+status: research  # unidentified artist — kept for ongoing research, not exported
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "22 April 2026 — New mural added, GPS from Rob's photo (originally attributed to Phi Phi Artland / Sara Salem)"
+  - "30 April 2026 — Entry removed pending provenance verification"
+  - "1 May 2026 — Restored as Unknown attribution; original Phi Phi attribution unconfirmed. Kept on tour as a useful waypoint in a long stretch with few murals."
+sourceNotes:
+  - "Photo by Rob 2026-04-21, GPS from EXIF"
+  - "Located on Central Ave, St. Petersburg"

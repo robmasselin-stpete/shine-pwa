@@ -1,0 +1,115 @@
+# Blake Emory — Cage Brewing diver + jellyfish
+
+# ── Required ──
+id: 203
+artist: Blake Emory
+year: 0
+lat: 27.770581
+lng: -82.660612
+address: 2001 1st Ave S
+category: commercial
+img: "images/murals/commercial/blake-emory-cage-diver-jellyfish.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Cage Brewing"
+instagram: emory_blake
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
+  former golf course where Ruth used to play.
+
+  Blake Emory is a Florida native, born 1983, now based in St. Petersburg. With
+  his brother James — out of Santa Fe — he runs ESP Gallery and the Emory Arts
+  collective. The day job is wide: Neo-Renaissance figure painting, Optic
+  Modernism, sculpture, set design, experimental film. He doesn't pick a lane.
+
+  His murals are scattered across St. Pete in places people don't expect,
+  including a few rooftops. The work doesn't always announce itself — you find
+  it by looking up, or by walking past somewhere you've passed a hundred times.
+
+  In 2025 the City of St. Petersburg unveiled "Babe Calls the Shot," his
+  life-size bronze of Ruth at the called-shot moment, sited at the St.
+  Petersburg Museum of History on the Pier.
+
+  This wall is one of three Cage Brewing murals he has painted. A vintage
+  copper-and-brass deep-sea diver kneels on the wall, helmet pulled off and
+  cradled in his arms. Three jellyfish drift overhead, the largest one trailing
+  tendrils that spill across the diver's shoulders.
+
+searchBio: |
+  He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
+  former golf course where Ruth used to play.
+
+  Blake Emory was born in Florida in 1983 and is now based in St. Petersburg,
+  with a studio at 1114 Farragut Dr N. With his brother James — based in Santa
+  Fe — he runs ESP Gallery and the Emory Arts collective (EMORY ARTS LLC and the
+  affiliated Emory Arts 501(c)(3)). His practice spans Neo-Renaissance figure
+  painting, Optic Modernism, sculpture, set design, and experimental film. He is
+  represented by Marcolina's Gallery.
+
+  His murals are scattered across St. Petersburg in places people don't expect,
+  including a few rooftops. He has been painting in the Tampa Bay area since
+  2017, with most of his documented work falling in 2021–2023. Beyond Florida,
+  he has painted along Route 66 in Grants, New Mexico.
+
+  In 2025 the City of St. Petersburg unveiled "Babe Calls the Shot," his
+  life-size bronze of Babe Ruth at the called-shot moment, sited at the St.
+  Petersburg Museum of History on the Pier.
+
+  This wall is one of three documented Blake Emory murals at Cage Brewing. The
+  exterior corner octopus (Mural Quest #194, painted 2023 with Guillo Perez III)
+  is the most visible from the street. The covered-patio interior wall (#202)
+  shows a goggled woman framed by koi and a nautilus shell. This
+  diver-and-jellyfish wall is on a side elevation in the brewery's outdoor
+  space. A copper-and-brass vintage hard-hat dive helmet sits in the diver's
+  arms; three glowing jellyfish drift through the upper register. Year not
+  documented; attribution confirmed by Rob meeting Blake Emory at Cage on
+  2026-05-01.
+
+  Instagram: @emory_blake. Galleries: ESP Gallery, Marcolina's. Website:
+  emorybrothersart.com.
+
+searchMuralDescription: |
+  An exterior wall mural at Cage Brewing's outdoor space. The lower half of the
+  wall shows a kneeling deep-sea diver in a vintage copper-and-brass hard hat
+  suit, painted in cool teal and silver-blue tones. He has removed his spherical
+  brass-and-glass dive helmet, which sits in his lap, cradled by both gloved
+  hands; a faint reflection or yellow porthole glows on the helmet's side. A
+  small bunch of purple grapes leans against the diver's right shoulder, growing
+  out of a slim turquoise vase or column. The upper two-thirds of the wall is
+  open ocean rendered in deep teal and royal blue with greenish atmospheric
+  haze. Three jellyfish drift overhead: a small pale-blue jellyfish with orange
+  tendrils on the upper left, a larger teal-and-yellow jellyfish in the upper
+  center with bright orange-pink tendrils streaming down toward the diver's
+  helmet, and a smaller orange-pink jellyfish on the upper right. A small yellow
+  glow on the right edge reads like a distant submarine porthole. Painted on a
+  smooth concrete-block wall with a dark wood-paneled overhang above. A small
+  section of a dark gray metal door frames the lower-left edge.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "emorybrothersart.com"
+    url: "https://www.emorybrothersart.com"
+  - name: "espgallery.com"
+    url: "https://www.espgallery.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-06 — New mural added by Rob: third Blake Emory at Cage Brewing, exterior outdoor wall (deep-sea diver removing helmet under three jellyfish). GPS from photo IMG_0282.jpeg EXIF (27.77072, -82.66072). Year unknown — flagged. Attribution authoritative (Rob met the artist on site 2026-05-01)."
+sourceNotes:
+  - "Photo by Rob 2026-05-05, GPS from EXIF (IMG_0282.jpeg)"
+  - "Rob met Blake Emory in person at Cage Brewing on 2026-05-01 — primary-source attribution confirmed."
+  - "https://www.emorybrothersart.com/biography"
+  - "https://marcolinas.com/collections/blake-emory"
+  - "https://www.instagram.com/emory_blake/"
+verification:
+  date: 2026-05-06
+  method: primary-source (artist met in person, 2026-05-01) + Rob photo
+  status: pass
+  notes: "Attribution confirmed by Rob meeting Blake Emory at Cage Brewing on 2026-05-01. Year not documented; flagged for follow-up."

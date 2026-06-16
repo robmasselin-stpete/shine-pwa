@@ -17,30 +17,100 @@ instagram: jaredwright
 basedIn: "Tampa Bay, FL"
 
 artistBio: |
-  Jared Wright is a Tampa Bay painter and illustrator whose style lands
-  somewhere between Dali and an illustrated storybook. His SHINE 2021
-  mural on Colony Grill was his first-ever wall piece, and he was later
-  selected for the 2024 Tampa Bay Rays Artist Series with work displayed
-  inside Tropicana Field.
+  His first mural ended up in a Tampa Bay Rays commercial. He designed a
+  skateboard for Tony Hawk.
 
-  The Colony Grill mural, titled "Harmony," features a dreamlike
-  composition of an owl, a serpentine creature, and flowing organic
-  forms in muted corals, sage greens, and teals. A moon floats among
-  the intertwined figures, creating the kind of surreal, gently weird
-  scene Wright is known for.
+  Jared Wright is a self-taught painter and illustrator from Connecticut, raised
+  in the Tampa Bay area. His style is surreal, dreamlike, hallucinatory — fun
+  worlds with loose narratives, influenced by Dali, classic rock, aliens, and
+  nature. His first painting commission came around 2007, based on Wes
+  Anderson's The Life Aquatic.
 
-muralDescription: |
-  A surreal scene fills the Colony Grill wall with smooth, rounded
-  organic forms in muted corals, sage, and teal. An owl with large
-  dark eyes perches near a crescent moon while a snake-like creature
-  winds through the composition. Leaf shapes, clouds, and celestial
-  elements float through the scene, all rendered in soft, flat color
-  fields with clean outlines.
+  He has collaborated with Birdhouse Skateboards (Tony Hawk), Asphalt Yacht
+  Club, and Pyramid Skateboards. For SHINE 2021, he painted "Harmony" at 670
+  Central Avenue — his first-ever mural.
+
+searchBio: |
+  His first mural ended up in a Tampa Bay Rays commercial. He designed a
+  skateboard for Tony Hawk.
+
+  Jared Wright is a self-taught painter, illustrator, and designer originally
+  from Connecticut and raised in the Tampa Bay area, currently based in
+  Clearwater, Florida. He works across painting, illustration, design, skate,
+  apparel, mural, and other commercial categories, organizing his portfolio at
+  jaredwrightart.com under those exact headings. He describes his style as a
+  variety of techniques and mediums used to create fun, surreal worlds with
+  loose narratives. His stated influences run from Salvador Dalí to classic
+  rock, aliens, and the beauty of nature, and he has said his goal is to create
+  work that prompts the viewer to feel, think, and either create themselves or
+  share the inspiration further. He is committed to the idea that an artist who
+  represents themselves genuinely and honestly will reach the right viewer in
+  the same register, and that the resulting connection can be everything.
+
+  His first painting commission came around 2007 and was based on Wes Anderson's
+  film "The Life Aquatic with Steve Zissou," and his career has since grown into
+  a hybrid practice that blends fine art with applied design work for skate and
+  apparel brands. His skateboard collaborations include Birdhouse Skateboards
+  (the Tony Hawk-founded company), Asphalt Yacht Club, and Pyramid Skateboards.
+  He maintains an online store through his own site that carries skate decks,
+  apparel, prints, and original work.
+
+  For SHINE Mural Festival 2021 — the festival's seventh annual edition, running
+  October 15–24, 2021 — Wright was selected as one of sixteen featured artists.
+  He was assigned to Colony Grill at 670 Central Avenue and painted "Harmony,"
+  his first-ever mural. The St. Pete Catalyst's "Meet the SHINE Mural Festival
+  Class of '21" feature by Bill DeYoung (October 12, 2021) profiled him
+  alongside Emily Ding, Greg Mike, Bakpak Durden, Mwanel Pierre-Louis, Jason
+  Harvin, Michael Fatutoa, Gleo, Woes Martin, Nicole Salgar, Jenipher Chandley,
+  Ricky Watts, Aurailieus Artist, Case Maclaim, Miss Crit, and Reid Jenkins. The
+  Catalyst characterized his work as that of "a surrealist and illustrator,
+  whose striking images are often cartoonlike in their simplicity, but
+  nevertheless strike an emotional chord," and quoted his own description of his
+  paintings as "fun worlds, with loose narratives."
+
+  The cohort of SHINE 2021 also included three "Bright Spot" community-project
+  murals: Jujmo (Cheryl Weber) at A-1 Recovery in partnership with the Shirley
+  Proctor Fuller Foundation; Leo Gomez at 744 6th Avenue S in partnership with
+  Bayfront Health for a tribute to pandemic frontline workers; and Ya La'Ford's
+  "Love Line Project" at 330 Beach Drive NE, which incorporated an illuminated
+  neon sign featuring a phrase of positivity voted on by the public. SHINE 2021
+  was the seventh annual edition of the festival and is run as a curated,
+  invitation-only event by the St. Petersburg Arts Alliance, the city's only
+  501(c)(3) nonprofit dedicated to raising money and advocating for the entire
+  local creative community.
+
+  The opening weekend of SHINE 2021 included two anchor events: an October 15
+  Friday-evening artist meet-and-greet at the Morean Arts Center, 719 Central
+  Avenue, from 5 to 8 p.m.; and "Spraycation Day" on Saturday, October 16, a 2
+  to 11 p.m. gathering at Bayboro Brewing, 2390 5th Avenue S, with live music,
+  art demos, live tattooing, and Spraycation, a craft beer brewed for the
+  occasion. The festival framed the experience as a literal en plein air viewing
+  opportunity, with most participating artists working from sunup to sundown
+  across the festival's ten-day run.
+
+  Wright's portfolio site, jaredwrightart.com, organizes his work under the
+  categories Illustration, Painting, Design (with Skate, Apparel, Other, and
+  Mural sub-folders), About, Contact, and Store. He also maintains a
+  WordPress-hosted secondary site at jaredwrightart.wordpress.com with parallel
+  sections for Painting, Illustration, Design, Apparel Design, Skateboard
+  Design, Publication, Murals, NFTs, Shop, and Contact. His contact email is
+  jaredwrightart@gmail.com. He uses Instagram under the handle @jaredwrightart
+  for inquiries and collaborations.
+
+searchMuralDescription: |
+  A surreal scene fills the Colony Grill wall with smooth, rounded organic forms
+  in muted corals, sage, and teal. An owl with large dark eyes perches near a
+  crescent moon while a snake-like creature winds through the composition. Leaf
+  shapes, clouds, and celestial elements float through the scene, all rendered
+  in soft, flat color fields with clean outlines.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
-
+artistAwards: "SHINE 2021 selected artist"
+furtherWork: []
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
@@ -48,3 +118,5 @@ sourceNotes:
   - "https://stpeteartsalliance.org/shine?alias=/2021_SHINE_Mural_Jared_Wright"
   - "https://www.jaredwrightart.com/"
   - "https://stpetecatalyst.com/meet-the-shine-mural-festival-class-of-21/"
+  - "https://jaredwrightart.wordpress.com/about-2/"
+  - "https://sans-archetype.com/2018/08/11/artist-profile-jared-wright/"

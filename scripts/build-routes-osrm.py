@@ -28,7 +28,7 @@ VALHALLA_BASE = 'https://valhalla1.openstreetmap.de/route'
 # Route definitions — must match ROUTE_DEFS in app.js
 ROUTE_DEFS = [
     {'id': 'downtown-north',
-     'ids': [6, 116, 23, 30, 1, 129, 66, 109, 110, 7, 9, 111, 115, 73, 24]},
+     'ids': [6, 116, 23, 30, 1, 36, 66, 129, 109, 110, 7, 9, 111, 115, 73, 24]},
     {'id': 'the-edge',
      'ids': [119, 80, 75, 120, 57, 135, 40, 130, 89, 83, 98, 43, 34]},
     {'id': 'methodist-town',

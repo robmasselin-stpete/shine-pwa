@@ -4,30 +4,94 @@
 id: 104
 artist: Mason Schwacke
 year: 2020
-lat: 27.7658
-lng: -82.6368
+lat: 27.756430
+lng: -82.636938
 address: 1400 3rd St S
 category: shine
-img: images/murals/2020/2020_SHINE_Mural_Festival_Mason_Schwacke.jpg
+img: "images/murals/2020/mason-schwacke.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Prosperitas"
 building: Hawk Diesel
 instagram: masonschwacke
-basedIn: "St. Petersburg, Florida"
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Titled 'Prosperitas' — Latin for prosperity"
+  - "Fought Tropical Storm Eta mid-festival to finish"
+  - "Partnered with NOAA for the species science"
 
 artistBio: |
-  Mason Schwacke is a St. Petersburg artist with a passion for illustrative
-  designs that focus on a playful color pallet. He blends street art with
-  contemporary designs to deliver symbolic messages applicable to all ages. His
-  designs may be interpreted as an assemblage of vibrant colors and characters
-  derived from his imagination, surrounding environment, and life experiences.
+  Four threatened Florida species. Tropical Storm Eta tried to wash him off the
+  wall. He finished anyway.
 
-muralDescription: ""
-muralInspiration: ""
+  Mason Schwacke is a St. Petersburg-based muralist who has been painting around
+  Tampa Bay for over a decade. His style sits at the intersection of street art
+  and contemporary illustration — bold, illustrative, leaning hard on color and
+  on characters that feel like they wandered out of a cartoon and into a
+  conservation textbook. He has exhibited at the Morean Arts Center and shown
+  work at Portspace Gallery in Gulfport.
+
+  For SHINE 2020, the festival partnered with PangeaSeed Foundation's Sea Walls
+  program for an ocean conservation edition. Schwacke teamed up with C.J. Thomas
+  (Christian Thomas of Commitment Tattoo Shop) and developed the concept in
+  consultation with NOAA. The sawfish is endangered; the other three are
+  threatened. He titled the piece "Prosperitas" — for the future he hoped they
+  could still have. Eta hit on Wednesday, November 11, 2020, costing him 24
+  hours mid-week. He finished on time.
+
+searchBio: |
+  Mason Schwacke is a St. Petersburg, Florida-based muralist. He has been
+  painting murals in the Tampa Bay area for over a decade. He has exhibited at
+  the Morean Arts Center and shown work at Portspace Gallery in Gulfport. He is
+  also associated with the Art Asylum creative community.
+
+  For SHINE 2020, the festival partnered with PangeaSeed Foundation's Sea Walls
+  program. Schwacke teamed up with C.J. Thomas (Christian Thomas) of Commitment
+  Tattoo Shop and developed the concept in consultation with NOAA, painting four
+  marine species at risk off the Florida coast: the scalloped hammerhead shark,
+  oceanic whitetip shark, giant manta ray, and smalltooth sawfish. The sawfish
+  is endangered; the other three are threatened. He titled the piece
+  "Prosperitas."
+
+  The wall at Hawk Diesel (1400 3rd St S) is 12 feet tall and 43 feet wide.
+  Tropical Storm Eta caused a 24-hour rain delay on Wednesday, November 11,
+  2020, during SHINE week.
+
+  Instagram: @masonschwacke.
+
+searchMuralDescription: |
+  An underwater scene spanning a long wall. A giant manta ray dominates the left
+  side in deep teal and navy blue with curling tentacle-like forms. At center, a
+  scalloped hammerhead shark dives downward through shafts of light breaking
+  through the water. A smalltooth sawfish with its distinctive elongated snout
+  swims along the coral-covered bottom. An oceanic whitetip shark cruises in
+  from the right. The seafloor is rendered in warm coral, red, and brown tones
+  with brain coral, sea fans, and sponges. Dark navy water fills the upper
+  portion with silhouettes of fish schools and rays of light. Signed
+  @masonschwacke and @cthomascustoms 2020.
+
+muralInspiration: "Painted in partnership with PangeaSeed Foundation and NOAA to highlight threatened local marine species and ocean conservation."
 muralAwards: ""
 artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "https://stpetecatalyst.com/a-little-rain-wont-stop-shine-artist-mason-schwacke/"
+  - "https://seawalls.org/activation/st-petersburg/"
+  - "https://stpeteartsalliance.org/mason-schwacke-2020"
+  - "https://moreanartscenter.org/exibition/shine-year-10-exhibition/"
+  - "https://yaleclimateconnections.org/2020/11/meandering-eta-makes-fourth-landfall-this-time-northwest-of-tampa-florida/"
+  - "https://www.tampabay.com/hurricane/2020/11/12/tropical-storm-eta-leaves-tampa-bay-staggering-a-reminder-of-the-regions-risk/"
+  - "Migrated from data.js 2026-03-05 (legacy note)"
+  - "Photo by Rob — confirmed iPhone EXIF audit 2026-05-12"
+revisionLog:
+  - "5 March 2026 — Migrated from data.js"
+  - "26 April 2026 — Audited; softened 'grew up in St. Petersburg' → 'based in St. Petersburg' (no source for grew-up); '7+ years' → 'over a decade' (figure was from 2020 source); 'group shows at Portspace' → 'shown at Portspace'; dropped 'Latin for prosperity' parenthetical (gloss not in source); 'NOAA scientists' → 'in consultation with NOAA'."
+  - "2026-05-12 — Confirmed photo is Rob's (iPhone EXIF audit)"
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "10/13 supported. Trimmed unsourced biographical specifics (grew-up, 7-years count, NOAA-scientists wording, Latin gloss). All SHINE 2020 mural details (species, dimensions, Eta, Hawk Diesel address) verified."

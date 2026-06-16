@@ -1,0 +1,126 @@
+# Aaron Tullo — Old Northeast Jewelers pocket watch (2018)
+
+# ── Required ──
+id: 204
+artist: Aaron Tullo
+year: 2018
+lat: 27.78398
+lng: -82.63817
+address: "1131 4th St N"
+category: commercial
+img: "images/murals/commercial/aaron-tullo-pocket-watch.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Old Northeast Jewelers / Hess Fine Art"
+instagram: aaron.tullo
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  He calls this his best wall. It was also his first big one.
+
+  The Milwaukee Brewers drafted Aaron Tullo twice. He pitched in their minor
+  league system for roughly six years before injuries ended it around age 25.
+  What came next was a pivot, not a restart. He started with nursery murals and
+  pet portraits, connected with the Vitale Brothers in Gulfport, and worked on
+  their jobs to learn the trade.
+
+  Then Old Northeast Jewelers gave him this wall. A vintage pocket watch
+  rendered the size of a building, signed "james tullo" in the lower-left
+  corner. The face reads "Hess W.CO." — a nod to Hess Fine Art, the watch
+  specialist next door. Four small Rolex-and chronograph-style watches sit
+  inside the dial like sub-counters. The chain extends across the wall to a
+  storefront awning and disappears into the parking lot.
+
+  His style moves between figurative realism, bold graphic design, and sign
+  painting. He letters by hand. He collaborates frequently with Ty Maner. For
+  SHINE Origins 2025 he painted the five-story white peacock on the Cordova Inn
+  (Mural Quest #1).
+
+searchBio: |
+  He calls this his best wall. It was also his first big one — painted in 2018
+  on the side of Old Northeast Jewelers at 1131 4th St N. A vintage pocket watch
+  rendered at building scale, the dial reading "Hess W.CO." for Hess Fine Art
+  (the watch specialist that shares the storefront). Four smaller Rolex-style
+  and chronograph dials sit inside the main face like sub-counters; the chain
+  swings across the building and ends near the awning. Signed "james tullo" in
+  the lower-left.
+
+  Aaron James Tullo was born March 9, 1988 in St. Petersburg, Florida. He
+  attended St. Petersburg High School under coach Stefan Futch, made second-team
+  All-County as a sophomore in 2004, and was selected to try out for the USA
+  Baseball Youth National Team at age 16. A throwing arm injury in the summer of
+  2005 complicated things, but the Milwaukee Brewers still drafted him in the
+  17th round (512th overall) of the 2006 MLB Draft out of high school. He turned
+  them down and went to college.
+
+  At the University of Tennessee he pitched as a right-hander — 10 appearances
+  as a freshman in 2007 with a 3.72 ERA and 56 strikeouts in 36.1 innings. The
+  Brewers drafted him again in 2007, 47th round. He signed and entered their
+  minor league system. He pitched professionally for roughly six years before
+  injuries ended his baseball career around age 25. He also attended St.
+  Petersburg College and is described as a USF graduate.
+
+  Tullo operates AJT Art + Design (also Aaron James Tullo Fine Art) out of a
+  studio at 2411 15th Avenue North in St. Petersburg. He works in brush, spray
+  paint, airbrush, and stencil across styles including realism, pop art,
+  abstract, and typography. He was mentored by the Vitale Brothers, well-known
+  St. Pete muralists — he worked on their jobs and exhibited at their Gulfport
+  studio, including Renaissance-inspired paintings on wood at their "Birds and
+  Bees" show.
+
+  Other confirmed murals include the Hemingway-and-Dali piece at Plotnick Law
+  (1515 4th St N), a collage-style mural at St. Pete Fishing Outfitters, work at
+  Fortunato's in Pinellas Park, and an Elliott Smith Figure 8-inspired mural
+  with an MLK quote at Josh Sheridan's law office in Tampa Heights. He
+  collaborates frequently with Ty Maner.
+
+  For SHINE Origins 2025 — the festival's 11th year, focused on local Tampa Bay
+  artists — Tullo was one of 17 selected artists. He painted a five-story white
+  peacock on the facade of the Cordova Inn at 253 2nd Ave N (Mural Quest #1).
+  Fox 13 News profiled him in September 2023 ("Retired minor league baseball
+  player creates custom murals in Tampa Bay"). He has been covered by the
+  Northeast Journal, Creative Loafing Tampa Bay, and The Gabber.
+
+searchMuralDescription: |
+  A wall-sized hyper-realistic painting of an antique gold pocket watch hanging
+  from its chain, occupying the full side of the Old Northeast Jewelers / Hess
+  Fine Art building at 1131 4th St N. The watch's outer case is rendered in
+  burnished gold with a deep black face. Roman numerals mark the hours in a
+  cream-yellow tone (XII, III, VI, IX visible). The face is inscribed "Hess
+  W.CO." in elegant gold serif lettering between the 12 and the center. Four
+  smaller watch faces sit inside the larger dial like sub-counters: at the top,
+  a Rolex Submariner-style black-and-silver dive watch with date window and dive
+  bezel; on the lower left, a white chronograph with three sub-dials reading
+  like a Daytona; at right, a small beige vintage face with hour and minute
+  hands; at bottom, a date watch with a white face and integrated bracelet. The
+  watch's hinged outer case hangs open on the left side, painted in metallic
+  silver and gold tones to suggest depth. A heavy gold chain extends from the
+  watch's crown across the wall to the right, looping past the storefront's red
+  metal awning and the "Old Northeast Jewelers Fine Jewelry" hanging sign before
+  disappearing off the right edge. Signed "james tullo" in subtle lettering near
+  the lower-left edge of the open case. Painted on a flat tan stucco wall above
+  a brick-paved parking area.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE Origins 2025 selected artist"
+
+furtherWork:
+  - name: "aaronjamestullo.com"
+    url: "https://www.aaronjamestullo.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-06 — New mural added by Rob: Aaron Tullo's first major public piece, a vintage pocket watch on the Old Northeast Jewelers / Hess Fine Art building at 1131 4th St N. Year 2018 per his own searchBio at Mural Quest #1. GPS from photo IMG_0284.jpeg EXIF (27.78398, -82.63817). Signed 'james tullo' lower-left. Per #1, Tullo himself considers this his best work."
+sourceNotes:
+  - "Photo by Rob 2026-05-06, GPS from EXIF (IMG_0284.jpeg)"
+  - "https://www.aaronjamestullo.com/"
+  - "https://northeastjournal.org/st-petes-artsy-murals-move-into-the-old-northeast/"
+  - "https://www.fox13news.com/news/former-minor-league-baseball-player-creates-custom-murals-in-tampa-bay"
+verification:
+  date: 2026-05-06
+  method: artist self-attribution (own bio at Mural Quest #1) + Rob photo with on-wall signature
+  status: pass
+  notes: "Attribution authoritative — Tullo's own searchBio at #1 names this wall, address, and year (2018). Signature 'james tullo' visible on the painted open-case interior in Rob's photo."

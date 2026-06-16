@@ -1,0 +1,68 @@
+# Chris Dyer — Gulfport Mandala (Commissioned)
+
+# ── Required ──
+id: 182
+artist: Chris Dyer
+year: 0
+lat: 27.744337
+lng: -82.699638
+address: Gulfport
+category: commercial
+img: "images/murals/commercial/chris-dyer-gulfport-mandala.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: chris_dyer
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Painted in 45 countries"
+  - "Lives in a purple house in Gulfport"
+  - "Psychedelic spiritual art meets street culture"
+
+artistBio: |
+  He has painted in forty-five countries. His mural is in the Bob Marley Museum.
+
+  Chris Dyer was born in Ottawa in 1979, moved to Lima, Peru at four, and
+  returned to Canada at seventeen. He studied illustration at Dawson College in
+  Montreal and trained under visionary masters Alex Grey, Robert Venosa, and
+  Amanda Sage. His style fuses psychedelic imagery, Incan and pre-Columbian
+  influences, sacred geometry, and 1980s skate culture.
+
+  He founded the Positive Creations brand in 2003 — clothing, tapestries, books,
+  skateboards, footwear. He has been art director at Creation Skateboards and
+  designed over a hundred commercial skateboard graphics for Santa Cruz,
+  Deathwish, and Think. He has done live painting for Diplo, Tipper, and
+  Immortal Technique at festivals from Burning Man to Boom to Rainbow Serpent.
+  He published two books and sold out 5,555 NFTs in 2021.
+
+  He now lives in a purple house in Gulfport with his partner Paulina Casati.
+
+searchBio: ""
+
+searchMuralDescription: |
+  A large mandala fills the side of a residential house in Gulfport. The central
+  figure is a symmetrical face composed of interlocking leaves, eyes, and
+  organic patterns in Chris Dyer's signature psychedelic style — greens, blues,
+  purples, pinks, and yellows densely layered with sacred geometry motifs. A
+  lightning bolt runs down the center of the forehead. Multiple eyes peer out
+  from within the design. The mandala radiates outward into petal-like forms
+  edged in yellow, pink, and blue. Behind it, bold orange and red sunburst rays
+  fill the entire wall. Signed "Chris Dyer" in purple graffiti lettering at
+  lower left.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "positivecreations.ca"
+    url: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "24 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-23, GPS from EXIF"
+  - "Private residence, Gulfport"

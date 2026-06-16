@@ -1,0 +1,87 @@
+# Ya La'Ford — Golden Wave (Morean Arts Center)
+
+# ── Required ──
+id: 172
+artist: "Ya La'Ford"
+year: 0
+lat: 27.771625
+lng: -82.644242
+address: 719 Central Ave
+category: commercial
+img: "images/murals/commercial/ya-la-ford-golden-wave.jpeg"
+
+# ── Optional ──
+title: Golden Wave
+building: Morean Arts Center
+instagram: yalaford
+basedIn: "Tampa, FL"
+
+artistBio: |
+  She has an MFA and a law degree. She represented the United States at the
+  Dakar Biennale in Senegal.
+
+  Ya La'Ford is a first-generation American of Jamaican heritage, from the
+  Bronx. She earned her MFA from the Art Institute of Boston (now Lesley
+  University) and her Juris Doctor from the University of Florida. She maintains
+  studios in St. Petersburg, the Bronx, Jamaica, and Maine.
+
+  Her work spans painting, sculpture, sound, print, video, and immersive
+  installations using light, water, sound, and motion. Sharp geometric lines,
+  bold contrasting colors, vibrant circles and triangles. She sits on the Board
+  of Trustees of the Museum of Fine Arts in St. Petersburg. She designed an
+  Arrow McLaren SP IndyCar and was a featured artist for Super Bowl 2021.
+
+  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is
+  in the collections of Tropicana Field, Al Lang Stadium, the Morean Arts
+  Center, and the Boston Public Library. She has shown at The James Museum, The
+  Ringling Museum of Art, and Florida CraftArt.
+
+  For SHINE 2021, she painted in St. Petersburg.
+
+searchBio: |
+  She has an MFA and a law degree. She represented the United States at the
+  Dakar Biennale in Senegal.
+
+  Ya La'Ford is a first-generation American of Jamaican heritage, from the
+  Bronx. She earned her MFA from the Art Institute of Boston (now Lesley
+  University) and her Juris Doctor from the University of Florida. She maintains
+  studios in St. Petersburg, the Bronx, Jamaica, and Maine.
+
+  Her work spans painting, sculpture, sound, print, video, and immersive
+  installations using light, water, sound, and motion. Sharp geometric lines,
+  bold contrasting colors, vibrant circles and triangles. She sits on the Board
+  of Trustees of the Museum of Fine Arts in St. Petersburg. She designed an
+  Arrow McLaren SP IndyCar and was a featured artist for Super Bowl 2021.
+
+  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is
+  in the collections of Tropicana Field, Al Lang Stadium, the Morean Arts
+  Center, and the Boston Public Library. She has shown at The James Museum, The
+  Ringling Museum of Art, and Florida CraftArt.
+
+  For SHINE 2021, she painted in St. Petersburg.
+
+searchMuralDescription: |
+  A striking gold-on-black mural on the exterior of the Morean Arts Center. Ya
+  La'Ford's signature dense geometric pattern — interlocking angular shapes
+  rendered in gold leaf or metallic gold paint — forms a large arch or wave
+  sweeping across a dark charcoal wall. The pattern flows over and around a pair
+  of black double doors, with a matching geometric heart motif painted on the
+  doors themselves. The composition creates an almost architectural portal
+  effect. A small gold plaque on the lower right reads "Ya La'Ford / Golden Wave
+  / Morean Arts Center / muralofia.com." Sunlight catches the metallic lines,
+  giving the piece a luminous, shifting quality.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "U.S. representative, Dakar Biennale Senegal (2024); Super Bowl 2021 featured artist; Arrow McLaren IndyCar designer; Board of Trustees, Museum of Fine Arts St. Petersburg; SHINE 2021"
+furtherWork:
+  - name: "yalaford.com"
+    url: "https://www.yalaford.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "20 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-20, GPS from EXIF"
+  - "Artist: Ya La'Ford, signed on plaque"
+  - "Morean Arts Center, 719 Central Ave"

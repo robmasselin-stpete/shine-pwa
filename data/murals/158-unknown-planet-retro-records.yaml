@@ -1,0 +1,56 @@
+# Unknown Artist — Planet Retro Records
+
+# ── Required ──
+id: 158
+artist: Unknown
+year: 0
+lat: 27.774175
+lng: -82.646958
+address: "Burlington Ave N"
+category: commercial
+img: "images/murals/commercial/planet-retro-records.jpeg"
+
+# ── Optional ──
+title: ""
+building: Planet Retro Records
+instagram: ""
+basedIn: ""
+
+artistBio: |
+  Artist unknown. Yellow line-drawn characters on the side of Planet Retro
+  Records — bearded figures wearing headphones, a turntable, and a "RECORDS"
+  sign in red. The style is illustrative and music-themed, matching the record
+  store.
+
+searchBio: |
+  Artist unknown. A mural on the side of Planet Retro Records in St. Petersburg,
+  FL. Yellow line-drawn characters on a dark gray background — bearded figures
+  wearing headphones, a turntable, and a "RECORDS" sign in red neon-style
+  lettering. The style is illustrative and music-themed. Not a SHINE piece —
+  likely a commercial commission for the record store. Note: Derek Donnelly
+  painted a nearby mural but this is a different piece.
+
+searchMuralDescription: |
+  Yellow line-drawn characters on a dark gray wall. On the left, a red "RECORDS"
+  sign and a figure with headphones and a yellow hat. At center, a yellow vinyl
+  record on a turntable. On the right, two bearded figures with flowing yellow
+  hair and headphones — their beards and hair rendered as tangled line work. The
+  entire piece uses only yellow, red, and gray/black, giving it a graphic,
+  illustrative quality that matches the record store aesthetic.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+status: research  # unidentified artist — kept for ongoing research, not exported
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-16, GPS from EXIF"
+  - "Building: Planet Retro Records"
+  - "Artist unknown — very thin info, not a Derek Donnelly piece"

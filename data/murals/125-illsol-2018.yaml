@@ -4,8 +4,8 @@
 id: 125
 artist: Illsol
 year: 2018
-lat: 27.769995
-lng: -82.660358
+lat: 27.76994
+lng: -82.660513
 address: 2010 1st Ave S
 category: shine
 img: "images/murals/2018/notice-us.jpeg"
@@ -13,40 +13,111 @@ img: "images/murals/2018/notice-us.jpeg"
 # ── Optional ──
 title: "Notice Us"
 building: ""
-instagram: _illsol_
+instagram:
 basedIn: "Tampa, FL"
 
-artistBio: |
-  Illsol is the collaborative duo of Tony Krol and Michelle Sawyer, a
-  husband-and-wife team based in Tampa. The name combines their surnames
-  while referencing the Spanish word for sun — a nod to Michelle's half-
-  Cuban heritage. They officially formed Illsol in 2015 to focus on large-
-  scale work. Michelle earned her BA in Fine Arts from the University of
-  South Florida in 2006 and spent five years as an arts educator before
-  completing a traditional tattoo apprenticeship. Tony comes from a stencil
-  art and wheat-pasting background and runs CLRTY Agency, a design and
-  multimedia studio. Together they founded Mergeculture Gallery in Tampa
-  Heights in 2017, representing artists in urban contemporary and graffiti
-  movements, and Heights Walls, a community mural initiative. They've been
-  commissioned by the City of Tampa for multiple public art projects
-  including Dream Pushers, Faces of West Tampa, and the Tampa Convention
-  Center. Michelle was selected for Valspar's 2025 "Be Bright" campaign
-  at the Feeding Tampa Bay building.
+fieldNotes:
+  - "'Illuminated soul' — sol is sun in Spanish"
+  - "Bold graphic street art"
+  - "Local Florida artist"
 
-muralDescription: |
-  A massive Florida panther portrait dominates the wall, its face rendered
-  in photorealistic detail with piercing gold-green eyes, whiskers, and
-  tawny fur blending into the surrounding abstract elements. The panther
-  looms 22 feet high over the intersection. Behind and around the big cat,
-  concentric rings in turquoise and coral create a haloed effect, while
-  scattered teal dots, monstera leaf silhouettes, and fragmented geometric
-  patterns fill the background. The palette balances the warm realism of
-  the panther against cool abstract elements in teals, corals, and greens.
+artistBio: |
+  The name means "illuminated soul" — sol is sun in Spanish, a nod to Michelle's
+  half-Cuban heritage.
+
+  Michelle Sawyer and Tony Krol are Illsol, a husband-and-wife team based in
+  Tampa. Michelle completed a traditional tattoo apprenticeship and has a
+  teaching background. Tony is a self-taught stencil artist. They have worked as
+  a duo since 2014, with Michelle going solo since 2021. Their style blends
+  clean-lined, often symmetrical imagery with distressed, layered textures —
+  stencil work, graffiti, aerosol portraits, and solid color blocks.
+
+  They founded Mergeculture Gallery in Tampa Heights (2017) and co-founded the
+  Heights Walls community mural program. Clients include T-Mobile, the City of
+  Tampa, and the Tampa Convention Center. Their SHINE 2018 mural "Notice Us"
+  depicted an endangered Florida panther.
+
+searchBio: |
+  The name means "illuminated soul" — sol is sun in Spanish, a nod to Michelle's
+  half-Cuban heritage.
+
+  Michelle Sawyer and Tony Krol are Illsol, an artist duo based in Tampa,
+  Florida. The name is pronounced "ee-sol" and means Illuminated Soul. The
+  project began as Illusionz in 1996 and went through several iterations before
+  becoming Illsol. Sawyer and Krol married in 2013 and started painting together
+  in 2014–2015, working as a duo through 2021. Since 2022, Sawyer has worked
+  under the Illsol name as a solo artist; the duo's joint output spans 2014
+  through 2021.
+
+  Sawyer earned her degree in Fine Arts from the University of South Florida and
+  brings a teaching background and a traditional tattoo apprenticeship to the
+  work. Krol is a self-taught stencil artist with roots in graffiti. The Illsol
+  style combines clean-lined, often symmetrical, bold imagery with distressed,
+  layered, muted textures — moving between stencil work, graffiti foundations,
+  rendered aerosol portraits, illustration, and solid blocks of color.
+
+  In 2017, the duo founded Mergeculture Gallery in Tampa Heights at 1544 N
+  Franklin Street, a contemporary art space focused on the urban contemporary,
+  graffiti, and new contemporary art movements. Mergeculture has shown work by
+  internationally known contemporary artists alongside Tampa Bay area artists
+  including Justin Wagher, Jujmo, Bekky Beukes, Palehorse (Chris Parks), Tes
+  One, and the muralist Sentrock, among others. They also founded Heights Walls,
+  a community mural initiative that grows neighborhood connections through
+  public art installations in Tampa Heights.
+
+  Their large-scale mural work spans commercial, historical, and
+  community-centered projects across the Tampa Bay area. Documented walls (most
+  co-designed and co-painted as a duo through 2021) include the Tampa Heights
+  mural at Cafe Hey raising awareness of interstate expansion in a historic
+  neighborhood, the West Tampa Community Mural at Salcines Park, "For the Love
+  of THIS City" at The Portico, "Riverwalk Memories" at Anchor Riverwalk, the
+  Tampa Heights Mural at Shuffle, and the TPA Mural at Westshore City Center.
+  Sawyer's solo work since 2022 includes the 1937 Antifascist Women's March
+  mural in Ybor City and displays for the Skatepark of Tampa's 30th anniversary.
+  Her most recent public piece was created as part of Valspar's 2025 "Be Bright"
+  campaign and is located on the Feeding Tampa Bay building just outside Ybor
+  City.
+
+  Brand and institutional clients include T-Mobile, the City of Tampa, the Tampa
+  Convention Center, and Valspar. For SHINE Mural Festival 2018, Illsol painted
+  "Notice Us" — a mural depicting an endangered Florida panther — in St.
+  Petersburg. They have credited Palehorse Design (Chris Parks), Chad Mize, and
+  Tes One as influences and friends in the regional scene.
+
+  Beyond the gallery and mural work, Sawyer's experience as a gallery co-founder
+  has carried into commercial art consulting; most recently she served as Art
+  Events Coordinator at The Bricks in Ybor City and organized the Ybor Arts Tour
+  in spring 2024. She continues to assist local businesses in integrating art
+  into their establishments and is recognized by Creative Pinellas as a
+  multifaceted visual artist whose work blends community and history through
+  public art.
+
+  Contact and links: Mergeculture Gallery at 1544 N Franklin Street, Tampa, FL
+  33602; phone (813) 586-4765. Website: illsol.com. Instagram: @_illsol_.
+  Facebook: illsol. Twitter: illsol. Mergeculture is on Facebook, Instagram, and
+  Twitter as @mergeculture.
+
+searchMuralDescription: |
+  A massive Florida panther portrait dominates the wall, its face rendered in
+  photorealistic detail with piercing gold-green eyes, whiskers, and tawny fur
+  blending into the surrounding abstract elements. The panther looms 22 feet
+  high over the intersection. Behind and around the big cat, concentric rings in
+  turquoise and coral create a haloed effect, while scattered teal dots,
+  monstera leaf silhouettes, and fragmented geometric patterns fill the
+  background. The palette balances the warm realism of the panther against cool
+  abstract elements in teals, corals, and greens.
 
 muralInspiration: "A plea on behalf of Florida's endangered wildlife. The Florida Panther was nearly declared extinct in the 1990s, with only 120-230 adults remaining. 'Notice Us' asks humans to recognize the impact of development on Florida's fragile ecosystem."
 muralAwards: ""
-artistAwards: "Michelle Sawyer: BA Fine Arts, University of South Florida (2006); Valspar 'Be Bright' campaign (2025). Tony Krol: Founder, Mergeculture Gallery (2017)"
+artistAwards: "Founded Mergeculture Gallery (2017); co-founded Heights Walls; SHINE 2018"
 
+furtherWork:
+  - name: "illsol.com"
+    url: ""
+
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
@@ -55,3 +126,4 @@ sourceNotes:
   - "https://illsol.com/us"
   - "https://creativepinellas.org/artist/michelle-sawyer/"
   - "https://stpetemuraltour.com/2018/10/10/illsol/"
+  - "https://stpeteartsalliance.org/illsol"

@@ -1,0 +1,58 @@
+# Derek Donnelly — Iguana (2014, Commissioned)
+
+# ── Required ──
+id: 187
+artist: Derek Donnelly
+year: 2014
+lat: 27.771642
+lng: -82.642395
+address: Central Ave
+category: commercial
+img: "images/murals/commercial/derek-donnelly-iguana-2014.jpeg"
+
+# ── Optional ──
+title: ""
+building: "ZaZoo'd"
+instagram: saintpaintarts
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  He painted a T-Rex in a Hawaiian shirt going fishing — for AARP. That tells
+  you most of what you need to know about Derek Donnelly.
+
+  A Pinellas County native, Donnelly grew up in Pinellas Park, graduated from
+  the Center for the Arts at Gibbs High School in 2001, and studied graphic
+  design and digital illustration at IADT Tampa. He went full-time on murals in
+  2010. His style sits at the intersection of illustration and realism — playful
+  without being childish, bold without being loud.
+
+  His client list runs from Fender Guitars to the Tampa Bay Rays to Sirata Beach
+  Resort. Multiple Best of the Bay wins. Inaugural Artmaker 2026 at Ruth Eckerd
+  Hall. For SHINE 2025, he ran operations and served as artist liaison for the
+  entire festival while producing two murals of his own.
+
+searchBio: ""
+
+searchMuralDescription: |
+  A large iguana head fills the wall of ZaZoo'd, painted on cinder block in
+  vibrant teal, yellow, orange, and red tones. The reptile faces right with a
+  detailed eye, textured scales along its jaw and throat, and spiny crest along
+  the top of its head. The background transitions from light on the left to dark
+  navy-black on the right with scattered white dots suggesting a night sky or
+  underwater scene. A smaller figure appears in the dark section at right.
+  Signed "DONNELLY 2K14" at lower left in graffiti lettering.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "saintpaintarts.com"
+    url: "https://www.saintpaintarts.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "26 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-26, GPS from EXIF"
+  - "Signed Donnelly 2K14 on wall"

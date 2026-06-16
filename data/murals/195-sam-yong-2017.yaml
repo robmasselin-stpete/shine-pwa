@@ -1,0 +1,110 @@
+# Sam Yong — SHINE 2017
+
+# ── Required ──
+id: 195
+artist: Sam Yong
+year: 2017
+lat: 27.77012
+lng: -82.66147
+address: ""
+category: shine
+img: "images/murals/2016/angela-delaplane-ospreys.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: samyongart
+basedIn: "Melbourne, Australia"
+
+artistBio: |
+  Two ospreys face each other across a building corner. The left bird descends
+  toward a brass lantern wrapped in chain, a portrait glowing inside it. The
+  right bird rises from breaking waves with the chain coiled around its body.
+  Photorealistic feather work on dark navy, painted by an Australian who flew
+  across an ocean to paint two birds that don't fly across oceans.
+
+  Sam Yong is a Melbourne-based painter and illustrator born in 1986. He is
+  self-taught, with a Bachelor of Visual Communication in Graphic Design as his
+  only formal training. His work explores "the connection between human
+  narratives which are represented through nature," and is shaped by what his
+  own bio calls a self-confessed introvert's love of solitude and solo
+  adventure.
+
+  He is represented by BeinArt Gallery in Victoria and has shown solo work at
+  Off the Kerb Gallery (Unnatural Selection, 2013), Outré Gallery (Keepsakes,
+  2016), and BeinArt Gallery (Ritual, 2017), all in Melbourne. Group shows have
+  run through Paris, New York, Los Angeles, Oakland, Portland, Auckland, and
+  Melbourne. His mural festival list is short and selective — Temple Children
+  (Hilo, Hawaii, 2016), SHINE (St. Petersburg, 2017), and Pow! Wow! Hawaii
+  (Honolulu, 2018). Press coverage in Juxtapoz, Booooooom, Invurt, and Pilerats.
+
+searchBio: |
+  Two ospreys face each other across a building corner. The left bird descends
+  toward a brass lantern wrapped in chain, a portrait glowing inside it. The
+  right bird rises from breaking waves with the chain coiled around its body.
+  Photorealistic feather work in browns, whites, grays, and cream against dark
+  navy. The address "2060" is painted in white text on the left panel. Painted
+  by Australian artist Sam Yong for the SHINE Mural Festival in 2017.
+
+  Sam Yong is a self-taught Melbourne, Australia-based painter and illustrator
+  born in 1986. His only formal training is a Bachelor of Visual Communication
+  in Graphic Design. He works in traditional painting and illustration across
+  multiple mediums, exploring what he describes as "the connection between human
+  narratives which are represented through nature." His own bio calls him "a
+  self-confessed introvert" with "a love of nature and solo adventure," and that
+  voice runs through the work — quiet, observational, tied to wilderness rather
+  than urban scenes.
+
+  He is currently represented by BeinArt Gallery in Victoria, Australia. Solo
+  exhibitions include Unnatural Selection at Off the Kerb Gallery in Melbourne
+  (2013), Keepsakes at Outré Gallery in Melbourne (2016), and Ritual at BeinArt
+  Gallery in Melbourne (2017). Group exhibitions have run through Paris, New
+  York, Los Angeles, Oakland, Portland, Auckland, and Melbourne across
+  2013–2018.
+
+  His mural festival history is short and curated rather than prolific.
+  Documented walls include Temple Children in Hilo, Hawaii (2016); SHINE on St.
+  Petersburg, Florida (2017) — the two-osprey wall now catalogued as Mural Quest
+  #195; Pow! Wow! Hawaii in Honolulu (2018); and the Collingwood Senior Citizens
+  Centre in Melbourne, Victoria (2020). The two Hawaii commissions plus the
+  SHINE St. Pete trip mark the period when he was traveling internationally for
+  mural work; the Collingwood Senior Citizens Centre piece is closer to home.
+
+  In 2014 he gave a public talk titled Analogue / Digital in Melbourne. Press
+  coverage spans Juxtapoz, Booooooom, Invurt Magazine, Pilerats, and additional
+  publications between 2013 and 2017.
+
+  Instagram: @samyongart. Facebook: samyongart. Website: samyong.art (with
+  portfolio archives organized by year, 2013–2018).
+
+searchMuralDescription: |
+  A two-sided mural wrapping the corner of a building. On the left wall, a
+  photorealistic osprey with white head and dark brown body swoops down from the
+  upper right with wings spread; its talons grip an old brass lantern wrapped in
+  chain, with what appears to be a portrait visible inside the lantern, and the
+  bird descends into breaking white-capped waves below. The number "2060" is
+  visible in white text in the lower-left corner. On the right wall, a second
+  osprey rises from the waves with similar plumage, beak open, also wrapped in
+  coiling chain. Both birds are rendered with detailed feather work in shades of
+  brown, white, gray, and cream. The dark navy background lets the foam of the
+  waves and the metallic sheen of the chains stand out. The corner column
+  between the two walls is painted gray with dark brick pillars on either side.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Represented by BeinArt Gallery (Victoria, AU); SHINE 2017 selected artist; Pow! Wow! Hawaii 2018 selected artist; Temple Children Hilo 2016"
+
+furtherWork:
+  - name: "samyong.art"
+    url: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-03 — New mural added by Rob (initially mis-attributed to Angela Delaplane SHINE 2016)."
+  - "2026-05-03 — MAJOR ATTRIBUTION CORRECTION per Rob: this is Sam Yong, not Angela Delaplane. File renamed 195-angela-delaplane-2016.yaml → 195-sam-yong-2017.yaml. Year corrected to 2017 per samyong.art/murals (Sam Yong's own portfolio lists his SHINE St. Petersburg wall as 2017; Rob said 2015 but the artist's own site is the primary source — flagging discrepancy). Bio fully replaced; Delaplane sources removed; samyong.art sources added."
+sourceNotes:
+  - "Photo by Rob 2026-05-03, GPS from EXIF (IMG_1422.jpeg)"
+  - "https://samyong.art"
+  - "https://samyong.art/about"
+  - "https://samyong.art/murals"

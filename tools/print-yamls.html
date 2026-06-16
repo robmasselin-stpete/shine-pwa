@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mural Quest — YAML Print Review</title>
+<style>
+  @page { size: letter; margin: 0.45in 0.5in; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 9pt; line-height: 1.32;
+  }
+  .mural {
+    padding: 0; max-width: 7.5in; margin: 0 auto;
+    page-break-before: always; break-before: page;
+    page-break-after: always; break-after: page;
+    /* Hard 2-page cap (each printable page ~10.1in at 0.45in top + bottom margin on letter) */
+    max-height: 20.2in; overflow: hidden;
+    position: relative;
+  }
+  /* Screen-only: show mural boundaries + a faint mid-mural rule where page 1 → page 2 happens */
+  @media screen {
+    body { background: #e8e8e8; }
+    .mural {
+      background: #fff;
+      margin: 24px auto;
+      padding: 24px 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      /* Repeating horizontal page-break guide every ~10.1in */
+      background-image: linear-gradient(to bottom, transparent 10.1in, #ff8a8a 10.1in, #ff8a8a calc(10.1in + 1px), transparent calc(10.1in + 1px));
+    }
+    .mural::before {
+      content: '— page 2 —';
+      position: absolute;
+      top: 10.1in; right: 10px;
+      font-size: 9pt; color: #c44; letter-spacing: 0.5px;
+      background: #fff; padding: 0 6px;
+    }
+  }
+  /* searchBio breaks out of the body grid into full page width with 2 balanced columns */
+  .sbio-block { margin-top: 8px; }
+  .sbio-block .text { font-size: 8pt; line-height: 1.32; column-count: 2; column-gap: 16px; column-fill: balance; }
+  .mural:first-child { page-break-before: auto; break-before: auto; }
+  .mural:last-child { page-break-after: auto; break-after: auto; }
+  .header { border-bottom: 2px solid #000; padding-bottom: 4px; margin-bottom: 6px; }
+  .id-row { display: flex; justify-content: space-between; align-items: baseline; }
+  .id { font-size: 16pt; font-weight: 700; }
+  .id .num { color: #888; font-weight: 400; margin-right: 8px; }
+  .title { font-style: italic; font-weight: 400; }
+  .gone-banner { background: #8a1010; color: #fff; padding: 6px 12px; font-weight: 700; font-size: 11pt; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; border-radius: 3px; }
+  .verify { font-size: 8pt; padding: 2px 8px; border-radius: 4px; background: #eee; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
+  .verify.pass { background: #d6efd9; color: #1a5c2a; }
+  .verify.fail { background: #fde0e0; color: #8a1010; }
+  .verify.review { background: #fff1c5; color: #8a6a10; }
+  .meta { font-size: 8.5pt; color: #444; margin-top: 4px; line-height: 1.5; }
+  .meta strong { color: #000; font-weight: 600; }
+  .body { display: grid; grid-template-columns: 1.6in 1fr; gap: 14px; align-items: start; }
+  .img { width: 100%; height: auto; border: 1px solid #888; display: block; }
+  .img-meta { font-size: 7.5pt; color: #777; margin-top: 4px; word-break: break-all; }
+  .section-label { font-weight: 700; text-transform: uppercase; font-size: 8pt; letter-spacing: 0.6px; color: #444; margin-top: 6px; padding-bottom: 1px; border-bottom: 1px solid #ddd; }
+  .section-label:first-child { margin-top: 0; }
+  .text { margin: 3px 0 0; white-space: pre-wrap; }
+  .src { font-size: 7.5pt; color: #444; margin: 4px 0 0; padding-left: 14px; }
+  .src li { margin: 1px 0; word-break: break-all; }
+  .filter-form { font-family: -apple-system, sans-serif; padding: 16px; background: #f8f8f8; border-bottom: 1px solid #ddd; }
+  .filter-form input, .filter-form button { font-size: 14px; padding: 6px 10px; margin-right: 8px; }
+  @media print { .filter-form { display: none; } }
+</style>
+</head>
+<body>
+<form class="filter-form" onsubmit="event.preventDefault(); apply()">
+  <label>Mural ID(s) — single, range, or mix; blank = all:
+    <input id="ids" type="text" placeholder="e.g.  5  •  1-100  •  1,5,10  •  1-20,50,75-90" size="44">
+  </label>
+  <button type="submit">Render</button>
+  <button type="button" onclick="window.print()">Print</button>
+  <span id="page-summary" style="color:#444;font-size:13px;margin-left:12px;font-weight:600"></span>
+  <span style="color:#666;font-size:13px;margin-left:8px">Tip: Cmd+P → "Save as PDF" to preview</span>
+</form>
+<div id="root"></div>
+
+<script type="module">
+import { murals } from '../js/data.js';
+
+window.apply = function() {
+  const v = (document.getElementById('ids').value || '').trim();
+  const params = new URLSearchParams(location.search);
+  if (v) params.set('ids', v); else params.delete('ids');
+  location.search = params.toString();
+};
+
+function init() {
+  const params = new URLSearchParams(location.search);
+  const idsRaw = params.get('ids') || '';
+  document.getElementById('ids').value = idsRaw;
+  // Parse: comma-separated tokens; each is either a single ID (e.g. "5") or a range (e.g. "1-100")
+  const wantedIds = [];
+  for (const tok of idsRaw.split(',').map(s => s.trim()).filter(Boolean)) {
+    const m = tok.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (m) {
+      const lo = Math.min(+m[1], +m[2]);
+      const hi = Math.max(+m[1], +m[2]);
+      for (let i = lo; i <= hi; i++) wantedIds.push(i);
+    } else if (/^\d+$/.test(tok)) {
+      wantedIds.push(+tok);
+    }
+  }
+  let list = wantedIds.length
+    ? murals.filter(m => wantedIds.includes(m.id))
+    : murals.slice();
+  list.sort((a, b) => a.id - b.id);
+  render(list);
+}
+
+function esc(s) {
+  return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function render(list) {
+  const root = document.getElementById('root');
+  root.innerHTML = list.map(m => {
+    const meta = [];
+    meta.push(`<strong>${m.y || '—'}</strong>`);
+    meta.push(esc(m.cat || '—'));
+    if (m.loc) meta.push(esc(m.loc));
+    if (m.bldg) meta.push(`@ ${esc(m.bldg)}`);
+    if (m.ig) meta.push(`IG: @${esc(m.ig)}`);
+    if (m.from) meta.push(`based: ${esc(m.from)}`);
+    if (m.lat != null && m.lng != null) meta.push(`${m.lat.toFixed(5)}, ${m.lng.toFixed(5)}`);
+    if (m.gone) meta.push('<strong style="color:#8a1010">⚠ GONE</strong>');
+
+    const fnHtml = (m.fn && m.fn.length)
+      ? `<div class="section-label">Field Notes</div><ul class="text" style="margin-top:2px;padding-left:18px">${m.fn.map(n => `<li>${esc(n)}</li>`).join('')}</ul>`
+      : '';
+    const bioHtml = m.bio
+      ? `<div class="section-label">Artist Bio (display)</div><div class="text">${esc(m.bio)}</div>`
+      : '<div class="section-label">Artist Bio</div><div class="text" style="color:#a00">(empty)</div>';
+    const sbioHtml = m.sbio && m.sbio !== m.bio
+      ? `<div class="sbio-block"><div class="section-label">Search Bio (longer — keyword-only)</div><div class="text">${esc(m.sbio)}</div></div>`
+      : '';
+    const descHtml = m.desc
+      ? `<div class="section-label">Mural Description</div><div class="text">${esc(m.desc)}</div>`
+      : '';
+    const inspHtml = m.insp ? `<div class="section-label">Inspiration</div><div class="text">${esc(m.insp)}</div>` : '';
+    const aawHtml = m.aaw ? `<div class="section-label">Artist Awards</div><div class="text">${esc(m.aaw)}</div>` : '';
+    const mawHtml = m.maw ? `<div class="section-label">Mural Awards</div><div class="text">${esc(m.maw)}</div>` : '';
+    const srcHtml = (m.src && m.src.length)
+      ? `<div class="section-label">Sources (${m.src.length})</div><ul class="src">${m.src.map(u => `<li>${esc(u)}</li>`).join('')}</ul>`
+      : '';
+    const fwHtml = (m.fw && m.fw.length)
+      ? `<div class="section-label">Further Work</div><ul class="src">${m.fw.map(g => `<li>${esc(g.name)} — ${esc(g.url)}</li>`).join('')}</ul>`
+      : '';
+
+    const goneBanner = m.gone
+      ? `<div class="gone-banner">⚠ Mural is GONE${m.goneDate ? ` — ${esc(m.goneDate)}` : ''}${m.goneReason ? ` — ${esc(m.goneReason)}` : ''}</div>`
+      : '';
+
+    return `
+      <article class="mural">
+        ${goneBanner}
+        <div class="header">
+          <div class="id-row">
+            <div class="id"><span class="num">#${m.id}</span>${esc(m.a || '(no artist)')}${m.t ? ` <span class="title">— ${esc(m.t)}</span>` : ''}</div>
+          </div>
+          <div class="meta">${meta.join(' · ')}</div>
+        </div>
+        <div class="body">
+          <div>
+            ${m.img ? `<img class="img" src="../${esc(m.img)}" alt="">` : ''}
+            <div class="img-meta">${esc(m.img || '')}</div>
+          </div>
+          <div>
+            ${fnHtml}
+            ${bioHtml}
+            ${descHtml}
+            ${inspHtml}
+            ${aawHtml}
+            ${mawHtml}
+            ${fwHtml}
+            ${srcHtml}
+          </div>
+        </div>
+        ${sbioHtml}
+      </article>
+    `;
+  }).join('');
+}
+
+init();
+
+// After render + images load, measure each mural and report total pages
+function measure() {
+  const PAGE_PX = 10.1 * 96; // 10.1in printable per letter page at 96 DPI
+  const articles = document.querySelectorAll('.mural');
+  if (!articles.length) {
+    document.getElementById('page-summary').textContent = '';
+    return;
+  }
+  let totalPages = 0;
+  let twoPagers = 0;
+  articles.forEach(a => {
+    const pages = a.offsetHeight > PAGE_PX ? 2 : 1;
+    totalPages += pages;
+    if (pages === 2) twoPagers++;
+    // Annotate each mural with its measured page count
+    let badge = a.querySelector('.page-badge');
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.className = 'page-badge';
+      badge.style.cssText = 'position:absolute;top:6px;right:6px;font-size:9pt;font-weight:600;background:'+(pages===2?'#fff1c5':'#e0f0e0')+';color:#333;padding:2px 8px;border-radius:3px;letter-spacing:0.3px';
+      a.appendChild(badge);
+    }
+    badge.textContent = pages + 'pg';
+  });
+  document.getElementById('page-summary').textContent = `${articles.length} murals · ${totalPages} pages total · ${twoPagers} go to page 2`;
+}
+
+window.addEventListener('load', () => setTimeout(measure, 200));
+// Re-measure if window resizes
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(measure, 300);
+});
+</script>
+</body>
+</html>

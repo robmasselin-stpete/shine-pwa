@@ -1,0 +1,103 @@
+# AnniePhunk — Satoshi Hideout (charging bull + anime woman, crypto theme)
+
+# ── Required ──
+id: 212
+artist: Annie Phunk
+year: 2022
+lat: 27.776765   # Rob-set via route-editor (Satoshi Hideout wall, 425 2nd St N)
+lng: -82.635410
+address: "425 2nd St N"
+category: commercial
+img: "images/murals/commercial/anniephunk-satoshi-bull.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Satoshi Hideout"
+instagram: miss.phunk
+basedIn: ""
+
+artistBio: |
+  A charging bull, a woman trailing red silk, and a sun stamped with glowing
+  code — painted like a Japanese woodblock print down the side of a Bitcoin
+  hotel.
+
+  It's the Wall Street bull, relocated to St. Pete and wrapped in ukiyo-e
+  clouds. The wall reads as one idea: a woman breaking free of the financial
+  establishment, the red silk she trails standing for that freedom; a dragon
+  tucked into the clouds for prosperity; and a sun lighting what Bitcoin calls
+  the "genesis block," the first block ever mined.
+
+  The mural covers the side of Satoshi Hideout, a crypto-themed boutique hotel
+  and co-living building at 425 2nd Street N downtown. The building's art
+  program launched in 2022, with the concept designed by St. Petersburg
+  advertising firm Clear ph. This wall is signed AnniePhunk.
+
+searchBio: |
+  A charging bull, a woman trailing red silk, and a sun stamped with glowing
+  code — painted like a Japanese woodblock print down the side of a Bitcoin
+  hotel. This wall is signed AnniePhunk.
+
+  It wraps the side of Satoshi Hideout, St. Petersburg's first crypto-themed
+  boutique hotel and co-living building, at 425 2nd Street N (the project also
+  spans 424 2nd Street N, the former Park Plaza Apartments) in downtown St.
+  Petersburg. The art concept was designed by St. Petersburg advertising firm
+  Clear ph; press coverage in 2022 credited the Satoshi Hideout murals to local
+  artist gatsbynotart, and the mural work took more than two weeks. This wall
+  carries the signature "AnniePhunk."
+
+  The imagery is openly about money and freedom. A woman confronts a bull drawn
+  after the iconic Charging Bull sculpture on Wall Street; the unwoven red silks
+  she trails were described as freedom from the constraints of the financial
+  establishment. A dragon hidden in the clouds represents prosperity, and a sun
+  illuminates the "genesis block" — the first block of the Bitcoin blockchain —
+  above the figures. The woman is rendered in an anime style. Another side of
+  the project carries portraits of unrelated people, a nod to the unknown
+  identity of Satoshi Nakamoto, Bitcoin's pseudonymous creator.
+
+  Annie Phunk is a painter — her studio work runs to realist oil, from
+  portraits to pop-leaning still lifes. Instagram: @miss.phunk. Website:
+  missphunk.com.
+
+  Painted in 2022. Category: commissioned (a private commission for the hotel,
+  not a SHINE Mural Festival wall).
+
+searchMuralDescription: |
+  A long two-story mural on the stucco side wall of an apartment-style building,
+  with the building's windows and air-conditioning units left exposed and
+  painted around. The whole scene is rendered in a stylized Japanese
+  woodblock-print idiom: scrolling, curled clouds in layered blues, purples,
+  pinks, and white fill the wall edge to edge. At center, a large dark
+  navy-to-black bull charges with its head lowered — pale curved horns, cyan
+  contour lines defining the muscles and a shaggy, bison-like mane, tail flicked
+  up behind. At far left, an anime-style woman with long black hair and a pink
+  hair ribbon leans into motion, wearing a deep magenta/maroon jacket over white,
+  her hair and a length of red-pink silk streaming behind her. Upper left, a
+  golden sun disc is filled with small repeating glyphs and characters
+  (code-like "AF" and "00" forms), throwing straight rays across a graduated
+  blue sky. The right half continues the cloudscape in pink and lavender. Signed
+  in black at the lower left: "AnniePhunk."
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "missphunk.com"
+    url: "https://www.missphunk.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-06-16 — New mural added by Rob: charging bull + anime woman + crypto 'genesis block' sun on the side of Satoshi Hideout (425 2nd St N). Photo from Rob (IMG_7214.jpeg, 2026-05-28); signature close-up IMG_7215.jpeg reads 'AnniePhunk'. Forwarded photos' EXIF GPS (27.78708, -82.64674) is bogus (identical stamp across all three forwarded photos) — discarded; Rob set final GPS via route-editor: 27.776765, -82.635410 (Satoshi Hideout wall, 425 2nd St N). (Was provisionally geocoded to 27.776945/-82.635316.) Year 2022 per St Pete Catalyst. Category commercial. Attribution: on-wall signature 'AnniePhunk' (authoritative for this wall); 2022 press credited Satoshi Hideout murals to gatsbynotart w/ concept by Clear ph — relationship between the two not asserted. Artist bio initially thin (no web presence found at add time)."
+  - "2026-06-16 — Rob supplied artist links: Instagram @miss.phunk (display name 'Annie Phunk'), website missphunk.com. Updated artist field 'AnniePhunk' → 'Annie Phunk' (the wall signature is the run-together 'AnniePhunk'); added IG + website; light bio enrichment (painter, realist oil — portraits and pop-leaning still lifes per her IG grid)."
+sourceNotes:
+  - "Photo by Rob (forwarded), IMG_7214.jpeg (full wall) + IMG_7215.jpeg (signature close-up, reads 'AnniePhunk'), dated 2026-05-28; EXIF GPS unreliable — GPS to be set manually"
+  - "On-wall signature: 'AnniePhunk' (lower left)"
+  - "Artist Instagram @miss.phunk (display name 'Annie Phunk') + website https://www.missphunk.com — provided by Rob 2026-06-16"
+  - "https://stpetecatalyst.com/inside-st-petes-first-crypto-themed-boutique-hotel/ (address 425 & 424 2nd St N; mural symbolism — woman/bull/red silk/dragon/genesis-block sun; concept by Clear ph; project credited to gatsbynotart; 2022; >2 weeks to paint)"
+  - "https://satoshihideout.com/"
+verification:
+  date: 2026-06-16
+  method: on-wall signature (photo) + web research (St Pete Catalyst)
+  status: partial
+  notes: "Mural subject/location/year well-sourced. Attribution rests on the photographed wall signature 'AnniePhunk'; artist confirmed by Rob as Annie Phunk (IG @miss.phunk, missphunk.com). 2022 press separately credited gatsbynotart/Clear ph for the Satoshi Hideout art — surfaced to Rob, relationship not asserted. GPS Rob-set via route-editor (27.776765, -82.635410)."

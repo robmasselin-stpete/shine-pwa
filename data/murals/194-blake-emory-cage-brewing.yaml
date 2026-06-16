@@ -1,0 +1,104 @@
+# Blake Emory & Guillo Perez III — Cage Brewing octopus
+
+# ── Required ──
+id: 194
+artist: Blake Emory & Guillo Perez III
+year: 2023
+lat: 27.77061
+lng: -82.660425
+address: 2001 1st Ave S
+category: commercial
+img: "images/murals/commercial/blake-emory-cage-brewing.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Cage Brewing"
+instagram: emory_blake
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
+  former golf course where Ruth used to play.
+
+  Blake Emory is a Florida native, born 1983, now based in St. Petersburg. With
+  his brother James — out of Santa Fe — he runs ESP Gallery and the Emory Arts
+  collective. The day job is wide: Neo-Renaissance figure painting, Optic
+  Modernism, sculpture, set design, experimental film. He doesn't pick a lane.
+
+  His murals are scattered across St. Pete in places people don't expect,
+  including a few rooftops. The work doesn't always announce itself — you find
+  it by looking up, or by walking past somewhere you've passed a hundred times.
+
+  In 2025 the City of St. Petersburg unveiled "Babe Calls the Shot," his
+  life-size bronze of Ruth at the called-shot moment, sited at the St.
+  Petersburg Museum of History on the Pier.
+
+  This Cage Brewing octopus is a 2023 collaboration with painter Guillo Perez
+  III. The body sits on the wall at the corner of 1st Ave S and 20th. The
+  tentacles don't stay on the wall — they peel forward, climbing past the plane
+  and reaching into the air.
+
+searchBio: |
+  He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
+  former golf course where Ruth used to play.
+
+  Blake Emory was born in Florida in 1983 and is now based in St. Petersburg,
+  with a studio at 1114 Farragut Dr N. With his brother James — based in Santa
+  Fe — he runs ESP Gallery and the Emory Arts collective (EMORY ARTS LLC and the
+  affiliated Emory Arts 501(c)(3)). His practice spans Neo-Renaissance figure
+  painting, Optic Modernism, sculpture, set design, and experimental film. He is
+  represented by Marcolina's Gallery.
+
+  His murals are scattered across St. Petersburg in places people don't expect,
+  including a few rooftops. He has been painting in the Tampa Bay area since
+  2017, with most of his documented work falling in 2021–2023. Beyond Florida,
+  he has painted along Route 66 in Grants, New Mexico.
+
+  In 2025 the City of St. Petersburg unveiled "Babe Calls the Shot," his
+  life-size bronze of Babe Ruth at the called-shot moment. It was sited at the
+  St. Petersburg Museum of History on the Pier — a placement that took on extra
+  weight given that Emory's own home stands on the former property of a golf
+  course Ruth played on during his St. Pete years.
+
+  This Cage Brewing piece is a 2023 collaboration with painter Guillo Perez III.
+  The body of a giant octopus sits on the corner wall at 1st Ave S and 20th
+  Street S; the tentacles extend past the plane of the wall and curl into the
+  air, reading as part mural, part sculptural extension.
+
+  Instagram: @emory_blake. Galleries: ESP Gallery, Marcolina's. Website:
+  emorybrothersart.com.
+
+searchMuralDescription: |
+  A giant octopus mural wrapping the corner exterior of Cage Brewing. The
+  octopus's body sits on the main wall; its tentacles extend across the building
+  and curl outward beyond the wall plane — part mural, part sculptural extension
+  into the air. Painted in saturated colors against the brewery's industrial
+  concrete-block facade.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "emorybrothersart.com"
+    url: "https://www.emorybrothersart.com"
+  - name: "espgallery.com"
+    url: "https://www.espgallery.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "1 May 2026 — New mural added per Rob; bio + collab attribution from research. GPS placeholder (1st Ave S & 20th St S corner) — to be replaced with EXIF when Rob uploads photo. Image filename reserved; image not yet on disk."
+sourceNotes:
+  - "https://www.beeradvocate.com/articles/16703/a-splash-of-color-breweries-add-murals-to-brighten-neighborhoods-and-taprooms/"
+  - "https://www.tampabay.com/life-culture/history/2025/05/10/babe-ruth-sculpture-st-petersburg-yankees-baseball/"
+  - "https://marcolinas.com/collections/blake-emory"
+  - "https://www.emorybrothersart.com/biography"
+  - "https://www.instagram.com/emory_blake/"
+  - "https://stpetersburgfoodies.com/craft-beer/cage-brewing-beer-games-music-in-st-pete/"
+  - "Rob met Blake Emory in person at Cage Brewing on 2026-05-01 while Blake was touching up his own mural — primary-source attribution confirmed."
+verification:
+  date: 2026-05-01
+  method: primary-source (artist met in person) + phase2-llm-per-claim (3 parallel agents)
+  status: pass
+  notes: "Attribution confirmed by Rob meeting Blake Emory in person at Cage Brewing while the artist was touching up the work. BeerAdvocate independently corroborates Blake Emory + Guillo Perez III collaboration, August 2023. Bio facts (1983 Florida birth, Neo-Renaissance/Optic Modernism style, ESP Gallery, Emory Arts) from Marcolina's gallery + Emory Brothers Art bio. Image and GPS are placeholders pending Rob's photo upload."

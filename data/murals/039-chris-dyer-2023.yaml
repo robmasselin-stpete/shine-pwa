@@ -4,8 +4,8 @@
 id: 39
 artist: Chris Dyer
 year: 2023
-lat: 27.762773
-lng: -82.674388
+lat: 27.762877
+lng: -82.672623
 address: 2875 7th Ave S
 category: shine
 img: "images/murals/2023/chris-dyer.jpeg"
@@ -16,37 +16,141 @@ building: "Stewart Moving & Storage"
 instagram: chris_dyer
 basedIn: "St. Petersburg, FL"
 
-artistBio: |
-  Chris Dyer (b. 1979) is a Peruvian-Canadian visionary artist now based in
-  St. Petersburg/Gulfport, Florida. Born in Ottawa, he grew up in Lima, Peru
-  before returning to Canada at 17, eventually studying illustration at Dawson
-  College in Montreal. A leading figure of the North American visionary art
-  movement, his style fuses psychedelic imagery, Incan and pre-Columbian
-  influences, sacred geometry, and 1980s-90s skate culture aesthetics. He has
-  painted murals in 44+ countries, including at the Bob Marley Museum in Jamaica,
-  the Beatles Ashram in India, and the STRAAT Museum in Amsterdam. He founded the
-  Positive Creations brand in 2003 and has published two art books through
-  Schiffer and Last Gasp. He teaches workshops at the Montreal Museum of Fine
-  Arts, the National Gallery of Canada, and The Chapel of Sacred Mirrors (CoSM).
+fieldNotes:
+  - "Painted in 45 countries"
+  - "Peruvian-Canadian, based in Montreal"
+  - "Psychedelic spiritual art meets street culture"
 
-muralDescription: |
+artistBio: |
+  He has painted in forty-five countries. His mural is in the Bob Marley Museum.
+
+  Chris Dyer was born in Ottawa in 1979, moved to Lima, Peru at four, and
+  returned to Canada at seventeen. He studied illustration at Dawson College in
+  Montreal and trained under visionary masters Alex Grey, Robert Venosa, and
+  Amanda Sage. His style fuses psychedelic imagery, Incan and pre-Columbian
+  influences, sacred geometry, and 1980s skate culture.
+
+  He founded the Positive Creations brand in 2003 — clothing, tapestries, books,
+  skateboards, footwear. He has been art director at Creation Skateboards and
+  designed over a hundred commercial skateboard graphics for Santa Cruz,
+  Deathwish, and Think. He has done live painting for Diplo, Tipper, and
+  Immortal Technique at festivals from Burning Man to Boom to Rainbow Serpent.
+  He published two books and sold out 5,555 NFTs in 2021.
+
+  He now lives in a purple house in Gulfport with his partner Paulina Casati.
+  For SHINE 2023, he painted "Ride on the sPEACEship!" on Stewart Moving and
+  Storage — a wildly detailed spaceship made of interlocking creatures trailing
+  rainbow exhaust flames.
+
+searchBio: |
+  He has painted in forty-five countries. His mural is in the Bob Marley Museum.
+
+  Chris Dyer was born March 3, 1979 in Ottawa, Ontario, and moved to Lima, Peru
+  at age four. He started skateboarding in 1986 at age eight and started surfing
+  at twelve. At fourteen he joined a Lima soccer-fan street gang called SepUlcro
+  (also written Sepulcro Crema), aligned with the Universitario de Deportes
+  club, and started tagging walls with spray paint in 1993. His parents sent him
+  back to Canada in 1996 at seventeen. He lived with his grandmother in Ottawa,
+  attended Heritage College and the University of Ottawa, then moved to Montreal
+  in 2000 to study illustration at Dawson College. A 2001 summer of tree
+  planting pushed him toward a more spiritual path. He later studied under and
+  taught alongside visionary masters Alex Grey, Robert Venosa, Martina Hoffman,
+  Laurence Caruana, A. Andrew Gonzales, Maura Holden, and Amanda Sage. His style
+  fuses Incan and pre-Columbian influences, shamanistic tribal patterning, 1980s
+  and 90s skate and graffiti culture, psychedelia, and vinyl and action-figure
+  collectibles.
+
+  He started painting on broken skateboards in 2000, which got him into Thrasher
+  and High Times magazines. In 2004 he began doing graphics for Creation
+  Skateboards out of San Francisco, and by 2011 he was Art Director and Brand
+  Manager of Creation Skateboards / Satori Movement, where he directed the skate
+  video Soul Harmonics. He has done over a hundred commercial skateboard
+  graphics for Santa Cruz, Deathwish, Think, Darkstar, and Skull. By the late
+  2010s he had moved into reclaimed-skateboard installations like the Skatebot
+  Army. His brother Patrick (a.k.a. Peru 143) is also a graffiti artist; the two
+  became roommates in Montreal in 2007 and started painting together in their
+  backyard, which is when Chris got fully into spray paint.
+
+  He launched the Positive Creations brand in 2003 (the Gabber dates it to 2004;
+  the brand turned twenty around 2024). The line covers clothing, tapestries,
+  books, backpacks, watches, footwear, skateboards, and accessories, sold online
+  and at festival pop-ups. In 2008 he co-directed a feature documentary about
+  his life with Dreamtime Cinema, released as Positive Creations on DVD in 2010
+  and free on YouTube. Schiffer Publishing put out the 256-page hardcover
+  Positive Creations: The Visionary Art of Chris Dyer in 2011. Last Gasp of San
+  Francisco published Chris Dyer's Kick-Ass Coloring Book in 2016 and a second
+  hardcover, Shamanic Journey, in 2024. Other publication credits include Pipe
+  Fiends (2006), Concrete 2 Canvas: More Skateboarders' Art (Laurence King,
+  2007), Drawgasmic (2008), The Sunlight Chronicles (2008), Maple Vedas (2010),
+  Visionary Art Yearbook (2010), Divining the Dream (2012), Arte Visionaria
+  (2015), Street Art Themes et Motifs (2018), The New Psychedelic Revolution by
+  James Oroc (Park Street Press, 2018), Feminine Mysticism in Arts (2018),
+  Painted Walls La Habana (2018), and Thrasher Magazine's Mail Drop Book (2019).
+  He runs the Artventures travel video series and the Chris Dyer's Creative
+  Friends podcast.
+
+  He has exhibited in galleries in Vienna, Bali, Costa Rica, Spain, Paris,
+  Berlin, Tokyo, New York City, Denver, and Los Angeles, and has shown alongside
+  Alex Grey, Shepard Fairey, Robert Venosa, H.R. Giger, and Romio Shrestha. He
+  has worked with skate-art legends Jim Phillips, Wes Humpston, and Andy Howell.
+  His murals are in the Bob Marley Mausoleum and Museum in Nine Mile, Jamaica;
+  the Beatles Ashram in Rishikesh, India (the I am the Eggman piece); the Straat
+  Museum in Amsterdam; the Street Art Museum in Saint Petersburg, Russia; the
+  Arte Urbano museum in Lima; and on Peter Tosh's tomb wall in Jamaica, painted
+  on the same trip as the Bob Marley piece. Festival mural credits include MURAL
+  Festival, Art Basel Miami, Burning Man, Shambhala in British Columbia, Boom in
+  Portugal, Rainbow Serpent in Australia, Ozora in Hungary, and Puro Muro in
+  Lima. He live-painted for Diplo, Tipper, Immortal Technique, Nahko Bear, and
+  Cut Chemist, and made album art and concert posters for Ott, String Cheese
+  Incident, Third World, 12th Planet, and The Gaslamp Killer. He was also the
+  artist who first pushed festivals to build him spray-paint walls instead of
+  canvas easels in the early 2010s.
+
+  He teaches workshops at the Montreal Museum of Fine Arts, the National Gallery
+  of Canada, Alex Grey's Chapel of Sacred Mirrors (CoSM) in Wappingers Falls,
+  New York, and the Vienna Academy of Visionary Art, plus residencies in Italy,
+  Bali, India, Thailand, and Australia. At CoSM he painted a Mushroom Cafe mural
+  — adding one of his signature gnomes and an elaborate mushroom being above the
+  Cafe/Parlor door — to a landscape originally created by Burgandy Viscosi.
+  Starting in 2017 he ran an art-and-shamanic-healing retreat at Katari Center
+  in the jungle near Tarapoto, Peru. He sold out 5,555 NFTs in 2021 as the
+  Galaktic Gang series, with the community still active on Discord and Twitter.
+  He married Belgian Valerie Lambert in 2010 and divorced in 2016.
+
+  Around 2022 he relocated from Montreal to the St. Pete / Gulfport area, drawn
+  by the Dalí Museum. He lives in a purple house in Gulfport with his partner,
+  artist Paulina Casati. For SHINE 2023, he painted Ride on the sPEACEship! on
+  Stewart Moving and Storage — a detailed spaceship made of interlocking
+  creatures trailing rainbow exhaust flames. He has other Gulfport and St. Pete
+  walls including a psychedelic crocodile at Drunken Taco (May 2025) and a piece
+  at Zaza Smoke Shop at 49th Street and 22nd Avenue South. Website:
+  positivecreations.ca and positivecreations.net. Instagram: @chris_dyer.
+
+searchMuralDescription: |
   A panoramic cosmic scene against a starry black background on Stewart Moving &
-  Storage. A wildly detailed spaceship made of interlocking creatures, tentacles,
-  and geometric patterns blasts across the wall, trailing rainbow exhaust flames
-  and lightning bolts. The vessel is piloted by psychedelic characters with
-  multiple eyes and Incan-inspired headdresses, one flashing a peace sign from
-  inside a blue bubble cockpit. "Positive Creations" floats above in rainbow
-  lettering, "PEACE PLEASE" appears in a speech bubble at right, and a smiling
-  sun face radiates in the upper right corner. Saturn, UFOs, and alien faces
-  orbit the composition. Signed "Chris Dyer" at left and "LOVE!" in pink at
-  lower right.
+  Storage. A wildly detailed spaceship made of interlocking creatures,
+  tentacles, and geometric patterns blasts across the wall, trailing rainbow
+  exhaust flames and lightning bolts. The vessel is piloted by psychedelic
+  characters with multiple eyes and Incan-inspired headdresses, one flashing a
+  peace sign from inside a blue bubble cockpit. "Positive Creations" floats
+  above in rainbow lettering, "PEACE PLEASE" appears in a speech bubble at
+  right, and a smiling sun face radiates in the upper right corner. Saturn,
+  UFOs, and alien faces orbit the composition. Signed "Chris Dyer" at left and
+  "LOVE!" in pink at lower right.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "Murals in 44+ countries including Bob Marley Museum, Beatles Ashram, STRAAT Museum; SHINE 2023 festival artist"
+artistAwards: "Murals in 45+ countries; Bob Marley Museum, Beatles Ashram, STRAAT Museum; SHINE 2023"
+
+furtherWork:
+  - name: "positivecreations.ca"
+    url: "https://positivecreations.ca"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
   - "https://stpeteartsalliance.org/chris-dyer-2023"
   - "https://en.wikipedia.org/wiki/Chris_Dyer_(artist)"
@@ -54,3 +158,5 @@ sourceNotes:
   - "https://canvasrebel.com/meet-chris-dyer/"
   - "https://thegabber.com/meet-chris-dyer-globally-renowned-visionary-artist/"
   - "https://www.wusf.org/arts-culture/2023-10-12/shine-st-pete-mural-festival-2023"
+  - "https://www.cosm.org/mushroom-cafe/chris-dyer"
+  - "https://headslifestyle.com/blogs/art/a-portrait-of-the-artist"

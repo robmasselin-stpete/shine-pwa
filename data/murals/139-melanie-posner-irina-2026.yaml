@@ -1,41 +1,96 @@
-# Melanie Posner — 2026 (in progress)
+# Melanie Posner — 2026
 
 # ── Required ──
 id: 139
 artist: Melanie Posner
 year: 2026
-lat: 27.77069167
-lng: -82.666
+lat: 27.770736
+lng: -82.665998
 address: 2200 block Central Ave
 category: commercial
-img: images/murals/commercial/melanie-posner-irina.jpeg
+img: "images/murals/commercial/melanie-posner-irina.jpeg"
 
 # ── Optional ──
 title: "Iryna"
-building: ""
+building:
 instagram: therealmelpoz
 basedIn: "Los Angeles, CA"
 
 artistBio: |
-  Melanie Posner is a fine artist and muralist from Philadelphia who earned her
-  BFA in Painting from the University of Tampa in 2016. She specializes in
-  vibrant, photorealistic paintings of women. Her clients include Walt Disney
-  World (scenic artwork for Star Wars: Galaxy's Edge), Amazon Prime, and TikTok
-  (a 40-foot mural on the LGBT Center of Los Angeles for Pride Month). She also
-  has a SHINE 2018 mural "New Beginnings" at 4139 7th Terrace S. She was a cast
-  member on the reality show Tampa Baes. Now based in Los Angeles.
+  Melanie Posner painted this portrait of Iryna Zarutska — golden-blonde hair, a
+  pink hibiscus at her shoulder, mint-to-gold light behind her.
 
-muralDescription: |
-  A large-scale photorealistic portrait on the side of a warehouse building,
-  still in progress as of March 16, 2026. The mural depicts Iryna Zarutska, a
-  23-year-old Ukrainian refugee who was stabbed and killed on the Charlotte,
-  North Carolina light rail on August 22, 2025, in a random attack. The portrait
-  shows her with flowing golden-blonde hair, gazing gently toward the viewer
-  with a soft, warm expression. A pink hibiscus flower blooms near her shoulder.
-  The background transitions from pale mint green on the left to warm golden
-  yellow on the right. The piece is rendered in Posner's signature photorealistic
-  style with warm, luminous skin tones. Posner was seen painting from a green
-  scissor lift on the day the photo was taken.
+  Posner's signature is photorealistic portraits of women — oversized expressive
+  eyes, vibrant palettes, florals. For this wall she pulled the palette down to
+  a soft mint-to-gold gradient and let Iryna's face carry it.
+
+  Posner was born around 1993 outside Philadelphia, moved to Tampa in 2013, and
+  earned her BFA in Painting from the University of Tampa in 2016. She is now
+  based in Los Angeles. Her commercial commissions include scenic art for Walt
+  Disney World's Star Wars: Galaxy's Edge, the eighteen-foot Hollander Hotel
+  mural for New Belgium Brewing (a woman in a red headscarf, completed in under
+  five days), and a forty-foot wall on the LGBT Center of Los Angeles for
+  TikTok's 2024 "Create the Future" campaign. She was a cast member on Amazon
+  Prime's docuseries Tampa Baes (2021). Her SHINE 2018 wall "New Beginnings" — a
+  twenty-three-by-sixty-five-foot photorealistic woman lying on her side — is at
+  4139 7th Terrace South.
+
+searchBio: |
+  She painted the woman in the red headscarf on the back of the Hollander Hotel
+  in under five days, then went straight to Walt Disney World to paint scenic
+  art for Star Wars: Galaxy's Edge.
+
+  Melanie "Mel" Posner was born around 1993 in a small town just outside
+  Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
+  the University of Tampa in 2016, where she also studied art therapy. She was
+  previously based in Gulfport, Florida, and is now in Los Angeles.
+
+  Her style is photorealistic portraits of women — oversized, expressive eyes,
+  vibrant rainbow color palettes, psychedelic paisley backgrounds, floral
+  elements. She blends lifelike detail with touches of dreamy surrealism. She
+  works in oil on canvas, collage, prints, and large-scale murals. She sources
+  her subjects from Pinterest, Google, and social media, looking for eyes,
+  story, and confidence. "Working large is just really exciting," she says. "I
+  feel like I'm a little bit more free doing murals." Her stated philosophy:
+  paint strong, confident, independent women to be inspired by them.
+
+  For SHINE 2018, she was one of five local "Open Call" artists. Her mural "New
+  Beginnings" at 4139 7th Terrace South is twenty-three feet high by sixty-five
+  feet long — a photorealistic woman lying horizontally on her side, her hand
+  cupping the right side of her face, one eye peeking through her fingers. She
+  completed it in October 2018.
+
+  Her commercial clients include Walt Disney World (scenic artwork for Star
+  Wars: Galaxy's Edge at Hollywood Studios, Orlando), New Belgium Brewing (the
+  eighteen-foot Hollander Hotel mural of a woman in a red headscarf with a glass
+  of Mural Agua Fresca Cerveza, completed in under five days), Amazon Prime
+  Video (a mural on a promotional bus for Tampa Baes), and TikTok. For TikTok's
+  2024 "Create the Future" campaign, she painted a forty-foot mural on the LGBT
+  Center of Los Angeles at 8745 Santa Monica Blvd in West Hollywood.
+
+  She was a cast member on all eight episodes of Tampa Baes (Amazon Prime Video,
+  2021), a docuseries about a Tampa Bay lesbian friend group produced by 3 Ball
+  Productions and filmed over roughly ten weeks starting April 2021. She
+  described herself as "neutral" and avoiding drama on the show. "My anxiety
+  during filming was up to the roof, my mental health totally depleted. It was
+  very stressful and I will say, I love how the show came out." Her oil painting
+  "Passion" (also called "Summer and Marissa") appears on screen. She worked for
+  years as a bartender at The Honey Pot, a landmark LGBTQ+ club in Ybor City,
+  Tampa.
+
+  She has exhibited at Enigma gallery in downtown St. Petersburg. Instagram:
+  @therealmelpoz. Website: melanieposner.com.
+
+searchMuralDescription: |
+  The mural depicts Iryna Zarutska, a23-year-old Ukrainian refugee who was
+  stabbed and killed on the Charlotte, North Carolina light rail on August 22,
+  2025, in a random attack. The portrait shows her with flowing golden-blonde
+  hair, gazing gently toward the viewer with a soft, warm expression. A pink
+  hibiscus flower blooms near her shoulder. The background transitions from pale
+  mint green on the left to warm golden yellow on the right. The piece is
+  rendered in Posner's signature photorealistic style with warm, luminous skin
+  tones. Posner was seen painting from a green scissor lift on the day the photo
+  was taken.
 
 muralInspiration: |
   Iryna Zarutska fled Ukraine during the Russian invasion and resettled in
@@ -46,7 +101,7 @@ muralInspiration: |
   bail and mental health evaluations.
 
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2018 Open Call artist; Walt Disney World Star Wars: Galaxy's Edge scenic artist; Tampa Baes (Amazon Prime, 2021) cast member; TikTok LA Pride campaign (2024)"
 
 furtherWork:
   - name: "melanieposner.com"
@@ -54,14 +109,17 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: |
-  GPS from user photo. User photo taken March 16, 2026 while mural was
-  in progress. User met artist Melanie Posner on site; she confirmed the
-  title "Irina" and the subject. Address approximate from GPS — 2200 block
-  of Central Ave area.
-  Sources consulted:
-  - en.wikipedia.org/wiki/Killing_of_Iryna_Zarutska
-  - cnn.com (Iryna Zarutska stabbing coverage)
-  - nbcnews.com (Ukrainian refugee killed on NC transit)
-  - abc11.com (Iryna's Law)
-  - Existing Posner bio from 107-melanie-posner-commercial.yaml
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "10 April 2026 — Deep research, full bio with hook, copied to all 3 Posner files"
+  - "2026-05-03 — Display bio rewritten as a memorial bio anchored to THIS wall: Iryna Zarutska's story (Ukrainian refugee, killed Aug 22 2025 on Charlotte light rail, age 23), the painted detail (golden-blonde hair, pink hibiscus, mint-to-gold), and the legal aftermath (Iryna's Law). Generic Posner career context now sits below."
+  - "2026-05-03 — Trimmed Iryna's full story out of the display bio per Rob (we already have it in muralInspiration field). Display bio now just names her and describes the painted portrait; muralInspiration carries the Ukrainian refugee / Charlotte light rail / Iryna's Law context."
+sourceNotes:
+  - "https://stpetecatalyst.com/melanie-posner/"
+  - "https://www.melanieposner.com/"
+  - "https://stpeteartsalliance.org/shine?alias=/2018_SHINE_Mural_Melanie_Posner"
+  - "https://outcoast.com/get-to-know-mel-posner-from-tampa-baes/"
+  - "http://watermarkoutnews.com/2021/12/02/tampa-baes-star-melanie-posner-talks-filming-season-one/"
+  - "https://www.imdb.com/name/nm12771071/"
+  - "https://findmasa.com/artist/melanie-posner"
+  - "https://www.artsy.net/artist/melanie-posner"

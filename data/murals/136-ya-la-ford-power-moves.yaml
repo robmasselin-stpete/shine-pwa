@@ -4,8 +4,8 @@
 id: 136
 artist: Ya La'Ford
 year: 2022
-lat: 27.76505333
-lng: -82.66333
+lat: 27.765208
+lng: -82.663275
 address: 569 22nd St S
 category: commercial
 img: images/murals/commercial/ya-la-ford-power-moves.jpeg
@@ -16,26 +16,122 @@ building: Power Moves Electric
 instagram: yalaford
 basedIn: "St. Petersburg, FL"
 
-artistBio: ""
-muralDescription: |
-  A mural covering the front facade of the Power Moves Electric warehouse on 22nd Street South. On a solid black cinder-block wall, three geometric compositions are arranged symmetrically: two matching half-circle forms flanking the sides and a full circle centered above a metal door. Each form is filled with angular, crystalline white linework — interlocking straight-line segments that create a stained-glass or shattered-ice pattern. Subtle accents of pastel blue, pink, and warm gold highlight select segments within the white network. The black background gives the piece a nighttime quality, making the white geometry glow. "Ya La'ford" is signed in white script in the lower right corner. The style is consistent with Ya La'Ford's broader body of work exploring sacred geometry and light refraction.
+artistBio: |
+  She has an MFA and a law degree. She represented the United States at the
+  Dakar Biennale in Senegal.
+
+  Ya La'Ford is a first-generation American of Jamaican heritage, from the
+  Bronx. She earned her MFA from the Art Institute of Boston (now Lesley
+  University) and her Juris Doctor from the University of Florida. She maintains
+  studios in St. Petersburg, the Bronx, Jamaica, and Maine.
+
+  Her work spans painting, sculpture, sound, print, video, and immersive
+  installations using light, water, sound, and motion. Sharp geometric lines,
+  bold contrasting colors, vibrant circles and triangles. She sits on the Board
+  of Trustees of the Museum of Fine Arts in St. Petersburg. She designed an
+  Arrow McLaren SP IndyCar and was a featured artist for Super Bowl 2021.
+
+  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is
+  in the collections of Tropicana Field, Al Lang Stadium, the Morean Arts
+  Center, and the Boston Public Library. She has shown at The James Museum, The
+  Ringling Museum of Art, and Florida CraftArt.
+
+  For SHINE 2021, she painted in St. Petersburg.
+
+searchBio: |
+  She has an MFA and a law degree. She represented the United States at the
+  Dakar Biennale in Senegal.
+
+  Ya La'Ford is a first-generation American of Jamaican heritage, originally
+  from the Bronx. She earned her MFA from the Art Institute of Boston (now
+  Lesley University) and her Juris Doctor from the University of Florida. She
+  has lived and worked in Washington, D.C., Houston, South Florida, and Boston,
+  and has been based in the Tampa Bay area for nearly a decade. She lives in St.
+  Petersburg's Historic Kenwood neighborhood and maintains studio space in the
+  Bronx, in Jamaica, and on a property in Maine that overlooks Canada, where she
+  is building her largest immersive public artwork on more than 30 acres. Her
+  grandfather was an influential figure in the arts, her uncle is a musician
+  with the band Third World, and her godfather wove cultural storytelling into
+  his music — family influences she credits as the foundation of her artistic
+  path.
+
+  Her work spans painting, sculpture, sound, print, video, and immersive
+  installations using light, water, sound, and motion. Her signature visual
+  vocabulary is sharp geometric lines, bold contrasting colors, and recurring
+  circles, triangles, and spirals — symbols she uses to represent unity, change,
+  and growth. She has described doors and entryways as the path she keeps
+  returning to, and many of her St. Petersburg installations sit at the
+  entrances of public and private buildings: the Hyatt entrance, the back
+  entrance of the Morean Arts Center, the entryway of the Tampa Bay Rowdies, the
+  Tampa Bay Rays entryway at Tropicana Field, the inside of Nike, the entryway
+  of the James Weldon Johnson Public Library, and the entryway of the Warehouse
+  Arts District. Her 2016 mural "The King's Dream Unite" is on display at the
+  Historic Manhattan Casino in St. Petersburg. "Intersections" wraps the second
+  level and rooftop terrace of the St. Petersburg Museum of History.
+
+  Her larger installations and public artworks include "The Silver Lining,"
+  which debuted at the London Art Fair as an immersive interplay of light,
+  water, sound, and motion; "Boulevard Flow," a sculptural landscape
+  installation featuring a labyrinth-shaped park and a 10-foot metal sphere;
+  "The Impenetrable Intersection: Jamaican Ja Rasta Visible L'Invisible," a
+  three-wall installation at the Atlantic Center for the Arts incorporating
+  spray paint, acrylic, gold leaf, and found objects; "Survey: The West," part
+  of a 2022 installation at the Ogden Contemporary Arts; and "Survey the West: A
+  Cross-Continental Reflection," her largest solo exhibition to date, mounted at
+  The James Museum of Western & Wildlife Art in St. Petersburg through May 18,
+  2025. Her "American/Rōōts" mixed-media installation showed at The John and
+  Mable Ringling Museum of Art. She has exhibited at the Baker Museum in Naples;
+  Gallery 221 at Hillsborough Community College, where she closed the immersive
+  solo show "Distance"; and held an exhibition in Dubai. Large-scale public art
+  sculptures and installations sit in Orlando, Gainesville, Pompano Beach,
+  Hawaii, and New Jersey, with additional projects underway in South Africa.
+
+  She designed an Arrow McLaren SP IndyCar and was a featured artist at the 2021
+  Super Bowl, with work distributed to all NFL Owners as part of the Super Bowl
+  collection. Brand and team clients include the Tampa Bay Rays, the Toronto
+  Blue Jays (Toronto Blue Jays 2 Installation), and Nike. Her work is in the
+  collections of Tropicana Field, Al Lang Stadium, the Morean Arts Center, and
+  the Boston Public Library. Local exhibition venues include The James Museum,
+  The Ringling Museum of Art, and Florida CraftArt. She has worked with children
+  in Cuba, traveled for projects in Thailand and China, and was scheduled for an
+  artist residency with the Urban League in Ghana.
+
+  She sits on the Board of Trustees of the Museum of Fine Arts in St.
+  Petersburg. She is married, a mother of two, and a pet parent. For SHINE 2021,
+  she painted in St. Petersburg.
+
+  Website: yalaford.com. Email: ya@yalaford.com (general), contact@yalaford.com
+  (press).
+
+searchMuralDescription: |
+  A mural covering the front facade of the Power Moves Electric warehouse on
+  22nd Street South. On a solid black cinder-block wall, three geometric
+  compositions are arranged symmetrically: two matching half-circle forms
+  flanking the sides and a full circle centered above a metal door. Each form is
+  filled with angular, crystalline white linework — interlocking straight-line
+  segments that create a stained-glass or shattered-ice pattern. Subtle accents
+  of pastel blue, pink, and warm gold highlight select segments within the white
+  network. The black background gives the piece a nighttime quality, making the
+  white geometry glow. "Ya La'ford" is signed in white script in the lower right
+  corner. The style is consistent with Ya La'Ford's broader body of work
+  exploring sacred geometry and light refraction.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
-
+artistAwards: "U.S. representative, Dakar Biennale Senegal (2024); Super Bowl 2021 featured artist; Arrow McLaren IndyCar designer; Board of Trustees, Museum of Fine Arts St. Petersburg; SHINE 2021"
+furtherWork:
+  - name: "yalaford.com"
+    url: "https://www.yalaford.com"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: |
-  GPS from user photo. User photo replaces stock image.
-  Private commercial commission for Power Moves Electric LLC (owner Tre Marshall).
-  Year estimated as 2022 — Power Moves Electric was established April 2021,
-  so the mural could not predate that. No published documentation of this
-  specific commission was found online. Ya La'Ford has extensive ties to the
-  22nd St S corridor (King's Dream Unite at Manhattan Casino, Community Woven
-  at WADA entrance).
-  Sources consulted:
-  - yalaford.com (portfolio)
-  - instagram.com/yalaford
-  - bbb.org (Power Moves Electric LLC profile)
-  - stpeteartsalliance.org (Ya La'Ford)
+sourceNotes:
+  - "GPS from user photo. User photo replaces stock image."
+  - "Private commercial commission for Power Moves Electric LLC (owner Tre Marshall). Year estimated as 2022."
+  - "https://www.yalaford.com/"
+  - "https://stpetecatalyst.com/local-ish-meet-artist-ya-laford/"
+  - "https://tampamagazines.com/ya-lafords/"
+  - "https://creativepinellas.org/magazine/arts-in-ya-laford/"
+  - "https://lesley.edu/stories/ya-laford"

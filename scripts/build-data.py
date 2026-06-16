@@ -43,7 +43,7 @@ EXPORT_FIELDS = [
     'id', 'artist', 'title', 'address', 'building',
     'lat', 'lng', 'year', 'category', 'instagram', 'artistBio',
     'img', 'basedIn',
-    'muralDescription', 'muralInspiration', 'muralAwards', 'artistAwards',
+    'searchMuralDescription', 'muralInspiration', 'muralAwards', 'artistAwards',
     'impressions', 'furtherWork',
 ]
 
@@ -94,9 +94,20 @@ def load_murals():
         data['_filename'] = basename
         murals.append(data)
 
-    # IMPORTANT: Only murals with source="claude-enhanced" are included in the build.
+    # Murals marked with a non-empty `status` stay in YAML but never reach the app.
+    # Buckets:
+    #   research      — unidentified artists / awaiting more info
+    #   painted-over  — wall no longer exists (preserved for history)
+    EXCLUDED_STATUSES = {'research', 'painted-over'}
+    for status in sorted(EXCLUDED_STATUSES):
+        bucket = [m for m in murals if m.get('status') == status]
+        if bucket:
+            print(f"  Skipped {len(bucket)} murals with status: {status}")
+    murals = [m for m in murals if m.get('status') not in EXCLUDED_STATUSES]
+
+    # Murals are approved if they have source="claude-enhanced" OR a revisionLog.
     # Legacy/unreviewed murals are excluded until they've been verified by Rob.
-    approved = [m for m in murals if m.get('source') == 'claude-enhanced']
+    approved = [m for m in murals if m.get('source') == 'claude-enhanced' or m.get('revisionLog')]
     skipped = len(murals) - len(approved)
     if skipped:
         print(f"  Skipped {skipped} legacy murals (not yet reviewed)")
@@ -173,17 +184,53 @@ def js_string_escape(s):
     s = s.replace('\u2019', "\\'")   # RIGHT SINGLE QUOTATION MARK
     s = s.replace('\u201C', '"')     # LEFT DOUBLE QUOTATION MARK
     s = s.replace('\u201D', '"')     # RIGHT DOUBLE QUOTATION MARK
-    s = s.replace('\n', ' ')  # flatten newlines for single-line JS
     s = s.replace('\r', '')
+    # Preserve paragraph breaks as \n\n, flatten single newlines to spaces
+    s = re.sub(r'\n\n+', '\x00', s)  # placeholder for paragraph breaks
+    s = s.replace('\n', ' ')
+    s = s.replace('\x00', '\\n\\n')  # JS literal \n\n
     # Collapse multiple spaces
     s = re.sub(r' {2,}', ' ', s)
     return s.strip()
 
 
+def _build_field_notes(m):
+    """Build a JS array string from fieldNotes list, or empty string if none."""
+    notes = m.get('fieldNotes') or []
+    if not notes:
+        return ''
+    items = ','.join(f"'{js_string_escape(n)}'" for n in notes if n)
+    return f"[{items}]"
+
+def _build_along_the_way(m):
+    """Build a JS array string from alongTheWay list, or empty string if none."""
+    notes = m.get('alongTheWay') or []
+    if not notes:
+        return ''
+    items = ','.join(f"'{js_string_escape(n)}'" for n in notes if n)
+    return f"[{items}]"
+
+
+def _build_sources(m):
+    """Build a JS array string of fetchable URLs from sourceNotes (URL entries only).
+    Non-URL notes (e.g. 'GPS from Rob's photo...') are dropped from the export."""
+    sn = m.get('sourceNotes')
+    if not sn:
+        return ''
+    if isinstance(sn, str):
+        sn = [sn]
+    urls = [u.strip() for u in sn
+            if isinstance(u, str) and u.strip().startswith(('http://', 'https://'))]
+    if not urls:
+        return ''
+    items = ','.join(f"'{js_string_escape(u)}'" for u in urls)
+    return f"[{items}]"
+
+
 def mural_to_js(m):
     """Convert a mural dict to a JS object literal string.
     Uses abbreviated field names (a, t, loc, bldg, y, cat, ig, from) to minimize payload.
-    artistBio and muralDescription are combined into a single 'bio' field."""
+    artistBio is the displayed bio. searchMuralDescription is search-only (hidden in DOM)."""
     mid = m.get('id', 0)
     artist = js_string_escape(m.get('artist', ''))
     title = js_string_escape(m.get('title', ''))
@@ -199,8 +246,10 @@ def mural_to_js(m):
 
     # Separate bio and mural description fields
     bio = js_string_escape((m.get('artistBio', '') or '').strip())
-    desc = js_string_escape((m.get('muralDescription', '') or '').strip())
+    desc = js_string_escape((m.get('searchMuralDescription', '') or '').strip())
     audio = js_string_escape(m.get('audio', '') or '')
+    original_img = js_string_escape(m.get('originalImg', '') or '')
+    search_bio = js_string_escape((m.get('searchBio', '') or '').strip())
     mural_insp = js_string_escape((m.get('muralInspiration', '') or '').strip())
     mural_awards = js_string_escape((m.get('muralAwards', '') or '').strip())
     artist_awards = js_string_escape((m.get('artistAwards', '') or '').strip())
@@ -241,14 +290,78 @@ def mural_to_js(m):
         f"insp:'{mural_insp}',"
         f"maw:'{mural_awards}',"
         f"aaw:'{artist_awards}',"
-        f"fw:{gal_str}}}"
+        f"fw:{gal_str}"
+        + (f",oimg:'{original_img}'" if original_img else '')
+        + (f",sbio:'{search_bio}'" if search_bio else '')
+        + (',gone:true' if m.get('gone') else '')
+        + (f",goneDate:'{js_string_escape(m.get('goneDate',''))}'" if m.get('gone') and m.get('goneDate') else '')
+        + (f",goneReason:'{js_string_escape(m.get('goneReason',''))}'" if m.get('gone') and m.get('goneReason') else '')
+        + (f",fn:{fn_str}" if (fn_str := _build_field_notes(m)) else '')
+        + (f",atw:{atw_str}" if (atw_str := _build_along_the_way(m)) else '')
+        + (f",src:{src_str}" if (src_str := _build_sources(m)) else '')
+        + '}'
     )
 
 
-def generate_data_js(murals, config):
+POI_DIR = os.path.join(PROJECT_ROOT, 'data', 'pois')
+
+
+def load_pois():
+    """Load all POI YAMLs from data/pois/ (skip _template.yaml)."""
+    if not os.path.isdir(POI_DIR):
+        return []
+    pois = []
+    for filepath in sorted(glob.glob(os.path.join(POI_DIR, '*.yaml'))):
+        if os.path.basename(filepath).startswith('_'):
+            continue
+        try:
+            data = yaml.safe_load(open(filepath, encoding='utf-8'))
+        except yaml.YAMLError as e:
+            print(f"ERROR: Invalid YAML in POI {filepath}: {e}")
+            continue
+        if isinstance(data, dict) and data.get('id') is not None:
+            pois.append(data)
+    return pois
+
+
+def poi_to_js(p):
+    """Convert a POI dict to a compact JS object literal string."""
+    pid = p.get('id', 0)
+    name = js_string_escape(p.get('name', ''))
+    ptype = js_string_escape(p.get('type', ''))
+    lat = p.get('lat')
+    lng = p.get('lng')
+    addr = js_string_escape(p.get('address', ''))
+    bldg = js_string_escape(p.get('building', ''))
+    web = js_string_escape(p.get('website', ''))
+    ig = js_string_escape(p.get('instagram', ''))
+    hrs = js_string_escape(p.get('hours', ''))
+    headline = js_string_escape((p.get('headline', '') or '').strip())
+    image = js_string_escape((p.get('image', '') or '').strip())
+    desc = js_string_escape((p.get('description', '') or '').strip())
+    linked = p.get('linkedMurals') or []
+    linked_str = '[' + ','.join(str(int(x)) for x in linked) + ']'
+    lat_s = str(lat) if lat is not None else 'null'
+    lng_s = str(lng) if lng is not None else 'null'
+    return (
+        f"  {{id:{pid},"
+        f"name:'{name}',"
+        f"type:'{ptype}',"
+        f"lat:{lat_s},lng:{lng_s},"
+        f"addr:'{addr}',bldg:'{bldg}',"
+        f"web:'{web}',ig:'{ig}',hrs:'{hrs}',"
+        f"headline:'{headline}',"
+        f"img:'{image}',"
+        f"desc:'{desc}',"
+        f"lm:{linked_str}}}"
+    )
+
+
+def generate_data_js(murals, config, pois=None):
     """Generate the full data.js content as a deterministic ES module string.
-    Output includes: murals array, YEARS, YEAR_COLORS, CATEGORY_COLORS exports.
+    Output includes: murals array, YEARS, YEAR_COLORS, CATEGORY_COLORS, pois.
     Murals sorted by year desc then artist alpha."""
+    pois = pois or []
     lines = []
 
     # Header
@@ -297,6 +410,16 @@ def generate_data_js(murals, config):
             color = cat_colors[cat]
             lines.append(f"  '{cat}': '{color}',")
         lines.append('};')
+        lines.append('')
+
+    # POIs (Points of Interest — galleries, studios, shops, etc.)
+    # Map-only. Tap or proximity-trigger shows a small popup card with linked murals.
+    lines.append(f'// Points of Interest ({len(pois)} POIs) — map-only, not in Explore grid')
+    lines.append('export const pois = [')
+    poi_lines = [poi_to_js(p) for p in sorted(pois, key=lambda p: p.get('id', 0))]
+    if poi_lines:
+        lines.append(',\n'.join(poi_lines))
+    lines.append('];')
 
     return '\n'.join(lines) + '\n'
 
@@ -379,8 +502,13 @@ def main():
         print(f"\nBuild ABORTED — fix {len(errors)} error(s) above")
         sys.exit(1)
 
+    # Load POIs (optional — may not exist yet)
+    pois = load_pois()
+    if pois:
+        print(f"Loaded {len(pois)} POIs from {POI_DIR}")
+
     # Generate
-    output = generate_data_js(murals, config)
+    output = generate_data_js(murals, config, pois)
 
     if dry_run:
         print(f"\n✓ Validation passed. {len(murals)} murals ready to build.")

@@ -4,8 +4,8 @@
 id: 103
 artist: Lili Yuan
 year: 2020
-lat: 27.771378
-lng: -82.65499
+lat: 27.771386
+lng: -82.655009
 address: Grand Central District
 category: shine
 img: "images/murals/2020/lili-yuan.jpeg"
@@ -16,31 +16,98 @@ building: "ARTE"
 instagram: oliooolio
 basedIn: "Jacksonville, FL"
 
+fieldNotes:
+  - "Left Hangzhou at thirteen for education"
+  - "Each mural tells a story of displacement"
+  - "Delicate, dreamlike figurative work"
+
 artistBio: |
-  Lili Yuan is a Chinese-born, Jacksonville-based artist who blends Eastern
-  and Western visual traditions through hyperrealistic painting and muralism.
-  She uses her own photography as source material, building large-scale works
-  that merge figurative realism with cultural symbolism — often incorporating
-  Chinese calligraphy, water imagery, and references to Taoist philosophy.
+  She left Hangzhou, China at thirteen for education. Each of her paintings
+  takes over a hundred hours.
 
-  Her mural work bridges fine art technique with street-scale ambition, and
-  she has painted walls across Florida and beyond. She participated in SHINE
-  2020 in St. Petersburg and continues to explore the tension between her
-  Chinese roots and American life through her studio and public work.
+  Lili Yuan is based in Jacksonville, Florida. She studied economics in China,
+  then took art classes at Florida State College at Jacksonville after
+  immigrating. She is largely self-taught. Her style is hyperrealism in oil —
+  rich tones and strong physical presence, exploring the dichotomy of Eastern
+  and Western cultures. Her "water series" is a recurring body of work.
 
-muralDescription: |
-  A large circular composition on a cream-colored wall depicting a woman
-  with long dark hair floating in turquoise water, seen from above. She
-  wears a flowing red dress with deep pleats that billow and spread around
-  her like a blooming flower. The water is rendered with photorealistic
-  light caustics and ripples. Her hands gently push against the fabric as
-  her hair trails out beyond the circle's edge. To the left, bold Chinese
-  calligraphy reads "shang shan ruo shui" (the highest good is like water)
-  — a passage from the Tao Te Ching. A small red seal stamp appears at the
-  bottom left corner. The @oliooolio tag is visible near the circle's edge.
+  For SHINE 2020 / Sea Walls, she painted "Gift" at 1661 Central Avenue — a
+  woman in a red dress floating in blue water with the Chinese idiom meaning "Be
+  like water."
+
+searchBio: |
+  She left Hangzhou, China at thirteen for education. Each of her paintings
+  takes over a hundred hours.
+
+  Lili Yuan is based in Jacksonville, Florida, and works as a painter and
+  part-time photographer. She was born and raised in China and has been away
+  from home since age thirteen for a better education — first moving from south
+  to north China, then to different countries before settling in the U.S. about
+  three years before her January 2020 VoyageMIA interview. She studied economics
+  in China before changing careers entirely after immigrating to the United
+  States. After moving to the U.S., she took a painting class at Florida State
+  College at Jacksonville and found her way into art from there. She is largely
+  self-taught. Each piece of her work takes more than 100 hours to complete.
+
+  Her style is hyperrealism in oil. She uses the rich tones that oils provide to
+  give her paintings a strong physical presence, paired with skill at rendering
+  realistic figures and a sharp eye for manipulating proportion and scale. Her
+  paintings are often based on her own photography — she combines photographic
+  techniques, international cultural perspectives, and original content. Most of
+  her work is rooted in her own life, especially the period after moving from
+  China, and the dichotomy between Eastern and Western cultures pushed her to
+  reevaluate the value of life. She came to be known for her "water series,"
+  which was the starting point of her art journey.
+
+  Her mentor and manager is Dustin Harewood, who found her early in her practice
+  and has helped guide and promote her work. Her parents — described as
+  traditional Chinese parents who gave her unusual freedom — supported her
+  career change from economics to art.
+
+  Her gallery and online presence is Lili.Gallery (lili.gallery), with sections
+  for About, Artwork, Photography, Shop, and Contact. Documented earlier press
+  includes the January 2020 VoyageMIA feature "Meet Lili Yuan of Lili.Gallery in
+  Jacksonville," the November 2019 VOID Magazine piece "The Art We Need: With
+  first solo show, Lili Yuan seizes the day," and the July 2019 MiEUX Mag
+  profile "Lili Yuan: Self Liberation Through Art." In early 2019 she completed
+  Paws Park Dog Park public art in Jacksonville.
+
+  For SHINE Mural Festival 2020 / Sea Walls in St. Petersburg, Florida, she
+  painted "Gift" at 1661 Central Avenue (Artistry St. Pete). The piece depicts
+  an obscured female figure surrounded by water with the Chinese idiom "上善若水" —
+  meaning "Be like water, as water stays humble while benefiting all." Her
+  artist statement frames the work as a response to the millions of gallons of
+  wastewater spilled around Tampa Bay in recent years. She chose a simplified
+  design because the value of water is precious enough to resonate on its own.
+  Holding water in hand symbolizes a precious gift from nature, since water
+  sustains all life no matter how big or small, and the round shape represents
+  nature's best gift — Earth itself. The piece was painted November 7-14, 2020,
+  as part of the Sea Walls activation by PangeaSeed Foundation, a 501(c)(3)
+  non-profit, with a focus on water quality. Sea Walls partnered with the SHINE
+  Mural Festival for the 2020 edition.
+
+  The "Gift" mural is documented in the Sea Walls catalog at
+  seawalls.org/mural/gift/. PangeaSeed Foundation lists the focus as Water
+  Quality and the activation as St. Petersburg, November 7-14, 2020.
+
+  Website: lili.gallery. Email contact is listed on the gallery site.
+
+searchMuralDescription: |
+  A large circular composition on a cream-colored wall depicting a woman with
+  long dark hair floating in turquoise water, seen from above. She wears a
+  flowing red dress with deep pleats that billow and spread around her like a
+  blooming flower. The water is rendered with photorealistic light caustics and
+  ripples. Her hands gently push against the fabric as her hair trails out
+  beyond the circle's edge. To the left, bold Chinese calligraphy reads "shang
+  shan ruo shui" (the highest good is like water) — a passage from the Tao Te
+  Ching. A small red seal stamp appears at the bottom left corner. The
+  @oliooolio tag is visible near the circle's edge.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2020 / Sea Walls selected artist"
+
+furtherWork: []
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
@@ -50,3 +117,8 @@ sourceNotes:
   - "https://stpetemuraltour.com/2021/03/01/lili-yuan/"
   - "https://www.cummermuseum.org/event/virtual-conversation-artists-dustin-harewood-crystal-floyd-and-lili-yuan"
   - "https://lili.gallery/about/"
+  - "https://stpeteartsalliance.org/lili-yuan/"
+  - "https://seawalls.org/mural/gift/"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

@@ -4,8 +4,8 @@
 id: 138
 artist: PHYBR
 year: 2024
-lat: 27.7709
-lng: -82.6578
+lat: 27.770883
+lng: -82.657692
 address: 1756 Central Ave
 category: commercial
 img: images/murals/commercial/phybr-neon-lunchbox.jpeg
@@ -16,11 +16,79 @@ building: The Neon Lunchbox
 instagram: phybr
 basedIn: "Kansas City, MO"
 
-artistBio: |
-  PHYBR is the tag name of Ken Dushane III, a self-taught muralist originally from the Detroit area. He got into art through graffiti and skateboard culture, studied IT and graphic design, and worked early on in airbrushing, custom car painting, and pinstriping before transitioning to full-time mural work around 2013. He has painted over 250 large-scale murals across the United States. His style fuses modern surrealism, pop aesthetics, hyper-realistic portraiture, and optical illusions. He has served as creative director for A$AP Rocky and done work for Universal Pictures and Tee Grizzley. He taught as adjunct faculty at the College for Creative Studies in Detroit and spent four years as an instructor in Toledo's Young Artists at Work program. He relocated to Kansas City's West Bottoms neighborhood in 2022, where he is currently based.
+fieldNotes:
+  - "Two weeks as A$AP Rocky's creative director"
+  - "Abstract geometric and typographic work"
+  - "New York energy in St. Pete"
 
-muralDescription: |
-  An exterior mural on the side of The Neon Lunchbox, an 80s/90s-themed restaurant and cocktail bar at 1756 Central Avenue. The piece is a swirling optical-illusion vortex of hyper-realistic 80s and 90s toys and pop culture icons against a dark background. Items spiral inward toward a central vanishing point: Tom and Jerry mid-chase, a Rubik's cube, a pink-and-black Furby with glowing blue eyes, a grey Beanie Baby elephant with its red TY heart tag, a Game Boy, porcelain dolls, a Tamagotchi, and other childhood artifacts of the era. The rendering is photorealistic — each toy casts its own shadow and catches light as if tumbling through space. The vortex effect creates a sense of being pulled into a nostalgic time warp, matching the restaurant's retro theme.
+artistBio: |
+  He spent two weeks as A$AP Rocky's creative director. He has a background in
+  horticulture.
+
+  Ken Dushane III — PHYBR — grew up in Toledo, Ohio, started in graffiti and
+  skateboarding, got into lowrider culture in high school, and learned
+  airbrushing and pinstriping along the way. He studied IT security and graphic
+  design before returning to art. He started painting graffiti seriously in
+  Detroit around 2013.
+
+  He has painted over 250 murals in twelve-plus years — hyperrealistic
+  portraits, animals, objects, creatures, and the "pop-esque tropical foliage"
+  that his horticulture background feeds. Clients include Universal Pictures
+  (advertising for the movie Night Swim), rapper Tee Grizzley, the Truman music
+  venue and Lyric Opera House in Kansas City.
+
+  He relocated to Kansas City in 2022 and completed a residency at Upper Level
+  Gallery. He has worked with youth through the Young Artists at Work program in
+  Toledo and after-school programs at the College for Creative Studies in
+  Detroit.
+
+searchBio: |
+  He spent two weeks as A$AP Rocky's creative director. He has a background in
+  horticulture.
+
+  Kenneth "Ken" Dushane III — PHYBR — grew up in Toledo, Ohio, originally
+  getting into art through graffiti and skateboarding culture. In high school he
+  discovered lowrider culture and learned airbrushing and pinstriping. He
+  studied IT security and graphic design, then returned to visual art and
+  started painting graffiti seriously in Detroit around 2013-2014.
+
+  He has painted over 250 murals professionally in twelve-plus years. His style
+  fuses hyperrealistic portraits, animals, objects, and creatures with
+  "pop-esque tropical foliage" informed by his background in horticulture. He is
+  expanding into fine art and 3D sculptural work, debuting with his "Poison
+  Garden" show. Specializations include landscape, figurative, and typography.
+
+  Clients include A$AP Rocky (creative director for two weeks, multiple
+  projects), Universal Pictures (advertising for Night Swim), rapper Tee
+  Grizzley, the Truman music venue (Kansas City), and the Lyric Opera House
+  (Kansas City). He has also painted at the From The Earth dispensary in Kansas
+  City as part of a collaboration with the artist Skela. He has shown at
+  Epiphany Center for the Arts in Chicago ("Foliage #3") and completed a
+  residency at Upper Level Gallery in Kansas City.
+
+  He has worked with youth through the Young Artists at Work program in Toledo,
+  Ohio and after-school art programs at the College for Creative Studies in
+  Detroit. He relocated to Kansas City in 2022 from Toledo via Detroit.
+
+  Festival credits include SpraySeeMO Mural Festival (participated every year
+  2017-2021+) and work in Detroit, Chicago, Kalamazoo, Kansas City, Toledo,
+  Miami, Los Angeles, and St. Petersburg. His Neon Lunchbox mural on Central
+  Avenue is a commercial commission, not a SHINE piece.
+
+  Instagram: @phybr. Website: phybrart.com.
+
+searchMuralDescription: |
+  An exterior mural on the side of The Neon Lunchbox, an 80s/90s-themed
+  restaurant and cocktail bar at 1756 Central Avenue. The piece is a swirling
+  optical-illusion vortex of hyper-realistic 80s and 90s toys and pop culture
+  icons against a dark background. Items spiral inward toward a central
+  vanishing point: Tom and Jerry mid-chase, a Rubik's cube, a pink-and-black
+  Furby with glowing blue eyes, a grey Beanie Baby elephant with its red TY
+  heart tag, a Game Boy, porcelain dolls, a Tamagotchi, and other childhood
+  artifacts of the era. The rendering is photorealistic — each toy casts its own
+  shadow and catches light as if tumbling through space. The vortex effect
+  creates a sense of being pulled into a nostalgic time warp, matching the
+  restaurant's retro theme.
 
 muralInspiration: ""
 muralAwards: ""
@@ -28,18 +96,24 @@ artistAwards: ""
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: |
-  GPS from user photo. User photo replaces stock image.
-  Commercial commission, not a SHINE piece. Sponsored by The Neon Lunchbox,
-  The Bayer Home Loan Team, F + S Marketing Strategy, and TTruth.
-  Unveiled June 2024. The Neon Lunchbox opened March 2024 in the former
-  Hideaway Cafe space.
-  User's original filename referenced "the neon lunchbox commercial june 2024."
-  Sources consulted:
-  - openpr.com (PHYBR partners with Neon Lunchbox, June 17 2024)
-  - phybrart.com
-  - instagram.com/phybr
-  - shoutoutla.com (Meet Ken Phybr Dushane)
-  - voyagekc.com (Daily Inspiration Meet Phybr)
-  - findmasa.com/artist/phybr
-  - ilovetheburg.com (Neon Lunchbox St Pete)
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "26 April 2026 — Removed unsupported claims (played in bands; age-30 divorce). Softened 'IT and computer networking' → 'IT security'; 'holds a residency' → 'completed a residency'; 'From The Earth Dispensary' client → noted as collab with Skela. Added verified URLs."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "Two unsourced personal-history claims removed (played in bands, age-30 divorce). Past-tense softening applied to ongoing claims that sources only documented as completed."
+sourceNotes:
+  - "https://www.phybrart.com/"
+  - "https://voyagekc.com/interview/daily-inspiration-meet-phybr/"
+  - "https://shoutoutla.com/meet-ken-phybr-dushane-muralist-designer/"
+  - "https://www.sprayseemo.com/phybr"
+  - "https://epiphanychi.com/phybr-foliage-3-2021-qr/"
+  - "https://findmasa.com/artist/phybr"
+  - "https://toledocitypaper.com/online/pieces-of-phybr-renowned-street-artist-to-debut-new-exhibit-at-art-supply-depo/"
+  - "https://www.openpr.com/news/3537851/phybr-partners-with-neon-lunchbox-to-bring-new-mural-to-st-petersburg"
+  - "https://www.openpr.com/news/3542046/renowned-artist-phybr-partners-with-locally-owned-business"
+  - "https://kctoday.6amcity.com/city-guide/play/murals-kansas-city"
+  - "https://www.instagram.com/phybr/"
+  - "GPS from user photo. Commercial commission, not a SHINE piece. Sponsored by The Neon Lunchbox, The Bayer Home Loan Team, F + S Marketing Strategy, and TTruth. Unveiled June 2024. The Neon Lunchbox opened March 2024 in the former Hideaway Cafe space."

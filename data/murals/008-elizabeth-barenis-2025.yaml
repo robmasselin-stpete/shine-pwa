@@ -4,44 +4,123 @@
 id: 8
 artist: Elizabeth Barenis
 year: 2025
-lat: 27.762931
-lng: -82.674592
+lat: 27.762864
+lng: -82.674834
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/elizabeth-barenis.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Shine On Palms"
 building: ""
 instagram: elizabethbarenis
 basedIn: "Pinellas County, FL"
 
 artistBio: |
-  Born and raised in Greenville, Mississippi, Elizabeth Barenis has been
-  painting since childhood. A graduate of Sarah Lawrence College in New York,
-  she was named a 2023 Creative Pinellas Professional Artist grantee and
-  participated in the 2018 International Painting Symposium at the Mark
-  Rothko Art Center in Latvia. Her signature "Abstract Precisionism" style,
-  inspired by her photography, uses softly abstracted shapes and colors to
-  evoke tranquility and beauty. Now based in Pinellas County, she believes
-  "it's the artist's job to amplify" beauty and that "art for a community
-  really uplifts the community." She participated in the 2025 SHINE Origins
-  festival.
+  In 2018, she was one of ten painters invited to the Mark Rothko Art Center in
+  Latvia. She grew up in the Mississippi Delta, where her parents owned a music
+  store.
 
-muralDescription: |
+  Elizabeth Barenis studied piano with her mother, took private art lessons
+  throughout childhood, attended the Mississippi School for Math and Science,
+  and graduated from Sarah Lawrence College in 2004. A summer at the Chautauqua
+  Institute for Art that same year sealed it — she committed to painting
+  full-time.
+
+  She calls her approach "Abstract Precisionism" — generalized shapes rendered
+  with clean, precise lines that recall Cubism. Palm fronds, tropical flora,
+  seascapes, forests, and foggy scenes dominate.
+
+  She moved to St. Petersburg in 2015 for family reasons and stayed for the arts
+  community. Since then: a 2017 Creative Pinellas Emerging Artist Grant, a 2023
+  Professional Artist Grant, solo shows at the Morean Arts Center ("Tropical
+  Splendor") and Art Center Sarasota ("Palmistry"), and a mural on the Bayfront
+  Hospital ambulance bay — a diptych painting photographed and enlarged for the
+  louvered exterior wall. Her first public mural was "Super Palm" in Dunedin in
+  2022, 300 square feet on a Parks and Recreation building.
+
+  For SHINE Origins 2025, she painted alongside Karel Garcia, Amy Ilic-Volpe,
+  Brain The Genius, and others at 31st Street and 7th Avenue South.
+
+searchBio: |
+  In 2018, she was one of ten painters from seven countries invited to the
+  International Painting Symposium at the Mark Rothko Art Center in Daugavpils,
+  Latvia, marking Rothko's 115th anniversary. She grew up in the Mississippi
+  Delta, where her parents owned a music store.
+
+  Elizabeth Barenis was born and raised in Greenville, Mississippi. She studied
+  piano with her mother and later learned guitar. She enrolled in private art
+  lessons throughout childhood. She attended the Mississippi School for Math and
+  Science in Columbus, Mississippi, then graduated from Sarah Lawrence College
+  in Bronxville, New York in 2004. A summer at the Chautauqua Institute for Art
+  that same year sealed it — she committed to painting full-time.
+
+  She calls her approach "Abstract Precisionism" — generalized shapes rendered
+  with clean, precise lines reminiscent of Cubism. Her primary subjects are palm
+  fronds, tropical flora, seascapes, forests, rainbows, and foggy scenes. She
+  works in acrylic and oil. Her philosophy: beauty is "an indication of a
+  greater force at work in our world, one of harmony and well-being."
+
+  She relocated to St. Petersburg, Florida in 2015 for family reasons and stayed
+  for the arts community. Awards include a 2017 Creative Pinellas Emerging
+  Artist Grant, a 2023 Creative Pinellas Professional Artist Grant, a 2025 Award
+  of Excellence at Art Festival Beth-El, and the Margaret Murphy Steward Best of
+  Show at a Morean Arts Center members exhibition (which led to her solo show
+  there). Solo exhibitions include "Palmistry" at Art Center Sarasota
+  (October-November 2022) and "Tropical Splendor" at the Morean Arts Center
+  (2024, with gallery talk August 8). Group exhibitions include "Perspectives"
+  at Studio@620 (with Vincent Mancuso), ARTicles Art Gallery in the Uptown Arts
+  District, SixStar Art Studios, and Art Festival Beth-El (2025, 2026).
+
+  Public art includes "Super Palm" — a 300 sq ft mural on the Parks and
+  Recreation building at 1700 Solon Ave in Dunedin, Florida (November 2022, her
+  first public mural), signal box designs in Clearwater, and an ambulance bay
+  mural at Bayfront Hospital (now Orlando Health Bayfront) in St. Petersburg —
+  based on a 48 by 144 inch diptych painting, photographed and enlarged for the
+  louvered exterior wall. Healthcare clients include Moffitt Cancer Center
+  (artwork acquisition), Bayfront Health St. Petersburg (mural and painting
+  commissions), and Premier Community Healthcare in New Port Richey (extensive
+  series of prints).
+
+  For SHINE Origins 2025, she was one of approximately 17 local artists
+  selected. She painted at 31st Street and 7th Avenue South alongside Karel
+  Garcia, Amy Ilic-Volpe, Brain The Genius, Jenipher Chandley, Zulu Painter, and
+  Rebekah Lazaridis. Website: elizabethbarenis.com. Instagram:
+  @elizabethbarenis.
+
+searchMuralDescription: |
   A wide mural on a cinder block wall depicting oversized tropical fan palm
-  fronds in layered shades of green, teal, and soft yellow. The leaves
-  radiate outward in clean, geometric planes — Barenis's "Abstract
-  Precisionism" style — creating depth through overlapping translucent shapes.
-  Signed "Elizabeth Barenis 2025" in the lower left corner.
+  fronds in layered shades of green, teal, and soft yellow. The leaves radiate
+  outward in clean, geometric planes — Barenis's "Abstract Precisionism" style —
+  creating depth through overlapping translucent shapes. Signed "Elizabeth
+  Barenis 2025" in the lower left corner.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "2023 Creative Pinellas Professional Artist grantee; 2018 International Painting Symposium, Mark Rothko Art Center, Latvia"
+artistAwards: "2017 Creative Pinellas Emerging Artist Grant; 2018 International Painting Symposium at Mark Rothko Art Center, Latvia; 2023 Creative Pinellas Professional Artist Grant; 2025 Award of Excellence, Art Festival Beth-El; Margaret Murphy Steward Best of Show, Morean Arts Center; SHINE Origins 2025 selected artist"
+
+furtherWork:
+  - name: "elizabethbarenis.com"
+    url: "https://www.elizabethbarenis.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "26 April 2026 — Title set to 'Shine on Palms'; removed photography/medical-illustration sentences from artistBio and searchBio per Rob"
+  - "2026-06-16 — Title casing corrected 'Shine on Palms' → 'Shine On Palms' to match the SPAA mural directory listing."
 sourceNotes:
   - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
   - "https://ilovetheburg.com/st-pete-shine-origins/"
   - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
+  - "https://creativepinellas.org/artist/elizabeth-barenis/"
+  - "https://creativepinellas.org/magazine/who-is-elizabeth-barenis/"
+  - "https://creativepinellas.org/magazine/elizabeth-barenis-in-sarasota/"
+  - "https://moreanartscenter.org/exibition/tropical-splendor-paintings-by-elizabeth-barenis/"
+  - "https://www.bahiastudios.org/blog/artcentersarasota"
+  - "https://www.floridarama.art/artist/elizabeth-barenis"
+  - "https://www.articlesstpete.com/shop-for-art/elizabeth-barenis"
+  - "https://www.rothkocenter.com/en/ekspozicija/international-painting-symposium-mark-rothko-2018/"
+  - "https://www.baltictimes.com/painting_symposium_mark_rothko_2018/"
+  - "https://www.artfestivalbethel.com/2026-artist-bios.html"
+  - "https://sixstarartstudios.com/six-star-launch-arts-new-era-in-st-pete/"

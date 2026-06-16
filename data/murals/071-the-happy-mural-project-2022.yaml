@@ -16,42 +16,84 @@ building: St. Petersbark
 instagram: alyssa.marie.of.the.sea
 basedIn: "St. Petersburg, FL"
 
-artistBio: |
-  The Happy Mural Project is a collaborative mural initiative founded and
-  directed by Alyssa Marie Everly, a St. Pete-based artist who grew up in
-  the Rocky Mountains of Colorado. She earned her BFA from Metropolitan
-  State University of Denver before relocating to Florida. Alyssa designs
-  the murals and organizes groups of artists to help execute them — the
-  project brings together various painters to collaborate on large-scale
-  public works. Her designs specialize in nature and wildlife subjects,
-  taking realistic animal forms and setting them against stylized, slightly
-  impressionistic backgrounds. She's been leading mural projects
-  professionally since 2017 and has done work for clients across the U.S.
-  and internationally. She was commissioned by the Florida Wildlife Corridor
-  Foundation for a mural celebrating the state's ecological connectivity
-  efforts. In St. Pete the project has become a go-to for Florida wildlife
-  subjects — manatees, gators, birds, and marine life on walls around the
-  city. The Happy Mural Project is a three-time SHINE participant, having
-  painted walls for the festival in 2020, 2022, and 2023.
+fieldNotes:
+  - "'Honk if You're Happy' is their motto"
+  - "First mural went up the week the world shut down"
+  - "Community color-by-number murals"
 
-muralDescription: |
+artistBio: |
+  Their motto is "Honk if You're Happy." Their first mural was painted the week
+  the world shut down.
+
+  Alyssa Marie and Braden Everly are The Happy Mural Project — a married couple
+  who relocated from Colorado to St. Petersburg in 2017. Alyssa is a fine artist
+  who opened a gallery on Beach Drive in 2018 (closed January 2020). Braden has
+  a degree in special education and worked as a house painter in Colorado. Their
+  first mural went up at Lolita's Catering in early March 2020, days before
+  lockdown.
+
+  Their signature is oversized sunflower murals in vibrant color, plus
+  community-participatory "color by number" walls. Florida wildlife — manatees,
+  gators, birds — runs through a lot of the work. They were commissioned by the
+  Florida Wildlife Corridor Foundation for a mural celebrating the state's
+  ecological connectivity efforts.
+
+  They are three-time SHINE artists. For SHINE 2022 they painted "Wild Ride" at
+  St. Petersbark on Central Avenue — a full-wall American alligator in rich
+  browns against a field of golden sunflowers and teal sky.
+
+searchBio: |
+  Their motto is "Honk if You're Happy." Their first mural was painted the week
+  the world shut down.
+
+  Alyssa Marie and Braden Everly are The Happy Mural Project — a married couple
+  who relocated from Colorado to St. Petersburg in 2017. Alyssa is a fine artist
+  who opened a gallery on Beach Drive in 2018 (closed January 2020). Braden has
+  a degree in special education and worked as a house painter in Colorado. Their
+  first mural went up at Lolita's Catering in early March 2020, days before
+  lockdown.
+
+  Their signature is oversized sunflower murals in vibrant color, plus
+  community-participatory "color by number" walls. Florida wildlife — manatees,
+  gators, birds — runs through a lot of the work. They were commissioned by the
+  Florida Wildlife Corridor Foundation for a mural celebrating the state's
+  ecological connectivity efforts.
+
+  They are three-time SHINE artists (2020, 2022, 2023). For SHINE 2022 they
+  painted "Wild Ride" at St. Petersbark on Central Avenue — a full-wall American
+  alligator in rich browns against a field of golden sunflowers and teal sky.
+  For SHINE 2020 they painted "Hands of Change" at the St. Petersburg City
+  Theatre — hands holding sunflowers representing racial and cultural diversity.
+  For SHINE 2023 they painted "Girl Power," a color-by-number mural completed by
+  Girl Scouts of West Central Florida.
+
+searchMuralDescription: |
   A full-wall painting of an American alligator in profile, stretching from
   snout to tail across the entire building. The gator is rendered in rich
   browns, tans, and dark chocolate with detailed scale texturing throughout.
   Behind it, oversized golden sunflowers on green stems fill the background
-  against a teal sky. The composition makes the gator feel massive — its
-  head alone takes up about a third of the wall. The color contrast between
-  the warm gator tones and the cool teal background gives it a Florida
-  postcard quality.
+  against a teal sky. The composition makes the gator feel massive — its head
+  alone takes up about a third of the wall. The color contrast between the warm
+  gator tones and the cool teal background gives it a Florida postcard quality.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "Florida Wildlife Corridor Foundation mural commission; 3x SHINE Festival artist (2020, 2022, 2023)"
+artistAwards: "Florida Wildlife Corridor Foundation commission; SHINE 2020, 2022, 2023 selected artist"
+
+furtherWork:
+  - name: "thehappymuralproject.com"
+    url: "https://www.thehappymuralproject.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "10 April 2026 — Fixed hollow opener, aligned with 051 and 100 bio, removed unverified Metro State Denver BFA claim"
+  - "2026-05-12 — Replaced photo with Rob's IMG_1527.jpeg (GPS 27.77132, -82.67402)"
 sourceNotes:
   - "User photo with GPS 2026-03-08"
   - "https://www.thehappymuralproject.com/"
-  - "https://www.thehappymuralproject.com/"
+  - "https://creativepinellas.org/magazine/the-happy-mural-project/"
+  - "https://stpeteartsalliance.org/happy-mural-project-2023"
+  - "https://www.abcactionnews.com/news/region-pinellas/happy-mural-project-near-st-petersburg-high-is-drawing-smiles-from-social-distancers"
   - "https://floridawildlifecorridor.org/"

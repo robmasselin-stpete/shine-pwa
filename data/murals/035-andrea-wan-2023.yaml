@@ -4,31 +4,117 @@
 id: 35
 artist: Andrea Wan
 year: 2023
-lat: 27.764
-lng: -82.6668
+lat: 27.76947
+lng: -82.656237
 address: 155 17th St S
 category: shine
-img: "images/murals/2023/Andrea-Wan-20231020-144359-MAR7308.jpg"    # TODO: needs-photo
+img: "images/murals/2023/andrea-wan.jpeg"
 
 # ── Optional ──
 title: Earth Song
 building: ""
 instagram: andrea_wan
-basedIn: Canada
+basedIn: "Vancouver, BC"
+gone: true
+goneDate: "April 2026"
+goneReason: "Building torn down"
 
 artistBio: |
-  Andrea Wan is a Hong Kong-born, Vancouver-raised Visual Artist and
-  Illustrator who has spent 8 years living in Berlin while exploring various
-  global destinations after completing her studies in Vancouver and Denmark.
-  She perceives her practice as a vessel for her stream of consciousness,
-  allowing what needs to emerge. Her narratives often take on an otherworldly
-  quality that reflects her inner world map and emotional states.
+  She used to be a piano teacher. Her client list includes Apple, The New York
+  Times, and Microsoft.
 
-muralDescription: ""
-muralInspiration: ""
+  Andrea Wan was born in Hong Kong in 1985 and moved to Vancouver at ten. Her
+  parents were graphic designers. She studied Film, Video and Integrated Media
+  at Emily Carr University of Art and Design, then spent six months at
+  Designskolen Kolding in Denmark — where she developed her current drawing
+  style. She lived in Berlin for eight years before returning to Vancouver
+  around 2019.
+
+  Her work is surrealist narrative in ink on paper and paint on walls — human
+  figures dissolving into botanical forms, celestial elements, and subconscious
+  landscapes. She describes each drawing as "a still image from a scene in an
+  ongoing story." Influences include European fables, Chinese folklore, and
+  Roald Dahl. Clients include Apple, The New York Times, Microsoft, Absolut,
+  AirBnB, Ray-Ban, Wired, and Lululemon. She is represented by Cosmopola in
+  Berlin.
+
+  For SHINE 2023 she painted "Earth Song" at 155 17th St S — surreal figures
+  intertwined with plant forms in blue and lavender against a warm yellow dome,
+  at the gateway between the Pinellas Trail and the Grand Central District.
+
+searchBio: |
+  She used to be a piano teacher. Her client list includes Apple, The New York
+  Times, and Microsoft.
+
+  Andrea Wan was born in 1985 in Hong Kong and moved to Vancouver, BC at age
+  ten. Her parents were graphic designers. She studied Film, Video and
+  Integrated Media at Emily Carr University of Art and Design in Vancouver, then
+  illustration and design at Designskolen Kolding in Denmark (approximately six
+  months, circa 2008), where she developed her current drawing style. She lived
+  in Berlin from 2012 to approximately 2019 and is now based in Vancouver.
+
+  Her work is surrealist, narrative-driven — human figures blended with
+  botanical and celestial elements, rendered primarily in ink on paper and paint
+  on walls. She describes her practice as "a journal of thoughts processed
+  through a fictional filter" and each drawing as "a still image from a scene in
+  an ongoing story." Themes include nature, personal mythology, identity,
+  interconnectedness of nature and human consciousness, psychology, and
+  spirituality. Influences include European fables, Chinese folklore, Roald
+  Dahl, dreams, and the subconscious mind.
+
+  Commercial clients include Apple, The New York Times (editorial illustrations
+  for NYT Magazine), Microsoft, Mozilla, Absolut, AirBnB, WeTransfer, Ray-Ban,
+  Jagermeister, Wired Magazine, Lululemon, Herschel Supply Co., and Poketo. She
+  is represented by Cosmopola (Berlin) and has exhibited with Affenfaust Galerie
+  (Hamburg) and Rabbit Eye Movement (Vienna). She has been featured in Juxtapoz,
+  Hi-Fructose, i-D Magazine, and on CBC Arts.
+
+  Solo exhibitions include "Pen Pals" at Idrawalot Gallery, Berlin (2012),
+  "Mirror Mirror" at Rabbit Eye Movement, Vienna (2014), and "Reunion" at Urban
+  Spree Galerie, Berlin (2022). She has shown at Spoke Art (San Francisco),
+  Giant Robot Gallery (LA), Superchief Gallery (Brooklyn), Gallery Nucleus (LA),
+  and CASS Contemporary (Tampa). She completed residencies in India and a
+  teaching residency in Iran (both 2019).
+
+  Mural credits include SHINE 2023 ("Earth Song," 155 17th St S, St.
+  Petersburg), POW! WOW! Hawaii (2013, collaborative with Jeff Hamada and Wu
+  Yue), Vancouver Mural Festival 2016 ("Handhug," 3010 Main Street), BUMP
+  Festival 2024 in Calgary ("Maa," 1302 4 St SW), and walls in Germany, Italy,
+  Denmark, and Finland. She has exhibited in New York, Paris, Berlin, San
+  Francisco, Brussels, Barcelona, Stockholm, and Rome.
+
+  Instagram: @andrea_wan. Website: andreawan.com.
+
+searchMuralDescription: |
+  A large-scale mural on a wide building wall set against a bright yellow
+  background shaped in a soft dome. The composition features surreal, stylized
+  human figures intertwined with nature — flowing blue and lavender forms merge
+  with botanical leaves, stems, and flower petals. A golden sun or moon sits at
+  the left, with waterdrop shapes falling from above. The palette centers on
+  cool blues, lavenders, and teals contrasted against the warm yellow
+  background, with accents of pink, green, and gold. The figures appear to grow
+  from or dissolve into the plant forms, creating a dreamlike scene of humans
+  and nature as one continuous organism.
+
+muralInspiration: "The deep connection and balance of life on our planet."
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2023 selected artist"
+
+furtherWork:
+  - name: "andreawan.com"
+    url: "https://www.andreawan.com"
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "GPS from Rob's photo IMG_1935.jpeg taken April 8, 2026"
+  - "Rob's photo replaces stock image"
+  - "https://www.andreawan.com/"
+  - "https://stpeteartsalliance.org/shine?alias=/2023_SHINE_andrea_wan"
+  - "https://www.pendulummag.com/art/2019/2/3/andrea-wan-mural-art"
+  - "https://www.cbc.ca/arts/b-c-illustrator-andrea-wan-1.3419036"
+  - "https://rabbiteyemovement.at/an-interview-with-andrea-wan/"
+  - "https://cosmopola.de/visual-artists/andrea-wan/"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "16 April 2026 — Full research, bio rewrite with hook, searchBio added"

@@ -4,8 +4,8 @@
 id: 29
 artist: NeSpoon
 year: 2024
-lat: 27.764366
-lng: -82.666149
+lat: 27.764297
+lng: -82.666143
 address: 601 24th St South
 category: shine
 img: "images/murals/2024/nespoon.jpeg"
@@ -16,40 +16,184 @@ building: Cemex
 instagram: nes.nespoon
 basedIn: "Warsaw, Poland"
 
-artistBio: |
-  NeSpoon (Elzbieta Dymna) is a Polish street artist based in Warsaw whose
-  signature medium is lace — traditional textile patterns rendered at monumental
-  scale on building facades and pressed into ceramic pieces installed on streets.
-  Her artist name comes from the famous line in The Matrix. She began her street
-  art career in 2009 after discovering that pressing lace into clay was a
-  traditional decorative technique, and has since created work in over 100 cities
-  across 40 countries on five continents. At each location she researches local
-  lace-making traditions through museums and community conversations. Her work
-  has appeared at the Louvre-Lens, EXPO Dubai 2020, the European Parliament in
-  Brussels, and the Urban Nation Biennale in Berlin. She won the ARTAQ Prize in
-  France in 2011 and 2012 and was selected for Urban Nation's Fresh A.I.R.
-  residency in Berlin in 2018.
+fieldNotes:
+  - "NeSpoon is her legal name — it's on her ID"
+  - "Lace patterns cast in concrete and ceramic"
+  - "Polish artist, works worldwide"
 
-muralDescription: |
+artistBio: |
+  Her thirty-year project is making porcelain petals by hand from the leftover
+  clay of her lace work — fifty kilograms a year, sitting on the streets of
+  every city she visits. She is targeting fifteen hundred kilograms for the
+  final exhibition in 2042.
+
+  NeSpoon is her legal name. It is on her ID — she changed it, taking the name
+  from "there is no spoon" in The Matrix. She grew up partly in West Berlin in
+  the late 1980s, crossing Checkpoint Charlie to attend Polish school in East
+  Berlin. She wanted to be a real artist from age five. No formal art degree —
+  she taught herself ceramics after hitting a dead end with abstract oil
+  paintings.
+
+  In 2009, she started placing ceramic lace objects on walls in public spaces in
+  Warsaw. That became the work. She researches each city's lace heritage, visits
+  local museums, and uses region-specific motifs to create large-scale
+  spray-painted murals, ceramic installations, stencil work, and crocheted
+  pieces. She has painted in over forty countries across five continents.
+  "Instead of fighting evil," she says, "it's better to spread good."
+
+  In 2020, she covered the facade of the Cité de la Dentelle et de la Mode in
+  Calais — the city's lace museum — with a monumental mural using an 1894
+  archival pattern. She has shown at the Louvre-Lens, EXPO Dubai 2020, the
+  European Parliament, and Urban Nation in Berlin. She co-founded an NGO that
+  lobbied the Polish Parliament for seven years to pass legislation controlling
+  outdoor advertising.
+
+  This wall went up for SHINE 2024 on the Cemex building. She was meant to
+  arrive the day Hurricane Milton made landfall; when she got here a month
+  later, she worked the storm into the design — lace holding the left and
+  center, the hurricane's winds spinning out of it on the right.
+
+searchBio: |
+  NeSpoon is her legal name. It is on her ID. She changed it. The name comes
+  from the line "there is no spoon" in The Matrix — the idea that the barriers
+  are mostly in your head. When you realize this, she says, you can quit your
+  corporate job and start painting in the streets, as she did.
+
+  She grew up partly in West Berlin in the late 1980s while the Wall still
+  stood, attending a Polish school in East Berlin and crossing Checkpoint
+  Charlie several times a week. Her parents did not want her to lose touch with
+  Polish culture. She passed the Berlin Wall daily — the longest art gallery in
+  the world at that time — and her interest in painting on walls started then.
+  She wanted to be a "real artist" from age five, while other girls dreamed of
+  being princesses. She has no formal art degree. Before street art, she painted
+  dark, sad, abstract oil paintings on canvas for years, hit a dead end, took a
+  two-year break, and turned to ceramics. At the Academy she had taken clay
+  sculpture classes, but she became serious about ceramics through porcelain.
+  She likes to say clay is kindergarten and porcelain is university.
+
+  In 2009, she started placing ceramic objects with lace motifs on walls in
+  public spaces in Warsaw. Pressing lace into fresh clay is one of the oldest
+  ways to decorate ceramics worldwide, and she realized the patterns were
+  beautiful on their own — they did not need a cup or a plate to be appreciated.
+  When she posted photos online, they went viral, and invitations to street art
+  festivals started arriving. She has since worked in over 100 cities, in 40
+  countries on 5 continents, and has been published in The Guardian, Huffington
+  Post, Elle, and Graffitiart Magazine. Her practice spans murals, ceramics,
+  sculpture, jewellery, stencils, screen printing, crocheted webbing, and video
+  installations. For illegal graffiti she uses stencils. For murals, she
+  sketches freehand or uses a video projector — she does not fetishize freehand
+  painting.
+
+  Her process is in situ. When she arrives in a new city, she researches local
+  lace heritage, visits museums and city archives, and finds local lace
+  associations or active lace-makers. If she cannot find anything, she walks the
+  neighborhood, knocks on doors, and asks residents for laces from home. She
+  always finds something. In 2020, she painted the facade of the Cité de la
+  Dentelle et de la Mode in Calais — the city's lace and fashion museum, housed
+  in a restored 19th-century factory — using a machine-lace pattern from 1894
+  that she chose from the museum's archive. Calais once employed 40,000 people
+  in lace-making; the master weavers controlled 11,000 threads at once and took
+  up to 12 years to learn. In 2019 she painted in Le Locle, Switzerland, the
+  home of Tissot, Zenith, Ulysse Nardin, and Mont Blanc — a town that in the
+  19th century had over 600 lace-makers. She met the last of them.
+
+  Major appearances include the Musée du Louvre-Lens (installation and live
+  painting, 2019), EXPO Dubai 2020 (installation in the Polish Pavilion), the
+  European Parliament in Brussels ("Artists 4 Human Rights" group exhibition,
+  2022; "Thoughts & Art Embraces Politics" performance and discussion), Urban
+  Nation in Berlin (Biennale 2019, One Wall 2017, and the Fresh A.I.R. Artist in
+  Residence Programme class of 2018), Sharjah Art Museum (UAE, 2014–2015),
+  STRAAT Museum in Amsterdam, and the Musée des Beaux-Arts in Alençon. Solo
+  exhibitions include "Harmony. Walls of Bologna" at Porta Nova Gallery in
+  Bologna (2016), "Scars" at BWA Gallery in Wrocław (2015), "Tableware for
+  Pigeons" at Taito Gallery in Helsinki (2015), "Merlettis" at Elastico Gallery
+  in Bologna (2014), "Szelest myśli" at BWA Gallery in Olsztyn (2013), and
+  "Harmony" at The Art Factory in Łódź (2024). Festival credits include JIDAR
+  (Rabat), Tirana Mural Fest, Hong Kong Walls, Lodhi Art District (Delhi) and
+  the St+Art Festival (Delhi, 2019), NUART (Aberdeen), BLINK Festival
+  (Cincinnati), the Jersey City Mural Arts Program (JCMAP), SHINE (St.
+  Petersburg, 2024), GarGar (Les Penelles, Spain), MUSA (Mendicino), Appartengo
+  (Stigliano), Emergence (Sicily), LeMur Oberkampf (Paris), Djerbahood
+  (Tunisia), Fame Festival (Grottaglie), the Countless Cities Biennial in
+  Favara, the International Lace Festival in Vamberk, Bradford UK City of
+  Culture 2025, the Borås Art Biennale, and the Urban Art Biennale in Moscow.
+  She showed a duplex exhibition with Nandita Kumar at Form Gallery in Perth
+  ("Recrafted", 2015) and a duo show with SC Szyman at O.D. Gallery in Amsterdam
+  ("#CeramicStreetArt", 2022).
+
+  Her work also carries political weight. In 2007 she co-founded the NGO Miasto
+  Moje A w Nim with friends to introduce a law controlling outdoor advertising
+  in Poland, which had been overrun with kitschy ads after the fall of
+  communism. After seven years of lobbying, parliament passed the act. Her 2014
+  Warsaw subvertising piece "For Those Who Know" — an Einstein takeover —
+  symbolically summed up that work, and the 2017 project "One of 1580" with SC
+  Szyman extended it. Other projects address dwindling drinking water ("World
+  Without Water," Sandymount, New Zealand, 2016), deforestation ("Epitaph for
+  the Forest," based on bark prints from the Białowieża primeval forest,
+  2016–2021), post-war trauma ("Scars," Wrocław, where she filled WWII bullet
+  holes in buildings with clay), and human rights (a melting ice "HUMAN RIGHTS"
+  inscription filmed for the European Parliament).
+
+  Her thirty-year project "Thoughts," begun in 2012, uses the leftover clay from
+  her lace pieces. She makes thin porcelain petals by hand, sitting on the
+  streets of cities she visits — fifty kilograms a year, like recording calming
+  thoughts in clay. Over 450 kilograms are ready, targeting 1,500 kilograms for
+  the final exhibition in 2042.
+
+  Her SHINE 2024 mural in St. Petersburg, on the Cemex building, captures
+  Hurricane Milton: she was due to arrive the day the storm made landfall in
+  October 2024, the festival was postponed, and a month later she painted lace
+  medallions unraveling into the hurricane's winds. She thanked SHINE's Jenee
+  Priebe for the invitation.
+
+  She is based in Warsaw. Website: nespoon.art.
+  Instagram: @nes.nespoon.
+
+searchMuralDescription: |
   A wide mural on the Cemex building featuring NeSpoon's signature lace patterns
   in white and pale blue against a deep plum-purple background. Intricate
   medallions with floral and geometric motifs occupy the left and center, their
   delicate threadwork rendered with illusory three-dimensional depth through
-  careful shading and layering. The right side transitions into flowing,
-  organic swirls that evoke wind or waves. The effect transforms the industrial
-  concrete wall into what appears to be an enormous draped lace textile. Signed
-  "NeSpoon" in the lower left corner.
+  careful shading and layering. The right side transitions into flowing, organic
+  swirls — the artist's rendering of Hurricane Milton, which struck the region a month before she painted. The effect transforms the industrial concrete
+  wall into what appears to be an enormous draped lace textile. Signed "NeSpoon"
+  in the lower left corner.
 
-muralInspiration: ""
+muralInspiration: |
+  NeSpoon was due to land in Florida on October 10, 2024 to paint for SHINE.
+  The night before, Hurricane Milton came ashore near Siesta Key and tore
+  across the Tampa Bay region — the strongest hurricane the area had seen, by
+  her account. The festival was postponed. She arrived a month later to find
+  the only traces left were broken branches in the streets, and decided to put
+  the storm into the wall: lace medallions hold the left and center, then
+  unravel into the hurricane's swirling winds across the right side. "I spent a
+  wonderful week here, and Florida truly showed its best side," she said,
+  thanking Jenee Priebe for the invitation and the SHINE team for the seamless
+  production.
 muralAwards: ""
-artistAwards: "ARTAQ Prize (France) 2011 and 2012; Urban Nation Fresh A.I.R. residency Berlin 2018; SHINE 2024 festival artist"
+artistAwards: "Artaq InSitu prize, France (2011, 2012); URBAN NATION Fresh A.I.R. Artist in Residence, Berlin (2018); SHINE 2024 selected artist"
+furtherWork:
+  - name: "nespoon.art"
+    url: "https://nespoon.art"
+  - name: "Instagram reel — painting the St. Petersburg mural"
+    url: "https://www.instagram.com/reel/DCwsjteTyEa/"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-02 — New hook leads with the 30-year 'Thoughts' project per user direction. Ties to this wall (porcelain petals come from leftover clay of her lace work — same tradition as the lace mural here)."
+  - "2026-06-16 — Artist-direct update (NeSpoon via Rob): added her Instagram reel to links; wove her hurricane account into muralInspiration, artistBio, searchMuralDescription, and searchBio. Due to arrive Oct 10 2024 (Hurricane Milton landfall Oct 9), festival postponed, painted a month later — the storm is the right-side swirls. Hurricane named/dated per public record."
 sourceNotes:
+  - "Artist-direct (Nov 2024): NeSpoon sent Rob a reel + copy describing the hurricane inspiration — https://www.instagram.com/reel/DCwsjteTyEa/ ; thanks Jenee Priebe + SHINE team; tagged @shineonstpete @nogooddeeds_art"
+  - "Hurricane Milton — landfall near Siesta Key Oct 9, 2024; ~16-18in rain on St. Petersburg — https://www.tampabay.com/hurricane/2024/10/09/hurricane-milton-live-updates-forecast-today-tampa-bay-hillsborough-pinellas-pasco/"
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_nespoon"
   - "https://nespoon.art/about/"
   - "https://urban-nation.com/artist/nespoon/"
   - "https://www.printmag.com/graffiti-and-street-art/nespoon-lace-murals/"
   - "https://www.thisiscolossal.com/2016/09/lace-street-art-nespoon/"
   - "https://artbreath.org/interviews/nespoon"
+  - "https://www.graffitistreet.com/interview-with-street-artist-nespoon-iwd-special-2023/"
+  - "https://www.thisiscolossal.com/2020/09/nespoon-lace-mural-calais/"
+  - "https://www.urbanyte.art/nespoon/"

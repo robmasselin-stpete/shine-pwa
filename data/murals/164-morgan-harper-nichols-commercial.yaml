@@ -1,0 +1,114 @@
+# Morgan Harper Nichols — Octopus Mural
+
+# ── Required ──
+id: 164
+artist: Morgan Harper Nichols
+year: 0
+lat: 27.770912
+lng: -82.659295
+address: "1901 Central Ave"
+category: commercial
+img: "images/murals/commercial/morgan-harper-nichols.jpeg"
+
+# ── Optional ──
+title: ""
+building: Art Jewelry Boutique
+instagram: morganharpernichols
+basedIn: ""
+
+artistBio: |
+  She started a project to write a million poems to strangers in her lifetime.
+  She has two million followers on Instagram.
+
+  Morgan Harper Nichols is a poet, author, and interdisciplinary media artist
+  born in Los Angeles in 1990, raised in Georgia, now based in Athens where she
+  is pursuing a PhD in Communication Studies at the University of Georgia. She
+  earned a BFA in English from Point University and an MFA in Interdisciplinary
+  Media Arts from Lindenwood University. In 2017 she began writing personalized
+  poems for strangers who submit their stories through her website — brief
+  letters of encouragement paired with visual art, sent free and shared
+  anonymously.
+
+  She has published four books with Zondervan/HarperCollins, including the Wall
+  Street Journal bestseller "All Along You Were Blooming." Clients include
+  Google, Apple, Adobe, Starbucks, COACH, and Hallmark. She was diagnosed with
+  autism at thirty-one.
+
+searchBio: |
+  She started a project to write a million poems to strangers in her lifetime.
+  She has two million followers on Instagram.
+
+  Morgan Harper Nichols (born Morgan Novelate Harper, February 4, 1990, Los
+  Angeles) is a poet, author, and interdisciplinary media artist. Her family
+  moved to Georgia in 1993 where her parents started Kingdom City Church in
+  Stone Mountain. Her younger sister is Christian music artist Jamie Grace. She
+  was homeschooled growing up. She began attending Point University at sixteen
+  and earned a BA in English. She earned an MFA in Interdisciplinary Media Arts
+  from Lindenwood University (2024) and is pursuing a PhD in Communication
+  Studies at the University of Georgia (began August 2024).
+
+  In 2017 she began writing personalized poems for strangers — people submit
+  stories via her website and she writes brief letters of encouragement paired
+  with visual art, sent free and shared anonymously on social media. She creates
+  all words and art on an iPad Pro. Her approach is collage-based, drawing from
+  worldbuilding, assemblage, and remixing.
+
+  Books include "Storyteller: 100 Poem Letters" (2017, self-published), "All
+  Along You Were Blooming" (2020, Zondervan — Wall Street Journal bestseller),
+  "How Far You Have Come" (2021, Zondervan), "Peace Is a Practice" (2021,
+  Zondervan), and "You Are Only Just Beginning" (2023, Zondervan). She signed a
+  two-book contract with Zondervan in June 2020.
+
+  Clients include Google, Meta, Apple, Adobe, Starbucks, KIND Snacks, COACH,
+  Paul Mitchell, Skillshare, Hallmark, Instagram, Aerie, and Vogue Singapore.
+  Products found at Target, Barnes & Noble, and Anthropologie. She is Vice
+  President of the Board of Directors for TWLOHA (To Write Love on Her Arms).
+  She founded Garden24, an e-commerce platform and physical shop in Phoenix. She
+  launched the "Storyteller by MHN" app (2019) and "The Morgan Harper Nichols
+  Show" podcast (2019).
+
+  She was diagnosed with autism at thirty-one along with ADHD and sensory
+  processing disorder. She married Patrick Kekoa Nichols on October 17, 2010.
+  They have a son, Jacob.
+
+  Instagram: @morganharpernichols (approximately 2 million followers). Website:
+  morganharpernichols.com. Shop: garden24.co.
+
+searchMuralDescription: |
+  An octopus mural wrapping around the corner of a small commercial building
+  (Art Jewelry Boutique). The octopus tentacles are rendered in warm earth tones
+  — browns, rusts, and tans — studded with colorful concentric circles in teal,
+  pink, purple, yellow, and brown, like suction cups reimagined as abstract
+  eyeballs. A parchment scroll at center contains a handwritten poem about inner
+  beauty and strength, signed "Morgan Harper Nichols." The circles continue onto
+  the sidewalk in front of the building. "Affluent Creatives" is painted at the
+  base. The background is a muted sage green.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photos (IMG_0048, IMG_0049)"
+  - "26 April 2026 — Audited (PASS). 19/20 claims fully verified, 1 (extended client list) verified via her own CV. Zero hallucinations."
+sourceNotes:
+  - "https://en.wikipedia.org/wiki/Morgan_Harper_Nichols"
+  - "https://en.wikipedia.org/wiki/Jamie_Grace"
+  - "https://twloha.com/board/"
+  - "https://morganharpernichols.com/bio"
+  - "https://comm.uga.edu/directory/people/morgan-harper-nichols"
+  - "https://www.lindenwood.edu/arts-and-humanities/art-history-ai-and-visual-culture/interdisciplinary-media-arts-mfa/"
+  - "https://parade.com/1235103/leighweingus/morgan-harper-nichols-autism/"
+  - "https://www.frontgatemedia.com/artist-and-poet-morgan-harper-nichols-signs-two-book-contract-with-zondervan/"
+  - "https://www.publishersweekly.com/pw/by-topic/industry-news/religion/article/83552-religion-book-deals-june-10-2020.html"
+  - "https://garden24.co/"
+  - "Photos by Rob 2026-04-16, GPS from EXIF. Building: Art Jewelry Boutique. Two photos — IMG_0048 (close-up of poem) and IMG_0049 (wider angle)."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "19/20 claims fully verified. The most-falsifiable specifics (birth date, sister Jamie Grace, parents' church, Point/Lindenwood/UGA, autism at 31, marriage date) all confirmed via Wikipedia + primary sources."

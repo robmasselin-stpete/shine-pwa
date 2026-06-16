@@ -1,0 +1,145 @@
+# Caratoes (Cara To) — SHINE 2016
+
+# ── Required ──
+id: 148
+artist: Caratoes
+year: 2016
+lat: 27.77042
+lng: -82.661691
+address: "2125 1st Ave S"
+category: shine
+img: "images/murals/2016/carla-sa-fernandes.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: caratoes
+basedIn: "Belgium / Hong Kong"
+
+fieldNotes:
+  - "Signs her walls 'Caratoes'"
+  - "Belgian-Hong Kong artist — Cara To"
+  - "Surrealist portrait style"
+
+artistBio: |
+  Two faces dissolve into waves and leaves on a grayscale wall. The only color
+  is a single sweep of soft pink. That contradiction — black-and-white realism
+  colliding with a slash of vibrant linework — is her signature.
+
+  Cara To — Caratoes — was born and raised in Zottegem, a small Belgian village
+  near Ghent, to Hong Kong immigrant parents. She studied two years of
+  biochemistry, switched to game design, then took a post-production job at
+  Wieden+Kennedy in Amsterdam. She discovered street art there in 2011, quit the
+  agency a few years later, and moved to Hong Kong to dig into where her parents
+  came from. She has been nomadic since 2013, with Hong Kong as her base.
+
+  Her practice spans murals, metal sculptures, installations, wearable
+  performance suits, and immersive environments. The STRAAT Museum in Amsterdam
+  holds her "Untitled" (2016, spray and latex on polyester); she has shown at
+  the Urban Nation Museum Berlin (Wall Poetry, 2015), painted at HKwalls Sham
+  Shui Po (2016), Mural Festival Montreal, and Wide Open Walls Sacramento, and
+  been featured in Juxtapoz and Hi-Fructose. Clients include Nike, Facebook,
+  Four Seasons, and Tiger Beer (the Air-Ink campaign — ink made from
+  air-pollution particles, painted on Tai Ping Shan Street in Sheung Wan).
+
+  "Making a wall pretty isn't my sole responsibility," she has said. "It's also
+  my chance to put a message on a wall for everyone to see in their own time."
+  She painted SHINE 2016 (this wall) and returned for SHINE 2022.
+
+searchBio: |
+  Two faces dissolve into waves and leaves on a grayscale wall. The only color
+  is a single sweep of soft pink. That contradiction — black-and-white realism
+  colliding with a slash of vibrant linework — is her signature.
+
+  Cara To — known professionally as Caratoes — is a Belgian-born street artist,
+  illustrator, sculptor, costume designer, and immersive-art maker of Hong Kong
+  descent. She was born and raised in Zottegem, a small Belgian village near
+  Ghent, to Hong Kong immigrant parents. She studied two years of biochemistry
+  before switching to game design at university, then took a post-production /
+  3D-artist role at the Amsterdam office of advertising agency Wieden+Kennedy.
+  She discovered street art in Amsterdam in 2011, quit the agency several years
+  later to dig into her parents' homeland, and moved to Hong Kong as her base.
+  She has been nomadic since 2013.
+
+  Her practice spans large-scale murals, metal sculptures, installations,
+  wearable performance suits, and immersive environments. The STRAAT Museum's
+  curatorial note describes her work as a "fusion of fragmented realism and
+  abstract shapes," with compositions balancing black-and-white realistic
+  portraits against vibrant — often neon — juxtaposing linework. She
+  self-describes as a "space designer who increases the beauty and serenity of a
+  place with my artwork and a precise message." Her stated approach to
+  commercial walls: "Making a wall pretty isn't my sole responsibility — it's
+  also my chance to put a message on a wall for everyone to see in their own
+  time." On gender bias: "I wanted to do things people say girls can't do."
+
+  Documented mural and festival credits include HKwalls 2016 in Sham Shui Po,
+  Hong Kong; Mural Festival Montreal; Wide Open Walls Sacramento; the Urban
+  Nation "Wall Poetry — We Paint the Music, You Love to Hear" project (Berlin,
+  September 30, 2015), pairing ten street artists with ten audio artists; the
+  inaugural Urban Nation Museum opening (Berlin, 2017); and "Ode to Mother" in
+  Reykjavik, Iceland. Her self-described count is 30-plus murals across 24
+  locations including Bali and Iceland. The STRAAT Museum Amsterdam holds a 2016
+  "Untitled" piece in spray and latex paint on polyester.
+
+  Named commercial / brand projects include Nike, Facebook, Four Seasons, and
+  Tiger Beer's Air-Ink campaign — a wall painted on Tai Ping Shan Street in
+  Sheung Wan, Hong Kong, using ink manufactured from air-pollution particles.
+  Press features include Juxtapoz, Hi-Fructose, the South China Morning Post (HK
+  Magazine cover-style profile by Adrienne So, September 13, 2016, "Graffiti
+  Artist Cara 'Caratoes' To on Materialism, Gender Bias and Repping Hong Kong
+  Art"), Sassy Hong Kong's "That Girl: Caratoes" feature, and a Frankie Beane
+  WordPress profile (May 21, 2015) describing her then-base in Zottegem, Belgium
+  / Hong Kong.
+
+  For SHINE Mural Festival 2016 in St. Petersburg, Florida, she painted at 2125
+  1st Avenue South — a wide monochromatic wall with two surrealist female faces
+  emerging from flowing organic forms (waves, leaves, curving lines), pale pink
+  accents the only color in an otherwise grayscale palette of grays, whites, and
+  blacks, geometric bridge-like structures and dashed road lines weaving through
+  the organics. Signed "CARATOES" in the lower left. She returned for SHINE
+  2022.
+
+  Instagram: @caratoes. Website: caratoes.com.
+
+searchMuralDescription: |
+  A wide monochromatic mural spanning a concrete block wall. Two surrealist
+  female faces emerge from flowing organic forms — the larger face on the right
+  gazes forward with one visible eye, features dissolving into waves, leaves,
+  and curving lines. The smaller face on the left peers out from behind swirling
+  abstract shapes. Soft pink circles and a pale pink swooping curve on the left
+  provide the only color against the otherwise grayscale palette of grays,
+  whites, and blacks. Geometric elements — bridge-like structures, dashed road
+  lines — weave through the organic forms. Signed "CARATOES" in the lower left.
+  The wall shows weathering and graffiti tags near the door.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2016 and 2022 selected artist"
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo, bio written to style card v1"
+  - "26 April 2026 — Audit found entry was attributed to wrong artist. The SHINE 2016 muralist signing 'Caratoes' is Cara To (Belgian-Hong Kong), not Carla Sá Fernandes (Portuguese painter). File renamed; bio rewritten; Instagram and basedIn corrected."
+  - "2026-05-03 — Display bio rewritten with hook anchored to this wall (faces dissolving into grayscale + soft pink), expanded with concrete sourced detail (Zottegem birthplace, biochem→game-design→Wieden+Kennedy Amsterdam→nomadic-since-2013, STRAAT Untitled 2016, Tiger Beer Air-Ink, HKwalls/Wide Open Walls/Mural Festival Montreal/Wall Poetry Berlin, Nike/Facebook/Four Seasons clients, two direct quotes). SearchBio expanded to ~700 words. 8 new URLs added to sourceNotes (Urban Nation, HKwalls, Mural Festival Montreal, SCMP, Sassy Hong Kong, Wide Open Walls, Art Public Montréal, The Dusty Rebel)."
+sourceNotes:
+  - "https://caratoes.com/"
+  - "https://caratoes.com/about1"
+  - "https://stpeteartsalliance.org/shine-2016"
+  - "https://straatmuseum.com/en/collection-database/caratoes"
+  - "https://urban-nation.com/artist/caratoes/"
+  - "https://hkwalls.org/festivals/hkwalls-2016-sham-shui-po/caratoes-2016/"
+  - "https://muralfestival.com/artist/caratoes/"
+  - "https://www.scmp.com/magazines/hk-magazine/article/2038265/graffiti-artist-cara-caratoes-materialism-gender-bias-and"
+  - "https://www.sassyhongkong.com/that-girl-cara-toes-style/"
+  - "https://www.wideopenwalls.com/artists/caratoes/"
+  - "https://artpublicmontreal.ca/en/artiste/caratoes/"
+  - "https://www.thedustyrebel.com/post/701102616429625344/ode-to-mother-caratoes-reykjavik"
+  - "GPS from Rob's photo, Carla Sa Fernandes shine 2016.jpeg. Tag 'CARATOES' visible on mural."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "Major correction: entry was incorrectly attributed to Carla Sá Fernandes (Portuguese abstract painter, never participated in SHINE). The SHINE 2016 'Caratoes' muralist is Cara To, Belgian-Hong Kong street artist. Image filename retained; YAML filename updated."

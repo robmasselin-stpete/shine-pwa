@@ -1,0 +1,93 @@
+# Paola Delfín — 2019
+
+# ── Required ──
+id: 170
+artist: Paola Delfín
+year: 2019
+lat: 27.768538
+lng: -82.660055
+address: 1975 3rd Ave S
+category: shine
+img: "images/murals/commercial/paola-delfin-emperatriz.jpeg"
+
+# ── Optional ──
+title: "La Emperatriz"
+building: ""
+instagram: paola_delfin
+basedIn: "Mexico City, Mexico"
+
+artistBio: |
+  Her monochromatic women have appeared on walls from New Delhi to Wynwood to
+  Mexico City — always in shades of gray, always tangled in leaves.
+
+  Paola Delfín is a Mexican muralist based in Mexico City. She studied graphic
+  design at Universidad Iberoamericana and has been painting large-scale
+  monochromatic murals since around 2012. Her signature is illustrative female
+  figures intertwined with botanical elements — leaves, flowers, dense foliage —
+  rendered in black-and-white or gray-blue palettes at monumental scale. The
+  work explores human bonds, intimacy, femininity, and emotional vulnerability.
+
+  She has painted walls across Mexico City, Guadalajara, Playa del Carmen, New
+  Delhi (for the St+Art India Foundation's Lodhi Art District), Lima, Wynwood,
+  Berlin, Barcelona, and Buenos Aires. She has been featured on Colossal and in
+  Juxtapoz.
+
+  "La Emperatriz" at 1975 3rd Ave S in St. Petersburg's Warehouse Arts District
+  is a monochromatic gray-blue mural of two women's faces emerging from dense
+  tropical foliage.
+
+searchBio: |
+  Her monochromatic women have appeared on walls from New Delhi to Wynwood to
+  Mexico City — always in shades of gray, always tangled in leaves.
+
+  Paola Delfín is a Mexican muralist and illustrator based in Mexico City. She
+  studied graphic design at Universidad Iberoamericana in Mexico City and has
+  been active professionally since approximately 2012-2013. Her signature is
+  large-scale monochromatic murals — predominantly black-and-white or gray-blue
+  palettes — centered on the female form intertwined with botanical elements.
+  Recurring themes include human bonds, intimacy, femininity, nature, and
+  emotional vulnerability. The style blends fine-art illustration with street
+  art scale, often described as poetic and delicate despite monumental size.
+
+  She has painted walls in Mexico City (Roma and Condesa neighborhoods),
+  Guadalajara, Playa del Carmen, New Delhi (Lodhi Art District for St+Art India
+  Foundation — one of her most internationally recognized pieces), Lima
+  (Barranco district), Wynwood (Miami), Berlin, Barcelona, and Buenos Aires.
+  Festival credits include SHINE Mural Festival (St. Petersburg), St+Art India
+  Foundation, and POW! WOW!. She has been featured on Colossal, in Juxtapoz, and
+  in Street Art News.
+
+  "La Emperatriz" at 1975 3rd Ave S in St. Petersburg's Warehouse Arts District
+  is a monochromatic gray-blue mural of two women's faces emerging from dense
+  tropical foliage — a hand reaching up through the plants holding a flower.
+
+  Instagram: @paola_delfin. Website: paoladelfin.com.
+
+searchMuralDescription: |
+  A monochromatic mural in shades of gray and blue-gray covering the side of a
+  commercial building. Two women's faces emerge from dense tropical foliage —
+  the larger figure on the left wears a crown of flowers and gazes directly at
+  the viewer, while a smaller face appears to the right, partially obscured. A
+  hand reaches up through the plants on the far left, holding a flower. The
+  vegetation is lush and detailed — broad leaves, stems, and blossoms rendered
+  with illustrative precision. The entire piece is monochromatic, giving it the
+  quality of a pencil drawing or engraving at massive scale.
+
+muralInspiration: "Themes of unity, community, and the human bond."
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+  - "2026-05-03 — Reclassified per Rob: this is SHINE 2019 (was tagged 'commercial' with year 0). File renamed 170-paola-delfin-commercial.yaml → 170-paola-delfin-2019.yaml."
+sourceNotes:
+  - "Photo by Rob 2026-04-16, GPS from EXIF"
+  - "Artist: Paola Delfín"
+  - "Title: La Emperatriz"
+  - "Address: 1975 3rd Ave S, Warehouse Arts District"
+  - "https://creativepinellas.org/ (A Ride Through St Pete's Murals)"
+  - "https://www.thisiscolossal.com/2020/01/paola-delfin-murals/"

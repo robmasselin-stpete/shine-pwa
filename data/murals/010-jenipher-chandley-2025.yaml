@@ -4,8 +4,8 @@
 id: 10
 artist: Jenipher Chandley
 year: 2025
-lat: 27.762876
-lng: -82.674887
+lat: 27.762868
+lng: -82.675064
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/jenipher-chandley.jpeg"
@@ -16,34 +16,140 @@ building: ""
 instagram: jenipherchandley
 basedIn: "St. Petersburg, FL"
 
-artistBio: |
-  Jenipher Chandley is a St. Petersburg-based representational artist whose
-  work explores the relationship between nature and the human condition,
-  focusing on themes of strength, beauty, loss, and resilience. Working
-  predominantly with oils, she creates figurative artwork infused with
-  surrealism and symbolism. She holds degrees in Interior and Graphic Design
-  and has shown her work in hundreds of shows and charitable events while
-  curating exhibitions throughout Tampa Bay. A 2023 Creative Pinellas
-  Emerging Artist grantee, she has also been selected as the Local Artist
-  Spotlight by the Gasparilla Festival of the Arts and featured by American
-  Stage Theater. She participated in SHINE 2021 and returned for SHINE
-  Origins 2025.
+fieldNotes:
+  - "Started painting outside Sake Bomb on Central Ave"
+  - "Runs the Creative Clay mural program"
+  - "Multiple SHINE murals across the city"
 
-muralDescription: |
+artistBio: |
+  She painted "Stronger Together" with her daughter Becka. The title is the
+  work.
+
+  Jenipher Chandley was born and raised in St. Petersburg. She earned degrees in
+  interior design and graphic design from IADT Tampa, is a mother of four, and
+  recently became a grandmother. She works predominantly in oils —
+  representational figurative work infused with surrealism and symbolism. The
+  female form recurs, embodying fragility and strength. Her central theme, in
+  her own words, is "the story of love" — seeking, experiencing, losing,
+  rediscovering.
+
+  She started painting outside Sake Bomb on Central Avenue around 2011 and
+  turned those nights into something permanent. Twelve-plus years later she is
+  the lead curator at Bar@548 (the same building, new name), hosts a free weekly
+  Wednesday-night art meetup taking no commission, and curates monthly
+  emerging-artist shows. Her studio is at the ArtsXchange, Studio Gallery 104.
+
+  She received a 2023 Emerging Artist Grant from Creative Pinellas and has been
+  a Local Artist Spotlight at the Gasparilla Festival of the Arts and American
+  Stage Theater. For SHINE 2021 she painted her first festival mural. For SHINE
+  Origins 2025 she returned to this wall at 31st Street and 7th Avenue South.
+
+searchBio: |
+  She started painting outside Sake Bomb on Central Avenue around 2011. She is a
+  survivor — of economic hardship, of domestic abuse — and she paints that
+  survival into everything. Jenipher Chandley was born and raised in St.
+  Petersburg, Florida, where she has raised her four children and recently
+  became a grandmother. She earned degrees in interior design and graphic design
+  from IADT Tampa. She works predominantly in oils, creating representational
+  figurative artwork infused with surrealism and symbolism, and her paintings
+  explore the relationship between nature and the human condition through themes
+  of strength, beauty, loss, pain, and resilience.
+
+  The female form is a recurring motif in her work, representing both
+  vulnerability and power. Through undulating gestures she conveys movement and
+  fluidity, capturing the ebb and flow of emotions tied to trauma.
+  Peach-complexioned girls dream of summer; dark-haired beauties float in
+  rose-hip waters. She returns often to the divine feminine, to inner power and
+  resilience. Her overarching theme is the story of love — the journey to find
+  it, revel in it, cherish and protect it, and the pain of losing it. She brings
+  her emotions and the entirety of her subconscious to the work, and through
+  vulnerability uncovers the strength to forge healing. As she puts it, "Humans
+  are complex and ever-changing, so our art should be as well."
+
+  Her imprint on the St. Petersburg creative community started in 2011, when she
+  gathered like-minded artists around her and began painting in front of what
+  was then Sake Bomb on Central Avenue in downtown St. Petersburg. Encouraged by
+  then-owner Tai Swank, she built those humble beginnings of home-made flyers
+  and neighboring dive bars into an ongoing artist meet-up and exhibition space
+  that continues today. The venue has since changed owners and become Bar@548,
+  where current owner Michael Kellem also supports the work. Jenipher is lead
+  curator at Bar@548, hosts a free weekly Wednesday Night art meetup for local
+  artists of all skill levels — taking no commission — and curates monthly shows
+  that showcase the work of emerging artists. She has co-curated and exhibited
+  in hundreds of shows throughout the Tampa Bay area. Her studio is at the
+  ArtsXchange, Studio Gallery 104, located at 515 22nd Street South, St.
+  Petersburg, FL 33712.
+
+  For more than twelve years she has worked with numerous nonprofit
+  organizations and community initiatives. She received a 2023 Emerging Artist
+  Grant from Creative Pinellas — a grant that supports artists on the upward
+  trajectory of their careers, not those at the very beginning. As part of that
+  grant she has kept a blog, worked with an artist mentor, and developed a new
+  body of work for exhibition. She was selected as the Local Artist Spotlight by
+  the Gasparilla Festival of the Arts in Tampa, and featured as the local
+  spotlight artist with the American Stage Theater in St. Petersburg, where an
+  exhibition of her work was installed in the lobby running simultaneously with
+  the play Crimes of the Heart through February 5th. She also had an upcoming
+  exhibition at The Fairgrounds. She is a member of The Portrait Society of
+  America and the Warehouse Arts District Association.
+
+  Her paintings have appeared on the walls of local boutiques and galleries, and
+  she sells work directly off the walls of Bar@548. Beyond canvas, she works
+  through fashion, choreography, poetry, and public arts installations to
+  amplify the healing power of art. Recent painted works documented through
+  Creative Pinellas include "Beyond the Exhibition: The Artistic Journey
+  Continues," "Navigating the Artistic Path: A Guide for Emerging Artists,"
+  "Embracing Growth: My Journey as an Emerging Artist in 2023," "A Visual
+  Artist's Journey of Inspiration," "Tranquil Reflection: Finding Inner Peace
+  through the Thorns of Life," "Resilience Blooms: Surrendering to Growth,"
+  "Lotus Unfolding: Embracing Healing and Growth," "The Hollowed Resilience: A
+  Woman Shielded from the Storms of the Past," "Journey to Serenity: Embracing
+  Home amidst Life's Trials," "Unfounded Terror: The Petrification of Unhealed
+  Trauma," "Transcendence: A Deep Connection Through Art," "Ophidian Epiphanies:
+  A Journey of Healing and Renewal," "The Transformative Power of Art," and
+  "Difficulty Creates Inspiration." Other titled pieces include "fire lily" and
+  "I paint My heart."
+
+  She was profiled by Robin O'Dell in The Artisan Magazine on June 5, 2025, in a
+  piece titled "The Original — Jenipher Chandley." She describes herself not as
+  a victim but a survivor, and she works to instill that mentality in others.
+  Her process incorporates "the desire to heal, to be happy and to find inner
+  peace, the common thread in all humanity." Her advice to emerging artists is
+  to not be afraid to grow out of their comfort zone, reflecting that
+  transitions are natural and needed.
+
+  For SHINE 2021 she painted her first festival mural. For SHINE Origins 2025
+  she returned with "Stronger Together" at 31st Street and 7th Avenue South,
+  assisted by her daughter Becka. SHINE is the curated, invitation-only mural
+  festival produced by the St. Petersburg Arts Alliance.
+
+  Website: jenipherchandley.com. Instagram: @jenipherchandley. Facebook:
+  jenipher.chandley.
+
+searchMuralDescription: |
   A wide mural on a cinder block wall with the words "Stronger Together" in
-  large flowing white script across a deep teal background. The text is
-  framed by a lush border of curling green vines and tropical flame-colored
-  flowers — gloriosa lilies in reds, oranges, and yellows. Signed "Jenipher
-  Chandley" in the upper right corner.
+  large flowing white script across a deep teal background. The text is framed
+  by a lush border of curling green vines and tropical flame-colored flowers —
+  gloriosa lilies in reds, oranges, and yellows. Signed "Jenipher Chandley" in
+  the upper right corner.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "2023 Creative Pinellas Emerging Artist grantee; Gasparilla Festival of the Arts Local Artist Spotlight; First Place, Gallery 21, Miami (oil painting 'Penelope')"
+artistAwards: "2023 Creative Pinellas Emerging Artist Grant; Gasparilla Festival of the Arts Local Artist Spotlight; American Stage Theater Local Spotlight Artist; SHINE 2021 and 2025 selected artist"
+
+furtherWork:
+  - name: "jenipherchandley.com"
+    url: "https://www.jenipherchandley.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-02 — Rewrote display bio hook: removed 'survivor of economic hardship and domestic abuse' lead per user direction ('i dont want to lead with survival'). New hook anchors to THIS wall — painted with her daughter Becka — making 'Stronger Together' literal. Female-form fragility/strength substance retained in body. SearchBio unchanged."
 sourceNotes:
   - "https://www.jenipherchandley.com/about-1"
+  - "https://www.jenipherchandley.com/statement"
   - "https://creativepinellas.org/artist/jenipher-chandley/"
   - "https://theartisanmagazine.com/the-original-jenipher-chandley/"
   - "https://stpeteartsalliance.org/shine?alias=/2021_SHINE_Mural_Jenipher_Chandley"

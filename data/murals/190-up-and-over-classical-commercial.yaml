@@ -1,0 +1,48 @@
+# Up & Over — Classical Face (Commissioned)
+
+# ── Required ──
+id: 190
+artist: Up & Over
+year: 0
+lat: 27.772300
+lng: -82.663400
+address: 2214 5th Ave S
+category: commercial
+img: "images/murals/commercial/vitale-bros-classical-face.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: upandovermurals
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Up & Over is a St. Petersburg mural collective that includes the Vitale
+  Brothers. Their work ranges from photorealistic portraits to bold graphic
+  compositions mixing classical imagery with contemporary street art techniques.
+
+searchBio: ""
+
+searchMuralDescription: |
+  A striking two-story mural on a commercial building. A massive classical
+  sculpture face — reminiscent of Michelangelo's Moses or a Greek god — rendered
+  in photorealistic grayscale dominates the upper portion, looking downward with
+  an intense expression and flowing beard. One enormous hand reaches forward
+  gripping a small branch with a figure. The composition is split between the
+  photorealistic figure and bold pop-art graphic elements — halftone dot
+  patterns in black, white, and blue, geometric orange and gold shapes, swirling
+  wave patterns, and tiger-stripe accents. Signed "Vitale Broz" at lower right.
+  Address 2214 visible on the building.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "26 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-26, GPS from EXIF"
+  - "Signed Vitale Broz — part of Up & Over collective"

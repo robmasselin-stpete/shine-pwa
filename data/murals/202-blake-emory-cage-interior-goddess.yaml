@@ -1,0 +1,115 @@
+# Blake Emory — Cage Brewing interior (goggled woman + koi)
+
+# ── Required ──
+id: 202
+artist: Blake Emory
+year: 0
+lat: 27.770425
+lng: -82.660570
+address: 2001 1st Ave S
+category: commercial
+img: "images/murals/commercial/blake-emory-cage-interior-goddess.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Cage Brewing"
+instagram: emory_blake
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
+  former golf course where Ruth used to play.
+
+  Blake Emory is a Florida native, born 1983, now based in St. Petersburg. With
+  his brother James — out of Santa Fe — he runs ESP Gallery and the Emory Arts
+  collective. The day job is wide: Neo-Renaissance figure painting, Optic
+  Modernism, sculpture, set design, experimental film. He doesn't pick a lane.
+
+  His murals are scattered across St. Pete in places people don't expect,
+  including a few rooftops. The work doesn't always announce itself — you find
+  it by looking up, or by walking past somewhere you've passed a hundred times.
+
+  In 2025 the City of St. Petersburg unveiled "Babe Calls the Shot," his
+  life-size bronze of Ruth at the called-shot moment, sited at the St.
+  Petersburg Museum of History on the Pier.
+
+  This wall sits inside Cage Brewing, on the women's-room exterior in the patio.
+  A goggled woman stares out from the right; betta and koi swim across the left
+  half through a nautilus shell. Painted directly onto the cinder block — the
+  door and the women's-room sign cut through the composition.
+
+searchBio: |
+  He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
+  former golf course where Ruth used to play.
+
+  Blake Emory was born in Florida in 1983 and is now based in St. Petersburg,
+  with a studio at 1114 Farragut Dr N. With his brother James — based in Santa
+  Fe — he runs ESP Gallery and the Emory Arts collective (EMORY ARTS LLC and the
+  affiliated Emory Arts 501(c)(3)). His practice spans Neo-Renaissance figure
+  painting, Optic Modernism, sculpture, set design, and experimental film. He is
+  represented by Marcolina's Gallery.
+
+  His murals are scattered across St. Petersburg in places people don't expect,
+  including a few rooftops. He has been painting in the Tampa Bay area since
+  2017, with most of his documented work falling in 2021–2023. Beyond Florida,
+  he has painted along Route 66 in Grants, New Mexico.
+
+  In 2025 the City of St. Petersburg unveiled "Babe Calls the Shot," his
+  life-size bronze of Babe Ruth at the called-shot moment. It was sited at the
+  St. Petersburg Museum of History on the Pier.
+
+  This wall is inside Cage Brewing's covered patio, painted on the women's
+  restroom exterior. A goggled woman occupies the right half, her face emerging
+  from a glowing aura of orange, magenta, and teal. Her hair flows leftward
+  across the wall, dissolving into water — koi and betta fish swim through it,
+  and a large iridescent nautilus shell sits at the center, around the door.
+  Painted on cinder block, with the door and women's-room sign integrated into
+  the composition. Year not documented; attribution confirmed by Rob meeting
+  Blake Emory in person at Cage Brewing on 2026-05-01.
+
+  Instagram: @emory_blake. Galleries: ESP Gallery, Marcolina's. Website:
+  emorybrothersart.com.
+
+searchMuralDescription: |
+  An interior mural at Cage Brewing's covered patio area, painted on the
+  cinder-block exterior of the women's restroom. The right half of the wall
+  shows a portrait of a woman in three-quarter view: deep red lips, large brown
+  eyes set within a sculpted orange-and-yellow goggle/mask shape that glows like
+  flame. Her face is framed in waves of orange, red, and teal that spread upward
+  like a sunset corona. Her hair flows leftward across the wall into a dreamy
+  underwater scene: a large iridescent nautilus shell sits in the center (around
+  the metal door), its spiral painted in violet, teal, and yellow. Multiple
+  ornamental koi and betta fish swim through the field — one pale gold koi in
+  profile near the lower-left, an orange-and-white pair near the door, a teal
+  betta with trailing fins above the shell. A green peacock feather and a
+  fantastical fish silhouette stretch across the upper-left edge. A bright lotus
+  flower with rainbow-mandala petals blooms at the woman's chin. The dominant
+  background is deep blue-violet, scattered with tiny stars. The metal women's
+  restroom door, with its accessibility-and-women signage, sits at the center of
+  the composition.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "emorybrothersart.com"
+    url: "https://www.emorybrothersart.com"
+  - name: "espgallery.com"
+    url: "https://www.espgallery.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-06 — New mural added by Rob: second Blake Emory at Cage Brewing, interior (women's-room exterior in covered patio). GPS from photo IMG_0279.jpeg EXIF (27.77072, -82.66113). Year unknown — flagged. Attribution authoritative (Rob met the artist on site 2026-05-01)."
+sourceNotes:
+  - "Photo by Rob 2026-05-05, GPS from EXIF (IMG_0279.jpeg)"
+  - "Rob met Blake Emory in person at Cage Brewing on 2026-05-01 — primary-source attribution confirmed."
+  - "https://www.emorybrothersart.com/biography"
+  - "https://marcolinas.com/collections/blake-emory"
+  - "https://www.instagram.com/emory_blake/"
+verification:
+  date: 2026-05-06
+  method: primary-source (artist met in person, 2026-05-01) + Rob photo
+  status: pass
+  notes: "Attribution confirmed by Rob meeting Blake Emory at Cage Brewing on 2026-05-01. Year not documented; flagged for follow-up."

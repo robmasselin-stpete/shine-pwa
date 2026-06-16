@@ -1,0 +1,97 @@
+# Vitale Bros — Overspray monster (Gulfport)
+
+# ── Required ──
+id: 208
+artist: Vitale Bros
+year: 0
+lat: 27.75087
+lng: -82.70133
+address: "5013 20th Ave S, Unit F, Gulfport"
+category: commercial
+img: "images/murals/commercial/vitale-bros-overspray-monster.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Overspray"
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  This one is on their own wall. Johnny Vitale launched Overspray in 2023 — a
+  street-art shop and graffiti school in Gulfport — and this green-skinned
+  cartoon monster with a spray-can-cap head guards the side of the building,
+  red can in one claw, "O.S." (Overspray) branded on its belly. Signed
+  "VITALE BROS" lower right.
+
+  Johnny Vitale and his brother Paul started Vitale Bros in Tampa Bay in 1992
+  hand-lettering signs and painting storefront windows. Their parents are
+  artists. So were their grandparents. No formal training — just family
+  tradition and thirty-plus years of practice.
+
+  In the late 1990s they opened a warehouse studio that hosted group art,
+  music, and fashion shows that helped birth St. Pete's emerging art scene.
+  They collaborated on set design for Harmony Korine's Spring Breakers. They
+  have painted for the Tampa Bay Rays, the Buccaneers, L'Oreal, and dozens
+  of local businesses. They call themselves the "mural police" — restoring
+  damaged walls around the city for free.
+
+  They have painted SHINE every year since its inception.
+
+searchBio: |
+  Vitale Bros — see full bio on their other entries (ids 27, 73, 142, 156,
+  174). This is the side wall of Overspray, the Vitale Bros' own street-art
+  shop and graffiti school in Gulfport (launched by Johnny Vitale in 2023).
+  Cartoon graffiti subject: a fanged green monster with a spray-can-cap for a
+  head, holding a red spray can in its left claw, branded "O.S." (Overspray)
+  across its belly, drool dripping from its long red tongue. Heavy
+  black-outline cartoon style, signed "VITALE BROS" in wildstyle lettering
+  lower right.
+
+  Johnny and Paul Vitale grew up in a family of artists across three
+  generations. No formal training. They have painted for the Tampa Bay Rays,
+  the Buccaneers, L'Oreal, and dozens of local businesses. They have painted
+  every SHINE since 2015 — including "The Cool Kids" (2015) and "Bait and
+  Switch" (2019). After Hurricane Milton, they painted free signs for
+  businesses that lost theirs. Johnny launched Overspray in Gulfport in 2023
+  and teaches tagging, block letters, Wildstyle, and advanced mural technique
+  to classes of up to twenty students.
+
+  Instagram: @vitalebros.
+
+searchMuralDescription: |
+  A large vertical mural on a white horizontal-clapboard exterior wall. The
+  subject is a chunky cartoon monster, full-figure, facing the viewer. Its
+  head is a stylized spray-paint can cap — silver dome with a black spray
+  nozzle. The face is bright green with bulging bloodshot eyes (one rolled
+  up, one rolled side), a wide fanged grin showing pointed teeth, and a long
+  red tongue lolling out. In its left claw it holds a red spray can with a
+  green cap, pointed away from the body, drips of paint dribbling off. Its
+  green body is hairy/scruffy around the edges, with the letters "O.S."
+  branded in red on its belly inside a black outline. The legs are stubby
+  with blue cuffs and bare green clawed feet planted on the ground. A small
+  navy-blue squiggle floats in the upper left, possibly representing motion
+  or stink. Signed in dark-blue wildstyle lettering at the lower right:
+  "VITALE BROS."
+
+muralInspiration: "Painted on the side wall of Overspray, the Vitale Bros' own street-art shop and graffiti school in Gulfport."
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "vitalebros.com"
+    url: "https://www.vitalebros.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-14 — New mural added by Rob: sixth Vitale Bros in Mural Quest, the spray-can monster mascot on the side of their own Overspray shop in Gulfport. GPS from photo IMG_0292.jpeg EXIF (27.75087, -82.70133). Signed 'VITALE BROS' lower right. Address pending exact street number — note that Vitale Bros own this wall."
+sourceNotes:
+  - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0292.jpeg)"
+  - "Signed 'VITALE BROS' lower right; building is their own (Overspray)"
+  - "https://www.vitalebros.com/"
+  - "https://www.instagram.com/vitalebros/"
+verification:
+  date: 2026-05-14
+  method: on-wall signature + Rob attribution (they own Overspray)
+  status: pass
+  notes: "Attribution authoritative — 'VITALE BROS' signature visible lower right, and the wall is on their own Gulfport shop building (Johnny Vitale launched Overspray in 2023 per #142 bio). Same building hosts Chris Dyer and BASK walls (ids 207, 209)."

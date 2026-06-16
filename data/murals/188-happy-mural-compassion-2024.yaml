@@ -1,0 +1,122 @@
+# Happy Mural Project — Compassion In Action (2024)
+
+# ── Required ──
+id: 188
+artist: Happy Mural Project
+year: 2024
+lat: 27.772397
+lng: -82.647942
+address: 929 1st Ave N
+category: commercial
+img: "images/murals/commercial/happy-mural-compassion.jpeg"
+
+# ── Optional ──
+title: "Compassion In Action"
+building: ""
+instagram: thehappymuralproject
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "600 volunteers painted this over Mother's Day weekend 2024"
+  - "Commissioned for Gulf Coast JFCS's 50th anniversary"
+  - "16 feet tall by 105 feet long — paint-by-numbers format"
+
+artistBio: |
+  Paint-by-numbers, but the wall is 16 feet tall and 105 feet long. Six hundred
+  people came out over Mother's Day weekend 2024 to paint it.
+
+  Gulf Coast Jewish Family and Community Services commissioned "Compassion In
+  Action" for their 50th anniversary. Two brown hands cradle a cluster of bright
+  blue morpho butterflies against flowing green leaves. The location was
+  deliberate too — the west side of the building that housed Dr. Philip
+  Benjamin's optometrist practice, built in 1969. Benjamin was a longtime
+  supporter of St. Petersburg Junior College and pushed for affirmative action
+  there before passing away in 1998. His widow Marilyn picked up a brush.
+
+  Alyssa Marie founded the Happy Mural Project after moving from Colorado to St.
+  Petersburg in 2017. She holds a BFA from Metropolitan State University of
+  Denver. The project's signature is exactly what it sounds like: she designs
+  the wall, breaks it into numbered sections, and runs paint-by-numbers events
+  where hundreds of volunteers each take a 30-minute slot. Children paint the
+  lower sections; volunteers comfortable on ladders paint the higher ones.
+
+searchBio: |
+  Paint-by-numbers, but the wall is 16 feet tall and 105 feet long. Six hundred
+  people came out over Mother's Day weekend 2024 to paint it.
+
+  "Compassion In Action" was commissioned by Gulf Coast Jewish Family and
+  Community Services (Gulf Coast JFCS), a nonprofit that helps people "of all
+  ages, faiths, cultures, and lifestyles," to celebrate the organization's 50th
+  anniversary theme. The mural is located at 929 1st Ave N in St. Petersburg, on
+  the west side of the building that housed Dr. Philip Benjamin's optometrist
+  practice, built in 1969. Benjamin (who died in 1998 at age 73) was a longtime
+  supporter of the then-St. Petersburg Junior College, served as vice chairman
+  and chairman on the board of trustees where he worked to establish affirmative
+  action policies, and helped create the college's Health Education Center. The
+  Social Arts Building at SPJC was named in his honor in 1984. His widow Marilyn
+  Benjamin painted glasses on the mural during the volunteer weekend, a nod to
+  her family's medical practice.
+
+  The mural's symbolism is deliberate: the lotus is known as the flower of
+  compassion, and as the butterflies are released from one hand they connect
+  with the flower — each needs the other to continue on. Two hands reach toward
+  each other; one releases butterflies that gently flutter toward the lotus
+  flower clutched in the other's hand. An inscription reads "Compassion in
+  action."
+
+  The project was cosponsored by the Tampa Bay Rays, Amuni Financial, the
+  Benjamin Family Foundation, and Frank Edgar of Creative Catering Company.
+  Approximately 600 people, including relatives of Dr. Benjamin, former mayors,
+  and community volunteers, came out over Mother's Day weekend to work on the
+  mural. Raymond, the Rays mascot, also painted on the wall. Gulf Coast JFCS
+  Communications Manager Hana Cowart oversaw the project on the org's side.
+
+  Alyssa Marie founded the Happy Mural Project after relocating from Colorado to
+  St. Petersburg in 2017. She holds a BFA in Communication Design with an
+  emphasis on Fine Art from Metropolitan State University of Denver and has done
+  paint-by-number community murals across the nation. She started painting
+  murals on her own and noticed that people were always interested in the
+  process — she remembered the paint-by-number books she did as a kid and built
+  the format around that. "When I started this, I just wanted to find a way to
+  get everybody involved," she told Northeast Journal in 2024. The format: she
+  designs the wall and team breaks it into numbered sections; volunteers come
+  for 30-minute slots, get a numbered cup of paint, and find the corresponding
+  section. Children paint the lower sections; volunteers comfortable on ladders
+  paint the higher ones.
+
+  Marie also works to find the right design to fit with the organization that
+  sponsors it. Gulf Coast JFCS's mission is to help vulnerable individuals find
+  safety, comfort, and a path toward a fulfilling life — they reach 30,000
+  people annually throughout the greater Tampa Bay area. They received a
+  $450,000 grant renewal from the NFL's Inspire Change social justice initiative
+  for the Community Assistance and Life Liaison (CALL) program, which trains
+  social workers and mental health professionals to respond to nonviolent and
+  noncriminal 911 calls.
+
+  Coverage in Northeast Journal (July 24, 2024, by Shelly Wilson). Project info
+  at thehappymuralproject.com and gulfcoastjewishfamilyandcommunityservices.org.
+
+searchMuralDescription: |
+  A large community mural on a long wall, 16 feet tall by 105 feet long. A pair
+  of brown hands cradles a cluster of bright blue morpho butterflies against a
+  background of flowing green leaves and fronds. A banner at the top left reads
+  "Compassion In Action" in script lettering with "GulfCoastJFCS.org" below it.
+  The palette is soft greens, browns, and vivid blue. Painted by roughly 600
+  volunteers over Mother's Day weekend 2024.
+
+muralInspiration: "Commissioned by Gulf Coast Jewish Family and Community Services for their 50th anniversary."
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "26 April 2026 — New mural added, GPS from Rob's photo"
+  - "2026-05-03 — Display bio rewritten with hook ('Paint-by-numbers, but the wall is 16 feet tall and 105 feet long. Six hundred people came out…') and body covering Gulf Coast JFCS commission, Dr. Philip Benjamin building backstory, Marilyn Benjamin painting glasses, Alyssa Marie's process. SearchBio populated from Northeast Journal source."
+sourceNotes:
+  - "Photo by Rob 2026-04-26, GPS from EXIF"
+  - "https://northeastjournal.org/inspired-by-the-mission-hundreds-help-paint-community-mural/"
+  - "https://thehappymuralproject.com"
+  - "https://gulfcoastjewishfamilyandcommunityservices.org"

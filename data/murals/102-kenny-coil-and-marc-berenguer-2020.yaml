@@ -17,36 +17,55 @@ instagram: kennycoil
 basedIn: "St. Petersburg, Florida"
 
 artistBio: |
-  Kenny Coil and Marc Berenguer are the creative duo behind Break Maiden,
-  a Tampa-based design studio that works across branding, illustration,
-  and large-scale murals. Coil grew up in the Tampa Bay area and brings a
-  bold, graphic sensibility to their projects, while Berenguer moved from
-  Barcelona to the U.S. in 2009, bringing a European eye for typography
-  and minimal composition.
+  Marc designed for brands in Barcelona before crossing the Atlantic. Kenny is a
+  USF graduate. They opened Break Maiden together in 2018.
 
-  Together they have worked with brands across every consumer category and
-  built a reputation for clean, flat illustration styles with strong color
-  palettes. Their SHINE 2020 mural at USFSP Harbor Hall transforms the
-  building into a bright, mid-century-flavored celebration of Florida
-  coastal life — herons, fish, mangroves, and downtown buildings rendered
-  in cheerful geometric shapes.
+  Kenny Coil and Marc Berenguer run Break Maiden, a branding and design studio
+  at 33 6th Street South in St. Petersburg. Both are USF graduates. Their work
+  spans brand identity, packaging, illustration, and murals. Marc moved from
+  Barcelona to the US in 2009, bringing a love of typography and minimal design.
 
-muralDescription: |
-  A full-building mural in a flat, graphic illustration style depicting
-  Florida nature and neighborhood life. The composition is divided into
-  loose grid-like sections filled with stylized herons, egrets, pelicans,
-  tropical fish, palm trees, mangroves, and colorful downtown buildings in
-  teal, pink, yellow, orange, and sage green. The shapes are rounded and
-  geometric with a mid-century modern feel — puffy trees with scalloped
-  edges, simplified houses with bright facades, and birds rendered as
-  elegant silhouettes. A large white egret dominates the lower right. The
-  overall palette is warm and coastal, giving the building a cheerful,
-  welcoming presence.
+  Clients include Green Bench Brewery (Webb City Cellar branding) and MADE
+  Coffee. For SHINE 2020 / Sea Walls, they painted a mangrove and coastal
+  wetlands mural on Harbor Hall at USF St. Pete, with embedded information
+  viewable via the Pixelstix app.
+
+searchBio: |
+  Marc designed for brands in Barcelona before crossing the Atlantic. Kenny is a
+  USF graduate. They opened Break Maiden together in 2018.
+
+  Kenny Coil and Marc Berenguer run Break Maiden, a branding and design studio
+  at 33 6th Street South in St. Petersburg. Both are USF graduates. Their work
+  spans brand identity, packaging, illustration, and murals. Marc moved from
+  Barcelona to the US in 2009, bringing a love of typography and minimal design.
+
+  Clients include Green Bench Brewery (Webb City Cellar branding) and MADE
+  Coffee. For SHINE 2020 / Sea Walls, they painted a mangrove and coastal
+  wetlands mural on Harbor Hall at USF St. Pete, with embedded information
+  viewable via the Pixelstix app.
+
+searchMuralDescription: |
+  A full-building mural in a flat, graphic illustration style depicting Florida
+  nature and neighborhood life. The composition is divided into loose grid-like
+  sections filled with stylized herons, egrets, pelicans, tropical fish, palm
+  trees, mangroves, and colorful downtown buildings in teal, pink, yellow,
+  orange, and sage green. The shapes are rounded and geometric with a
+  mid-century modern feel — puffy trees with scalloped edges, simplified houses
+  with bright facades, and birds rendered as elegant silhouettes. A large white
+  egret dominates the lower right. The overall palette is warm and coastal,
+  giving the building a cheerful, welcoming presence.
+
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2020 / Sea Walls selected artist"
 
 # ── Provenance (not exported to data.js) ──
+furtherWork:
+  - name: "breakmaiden.co"
+    url: "https://www.breakmaiden.co"
 source: "claude-enhanced"
 sourceNotes:
   - "User photo with GPS 2026-03-08"
+  - "https://www.breakmaiden.co/about"
+  - "https://stpeteartsalliance.org/kenny-coil-with-marc-berenguer/"
+revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

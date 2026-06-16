@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SHINE Book Card — Mockup v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F4EF; --card:#F7F4EF; --text:#1C1C1E; --text2:#8E8E93;
+    --teal:#0E918C; --teal-dark:#0A706C; --teal-light:#E2F5F2;
+    --border:#E8E3DC; --shadow:0 2px 8px rgba(0,0,0,.07);
+    --radius:14px; --font-display:'Quicksand',sans-serif; --font-body:'Outfit',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{background:#d9d2c7;font-family:var(--font-body);padding:40px;display:flex;gap:44px;justify-content:center;align-items:flex-start;flex-wrap:wrap;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .col h2{font-family:var(--font-display);font-weight:600;font-size:15px;color:#5a5248;}
+  .col .cap{font-size:12px;color:#7a7164;max-width:393px;text-align:center;line-height:1.4;}
+  .phone{width:393px;height:852px;background:var(--bg);border-radius:46px;border:11px solid #1c1c1e;box-shadow:0 18px 50px rgba(0,0,0,.35);overflow:hidden;position:relative;}
+  .screen{position:absolute;inset:0;overflow-y:auto;}
+
+  .topbar{padding:54px 20px 6px;}
+  .explore-title{font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--text);}
+  .explore-sub{font-size:12px;color:var(--text2);margin-top:2px;}
+  .pills{display:flex;gap:8px;padding:14px 20px 4px;flex-wrap:wrap;}
+  .pill{font-family:var(--font-display);font-weight:600;font-size:13px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:7px 15px;border-radius:999px;}
+  .pill.active{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .ysub{display:flex;gap:8px;padding:8px 20px 2px;flex-wrap:wrap;}
+  .ypill{font-family:var(--font-display);font-weight:600;font-size:12px;border:1px solid var(--border);background:var(--card);color:var(--text2);padding:5px 12px;border-radius:999px;display:flex;align-items:center;gap:6px;}
+  .ydot{width:8px;height:8px;border-radius:50%;}
+
+  .mural-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:12px 20px 24px;}
+  .mural-card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  .mural-card-img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--border);display:block;}
+  .mural-card-info{padding:10px 12px 12px;}
+  .mural-card-artist{font-family:var(--font-display);font-size:14px;font-weight:700;line-height:1.2;color:var(--text);}
+  .mural-card-meta{font-size:11px;color:var(--text2);margin-top:2px;}
+
+  /* ── A: full-width BANNER above grid ── */
+  .book-banner{margin:14px 20px 2px;background:linear-gradient(135deg,#0E918C 0%,#0A706C 100%);border-radius:var(--radius);box-shadow:0 6px 18px rgba(14,145,140,.3);display:flex;align-items:stretch;overflow:hidden;}
+  .book-banner .bb-cover{width:96px;flex:none;background:#08524f;display:flex;align-items:center;justify-content:center;padding:10px;}
+  .book-banner .bb-cover img{width:100%;border-radius:3px;box-shadow:0 4px 10px rgba(0,0,0,.4);}
+  .book-banner .bb-body{padding:13px 14px;color:#fff;display:flex;flex-direction:column;justify-content:center;gap:3px;}
+  .book-banner .bb-eyebrow{font-family:var(--font-display);font-weight:700;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#bdeae6;}
+  .book-banner .bb-title{font-family:var(--font-display);font-weight:700;font-size:16px;line-height:1.12;}
+  .book-banner .bb-cta{font-family:var(--font-display);font-weight:600;font-size:12px;color:#eafffb;margin-top:4px;}
+
+  /* ── B: distinct pinned card ── */
+  .book-card2{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 16px rgba(14,145,140,.2);position:relative;display:flex;flex-direction:column;}
+  .book-card2 .ribbon{background:var(--teal);color:#fff;font-family:var(--font-display);font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;}
+  .book-card2 .mat{background:#08524f;padding:14px 18px 0;display:flex;justify-content:center;}
+  .book-card2 .mat img{width:74%;border-radius:3px;box-shadow:0 6px 14px rgba(0,0,0,.45);}
+  .book-card2 .b2-info{padding:10px 12px 12px;background:#08524f;flex:1;}
+  .book-card2 .b2-name{font-family:var(--font-display);font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
+  .book-card2 .b2-sub{font-size:11px;color:#bdeae6;font-weight:600;margin-top:3px;font-family:var(--font-display);}
+
+  /* ── Detail view ── */
+  .d-back{position:absolute;top:54px;left:16px;z-index:5;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text);}
+  .d-cover{width:100%;background:#1c1c1e;padding:64px 0 0;display:flex;justify-content:center;}
+  .d-cover img{width:62%;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.45);margin-bottom:28px;}
+  .d-body{padding:22px 22px 40px;}
+  .d-eyebrow{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);}
+  .d-title{font-family:var(--font-display);font-weight:700;font-size:24px;color:var(--text);line-height:1.12;margin:6px 0 14px;}
+  .d-body p{font-size:14.5px;line-height:1.62;color:#3a3a3c;margin-bottom:14px;}
+  .d-buy{display:block;width:100%;text-align:center;background:var(--teal);color:#fff;font-family:var(--font-display);font-weight:700;font-size:16px;padding:16px;border-radius:14px;margin-top:8px;box-shadow:0 6px 18px rgba(14,145,140,.32);text-decoration:none;}
+  .d-note{text-align:center;font-size:11px;color:var(--text2);margin-top:12px;}
+  .d-partner{text-align:center;font-size:11px;color:var(--text2);margin-bottom:18px;font-style:italic;}
+</style>
+</head>
+<body>
+
+<!-- A: BANNER -->
+<div class="col">
+  <h2>A · Full-width banner (above grid)</h2>
+  <div class="cap">Clearly a different object. Sits on top, doesn't displace a mural.</div>
+  <div class="phone"><div class="screen">
+    <div class="topbar">
+      <div class="explore-title">Explore</div>
+      <div class="explore-sub">175+ Murals in St. Petersburg, Florida</div>
+    </div>
+    <div class="pills"><div class="pill">All</div><div class="pill active">SHINE&reg;</div><div class="pill">Vintage</div><div class="pill">Commissioned</div></div>
+    <div class="ysub"><div class="ypill"><span class="ydot" style="background:#E8743B"></span>2024</div><div class="ypill"><span class="ydot" style="background:#4A9FD4"></span>2023</div></div>
+    <div class="book-banner">
+      <div class="bb-cover"><img src="/Users/robasselin/shine-pwa/assets/wip/book-card/shine-book-cover.jpeg"></div>
+      <div class="bb-body">
+        <div class="bb-eyebrow">The Official SHINE Book</div>
+        <div class="bb-title">A Decade of Murals</div>
+        <div class="bb-cta">Take SHINE Home ›</div>
+      </div>
+    </div>
+    <div class="mural-grid">
+      <div class="mural-card"><img class="mural-card-img" src="/Users/robasselin/shine-pwa/images/thumbs/2024/abys.jpeg"><div class="mural-card-info"><div class="mural-card-artist">Abys</div><div class="mural-card-meta">450 Central Ave · 2024</div></div></div>
+      <div class="mural-card"><img class="mural-card-img" src="/Users/robasselin/shine-pwa/images/thumbs/2023/andrea-wan.jpeg"><div class="mural-card-info"><div class="mural-card-artist">Andrea Wan</div><div class="mural-card-meta">Warehouse Arts District · 2023</div></div></div>
+      <div class="mural-card"><img class="mural-card-img" src="/Users/robasselin/shine-pwa/images/thumbs/2023/artist-jones.jpeg"><div class="mural-card-info"><div class="mural-card-artist">Artist Jones</div><div class="mural-card-meta">Grand Central · 2023</div></div></div>
+      <div class="mural-card"><img class="mural-card-img" src="/Users/robasselin/shine-pwa/images/thumbs/2024/abys.jpeg"><div class="mural-card-info"><div class="mural-card-artist">Bask</div><div class="mural-card-meta">Central Ave · 2024</div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- B: DISTINCT PINNED CARD -->
+<div class="col">
+  <h2>B · Distinct pinned card (first cell)</h2>
+  <div class="cap">Stays first in the grid, but matted + ribboned so it reads as a book, not a wall.</div>
+  <div class="phone"><div class="screen">
+    <div class="topbar">
+      <div class="explore-title">Explore</div>
+      <div class="explore-sub">175+ Murals in St. Petersburg, Florida</div>
+    </div>
+    <div class="pills"><div class="pill">All</div><div class="pill active">SHINE&reg;</div><div class="pill">Vintage</div><div class="pill">Commissioned</div></div>
+    <div class="ysub"><div class="ypill"><span class="ydot" style="background:#E8743B"></span>2024</div><div class="ypill"><span class="ydot" style="background:#4A9FD4"></span>2023</div></div>
+    <div class="mural-grid">
+      <div class="book-card2">
+        <div class="ribbon">SPAA · The Book</div>
+        <div class="mat"><img src="/Users/robasselin/shine-pwa/assets/wip/book-card/shine-book-cover.jpeg"></div>
+        <div class="b2-info"><div class="b2-name">A Decade of Murals</div><div class="b2-sub">Where to buy ›</div></div>
+      </div>
+      <div class="mural-card"><img class="mural-card-img" src="/Users/robasselin/shine-pwa/images/thumbs/2024/abys.jpeg"><div class="mural-card-info"><div class="mural-card-artist">Abys</div><div class="mural-card-meta">450 Central Ave · 2024</div></div></div>
+      <div class="mural-card"><img class="mural-card-img" src="/Users/robasselin/shine-pwa/images/thumbs/2023/andrea-wan.jpeg"><div class="mural-card-info"><div class="mural-card-artist">Andrea Wan</div><div class="mural-card-meta">Warehouse Arts · 2023</div></div></div>
+      <div class="mural-card"><img class="mural-card-img" src="/Users/robasselin/shine-pwa/images/thumbs/2023/artist-jones.jpeg"><div class="mural-card-info"><div class="mural-card-artist">Artist Jones</div><div class="mural-card-meta">Grand Central · 2023</div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- DETAIL relabeled -->
+<div class="col">
+  <h2>Detail · relabeled "Where to buy"</h2>
+  <div class="cap">Outbound handoff, not a sale. One swappable URL.</div>
+  <div class="phone"><div class="screen">
+    <div class="d-back">‹</div>
+    <div class="d-cover"><img src="/Users/robasselin/shine-pwa/assets/wip/book-card/shine-book-cover.jpeg"></div>
+    <div class="d-body">
+      <div class="d-eyebrow">The Official SHINE Book</div>
+      <div class="d-title">SHINE: A Decade of Murals</div>
+      <p>Celebrate ten years of the internationally recognized SHINE Mural Festival with this premium book documenting the murals, artists, and community impact that helped transform St. Petersburg, Florida into a global destination for public art.</p>
+      <p>A collector's edition featuring more than 250 pages of full-color photography, artist profiles, behind-the-scenes stories, and reflections from muralists and community leaders — both a visual centerpiece and a historical archive.</p>
+      <a class="d-buy" href="#">Take SHINE Home ›</a>
+      <div class="d-note">Opens Tombolo Books in your browser</div>
+      <div class="d-partner" style="margin-top:18px;">Published by the St. Petersburg Arts Alliance</div>
+    </div>
+  </div></div>
+</div>
+
+</body>
+</html>

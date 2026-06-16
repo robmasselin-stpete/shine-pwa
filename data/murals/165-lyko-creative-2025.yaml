@@ -1,0 +1,88 @@
+# Lyko Creative — 2025
+
+# ── Required ──
+id: 165
+artist: Lyko Creative
+year: 2025
+lat: 27.762862
+lng: -82.67437
+address: "3030 7th Ave S"
+category: commercial
+img: "images/murals/commercial/lyko-creative.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: lyko.creations
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Florida pulled five St. Pete street murals in summer 2025 under SB 1662 —
+  Progressive Pride, Black History Matters, Fluid Structures, Common Ground,
+  Crossway Crux. The Love Thy Neighbor Project responded by painting free murals
+  on private property, where the state can't reach. This is one of them.
+
+  Zac "Lyko" Shaffer co-led the project in August 2025 with Jazzy Erickson,
+  alongside founder Michelle Sasha of ArtFluent Creatives. His piece is a
+  Florida nature scene — a mockingbird, magnolia blossoms, a golden orange, and
+  zebra longwing butterflies on a sky-blue background. Quieter than the murals
+  the state removed, but the gesture is the same.
+
+  Lyko is a St. Petersburg-based multi-media artist working under the brand Lyko
+  Creations.
+
+searchBio: |
+  Zac "Lyko" Shaffer — Lyko Creations — is a St. Petersburg-based multi-media
+  artist.
+
+  In August 2025 he co-led the Love Thy Neighbor Project with Jazzy Erickson, a
+  community mural initiative founded by Michelle Sasha of ArtFluent Creatives.
+  The project painted free inclusivity murals on private properties in St.
+  Petersburg as a response to Florida's removal of public street murals — five
+  St. Pete murals (Progressive Pride, Black History Matters, Fluid Structures,
+  Common Ground, Crossway Crux) were removed by FDOT under SB 1662 (signed by
+  Gov. DeSantis, June 2025).
+
+  This mural was painted in 2025 — a Florida nature scene with a mockingbird,
+  magnolia blossoms, a golden orange, and zebra longwing butterflies. Not an
+  official SHINE Origins 2025 piece.
+
+  Instagram: @lyko.creations. Website: lykocreations.com.
+
+searchMuralDescription: |
+  A panoramic Florida nature scene on a blue cinder block wall. On the left, a
+  gray-and-white mockingbird perches on a dark branch. At center, green magnolia
+  leaves and a white magnolia blossom frame a large golden-orange citrus fruit.
+  On the right, two zebra longwing butterflies with black and white striped
+  wings flutter near the foliage. The palette is naturalistic — sky blue
+  background, rich greens, and warm gold — celebrating Florida's native wildlife
+  and flora.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited; FAIL → rewrite. Removed unverified 'Detroit roots' (no source); removed 'fuses street art, graffiti, impressionism' (style claim only on inaccessible website page); removed 'Ceara Rae' (3rd co-artist not in any source — sources name only Sasha, Erickson, Shaffer); kept 'Lyko' verified, removed 'Zachary' speculation."
+  - "2026-05-03 — Display bio rewritten with hook anchored to the political story (Florida SB 1662 removal of 5 St. Pete street murals → Love Thy Neighbor Project response on private property). Names the 5 removed murals. Closes with the contrast: this wall is a quieter Florida nature scene, but the gesture is the same."
+sourceNotes:
+  - "https://stpetecatalyst.com/street-mural-removals-foster-activism-solidarity/"
+  - "https://watermarkonline.com/2025/08/29/love-thy-neighbor-project-offers-tampa-bay-free-lgbtq-murals-after-fdot-ban/"
+  - "https://spectrumlocalnews.com/tampa/news/2025/08/30/florida-street-murals"
+  - "https://floridapolitics.com/archives/754078-st-petes-progressive-pride-mural-the-last-of-5-street-artworks-removed-by-state/"
+  - "https://www.tampabay.com/news/st-petersburg/2025/09/02/st-petersburg-pride-street-mural-removed-florida/"
+  - "https://www.axios.com/local/tampa-bay/2025/08/22/st-petersburg-to-comply-with-state-order-to-remove-pride-black-history-street-art"
+  - "https://lykocreations.com"
+  - "https://www.instagram.com/lyko.creations/"
+  - "https://artfluentcreatives.com"
+  - "Photo by Rob 2026-04-16, GPS from EXIF. Mural is part of the Love Thy Neighbor Project, not an official SHINE 2025 piece."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: needs-review
+  notes: "Bio rewritten to remove 6 hallucination flags (Detroit roots, style claims, third co-artist Ceara Rae, etc.). Now only contains verified facts. NOTE: artistAwards still says 'SHINE 2025 selected artist' but this is NOT a SHINE piece — it's a Love Thy Neighbor Project mural. Recommend Rob review and possibly remove that award."

@@ -1,0 +1,132 @@
+# IBOMS — St Pete Youth Farm (Commissioned)
+
+# ── Required ──
+id: 184
+artist: IBOMS
+year: 0
+lat: 27.753037
+lng: -82.650763
+address: St Pete Youth Farm
+category: commercial
+img: "images/murals/commercial/iboms-youth-farm.jpeg"
+
+# ── Optional ──
+title: ""
+building: "St Pete Youth Farm"
+instagram: i.b.o.m.s
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Cartoon fruit and veggie characters working the farm"
+  - "St Pete Youth Farm established 2019"
+  - "IBOMS is a St. Pete native — SHINE 2020 artist"
+
+artistBio: |
+  He partnered with the St. Pete Youth Farm in 2021 on a custom PSTA bus wrap.
+  This time they handed him the wall.
+
+  Anthropomorphic tomatoes, bananas, broccoli, eggplants, pumpkins, grapes, and
+  sunflowers work the garden beds. A Pac-Man-faced sun beams down from the top.
+  A starfruit character lounges by the pond. The arch reads "STPETE YOUTH FARM
+  Est. 2019."
+
+  Jabari Jahi Babatu Reed-Diop — IBOMS — is a St. Petersburg native. He attended
+  Douglas Anderson School of the Arts in Jacksonville and the Gibbs High PCCA
+  Magnet Program. The acronym stands for "illegal. Beauty. On. My. Streets." His
+  signature character "Ashi" (a young Black male drawn from his childhood in
+  south St. Pete) anchors most of his other walls — but this one shifted into
+  community-mural mode for the kids.
+
+  He works in 2D illustration, 3D sculpture, and digital design. His solo show
+  "Ego Death" at Mize Gallery sold out in 48 hours. He designed a Tampa Bay Rays
+  Artist Print Series in 2019. His SHINE 2020 wall "Where the Bloom Begins" sits
+  at Grand Central Brewhouse on Central Ave, and he returned to SHINE in 2021 as
+  a Bright Spots artist.
+
+searchBio: |
+  He partnered with the St. Pete Youth Farm in 2021 on a custom PSTA bus wrap
+  titled "Together We Grow," designed by IBOMS together with the students of the
+  St. Pete Youth Farm and revealed on October 23, 2021. This commercial
+  commission at the Youth Farm itself extends that ongoing collaboration onto a
+  wall on the property.
+
+  Jabari Jahi Babatu Reed-Diop — IBOMS — is a St. Petersburg native based in St.
+  Petersburg, Florida. The acronym stands for "illegal. Beauty. On. My.
+  Streets." His artistic acumen comes from personal experience and formal
+  education at Douglas Anderson School of the Arts in Jacksonville and the Gibbs
+  High PCCA Magnet Program in St. Petersburg.
+
+  His signature character "Ashi" — a young Black male — was drawn from his
+  childhood in south St. Pete. The name "ASHI" appears in capital letters below
+  the character's left eye on his SHINE 2020 mural at Grand Central Brewhouse.
+  IBOMS uses the "iceberg theory" in his practice: a celebratory surface with
+  deeper narratives running underneath, like a dark river beneath a blissful
+  exterior. His characters are complex and often represent aspects of his psyche
+  as a young Black male, transmuting emotional and physical states of being to
+  mirror the relationships between spirit and god. His work covers themes of
+  self-love, destruction, discovery, omens, and love, and aims to give his
+  community a lens into the experience of an African American male in the
+  Sunshine City.
+
+  He works across multiple mediums: 2D illustration, 3D sculpture, and digital
+  design. At first glance his work may read as simple illustrations or graffiti,
+  but each piece carries a deeper message. Recent work features mushroom-headed
+  characters exploring "Ego Death." He has shown at d-Gallerie and Mize Gallery
+  (also styled MIZE Gallery) in St. Petersburg. His solo show "Ego Death" with
+  Chad Mize at Mize Gallery sold out within 48 hours of its debut, with select
+  pieces remaining for sale at d-Gallerie afterward.
+
+  He designed a Tampa Bay Rays Artist Print Series in 2019. A portrait of IBOMS
+  by muralist and curator Derek Donnelly is painted in the alley behind the 600
+  Block of Central Avenue in St. Petersburg.
+
+  For SHINE 2020, he painted "Where the Bloom Begins" on the side of the
+  then-new Grand Central Brewhouse — 30 feet high and 36 feet wide on a
+  brilliant yellow background, his signature character Ashi towering with his
+  back to the viewer, looking over his left shoulder. He returned to SHINE in
+  2021 as a Bright Spots artist, partnering with the Pinellas Suncoast Transit
+  Authority (PSTA) and the St. Pete Youth Farm on the "Together We Grow" PSTA
+  bus wrap.
+
+  This Youth Farm wall is a vibrant cartoon-style scene on a cinder block wall
+  depicting a community garden bustling with anthropomorphic fruit and vegetable
+  characters — tomatoes, bananas, broccoli, eggplants, pumpkins, grapes,
+  sunflowers, and more — all rendered as cartoon people with expressive faces,
+  working in raised garden beds. A smiling sun with a Pac-Man-style face beams
+  from the top center. The archway reads "STPETE YOUTH FARM Est. 2019."
+  Background features green hills, fruit trees, and a city skyline. A pond with
+  a starfruit character sits at the right. Signed @i.B.O.M.S at upper left.
+
+  IBOMS was profiled in the Tampa Bay Born Murals video series from I Love the
+  Burg and That's So Tampa (October 11, 2021 feature by Andrew Harlan), and is
+  listed as a Creative Pinellas artist. Instagram: @i.b.o.m.s.
+
+searchMuralDescription: |
+  A vibrant, cartoon-style mural on a cinder block wall at the St Pete Youth
+  Farm. The scene depicts a community garden bustling with anthropomorphic fruit
+  and vegetable characters — tomatoes, bananas, broccoli, eggplants, pumpkins,
+  grapes, sunflowers, and more — all rendered as cartoon people with expressive
+  faces, working in raised garden beds. A smiling sun with a Pac-Man-style face
+  beams down from the top center. An archway reads "STPETE YOUTH FARM Est.
+  2019." The background features green hills, trees laden with fruit, and a city
+  skyline. A pond with a starfruit character sits at the right. Signed
+  @i.B.O.M.S at upper left.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "24 April 2026 — New mural added, GPS from Rob's photo"
+  - "2026-05-03 — Display bio rewritten + searchBio populated using context from #101 (the SHINE 2020 IBOMS YAML). Hook anchored to existing IBOMS/Youth Farm relationship (he co-created the 'Together We Grow' PSTA bus wrap with the Youth Farm in 2021 — this wall extends that). Added canonical IBOMS sources from #101."
+sourceNotes:
+  - "Photo by Rob 2026-04-23, GPS from EXIF"
+  - "https://creativepinellas.org/directory/jabari-reed-diop/"
+  - "https://stpeteartsalliance.org/shine?alias=/2020_SHINE_Mural_IBOMS"
+  - "https://creativepinellas.org/artist/jabari-reed-diop-i-b-o-m-s/"
+  - "https://ilovetheburg.com/tampa-bay-murals-iboms/"
+  - "https://www.instagram.com/i.b.o.m.s/"

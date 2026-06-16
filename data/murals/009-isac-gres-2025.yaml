@@ -4,8 +4,8 @@
 id: 9
 artist: Isac Gres
 year: 2025
-lat: 27.771676
-lng: -82.643886
+lat: 27.771671
+lng: -82.643881
 address: 699 Central Ave
 category: shine
 img: "images/murals/2025/isac-gres.jpeg"
@@ -16,38 +16,84 @@ building: Melting Pot
 instagram: isacgres.art
 basedIn: "Cuba / St. Petersburg, FL"
 
-artistBio: |
-  Isac Gres (b. 1993, Cuba) is a surrealist painter, muralist, and tattoo
-  artist whose work transforms themes of exile, memory, and resilience into
-  dreamlike imagery. After a 12-country journey to the U.S., he developed a
-  symbolic language of doorways, jellyfish, and apples — metaphors of identity
-  and transformation. His large-scale work blends hyperrealistic technique with
-  cosmic surrealism, often featuring a recurring motif of beaming light that he
-  describes as representing "light and good energy." For the 2025 SHINE Origins
-  festival, Gres took on his tallest wall to date on the 600 block of Central
-  Avenue — where the mural movement that launched SHINE began in 2012 —
-  alongside Dreamweaver and John Vitale.
+fieldNotes:
+  - "Walked through 12 countries leaving Cuba in 2019"
+  - "Architectural training from Havana"
+  - "First SHINE festival as artist"
 
-muralDescription: |
-  A massive two-story mural wrapping around the corner of a building in
-  swirling cosmic surrealism. The composition features molten planetary
-  spheres, a city skyline encased in a dripping glass orb, melting candles
-  nodding to Dalí, and a sculptural elephant form emerging from fiery nebula
-  clouds. The palette is dominated by deep space blues and purples contrasted
-  with blazing oranges, reds, and golds. Signed "Isac Gres" in the lower
-  corners of both walls.
+artistBio: |
+  He left Cuba in 2019 and walked through twelve countries — including the
+  Darien Gap — before reaching the United States. He brought his brushes.
+
+  Isac Gres was born in 1993 in Bayamo, Cuba. He studied cubism, hyperrealism,
+  surrealism, and conceptual thinking at the E.I.A Jose Marti Perez art academy,
+  then spent three years studying psychology at the Celia Sanchez Manduley
+  institute, followed by a year of mandatory military service. He left Cuba on
+  November 12, 2019, established a tattoo studio called Isac Ink in Uruguay,
+  then relocated to Miami in 2022 to reunite with family before settling in St.
+  Petersburg.
+
+  His work is contemporary surrealism in mixed media — acrylic, oil, spray
+  paint. Fragmented figures, dreamlike landscapes, hybrid beings. Pathways and
+  doorways recur. So do jellyfish, which he reads as resilience and immortality,
+  and apples, which stand for knowledge and identity. Light drives everything.
+  "Color for me means light," he says, "and also good energy."
+
+  For SHINE Origins 2025 he painted the tallest wall of his career — a
+  surrealist design with melting clocks (a nod to Dali) on the Melting Pot
+  restaurant.
+
+searchBio: |
+  He left Cuba in 2019 and walked through twelve countries — including the
+  Darien Gap — before reaching the United States. He brought his brushes.
+
+  Isac Gres was born November 29, 1993 in Bayamo, Cuba. He studied cubism,
+  hyperrealism, surrealism, and conceptual thinking at the E.I.A Jose Marti
+  Perez art academy, then spent three years studying psychology at the Celia
+  Sanchez Manduley institute, followed by a year of mandatory military service
+  in Cuba's army. He left Cuba on November 12, 2019 and traveled through 12
+  countries including the Darien Gap. He established "Isac Ink" tattoo studio in
+  Uruguay (approximately 2019-2022), then relocated to Miami in 2022 to reunite
+  with family. He worked at a tattoo studio while painting before settling in
+  St. Petersburg, Florida.
+
+  His work is contemporary surrealism in mixed media — acrylic, oil, spray
+  paint. Bold abstractions balancing vibrant color, texture, and form.
+  Fragmented figures, dreamlike landscapes, hybrid beings. Recurring symbols
+  include pathways and doorways, jellyfish (resilience and immortality), and
+  apples (knowledge and identity). Light drives everything: "Color for me means
+  light...and also good energy." He is represented by Patti Suzette Art and has
+  exhibited in South Carolina and multiple galleries nationwide. He has an NFT
+  collection on OpenSea.
+
+  For SHINE Origins 2025 he painted the tallest wall of his career — a
+  surrealist design with melting clocks (a nod to Dali) on the Melting Pot
+  restaurant. Instagram: @isacgres.art.
+
+searchMuralDescription: |
+  A massive two-story mural wrapping around the corner of a building in swirling
+  cosmic surrealism. The composition features molten planetary spheres, a city
+  skyline encased in a dripping glass orb, melting candles nodding to Dalí, and
+  a sculptural elephant form emerging from fiery nebula clouds. The palette is
+  dominated by deep space blues and purples contrasted with blazing oranges,
+  reds, and golds. Signed "Isac Gres" in the lower corners of both walls.
 
 muralInspiration: |
-  The mural is on a restaurant called the Melting Pot, and Gres appreciated
-  how the work represents a melting pot of cultures. The melting clocks are
-  a nod to Dalí.
+  The mural is on a restaurant called the Melting Pot, and Gres appreciated how
+  the work represents a melting pot of cultures. The melting clocks are a nod to
+  Dalí.
 
 muralAwards: ""
-artistAwards: "SHINE 2025 Origins festival artist"
+artistAwards: "SHINE Origins 2025 selected artist"
+furtherWork: []
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://ilovetheburg.com/st-pete-shine-origins/"
   - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
   - "https://83degreesmedia.com/tampa-bay-arts-roundup-shine-mural-festival-arts-annual-more/"
+  - "https://theartisanmagazine.com/isacgres-artist/"
+  - "https://www.pattisuzette.com/copy-of-chase-parker"
+  - "https://www.madsgallery.art/item/409d58eb-c9e0-41b8-bf4c-026c65df0e63/artist/isac-gres"

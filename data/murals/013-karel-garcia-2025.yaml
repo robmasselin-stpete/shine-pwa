@@ -4,50 +4,85 @@
 id: 13
 artist: Karel Garcia
 year: 2025
-lat: 27.762931
-lng: -82.674478
+lat: 27.76287
+lng: -82.674461
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/karel-garcia.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Freedom"
 building: ""
 instagram: karelgarcia.fineartist
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Karel Garcia (b. 1990, Vedado, Cuba) trained as an architect in Havana,
-  completing his degree in 2017. While working as an architect, he reconnected
-  with art through exhibitions including projects at the Habana Espacio
-  Creativo Center, developing his "Human" series exploring the human
-  experience. After emigrating to Florida, he joined the Green Book of Tampa
-  Bay residency program with a studio in St. Petersburg's Warehouse Arts
-  District. The 2025 SHINE Origins festival marked Garcia's first public art
-  installation in America. "My mural is about my history, coming here to
-  America, looking for freedom. So it's about migration, love, freedom,
-  family, and live your truth," he said.
+  His SHINE 2025 mural was his first public art installation in America. He
+  trained as an architect in Havana.
 
-muralDescription: |
-  A wide mural on a cinder block wall depicting bold, swirling ocean waves
-  in deep blues and greens against a golden-orange sky. Three carved wooden
+  Karel Garcia was born December 27, 1990 in Vedado, Cuba. He earned an
+  architecture degree in Havana in 2017, working as an architect while
+  exhibiting art privately and participating in projects at the Habana Espacio
+  Creativo Center. His focus has always been the human figure — sexuality, the
+  bond between humans and nature, consciousness.
+
+  Now based in St. Petersburg, he holds a studio in the Warehouse Arts District
+  through the Green Book of Tampa Bay artist residency. His current series,
+  "Human," explores themes of human experience through detailed drawing and
+  sculpture. His mural work uses bold color — oranges, blues, greens — with
+  stylized graphic linework.
+
+  For SHINE Origins 2025, he painted at 31st Street and 7th Avenue South. The
+  themes were personal: migration, freedom, family, social justice — reflecting
+  his own journey from Cuba.
+
+searchBio: |
+  His SHINE 2025 mural was his first public art installation in America. He
+  trained as an architect in Havana.
+
+  Karel Garcia (sometimes listed as Karel Garcia de Leon) was born December 27,
+  1990 in Vedado, Cuba. He earned an architecture degree in Havana, completed in
+  2017, and worked as an architect while exhibiting art privately. He
+  participated in projects at the Habana Espacio Creativo Center in Havana. His
+  focus is the human figure — sexuality, the bond between humans and nature and
+  environment, consciousness.
+
+  Now based in St. Petersburg, Florida, he holds a studio in the Warehouse Arts
+  District through the Green Book of Tampa Bay artist residency. His notable
+  series "Human" explores themes of human experience and consciousness through
+  detailed drawing and sculpture. His mural work uses bold color — oranges,
+  blues, greens — with stylized graphic linework.
+
+  For SHINE Origins 2025, he painted at 31st Street and 7th Avenue South
+  alongside Amy Ilic-Volpe, Elizabeth Barenis, Zulu Painter, Brain The Genius,
+  and others. The themes were personal: migration, freedom, family, social
+  justice — reflecting his own journey from Cuba. He is listed on Creative
+  Pinellas. Instagram: @karelgarcia.fineartist.
+
+searchMuralDescription: |
+  A wide mural on a cinder block wall depicting bold, swirling ocean waves in
+  deep blues and greens against a golden-orange sky. Three carved wooden
   totem-like hands rise from the waves, and small red paper boats ride the
-  cresting swells — symbols of migration and hope. The flowing, graphic
-  linework gives the waves a stylized, rhythmic energy. Signed "Karel Garcia"
-  in the lower right.
+  cresting swells — symbols of migration and hope. The flowing, graphic linework
+  gives the waves a stylized, rhythmic energy. Signed "Karel Garcia" in the
+  lower right.
 
 muralInspiration: |
   Garcia's mural explores themes of migration, freedom, and social justice,
-  reflecting his own journey from Cuba to America. The paper boats and
-  reaching hands symbolize the search for freedom and family.
+  reflecting his own journey from Cuba to America. The paper boats and reaching
+  hands symbolize the search for freedom and family.
 
 muralAwards: ""
-artistAwards: "Green Book of Tampa Bay artist residency; SHINE 2025 Origins festival artist"
+artistAwards: "Green Book of Tampa Bay artist residency; SHINE Origins 2025 selected artist"
+furtherWork: []
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://creativepinellas.org/artist/karel-garcia/"
   - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
   - "https://ilovetheburg.com/st-pete-shine-origins/"
   - "https://www.tampabay.com/life-culture/entertainment/2025/12/04/shine-mural-festival-st-petersburg-florida-arts-hurricane/"
+  - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
+  - "https://www.axios.com/local/tampa-bay/2025/10/16/st-pete-shine-mural-festival-2025"

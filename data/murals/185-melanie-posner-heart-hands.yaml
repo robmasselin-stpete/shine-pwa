@@ -1,0 +1,128 @@
+# Melanie Posner — Heart Hands (Commissioned)
+
+# ── Required ──
+id: 185
+artist: Melanie Posner
+year: 0
+lat: 27.757783
+lng: -82.638612
+address: St. Petersburg
+category: commercial
+img: "images/murals/commercial/melanie-posner-heart-hands.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: therealmelpoz
+basedIn: "Los Angeles, CA"
+
+fieldNotes:
+  - "Two hands forming a heart with rainbow concentric hearts inside"
+  - "Colorful silhouettes of diverse people flanking the center"
+  - "Awareness ribbon at the center of the heart"
+
+artistBio: |
+  Two hands — one lighter, one darker — form a heart on this wall. Concentric
+  rainbow hearts radiate inward toward a small awareness ribbon. Colorful
+  silhouettes of diverse people flank both sides.
+
+  This is a community/awareness piece — graphic silhouettes and flat color
+  rather than Posner's usual photorealism — celebrating connection, diversity,
+  and care.
+
+  Melanie Posner was born around 1993 outside Philadelphia, moved to Tampa in
+  2013, and earned her BFA in Painting from the University of Tampa in 2016. She
+  is now based in Los Angeles. Her usual signature is photorealistic portraits
+  of women — oversized expressive eyes, vibrant rainbow palettes, psychedelic
+  paisley backgrounds, florals.
+
+  Her commercial commissions include scenic art for Walt Disney World's Star
+  Wars: Galaxy's Edge, the eighteen-foot Hollander Hotel mural for New Belgium
+  Brewing (a woman in a red headscarf, completed in under five days), and a
+  forty-foot wall on the LGBT Center of Los Angeles for TikTok's 2024 "Create
+  the Future" campaign. She was a cast member on Amazon Prime's docuseries Tampa
+  Baes (2021).
+
+  Other St. Pete walls: the Mint House on 11th St N (a woman in giant reflective
+  sunglasses with the waterfront skyline in the lenses), the Iryna Zarutska
+  memorial on Central Ave (gold-blonde hair, pink hibiscus, mint-to-gold), and
+  her SHINE 2018 wall "New Beginnings" — a 23-by-65-foot photorealistic woman
+  lying on her side — at 4139 7th Terrace South.
+
+searchBio: |
+  Two hands — one lighter, one darker — form a heart on this wall. Concentric
+  rainbow hearts radiate inward toward a small awareness ribbon. Colorful
+  silhouettes of diverse people flank both sides. This is a community/awareness
+  piece — graphic silhouettes and flat color rather than Posner's usual
+  photorealism — celebrating connection, diversity, and care.
+
+  Melanie "Mel" Posner was born around 1993 in a small town just outside
+  Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
+  the University of Tampa in 2016, where she also studied art therapy. She was
+  previously based in Gulfport, Florida, and is now in Los Angeles. Her usual
+  style is photorealistic portraits of women — oversized expressive eyes,
+  vibrant rainbow color palettes, psychedelic paisley backgrounds, floral
+  elements. She blends lifelike detail with touches of dreamy surrealism. She
+  works in oil on canvas, collage, prints, and large-scale murals. She sources
+  her subjects from Pinterest, Google, and social media, looking for eyes,
+  story, and confidence. "Working large is just really exciting," she says. "I
+  feel like I'm a little bit more free doing murals." Her stated philosophy:
+  paint strong, confident, independent women to be inspired by them.
+
+  Commercial clients include Walt Disney World (scenic artwork for Star Wars:
+  Galaxy's Edge at Hollywood Studios, Orlando), New Belgium Brewing (the
+  eighteen-foot Hollander Hotel mural of a woman in a red headscarf with a glass
+  of Mural Agua Fresca Cerveza, completed in under five days), Amazon Prime
+  Video (a mural on a promotional bus for Tampa Baes), and TikTok. For TikTok's
+  2024 "Create the Future" campaign, she painted a forty-foot mural on the LGBT
+  Center of Los Angeles at 8745 Santa Monica Blvd in West Hollywood.
+
+  She was a cast member on all eight episodes of Tampa Baes (Amazon Prime Video,
+  2021), a docuseries about a Tampa Bay lesbian friend group produced by 3 Ball
+  Productions and filmed over roughly ten weeks starting April 2021. Her oil
+  painting "Passion" (also called "Summer and Marissa") appears on screen. She
+  worked for years as a bartender at The Honey Pot, a landmark LGBTQ+ club in
+  Ybor City, Tampa.
+
+  Other St. Petersburg walls include: the Mint House at 77 11th St N (a 2023
+  commercial commission — a woman in giant reflective sunglasses with the
+  waterfront skyline reflected in the lenses, polka dots, palm trees), the Iryna
+  Zarutska memorial mural on the 2200 block of Central Ave (a 2026 portrait of
+  the 23-year-old Ukrainian refugee killed on the Charlotte light rail in August
+  2025; mint-to-gold background, pink hibiscus), and her SHINE 2018 Open Call
+  mural "New Beginnings" at 4139 7th Terrace South — twenty-three feet high by
+  sixty-five feet long, a photorealistic woman lying horizontally on her side,
+  her hand cupping the right side of her face, one eye peeking through her
+  fingers. She has exhibited at Enigma gallery in downtown St. Petersburg.
+
+  Instagram: @therealmelpoz. Website: melanieposner.com. Signed @therealmelipoz
+  at lower right of this wall.
+
+searchMuralDescription: |
+  Two hands — one lighter-skinned, one darker-skinned — form a heart shape at
+  the center of a white cinder block wall. Inside the heart, concentric
+  rainbow-colored hearts radiate inward toward a small awareness ribbon at the
+  center. Flanking the hands on both sides are overlapping silhouettes of people
+  in profile — men and women with different hairstyles and builds — rendered in
+  bold, flat colors: yellow, green, pink, magenta, blue, teal, orange, and red.
+  The silhouettes layer and overlap transparently, creating rich color
+  intersections. Signed @therealmelipoz at lower right.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "24 April 2026 — New mural added, GPS from Rob's photo"
+  - "2026-05-03 — Display bio rewritten + searchBio populated using context from #120 (Mint House Posner). Hook anchored to this wall's heart/diverse-silhouettes design. Notes that this is an awareness/community piece — flat graphic style rather than her usual photorealism. Cross-references to other Posner walls (#120 Mint House, #139 Iryna memorial, #119 SHINE 2018 New Beginnings)."
+sourceNotes:
+  - "Photo by Rob 2026-04-23, GPS from EXIF"
+  - "https://stpetecatalyst.com/melanie-posner/"
+  - "https://www.melanieposner.com/"
+  - "https://stpeteartsalliance.org/shine?alias=/2018_SHINE_Mural_Melanie_Posner"
+  - "https://outcoast.com/get-to-know-mel-posner-from-tampa-baes/"
+  - "https://www.instagram.com/therealmelpoz/"

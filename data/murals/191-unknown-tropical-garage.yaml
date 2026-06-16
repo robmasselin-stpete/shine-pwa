@@ -1,0 +1,46 @@
+# Unknown — Tropical Flowers Garage Door (Commissioned)
+
+# ── Required ──
+id: 191
+artist: Unknown
+year: 0
+lat: 27.772445
+lng: -82.663788
+address: 5th Ave S
+category: commercial
+img: "images/murals/commercial/unknown-tropical-garage.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: ""
+basedIn: ""
+
+artistBio: |
+  Artist unknown. A photorealistic tropical garden scene painted on a
+  residential garage door.
+
+searchBio: ""
+
+searchMuralDescription: |
+  A photorealistic tropical garden scene painted on a residential garage door. A
+  large bird of paradise flower with orange and yellow petals dominates the
+  center. Purple and white orchids bloom on the left. Lush green monstera and
+  tropical leaves fill the background. A small sloth peeks out from behind
+  foliage on the right. The painting is highly detailed and naturalistic,
+  filling the entire garage door surface.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+status: research  # unidentified artist — kept for ongoing research, not exported
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "26 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-26, GPS from EXIF"
+  - "Artist unknown, residential garage door"

@@ -1,0 +1,80 @@
+# Vitale Bros — Ride 'em Cowboy (commercial)
+
+# ── Required ──
+id: 156
+artist: Vitale Bros
+year: 0
+lat: 27.771234
+lng: -82.666803
+address: "2451 Central Ave"
+category: commercial
+img: "images/murals/commercial/vitale-bros-ridem-cowboy.jpeg"
+
+# ── Optional ──
+title: "Ride 'em Cowboy"
+building: "Ride 'em Cowboy bar"
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Vitale Bros — family tradition since 1992"
+  - "Set design for Spring Breakers"
+  - "Local St. Pete legends"
+
+artistBio: |
+  Their first mural came from a sketch on a paper napkin, handed to a restaurant
+  owner. That was 1992.
+
+  Johnny Vitale and his brother Paul started Vitale Bros in Tampa Bay
+  hand-lettering signs and painting storefront windows. Their parents are
+  artists. So were their grandparents. No formal training — just family
+  tradition and thirty-plus years of practice. Their late aunt Nancy, who had
+  Down syndrome and attended Parc Center for Disabilities, turned out to be an
+  artist too, discovered in her final decade.
+
+  In the late 1990s they opened a warehouse studio that hosted group art, music,
+  and fashion shows that helped birth St. Pete's emerging art scene. They
+  collaborated on set design for Harmony Korine's Spring Breakers. They have
+  painted for the Tampa Bay Rays, the Buccaneers, L'Oreal, and dozens of local
+  businesses. They call themselves the "mural police" — restoring damaged walls
+  around the city for free.
+
+  In 2023, Johnny launched Overspray, a street art shop and graffiti school now
+  based in Gulfport, teaching tagging, block letters, Wildstyle, and advanced
+  mural technique to classes of up to twenty students. After Hurricane Milton,
+  they painted free signs for businesses that lost theirs.
+
+  They have painted SHINE every year since its inception — "The Cool Kids" in
+  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
+  2025, Johnny painted two solo murals: one on the 600 block where it all began,
+  and another at The Factory on Fairfield Ave South with his daughter Sionna.
+
+searchBio: |
+  See Vitale Bros entries (ids 11, 12, 38, 73, 142) for full search bio.
+
+searchMuralDescription: |
+  A vibrant retro-style mural framed by a painted trompe-l'oeil wooden frame
+  with visible grain and nail heads. On the left, a pin-up cowgirl with brown
+  curls, a red cowboy hat, and a studded red bustier smiles confidently. On the
+  right, a cowboy in blue jeans and hat swings a lasso while riding a green
+  alligator through a tropical Florida landscape — palm trees, hibiscus flowers,
+  a sandy beach, and a warm sunset sky. "Ride 'em Cowboy" is lettered in bold
+  cursive across the top center. The Vitale Bros signature is visible at the
+  bottom left. The whole piece has a classic Americana postcard feel with a
+  distinctly Florida twist.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE festival artist every year since inception; set design for Spring Breakers (Harmony Korine)"
+
+furtherWork:
+  - name: "vitalebrothers.com"
+    url: "https://vitalebrothers.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "GPS from Rob's photo, vitale bros commercial.jpeg"
+  - "Building identified by Rob as Ride 'em Cowboy bar"

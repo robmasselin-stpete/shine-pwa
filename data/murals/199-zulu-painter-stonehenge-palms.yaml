@@ -1,0 +1,109 @@
+# Zulu Painter — Stonehenge Park (palm silhouettes)
+
+# ── Required ──
+id: 199
+artist: Zulu Painter
+year: 0
+lat: 27.79917
+lng: -82.73745
+address: ""
+category: commercial
+img: "images/murals/unknown/zulu-painter-stonehenge-palms.jpeg"
+
+# ── Optional ──
+title: "Stonehenge Park"
+building: "Stonehenge Park (Tyrone Blvd overpass on Pinellas Trail)"
+instagram: zulupainter1
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Zulu Painter usually crowds the wall — gators, portraits, geometric patterns
+  stacked on top of each other. At Stonehenge Park he painted three palm
+  silhouettes and stopped.
+
+  Carlos Culbertson — Zulu Painter — is a native West Virginian who started
+  pursuing art at age eight. He holds a degree in fine arts painting and works
+  out of a studio at the ArtsXchange on 22nd Street South. He paints in acrylic
+  and spray paint, favors reclaimed materials, and has worked as a scenic artist
+  for Disney on Ice, the Science Channel, HSN, and SeaWorld Parks and
+  Entertainment.
+
+  His mural projects span the country: Denver, Chattanooga, Atlanta, Austin,
+  Miami, Las Vegas, Los Angeles, Kansas City, Flint, and Binghamton, New York —
+  where he painted "Cultivate Kindness," a 40-foot mural with West Side Middle
+  School students. He is a four-time SHINE artist (2016, 2017, 2018, 2024) and
+  returned for SHINE Origins 2025. He received a St. Pete Arts Alliance Muse
+  Award in 2022.
+
+searchBio: |
+  Three palm trees in silhouette against a soft turquoise sky, with sand and
+  clouds beneath. The Stonehenge Park sign in green Old-English lettering hangs
+  on the upper-center pillar. Signed "zulupainter" in cyan in the lower-right
+  corner. Painted on a low concrete wall under the Tyrone Blvd overpass on the
+  Pinellas Trail in St. Petersburg, Florida.
+
+  Carlos Culbertson — Zulu Painter — is a native West Virginian who started
+  pursuing art in elementary school and never looked back. He holds a degree in
+  fine arts painting and works out of his studio at the ArtsXchange in St.
+  Petersburg, located at 515 22nd Street South, Studio 111. He works in acrylic
+  and spray paint, favors reclaimed materials, and produces work across
+  traditional mediums, body paint, special effects, and scenic art. He calls his
+  approach "Mindful Murals."
+
+  His scenic art client list includes The Science Channel, Disney on Ice, Home
+  Shopping Network (HSN), SeaWorld Parks and Entertainment, and a series of
+  national ad campaigns. He has also served as a Representative Artist for Visit
+  Florida.
+
+  His mural work spans the country: Denver, Chattanooga, Atlanta, Austin, Miami,
+  Las Vegas, Los Angeles, Kansas City, Flint, Sanford (FL), Jacksonville, and
+  Binghamton, New York. In Binghamton he painted "Spread Love" — an
+  approximately 40-foot mural on the M&T Bank building at 68 Exchange Street. He
+  has painted at Paint Memphis 2019, the 2018 Colorado Black Arts Festival, the
+  48 Hour Mural Competition in Jacksonville (Sept 29, 2023), HULAWEEN at Spirit
+  of Suwannee, and the Art With Me Festival in Miami.
+
+  In St. Petersburg, he painted CASA Family Justice Center (Arlington Ave,
+  domestic violence survivor themes) and a portrait of Betty Reid Soskin at the
+  Florida Botanical Gardens in Largo for the 2024 Pinellas African American
+  Heritage Celebration. He is a four-time SHINE Mural Festival artist: "Moon
+  Beam Dream 2" (2016), "Legacy" with Thirst (2017), "Wisdom, Growth, Progress"
+  (2018), and the AMIKids wall (2024). He returned for SHINE Origins 2025 at
+  31st St & 7th Ave South. He collaborated with Reid Jenkins and Iboms on
+  "Imagine Gas Plant and Laurel Park" at Campbell Park Recreational Center.
+
+  In 2022 he received a St. Petersburg Arts Alliance Muse Award. He has also
+  been recognized with a 2021 Business Arts Award, was a winner of the 2021 UF
+  Big Idea Competition, and was featured in the Innovate Gainesville Book.
+
+  Studio open Mon–Fri, 9am–6pm. Contact: info@zulupainter.com, 727-768-4737.
+  Website: zulupainter.com. Instagram: @zulupainter1. Facebook:
+  facebook.com/ZULUPAINTER1.
+
+searchMuralDescription: |
+  A wide concrete wall under the Tyrone Blvd overpass at the entrance to
+  Stonehenge Park on the Pinellas Trail. Three deep-teal coconut palm trees
+  stand in silhouette across the wall, rooted in pale sand. Behind them, a soft
+  turquoise-to-aqua sky holds soft white cumulus clouds. The horizon line is a
+  band of cream-colored beach. A green Old-English-lettered "Stonehenge Park"
+  sign with white border is mounted on the upper-center pillar above the middle
+  palm. Signed "zulupainter" in cyan in the lower-right corner. The composition
+  reads as a stripped-down beachscape — silhouettes only, no detail on the trees
+  themselves, letting the negative space carry it.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "St. Pete Arts Alliance Muse Award (2022); SHINE 2016, 2017, 2018, 2024 selected artist"
+furtherWork:
+  - name: "zulupainter.com"
+    url: "https://www.zulupainter.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-04 — New mural added by Rob: Zulu Painter's Stonehenge Park palm silhouettes wall under the Tyrone Blvd overpass. GPS from photo IMG_0254.jpeg EXIF (27.79917, -82.73745). Year unknown — flagged for follow-up. Bio body adapted from #019 Zulu Painter SHINE Origins 2025 yaml."
+sourceNotes:
+  - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0254.jpeg)"
+  - "https://www.zulupainter.com/about.html"
+  - "https://creativepinellas.org/magazine/the-mindful-murals-of-zulu-painter/"
+  - "https://stpeteartsalliance.org/zulupainter-2"

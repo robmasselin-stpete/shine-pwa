@@ -1,0 +1,91 @@
+# Quinn Cale — SHINE 2025 (Tyrone Middle School)
+
+# ── Required ──
+id: 197
+artist: Quinn Cale
+year: 2025
+lat: 27.79366
+lng: -82.72751
+address: "2375 66th St N"
+category: shine
+img: "images/murals/2025/quinn-cale-tyrone-middle.jpeg"
+
+# ── Optional ──
+title: "Pixel Reacher"
+building: "Tyrone Middle School"
+instagram: quinnsessential
+basedIn: "Tampa, FL"
+
+artistBio: |
+  She taught kids digital art on iPads at Apple. Now she's painted a
+  CRT-monitor-headed teacher on the side of Tyrone Middle School's Center for
+  Innovation and Digital Learning.
+
+  Quinn Cale is from Middletown, Delaware, now based in Tampa. She is
+  self-taught — no formal art degree. She worked sales at Apple before pivoting
+  to Apple Creative around 2020. The pivot stuck.
+
+  Her work runs on late-90s and early-2000s nostalgia: arcade cabinets,
+  pixelated cursors, TV-headed figures, retro chrome. She uses Adobe Aero to
+  overlay augmented reality animations on her paintings.
+
+  SHINE Origins 2025 brought her to Tyrone Middle School for her second SHINE
+  wall — her 2024 piece at Main Grove had an AR cat-and-mouse animation.
+
+searchBio: |
+  A figure with a CRT monitor for a head, brain glowing inside the screen, robot
+  hands gesturing — Quinn Cale painted a literal computer-headed teacher for a
+  building literally called the Center for Innovation and Digital Learning.
+  Signed lower right with her "C" mark and 2025.
+
+  Quinn Cale is from Middletown, Delaware, now based in Tampa, Florida. She is
+  self-taught with no formal art degree, having started painting on scrap wood
+  as a teenager. She worked in sales at Apple, then became an Apple Creative
+  around 2020, teaching children digital art on iPads.
+
+  Her style channels late-90s and early-2000s nostalgia — arcade machines,
+  tropical motifs, instruments, TV-headed figures — in bold surreal color
+  compositions using surrealism and color theory. She pioneers augmented reality
+  overlays on her paintings using Adobe Aero (no-code platform): viewers scan
+  with a phone or iPad and the painting animates.
+
+  Her SHINE festival work began with SHINE 2024, where she painted at 225 2nd
+  Ave North (Main Grove) in St. Petersburg featuring an animated cat and mouse
+  with AR. For SHINE Origins 2025, she painted this wall at Tyrone Middle School
+  (2375 66th St N) — the Center for Innovation and Digital Learning building.
+  Per quinncale.com, additional documented festivals include Tampa Walls (Tampa,
+  2022), Guava Paint Jam (Tampa, 2025), Hot Walls (St. Petersburg, 2025), and
+  Fish Food on the Tampa Trail (Tampa, 2025). She has exhibited at MOSI (Tampa)
+  and the Straz Center "First Annual Black Art" show with "Fire Fist Mario
+  8-Bit." She was an inaugural Remote Studio Artist at the Gasparilla Festival
+  of the Arts. Website: quinncale.com. Instagram: @quinnsessential.
+
+searchMuralDescription: |
+  A large mural on the side of Tyrone Middle School's Center for Innovation and
+  Digital Learning building. The figure's head is a vintage CRT computer monitor
+  with a glowing brain on the screen, surrounded by small icons connected by
+  lines like a neural map. The figure wears a lime-green polo shirt; both hands
+  are articulated robot hands, one raised palm-out, the other gesturing open. A
+  pixelated white cursor arrow floats to the left. Yellow, light green, dark
+  green, and teal pixelated squares scatter across the cream-colored wall like
+  screen artifacts. Above the figure: the green-and-yellow Tyrone Eagle school
+  mascot logo and the building's name "CENTER FOR INNOVATION AND DIGITAL
+  LEARNING" in silver dimensional letters. Signed lower right with a stylized
+  "C" and "2025."
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2024 selected artist; SHINE Origins 2025 selected artist (Tyrone Middle School)"
+furtherWork:
+  - name: "quinncale.com"
+    url: "https://quinncale.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-04 — New mural added by Rob: Quinn Cale's SHINE Origins 2025 wall at Tyrone Middle School. GPS from photo IMG_0262.jpeg EXIF (27.79366, -82.72751). Image saved as quinn-cale-tyrone-middle.jpeg."
+  - "2026-06-16 — Title changed from 'Center for Innovation and Digital Learning' (the building's name) to 'Pixel Reacher' to match the SPAA mural directory listing."
+sourceNotes:
+  - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0262.jpeg)"
+  - "https://quinncale.com"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"

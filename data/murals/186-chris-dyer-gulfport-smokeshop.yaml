@@ -1,0 +1,60 @@
+# Chris Dyer — Gulfport Smoke Shop (Commissioned)
+
+# ── Required ──
+id: 186
+artist: Chris Dyer
+year: 0
+lat: 27.748562
+lng: -82.699713
+address: Gulfport
+category: commercial
+img: "images/murals/commercial/chris-dyer-gulfport-smokeshop.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Smoke Shop"
+instagram: chris_dyer
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Painted in 45 countries"
+  - "Lives in a purple house in Gulfport"
+  - "Psychedelic spiritual art meets street culture"
+
+artistBio: |
+  He has painted in forty-five countries. His mural is in the Bob Marley Museum.
+
+  Chris Dyer was born in Ottawa in 1979, moved to Lima, Peru at four, and
+  returned to Canada at seventeen. He studied illustration at Dawson College in
+  Montreal and trained under visionary masters Alex Grey, Robert Venosa, and
+  Amanda Sage. His style fuses psychedelic imagery, Incan and pre-Columbian
+  influences, sacred geometry, and 1980s skate culture.
+
+  He founded the Positive Creations brand in 2003 — clothing, tapestries, books,
+  skateboards, footwear. He now lives in a purple house in Gulfport with his
+  partner Paulina Casati.
+
+searchBio: ""
+
+searchMuralDescription: |
+  A psychedelic mural covering the front facade of a purple smoke shop in
+  Gulfport. The central figure is a symmetrical creature with multiple eyes and
+  ornate geometric patterns in Chris Dyer's signature style — greens, golds,
+  pinks, and purples interlocking in sacred geometry motifs. A lightning bolt
+  runs through the design. The surrounding wall is painted deep purple with pink
+  drip effects along the roofline. The shop sign reads "SMOKE SHOP — CIGARS &
+  TOBACCO" in green lettering above.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "positivecreations.ca"
+    url: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "24 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-23, GPS from EXIF"

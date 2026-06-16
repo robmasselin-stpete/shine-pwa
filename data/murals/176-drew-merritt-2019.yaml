@@ -1,0 +1,89 @@
+# Drew Merritt — 2019
+
+# ── Required ──
+id: 176
+artist: Drew Merritt
+year: 2019
+lat: 27.778247
+lng: -82.646402
+address: 551 Dr. Martin Luther King Jr. St N
+category: shine
+img: "images/murals/2019/drew-merritt.jpeg"
+
+# ── Optional ──
+title: "Mask Off"
+building: ""
+instagram: drewmerritt
+basedIn: "Los Angeles, CA"
+
+artistBio: |
+  He grew up on a cattle ranch in New Mexico. No formal art training — he taught
+  himself painting between farm chores and graffiti experiments.
+
+  Drew Merritt was born May 29, 1985, on the outskirts of Clovis, New Mexico. He
+  splits time between Los Angeles and southern New Mexico. His style is vivid
+  photorealism that blends classical Renaissance-inspired imagery with
+  contemporary settings. He works in oil, acrylic, spray paint, and 24-karat
+  gold leaf on canvas, panels, and walls.
+
+  His figurative portraiture focuses on human emotion, the passage of time, and
+  what he calls "showcasing flaws — physical, emotional, or environmental." The
+  contrast between classical beauty and modern grit runs through everything.
+
+  Clients include Tesla, Sony PlayStation, UFC, Steve Aoki, and Universal Music
+  Group. He has shown at Thinkspace Projects (Los Angeles), SCOPE Basel, SCOPE
+  Miami Beach, Spoke Art (New York), West Chelsea Contemporary (Austin),
+  NextStreet Gallery (Paris), and Treason Gallery (Seattle). He has painted at
+  POW! WOW! Hawaii and festivals worldwide.
+
+  For SHINE 2019, he painted "Mask Off" in St. Petersburg.
+
+searchBio: |
+  Drew Merritt was born May 29, 1985, on the outskirts of Clovis, New Mexico. He
+  grew up on a farm and cattle ranch. Self-taught — no formal art training. He
+  experimented with graffiti, street art, and portraiture on the ranch, then
+  moved to Los Angeles where he realized he could make a career of it. He now
+  splits time between LA and southern New Mexico.
+
+  His style is vivid photorealism blending classical Renaissance imagery with
+  contemporary settings. He works in oil, acrylic, spray paint, and 24k gold
+  leaf on canvas, panels, and walls. Themes: human emotion, passage of time,
+  compassion, isolation, showcasing flaws.
+
+  Exhibitions: Thinkspace Projects (LA), SCOPE Basel, SCOPE Miami Beach, Spoke
+  Art NYC, West Chelsea Contemporary (Austin), NextStreet Gallery (Paris),
+  Treason Gallery (Seattle), POW! WOW! Hawaii (2017, 2020). Clients: Tesla, Sony
+  PlayStation, UFC, Steve Aoki, Universal Music Group. Notable works: "Sav"
+  (2018), "Let Them Eat Cake" (2018), "Trap Queen" (2016).
+
+  For SHINE 2019, he painted "Mask Off" at 551 MLK Jr. St N in St. Petersburg.
+  Website: drewmerritt.com. Instagram: @drewmerritt.
+
+searchMuralDescription: |
+  A massive 89-by-12-foot photorealistic mural on a gray stucco wall. A woman
+  with wild, curly brown-gold hair fills the left side — her face rendered in
+  extraordinary detail with blue eyes, heavy brows, and a direct gaze. Her right
+  arm extends forward, hand gripping a small alligator by the jaw, its mouth
+  pried open to reveal rows of teeth. The alligator's scales and the woman's
+  skin are painted with equal hyperrealistic precision. Lavender nail polish is
+  visible on her fingertips. The background is bare white wall, making the
+  figures appear to emerge from the surface. The model is Kari Michelle. Painted
+  entirely in spray paint.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2019 selected artist; POW! WOW! Hawaii; clients include Tesla, Sony PlayStation, UFC"
+
+furtherWork:
+  - name: "drewmerritt.com"
+    url: "https://www.drewmerritt.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "22 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-21, GPS from EXIF"
+  - "https://www.visitstpeteclearwater.com/profile/mask-off-edge-district/140781"
+  - "https://www.drewmerritt.com/about-drew-merritt"
+  - "https://wcc.art/artist/drew-merritt"
+  - "https://thinkspaceprojects.com/artists/drew-merritt/"

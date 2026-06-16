@@ -66,6 +66,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   flex-shrink: 0; opacity: 0.6;
 }
 .stop-item .remove-btn:hover { opacity: 1; }
+.stop-reorder {
+  display: flex; flex-direction: column; gap: 1px; flex-shrink: 0;
+}
+.reorder-btn {
+  width: 22px; height: 16px; border: 1px solid #555; border-radius: 3px;
+  background: #333; color: #aaa; font-size: 9px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0; -webkit-tap-highlight-color: transparent;
+}
+.reorder-btn:active { background: #1E88E5; color: #fff; }
+.reorder-btn:disabled { opacity: 0.2; cursor: default; }
 
 .available-item {
   padding: 6px 8px; margin-bottom: 2px; border-radius: 4px;
@@ -150,17 +161,21 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   <button id="add-poi">+ POI</button>
   <button id="add-commercial">+ Commercial</button>
   <button id="delete-point" class="danger" style="display:none">Delete Point</button>
-  <button id="undo-btn" style="display:none;background:#FFA726;color:#000;border-color:#FFA726" onclick="doUndo()">Undo</button>
+  <button id="split-segment" style="display:none;background:#29B6F6;color:#000;border-color:#29B6F6">Split Here</button>
+  <button id="add-segment" style="display:none;background:#4CAF50;color:#fff;border-color:#4CAF50">+ Segment</button>
+  <button id="delete-segment" class="danger" style="display:none">Delete Segment</button>
+  <button id="undo-btn" style="display:none;background:#FFA726;color:#000;border-color:#FFA726">Undo</button>
   <span class="spacer"></span>
   <span class="mode-label" id="mode-label"></span>
   <span class="info" id="status"></span>
+  <span style="font-size:10px;color:#666">v11</span>
   <button class="primary" id="copy-changes">Export All</button>
-  <button class="primary" id="copy-current" style="background:#1E88E5;border-color:#1E88E5" onclick="exportCurrentRoute()">Export Route</button>
+  <button class="primary" id="copy-current" style="background:#1E88E5;border-color:#1E88E5">Export Route</button>
 </div>
 
 <div id="map"></div>
 <div id="sidebar"></div>
-<div id="output"><div id="output-bar"><button id="copy-btn" onclick="copyOutput()">📋 Copy to Clipboard</button><button onclick="document.getElementById('output').classList.remove('open')" style="background:#555">Close</button></div><textarea id="output-text" readonly></textarea></div>
+<div id="output"><div id="output-bar"><button id="copy-btn">📋 Copy to Clipboard</button><button id="close-output" style="background:#555">Close</button></div><textarea id="output-text" readonly></textarea></div>
 
 <div id="new-route-overlay"></div>
 <div id="new-route-dialog">
@@ -175,8 +190,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
 </div>
 
 <script type="module">
-import { murals } from '../js/data.js';
-import { ROUTE_PATHS } from '../js/routes.js';
+const { murals } = await import('../js/data.js?v=' + Date.now());
+const { ROUTE_PATHS } = await import('../js/routes.js?v=' + Date.now());
 
 console.log('ROUTE_PATHS loaded:', Object.keys(ROUTE_PATHS));
 
@@ -189,11 +204,13 @@ const ROUTE_DEFS = [
   { id: 'methodist-town', name: 'Methodist Town',
     ids: [4, 108, 61, 60, 24, 114, 64] },
   { id: 'tropicana-field', name: 'Tropicana Field',
-    ids: [59, 103, 20, 52, 44, 123, 16, 125, 18, 131] },
+    ids: [59, 103, 163, 133, 171, 138, 52, 44, 123, 16, 125, 131, 18] },
   { id: 'central-ave', name: 'Central Ave',
-    ids: [48, 122, 62, 55, 76, 71, 88, 38, 101] },
+    ids: [48, 122, 62, 55, 156, 173, 76, 174, 71, 88, 38, 151, 101] },
   { id: 'arts-district', name: 'Arts District',
-    ids: [140, 90, 84, 72, 29, 39, 10, 25, 12, 93, 121, 50, 79] },
+    ids: [140, 136, 90, 84, 72, 29, 93, 121, 50, 79, 167, 168] },
+  { id: 'pinellas-trail', name: 'Pinellas Trail',
+    ids: [26, 78, 32, 58, 170, 168, 29, 157, 8, 46, 39, 166, 189, 12, 25] },
 ];
 
 // ── State ──
@@ -213,6 +230,7 @@ const editPaths = JSON.parse(JSON.stringify(ROUTE_PATHS)); // deep copy for edit
 const pathDirty = {};  // routeId → true if modified
 let pathPolylines = [];
 let pathVertexMarkers = [];
+let pathLabels = [];
 let showPaths = true;
 
 // ── POI state ──
@@ -224,8 +242,8 @@ let poiNextId = 1;
 
 // ── Map ──
 const map = L.map('map').setView([27.771, -82.649], 15);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 20, attribution: '&copy; OpenStreetMap'
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO'
 }).addTo(map);
 
 // ── User location ──
@@ -259,17 +277,22 @@ populateDropdown();
 
 // ── Icons ──
 function makeIcon(color, label, size = 28) {
+  const tap = Math.max(size + 16, 44); // minimum 44px tap target
+  const offset = (tap - size) / 2;
   return L.divIcon({
     className: '',
     html: `<div style="
+      width:${tap}px;height:${tap}px;
+      display:flex;align-items:center;justify-content:center;
+    "><div style="
       width:${size}px;height:${size}px;border-radius:50%;
       background:${color};border:2px solid #fff;
       color:#fff;font-size:${size < 24 ? 8 : 11}px;font-weight:700;
       display:flex;align-items:center;justify-content:center;
       box-shadow:0 2px 6px rgba(0,0,0,0.4);
-    ">${label}</div>`,
-    iconSize: [size, size],
-    iconAnchor: [size/2, size/2],
+    ">${label}</div></div>`,
+    iconSize: [tap, tap],
+    iconAnchor: [tap/2, tap/2],
   });
 }
 
@@ -296,7 +319,7 @@ function showRoute(defId, fitBounds = true) {
 
   const bounds = [];
 
-  // Route stop markers (red, draggable)
+  // Route stop markers (green=locked, red=unlocked/draggable)
   def.ids.forEach((id, i) => {
     const m = muralById[id];
     if (!m || !m.lat || !m.lng) return;
@@ -304,16 +327,53 @@ function showRoute(defId, fitBounds = true) {
     if (!originalPos[id]) originalPos[id] = { lat: m.lat, lng: m.lng };
 
     const marker = L.marker([pos.lat, pos.lng], {
-      draggable: true, icon: makeIcon('#E53935', i + 1),
+      draggable: false, icon: makeIcon('#64B5F6', i + 1),
     }).addTo(map);
     marker.muralId = id;
+    marker._locked = true;
+
+    function toggleLock() {
+      if (marker._locked) {
+        marker._locked = false;
+        marker.dragging.enable();
+        marker.setIcon(makeIcon('#E53935', i + 1));
+      } else {
+        marker._locked = true;
+        marker.dragging.disable();
+        marker.setIcon(makeIcon('#64B5F6', i + 1));
+      }
+    }
+
+    marker.on('dblclick', (e) => {
+      L.DomEvent.stopPropagation(e);
+      toggleLock();
+    });
+    // Long-press also toggles lock (easier with Apple Pencil)
+    let _lpt;
+    function startLp() { _lpt = setTimeout(toggleLock, 600); }
+    function cancelLp() { clearTimeout(_lpt); }
+    marker.on('mousedown', startLp);
+    marker.on('mouseup mouseout', cancelLp);
+    marker.getElement()?.addEventListener('touchstart', startLp, { passive: true });
+    marker.getElement()?.addEventListener('touchend', cancelLp);
+    marker.getElement()?.addEventListener('touchcancel', cancelLp);
+    // Defer touch binding until marker is on DOM
+    setTimeout(() => {
+      const el = marker.getElement();
+      if (el) {
+        el.addEventListener('touchstart', startLp, { passive: true });
+        el.addEventListener('touchend', cancelLp);
+        el.addEventListener('touchcancel', cancelLp);
+      }
+    }, 100);
 
     marker.bindPopup(() => {
       const p = changes[id] || { lat: m.lat, lng: m.lng };
       const div = document.createElement('div');
       div.innerHTML = `<b>${i+1}. ${m.a}</b><br>${m.t || ''}<br>
         <small>${p.lat.toFixed(6)}, ${p.lng.toFixed(6)}</small>
-        ${changes[id] ? '<br><em style="color:#f90">moved</em>' : ''}`;
+        ${changes[id] ? '<br><em style="color:#f90">moved</em>' : ''}
+        <br><em style="color:${marker._locked ? '#4CAF50' : '#E53935'}">${marker._locked ? '🔒 Locked — hold or double-tap to unlock' : '🔓 Unlocked — hold or double-tap to lock'}</em>`;
       const btn = document.createElement('button');
       btn.className = 'popup-remove-btn';
       btn.textContent = 'Remove from route';
@@ -322,6 +382,10 @@ function showRoute(defId, fitBounds = true) {
       return div;
     });
 
+    marker.on('dragstart', () => {
+      const prev = changes[id] || { lat: m.lat, lng: m.lng };
+      pushMuralUndo(id, prev.lat, prev.lng);
+    });
     marker.on('dragend', () => {
       const ll = marker.getLatLng();
       changes[id] = { lat: parseFloat(ll.lat.toFixed(6)), lng: parseFloat(ll.lng.toFixed(6)) };
@@ -334,26 +398,70 @@ function showRoute(defId, fitBounds = true) {
     bounds.push([pos.lat, pos.lng]);
   });
 
-  // Background markers (gray, small) — murals NOT on this route
+  // Background markers (gray=locked, small) — murals NOT on this route
   const routeIdSet = new Set(def.ids);
   murals.forEach(m => {
     if (!m.lat || !m.lng || routeIdSet.has(m.id)) return;
     const pos = changes[m.id] || { lat: m.lat, lng: m.lng };
     const marker = L.marker([pos.lat, pos.lng], {
-      icon: makeIcon('#555', m.id, 20),
+      draggable: false, icon: makeIcon('#4CAF50', m.id, 20),
     }).addTo(map);
     marker.muralId = m.id;
+    marker._locked = true;
+
+    function toggleBgLock() {
+      if (marker._locked) {
+        marker._locked = false;
+        marker.dragging.enable();
+        marker.setIcon(makeIcon('#E53935', m.id, 20));
+      } else {
+        marker._locked = true;
+        marker.dragging.disable();
+        marker.setIcon(makeIcon('#4CAF50', m.id, 20));
+      }
+    }
+
+    marker.on('dblclick', (e) => {
+      L.DomEvent.stopPropagation(e);
+      toggleBgLock();
+    });
+    let _lpt2;
+    function startLp2() { _lpt2 = setTimeout(toggleBgLock, 600); }
+    function cancelLp2() { clearTimeout(_lpt2); }
+    marker.on('mousedown', startLp2);
+    marker.on('mouseup mouseout', cancelLp2);
+    setTimeout(() => {
+      const el = marker.getElement();
+      if (el) {
+        el.addEventListener('touchstart', startLp2, { passive: true });
+        el.addEventListener('touchend', cancelLp2);
+        el.addEventListener('touchcancel', cancelLp2);
+      }
+    }, 100);
 
     marker.bindPopup(() => {
       const div = document.createElement('div');
+      const p = changes[m.id] || { lat: m.lat, lng: m.lng };
       div.innerHTML = `<b>#${m.id} ${m.a}</b><br>${m.t || ''}<br>
-        <small>${pos.lat.toFixed(6)}, ${pos.lng.toFixed(6)}</small>`;
+        <small>${p.lat.toFixed(6)}, ${p.lng.toFixed(6)}</small>
+        ${changes[m.id] ? '<br><em style="color:#f90">moved</em>' : ''}
+        <br><em style="color:${marker._locked ? '#4CAF50' : '#E53935'}">${marker._locked ? '🔒 Hold or double-tap to unlock' : '🔓 Hold or double-tap to lock'}</em>`;
       const btn = document.createElement('button');
       btn.className = 'popup-add-btn';
       btn.textContent = 'Add to route';
       btn.onclick = () => { addStop(m.id); marker.closePopup(); };
       div.appendChild(btn);
       return div;
+    });
+    marker.on('dragstart', () => {
+      const prev = changes[m.id] || { lat: m.lat, lng: m.lng };
+      pushMuralUndo(m.id, prev.lat, prev.lng);
+    });
+    marker.on('dragend', () => {
+      const ll = marker.getLatLng();
+      changes[m.id] = { lat: parseFloat(ll.lat.toFixed(6)), lng: parseFloat(ll.lng.toFixed(6)) };
+      updateSidebar();
+      updateStatus();
     });
 
     bgMarkers.push(marker);
@@ -366,6 +474,8 @@ function showRoute(defId, fitBounds = true) {
   updateSidebar();
   updateStatus();
   if (!poiMode) document.getElementById('mode-label').textContent = '';
+  // Show segment buttons when a route is selected
+  document.getElementById('add-segment').style.display = showPaths ? '' : 'none';
 }
 
 function updateRouteLine() {
@@ -388,23 +498,49 @@ function clearPaths() {
   pathPolylines = [];
   pathVertexMarkers.forEach(m => map.removeLayer(m));
   pathVertexMarkers = [];
+  pathLabels.forEach(m => map.removeLayer(m));
+  pathLabels = [];
 }
 
 let selectedVertex = null; // { routeId, segIdx, ptIdx, marker }
-const undoStack = []; // { routeId, segments: deep copy }
+const undoStack = []; // { type: 'path'|'mural', ... }
 
 function pushUndo(routeId) {
-  undoStack.push({ routeId, segments: JSON.parse(JSON.stringify(editPaths[routeId].segments)) });
+  undoStack.push({ type: 'path', routeId, segments: JSON.parse(JSON.stringify(editPaths[routeId].segments)) });
+  document.getElementById('undo-btn').style.display = '';
+}
+
+function pushMuralUndo(muralId, prevLat, prevLng) {
+  undoStack.push({ type: 'mural', muralId, lat: prevLat, lng: prevLng });
   document.getElementById('undo-btn').style.display = '';
 }
 
 function doUndo() {
   if (!undoStack.length) return;
-  const { routeId, segments } = undoStack.pop();
-  editPaths[routeId].segments = segments;
-  pathDirty[routeId] = true;
-  selectVertex(null);
-  if (selectedRoute?.id === routeId) showRoutePaths(routeId);
+  const entry = undoStack.pop();
+  if (entry.type === 'path') {
+    editPaths[entry.routeId].segments = entry.segments;
+    pathDirty[entry.routeId] = true;
+    selectVertex(null);
+    if (selectedRoute?.id === entry.routeId) showRoutePaths(entry.routeId);
+  } else if (entry.type === 'mural') {
+    // Restore previous mural position
+    const prev = { lat: entry.lat, lng: entry.lng };
+    changes[entry.muralId] = prev;
+    // If the original position matches, remove the change
+    const orig = murals.find(m => m.id === entry.muralId);
+    if (orig && Math.abs(orig.lat - prev.lat) < 0.000001 && Math.abs(orig.lng - prev.lng) < 0.000001) {
+      delete changes[entry.muralId];
+    }
+    // Move the marker directly on the map
+    const allMk = [...routeMarkers, ...bgMarkers];
+    const target = allMk.find(mk => mk.muralId === entry.muralId);
+    if (target) {
+      target.setLatLng([prev.lat, prev.lng]);
+    }
+    // Update route line if applicable
+    if (selectedRoute) { updateRouteLine(); updateSidebar(); }
+  }
   updateStatus();
   if (!undoStack.length) document.getElementById('undo-btn').style.display = 'none';
 }
@@ -422,15 +558,24 @@ function selectVertex(info) {
     info.marker.getElement()?.querySelector('div')?.style.setProperty('width', '12px');
     info.marker.getElement()?.querySelector('div')?.style.setProperty('height', '12px');
     document.getElementById('delete-point').style.display = '';
+    document.getElementById('delete-segment').style.display = '';
+    // Only show split if vertex is not at start or end of segment
+    const segObj = editPaths[info.routeId]?.segments[info.segIdx];
+    const pts = segObj?.path || segObj;
+    const canSplit = pts && info.ptIdx > 0 && info.ptIdx < pts.length - 1;
+    document.getElementById('split-segment').style.display = canSplit ? '' : 'none';
   } else {
     document.getElementById('delete-point').style.display = 'none';
+    document.getElementById('delete-segment').style.display = 'none';
+    document.getElementById('split-segment').style.display = 'none';
   }
 }
 
 function deleteSelectedVertex() {
   if (!selectedVertex) return;
   const { routeId, segIdx, ptIdx } = selectedVertex;
-  const seg = editPaths[routeId].segments[segIdx];
+  const segObj = editPaths[routeId].segments[segIdx];
+  const seg = segObj.path || segObj;
   if (seg.length <= 2) { alert('Segment must have at least 2 points'); return; }
   pushUndo(routeId);
   seg.splice(ptIdx, 1);
@@ -440,7 +585,102 @@ function deleteSelectedVertex() {
   updateStatus();
 }
 
+// Split segment at the selected vertex — creates two segments from one
+function splitAtVertex() {
+  if (!selectedVertex) return;
+  const { routeId, segIdx, ptIdx } = selectedVertex;
+  const segments = editPaths[routeId].segments;
+  const segObj = segments[segIdx];
+  const pts = segObj.path || segObj;
+  if (ptIdx <= 0 || ptIdx >= pts.length - 1) { alert('Cannot split at start or end of segment'); return; }
+  pushUndo(routeId);
+  const firstHalf = pts.slice(0, ptIdx + 1);
+  const secondHalf = pts.slice(ptIdx);
+  // Create two tagged segments — first keeps original from, second gets to
+  const seg1 = { from: segObj.from || 0, to: 0, path: firstHalf };
+  const seg2 = { from: 0, to: segObj.to || 0, path: secondHalf };
+  segments.splice(segIdx, 1, seg1, seg2);
+  pathDirty[routeId] = true;
+  selectVertex(null);
+  showRoutePaths(routeId);
+  updateStatus();
+}
+
+// Delete the entire segment that the selected vertex belongs to
+function deleteSelectedSegment() {
+  if (!selectedVertex) return;
+  const { routeId, segIdx } = selectedVertex;
+  const segments = editPaths[routeId].segments;
+  if (segments.length <= 1) { alert('Cannot delete the last segment'); return; }
+  pushUndo(routeId);
+  segments.splice(segIdx, 1);
+  pathDirty[routeId] = true;
+  selectVertex(null);
+  showRoutePaths(routeId);
+  updateStatus();
+}
+
+// Add a new segment — user clicks two points on the map to define start and end
+let addSegmentMode = false;
+let addSegmentRouteId = null;
+let addSegmentPoints = [];
+let addSegmentFromId = 0;
+let addSegmentToId = 0;
+let addSegmentMarkers = [];
+
+function startAddSegment() {
+  if (!selectedRoute) { alert('Select a route first'); return; }
+  const routeId = selectedRoute.id;
+  if (!editPaths[routeId]) {
+    editPaths[routeId] = { segments: [], distance: 0 };
+  }
+  // Build stop picker options
+  const stops = selectedRoute.ids.map((id, i) => {
+    const m = muralById[id];
+    return `${i+1}. #${id} ${m ? m.a : '?'}`;
+  });
+  const fromInput = prompt('FROM stop number (1-' + stops.length + '):\n\n' + stops.join('\n'));
+  if (!fromInput) return;
+  const fromIdx = parseInt(fromInput) - 1;
+  if (isNaN(fromIdx) || fromIdx < 0 || fromIdx >= selectedRoute.ids.length) { alert('Invalid stop number'); return; }
+
+  const toInput = prompt('TO stop number (1-' + stops.length + '):\n\n' + stops.join('\n'));
+  if (!toInput) return;
+  const toIdx = parseInt(toInput) - 1;
+  if (isNaN(toIdx) || toIdx < 0 || toIdx >= selectedRoute.ids.length) { alert('Invalid stop number'); return; }
+
+  addSegmentMode = true;
+  addSegmentRouteId = routeId;
+  addSegmentPoints = [];
+  addSegmentFromId = selectedRoute.ids[fromIdx];
+  addSegmentToId = selectedRoute.ids[toIdx];
+  document.getElementById('add-segment').textContent = `${fromIdx+1}→${toIdx+1}: Click start...`;
+  document.getElementById('add-segment').style.background = '#FF9800';
+  document.getElementById('mode-label').textContent = `Drawing segment: stop ${fromIdx+1} → stop ${toIdx+1}. Click map for start point.`;
+}
+
+function cancelAddSegment() {
+  addSegmentMode = false;
+  addSegmentRouteId = null;
+  addSegmentPoints = [];
+  addSegmentFromId = 0;
+  addSegmentToId = 0;
+  addSegmentMarkers.forEach(m => map.removeLayer(m));
+  addSegmentMarkers = [];
+  document.getElementById('add-segment').textContent = '+ Segment';
+  document.getElementById('add-segment').style.background = '#4CAF50';
+  if (!poiMode) document.getElementById('mode-label').textContent = '';
+}
+
+// Wire into map click — handled in the map click listener below
+
 document.getElementById('delete-point').addEventListener('click', deleteSelectedVertex);
+document.getElementById('delete-segment').addEventListener('click', deleteSelectedSegment);
+document.getElementById('split-segment').addEventListener('click', splitAtVertex);
+document.getElementById('add-segment').addEventListener('click', () => {
+  if (addSegmentMode) cancelAddSegment();
+  else startAddSegment();
+});
 document.addEventListener('keydown', (e) => {
   if ((e.key === 'Delete' || e.key === 'Backspace') && selectedVertex && !e.target.matches('input,textarea,select')) {
     e.preventDefault();
@@ -459,42 +699,75 @@ function showRoutePaths(routeId) {
   const pathData = editPaths[routeId] || ROUTE_PATHS[routeId];
   if (!pathData || !pathData.segments) { console.warn('No path data for', routeId, Object.keys(editPaths)); return; }
 
-  pathData.segments.forEach((seg, segIdx) => {
-    if (seg.length < 2) return;
+  pathData.segments.forEach((segObj, segIdx) => {
+    // Support both tagged {from, to, path} and legacy [pt, pt, ...] formats
+    const pts = segObj.path || segObj;
+    if (!Array.isArray(pts) || pts.length < 2) return;
+
+    // Color by from/to tag: green if tagged, blue if legacy
+    const isTagged = segObj.from != null;
+    const segColor = isTagged ? '#1E88E5' : '#888';
+
     // Draw polyline for this segment
-    const latlngs = seg.map(pt => [pt[0], pt[1]]);
+    const latlngs = pts.map(pt => [pt[0], pt[1]]);
     const polyline = L.polyline(latlngs, {
-      color: '#1E88E5', weight: 3, opacity: 0.8,
+      color: segColor, weight: 3, opacity: 0.8,
     }).addTo(map);
     pathPolylines.push(polyline);
+
+    // Popup with segment info
+    if (isTagged) {
+      const fromM = muralById[segObj.from];
+      const toM = muralById[segObj.to];
+      polyline.bindPopup(`<b>Segment ${segIdx}</b><br>${fromM?.a || '#'+segObj.from} → ${toM?.a || '#'+segObj.to}<br>${pts.length} points`);
+    }
+
+    // Labels at each end showing the stop number (position in route)
+    const startPt = pts[0];
+    const endPt = pts[pts.length - 1];
+    const routeIds = selectedRoute ? selectedRoute.ids : [];
+    const fromStop = segObj.from ? routeIds.indexOf(segObj.from) + 1 : '?';
+    const toStop = segObj.to ? routeIds.indexOf(segObj.to) + 1 : '?';
+    const makeLbl = (pt, text) => L.marker([pt[0], pt[1]], {
+      interactive: false,
+      icon: L.divIcon({
+        className: '',
+        html: `<div style="
+          background:#1E88E5;color:#fff;font-size:11px;font-weight:700;
+          padding:1px 5px;border-radius:3px;white-space:nowrap;
+        ">${text}</div>`,
+        iconSize: [0, 0], iconAnchor: [-6, 12],
+      }),
+    }).addTo(map);
+    pathLabels.push(makeLbl(startPt, fromStop));
+    pathLabels.push(makeLbl(endPt, toStop));
 
     // Click on polyline to add a point at that location
     polyline.on('click', (e) => {
       L.DomEvent.stopPropagation(e);
       const clickPt = [parseFloat(e.latlng.lat.toFixed(5)), parseFloat(e.latlng.lng.toFixed(5))];
-      // Find nearest segment edge to insert after
       let bestIdx = 0, bestDist = Infinity;
-      for (let i = 0; i < seg.length - 1; i++) {
-        const mid = [(seg[i][0]+seg[i+1][0])/2, (seg[i][1]+seg[i+1][1])/2];
+      for (let i = 0; i < pts.length - 1; i++) {
+        const mid = [(pts[i][0]+pts[i+1][0])/2, (pts[i][1]+pts[i+1][1])/2];
         const d = Math.hypot(clickPt[0]-mid[0], clickPt[1]-mid[1]);
         if (d < bestDist) { bestDist = d; bestIdx = i + 1; }
       }
       pushUndo(routeId);
-      seg.splice(bestIdx, 0, clickPt);
+      pts.splice(bestIdx, 0, clickPt);
       pathDirty[routeId] = true;
       showRoutePaths(routeId);
       updateStatus();
     });
 
     // Draggable vertex markers for each point
-    seg.forEach((pt, ptIdx) => {
+    pts.forEach((pt, ptIdx) => {
       const vtx = L.marker([pt[0], pt[1]], {
         draggable: true,
         icon: L.divIcon({
           className: '',
           html: `<div style="
             width:8px;height:8px;border-radius:50%;
-            background:#1E88E5;border:1.5px solid #fff;
+            background:${segColor};border:1.5px solid #fff;
             box-shadow:0 1px 3px rgba(0,0,0,0.4);
           "></div>`,
           iconSize: [8, 8], iconAnchor: [4, 4],
@@ -509,12 +782,11 @@ function showRoutePaths(routeId) {
       vtx.on('dragstart', () => pushUndo(routeId));
       vtx.on('dragend', () => {
         const ll = vtx.getLatLng();
-        editPaths[routeId].segments[segIdx][ptIdx] = [
-          parseFloat(ll.lat.toFixed(5)), parseFloat(ll.lng.toFixed(5))
-        ];
+        const segData = editPaths[routeId].segments[segIdx];
+        const p = segData.path || segData;
+        p[ptIdx] = [parseFloat(ll.lat.toFixed(5)), parseFloat(ll.lng.toFixed(5))];
         pathDirty[routeId] = true;
-        // Redraw this segment's polyline
-        const newLatlngs = editPaths[routeId].segments[segIdx].map(p => [p[0], p[1]]);
+        const newLatlngs = p.map(pt => [pt[0], pt[1]]);
         polyline.setLatLngs(newLatlngs);
         updateStatus();
       });
@@ -628,6 +900,29 @@ function togglePOIMode(type) {
 
 // Map click — place POI when in placement mode
 map.on('click', (e) => {
+  // Handle add-segment mode
+  if (addSegmentMode) {
+    const pt = [parseFloat(e.latlng.lat.toFixed(5)), parseFloat(e.latlng.lng.toFixed(5))];
+    addSegmentPoints.push(pt);
+    // Show a temporary marker (tracked for cleanup)
+    const tmpMarker = L.circleMarker([pt[0], pt[1]], { radius: 6, color: '#4CAF50', fillColor: '#4CAF50', fillOpacity: 1 }).addTo(map);
+    addSegmentMarkers.push(tmpMarker);
+
+    if (addSegmentPoints.length === 1) {
+      document.getElementById('add-segment').textContent = 'Click end point...';
+      document.getElementById('mode-label').textContent = 'Click map: end point of new segment';
+    } else {
+      // Two points collected — create tagged segment
+      const finishedRouteId = addSegmentRouteId;
+      pushUndo(finishedRouteId);
+      editPaths[finishedRouteId].segments.push({ from: addSegmentFromId, to: addSegmentToId, path: [...addSegmentPoints] });
+      pathDirty[finishedRouteId] = true;
+      cancelAddSegment();
+      showRoutePaths(finishedRouteId);
+      updateStatus();
+    }
+    return;
+  }
   if (!poiMode) return;
   addPOI(e.latlng.lat, e.latlng.lng, poiMode);
 });
@@ -663,6 +958,9 @@ function showAllMurals() {
   clearRouteMarkers();
   clearBgMarkers();
   selectedRoute = null;
+  document.getElementById('add-segment').style.display = 'none';
+  document.getElementById('delete-segment').style.display = 'none';
+  cancelAddSegment();
 
   const bounds = [];
   murals.forEach(m => {
@@ -676,6 +974,10 @@ function showAllMurals() {
     marker.muralId = m.id;
     marker.bindPopup(`<b>#${m.id} ${m.a}</b><br>${m.t || ''}<br>
       <small>${pos.lat.toFixed(6)}, ${pos.lng.toFixed(6)}</small>`);
+    marker.on('dragstart', () => {
+      const prev = changes[m.id] || { lat: m.lat, lng: m.lng };
+      pushMuralUndo(m.id, prev.lat, prev.lng);
+    });
     marker.on('dragend', () => {
       const ll = marker.getLatLng();
       changes[m.id] = { lat: parseFloat(ll.lat.toFixed(6)), lng: parseFloat(ll.lng.toFixed(6)) };
@@ -699,9 +1001,18 @@ function updateSidebar() {
   if (!selectedRoute) { sb.classList.remove('open'); return; }
   sb.classList.add('open');
 
-  const stops = selectedRoute.ids.map(id => muralById[id]).filter(Boolean);
+  const stops = [];
+  const missingIds = [];
+  selectedRoute.ids.forEach(id => {
+    const m = muralById[id];
+    if (m) stops.push(m);
+    else missingIds.push(id);
+  });
+  if (missingIds.length) {
+    html += `<div style="background:#e53935;color:#fff;padding:6px 8px;border-radius:4px;font-size:11px;margin-bottom:8px">⚠ Missing murals (not in data.js): ${missingIds.join(', ')} — try hard refresh</div>`;
+  }
   const routeIdSet = new Set(selectedRoute.ids);
-  const available = murals.filter(m => m.lat && m.lng && !routeIdSet.has(m.id));
+  const available = murals.filter(m => m.lat && m.lng && !routeIdSet.has(m.id)).sort((a, b) => a.id - b.id);
 
   let html = `<h3>${selectedRoute.name} — ${stops.length} stops</h3>`;
   html += `<div class="section-label">Route stops (drag to reorder)</div>`;
@@ -710,8 +1021,12 @@ function updateSidebar() {
     const moved = !!changes[m.id];
     const pos = changes[m.id] || { lat: m.lat, lng: m.lng };
     html += `<div class="stop-item" draggable="true" data-idx="${i}" data-id="${m.id}">
+      <div class="stop-reorder">
+        <button class="reorder-btn" data-dir="up" data-idx="${i}" ${i === 0 ? 'disabled' : ''}>▲</button>
+        <button class="reorder-btn" data-dir="down" data-idx="${i}" ${i === stops.length - 1 ? 'disabled' : ''}>▼</button>
+      </div>
       <span class="num">${i+1}</span>
-      <span class="name">${m.a}<small>${m.t || ''}</small></span>
+      <span class="name">#${m.id} ${m.a}<small>${m.t || ''}</small></span>
       <span class="coords">${pos.lat.toFixed(5)}, ${pos.lng.toFixed(5)}</span>
       ${moved ? '<span class="moved">moved</span>' : ''}
       <button class="remove-btn" data-idx="${i}" title="Remove">&times;</button>
@@ -742,6 +1057,33 @@ function updateSidebar() {
         <button class="remove-btn" data-poi-rm="${poi.id}" title="Remove">&times;</button>
       </div>`;
     });
+  }
+
+  // Missing segments section
+  const routeId = selectedRoute.id;
+  const pathData = editPaths[routeId];
+  if (pathData && pathData.segments) {
+    const existingPairs = new Set(pathData.segments.map(s => `${s.from}-${s.to}`));
+    const missing = [];
+    for (let i = 0; i < stops.length; i++) {
+      const fromId = stops[i].id;
+      const toId = stops[(i + 1) % stops.length].id;
+      if (!existingPairs.has(`${fromId}-${toId}`)) {
+        missing.push({ from: fromId, to: toId, fromName: stops[i].a, toName: stops[(i + 1) % stops.length].a, idx: i });
+      }
+    }
+    if (missing.length) {
+      html += `<div class="section-label" style="color:#e53935">Missing segments (${missing.length})</div>`;
+      missing.forEach(m => {
+        html += `<div class="missing-seg-item" data-from="${m.from}" data-to="${m.to}" style="padding:6px 8px;margin-bottom:3px;border-radius:6px;background:#3a2020;border:1px solid #e53935;font-size:12px;display:flex;align-items:center;gap:6px;cursor:pointer">
+          <span style="color:#e53935;font-weight:700">${m.idx+1}→${m.idx+2}</span>
+          <span style="flex:1;color:#eee">${m.fromName} → ${m.toName}</span>
+          <button class="draw-seg-btn" data-from="${m.from}" data-to="${m.to}" style="padding:3px 8px;border-radius:4px;background:#4CAF50;color:#fff;border:none;font-size:11px;cursor:pointer">Draw</button>
+        </div>`;
+      });
+    } else {
+      html += `<div class="section-label" style="color:#4CAF50">All segments present ✓</div>`;
+    }
   }
 
   html += `<div class="section-label">Available murals (click to add)</div>`;
@@ -791,6 +1133,30 @@ function updateSidebar() {
     });
   }
 
+  // Draw missing segment buttons
+  sb.querySelectorAll('.draw-seg-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const fromId = parseInt(btn.dataset.from);
+      const toId = parseInt(btn.dataset.to);
+      if (!selectedRoute) return;
+      const routeId = selectedRoute.id;
+      if (!editPaths[routeId]) editPaths[routeId] = { segments: [], distance: 0 };
+      addSegmentMode = true;
+      addSegmentRouteId = routeId;
+      addSegmentPoints = [];
+      // Store the from/to for tagging
+      addSegmentFromId = fromId;
+      addSegmentToId = toId;
+      const fromM = muralById[fromId];
+      const toM = muralById[toId];
+      document.getElementById('add-segment').textContent = 'Click start...';
+      document.getElementById('add-segment').style.display = '';
+      document.getElementById('add-segment').style.background = '#FF9800';
+      document.getElementById('mode-label').textContent = `Draw: ${fromM?.a || fromId} → ${toM?.a || toId}`;
+    });
+  });
+
   // POI label editing
   sb.querySelectorAll('.poi-label').forEach(inp => {
     inp.addEventListener('input', () => {
@@ -835,6 +1201,19 @@ function updateSidebar() {
         moveStop(dragSrcIdx, toIdx);
       }
       dragSrcIdx = null;
+    });
+  });
+
+  // Up/down reorder buttons (works on touch devices)
+  sb.querySelectorAll('.reorder-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.idx);
+      const dir = btn.dataset.dir;
+      const toIdx = dir === 'up' ? idx - 1 : idx + 1;
+      if (toIdx >= 0 && toIdx < selectedRoute.ids.length) {
+        moveStop(idx, toIdx);
+      }
     });
   });
 }
@@ -1018,7 +1397,7 @@ function createNewRoute() {
 }
 
 // ── Event listeners ──
-sel.addEventListener('change', () => { if (sel.value) showRoute(sel.value); });
+sel.addEventListener('change', () => { if (sel.value) showRoute(sel.value); else showAllMurals(); });
 document.getElementById('show-all').addEventListener('click', showAllMurals);
 document.getElementById('toggle-sidebar').addEventListener('click', () => {
   document.getElementById('sidebar').classList.toggle('open');
@@ -1034,6 +1413,9 @@ document.getElementById('toggle-paths').addEventListener('click', () => {
 document.getElementById('add-poi').addEventListener('click', () => togglePOIMode('poi'));
 document.getElementById('add-commercial').addEventListener('click', () => togglePOIMode('commercial'));
 document.getElementById('copy-changes').addEventListener('click', exportChanges);
+document.getElementById('undo-btn').addEventListener('click', doUndo);
+document.getElementById('copy-btn').addEventListener('click', copyOutput);
+document.getElementById('close-output').addEventListener('click', () => document.getElementById('output').classList.remove('open'));
 document.getElementById('btn-new-route').addEventListener('click', showNewRouteDialog);
 document.getElementById('new-route-cancel').addEventListener('click', hideNewRouteDialog);
 document.getElementById('new-route-overlay').addEventListener('click', hideNewRouteDialog);
@@ -1047,6 +1429,7 @@ document.getElementById('new-route-name').addEventListener('input', (e) => {
 function saveState() {
   localStorage.setItem('route-editor-changes', JSON.stringify(changes));
   localStorage.setItem('route-editor-routes', JSON.stringify(ROUTE_DEFS));
+  localStorage.setItem('route-editor-version', 'v12');
   // Only save dirty paths
   const dirtyPaths = {};
   Object.keys(pathDirty).forEach(id => { dirtyPaths[id] = editPaths[id]; });
@@ -1060,11 +1443,21 @@ function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem('route-editor-changes') || '{}');
     Object.assign(changes, saved);
-    const savedRoutes = JSON.parse(localStorage.getItem('route-editor-routes') || 'null');
-    if (savedRoutes) {
-      ROUTE_DEFS.length = 0;
-      savedRoutes.forEach(r => ROUTE_DEFS.push(r));
-      populateDropdown();
+    // Only restore saved routes if version matches — otherwise use hardcoded defaults
+    const ROUTE_VERSION = 'v14';
+    const savedVersion = localStorage.getItem('route-editor-version');
+    if (savedVersion === ROUTE_VERSION) {
+      const savedRoutes = JSON.parse(localStorage.getItem('route-editor-routes') || 'null');
+      if (savedRoutes) {
+        ROUTE_DEFS.length = 0;
+        savedRoutes.forEach(r => ROUTE_DEFS.push(r));
+        populateDropdown();
+      }
+    } else {
+      // New version — clear stale route data, keep GPS changes
+      localStorage.removeItem('route-editor-routes');
+      localStorage.removeItem('route-editor-paths');
+      localStorage.setItem('route-editor-version', ROUTE_VERSION);
     }
     const savedPaths = JSON.parse(localStorage.getItem('route-editor-paths') || 'null');
     if (savedPaths) {

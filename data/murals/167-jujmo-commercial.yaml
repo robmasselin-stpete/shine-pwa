@@ -1,0 +1,78 @@
+# Jujmo — SHINE 2021
+
+# ── Required ──
+id: 167
+artist: Jujmo
+year: 2021
+lat: 27.766404
+lng: -82.663515
+address: Warehouse Arts District
+category: shine
+img: "images/murals/commercial/jujmo-blobs.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: jujmo
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Military kid — discovered anime after moving to the U.S."
+  - "Painted the 'B' in St. Pete's BLM street mural, Juneteenth 2020"
+  - "Calls her style 'cute forward' — anime and Filipino folklore influences"
+
+artistBio: |
+  Growing up on military bases overseas, Cheryl Weber had almost no access to
+  cartoons. When her family moved back to the States, anime hit her like a
+  freight train — and she decided on the spot to become an artist.
+
+  Weber works under the name Jujmo. She is Filipina American, earned her BFA
+  from the University of South Florida in 2013, and went straight into
+  freelancing the day after graduation. Her style is what she calls "cute
+  forward" — saturated color, zero straight lines, and dense compositions where
+  blob creatures, mushroom forms, and smiley-faced amoebas pile on top of each
+  other like a candy-colored coral reef.
+
+  She painted the "B" in the Black Lives Matter street mural in front of the Dr.
+  Carter G. Woodson African American Museum in St. Petersburg for Juneteenth
+  2020. SHINE picked her twice — 2017 ("Space Rainbows") and 2021.
+
+searchBio: |
+  Cheryl Weber — Jujmo — is Filipina American, born to a military family. She
+  earned her BFA from the University of South Florida in 2013. Her style is
+  "cute forward" — saturated color, no straight lines, dense compositions with
+  anime, Japanese folklore, and Filipino folklore influences.
+
+  She painted the "B" in St. Pete's BLM street mural at the Woodson Museum,
+  Juneteenth 2020. Imagine Museum Artist Lecture Series 2024. WEDU Arts Plus PBS
+  feature (Season 14). Creative Pinellas listed artist.
+
+  SHINE selected her twice: 2017 ("Space Rainbows," 48 ft wide on 1st Ave S) and
+  2021 (Warehouse Arts District).
+
+  Instagram: @jujmo. Website: jujmo.com.
+
+searchMuralDescription: |
+  A panoramic mural of warm-toned abstract blob creatures flowing diagonally
+  across the wall. The palette is autumnal — orange, teal, brown, pink, and
+  gold. Smiling blob faces with simple dot eyes and wide grins peek out from
+  amorphous organic shapes. Small flowers, sparkles, and circular forms dot the
+  composition. Signed "JUJMO" in the lower right corner. The style is her
+  signature candy-colored character abstraction, here in warmer tones than her
+  typical pastel palette.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2017 and 2021 selected artist; Imagine Museum Artist Lecture Series 2024; WEDU Arts Plus PBS feature"
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-16, GPS from EXIF"
+  - "Artist: Jujmo (Cheryl Weber), signed on wall"
+  - "Third Jujmo wall — also has SHINE 2017 (id 163) and SHINE 2021 (id 85)"
+  - "Warehouse Arts District"

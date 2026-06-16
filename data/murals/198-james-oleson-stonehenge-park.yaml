@@ -1,0 +1,119 @@
+# James Oleson — Stonehenge Park (neo-surrealist face)
+
+# ── Required ──
+id: 198
+artist: James Oleson
+year: 0
+lat: 27.79915
+lng: -82.73745
+address: "2993 Tyrone Blvd N"
+category: commercial
+img: "images/murals/unknown/james-oleson-stonehenge-park.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Stonehenge Park (Tyrone Blvd overpass on Pinellas Trail)"
+instagram: olesonart
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  James Oleson describes himself as "Sculptor Painter Rebarbarian." This wall is
+  the rebarbarian one — a face the size of the underpass, one teal eye, one
+  purple, crooked teeth across a navy mouth.
+
+  Oleson Jr. is a sculptor, painter, and installation artist based in St.
+  Petersburg. He works with welded steel and reclaimed industrial materials,
+  "transforms mundane cast-off materials into art, drawing characters from his
+  subconscious." He is self-taught.
+
+  He co-founded the Bloom Art Center at 910 5th Ave N — a downtown St. Pete
+  property where he curates exhibits to complement existing murals on the
+  building. His permanent collections sit at the Crealde School of Art, the
+  Industrial Arts Center, the Lake Wales Art Center Sculpture Garden, and
+  corporate placements at Brooksville City Hall, Ocala City Hall, and Hernando
+  County School System. He took Best in Show at ArtLoud Tampa (2010) and Best of
+  Show at the Kissimmee Sculpture Experience.
+
+  Other St. Pete walls of his include a "Goblin" piece at Planet Retro Records
+  and the murals around the Bloom Art Center building.
+
+searchBio: |
+  A giant neo-surrealist face fills a low concrete wall under an overpass:
+  heavy-lidded eyes — one with a teal iris, one with a purple iris — a bulbous
+  nose, and a wide grin of crooked square teeth across a dark navy mouth
+  interior. Two curved red horn/tusk shapes sweep inward from either edge.
+  Signed "OL3SON" in cyan in the lower-left. There is a smaller cursive
+  signature in the lower-right that has not been verified as a co-artist or as
+  Oleson's own secondary mark. Year not documented in public sources. Painted at
+  Stonehenge Park (under the Tyrone Blvd overpass on the Pinellas Trail, north
+  of Tyrone Square Mall) at 2993 Tyrone Blvd N, St. Petersburg, Florida.
+
+  James Oleson Jr. is a multidisciplinary artist based in St. Petersburg,
+  Florida, working in sculpture, painting, and installation. He is self-taught.
+  His practice is described in his St. Pete Arts Alliance directory listing as
+  work that "transforms mundane cast-off materials into art, drawing characters
+  from his subconscious," and he works extensively with welded steel and
+  reclaimed/industrial materials. His own Instagram bio reads "SCULPTOR PAINTER
+  REBARBARIAN." His Morean Arts Center profile lists a Brooksville mailing P.O.
+  box (P.O. Box 1293, Brooksville 34605) for sales, but his studio operation is
+  in St. Petersburg.
+
+  He is the co-founder of the Bloom Art Center, located at 910 5th Avenue North
+  in downtown St. Petersburg. He is described in St. Pete press coverage as a
+  "renowned sculptor and muralist" who curates exhibits at the Bloom property to
+  complement existing murals around the building.
+
+  His awards include Best in Show at ArtLoud Tampa (2010) and Best of Show at
+  the Kissimmee Sculpture Experience. His sculpture work sits in permanent
+  collections at the Crealde School of Art, the Industrial Arts Center, the Lake
+  Wales Art Center Sculpture Garden, and corporate / civic placements at
+  Brooksville City Hall, Ocala City Hall, and the Hernando County School System.
+
+  Other documented St. Petersburg walls include a piece titled "Goblin" at
+  Planet Retro Records, an untitled "blue building / green eyes" wall (a
+  Pinterest pin dates that piece 9/15 — September 2015 — but it is not the
+  Stonehenge Park wall), and the murals on the Bloom Art Center building at 910
+  5th Ave N.
+
+  Instagram: @olesonart. Email: olesonart@gmail.com (per Instagram bio).
+  Website: artandsculptures.com (per Morean Arts Center).
+
+searchMuralDescription: |
+  A wide concrete wall under the Tyrone Blvd overpass at Stonehenge Park. The
+  full wall is taken up by a single giant face rendered in neo-surrealist style.
+  The skin is a deep maroon-burgundy with highlights in lighter pink and cream.
+  Two heavy-lidded eyes look down at the viewer — the left eye has a bright teal
+  iris ringed with light blue, the right eye has a deep purple iris. Between
+  them, a small bulbous nose with a darker tip and a tiny gold-ring detail.
+  Below, a wide closed-lipped grin curves across nearly the full width of the
+  wall. Big square teeth sit in two rows — upper and lower — some white, some
+  pale green-yellow, some pink-tinted, spaced unevenly across a dark navy
+  interior of the mouth. Two stylized curved red shapes (reading as horns or
+  tusks or curling ribbons) sweep inward from the far left and far right edges,
+  framing the face. The composition is signed "OL3SON" in cyan block-letter
+  graffiti style in the lower-left corner. A small cursive signature appears in
+  the lower-right corner; the lettering cannot be reliably identified from photo
+  alone.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Best in Show, ArtLoud Tampa (2010); Best of Show, Kissimmee Sculpture Experience"
+furtherWork:
+  - name: "artandsculptures.com"
+    url: "https://artandsculptures.com"
+  - name: "Instagram @olesonart"
+    url: "https://www.instagram.com/olesonart/"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-04 — New mural added by Rob: James Oleson neo-surrealist grinning face wall at Stonehenge Park, St. Petersburg. GPS from photo IMG_0255.jpeg EXIF (27.79915, -82.73745). Year not documented in public sources — flagged for follow-up. Lower-right cursive signature unidentified. Bio compiled from St. Pete Arts Alliance directory, Morean Arts Center profile, Crow's Nest 'Perennial Bloom' coverage, and @olesonart Instagram."
+sourceNotes:
+  - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0255.jpeg)"
+  - "https://stpeteartsalliance.org/arts-culture-directory/details?itemid=85"
+  - "https://moreanartscenter.org/james-oleson/"
+  - "https://www.instagram.com/olesonart/"
+  - "http://crowsneststpete.com/2018/04/08/perennial-bloom-captures-essence-of-st-petersburgs-art-scene/"
+  - "https://www.wescover.com/p/street-murals-by-james-oleson-at-planet-retro-records--Pr1lwjl5Xm"
+  - "https://www.linkedin.com/in/james-oleson-76bb166a/"
+  - "https://www.yelp.com/biz/stonehenge-park-st-petersburg"

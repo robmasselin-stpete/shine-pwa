@@ -4,8 +4,8 @@
 id: 30
 artist: Quinn Cale
 year: 2024
-lat: 27.773642
-lng: -82.636235
+lat: 27.773643
+lng: -82.636226
 address: 225 2nd Ave North
 category: shine
 img: "images/murals/2024/quinn-cale.jpeg"
@@ -16,34 +16,93 @@ building: Main Grove
 instagram: quinnsessential
 basedIn: "Tampa, FL"
 
+fieldNotes:
+  - "Self-taught, started on wood slats as a teen"
+  - "Apple Creative — taught kids digital art on iPads"
+  - "Augmented reality overlays on her paintings"
+
 artistBio: |
-  Quinn Cale is a Tampa-based painter originally from Delaware whose work
-  channels early-2000s childhood nostalgia into bold, colorful
-  compositions. She previously worked at Apple, an experience that led
-  her to experiment with augmented reality overlays on her paintings
-  using Adobe Aero — viewers can point an iPad at the canvas and see
-  digital elements come to life.
+  She started painting as a teenager on wood slats because she couldn't afford
+  to go out with friends. Now she makes the paintings move.
 
-  Her SHINE 2024 mural at Main Grove features a multicolored cat in
-  vivid neon hues pouncing toward a pixelated mouse cursor and a
-  retro-styled pixel hand pointer. The gaming references and rainbow
-  palette are pure Cale — pop culture nostalgia meets street art energy.
+  Quinn Cale is from Middletown, Delaware, now based in Tampa. She has no formal
+  art degree — she is self-taught. She worked in sales at Apple, then became an
+  Apple Creative around 2020, teaching children digital art on iPads. That pivot
+  from tech to art stuck.
 
-muralDescription: |
-  A large cat rendered in electric purples, teals, oranges, and pinks
-  leaps across the wall, chasing a pixelated orange mouse and a retro
-  cursor hand icon. The cat's fur is broken into bold color blocks that
-  read like a neon stained-glass window. The whole piece pops against
-  a dark teal and sage background.
+  Her style channels late-90s and early-2000s childhood nostalgia — arcade
+  machines, tropical motifs, instruments, TV-headed figures — in bold, surreal
+  color compositions. She pioneers augmented reality overlays on her paintings
+  using Adobe Aero: viewers scan with a phone and the work animates. Her SHINE
+  2024 mural at 225 2nd Ave North featured an animated cat and mouse in AR.
+
+  She has exhibited at MOSI in Tampa and the Straz Center's First Annual Black
+  Art show. For SHINE Origins 2025, she painted at Tyrone Middle School.
+
+searchBio: |
+  She started painting as a teenager on wood slats because she couldn't afford
+  to go out with friends. Now she makes the paintings move.
+
+  Quinn Cale is from Middletown, Delaware, now based in Tampa, Florida. She is
+  approximately 32 years old (as of late 2024). She has no formal art degree —
+  she is self-taught, starting with paint on scrap wood as a teenager. She
+  worked in sales at Apple, then became an Apple Creative around 2020, teaching
+  children digital art on iPads.
+
+  Her style channels late-90s and early-2000s childhood nostalgia — arcade
+  machines, tropical motifs, instruments, TV-headed figures — in bold, surreal
+  color compositions using surrealism and color theory, with themes of animals
+  and space. She pioneers augmented reality overlays on her paintings using
+  Adobe Aero (no-code platform): viewers scan with an iPad or phone and the work
+  animates.
+
+  For SHINE 2024, she painted a mural at 225 2nd Ave North (Main Grove) in St.
+  Petersburg, featuring an animated cat and mouse with AR. For SHINE Origins
+  2025, she painted at Tyrone Middle School (2375 66th St N). She has exhibited
+  at MOSI (Tampa) and the Straz Center "First Annual Black Art" show. She has a
+  profile on RAW Artists. Website: quinncale.com. Instagram: @quinnsessential.
+
+  Per quinncale.com, additional documented mural festival participation includes
+  Tampa Walls (Tampa, 2022), SHINE 10 (St. Petersburg, 2024), Guava Paint Jam
+  (Tampa, 2025), Hot Walls (St. Petersburg, 2025), and Fish Food on the Tampa
+  Trail (Tampa, 2025). The Straz Center piece selected for the First Annual
+  Black Art Gala was titled "Fire Fist Mario 8-Bit." She was an inaugural Remote
+  Studio Artist at the Gasparilla Festival of the Arts (one of five selected).
+  Original painting titles available through her shop include "Flamingo," "And
+  They're Both Boys..," "The Royal Three," "Deandra," and "Geoffrey Giraffe,"
+  plus the Colorburst Sunflower Collection and No Signal Collection. Artist
+  statements from the site: "I am a story teller and I welcome you to join me on
+  this visual journey," and "Once you begin, you cannot stop. Life with art is
+  affluent, profound, and passionate."
+
+searchMuralDescription: |
+  A large cat rendered in electric purples, teals, oranges, and pinks leaps
+  across the wall, chasing a pixelated orange mouse and a retro cursor hand
+  icon. The cat's fur is broken into bold color blocks that read like a neon
+  stained-glass window. The whole piece pops against a dark teal and sage
+  background.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2024 selected artist; SHINE Origins 2025 selected artist"
+furtherWork:
+  - name: "quinncale.com"
+    url: "https://quinncale.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-03 — Integrated quinncale.com (artist site): added Tampa Walls 2022, Guava Paint Jam 2025, Hot Walls 2025, Fish Food 2025; named 'Fire Fist Mario 8-Bit' for Straz Center; Gasparilla Remote Studio Artist; original-painting titles; two artist statements. Added 3 source URLs."
+  - "2026-05-12 — Confirmed photo is Rob's (iPhone EXIF audit)"
 sourceNotes:
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_quinn_cale"
   - "https://www.cltampa.com/arts/interview-tampa-artist-quinn-cale-merges-technology-with-childhood-nostalgia-for-shine-mural-festival-18892874/"
   - "https://ilovetheburg.com/st-pete-shine-origins/"
+  - "https://rawartists.com/quinncale"
+  - "https://stpeteartsalliance.org/shine-2024"
+  - "https://quinncale.com"
+  - "https://quinncale.com/blogs/news/about-me"
+  - "https://quinncale.com/pages/quinnpaintsmurals"
+  - "Photo by Rob — confirmed iPhone EXIF audit 2026-05-12"

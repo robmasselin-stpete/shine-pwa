@@ -4,8 +4,8 @@
 id: 79
 artist: Gleo
 year: 2021
-lat: 27.766473
-lng: -82.66487
+lat: 27.766397
+lng: -82.665017
 address: 2336 5th Ave. S.
 category: shine
 img: "images/murals/2021/gleo.jpeg"
@@ -16,36 +16,117 @@ building: New Dawn Coffee Co
 instagram: gleo_co
 basedIn: Colombia
 
-artistBio: |
-  Gleo is the working name of Natalia Gallego Sanchez, born in 1992 in Cali,
-  Colombia. She started painting street art at 17, juggling chemistry classes
-  during the day and fine arts at night, before studying Visual Arts and
-  Graphic Design at Universidad del Valle. Her style layers dreamlike
-  portraits of women and children with botanical motifs, pre-Columbian
-  cultural references, and ornamental masks — everything rendered in soft
-  earth tones and pastels with her signature glowing yellow orbs as a
-  recurring element. She paints primarily with rollers and brushes at massive
-  scale. Her 2018 mural "El Sueno Original" on a grain elevator in Wichita,
-  Kansas covered 50,000 square feet and was recognized by the World Record
-  Academy as the world's largest mural by a single artist. She's painted
-  major walls across the Americas and Europe — Montreal, The Hague, Mexico
-  City, Sao Paulo, Barcelona, Charlotte, and Rabat among them. Dinero, a
-  major Colombian business magazine, named her one of their "40 Under 40"
-  Colombians leading their fields.
+fieldNotes:
+  - "Painted a 50,000-sq-ft grain elevator in Wichita"
+  - "Colombian artist, based in Bogotá"
+  - "Mythological narrative at architectural scale"
 
-muralDescription: |
+artistBio: |
+  She painted a 50,000-square-foot grain elevator in Wichita, Kansas. It broke
+  the record for the largest acrylic mural by a single artist.
+
+  Nathalia Gallego Sanchez — Gleo — was born in 1992 in Cali, Colombia. She
+  studied chemistry by day and fine arts at a night institute before earning her
+  bachelor's in visual arts and graphic design from Universidad del Valle. She
+  found formal study too theoretical and went her own way. She uses acrylics,
+  brushes, and rollers — no spray cans. "I let myself be guided by the moment."
+
+  Her murals feature mystical beings, pre-Columbian figures, women with
+  patterned face-paint and floral-decorated hair, and signature bright yellow
+  orbs. She draws from Colombian folklore and ancestral cosmology. She has
+  painted across France, Portugal, Morocco, Brazil, Mexico, Belgium, the
+  Netherlands, and the US. Her name is wordplay — derived from her surname
+  GALLEGO.
+
+  For SHINE 2021, she painted in St. Petersburg.
+
+searchBio: |
+  She painted a 50,000-square-foot grain elevator in Wichita, Kansas. It broke
+  the record for the largest acrylic mural by a single artist.
+
+  Nathalia Gallego Sánchez — Gleo — was born in 1992 and grew up in Cali,
+  Colombia from age nine. She studied chemistry by day and fine arts at a night
+  institute before earning her bachelor's in visual arts and graphic design at
+  Universidad del Valle. She found formal art study too theoretical and went her
+  own way. The pseudonym Gleo is wordplay derived from her surname GALLEGO. She
+  does not reveal her face to media.
+
+  She began experimenting with street art at seventeen, painting sea creatures
+  in her neighborhood. Her first piece on a wall in front of her house was
+  nearly painted over by a more experienced graffiti artist; her mother stepped
+  outside and told him she would call the police if he covered her daughter's
+  work. The confrontation ended with Gleo joining the local crew. Her real
+  training came on the street and through travel. Her work has since reached
+  Argentina, Paraguay, Peru, Brazil, Ecuador, Costa Rica, Mexico, the United
+  States, Spain, Portugal, Belgium, Sweden, the Netherlands, France, and
+  Morocco. Her path into Mexico opened through a scholarship that did not come
+  through, then through work she found at an urban art gallery.
+
+  She works in acrylic outdoor vinyl, brushes, and rollers — no spray cans. She
+  sketches the design, then builds an irregular grid for proportions and
+  perspective before adding splatters, textures, and color. Her murals depict
+  mystical beings, pre-Columbian figures, women with patterned face-paint and
+  floral-decorated hair, mythical creatures with yellow glowing eyes, and
+  signature bright yellow orbs. She draws from Colombian folklore, ancestral
+  cosmology, antiquity, and the primary arts of the world. Her stance: "I let
+  myself be guided by the moment I'm painting." She has spoken about street art
+  as political engagement — a protest against the concrete grid called "city"
+  and an invitation to remember that humans are living creatures inside a larger
+  whole.
+
+  In 2016 she exhibited "Origo," a departure from her typical street work that
+  included canvas, sculpture, and intervened objects. In 2017 she completed a
+  wall in São Paulo, Brazil that she has named her favorite project — a
+  challenge years in the anticipating that pushed her past her existing skills.
+
+  In 2018 she painted "El Sueño Original" ("The Original Dream") on the Beachner
+  Grain Elevator at 519 E 20th Street N, Wichita, Kansas, as part of the
+  Horizontes Mural Project. The mural was commissioned by artist and community
+  organizer Armando Minjarez, who designed and directed the project after
+  immigrating to Wichita in 2001. At 50,000 square feet, "El Sueño Original"
+  surpassed Spain's previous 38,701-square-foot record to become the World
+  Record Academy and Guinness-recognized largest acrylic mural by a single
+  artist. The grain elevator sits in the industrial corridor that separates
+  Wichita's predominantly Latino NorthEnd from its historically Black Northeast
+  neighborhoods. The mural depicts people of color from those neighborhoods
+  looking toward the horizon, with a young woman at the center representing
+  Wichita; many figures are based on local residents and migrant laborers who
+  built the railroad tracks around the elevator. Photographers Ashwin
+  Govindarajan, Alexis Rivierre, Juan Carlos Garcia, and Xavier Leija
+  contributed source portraits for the project. Mural production was led by
+  Fellipe Ribeiro; art assistants included Quintis Pinkston and Rob Lewis;
+  logistics assistant was Mason Talbott. The piece is visible from Interstate
+  135 and Highway 96.
+
+  In 2022 she painted "Flower Woman in the Window," one of the largest murals in
+  the Netherlands, opposite Moerwijk Station in The Hague. It was commissioned
+  through Mauritshuis and inspired by Ambrosius Bosschaert's painting "Vase of
+  Flowers in a Window." The wall took twenty-one days to complete. Through
+  Beyond Walls, the Lynn, Massachusetts–based public art organization, she has
+  also painted "Child Flower" on the former Boys Club building at Yellow Brick
+  Management in Holyoke, Massachusetts.
+
+  For SHINE Mural Festival 2021, she painted in St. Petersburg, Florida.
+
+  Website: gleo.com. Instagram: @gleo_co.
+
+searchMuralDescription: |
   A wide panoramic mural across the full building wall showing multiple
   overlapping faces and hands rendered in soft pinks and mauves. The figures
-  intertwine with ornate mandala-like patterns in warm golds and oranges,
-  with sunflowers and botanical details woven between the portraits. The
-  color palette is dreamy — mostly blush pink, sage green, and amber against
-  a pale background. The faces gaze in different directions, creating a
-  layered, contemplative composition.
+  intertwine with ornate mandala-like patterns in warm golds and oranges, with
+  sunflowers and botanical details woven between the portraits. The color
+  palette is dreamy — mostly blush pink, sage green, and amber against a pale
+  background. The faces gaze in different directions, creating a layered,
+  contemplative composition.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "Dinero Magazine 40 Under 40; World Record Academy — largest acrylic mural by a single artist (2018)"
-
+artistAwards: "Largest acrylic mural by single artist (Wichita, 2018); Dinero 40 under 40 (Colombia); SHINE 2021"
+furtherWork: []
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-03 — Added IG URL (instagram.com/gleo_co) to sourceNotes."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
@@ -54,4 +135,7 @@ sourceNotes:
   - "https://especiales.dinero.com/cuarenta-menores-de-cuarenta/nathalia-gallego.html"
   - "https://www.worldrecordacademy.org/2023/7/worlds-largest-mural-by-a-single-artist-world-record-in-wichita-kansas-423283"
   - "https://beyondwalls.org/artists/gleo/"
-  - "https://beyondwalls.org/artists/gleo/"
+  - "https://www.isupportstreetart.com/artist/gleo/"
+  - "https://ardeartdealer.com/blogs/wallart/nathalia-gallego-gleo"
+  - "https://www.mauritshuis.nl/en/what-s-on/mauritshuis-murals/gleo"
+  - "https://www.instagram.com/gleo_co/"

@@ -4,42 +4,104 @@
 id: 120
 artist: Melanie Posner
 year: 2023
-lat: 27.771896
-lng: -82.649495
-address: ""
+lat: 27.771894
+lng: -82.649287
+address: "77 11th St N"
 category: commercial
 img: "images/murals/commercial/unknown-1506.jpeg"
 
 # ── Optional ──
 title: ""
-building: ""
+building:
 instagram: therealmelpoz
 basedIn: "Los Angeles, CA"
 
+fieldNotes:
+  - "Photorealistic woman in reflective sunglasses with St. Pete skyline reflected in the lenses"
+  - "Signed therealmelpoz 2023"
+  - "Now based in Los Angeles"
+
 artistBio: |
-  Melanie Posner is an LA-based muralist originally from Pennsylvania
-  who earned her BFA from the University of Tampa. She's known for
-  vibrant, photorealistic portraits of women, and her client list
-  includes Walt Disney World, Amazon Prime, and TikTok — for whom she
-  painted a 40-foot mural in the heart of Hollywood.
+  She painted a woman in giant reflective sunglasses on this wall. Look closely
+  at the lenses — the waterfront skyline is reflected in them.
 
-  Her 2023 St. Pete mural features a woman's face in oversized
-  reflective sunglasses with bright pink lips, set against a playful
-  background of colorful polka dots on teal. The sunglasses reflect
-  what appears to be the St. Pete waterfront, tying the portrait to
-  its location.
+  Melanie Posner was born around 1993 outside Philadelphia, moved to Tampa in
+  2013, and earned her BFA in Painting from the University of Tampa in 2016. She
+  is now based in Los Angeles. Her style is photorealistic portraits of women —
+  oversized expressive eyes, vibrant rainbow palettes, psychedelic paisley
+  backgrounds, florals. She paints "strong, confident, independent women to be
+  inspired by them."
 
-muralDescription: |
+  Her commercial commissions run wide. She painted scenic art for Walt Disney
+  World's Star Wars: Galaxy's Edge at Hollywood Studios. The eighteen-foot mural
+  on the back of the Hollander Hotel — a woman in a red headscarf with a glass
+  of cerveza — was for New Belgium Brewing's Mural Agua Fresca; she finished it
+  in under five days. Amazon Prime commissioned a mural on a bus that toured
+  Tampa promoting the docuseries Tampa Baes (2021), in which she was a cast
+  member. In 2024 she painted a forty-foot wall on the LGBT Center of Los
+  Angeles for TikTok's "Create the Future" campaign.
+
+  Her SHINE 2018 mural "New Beginnings" — a twenty-three-by-sixty-five foot
+  photorealistic woman lying on her side, one eye peeking through her fingers —
+  is at 4139 7th Terrace South.
+
+searchBio: |
+  She painted the woman in the red headscarf on the back of the Hollander Hotel
+  in under five days, then went straight to Walt Disney World to paint scenic
+  art for Star Wars: Galaxy's Edge.
+
+  Melanie "Mel" Posner was born around 1993 in a small town just outside
+  Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
+  the University of Tampa in 2016, where she also studied art therapy. She was
+  previously based in Gulfport, Florida, and is now in Los Angeles.
+
+  Her style is photorealistic portraits of women — oversized, expressive eyes,
+  vibrant rainbow color palettes, psychedelic paisley backgrounds, floral
+  elements. She blends lifelike detail with touches of dreamy surrealism. She
+  works in oil on canvas, collage, prints, and large-scale murals. She sources
+  her subjects from Pinterest, Google, and social media, looking for eyes,
+  story, and confidence. "Working large is just really exciting," she says. "I
+  feel like I'm a little bit more free doing murals." Her stated philosophy:
+  paint strong, confident, independent women to be inspired by them.
+
+  For SHINE 2018, she was one of five local "Open Call" artists. Her mural "New
+  Beginnings" at 4139 7th Terrace South is twenty-three feet high by sixty-five
+  feet long — a photorealistic woman lying horizontally on her side, her hand
+  cupping the right side of her face, one eye peeking through her fingers. She
+  completed it in October 2018.
+
+  Her commercial clients include Walt Disney World (scenic artwork for Star
+  Wars: Galaxy's Edge at Hollywood Studios, Orlando), New Belgium Brewing (the
+  eighteen-foot Hollander Hotel mural of a woman in a red headscarf with a glass
+  of Mural Agua Fresca Cerveza, completed in under five days), Amazon Prime
+  Video (a mural on a promotional bus for Tampa Baes), and TikTok. For TikTok's
+  2024 "Create the Future" campaign, she painted a forty-foot mural on the LGBT
+  Center of Los Angeles at 8745 Santa Monica Blvd in West Hollywood.
+
+  She was a cast member on all eight episodes of Tampa Baes (Amazon Prime Video,
+  2021), a docuseries about a Tampa Bay lesbian friend group produced by 3 Ball
+  Productions and filmed over roughly ten weeks starting April 2021. She
+  described herself as "neutral" and avoiding drama on the show. "My anxiety
+  during filming was up to the roof, my mental health totally depleted. It was
+  very stressful and I will say, I love how the show came out." Her oil painting
+  "Passion" (also called "Summer and Marissa") appears on screen. She worked for
+  years as a bartender at The Honey Pot, a landmark LGBTQ+ club in Ybor City,
+  Tampa.
+
+  She has exhibited at Enigma gallery in downtown St. Petersburg. Instagram:
+  @therealmelpoz. Website: melanieposner.com.
+
+searchMuralDescription: |
   A photorealistic woman's face fills the wall, wearing large reflective
-  sunglasses that mirror a waterfront skyline scene. Bright pink lips
-  and warm skin tones contrast with the cool teal background, which is
-  dotted with oversized polka dots in pink, gold, red, and light blue.
-  The piece wraps around windows that are incorporated into the design.
-  Palm trees frame the mural on either side.
+  sunglasses that mirror a waterfront skyline scene. Bright pink lips and warm
+  skin tones contrast with the cool teal background, which is dotted with
+  oversized polka dots in pink, gold, red, and light blue. The piece wraps
+  around windows that are incorporated into the design. Palm trees frame the
+  mural on either side.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2018 Open Call artist; Walt Disney World Star Wars: Galaxy's Edge scenic artist; Tampa Baes (Amazon Prime, 2021) cast member; TikTok LA Pride campaign (2024)"
 
 furtherWork:
   - name: "melanieposner.com"
@@ -47,8 +109,18 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "10 April 2026 — Deep research, full bio with hook, copied to all 3 Posner files"
+  - "2026-05-02 — Display bio rewritten anchored to THIS wall (sunglasses with reflected skyline) instead of the red-headscarf Hollander wall. Hollander/Disney/TikTok/Tampa Baes facts kept as career context. Fixed inconsistent 'red headscarf' fieldNote."
 sourceNotes:
   - "Enhanced with Rob's field photo 2026-03-06"
   - "Credit on wall: therealmelpoz 2023"
-  - "https://www.melanieposner.com/about"
-  - "https://www.melanieposner.com/murals-portfolio"
+  - "https://stpetecatalyst.com/melanie-posner/"
+  - "https://www.melanieposner.com/"
+  - "https://stpeteartsalliance.org/shine?alias=/2018_SHINE_Mural_Melanie_Posner"
+  - "https://outcoast.com/get-to-know-mel-posner-from-tampa-baes/"
+  - "http://watermarkoutnews.com/2021/12/02/tampa-baes-star-melanie-posner-talks-filming-season-one/"
+  - "https://www.imdb.com/name/nm12771071/"
+  - "https://findmasa.com/artist/melanie-posner"
+  - "https://www.artsy.net/artist/melanie-posner"

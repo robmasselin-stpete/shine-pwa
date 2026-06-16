@@ -17,15 +17,112 @@ instagram: waywardwalls
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Jason Harvin is a self-taught geometric abstraction artist who left a corporate career in 2022 to paint full time through his company Wayward Walls. His hard-edged style layers triangles, circles, and stripes into dense optical compositions that pulse with energy. Featured on HGTV's 100 Day Dream Home, his work can be found across homes and businesses in Tampa Bay. He's painted walls and intersection murals for SHINE across St. Petersburg.
+  He quit Oracle to paint walls. He started painting in 2018. He was featured on
+  HGTV's 100 Day Dream Home.
 
-muralDescription: |
-  A wide commercial building wrapped in interlocking geometric shapes — overlapping triangles, concentric circles, and bold diagonal stripes in saturated blue, orange, red, yellow, black, and white. A large red triangle dominates the center, framed by concentric blue-and-orange rings. A bright yellow half-circle anchors the bottom edge. Black-and-white striped bands slice through the composition at sharp angles, while smaller geometric motifs fill every remaining gap. Palm trees along the base add scale to the Op Art explosion.
+  Jason Harvin grew up in a military family in Germany, graduated from
+  Heidelberg American High School, and earned a degree in hospitality management
+  from the University of Central Florida. He worked at Oracle for years before
+  leaving corporate in early 2022 to paint full-time.
+
+  He founded Wayward Walls in 2019. His style is geometric abstraction with bold
+  color palettes — painter's tape for crisp designs that transform blank walls
+  into vibrant landmarks. During the pandemic he created "Zoom Walls" — custom
+  accent walls for virtual meeting backgrounds. He also runs Wayworld, an
+  event-driven art space in St. Pete's Warehouse Arts District.
+
+  For SHINE 2021 and 2022, he painted in St. Petersburg.
+
+searchBio: |
+  He quit Oracle to paint walls. He started painting in 2018. He was featured on
+  HGTV's 100 Day Dream Home.
+
+  Jason Harvin grew up in Germany while his parents served in the US Air Force
+  and worked for the US Government. He graduated from Heidelberg American High
+  School in 2004, then moved to Orlando, Florida to attend the University of
+  Central Florida (UCF), where he earned a degree in hospitality management in
+  2008. After graduating, he joined MICROS Systems — later acquired by Oracle
+  Corp. — training, installing, and eventually managing hotel software across
+  North America. He stayed at Oracle for thirteen years, relocating from Orlando
+  to the Tampa area during that time and purchasing his first home.
+
+  Buying that house is what started the painting. After years of renting where
+  he could not paint walls, he picked up painter's tape and began experimenting
+  with accent and design walls room by room. Neighbors noticed, asked him to
+  paint walls in their homes, and a side business started organically. Curious
+  to see what running a small business took, he registered Wayward Walls, LLC in
+  September 2019 — a painting company focused on accent, design, and feature
+  walls. The business grew through word of mouth, social media, and creative
+  marketing.
+
+  When the COVID-19 pandemic arrived in March 2020, Harvin spotted an
+  opportunity. With remote work, remote school, and social distancing keeping
+  people home, he pitched "Zoom Walls" — custom accent walls designed to stand
+  out as Zoom backgrounds, distinguishing professionals to employers and
+  students to teachers. He spent most of 2020 and 2021 selling Zoom Walls and
+  continued growing into small-business work. He was invited to participate in
+  the Black Lives Matter mural in St. Petersburg, and was selected as an artist
+  in the SHINE Mural Festival.
+
+  In October 2021, while on a lift painting his SHINE wall, a group with
+  professional cameras stopped to watch. He assumed it was a news crew. It
+  turned out to be the production company behind HGTV's 100 Day Dream Home, the
+  show with Mika and Brian Kleinschmidt. They commissioned him on the spot to
+  paint a piece for one of the homes they were renovating in the area. Harvin
+  finished SHINE and returned to his Oracle job with painting still as the side
+  hustle. By 2022 he was burning the candle at both ends — handling Oracle email
+  blocks from 5 a.m. to 8 a.m., then painting all day, sometimes hosting Oracle
+  project kickoff calls from 20 feet up on scaffolding. At the end of March 2022
+  he left Oracle to paint full-time. The HGTV episode aired in April 2022 and
+  gave him enough business momentum to support the transition.
+
+  Soon after, he was approached by The Factory St. Pete to pilot their Artist in
+  Residence program. The residency expanded into something larger: between July
+  and November 2022 he built out a previously unusable area of The Factory into
+  a full event space and art gallery. He named it Wayworld. The space became a
+  fixture in the Warehouse Arts District, hosting World Cup viewing parties,
+  solo and group art shows, dance parties, and a New Year's Eve celebration with
+  200 people that brought in 2023. He continues to paint and run Wayworld in St.
+  Petersburg.
+
+  For SHINE Mural Festival 2021 and 2022, he painted in St. Petersburg. His
+  signature style is geometric abstraction with bold color palettes — designs
+  built with painter's tape for crisp, hard-edged shapes that transform blank
+  walls into vibrant landmarks. Each project is custom designed, often
+  reflecting the identity of the business, neighborhood, or client.
+
+  Press coverage includes a March 10, 2026 FOX 13 Tampa Bay "Made in Tampa Bay"
+  segment by photojournalist Mike Hughes, which traced his arc from corporate
+  work to full-time muralist. He has also been featured on HGTV's 100 Day Dream
+  Home (2022 episode with Mika and Brian Kleinschmidt).
+
+  He lives with his fiancée Vera Herrera, a longtime artist herself, and their
+  rescue cat Zooey. Contact: 813-502-0442 or jason@waywardwalls.com. Website:
+  waywardwalls.com.
+
+searchMuralDescription: |
+  A wide commercial building wrapped in interlocking geometric shapes —
+  overlapping triangles, concentric circles, and bold diagonal stripes in
+  saturated blue, orange, red, yellow, black, and white. A large red triangle
+  dominates the center, framed by concentric blue-and-orange rings. A bright
+  yellow half-circle anchors the bottom edge. Black-and-white striped bands
+  slice through the composition at sharp angles, while smaller geometric motifs
+  fill every remaining gap. Palm trees along the base add scale to the Op Art
+  explosion.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
-
+artistAwards: "SHINE 2021 and 2022 selected artist; HGTV 100 Day Dream Home feature"
+furtherWork:
+  - name: "waywardwalls.com"
+    url: "https://www.waywardwalls.com"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: "Photo by Rob Asselin. Bio reused from 2022 profile. 2026-03-05."
+sourceNotes:
+  - "Photo by Rob Asselin. Bio reused from 2022 profile. 2026-03-05."
+  - "https://www.waywardwalls.com/about-6"
+  - "https://www.fox13news.com/news/tampa-artist-pursuing-full-time-mural-painting"
+  - "https://www.axios.com/local/tampa-bay/2021/10/18/spotlight-shine-muralist-jason-harvin-florida-mural-art"

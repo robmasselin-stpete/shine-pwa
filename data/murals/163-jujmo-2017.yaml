@@ -1,0 +1,108 @@
+# Jujmo — Space Rainbows (2017)
+
+# ── Required ──
+id: 163
+artist: Jujmo
+year: 2017
+lat: 27.770471
+lng: -82.656416
+address: 1701 1st Ave S
+category: shine
+img: "images/murals/2017/jujmo-space-rainbows.jpeg"
+
+# ── Optional ──
+title: "Aquatic Forest"
+building: ""
+instagram: jujmo
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Grew up as a military kid between bases overseas"
+  - "Anime and street art fusion"
+  - "Vibrant character illustration"
+
+artistBio: |
+  She grew up as a military kid moving between bases overseas with limited
+  access to cartoons. When she finally got to watch anime in the U.S., she
+  decided to become an artist.
+
+  Cheryl Weber — Jujmo — is a Filipina American artist based in Tampa. She
+  earned her BFA from the University of South Florida and started freelancing
+  immediately after graduation. Her style is colorful and playful — saturated
+  colors, no straight lines, happy intertwined worlds of strange creatures
+  influenced by anime, Japanese folklore, and Filipino folklore. She paints on
+  walls, helmets, shoes, tote bags, and cars.
+
+  She has ten-plus years of mural experience and painted the "B" in the Black
+  Lives Matter street mural in front of the Dr. Carter G. Woodson Museum for
+  Juneteenth 2020. She gave a lecture at the Imagine Museum in 2024 and was
+  featured on WEDU Arts Plus (PBS). Her work is her true love: "I want it to be
+  your time to shine, just as much as mine."
+
+searchBio: |
+  She grew up as a military kid moving between bases overseas with limited
+  access to cartoons. When she finally got to watch anime in the U.S., she
+  decided to become an artist.
+
+  Cheryl Weber — Jujmo (pronounced "jooj-moe") — is a Filipina American artist
+  based in Tampa, FL. She earned her BFA from the University of South Florida
+  (approximately 2013) and began freelancing immediately via email, Instagram,
+  and Facebook. Her style is colorful and playful with saturated colors and
+  heavy influence from anime, Japanese folklore, and Filipino folklore. She is
+  characterized by bright colors and the absence of straight lines — happy
+  intertwined worlds of fanciful creatures. She paints on walls, helmets, shoes,
+  tote bags, and cars.
+
+  SHINE credits: 2017 ("Aquatic Forest," 1701 1st Ave S — 48 feet wide by 14
+  feet high) and 2021 (A-1 Recovery, 2221 5th Ave S, plus a week-long mural
+  education course for the Shirley Proctor Puller Foundation). She painted the
+  "B" in the Black Lives Matter street mural in front of the Dr. Carter G.
+  Woodson African American Museum for Juneteenth 2020. Other murals include
+  Black Radish Grocery and Love Food Central in St. Petersburg.
+
+  She gave a lecture at the Imagine Museum Artist Lecture Series (September
+  2024) and was featured on WEDU Arts Plus (PBS, Season 14 Episode 8). She
+  launched a free Instagram livestream drawing show during COVID-19. She created
+  a limited-edition design for WEDU PBS supporters.
+
+  Instagram: @jujmo. Website: jujmo.com.
+
+searchMuralDescription: |
+  A wide panoramic mural covering a commercial wall, filled edge to edge with
+  colorful abstract blob creatures and organic shapes. The palette spans soft
+  pinks, greens, teals, yellows, purples, and deep blues. Playful characters
+  with simple dot eyes and small mouths peek out from amorphous cloud-like
+  forms. Some shapes resemble mushrooms, coral, or amoebas. The composition
+  flows like an underwater garden or alien landscape — dense, layered, and
+  cheerful. Trees frame the mural on both sides.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2017 and 2021 selected artist"
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited; FIXED title: 'Space Rainbows' was wrong (that's a Ricky Watts mural). Per SPAA, Jujmo's 2017 mural at 1701 1st Ave S is 'Aquatic Forest.' Removed unsourced 'cute forward' style quote."
+sourceNotes:
+  - "https://jujmo.com/about"
+  - "https://creativepinellas.org/artist/cheryl-weber/"
+  - "https://ilovetheburg.com/jujmo-murals-tampa-st-pete/"
+  - "https://stpeteartsalliance.org/jujmo"
+  - "https://stpeteartsalliance.org/blm-mural"
+  - "https://www.tampabay.com/life-culture/arts/visual-arts/2020/06/19/a-new-black-lives-matter-mural-has-been-unveiled-in-st-petersburg/"
+  - "https://www.eventbrite.com/e/artist-lecture-series-featuring-jujmo-tickets-976117282067"
+  - "https://www.cltampa.com/arts/tampa-artist-jujmo-to-discuss-public-art-and-her-origin-story-at-museum-lecture-series-18468229"
+  - "https://www.pbs.org/video/1408-jujmo-oebmso/"
+  - "https://www.wtsp.com/article/news/community/jujmo-tampa-bay-area-filipino-artist/67-00a27014-b3f2-417a-bc9d-fa96e85af452"
+  - "https://voyagemia.com/interview/meet-cheryl-weber-aka-jujmo-miami-tampa-bay/"
+  - "https://registrytampabay.com/shine-mural-festival-2021-its-a-world-tour/"
+  - "Photo by Rob 2026-04-16, GPS from EXIF. Address: 1701 1st Ave S. Second Jujmo piece — also has SHINE 2021 entry (id 85) and another piece (id 167)."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "Major correction: title was wrong ('Space Rainbows' belongs to Ricky Watts; SPAA confirms Jujmo's 2017 mural is 'Aquatic Forest'). 'Cute forward' style quote not in any source — replaced with sourced descriptor."

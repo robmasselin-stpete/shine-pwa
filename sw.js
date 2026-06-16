@@ -14,7 +14,7 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v122';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v144';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
 const IMG_CACHE = 'shine-images-v9'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
@@ -146,6 +146,7 @@ const MURAL_IMAGES = [
   './images/murals/2018/angela-faustina.jpeg',
   './images/murals/2019/jimmy-breen-anthony-freese.jpeg',
   './images/murals/2016/dasic-fernandez.jpeg',
+  './images/murals/2016/pantonio.jpeg',
   './images/murals/2016/michael-reeder.jpeg',
   './images/murals/pre-shine/bask-make-history.jpeg',
   './images/murals/2018/look-the-weird.jpeg',
@@ -159,7 +160,22 @@ const MURAL_IMAGES = [
   './images/murals/2021/reid-jenkins-distillery.jpeg',
   './images/murals/2023/happy-mural-project.jpeg',
   './images/murals/2023/rhys-meatyard.jpeg',
-  './images/murals/commercial/gibbs-mural-club-distillery.jpeg'
+  './images/murals/commercial/gibbs-mural-club-distillery.jpeg',
+  './images/murals/2016/pantonio.jpeg',
+  './images/murals/commercial/planet-retro-records.jpeg',
+  './images/murals/commercial/derek-donnelly-sonshine.jpeg',
+  './images/murals/commercial/art-of-slim-dreams-to-reality.jpeg',
+  './images/murals/commercial/unknown-snake-cobra.jpeg',
+  './images/murals/commercial/romero-stpetersrun.jpeg',
+  './images/murals/2017/jujmo-space-rainbows.jpeg',
+  './images/murals/commercial/morgan-harper-nichols.jpeg',
+  './images/murals/commercial/lyko-creative.jpeg',
+  './images/murals/commercial/chad-mize-doodle-wall.jpeg',
+  './images/murals/commercial/jujmo-blobs.jpeg',
+  './images/murals/commercial/carrie-jadus-mother.jpeg',
+  './images/murals/commercial/dreamweaver-20th-st.jpeg',
+  './images/murals/commercial/paola-delfin-emperatriz.jpeg',
+  './images/murals/2019/taj-tenfold-sewing-seeds.jpeg'
 ];
 
 // Install: precache shell + all mural images (~16MB total after compression).
@@ -196,6 +212,9 @@ self.addEventListener('fetch', (e) => {
 
   // Skip non-GET requests
   if (e.request.method !== 'GET') return;
+
+  // Tools (route-editor, yaml-editor) — always network, never cache
+  if (url.pathname.includes('/tools/')) return;
 
   // Google Fonts + Leaflet CDN — cache first (rarely changes)
   if (url.hostname.includes('fonts.googleapis.com') || url.hostname.includes('fonts.gstatic.com') || url.hostname.includes('unpkg.com')) {

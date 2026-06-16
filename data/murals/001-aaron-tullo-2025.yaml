@@ -11,31 +11,101 @@ category: shine
 img: "images/murals/2025/aaron-tullo.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Golden Dawn"
 building: Cordova Inn
 instagram: aaron.tullo
 basedIn: "St. Petersburg, FL"
 
-artistBio: |
-  Aaron Tullo is a St. Petersburg-based muralist, sign painter, and fine artist
-  who operates under the Aaron James Tullo Fine Art studio. His work blends
-  figurative realism with bold graphic design, drawing on his background in both
-  traditional painting and commercial art — including work for clients such as
-  St. Pete College, Penn Fishing Reels, and Old Northeast Jewelers. A former
-  minor league baseball player, Tullo channels his travels and community
-  connections into story-driven public art that celebrates place and people.
-  He participated in the 2025 SHINE Origins festival, painting a five-story mural
-  on the Cordova Inn, the festival's title sponsor.
+fieldNotes:
+  - "Milwaukee Brewers drafted him twice"
+  - "Self-taught muralist"
+  - "Lives and paints in St. Pete"
 
-muralDescription: |
+artistBio: |
+  The Milwaukee Brewers drafted him twice. He picked up a paintbrush instead.
+
+  Aaron Tullo was born in St. Petersburg in 1988 and grew up throwing fastballs.
+  He played at St. Petersburg High School, made second-team All-County as a
+  sophomore, and tried out for the USA Baseball Youth National Team at 16. The
+  Brewers took him in the 17th round of the 2006 draft — he turned them down for
+  college. They took him again in 2007 out of the University of Tennessee. This
+  time he signed.
+
+  He pitched in the Brewers' minor league system for roughly six years before
+  injuries ended it. He was around 25.
+
+  What came next was a pivot, not a restart. Tullo studied at St. Petersburg
+  College and the University of Tennessee (arts and sciences), and his eye for
+  composition carried over. He started with nursery murals and pet portraits,
+  then connected with the Vitale Brothers in Gulfport — working on their jobs,
+  learning the trade, exhibiting alongside them. His first major public piece
+  was a towering vintage pocket watch on Old Northeast Jewelers at 1131 4th St N
+  — a mural he still considers his best work.
+
+  His style moves between figurative realism, bold graphic design, and sign
+  painting. He letters by hand. He collaborates frequently with Ty Maner.
+  Clients include Old Northeast Jewelers, Plotnick Law (where he painted
+  Hemingway and Dali side by side), Fortunato's, and St. Pete Fishing
+  Outfitters. For a Tampa Heights law office, he painted an Elliott Smith Figure
+  8-inspired piece with an MLK quote and a child's face.
+
+  For SHINE Origins 2025, he painted a five-story white peacock on the Cordova
+  Inn — the festival's title sponsor. It fills the building's entire facade and
+  reads from blocks away.
+
+searchBio: |
+  The Milwaukee Brewers drafted him twice. He picked up a paintbrush instead.
+
+  Aaron James Tullo was born March 9, 1988 in St. Petersburg, Florida. He
+  attended St. Petersburg High School under coach Stefan Futch, made second-team
+  All-County as a sophomore in 2004, and was selected to try out for the USA
+  Baseball Youth National Team at age 16. A throwing arm injury in the summer of
+  2005 complicated things, but the Milwaukee Brewers still drafted him in the
+  17th round (512th overall) of the 2006 MLB Draft out of high school. He turned
+  them down and went to college.
+
+  At the University of Tennessee he pitched as a right-hander — 10 appearances
+  as a freshman in 2007 with a 3.72 ERA and 56 strikeouts in 36.1 innings. The
+  Brewers drafted him again in 2007, 47th round. He signed and entered their
+  minor league system. He pitched professionally for roughly six years before
+  injuries ended his baseball career around age 25. He also attended St.
+  Petersburg College and is described as a USF graduate.
+
+  Tullo operates AJT Art + Design (also Aaron James Tullo Fine Art) out of a
+  studio at 2411 15th Avenue North in St. Petersburg. He works in brush, spray
+  paint, airbrush, and stencil across styles including realism, pop art,
+  abstract, and typography. He was mentored by the Vitale Brothers, well-known
+  St. Pete muralists — he worked on their jobs and exhibited at their Gulfport
+  studio, including Renaissance-inspired paintings on wood at their "Birds and
+  Bees" show.
+
+  His first major public piece was the vintage pocket watch mural at Old
+  Northeast Jewelers / Hess Fine Art (1131 4th St N, St. Pete) in 2018 — a work
+  he considers his best. Other confirmed murals include the Hemingway-and-Dali
+  piece at Plotnick Law (1515 4th St N), a collage-style mural at St. Pete
+  Fishing Outfitters, work at Fortunato's in Pinellas Park, and an Elliott Smith
+  Figure 8-inspired mural with an MLK quote at Josh Sheridan's law office in
+  Tampa Heights. He collaborates frequently with Ty Maner.
+
+  Fox 13 News profiled him in September 2023 ("Retired minor league baseball
+  player creates custom murals in Tampa Bay"). He has been covered by the
+  Northeast Journal, Creative Loafing Tampa Bay, and The Gabber.
+
+  For SHINE Origins 2025 — the festival's 11th year, focused on local Tampa Bay
+  artists — Tullo was one of 17 selected artists. He painted a five-story white
+  peacock on the facade of the Cordova Inn at 253 2nd Ave N, the festival's
+  title sponsor. The bird's plumage fills the building's vertical expanse,
+  creating a landmark visible from blocks away in downtown St. Petersburg.
+
+searchMuralDescription: |
   This five-story mural on the facade of the Cordova Inn depicts a large white
-  peacock rendered in Tullo's characteristic blend of figurative realism and bold
-  graphic composition. The bird's plumage fills the building's vertical expanse,
-  creating a striking visual landmark in downtown St. Petersburg.
+  peacock rendered in Tullo's characteristic blend of figurative realism and
+  bold graphic composition. The bird's plumage fills the building's vertical
+  expanse, creating a striking visual landmark in downtown St. Petersburg.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE Origins 2025 selected artist"
 
 furtherWork:
   - name: "aaronjamestullo.com"
@@ -43,9 +113,20 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-06-16 — Title set to 'Golden Dawn' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:
+  - "https://www.aaronjamestullo.com/"
+  - "https://utsports.com/sports/baseball/roster/aaron-tullo/443"
+  - "https://www.milb.com/player/aaron-tullo-476609"
+  - "https://www.mlb.com/player/aaron-tullo-476609"
+  - "https://www.fox13news.com/news/former-minor-league-baseball-player-creates-custom-murals-in-tampa-bay"
+  - "https://northeastjournal.org/st-petes-artsy-murals-move-into-the-old-northeast/"
+  - "https://northeastjournal.org/living-color-celebrating-murals-in-the-northeast/"
+  - "https://www.cltampa.com/music/elliott-smithinspired-mural-surfaces-in-tampa-heights-12242173/"
+  - "https://thegabber.com/vitale-brothers-birds-and-bees-in-gulfport/"
   - "https://ilovetheburg.com/st-pete-shine-origins/"
   - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
   - "https://83degreesmedia.com/tampa-bay-arts-roundup-shine-mural-festival-arts-annual-more/"
-  - "https://www.artfluentcreatives.com/artists"
-  - "https://995qyk.com/2026/01/26/downtown-st-petersburg-hotel-will-add-65-rooms-and-rooftop-bar-in-february/"
+  - "https://luciwest.com/photos-from-shine-origins-mural-festival-2025/"

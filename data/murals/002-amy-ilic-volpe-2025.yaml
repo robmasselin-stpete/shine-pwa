@@ -4,8 +4,8 @@
 id: 2
 artist: "Amy Ilic-Volpe"
 year: 2025
-lat: 27.762931
-lng: -82.674592
+lat: 27.762868
+lng: -82.674598
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/amy-ilic-volpe.jpeg"
@@ -17,22 +17,61 @@ instagram: amy_ilic_volpe
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Amy Ilic-Volpe is a St. Petersburg-based multimedia artist whose work
-  explores the interplay of color, form, and perception. Her bold, graphic
-  style uses bright palettes and layered geometric compositions to create
-  work that feels both playful and contemplative. She was the 2022 Gasparilla
-  Festival of the Arts Emerging Artist Recipient, a featured artist in All
-  She Makes magazine, and a SHINE St. Petersburg "Bright Spot" artist in
-  2022. For the 2025 SHINE Origins festival she returned with a full-scale
-  mural on 31st St & 7th Ave S.
+  Before she picked up a brush, she spent nearly a decade on cruise ships
+  entertaining children around the world. That sense of play never left.
 
-muralDescription: |
+  Amy Ilic-Volpe is a Florida native now based in St. Petersburg. Her work is
+  process-driven and spontaneous — fluid color, layered geometric shapes, bold
+  palettes of pink, green, yellow, and turquoise that land somewhere between
+  playful and contemplative. She cites Hilma af Klint as an influence and
+  listens to Ani DiFranco in the studio.
+
+  She works with children through youth education and art classes, and calls
+  teaching her greatest achievement — "sparking wonder." Kids are her primary
+  artistic inspiration. She views her practice through "the excitement and
+  vitality of young eyes" and prioritizes fun over seriousness. Her current
+  collection, Keys, explores the mystery found in isolation and going within.
+
+  Recognition includes the 2022 Gasparilla Festival of the Arts Emerging Artist
+  award, a feature in All She Makes magazine, and a SHINE 2022 "Bright Spot"
+  mural. For SHINE Origins 2025, she returned with "Here & Now" — a candy-bright
+  explosion of circles, stripes, polka dots, and stacked block letters on 31st
+  Street and 7th Avenue South.
+
+searchBio: |
+  Before she picked up a brush, she spent nearly a decade on cruise ships
+  entertaining children around the world. That sense of play never left.
+
+  Amy Ilic-Volpe is a Florida native and multimedia artist based in St.
+  Petersburg. Her work is process-driven and spontaneous — fluid color, layered
+  geometric shapes, bold palettes that land somewhere between playful and
+  contemplative. She allows materials to "speak" to her, describing painting as
+  "a visceral and emotional practice." She cites Hilma af Klint as an influence
+  and listens to Ani DiFranco in the studio. She advocates against
+  pretentiousness in the art world, calling for artists to "lift each other up."
+
+  She works with children through youth education and art classes, and calls
+  teaching her greatest achievement — "sparking wonder." Kids are her primary
+  artistic inspiration. She views her practice through "the excitement and
+  vitality of young eyes." Her current collection, Keys, explores "the
+  excitement and mystery that can be found in isolation and going within
+  ourselves." She uses meditation and intentional thought in her creative
+  practice.
+
+  Recognition includes the 2022 Gasparilla Festival of the Arts Emerging Artist
+  Recipient award, a feature in All She Makes magazine, and a SHINE St.
+  Petersburg "Bright Spot" mural in 2022. She has been profiled by Not Real Art
+  and FloridaRAMA / Fairgrounds St. Pete. For SHINE Origins 2025, she painted
+  "Here & Now" at 31st Street and 7th Avenue South — a wide mural on a cinder
+  block wall bursting with overlapping geometric shapes in a candy-bright
+  palette. Instagram: @amy_ilic_volpe.
+
+searchMuralDescription: |
   A wide, vibrant mural on a cinder block wall bursting with overlapping
-  geometric shapes — circles, stripes, polka dots, and waves — in a candy-
-  bright palette of pink, green, yellow, orange, purple, and turquoise. The
-  left side features the words "Here & Now" in stacked multicolor block
-  letters. Signed "Amy Ilic Volpe @amy_ilic_volpe" in pink in the lower
-  right corner.
+  geometric shapes — circles, stripes, polka dots, and waves — in a candy-bright
+  palette of pink, green, yellow, orange, purple, and turquoise. The left side
+  features the words "Here & Now" in stacked multicolor block letters. Signed
+  "Amy Ilic Volpe @amy_ilic_volpe" in pink in the lower right corner.
 
 muralInspiration: ""
 muralAwards: ""
@@ -40,4 +79,9 @@ artistAwards: "2022 Gasparilla Festival of the Arts Emerging Artist Recipient; A
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: "Enhanced from photo, 2026-03-05"
+revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+sourceNotes:
+  - "Enhanced from photo, 2026-03-05"
+  - "https://notrealart.com/artist-amy-ilic-volpe-paintings-cultivate-childlike-glee/"
+  - "https://floridarama.art/"
+  - "https://gasparillaarts.com/"

@@ -1,0 +1,130 @@
+# Jade Rivera — 2016
+
+# ── Required ──
+id: 151
+artist: Jade Rivera
+year: 2016
+lat: 27.770883
+lng: -82.66805
+address: 2536 Central Ave
+category: shine
+img: "images/murals/2016/jade-rivera.jpeg"
+
+# ── Optional ──
+title: "El Templo - Find the Light"
+building: ""
+instagram: jade_rivera_artist
+basedIn: "Lima, Peru"
+
+fieldNotes:
+  - "Has his own museum, gallery, and clothing line"
+  - "Puerto Rican heritage, based in Tampa"
+  - "Bold Latin American iconography"
+
+artistBio: |
+  He has his own museum, gallery, clothing line, and creative lab on one street
+  in Lima's Barranco district.
+
+  Jonatan "Jade" Rivera is a self-taught Peruvian muralist born in 1983 in
+  Junin, raised in Lima's Chorrillos district. He first encountered graffiti at
+  fourteen and has been painting walls since 1998. A visit to the Louvre helped
+  shape his ambitions, but he never finished formal art school — he defines
+  himself as self-taught since 1997.
+
+  His signature is large-format surrealist photorealism: human figures in
+  dreamlike stillness surrounded by disproportionately large birds, butterflies,
+  and candle flames. Birds recur as "messengers between worlds." The work
+  explores Latin identity, faith, and the importance of believing in one's own
+  dreams. Beyond murals he works in oil, watercolor, and wood carving.
+
+  He has painted in seventeen-plus countries across South America, North
+  America, Europe, and the Middle East. Festival credits include Forest for the
+  Trees (Portland), Constructo (Mexico), and Mirafau (Lima). In 2024 he painted
+  "La Florista" in Rahway, New Jersey — his daughter Emilia holding lilies.
+
+  For SHINE 2016 he painted "El Templo — Find the Light" at 2536 Central Avenue
+  — a boy lying across the full width of the wall, a blue ibis standing on his
+  belly, a monarch butterfly at his neck, and a single candle flame burning in
+  the darkness.
+
+searchBio: |
+  He has his own museum, gallery, clothing line, and creative lab on one street
+  in Lima's Barranco district.
+
+  Jonatan "Jade" Rivera is a self-taught Peruvian street artist and muralist
+  born in 1983 in Junin (Huancayo), Peru. At seven months old he and his mother
+  moved to Lima, where he grew up in the Chorrillos district. His interest in
+  art began around age eleven; he first encountered graffiti at fourteen. At
+  seventeen he enrolled at the National Pre-School of Fine Arts (Escuela
+  Nacional de Bellas Artes) but gave up applying at the last moment. He defines
+  himself as self-taught since 1997 and has been making murals since 1998. A
+  visit to the Louvre Museum in Paris was a significant formative influence.
+
+  His signature is large-format surrealist photorealism: human figures in
+  dreamlike states surrounded by disproportionately large birds, butterflies,
+  insects, and candle flames. Birds recur as "messengers between worlds." His
+  work explores Latin identity, environment, faith originating from oneself, and
+  believing in one's dreams. His murals are "reflections on life and its
+  constant eventfulness, portrayed with optimism and wonder." Beyond murals he
+  works in oil painting, watercolor, and wood carving.
+
+  He has painted in seventeen-plus countries: Peru, Colombia, Mexico, Chile,
+  Argentina, Ecuador, Paraguay, Dominican Republic, Costa Rica, the United
+  States, Denmark, France, Sweden, Germany, Switzerland, Spain, Italy, Slovenia,
+  Poland, and the United Arab Emirates. Festival credits include SHINE 2016 (St.
+  Petersburg), Forest for the Trees (Portland, Oregon), Constructo (Mexico),
+  Mirafau Festival (Lima), and Barrio Arte (Santiago, Chile).
+
+  Notable murals include "La Florista" in Rahway, New Jersey (November 2024, a
+  collaboration between Peruvian restaurant QUILLA and the city, depicting his
+  daughter Emilia holding lilies), "Buscando la verdad" in Santiago de Chile
+  (2018), and "El Abrazo De Un Deseo."
+
+  In Lima's Barranco district he operates Jade Rivera World on Bajada de Banos
+  street, which includes: Museo Jade Rivera (a museum of his work), Jade Rivera
+  Lab (workshops and creative encounters), Jade Rivera Gallery (original pieces,
+  sculptures, prints), and Despierta (his clothing line). He is represented by
+  Quai 36 (French street art production company) and listed with the South
+  American Street Art Fund (SASA Fund). He has a daughter named Emilia.
+
+  For SHINE 2016 he painted "El Templo — Find the Light" at 2536 Central Avenue
+  in St. Petersburg — forty-five feet wide by thirteen feet high. A boy lies on
+  his back across the full length of the wall against a deep blue-black
+  background, a blue ibis standing on his belly in a pool of water, a monarch
+  butterfly at his neck, and a single candle flame burning.
+
+  Instagram: @jade_rivera_artist. Website: jaderivera.pe.
+
+searchMuralDescription: |
+  A surrealist photorealistic mural on a deep blue-black background. A young man
+  lies on his back with eyes closed, wearing a light-colored shirt. A monarch
+  butterfly with orange and black wings rests near his neck, and a blue ibis
+  stands on his torso, bending its long neck downward into a small pool of
+  water. A single candle flame burns between the boy and the bird. The
+  composition spans the full width of the wall — forty-five feet of dreamlike
+  stillness, nature and the human figure merged in silence.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2016 selected artist"
+
+furtherWork:
+  - name: "jaderivera.pe"
+    url: "https://www.jaderivera.pe"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+  - "16 April 2026 — Full research and bio, Claude-enhanced"
+sourceNotes:
+  - "GPS from Rob's photo, IMG_0012.jpeg"
+  - "Title and artist identified by Rob: El Templo - Find the Light by Jade Rivera, SHINE 2016"
+  - "Address: 2536 Central Ave (from SPAA)"
+  - "https://www.jaderivera.pe/"
+  - "https://www.museojaderivera.com/"
+  - "https://www.instagram.com/jade_rivera_artist/"
+  - "https://quai36.com/en/talent/jade-rivera/"
+  - "https://sasafund.org/jade-rivera/1650/"
+  - "https://www.booooooom.com/2019/07/18/artist-spotlight-jade-rivera/"
+  - "https://www.wionews.com/entertainment/-peru-and-latin-america-are-two-constant-heartbeats-in-my-work-says-peruvian-artist-jade-rivera-interview-1766323549732"

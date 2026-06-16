@@ -4,8 +4,8 @@
 id: 90
 artist: Nicole Salgar
 year: 2021
-lat: 27.764775
-lng: -82.664628
+lat: 27.764672
+lng: -82.664528
 address: 615 23rd St S
 category: shine
 img: images/murals/2021/nicole-salgar.jpeg
@@ -16,35 +16,136 @@ building: Cimco Tile
 instagram: nmsalgar
 basedIn: "St. Petersburg, FL"
 
-artistBio: |
-  Nicole Salgar is a Cuban-Colombian visual artist and muralist who grew up in Miami. She attended Design & Architecture Senior High (DASH), then headed to New York City to study fashion design at the Fashion Institute of Technology, earning her bachelor's degree with a focus on tailoring. She spent about seven years in the fashion industry designing for Ralph Lauren and other major labels before pivoting to art full-time. Her mural career kicked off in 2013 with a collaboration on the Centre-Fuge Public Art Project on Manhattan's Lower East Side, and she went on to co-found NS/CB studio, producing research-driven murals across the U.S. and internationally. Her style draws on Latin American folk art, indigenous imagery, mythology, cinema, and the cultures she encounters while traveling — she gravitates toward vivid colors with contrasting accents and often paints large-scale female portraits that function as "gatekeepers to other dimensions," blending surreal and symbolic elements into figurative work. Through residencies and festivals, she has painted walls in Israel, Mexico, Spain, Cuba, Puerto Rico, and across the United States. Her commercial client list includes Starbucks, Absolut, Tanqueray, Steve Madden, Lululemon, and Bacardi. She painted "Viaje Despierto" at Disney Springs for Hispanic Heritage Month in 2024, and in 2025 was one of thirteen artists selected to paint directly on the gallery walls of the Dali Museum in St. Petersburg for their first-ever murals exhibition, "Outside In: New Murals Inspired by Dali." She relocated from Miami to St. Petersburg in December 2023.
+fieldNotes:
+  - "Seven years designing for Ralph Lauren"
+  - "Then switched to full-time painting"
+  - "Colombian-American, fashion-to-art career"
 
-muralDescription: |
-  A large-scale mural covering the entire side wall of Cimco Tile in a striking limited palette of muted reds, teals, greens, and pinks. The left side features a photorealistic portrait of a young woman gazing directly at the viewer with an intense, contemplative expression. Her face is rendered in soft green and warm tones, with horizontal red striped shadows — like light through blinds — falling across her forehead and the wall behind her. Lush tropical leaves in deep reds and teals frame her face and extend across the right side of the wall, interwoven with chain-link fence imagery and bold geometric red shapes. A large flower blooms on the far right, wrapping around the building's roll-up door. Signed "ns" on the left side. The piece explores themes of parallel dimensions and transformation, with the subject serving as a gatekeeper between worlds.
+artistBio: |
+  She spent seven years designing for Ralph Lauren before she started painting
+  walls.
+
+  Nicole Salgar graduated from Design and Architecture Senior High in Miami and
+  earned her degree from the Fashion Institute of Technology in New York,
+  specializing in tailoring. She left fashion and started painting. Her first
+  mural was a 2013 collaboration with Chuck Berrett on Manhattan's Lower East
+  Side.
+
+  Her style blends Latin folk art influences with horror, sci-fi, and cinema
+  aesthetics — vivid colors, high contrast, constantly evolving. She was
+  selected for the Dali Museum's "Outside In" exhibition (2025). Her largest
+  wall is a 2.5-story mural in Wynwood with the Pangeaseed foundation on rising
+  sea levels. She has painted in Israel, Mexico, Spain, Cuba, Puerto Rico, and
+  across the US. Clients include Starbucks, Absolut, Lululemon, Steve Madden,
+  and Bacardi.
+
+  For SHINE 2021, she painted in St. Petersburg.
+
+searchBio: |
+  She spent seven years designing for Ralph Lauren before she started painting
+  walls.
+
+  Nicole Salgar grew up in Miami, Florida, attending art magnet schools from a
+  young age. At 15 she enrolled at Design & Architecture Senior High in the
+  Miami design district to study fashion design, graduating in 1999. She moved
+  to New York City at 18 and earned her bachelor's degree from the Fashion
+  Institute of Technology (FIT), specializing in tailoring. For seven years she
+  worked as a freelance and full-time fashion designer for Ralph Lauren, The
+  Gap, Jordache, Sears/Kmart, and independent designers. She also spent three
+  years as an assistant stylist for fashion and product editorial shoots at
+  Sandbox Studios.
+
+  After realizing office life was not for her, she shifted her focus back to
+  art, curating group shows, pop-ups, and installations across Manhattan and
+  Brooklyn. She set herself the goal of painting a mural, and in 2013 painted
+  her first one — a collaboration with Chuck Berrett through The Centre-Fuge
+  Public Art Project on Manhattan's Lower East Side. Conversations with
+  muralists Damien Mitchell and Phetus convinced her she could make a living
+  from public art.
+
+  In 2014, the murder of her brother Louis Salgar brought her back to Miami.
+  Painting became therapy and full-time work. She immersed herself in the local
+  art and music scene, finding early paid opportunities through the hospitality
+  network her brother had been part of. In December 2023 she relocated from
+  Miami to St. Petersburg, citing inconsistent municipal support for working
+  artists in Miami compared to other cities.
+
+  Her style blends Latin folk art influences with horror, sci-fi, and cinema
+  aesthetics — vivid colors with abrupt contrast accents, recently leaning on
+  cooler palettes offset by extreme red or hot pink. She cites cinema as her
+  biggest inspiration, naming the films of Panos Cosmatos, Peter Strickland,
+  Nicolas Winding Refn, Pedro Almodóvar, Alfred Hitchcock, and Dario Argento.
+  Her recent personal work includes a series of portraits playing with
+  inter-dimensional existence and multiple realities. She has cited the painter
+  Mr. Aryz as a current influence.
+
+  Through artist residencies and mural festivals, she has painted in Shtula,
+  Israel; Tulum, Mexico; Barcelona, Vitoria, Cadiz, and Sancti Petri, Spain;
+  Havana, Cuba; San Juan, Puerto Rico; New York; Wenatchee, Washington; Atlanta,
+  Georgia; and Charleston, South Carolina. Her largest wall is a roughly
+  2.5-story, 32-foot-wide mural in the Wynwood Arts District in Miami, painted
+  with the Pangeaseed Foundation to raise awareness of rising sea levels in
+  Florida.
+
+  She runs NS/CB Studio (nscbstudio.com) with her partner Chuck Berrett out of
+  Coral Gables, designing installations, sign painting, faux finishing, and
+  murals for residential and commercial clients. The client list includes
+  Starbucks, Absolut, Tanqueray, Lululemon, Steve Madden, Bacardi, Bombay
+  Sapphire, PBR, Create & Cultivate, BoxyCharm, The Setai Hotel, The Loews
+  Hotel, Aloft Hotel, The Freehand Hotel, Zamas Hotel in Tulum, Bar Nancy in
+  Little Havana, The Anderson, Sweet Liberty, Le Pain Quotidien in Coconut
+  Grove, Tribal Yoga in Tulum, St. Roch in the Design District, D'Oro in
+  downtown Miami, Madrinas Bar in Gainesville, Wynwood Parlor, LB Smoke Shop,
+  Street Taco NYC, Lizarran America, Technique Records, Gramps Bar, Kilted
+  Mermaid in Vero Beach, El Grito Bar, Boombox Bar, Odd Birds Bar in St.
+  Augustine, Wood Tavern, and The Corner. She painted and installed murals for
+  Steve Madden and BoxyCharm at Create & Cultivate's 2019 Vision Summit in
+  Miami, and has done multiple Starbucks projects, including a siren inside a
+  new Miami store. She also collaborated with Hope Murals, a nonprofit bringing
+  art to children in detention centers.
+
+  She built her business through cold-emailing companies, interior decorators,
+  and property owners — operating without an agent, manager, or gallery. Her
+  advice to artists is to avoid branding themselves around a single style, to
+  know the value of their work, and to stick to professional pricing.
+
+  In 2025 she was one of thirteen artists selected for the Dalí Museum's Outside
+  In exhibition in St. Petersburg, curated by Associate Curator Allison McCarthy
+  and marking the 10th anniversary of the SHINE St. Petersburg Mural Festival.
+  The show ran through October 26, 2025, with murals inspired by Dalí's
+  surrealism installed within the museum's walls.
+
+  For SHINE 2021, she painted in St. Petersburg. Her father is an architect; her
+  mother worked for the airline Mexicana, and she traveled extensively to Mexico
+  growing up.
+
+  Website: nscbstudio.com. Instagram: @nmsalgar and @nscbstudios.
+
+searchMuralDescription: |
+  A large-scale mural covering the entire side wall of Cimco Tile in a striking
+  limited palette of muted reds, teals, greens, and pinks. The left side
+  features a photorealistic portrait of a young woman gazing directly at the
+  viewer with an intense, contemplative expression. Her face is rendered in soft
+  green and warm tones, with horizontal red striped shadows — like light through
+  blinds — falling across her forehead and the wall behind her. Lush tropical
+  leaves in deep reds and teals frame her face and extend across the right side
+  of the wall, interwoven with chain-link fence imagery and bold geometric red
+  shapes. A large flower blooms on the far right, wrapping around the building's
+  roll-up door. Signed "ns" on the left side. The piece explores themes of
+  parallel dimensions and transformation, with the subject serving as a
+  gatekeeper between worlds.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
-
+artistAwards: "Dali Museum Outside In (2025); SHINE 2021"
+furtherWork: []
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: |
-  GPS from user photo (IMG_1605.jpeg). User photo replaces stock image.
-  Sources consulted:
-  - instagram.com/nmsalgar
-  - linkedin.com/in/nicole-salgar
-  - st-artnow.com/nicole-salgar-about
-  - floridarama.art/artist/nicole-salgar
-  - morivermurals.org/artists/nicole-salgar
-  - nectarsunglasses.com (Nicole Salgar artist feature)
-  - jitneybooks.com/nicole-salgar (Dali Museum interview)
-  - smokymountains.org (Walls for Women - Senderos)
-  - streetartnyc.org (SHINE 2021 coverage)
-  - stpetecatalyst.com (SHINE 2021 diary, Dali Outside In, FloridaRAMA)
-  - stpeterising.com (SHINE 2021 coverage)
-  - clickorlando.com (Disney Springs Hispanic Heritage Month)
-  - createcultivate.com (How to Be an Artist interview)
-  - thedali.org (Outside In press release)
-  - artsy.net/artist/nicole-salgar
-  - miamiopen.com (2022 Miami Open Murals)
-  - pleasantpeninsula.org (2025 Pleasant Peninsula festival)
+sourceNotes:
+  - "GPS from user photo (IMG_1605.jpeg). User photo replaces stock image."
+  - "https://jitneybooks.com/nicole-salgar/"
+  - "https://www.createcultivate.com/blog/how-to-be-an-artist-nicole-salgar"
+  - "https://voyagemia.com/interview/meet-nicole-salgar-nscb-studio-coral-gables/"

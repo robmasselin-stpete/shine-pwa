@@ -1,0 +1,117 @@
+# Carrie Jadus — Grand Central Brewhouse
+
+# ── Required ──
+id: 150
+artist: Carrie Jadus
+year: 0
+lat: 27.770771
+lng: -82.665143
+address: "2324 Central Ave"
+category: commercial
+img: "images/murals/commercial/carrie-jadus-grand-central.jpeg"
+
+# ── Optional ──
+title: "Last Call"
+building: Grand Central Brewhouse
+instagram: jadusfineart
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  Bob Marley, Bono, Bruce Springsteen, Lady Gaga, Eddie Vedder, John Legend —
+  six musicians she calls "extremely talented and socially conscious." She put
+  them at the bar with beers. Three weeks, fifty by thirty feet, heads eight
+  feet tall.
+
+  Kevin Milkey commissioned "Last Call" for Grand Central Brewhouse in 2020.
+  Carrie Jadus had been an electrical engineer for years before quitting to
+  paint full-time, and her style sits in what she calls "the rich and fertile
+  ground between realism and impressionism" — figures rendered with photographic
+  care, edges softened. She picked the six musicians for who they are, not just
+  because they're famous.
+
+  Born in Tampa in 1976, she grew up in St. Petersburg from age five, trained at
+  the Pinellas County Center for the Arts at Gibbs High, fell for Impressionism
+  on a post-graduation Europe trip, then earned a BS in Electrical Engineering
+  from USF before pivoting to art full-time. She works primarily in oils at
+  every scale — from notecards to fifty-foot walls — and creates 200 to 300
+  pieces a year. Her studio is at Soft Water Studios in the Warehouse Arts
+  District.
+
+  Other St. Pete walls include her Nikola Tesla SHINE 2015 portrait at 22nd &
+  5th, "Little Miss Sisyphus" around the corner, and "Awakening Bodhisattva" — a
+  memorial to Bodhi Kaiser — on the Dog Bar side of this same building.
+
+searchBio: |
+  She has a degree in electrical engineering. She worked as a radio-frequency
+  design engineer. Then she quit to paint.
+
+  Carrie Jadus was born in 1976 in Tampa, FL. Her family moved to St. Petersburg
+  when she was five. She comes from an artistic lineage — family populated with
+  creatives. She attended the Pinellas County Center for the Arts magnet program
+  at Gibbs High School, training across multiple mediums. A post-graduation trip
+  to Europe sparked a fascination with Impressionism. She then earned a BS in
+  Electrical Engineering from the University of South Florida and worked as a
+  radio-frequency design engineer for several years before quitting to pursue
+  art full-time.
+
+  She works primarily in oils, comfortable at every scale from notecards to
+  fifty-foot murals. She occupies "the rich and fertile ground between realism
+  and impressionism" with a "distinctive, soft and subtly subversive style." Key
+  influences: Winslow Homer (storytelling) and Egon Schiele (the human figure).
+  She creates 200-300 pieces annually. She has expanded into large-scale
+  sculpture through collaboration with MGA Sculpture Studio. Licensed as a
+  professional artist since 2016, she uses "the business plan of a Toymaker as a
+  model" — multiple product lines to sustain income.
+
+  Her SHINE 2015 murals include the Nikola Tesla portrait at 22nd St S and 5th
+  Ave S, painted with assistant Tara Radosevich over two weeks, and "Little Miss
+  Sisyphus," a girl pushing an enormous reflective sphere up a mountain. At
+  Grand Central Brewhouse she painted "Last Call" (2020), a 50x30 ft mural of
+  six musical icons: Bob Marley, Bono, Bruce Springsteen, Lady Gaga, Eddie
+  Vedder, and John Legend — chosen because "they're all extremely talented and
+  socially conscious." Heads roughly 8 ft tall, completed in three weeks,
+  commissioned by Kevin Milkey. "Awakening Bodhisattva" at Dog Bar (2020) is a
+  memorial to Bodhi, dog of artist Marianne Wysocki — a double entendre: the dog
+  waking up, and the Buddhist concept of a being who delays nirvana out of
+  compassion.
+
+  She maintains a studio at Soft Water Studios in the Warehouse Arts District.
+  She illustrates for St. Pete Preservation and designed a Kahwa Coffee Art
+  Canister (4th installment) benefiting the St. Petersburg Arts Endowment. Solo
+  series include "Blue Nudes," "Imaginary Friends," and "Grand Portraits"
+  (Einstein, Nina Simone). Instagram: @jadusfineart. Website: carriejadus.com.
+
+artistAwards: "SHINE 2015 selected artist (Tesla, Little Miss Sisyphus)"
+
+searchMuralDescription: |
+  A photorealistic mural on the side of Grand Central Brewhouse depicting six
+  iconic musicians and performers gathered together as if at a bar, each holding
+  a glass of beer or wine. From left to right: a figure resembling Bob Marley in
+  a white jacket, Bono in sunglasses, Eddie Vedder in a headband leaning in
+  conspiratorially, Lady Gaga in blonde hair holding a beer, Bruce Springsteen
+  in a casual shirt, and John Legend in profile. The background is a deep blue
+  with circular bokeh lights. "Grand Central" signage is visible at the bottom
+  center.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited; added 'Last Call' title (was empty); dropped 'Resonance' title for the Tesla mural in bio (sources call it just 'Tesla'). NOTE: bio names Marley/Bono/Springsteen/LadyGaga/Vedder/Legend per Catalyst; muralDescription names Keith Richards instead of Springsteen+Vedder — Rob to verify which is right from photo."
+  - "2026-05-03 — Display bio rewritten anchored to THIS wall (Last Call commission story: Marley/Bono/Springsteen/Gaga/Vedder/Legend at the bar with beers, Kevin Milkey commission, 50x30 ft / 8-foot heads / 3 weeks). Differentiates from #149 (Dog Bar / Awakening Bodhisattva), which previously shared the same generic display bio. Closes with explicit callout to the sister wall on the Dog Bar side."
+sourceNotes:
+  - "https://stpetecatalyst.com/carrie-jadus-paint-grand-central-beer-garden-music/"
+  - "http://www.carriejadus.com/bio.html"
+  - "https://creativepinellas.org/magazine/carrie-jadus/"
+  - "GPS from Rob's photo, grand central brewery.jpeg."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: needs-review
+  notes: "'Last Call' title and Marley/Bono/Springsteen/LadyGaga/Vedder/Legend musician list verified via Catalyst article. Mural description names Keith Richards instead of Springsteen/Vedder — Rob should verify which is correct from his photo before launch."

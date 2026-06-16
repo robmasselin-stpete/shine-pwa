@@ -4,11 +4,11 @@
 id: 100
 artist: Happy Mural Project
 year: 2020
-lat: 27.7347
-lng: -82.6537
+lat: 27.731135
+lng: -82.675585
 address: 4025 31st Street S
 category: shine
-img: images/murals/2020/2020_SHINE_Mural_Festival_Happy_Mural_Project.png
+img: ""  # needs Rob photo — stock removed 2026-05-12
 
 # ── Optional ──
 title: ""
@@ -17,23 +17,115 @@ instagram: thehappymuralproject
 basedIn: ""
 
 artistBio: |
-  The Happy Mural Project is led by artist Alyssa Marie and her husband Braden.
-  Alyssa is a fine artist originally from Colorado who relocated to St. Pete in
-  early 2017. In a childhood art book Alyssa created at age 7, she drew a
-  picture of a stick figure painting a canvas on an easel. The caption read
-  "When I grow up I want to be an artsist" An "artsist" is exactly what that
-  little girl would become. Alyssa has used oil paints to spread joy to
-  collectors all over the globe. The Happy Mural Project began in an effort to
-  expand this effect. While enjoying time in her studio, she felt as if her
-  reach could even greater with large walls and giant sunflowers. She radiates
-  happiness around everything and everyone she comes in comes in contact with.
-  You will feel that energy with the walls of The Happy Mural Project.
+  Their motto is "Honk if You're Happy." Their first mural was painted the week
+  the world shut down.
 
-muralDescription: ""
+  Alyssa Marie and Braden Everly are The Happy Mural Project — a married couple
+  who relocated from Colorado to St. Petersburg in 2017. Alyssa is a fine artist
+  who opened a gallery on Beach Drive in 2018 (closed January 2020). Braden has
+  a degree in special education and worked as a house painter in Colorado. Their
+  first mural went up at Lolita's Catering in early March 2020, days before
+  lockdown.
+
+  Their signature is oversized sunflower murals in vibrant color, plus
+  community-participatory "color by number" walls. Their SHINE 2020 piece "Hands
+  of Change" at the City Theatre featured hands holding sunflowers representing
+  racial and cultural diversity. For SHINE 2023, "Girl Power" was a
+  color-by-number mural completed by Girl Scouts of West Central Florida. They
+  are three-time SHINE artists — 2020, 2022, and 2023.
+
+searchBio: |
+  Their motto is "Honk if You're Happy." Their first mural was painted the week
+  the world shut down.
+
+  The Happy Mural Project is the collaborative work of Alyssa Marie and Braden
+  Everly, a married couple based in St. Petersburg. Both relocated from Colorado
+  to St. Petersburg in 2017. Alyssa Marie is a fine artist from Colorado. In
+  2018 she opened the Alyssa Marie Gallery on Beach Drive NE in downtown St.
+  Petersburg, where she exhibited her own work. The gallery closed in January
+  2020, after which she continued selling her paintings of local and nature
+  scenes through her website. Braden Everly holds a degree in special education
+  and worked as a house painter during summers in Colorado before the couple
+  moved to Florida. His experience with paint, ladders and scaffolding combined
+  with Alyssa's fine-art background to launch the project.
+
+  Their first Happy Mural Project wall went up at Lolita's Catering + Events at
+  2735 5th Avenue North, at the corner of 5th Ave N and 28th Street in St.
+  Petersburg, in early March 2020 — days before the COVID-19 lockdown. The
+  original plan had been to hand out sunflowers to passersby during the launch.
+  When social distancing made that impossible, the couple propped up a "Honk if
+  You're Happy" sign at the wall and invited drivers to honk as they passed. The
+  Lolita's wall sits in the shadows of St. Petersburg High School and became the
+  first of a series of oversized, vibrantly colored sunflower murals across the
+  city.
+
+  The signature Happy Mural Project look is supersized sunflowers in bright
+  color. The project's stated mission is to inspire and uplift people and
+  communities through these murals. A second strand of their work is
+  community-participatory "color by number" walls, in which volunteers — no
+  experience required — fill in numbered sections with provided paint and
+  supplies.
+
+  For the SHINE Mural Festival 2020, The Happy Mural Project painted "Hands of
+  Change" at the St. Petersburg City Theatre, 4025 31st Street S. The wall was
+  painted from October 31 through November 6, 2020 as an early start to that
+  year's festival, with volunteers signing up through the project's website. The
+  mural depicts hands holding giant sunflowers, intended to represent "unique
+  excellence from many different races, colors, national origins, sexual
+  orientations and everything that makes us beautiful," and to stand as a symbol
+  of love, connectedness and growth. The St. Petersburg City Theatre — a
+  volunteer-driven theater that was preparing to celebrate its 100th birthday in
+  2021 — hosted the wall while operating under physically distanced seating and
+  pandemic-era safety protocols.
+
+  For SHINE 2023, the project produced "Girl Power," a color-by-number mural
+  completed by members of the Girl Scouts of West Central Florida. The Happy
+  Mural Project has been a SHINE artist three times: 2020, 2022 and 2023.
+
+  Press coverage tracked the project from its first wall onward. Sean Daly of
+  ABC Action News (WFTS Tampa Bay 28) visited the Lolita's site for a segment
+  titled "'Happy Mural Project' near St. Petersburg High is drawing smiles from
+  social distancers." Gabby Arzola of Bay News 9 filed the project's first news
+  segment, picking up a brush herself on camera. Liz Burch of CBS 10 conducted a
+  socially distanced interview at the wall, attaching her microphone to a pole
+  to maintain six feet of separation. Maggie Duffy of the Tampa Bay Times wrote
+  a feature published June 8, 2023, titled "In St. Petersburg, how did these
+  paint-by-numbers community murals come to be?" Creative Pinellas published a
+  feature by Shae Vehorn on October 26, 2020 titled "The Happy Mural Project —
+  Spreading Joy Through Art," documenting the Hands of Change project at the
+  City Theatre.
+
+  The project takes wall submissions through a "Submit Your Wall" form on its
+  website, where business owners and homeowners can propose locations. Painting
+  supplies are provided for community paint days and volunteer artists sign up
+  through the same site. Alyssa's stated belief — "anyone can do art" — drives
+  the participatory model.
+
+  The couple was newly married when they launched the project in March 2020.
+  Their personal travel and adventure account is @bestlifeeverly, Braden's
+  personal handle is @theoriginalbraden, and Alyssa's gallery handle is
+  @alyssa_marie_gallery. The Happy Mural Project's website is
+  thehappymuralproject.com and its Instagram handle is @thehappymuralproject.
+
+searchMuralDescription: ""
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2020, 2022, 2023 selected artist"
+furtherWork:
+  - name: "thehappymuralproject.com"
+    url: "https://www.thehappymuralproject.com"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-05-12 — Marked status: research; removed SPAA stock photo. Pending Rob photo of Hands of Change at City Theatre."
+
+status: research  # no Rob photo yet — exclude from app until photographed
 
 # ── Provenance (not exported to data.js) ──
-source: "legacy"
-sourceNotes: "Migrated from data.js 2026-03-05"
+source: "claude-enhanced"
+sourceNotes:
+  - "Migrated from data.js 2026-03-05"
+  - "https://www.thehappymuralproject.com/"
+  - "https://creativepinellas.org/magazine/the-happy-mural-project/"
+  - "https://stpeteartsalliance.org/happy-mural-project-2023"
+  - "https://www.abcactionnews.com/news/region-pinellas/happy-mural-project-near-st-petersburg-high-is-drawing-smiles-from-social-distancers"

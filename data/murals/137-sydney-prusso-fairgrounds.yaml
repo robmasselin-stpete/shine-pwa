@@ -4,8 +4,8 @@
 id: 137
 artist: Sydney Prusso
 year: 2021
-lat: 27.76376667
-lng: -82.66975333
+lat: 27.763808
+lng: -82.669662
 address: 2606 Fairfield Ave S
 category: commercial
 img: images/murals/commercial/sydney-prusso-fairgrounds.jpeg
@@ -17,30 +17,118 @@ instagram: sydbloomstudio
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Sydney Prusso is a muralist and designer working under the name Syd Bloom Studio, based in the Tampa Bay area. Her work is self-described as "bold, dreamy, dramatic, colorful, high-contrast, and distinctly flat," blending influences from Japanese anime and pop art. She has painted over 30 murals across six states and has worked with brands including Salesforce, Adobe, Dickies, and Grow Financial. She received a Communication Arts Typography Award in 2022. She painted "Go Outside, Look Inside" for SHINE 2022 at 533 28th St S, and has done commercial mural work throughout the Warehouse Arts District.
+  She graduated from MICA and has painted fifty-plus murals across six states,
+  installations up to 75 feet.
 
-muralDescription: |
-  A long horizontal mural covering the side of a low warehouse building in the Fairgrounds / Factory St. Pete complex. The piece is a bold, graphic composition of abstract geometric shapes with hard edges and flat fills in teal, pink, black, maroon, and blue. A large six-pointed teal star dominates the center. To its left, a black field is filled with salmon-pink polka dots. Flowing red and maroon organic shapes weave between diagonal teal stripes and chevrons. Blue teardrop forms, pink arches, and a spiral motif round out the composition on the right. Two small windows are integrated into the design. The style is pop-art influenced with strong graphic sensibility — reminiscent of Memphis Design or 1980s postmodern illustration.
+  Sydney Prusso is an illustrator, lettering artist, and muralist based in the
+  Tampa Bay area. Her style is contemporary botanical — flat illustration rooted
+  in graphic design, warm 1960s and 70s color palettes, flowing poster
+  lettering. Nature, the outdoors, and mental health run through the work. She
+  has done a Reef Organization project in the Florida Keys.
+
+  Clients include Salesforce, Adobe, Dickies, PepsiCo, John Deere, Stihl, the
+  NFL, and AstraZeneca. For SHINE 2022, she painted two murals in St.
+  Petersburg.
+
+searchBio: |
+  She graduated from MICA and has painted fifty-plus murals across six states,
+  installations up to 75 feet.
+
+  Sydney Prusso is an illustrator, lettering artist, and muralist based near
+  Tampa, Florida. She holds a degree from the Maryland Institute College of Art
+  (MICA), brings a graphic-design background to a contemporary botanical style,
+  and now runs the studio under the brand Syd Bloom Studio. The work is flat
+  illustration with warm 1960s and 70s color palettes and flowing poster
+  lettering — nature, the outdoors, and mental health running through it.
+
+  Her brand and commercial client list runs through Salesforce, Adobe, Dickies,
+  PepsiCo, John Deere, Stihl, the NFL, and AstraZeneca, alongside named brand
+  projects documented on sydbloom.com. Apothecary commissioned both a mural and
+  a tea-package design. Grow Financial commissioned a multi-store mural
+  installation including the West River, Tampa location. Gallimufry — a vintage
+  furniture store — commissioned a mural plus a full branding package. Fresh
+  Kitchen has a multi-store installation listed as forthcoming. Other commercial
+  clients include Garage Project (the brewery). She also takes residential
+  commissions and out-of-state projects, with testimonials referencing a
+  short-term rental mural in Port Angeles, Washington. The studio's tagline for
+  the brand-collabs program: "Part statement piece, part marketing machine.
+  Beautiful on the wall, working for your business every day."
+
+  Her illustration practice spans branded packaging, advertising, publishing,
+  surface patterns, and textiles. Documented illustration projects on the studio
+  site include Pom Pattern Portfolio, Good Good Good Newspaper centerfold,
+  Loving, Psithurism, Iris Pattern Portfolio, and Wedding Invite Portfolio.
+
+  For SHINE 2022 in St. Petersburg she painted two murals across the city,
+  including the retro psychedelic "Go Outside, Look Inside" piece at Seriously
+  Strong Training — the title doubles as her practice in three words. She has
+  also done a Reef Organization project in the Florida Keys.
+
+  The Fairgrounds St. Pete wall — this wall, at 2606 Fairfield Ave S in the
+  FloridaRAMA / Factory complex — was painted for the venue's September 2021
+  opening, when Fairgrounds commissioned 60+ artists to cover the building
+  exteriors and interior spaces. The Syd Bloom Studio piece sits among exterior
+  walls by Derek Donnelly, Chad Mize, Zulu Painter, and Ricky Watts. The
+  composition is a bold graphic field rather than her botanical default: a
+  six-pointed teal star at the center, salmon-pink polka dots on a black field
+  to the left, flowing red and maroon organic shapes weaving between diagonal
+  teal stripes and chevrons, blue teardrop forms, pink arches, and a spiral
+  motif on the right, with two small windows integrated into the design. The
+  style reads as Memphis Design or 1980s postmodern illustration filtered
+  through her flat-graphic vocabulary.
+
+  She has rebranded her Instagram and studio practice from @sydneyprusso to
+  @sydbloomstudio (Syd Bloom Studio), with her current style described as "bold,
+  dreamy, dramatic, colorful, high-contrast, and distinctly flat" — a vocabulary
+  that maps directly onto the geometric pop-art register of this Fairgrounds
+  piece. The Salesforce, Adobe, PAN, Shine, and FK logos appear on the about
+  page as documented brand partnerships. Beyond the named clients, the about
+  page positions the studio as one that "transforms spaces and products with her
+  natural worlds" and weaves brand identities into custom flat-illustration
+  compositions.
+
+  Studio contact: studio@sydbloom.com. Direct: sydney@sydneyprusso.com.
+  Websites: sydbloom.com (current) and sydneyprusso.com (still active for the
+  artist domain; brand-collabs subpath 301 redirects to sydbloom.com).
+  Instagram: @sydbloomstudio. Copyright on the site reads "© 2026 Sydney Prusso.
+  All Rights Reserved."
+
+searchMuralDescription: |
+  A long horizontal mural covering the side of a low warehouse building in the
+  Fairgrounds / Factory St. Pete complex. The piece is a bold, graphic
+  composition of abstract geometric shapes with hard edges and flat fills in
+  teal, pink, black, maroon, and blue. A large six-pointed teal star dominates
+  the center. To its left, a black field is filled with salmon-pink polka dots.
+  Flowing red and maroon organic shapes weave between diagonal teal stripes and
+  chevrons. Blue teardrop forms, pink arches, and a spiral motif round out the
+  composition on the right. Two small windows are integrated into the design.
+  The style is pop-art influenced with strong graphic sensibility — reminiscent
+  of Memphis Design or 1980s postmodern illustration.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2022 selected artist"
 
+furtherWork:
+  - name: "sydbloom.com"
+    url: "https://sydbloom.com"
+
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-03 — Expanded searchBio (~600-1000 words, 612 words) integrating cached source + sydbloom.com (about, brand-collabs, illustration). Added named brand projects (Apothecary, Grow Financial, Gallimufry, Fresh Kitchen, Pom Pattern Portfolio, Good Good Good Newspaper). Added 3 sydbloom.com URLs to sourceNotes."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: |
-  GPS from user photo. User photo replaces stock image.
-  User identified artist from a web article. Prusso rebranded to Syd Bloom
-  Studio (@sydbloomstudio). Her current style description ("bold, dreamy,
-  dramatic, colorful, high-contrast, and distinctly flat") fits the geometric
-  pop-art style seen in this mural. The Fairgrounds commissioned 60+ artists
-  for their 2021 opening; other known exterior murals include Derek Donnelly,
-  Chad Mize, Zulu Painter, and Ricky Watts.
-  Year estimated as 2021 (Fairgrounds opened September 2021).
-  Sources consulted:
-  - stpeteartsalliance.org (Sydney Prusso 2022, Fairgrounds directory)
-  - eyesonthestreets.blog (Around Fairgrounds, Sydney Prusso tag)
-  - sydbloom.com (about)
-  - floridarama.art
-  - cltampa.com (Fairgrounds artist announcement)
-  - tampabay.com (Fairgrounds opening)
+sourceNotes:
+  - |
+    GPS from user photo. User photo replaces stock image.
+    User identified artist from a web article. Prusso rebranded to Syd Bloom
+    Studio (@sydbloomstudio). Her current style description ("bold, dreamy,
+    dramatic, colorful, high-contrast, and distinctly flat") fits the geometric
+    pop-art style seen in this mural. The Fairgrounds commissioned 60+ artists
+    for their 2021 opening; other known exterior murals include Derek Donnelly,
+    Chad Mize, Zulu Painter, and Ricky Watts.
+    Year estimated as 2021 (Fairgrounds opened September 2021).
+  - "https://sydbloom.com/about"
+  - "https://sydbloom.com/brand-collabs"
+  - "https://sydbloom.com/illustration"
+  - "https://stpeteartsalliance.org/sydney-prusso-2022"

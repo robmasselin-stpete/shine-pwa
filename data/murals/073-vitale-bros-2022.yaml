@@ -4,8 +4,8 @@
 id: 73
 artist: Vitale Bros
 year: 2022
-lat: 27.772544
-lng: -82.64355
+lat: 27.772527
+lng: -82.643546
 address: 694 Arlington Ave N
 category: shine
 img: "images/murals/2022/vitale-bros.jpeg"
@@ -16,32 +16,123 @@ building: Parc
 instagram: vitalebros
 basedIn: "St. Petersburg, FL"
 
+fieldNotes:
+  - "Vitale Bros — painting St. Pete since 1992"
+  - "No formal training — family tradition"
+  - "Helped birth St. Pete's art scene in the '90s"
+
 artistBio: |
-  The Vitale Brothers — Johnny and Paul — are a St. Petersburg muralist
-  duo who've been part of the local art scene for years. They're known
-  for large-scale character paintings with a playful, pop-culture-heavy
-  approach that makes their walls some of the most photographed in the
-  city.
+  Their first mural came from a sketch on a paper napkin, handed to a restaurant
+  owner. That was 1992.
 
-  Their 2022 SHINE piece at Parc features a lineup of cartoon characters
-  rendered in the Vitales' bold, graphic style, turning the building wall
-  into a crowd-pleasing photo spot.
+  Johnny Vitale and his brother Paul started Vitale Bros in Tampa Bay
+  hand-lettering signs and painting storefront windows. Their parents are
+  artists. So were their grandparents. No formal training — just family
+  tradition and thirty-plus years of practice. Their late aunt Nancy, who had
+  Down syndrome and attended Parc Center for Disabilities, turned out to be an
+  artist too, discovered in her final decade.
 
-muralDescription: |
+  In the late 1990s they opened a warehouse studio that hosted group art, music,
+  and fashion shows that helped birth St. Pete's emerging art scene. They
+  collaborated on set design for Harmony Korine's Spring Breakers. They have
+  painted for the Tampa Bay Rays, the Buccaneers, L'Oreal, and dozens of local
+  businesses. They call themselves the "mural police" — restoring damaged walls
+  around the city for free.
+
+  In 2023, Johnny launched Overspray, a street art shop and graffiti school now
+  based in Gulfport, teaching tagging, block letters, Wildstyle, and advanced
+  mural technique to classes of up to twenty students. After Hurricane Milton,
+  they painted free signs for businesses that lost theirs.
+
+  They have painted SHINE every year since its inception — "The Cool Kids" in
+  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
+  2025, Johnny painted two solo murals: one on the 600 block where it all began,
+  and another at The Factory on Fairfield Ave South with his daughter Sionna.
+
+searchBio: |
+  Their first mural came from a sketch on a paper napkin, handed to a restaurant
+  owner. That was 1992.
+
+  Johnny Vitale and his brother Paul founded Vitale Bros in 1992 in Tampa Bay,
+  starting with hand-lettered signs and painted storefront windows. Youngest
+  brother Joey later joined. Their parents are artists — the family artistic
+  tradition goes back to their grandparents. No formal art education has been
+  documented; the craft appears entirely self-taught and family-transmitted.
+  Their late aunt Nancy had Down syndrome and attended Parc Center for
+  Disabilities, where staff discovered her artistic talent in her final decade
+  of life.
+
+  In the late 1990s and early 2000s, they opened a warehouse studio that hosted
+  legendary group art, music and fashion shows credited with helping birth St.
+  Pete's emerging art scene. They collaborated in set design for Harmony
+  Korine's Spring Breakers (filmed in the St. Pete area). Their style blends pop
+  art, graffiti, and traditional mural techniques — fine art meets pop art
+  sensibility, incorporating local culture, historical elements, and visual
+  stories reflecting community identity.
+
+  Clients include the Tampa Bay Rays, Tampa Bay Buccaneers, L'Oreal /
+  SalonCentric (national locations), Anchor Skate Supply, and Great Bay
+  Distributors, plus numerous local businesses and private residences. Notable
+  murals include the Marilyn Monroe on the side of the historic Playhouse
+  Theater on Central Ave, a Virgin Mary at St. Pete Catholic High School, Power
+  to the Patients giant fist at the Morean Arts Center, and the Nueva Cantina
+  restaurant mural in Tampa. They describe themselves as the mural police —
+  restoring damaged murals around the city for free.
+
+  The current Vitale Bros team includes Johnny, Paul, Nick and Jason Kekllas,
+  Bruce Statton, and Jake Gerow. They have also collaborated under the name Up
+  and Over with Tes One, and painted behind the State Theatre with Tes One and
+  Palehorse.
+
+  In July 2023, Johnny launched Overspray — a retail street art shop and
+  graffiti school, initially on the Pinellas Trail, relocated to 5013 20th Ave
+  S. in Gulfport. Overspray teaches graffiti, tagging, block and bubble letters,
+  Wildstyle, and advanced mural classes to groups of up to 20 students. The
+  five-artist teaching team includes John Vitale, Nicole Salgar, Hinson
+  Thehealer, Digital (LA), and Jujmo. After Hurricane Milton, they painted free
+  signs for businesses that lost theirs. They host events like Hot Walls during
+  SHINE.
+
+  SHINE participation: The Cool Kids (2015, 2063 Central Ave — faces of the
+  artists' children), Bait and Switch (2019 — red snapper and sea turtle), SHINE
+  2022, SHINE 2024 (mural at Anchor Skate Supply with pro skateboarder Kris
+  Markovich, inspired by Rays City Connect uniforms; limited-edition skateboard
+  L'Orange). For SHINE Origins 2025, Johnny painted two solo walls: 600 1st Ave
+  N (the 600 block where SHINE began) and The Factory at 2606 Fairfield Ave S
+  (collaboration with Sionna Sio Macleish, celebrating St. Pete history and
+  landmarks).
+
+  Studio: 5013 20th Ave S., Gulfport, FL. Website: vitalebrothers.com.
+  Instagram: @johnvitale (solo), @vitalebros (collective).
+
+searchMuralDescription: |
   A row of SpongeBob SquarePants characters fills the wall in the Vitale
-  Brothers' bold, graphic mural style. The familiar cartoon figures are
-  painted at building scale with clean outlines and flat, saturated colors
-  that pop against the building exterior. It's become one of the more
-  popular photo-op walls in the area.
+  Brothers' bold, graphic mural style. The familiar cartoon figures are painted
+  at building scale with clean outlines and flat, saturated colors that pop
+  against the building exterior. It's become one of the more popular photo-op
+  walls in the area.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE festival artist every year since inception; set design for Spring Breakers (Harmony Korine)"
+
+furtherWork:
+  - name: "vitalebrothers.com"
+    url: "https://vitalebrothers.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://vitalebrothers.com/"
   - "https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/"
   - "https://monochronicle.com/artist/vitale-brothers/"
+  - "https://vitalebrothers.com/about/"
+  - "https://vitalebrothers.com/transforming-st-pete-the-artistic-impact-of-the-vitale-brothers/"
+  - "https://ilovetheburg.com/overspray-mural-art-gulfport/"
+  - "https://thegabber.com/vitale-brothers-birds-and-bees-in-gulfport/"
+  - "https://thegabber.com/overspray-art-space-paints-signs-for-businesses-post-milton/"
+  - "https://www.fox13news.com/news/vitale-brothers-paint-the-town-with-murals"
+  - "https://www.paradisenewsfl.com/artists-spotlight-nov-2025/"

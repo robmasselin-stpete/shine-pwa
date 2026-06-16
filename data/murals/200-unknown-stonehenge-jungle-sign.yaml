@@ -1,0 +1,109 @@
+# Unknown — Stonehenge Park jungle sign
+
+# ── Required ──
+id: 200
+artist: Unknown
+year: 0
+lat: 27.79919
+lng: -82.73745
+address: ""
+category: commercial
+img: "images/murals/unknown/stonehenge-park-jungle-sign.jpeg"
+
+# ── Optional ──
+title: "Stonehenge Park"
+building: "Stonehenge Park (Tyrone Blvd overpass on Pinellas Trail)"
+instagram: ""
+basedIn: ""
+
+artistBio: |
+  Stonehenge Park is not on any St. Pete park map. It's an underpass at Tyrone
+  Blvd that 22 artists turned into a kaleidoscope — 21 painted pillars, 10
+  walls, and a name that took.
+
+  The site sits at 2993 Tyrone Blvd N, directly on the Pinellas Trail just north
+  of Tyrone Square Mall. Concrete bridge columns rise out of grass and dirt
+  mounds; the crossbeams above the road deck are striped in safety-orange. Trail
+  riders coast through the shade.
+
+  Frogs, elephants, mermaids, photoreal portraits, neo-surrealist faces, jungle
+  scenes, palm silhouettes. Different styles, different years, different hands.
+  It reads less like a curated gallery and more like a community paint day that
+  kept going.
+
+  No city, county, or Creative Pinellas record documents who organized it, what
+  year it started, or who paid for the paint. Two artists are publicly
+  attributed: James Oleson (the maroon grinning face — Mural Quest #198) and
+  Zulu Painter (three palm silhouettes — #199). Everyone else is unidentified.
+
+  If you painted one of these walls or know who did, email
+  support@muralquest.app — we'll credit you and write a real bio.
+
+searchBio: |
+  Stonehenge Park is not on any St. Pete park map. It's an underpass at Tyrone
+  Blvd that 22 artists turned into a kaleidoscope — 21 painted pillars, 10
+  walls, and a name that took.
+
+  The site sits at 2993 Tyrone Blvd N in St. Petersburg, Florida, directly on
+  the Pinellas Trail just north of Tyrone Square Mall. Concrete bridge columns
+  rise out of grass and dirt mounds. The crossbeams above the road deck are
+  striped in safety-orange. Benches, lighting, and a sidewalk connect the trail
+  through the underpass. Trail riders coast through the shade.
+
+  The painted walls and pillars run the gamut: frogs, elephants, mermaids,
+  photoreal portraits, neo-surrealist faces, jungle scenes, palm silhouettes.
+  Different styles, different years, different hands. It reads less like a
+  curated gallery and more like a community paint day that kept going.
+
+  No city, county, or Creative Pinellas record documents who organized the site,
+  what year it started, or who funded the paint. Stonehenge Park does not appear
+  on the City of St. Petersburg's parks list and is not part of the Creative
+  Pinellas "Pinellas Trail ArtWorks" program (those four commissions are in Palm
+  Harbor and Tarpon Springs). It appears to be an informally named site rather
+  than a chartered city park. The 22-artists / 21-pillars / 10-walls count comes
+  from a Yelp reviewer summary and is treated as approximate.
+
+  Two artists are publicly attributed for specific walls: James Oleson — the
+  maroon neo-surrealist grinning face wall, signed "OL3SON" (Mural Quest #198) —
+  and Zulu Painter — the three palm silhouettes with the green Old-English
+  Stonehenge Park sign, signed "zulupainter" (#199). The jungle-themed
+  entry-sign wall (#200) and the painted pillar cluster (#201) are catalogued
+  with artists unknown.
+
+  If you painted any of these walls or know who did, email
+  support@muralquest.app and we will credit you and write a proper bio.
+
+searchMuralDescription: |
+  A wide concrete wall painted as a dense tropical jungle scene. A woodgrain
+  rectangular plaque in the center reads "STONEHENGE PARK" in green block
+  letters set in a tan textured background like leaf rubbings. Above the plaque,
+  a tall painted coconut palm climbs the concrete pillar of the overpass, its
+  fronds reaching up into the blue sky. Bamboo poles in tan and brown form
+  vertical borders on the far left and far right of the wall. Between them, a
+  layered jungle: large dark-green monstera leaves, palm fronds, smaller ferns,
+  all in deep teals and emerald greens. A white wood stork or ibis with black
+  wing tips perches on a curved branch on the left side. Two bright
+  blue-and-yellow macaw parrots sit close together on a vine in the
+  center-bottom. A black-and-white butterfly hovers near the upper-right. On the
+  lower-right, a small green lizard rests on a branch above the bamboo. Small
+  purple flower clusters and bromeliad blooms accent the foliage. A small
+  signature appears in the lower-right corner; the lettering is not clear enough
+  to attribute reliably from photo alone.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+furtherWork: []
+
+status: research  # unidentified artist — kept for ongoing research, not exported
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "2026-05-04 — New mural added by Rob: unattributed Stonehenge Park jungle sign wall under the Tyrone Blvd overpass on the Pinellas Trail. GPS from photo IMG_0257.jpeg EXIF (27.79919, -82.73745). Artist and year unknown — flagged for follow-up."
+sourceNotes:
+  - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0257.jpeg)"
+  - "https://www.yelp.com/biz/stonehenge-park-st-petersburg"
+  - "https://foursquare.com/v/stonehenge-park/51bc88dd498e8d6f75faf8df"
+  - "https://creativepinellas.org/opportunity/pinellas-trail-artworks/"
+  - "https://en.wikipedia.org/wiki/List_of_parks_in_St._Petersburg,_Florida"

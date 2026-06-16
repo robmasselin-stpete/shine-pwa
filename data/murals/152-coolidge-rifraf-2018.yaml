@@ -1,0 +1,134 @@
+# Sebastian Coolidge & Rif Raf Giraffe — 2018
+
+# ── Required ──
+id: 152
+artist: Sebastian Coolidge & Rif Raf Giraffe
+year: 2018
+lat: 27.771525
+lng: -82.662163
+address: "Central Ave"
+category: shine
+img: "images/murals/2018/coolidge-rifraf.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: sebastiancoolidge
+basedIn: "St. Petersburg, FL / Kansas City, MO"
+
+artistBio: |
+  Coolidge dropped out of St. Petersburg College his first semester. His first
+  two years as an artist he dumpster-dived for paint and bartered murals for
+  food.
+
+  Sebastian Coolidge moved from Independence, Missouri to St. Petersburg around
+  2008 and biked downtown nightly to paint, carrying supplies on his back. His
+  2012 mural at Freshly Squeezed on MLK led to steady commissions. His style
+  blends classic animation and Lowbrow art — dark and surreal one wall, light
+  and whimsical the next. He co-painted "A Moment to Reflect" with Derek
+  Donnelly on the Florida CraftArt building — four stories tall, finished in ten
+  days, the largest mural in St. Petersburg at the time. He also runs the
+  clothing brand SC1912.
+
+  Jason Harrington — Rif Raf Giraffe — grew up in Kansas City, studied Painting
+  and Film at the School of the Art Institute of Chicago, and painted graffiti
+  in Chicago starting in 2002. He returned to KC in 2013 and co-founded the
+  SpraySeeMO mural festival with his wife Ami in 2017 — the festival has
+  produced roughly a hundred and fifty murals in Kansas City and expanded to
+  Miami and Los Angeles. His work focuses on futurism and "future pop" —
+  characters reflecting societal behaviors, ranging from comedic to political.
+  Clients include Tiffany & Co. and Giphy Arts.
+
+  For SHINE 2018 they collaborated on this mural in St. Petersburg. The two
+  share Kansas City roots and have worked together repeatedly — Wynwood in 2015
+  (with Oleson Art and Zulu Painter), SpraySeeMO 2018, and KC's Crossroads
+  district in 2021.
+
+searchBio: |
+  Coolidge dropped out of St. Petersburg College his first semester. His first
+  two years as an artist he dumpster-dived for paint and bartered murals for
+  food.
+
+  Sebastian Coolidge (born approximately 1989) moved from Independence, Missouri
+  to St. Petersburg, Florida around 2008 because his aunt lived there and he
+  wanted a change of scenery. He enrolled at St. Petersburg College but dropped
+  out first semester to pursue art full-time. His first two years were
+  financially difficult — he and friend Elijah Barrett sourced discarded paint
+  from dumpsters and bartered mural work for food, money, or clothing. He worked
+  at Vans Store, Starbucks, and a smoke shop simultaneously while biking
+  downtown nightly to create live paintings.
+
+  His 2012 mural at Freshly Squeezed clothing store (MLK & 1st Ave N) depicting
+  "a kid in a newsboy cap with long outstretched arms squeezing an orange" led
+  to steady commissions. He has painted approximately forty to fifty exterior
+  murals. His style blends classic animation and Lowbrow art, ranging from dark
+  and surreal to light and whimsical. He works in pencils, pens, spray paint,
+  and oil paint with a spontaneous approach — sometimes no sketches. Notable
+  murals include "A Moment to Reflect" on the Florida CraftArt building
+  (co-painted with Derek Donnelly, four stories tall, completed in ten days, the
+  largest mural in St. Petersburg at the time), "The Bends" (representing "the
+  irrelevance of time"), and a giant face on an industrial silo near Woodlawn
+  Park visible from I-275. He painted "Cherish Yourself" for SpraySeeMO 2024 in
+  Kansas City. He runs the SC1912 clothing brand and participated in the Carmada
+  art car movement. Featured in Hi-Fructose and Huffington Post.
+
+  Jason Harrington — Rif Raf Giraffe — is a Lebanese-Irish American artist born
+  around 1980 in Kansas City, Missouri. He attended Johnson County Community
+  College before transferring to the School of the Art Institute of Chicago
+  (SAIC), where he studied Painting and Film. He lived in Chicago for a decade,
+  started painting graffiti in 2002, and returned to Kansas City in 2013. He
+  became a full-time artist in 2016. The name came from National Geographic
+  footage of a giraffe being hunted, then finding a toy giraffe on his walk home
+  — he added "Rif Raf" because he saw himself as "working-class trouble."
+
+  His work focuses on futurism and "future pop" — characters reflecting societal
+  behaviors, messages ranging from comedic to political commentary. He works
+  across mural painting, canvas, digital illustration, animated GIFs, and film.
+  Clients include Tiffany & Co., Giphy Arts, Emporium at Area 15 (Las Vegas),
+  and MoDOT. He co-founded SpraySeeMO mural festival with wife Ami Ayars in 2017
+  (originally called SolaNoir) — approximately 150 murals in Kansas City,
+  expanded to Miami and Los Angeles. They co-run Upper Level Gallery in Kansas
+  City. He has painted in London, Barcelona, Mexico, and Hawaii.
+
+  For SHINE 2018 they collaborated on a mural in St. Petersburg. The two share
+  Kansas City roots and have worked together repeatedly: Wynwood, Miami (2015,
+  with Oleson Art and Zulu Painter), SpraySeeMO 2018 (514 Southwest Blvd, KC),
+  American Shaman CBD (2018, with Jake Merten), KC Crossroads (2021, with Ghost
+  Beard), and SpraySeeMO 2020 at Royal Liquor.
+
+  Instagram: @sebastiancoolidge, @rifrafgiraffe. Websites: sc1912.com,
+  rifrafgiraffe.com.
+
+searchMuralDescription: |
+  Two surreal, stylized heads side by side against a dark gray background. On
+  the left, a drooping flesh-toned face with melting features — heavy lidded
+  eyes, elongated nose, sagging mouth — rendered in pale pinks and creams. On
+  the right, a robot-like head with fiery orange hair, piano keys for teeth,
+  three teal circular eyes, and a small mouse or creature piloting from inside
+  the open skull. The robot wears a mint-green collared shirt. The style blends
+  lowbrow illustration with surrealist character design.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2018 selected artists; SpraySeeMO co-founder (Rif Raf Giraffe)"
+
+furtherWork:
+  - name: "rifrafgiraffe.com"
+    url: "https://www.rifrafgiraffe.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+  - "16 April 2026 — Full research and bio, Claude-enhanced"
+sourceNotes:
+  - "GPS from Rob's photo, IMG_0017.jpeg"
+  - "Artists identified by Rob: Sebastian Coolidge and Rif Raf Giraffe, SHINE 2018"
+  - "https://www.instagram.com/sebastiancoolidge/"
+  - "https://www.instagram.com/rifrafgiraffe/"
+  - "https://www.rifrafgiraffe.com/"
+  - "https://hifructose.com/2019/03/28/the-cross-dimensional-murals-of-sebastian-coolidge/"
+  - "https://www.cltampa.com/arts/ask-the-locals-sebastian-coolidge-mural-master-12301960"
+  - "https://canvasrebel.com/meet-jason-rif-raf-giraffe-harrington/"
+  - "https://www.startlandnews.com/2018/07/rif-raf-giraffe-crossroads/"
+  - "https://creativepinellas.org/magazine/bees-in-the-hive-secret-walls-with-sebastian-coolidge/"

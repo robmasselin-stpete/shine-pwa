@@ -17,15 +17,75 @@ instagram: sydneyprusso
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  Sydney Prusso is a muralist and designer working under the name Syd Bloom Studio, based in the Tampa Bay area. Her work is self-described as "bold, dreamy, dramatic, colorful, high-contrast, and distinctly flat," blending influences from Japanese anime and pop art. She has painted over 30 murals across six states and has worked with brands including Salesforce, Adobe, Dickies, and Grow Financial. She received a Communication Arts Typography Award in 2022. She painted "Go Outside, Look Inside" for SHINE 2022 at 533 28th St S, and has done commercial mural work throughout the Warehouse Arts District.
+  This wall looks like a vintage concert poster blown up to building scale. The
+  three words on it — Go Outside, Look Inside — are her whole practice.
 
-muralDescription: |
-  The entire side of a peaked-roof building wrapped in retro psychedelic lettering spelling "Outside" and "Look Inside" in chunky, rounded '70s-style typography. The letters are layered in pinks, oranges, chartreuse, white, and maroon against a purple background. Colorful butterflies — a large pink-and-red one at center, smaller ones floating above — are scattered between the words. Sparkle stars dot the upper peak. The overall vibe is a vintage concert poster blown up to building scale.
+  Sydney Prusso is an illustrator, lettering artist, and muralist based in the
+  Tampa Bay area. Her style is contemporary botanical — flat illustration rooted
+  in graphic design, warm 1960s and 70s color palettes, flowing poster
+  lettering. Nature, the outdoors, and mental health run through the work. She
+  graduated from MICA and has painted fifty-plus murals across six states, with
+  installations up to 75 feet. She has done a Reef Organization project in the
+  Florida Keys.
+
+  Clients include Salesforce, Adobe, Dickies, PepsiCo, John Deere, Stihl, the
+  NFL, and AstraZeneca. For SHINE 2022, she painted two murals in St.
+  Petersburg.
+
+searchBio: |
+  She graduated from MICA and has painted fifty-plus murals across six states,
+  installations up to 75 feet.
+
+  Sydney Prusso is an illustrator, lettering artist, and muralist based in the
+  Tampa Bay area. Her style is contemporary botanical — flat illustration rooted
+  in graphic design, warm 1960s and 70s color palettes, flowing poster
+  lettering. Nature, the outdoors, and mental health run through the work. She
+  has done a Reef Organization project in the Florida Keys.
+
+  Clients include Salesforce, Adobe, Dickies, PepsiCo, John Deere, Stihl, the
+  NFL, and AstraZeneca. For SHINE 2022, she painted two murals in St.
+  Petersburg.
+
+  Her studio operates under the brand Syd Bloom Studio (sydneyprusso.com /
+  sydbloom.com). Named brand projects on her site include an Apothecary mural
+  and tea package design, a Grow Financial multi-store mural installation
+  (including the West River, Tampa location), a Vintage Furniture Store mural
+  and branding package, and a Fresh Kitchen multi-store installation. Other
+  commercial clients include Garage Project (the brewery). She also takes
+  residential commissions and out-of-state projects — testimonials reference a
+  short-term rental mural in Port Angeles, Washington. Her illustration practice
+  spans branded packaging, advertising, publishing, surface patterns, and
+  textiles. Studio email: studio@sydbloom.com. Direct: sydney@sydneyprusso.com.
+
+searchMuralDescription: |
+  The entire side of a peaked-roof building wrapped in retro psychedelic
+  lettering spelling "Outside" and "Look Inside" in chunky, rounded '70s-style
+  typography. The letters are layered in pinks, oranges, chartreuse, white, and
+  maroon against a purple background. Colorful butterflies — a large
+  pink-and-red one at center, smaller ones floating above — are scattered
+  between the words. Sparkle stars dot the upper peak. The overall vibe is a
+  vintage concert poster blown up to building scale.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
+artistAwards: "SHINE 2022 selected artist"
+
+furtherWork:
+  - name: "sydbloom.com"
+    url: "https://sydbloom.com"
+
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-02 — New hook anchored to this wall: vintage concert poster scale + the title 'Go Outside, Look Inside' is her practice in three words. Replaced resume-style MICA opener; that fact moved into body."
+  - "2026-05-03 — Appended sydneyprusso.com / sydbloom.com findings to searchBio: Syd Bloom Studio brand, named brand projects (Apothecary, Grow Financial multi-store including West River Tampa, Vintage Furniture Store, Fresh Kitchen), Garage Project as client, residential commissions including Port Angeles WA short-term rental, illustration service categories, two contact emails."
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-sourceNotes: "Photo by Rob Asselin. Bio originally written. 2026-03-05."
+sourceNotes:
+  - "Photo by Rob Asselin. Bio originally written. 2026-03-05."
+  - "https://sydbloom.com/about"
+  - "https://stpeteartsalliance.org/sydney-prusso-2022"
+  - "https://sydneyprusso.com"
+  - "https://sydneyprusso.com/about"
+  - "https://sydneyprusso.com/brand-collabs"
+  - "https://sydneyprusso.com/illustration"

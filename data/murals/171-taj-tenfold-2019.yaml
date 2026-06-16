@@ -1,0 +1,113 @@
+# Taj Tenfold — Sewing Seeds (2019)
+
+# ── Required ──
+id: 171
+artist: Taj Tenfold
+year: 2019
+lat: 27.770868
+lng: -82.657018
+address: 1720 Central Ave
+category: shine
+img: "images/murals/2019/taj-tenfold-sewing-seeds.jpeg"
+
+# ── Optional ──
+title: "Sewing Seeds"
+building: ""
+instagram: tajfrancis
+basedIn: "Kingston, Jamaica"
+
+fieldNotes:
+  - "Cover art for John Wick 4"
+  - "Promotional artwork for HBO's Lovecraft Country"
+  - "Jamaican artist — calls his style 'visual reggae'"
+
+artistBio: |
+  He did the cover art for John Wick 4 and promotional artwork for HBO's
+  Lovecraft Country. He calls his style "visual reggae."
+
+  Taj Francis — Taj Tenfold — was born in 1989 in St. Andrew parish, Jamaica and
+  studied Illustration at the Edna Manley College of the Visual and Performing
+  Arts in Kingston (2007-2011). His work explores African ancestry and human
+  identity through a surreal lens, drawing on Japanese Manga, hip-hop, Baroque
+  painting, vintage vinyl art, and Jamaican Reggae aesthetics.
+
+  Clients include Marvel Studios, DC Comics, HBO (Lovecraft Country), Lionsgate
+  (John Wick 4), Adobe, Harper Collins, and Audible. He is represented by
+  Bernstein & Andriulli for illustration and murals. He shows at The Olympia
+  Gallery in Kingston and held his debut solo exhibition "The Night Sees" in
+  February 2024.
+
+  For SHINE 2019 he was a lead artist, painting "Sewing Seeds" at 1720 Central
+  Avenue — ninety feet long by fifteen feet tall. A woman's face rises from a
+  surging sea, her purple and magenta hair coiled in a rippling orange scarf,
+  the thread made of water repairing damage to the ocean.
+
+searchBio: |
+  He did the cover art for John Wick 4 and promotional artwork for HBO's
+  Lovecraft Country. He calls his style "visual reggae."
+
+  Taj Francis — Taj Tenfold — was born in 1989 in the parish of St. Andrew,
+  Jamaica. He studied Illustration at the Edna Manley College of the Visual and
+  Performing Arts in Kingston (2007-2011). He is based in Kingston. His work
+  explores nuances of human behavior and identity relating to African ancestry
+  through a surreal lens. Influences include Japanese Manga, hip-hop, Baroque
+  paintings, vintage vinyl and poster art, Pop Art, and Jamaican Reggae
+  aesthetics. He works in paintings, digital art, murals, video art, animation,
+  illustration, design, and creative direction.
+
+  Commercial clients include HBO (Lovecraft Country), Marvel Studios, DC Comics
+  (cover artworks), Lionsgate (John Wick 4 cover), Adobe (Design Creator
+  Showcase), Audible ("SUNDOWN"), Harper Collins ("War Widow" cover), Rocket
+  League (Parallel Skin), and PURE Chocolate Jamaica. He is represented by
+  Bernstein & Andriulli (B&A) for illustration, painting, murals, and commercial
+  projects in the USA, UK, and Europe. He shows at The Olympia Gallery in
+  Kingston. His debut solo exhibition "The Night Sees" opened February 17, 2024
+  at 10A, Kingston.
+
+  Festival credits include SHINE 2019 (St. Petersburg, lead artist), POW! WOW!
+  DC 2018 (double portrait mural at M St. NE & 3rd, Washington DC), Paint
+  Jamaica 2014 (two murals at 41 Fleet Street, Downtown Kingston), and MANIFESTO
+  Festival (Toronto, 2015).
+
+  For SHINE 2019 he painted "Sewing Seeds" at 1720 Central Avenue in St.
+  Petersburg — ninety feet long by fifteen feet tall. A woman's face and
+  shoulders rise from a surging sea, undulating curves of blue across her face,
+  purple and magenta hair coiled in a rippling orange scarf. The title plays on
+  "sewing" (cloth) — the thread is made of water, repairing damage to the ocean
+  and addressing sea rise.
+
+  Instagram: @tajfrancis (approximately 41K followers). Website: tajtenfold.com.
+
+searchMuralDescription: |
+  A vibrant two-story mural spanning ninety feet. A woman's face dominates the
+  right side — rendered in shades of blue with bold features and a direct gaze,
+  her purple and magenta hair coiled in a rippling orange scarf. To the left, a
+  blue-toned figure appears to pull thread made of water through surging waves.
+  Swirling ribbons of pink, coral, blue, and yellow flow across the composition
+  like ocean currents. The palette is jewel-toned Caribbean color — crimson,
+  orange, purple, aqua, and royal blue against a light background.
+
+muralInspiration: "The thread is made of water, repairing damage to the ocean — addressing sea rise through the artist's Jamaican heritage."
+muralAwards: ""
+artistAwards: "SHINE 2019 lead artist"
+
+furtherWork:
+  - name: "tajtenfold.com"
+    url: "https://www.tajtenfold.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — New mural added from screenshot reference"
+  - "16 April 2026 — Research corrected: SHINE 2019 not 2017, title is Sewing Seeds not Seas, address 1720 Central Ave"
+  - "2026-05-12 — Confirmed photo is Rob's (iPhone EXIF audit)"
+sourceNotes:
+  - "Image from screenshot, no EXIF GPS — address from research: 1720 Central Ave"
+  - "Artist: Taj Francis / Taj Tenfold, Kingston, Jamaica"
+  - "Title: Sewing Seeds (not Sewing Seas)"
+  - "SHINE 2019 (not 2017 as originally reported)"
+  - "https://www.tajtenfold.com/"
+  - "https://www.ba-reps.com/illustrators/taj-francis"
+  - "https://www.cltampa.com/arts/jamaicas-taj-tenfold-leads-artist-lineup-for-2019-st-petersburg-shine-mural-festival-12254798"
+  - "https://scenefromthesidewalk.blog/post/615829516343033856/sewing-seas-by-taj-tenfold"
+  - "Photo by Rob — confirmed iPhone EXIF audit 2026-05-12"

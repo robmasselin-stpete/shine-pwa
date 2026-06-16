@@ -1,0 +1,139 @@
+# Taylor White — Ecstatic Dancers (SHINE 2019)
+
+# ── Required ──
+id: 180
+artist: Taylor White
+year: 2019
+lat: 27.774788
+lng: -82.646867
+address: 276 Dr. Martin Luther King Jr. St N
+category: shine
+img: "images/murals/2019/taylor-white-ecstatic-dancers.jpeg"
+
+# ── Optional ──
+title: "Ecstatic Dancers"
+building: ""
+instagram: taylorwhitestudio
+basedIn: "Raleigh, NC"
+
+fieldNotes:
+  - "Created one of the world's largest augmented reality murals with Google Fiber"
+  - "Inspired by improvisational dance — the moment a body stops thinking"
+  - "Lived in Oslo and Melbourne before becoming Raleigh's first commissioned muralist"
+
+artistBio: |
+  Taylor White is a painter and muralist based in Raleigh, North Carolina, whose
+  large-scale work turns the human body into something fluid, electric, and a
+  little bit untamed. She grew up in nearby Cary, studied illustration at the
+  Savannah College of Art and Design, graduating in 2007, and then did something
+  unexpected — she moved to Oslo, Norway, where she became the first full-time
+  illustrator hired by a Norwegian ad agency, working at TRY/Apt on storyboards
+  and campaigns. When the recession hit and the job disappeared, a friend talked
+  her into relocating to Melbourne, Australia. She spent her time there working
+  odd jobs and sketching surrealist ink portraits that dug into childhood
+  memories and emotional complexity.
+
+  Back in Raleigh, White pivoted hard into murals. Her 2018 piece Abstracted
+  Motion — a 40-by-60-foot wall of interconnected dancers on the Alfred Williams
+  Building (visible from W. Davie Street) — was a collaboration with Google
+  Fiber that became one of the largest public-facing augmented reality murals in
+  the world. She followed it up in 2021 with 8-Bit to 5G, another AR mural
+  celebrating Raleigh's growing esports scene.
+
+  Her festival resume includes Murals in the Market in Detroit, the Richmond
+  Mural Project, BLINK Cincinnati, Branded Arts, O-Town Walls in Ontario,
+  California, and SCOPE Miami Beach. In 2021 she self-funded a solo show called
+  Pursuit of Happiness — 24 large-scale paintings where figures dissolve into
+  pixels, emojis, and graphic shapes.
+
+  For SHINE 2019, her Ecstatic Dancers mural spans a wall in the EDGE District —
+  a crowd of figures in white T-shirts caught in full-body joy, completely lost
+  in the rhythm.
+
+searchBio: |
+  Taylor White is a painter and muralist based in Raleigh, North Carolina; she
+  grew up in nearby Cary. She studied illustration at the Savannah College of
+  Art and Design, graduating with a BFA in 2007. After graduating she moved to
+  Oslo, Norway, where she became the first full-time illustrator hired by a
+  Norwegian ad agency, working at the firm TRY/Apt on storyboards and campaigns.
+  When Norway's economy slid into recession she relocated to Melbourne,
+  Australia, where she worked odd jobs and sketched surrealist ink portraits
+  exploring childhood memories and emotional complexity. Australia also
+  connected her to the street art community through the Juddy Roller collective.
+
+  Back in Raleigh, White pivoted into murals. Her 2018 piece Abstracted Motion —
+  a 40-by-60-foot wall of interconnected dancers on the Alfred Williams Building
+  (410 S. Salisbury St, visible from W. Davie Street) — was a collaboration with
+  Google Fiber and Portland-based design firm Nelson Cash. It became one of the
+  largest public-facing augmented reality murals in the world. She followed it
+  in 2021 with 8-Bit to 5G, another AR mural celebrating Raleigh's esports
+  scene.
+
+  Festival credits include SHINE 2019 (St. Petersburg), Murals in the Market
+  (Detroit), Richmond Mural Project (Virginia), BLINK Cincinnati, Branded Arts
+  (Los Angeles), O-Town Walls (Ontario, California — 80-foot mural), the Outer
+  Space Project, Juddy Roller (Australia), and SCOPE Miami Beach. Exhibitions in
+  Melbourne, Berlin, Los Angeles, Miami, Atlanta, Chicago, and Detroit.
+
+  In 2021 she self-funded a solo exhibition called Pursuit of Happiness at 21 W.
+  Hargett Street in downtown Raleigh — 24 large-scale abstract figurative
+  paintings where human subjects appear superimposed with graphic shapes,
+  pixels, and emojis.
+
+  Her style sits at the intersection of classical figure painting and street art
+  energy. Murals often feature crowds of bodies in motion, rendered in vivid
+  pinks, purples, and magentas, limbs overlapping and fragmenting as if the
+  dancers are mid-transformation. The work is rooted in improvisational dance —
+  that moment when a body stops thinking and just moves.
+
+  For SHINE 2019, she painted Ecstatic Dancers at 276 Dr. MLK Jr. St N in the
+  EDGE District — a crowd of figures with pink and fuchsia skin in white
+  T-shirts, caught in full-body joy.
+
+  Instagram: @taylorwhitestudio. Website: taylorwhite.art.
+
+searchMuralDescription: |
+  A wide mural spanning nearly a hundred feet across a white commercial building
+  wall. A crowd of figures with pink and fuchsia skin wearing simple white
+  T-shirts move across the surface in states of full-body expression —
+  stretching upward, bending, curving, looking skyward, completely absorbed in
+  dance. Painted from the waist up or just chest and shoulders, the figures fill
+  the 14-foot-tall wall with kinetic energy, each body distinct but connected to
+  the collective movement around it. The monochromatic pink-purple-magenta
+  palette against the white wall gives the piece a dreamlike quality. A white
+  column breaks the wall into two sections, but the composition flows across it.
+
+muralInspiration: "Inspired by improvisational dance and the exquisitely expressive movements of the human figure."
+muralAwards: ""
+artistAwards: "SHINE 2019 selected artist; Google Fiber AR mural collaboration"
+
+furtherWork:
+  - name: "taylorwhite.art"
+    url: "https://taylorwhite.art"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "23 April 2026 — New mural added, GPS from Rob's photo"
+  - "26 April 2026 — Audited; clarified Cary vs. Raleigh; fixed Abstracted Motion location (Alfred Williams Building, visible from W. Davie); dropped 'inaugural' for O-Town Walls (project not new in 2025); dropped unsourced 'nearly a hundred feet' dimension."
+sourceNotes:
+  - "https://taylorwhite.art/about"
+  - "https://www.levelupartists.com/lua-podcast/106"
+  - "https://www.annarborartcenter.org/taylor-white/"
+  - "https://waltermagazine.com/art-and-culture/taylor-white/"
+  - "https://downtownraleigh.org/public-art/abstracted-motion"
+  - "https://immersive-technology.com/augmentedreality/downtown-raleigh-gets-one-the-first-ar-murals-in-the-world/"
+  - "https://919raleigh.com/local/abstracted-motion-by-taylor-white/"
+  - "https://www.wral.com/new-augmented-reality-mural-debuts-in-downtown-raleigh/19670958/"
+  - "https://www.visitraleigh.com/media/press-release/post/greater-raleigh-esports-local-organizing-committee-unveils-augmented-reality-public-art-mural/"
+  - "https://downtownraleigh.org/public-art/8-bit-to-5g"
+  - "https://raleighmag.com/2021/07/12/on-the-pursuit-of-happiness/"
+  - "https://www.globenewswire.com/news-release/2021/07/06/2258443/0/en/Artist-Packs-Out-Opening-Night-and-Continues-to-Spread-the-Pursuit-of-Happiness-Throughout-the-Summer.html"
+  - "https://www.visitstpeteclearwater.com/article/murals-edge-district"
+  - "https://stpetecatalyst.com/countdown-to-shine-19-meet-the-international-mural-artists/"
+  - "Photo by Rob 2026-04-23, GPS from EXIF. SHINE 2019, EDGE District."
+verification:
+  date: 2026-04-26
+  method: phase1-mechanical + phase2-llm-per-claim
+  status: pass
+  notes: "10/13 fully verified. Minor cleanups: from Cary not Raleigh; Abstracted Motion is on Alfred Williams Bldg (410 S. Salisbury), not literally W. Davie; dropped 'inaugural' for O-Town Walls; dropped unsourced 100-ft dimension."

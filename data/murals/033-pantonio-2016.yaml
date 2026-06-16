@@ -1,0 +1,128 @@
+# Pantonio — 2016
+
+# ── Required ──
+id: 33
+artist: Pantonio
+year: 2016
+lat: 27.771478
+lng: -82.65896
+address: 1901 Central Ave
+category: shine
+img: "images/murals/2016/pantonio.jpeg"
+
+# ── Optional ──
+title: ""
+building: Imagine Museum
+instagram: pantonio.o
+basedIn: "Lisbon, Portugal"
+
+fieldNotes:
+  - "His 66-meter fish mural covers a Paris housing tower"
+  - "Portuguese artist, trained in Lisbon"
+  - "Kinetic black-and-white marine life"
+
+artistBio: |
+  His sixty-six-meter fish mural on a Paris housing tower was the tallest piece
+  of street art in Europe when it went up in 2014.
+
+  António Correia — Pantonio — grew up on Terceira Island in the Azores,
+  surrounded by the Atlantic. He studied sculpture, drawing, and photography in
+  the Azores and graphic arts at the Polytechnic Institute of Tomar before
+  moving to Lisbon in the 1990s. He worked in animation design, advertising, and
+  children's illustration before dedicating himself to urban art full-time
+  around 2012.
+
+  His signature is swarms of marine life — sardines, cod, manta rays, octopus —
+  rendered in Atlantic blues, volcanic blacks, and seafoam whites with simple,
+  fluid lines that make the walls feel like they are moving. The palette comes
+  straight from the Azores. He has painted walls in over eighteen countries,
+  from a Paris bridge (Pont des Arts, after the city removed the love locks) to
+  grain silos on his home island.
+
+  For SHINE 2016 he wrapped two walls of the Imagine Museum on Central Avenue
+  with a swirling school of dark fish and aquatic foliage in black, gray, and
+  teal — one of the festival's largest pieces, spanning roughly a hundred and
+  thirteen feet across the corner of the building.
+
+searchBio: |
+  His sixty-six-meter fish mural on a Paris housing tower was the tallest piece
+  of street art in Europe when it went up in 2014.
+
+  António Correia — Pantonio — was born in 1975 on Terceira Island in the
+  Azores, Portugal. He studied sculpture, modeling, drawing, and painting at the
+  Instituto da Cultura dos Acores, then drawing and photography at the
+  Professional School of Artistic Crafts in Vila Nova de Cerveira starting in
+  1989, and graphic arts technologies at the Polytechnic Institute of Tomar. He
+  moved to Lisbon in the 1990s and worked professionally in animation design,
+  advertising, and children's illustration. In 1993 he represented Portugal at
+  UNESCO's fiftieth anniversary celebration in Romania. In 2005 he received a
+  distinction at the Macaronesian Young Artists Show for illustration. He
+  dedicated himself exclusively to urban art and fine art around 2011-2012.
+
+  His signature subjects are swarms of marine life — sardines, cod, manta rays,
+  octopus — along with birds, rabbits, ropes, boats, and fantastical creatures.
+  His palette draws from the Azores: Atlantic blues, volcanic blacks, seafoam
+  whites, with occasional greens and purples. The style blends realism with
+  abstraction through simple, flexible, fluid lines and undulating compositions
+  that create a sense of movement on static walls.
+
+  Major murals include the Tour Sienne in Paris's 13th arrondissement (2014,
+  sixty-six meters high by fifteen meters wide — the largest street art mural in
+  Europe at the time, taking one month to complete), the Pont des Arts bridge in
+  Paris (2015, painted after the city removed the love-lock grilles), the
+  Aquarium of the Pacific in Long Beach, California (2016, his first US mural, a
+  manta ray on approximately 2,600 square feet), and grain silos on Terceira
+  Island in the Azores. He has painted in over eighteen countries including
+  Portugal, France, Italy, Spain, Belgium, Denmark, Poland, Sweden, Ukraine,
+  Russia, China, Brazil, Canada, the United States, Tunisia, Morocco, Senegal,
+  and Cape Verde.
+
+  He is represented by Galerie Itinerrance in Paris. Solo exhibitions include
+  "Exodus" at Galerie Itinerrance (2014), "Atlantida" at Galerie Itinerrance
+  (2017), and "Vento" at the Instituto Acoriano de Cultura in the Azores (2019).
+
+  For SHINE 2016 he wrapped the east and north walls of the Imagine Museum at
+  1901 Central Avenue in St. Petersburg with a swirling underwater scene of
+  black fish and aquatic plant life, approximately 113 feet wide by 19 feet
+  high. The piece is rendered in black, gray, and teal tones, full of fluid
+  movement.
+
+  Festival credits include SHINE 2016 (St. Petersburg), POW! WOW! Long Beach
+  (2016), Artscape White Moose Project (Karlstad, Sweden, 2017), Big City Life
+  (Rome, 2015), and Fresh Paint OLLN (Louvain-la-Neuve, Belgium, 2021).
+
+  Instagram: @pantonio.o.
+
+searchMuralDescription: |
+  A massive wraparound composition covering two walls of the Imagine Museum.
+  Swirling schools of dark fish — rendered in black, charcoal gray, and deep
+  teal — spiral and twist through pale aquatic foliage in mint green and sage
+  tones against a light background. The fish move in dense, fluid formations
+  that create a vortex-like sense of motion across the full width of the
+  building. Broad leaves and plant forms weave between the fish, adding depth
+  and organic rhythm. The piece wraps around the corner of the building,
+  creating a continuous underwater scene visible from multiple angles.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Macaronesian Young Artists Show distinction (2005); represented Portugal at UNESCO's 50th anniversary (1993)"
+
+furtherWork:
+  - name: "Galerie Itinerrance"
+    url: "https://itinerrance.fr"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "16 April 2026 — Created from user photo, Claude research and bio"
+  - "2026-05-03 — Added widewalls.ch/artists/pantonio to sourceNotes per user direction. Page content was unreachable from this environment (widewalls.ch timed out; widewalls.com redirects to a parked /lander page). URL is documented as a source pointer; no new facts integrated into searchBio. If Widewalls content is needed in the bio, paste it directly and I will integrate."
+sourceNotes:
+  - "Photo by Rob, GPS from EXIF (27.771336, -82.658914)"
+  - "SHINE 2016 — wraps east and north walls of Imagine Museum"
+  - "https://stpeteartsalliance.org/pantonio"
+  - "https://www.instagram.com/pantonio.o/"
+  - "https://www.cps.pt/en/artistas/pantonio"
+  - "https://www.thisiscolossal.com/2016/02/pantonio-street-art/"
+  - "https://fr.wikipedia.org/wiki/Pantonio"
+  - "https://itinerrance.fr"
+  - "https://www.widewalls.ch/artists/pantonio"

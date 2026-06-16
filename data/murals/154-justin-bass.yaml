@@ -1,0 +1,122 @@
+# Justin Bass — Tru (Central Ave)
+
+# ── Required ──
+id: 154
+artist: Justin Bass
+year: 0
+lat: 27.770672
+lng: -82.655992
+address: "1650 Central Ave"
+category: commercial
+img: "images/murals/commercial/justin-bass-tru.jpeg"
+
+# ── Optional ──
+title: ""
+building: Tru
+instagram: dropthelove
+basedIn: ""
+
+artistBio: |
+  On January 1, 1914, a Benoist flying boat lifted off the St. Pete waterfront,
+  climbed to 50 feet, and crossed Tampa Bay in 23 minutes. First scheduled
+  airline flight in history. Tony Jannus at the controls. The mayor — Abram
+  Pheil — had paid $400 at auction for the seat next to him.
+
+  Justin Bass painted the sequel. A flamingo glides across the sky carrying
+  St. Pete itself, a figure perched on its back, a boombox along for the ride.
+  A flamingo flies escort. Same route the Benoist took, retold in pastel.
+
+  Bass works under the name DropTheLove — artist, designer, restoration
+  specialist out of South Florida. He's collaborated with Miami scenic painter
+  Ryan Zook on projects around the region. Beyond that the trail goes quiet:
+  an Instagram, a LinkedIn, no interviews, no press packet. The wall does
+  the talking.
+
+  It wraps the Tru by Hilton parking garage on Central Avenue, blocks from
+  the bay the Benoist crossed.
+
+searchBio: |
+  On January 1, 1914, the world's first scheduled commercial airline flight
+  took off from the St. Petersburg Municipal Pier. The aircraft was a Benoist
+  XIV flying boat — a pontoon-equipped biplane carrying one pilot and one
+  passenger. The pilot was Tony Jannus. The passenger was former St. Petersburg
+  mayor Abram C. Pheil, who had won the seat at auction for $400. They climbed
+  to 50 feet, crossed Tampa Bay in 23 minutes, and landed near the mouth of the
+  Hillsborough River. A crowd of over 3,000 lined the St. Pete waterfront to
+  watch them go. The St. Petersburg–Tampa Airboat Line, conceived by Florida
+  entrepreneur Percival Fansler in partnership with aircraft manufacturer
+  Thomas Benoist, ran for nearly four months and carried 1,205 passengers
+  before shutting down. It is the origin point of commercial aviation.
+
+  Justin Bass turned that flight into a mural on Central Avenue 112 years later.
+  In his version a flamingo stands in for the Benoist, a rider for Mayor Pheil,
+  and the city of St. Petersburg itself is the cargo. A pink flamingo flies
+  escort. A second winged flamingo dives in from the upper right. Puffy
+  blue-gray clouds and small triangular shapes fill the teal-green sky. The
+  flamingo is the 112-year update — same route, different vibe.
+
+  Bass works as an artist, designer, and restoration specialist under the brand
+  DropTheLove. His LinkedIn title is "Artist / Designer / Restorations at
+  DropTheLove." He has collaborated with Miami-based scenic artist and designer
+  Ryan Zook (@zookart, ryanzookart.com) — the pair were described as "the
+  dynamic duo" by Project In The Paint. He also goes by "Jb Jb" on Instagram
+  and "jmovement" on Facebook and Flickr.
+
+  The mural wraps the parking garage wall at the Tru by Hilton on Central
+  Avenue in St. Petersburg. It is an exterior piece, distinct from the hotel's
+  interior lobby art by Mike Traina. Two blocks from the waterfront where the
+  Benoist took off in 1914.
+
+  Instagram: @dropthelove. TikTok: @justinbass511.
+
+searchMuralDescription: |
+  A wide mural along a parking garage wall on a teal-green background. A surreal
+  aviation scene features a pink flamingo in flight on the left, a figure riding
+  atop a giant flamingo carrying a boombox through the sky at center, and a
+  winged flamingo diving from the upper right. Puffy blue-gray clouds and small
+  triangular shapes fill the sky. The style is playful and illustrative with a
+  pastel palette of teal, pink, lavender, and gray.
+
+muralInspiration: |
+  The world's first scheduled commercial airline flight took off from the
+  St. Petersburg waterfront on January 1, 1914 — a Benoist XIV flying boat
+  piloted by Tony Jannus, carrying former mayor Abram C. Pheil to Tampa in
+  23 minutes. Pheil paid $400 at auction for the seat. Bass's mural retells
+  that flight in surreal pastel: the flamingo stands in for the Benoist, the
+  rider for Mayor Pheil, and St. Pete itself is along for the ride. The
+  boombox is the 112-year update.
+muralAwards: ""
+artistAwards: ""
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "15 April 2026 — New mural added, GPS from Rob's photo"
+  - "16 April 2026 — Research completed, minimal bio (very thin online footprint)"
+  - "22 May 2026 — Rob identified the mural inspiration: the 1914 Benoist XIV flight. Researched the flight (see sourceNotes); rewrote artistBio with a 1914-Benoist hook, expanded searchBio with a full historical paragraph, and filled muralInspiration tying the imagery (pelican = Benoist, rider = Mayor Pheil, city = cargo, boombox = 2026 update) to the actual event."
+  - "24 May 2026 — Rob recategorized all three birds as flamingos (was pelican-carrier + flamingo escort + pelican diver). File renamed 154-justin-bass-commercial.yaml → 154-justin-bass.yaml. Applied flamingo edits across artistBio / searchBio / searchMuralDescription / muralInspiration. Fixed two stray 'pelican' references in searchBio ('second winged pelican dives' and 'boombox the pelican carries') for consistency with the rest of the file."
+
+sourceNotes:
+  - "GPS from Rob's photo, IMG_1595.jpeg"
+  - "Artist identified by Rob: Justin Bass, @dropthelove, on Tru building on Central Ave"
+  - "Bird identification (per Rob, 24 May 2026): all three birds are flamingos, not pelicans"
+  - "https://www.instagram.com/dropthelove/"
+  - "https://www.linkedin.com/in/justin-bass-a8814410a"
+  - "Collaborator: Ryan Zook (@zookart, ryanzookart.com)"
+  - "Note: very limited online presence, no interviews or articles found"
+
+  # 22 May 2026 — Benoist flight research (mural inspiration per Rob)
+  - "Mural inspiration (per Rob): 1914 Benoist XIV flight, world's first scheduled commercial airline flight, St. Pete → Tampa, pilot Tony Jannus"
+  - "Search query (WebSearch): 'Benoist XIV Tony Jannus St Petersburg Tampa January 1 1914 first commercial airline flight'"
+  - "Fact: Date = January 1, 1914 — first scheduled commercial airline flight in the world (heavier-than-air aircraft). Source: Tony Jannus Wikipedia"
+  - "Fact: Aircraft = Benoist XIV flying boat biplane on pontoons, pilot + 1 passenger. Source: Benoist XIV Wikipedia"
+  - "Fact: Pilot = Tony Jannus. Source: Tony Jannus Wikipedia"
+  - "Fact: Passenger = former St. Petersburg mayor Abram C. Pheil, who won the seat at auction for $400. Source: foawa.org/the-first-commercial-flight"
+  - "Fact: Route = St. Pete Municipal Pier → near mouth of the Hillsborough River, Tampa. 23 minutes, climbed to 50 ft altitude. Source: foawa.org/the-first-commercial-flight"
+  - "Fact: Airline = St. Petersburg–Tampa Airboat Line, conceived by Percival E. Fansler in partnership with Thomas Benoist. Operated ~4 months, carried 1,205 passengers. Source: foawa.org/the-first-commercial-flight"
+  - "Fact: Crowd of 3,000+ gathered at the St. Pete waterfront to watch the inaugural flight. Source: WebSearch summary citing Tony Jannus Wikipedia"
+  - "https://en.wikipedia.org/wiki/Tony_Jannus"
+  - "https://foawa.org/the-first-commercial-flight/"
+  - "https://en.wikipedia.org/wiki/Benoist_XIV"

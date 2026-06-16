@@ -1,0 +1,107 @@
+# Kosharekart — 2020
+
+# ── Required ──
+id: 147
+artist: Kosharekart
+year: 2020
+lat: 27.770012
+lng: -82.662501
+address: "2153 1st Ave S"
+category: commercial
+img: "images/murals/2020/kosharekart.jpeg"
+
+# ── Optional ──
+title: ""
+building: Coastal Creative
+instagram: kosharekart
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  She spent thirteen years as a stay-at-home mom with four kids before becoming
+  a full-time artist. Her work is in the Smithsonian.
+
+  Jennifer Kosharek — Kosharekart — is a formally trained artist who studied at
+  the Pinellas County Center for the Arts and holds a BA in English. She lived
+  in St. Petersburg for over forty years before relocating to Alaska in 2022 to
+  pursue a lifelong dream. She started as a realistic oil portrait painter, then
+  gave herself "permission to paint unrealistically."
+
+  Her signature character Gretchen — a big-eyed whimsical female figure — was
+  born around 2008, described as "a type of Vivian Girl who fights for the lives
+  and rights of children and women." She learned spray painting after meeting
+  street artist Narchy in Calgary and was described as "the only female in St.
+  Pete doing spray paint street art" at the time. She owned eve-N-odd Gallery in
+  St. Petersburg from 2011 to 2014, hosting thirty-plus shows.
+
+  Her work is held in the Smithsonian and MOMA collections in New York, Wales,
+  and Brazil through the mail art community. In December 2024 she spray-painted
+  "Hope" and her Gretchen character on a beached sailboat at North Shore Park
+  after Hurricane Helene.
+
+searchBio: |
+  She spent thirteen years as a stay-at-home mom with four kids before becoming
+  a full-time artist. Her work is in the Smithsonian.
+
+  Jennifer Kosharek — Kosharekart — studied at the Pinellas County Center for
+  the Arts and holds a BA in English. She is trained in realistic oil
+  portraiture, intaglio printmaking, and various other media. She lived in St.
+  Petersburg for 40-plus years before relocating to Alaska in early 2022. She is
+  a multi-disciplinary artist: painter, spray paint muralist, rag doll maker,
+  nesting doll painter, quilt maker, illustrator, mail artist, Fluxus
+  performance artist, fiber artist, and graphic designer. Mother of four.
+
+  Her signature character "Gretchen" (born circa 2008) is a big-eyed whimsical
+  female figure — "a type of Vivian Girl who fights for the lives and rights of
+  children and women." She writes hidden words, poems, and sayings onto canvases
+  before covering them with her final creation. She learned spray painting after
+  meeting street artist Narchy in Calgary, AB. She was described as "the only
+  female in St. Pete doing spray paint street art" at that time and helped start
+  the city's mural scene. Her first spray paint mural was "Gretchen and
+  Spoonman" with Christian Thomas.
+
+  She owned and operated eve-N-odd Gallery in St. Petersburg (January 2011 to
+  January 2014), hosting 30-plus shows. She held a solo exhibition "Woman's
+  Work" at the Morean Arts Center (October 2020) as part of a SHINE prequel
+  pop-up. In August 2022 she completed a residency at the Wrangell Mountains
+  Center in McCarthy, Alaska. In December 2024 she spray-painted "Hope" on a
+  beached sailboat at North Shore Park after Hurricane Helene (covered by FOX
+  13). She published "Kosharek Art: Whimsical Art for the Masses" via Blurb.
+
+  Her work is held in the Smithsonian (via mail art historian John Held Jr.'s
+  archive) and MOMA collections in New York, Wales, and Brazil. She has
+  participated in Free Art Friday for 10-plus years and The Sketchbook Project.
+
+  Instagram: @kosharekart. Website: kosharek.art.
+
+searchMuralDescription: |
+  A large black-and-white mural spanning the side wall of the Coastal Creative
+  building. Two stylized female figures anchor the composition — one on the left
+  with flowing ribbon-like hair and a potted plant atop her head, the other on
+  the right wearing a braided hairstyle topped with a cactus and leafy branches.
+  Between them, a toucan perches with its curved beak reaching upward. The
+  figures are surrounded by densely packed flowers, leaves, birds, and organic
+  swirling patterns, all rendered in bold black line work against the white
+  wall. A small "20" date mark is visible near the left figure. The mural wraps
+  around a centered garage door.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "kosharek.art"
+    url: "https://kosharek.art"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "GPS from Rob's photo IMG_1699.jpeg taken April 8, 2026"
+  - "Signed Kosharekart 2020 on mural"
+  - "Building identified as Coastal Creative"
+  - "https://voyagemia.com/interview/meet-jennifer-kosharek-kosharek-art-st-petersburg-fl/"
+  - "https://canvasrebel.com/meet-jennifer-kosharek/"
+  - "https://creativepinellas.org/magazine/bees-in-the-hive-discovering-mail-art-with-jennifer-kosharek/"
+  - "https://www.fox13news.com/news/artist-uses-beached-sailboat-st-pete-spread-message-hope-after-hurricanes"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "16 April 2026 — Full research, bio rewrite with hook, searchBio added"

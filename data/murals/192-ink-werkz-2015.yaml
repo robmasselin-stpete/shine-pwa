@@ -1,0 +1,77 @@
+# Ink Werkz Crew — SHINE 2015
+
+# ── Required ──
+id: 192
+artist: Ink Werkz Crew
+year: 2015
+lat: 27.770947
+lng: -82.655105
+address: 1610 Central Ave
+category: shine
+img: "images/murals/2015/ink-werkz-2015.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: ""
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Three-artist crew — Reid Jenkins, Scott Hillis, Sovoth Chan"
+  - "Painted at the inaugural SHINE 2015"
+  - "A building has since been built in front — only the crew signatures are visible now"
+
+artistBio: |
+  Three friends painted this at SHINE's first year in 2015. A decade later, a
+  building covers most of it. The signatures are still there.
+
+  The Ink Werkz Crew was Reid Jenkins, Scott Hillis, and Sovoth Chan — three St.
+  Petersburg-based artists who painted together at the inaugural SHINE Mural
+  Festival in late 2015. Their collaborative style leans into bold geometric
+  forms, lightning-bolt linework, and saturated color blocks — a vocabulary that
+  reads as graffiti-influenced public art.
+
+  This wall at 1610 Central Avenue dates to the festival's first year. A new
+  building was constructed directly in front of it, covering nearly all of the
+  original artwork. What remains visible is the slice of blue, yellow, and white
+  geometric work along the edge — and the crew's three Instagram tags
+  (@reidjenkinsart, @hillis727, @duke_727) in the lower-left corner.
+
+searchBio: |
+  The Ink Werkz Crew is a St. Petersburg-based collaborative collective made up
+  of Reid Jenkins (@reidjenkinsart), Scott Hillis (@hillis727), and Sovoth Chan
+  (@doke_727). The three painted together at the inaugural SHINE Mural Festival
+  in late 2015 at 1610 Central Avenue.
+
+  Their collaborative work leans into geometric forms, lightning-bolt linework,
+  layered blue and yellow color blocks, and graffiti-influenced composition — a
+  vocabulary that reads as bold, playful public art.
+
+  A new building was later constructed directly in front of this wall, covering
+  nearly all of the original mural. What remains visible is a slice of geometric
+  work and the three crew signatures in the lower-left corner.
+
+searchMuralDescription: |
+  A geometric SHINE 2015 mural on the side of a Central Avenue commercial
+  building, now mostly hidden behind a new building constructed directly in
+  front of the wall. Only a slice of the original artwork is visible — layered
+  blue tones (light blue base, navy mid-band, yellow zigzag at the top) overlaid
+  with jagged white lightning-bolt linework — along with the crew's three
+  Instagram handles (@duke_727, @hillis727, @reidjenkinsart) and a stylized
+  signature in the lower-left corner. A SHINE Mural Festival sticker is affixed
+  near the signage. The full composition was bold, graphic, graffiti-influenced
+  public art.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2015 (inaugural festival) selected artists"
+
+furtherWork: []
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "29 April 2026 — New mural added, GPS from Rob's photo IMG_0218 taken 2026-04-29"
+  - "2026-05-03 — New hook ('Three friends painted this at SHINE's first year in 2015. A decade later, a building covers most of it. The signatures are still there.'). Updated to reflect current state: a building (not just an ATM kiosk) was built in front, only a slice of the original artwork plus the signatures are visible. Per Rob (May 2026 visit)."
+sourceNotes:
+  - "Photo by Rob 2026-04-29, GPS from EXIF. Crew tags visible on mural: @duke_727, @hillis727, @reidjenkinsart. Painted SHINE 2015 (inaugural year). Partially obscured by Chase Bank ATM kiosk built in front in 2018. Source: Tampa Bay Times coverage of SHINE 2015."

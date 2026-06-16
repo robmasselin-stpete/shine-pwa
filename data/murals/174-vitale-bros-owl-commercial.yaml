@@ -1,0 +1,89 @@
+# Vitale Bros — Owl (Commercial)
+
+# ── Required ──
+id: 174
+artist: Vitale Bros
+year: 0
+lat: 27.771298
+lng: -82.669796
+address: Central Ave
+category: commercial
+img: "images/murals/commercial/vitale-bros-owl.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Vitale Bros — painting since 1992"
+  - "Photorealistic wildlife murals"
+  - "Local Pinellas County family"
+
+artistBio: |
+  Their first mural came from a sketch on a paper napkin, handed to a restaurant
+  owner. That was 1992.
+
+  Johnny Vitale and his brother Paul started Vitale Bros in Tampa Bay
+  hand-lettering signs and painting storefront windows. Their parents are
+  artists. So were their grandparents. No formal training — just family
+  tradition and thirty-plus years of practice. Their late aunt Nancy, who had
+  Down syndrome and attended Parc Center for Disabilities, turned out to be an
+  artist too, discovered in her final decade.
+
+  In the late 1990s they opened a warehouse studio that hosted group art, music,
+  and fashion shows that helped birth St. Pete's emerging art scene. They
+  collaborated on set design for Harmony Korine's Spring Breakers. They have
+  painted for the Tampa Bay Rays, the Buccaneers, L'Oreal, and dozens of local
+  businesses. They call themselves the "mural police" — restoring damaged walls
+  around the city for free.
+
+  In 2023, Johnny launched Overspray, a street art shop and graffiti school now
+  based in Gulfport, teaching tagging, block letters, Wildstyle, and advanced
+  mural technique to classes of up to twenty students. After Hurricane Milton,
+  they painted free signs for businesses that lost theirs.
+
+  They have painted SHINE every year since its inception — "The Cool Kids" in
+  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
+  2025, Johnny painted two solo murals: one on the 600 block where it all began,
+  and another at The Factory on Fairfield Ave South with his daughter Sionna.
+
+searchBio: |
+  Their first mural came from a sketch on a paper napkin, handed to a restaurant
+  owner. That was 1992.
+
+  Johnny Vitale and his brother Paul founded Vitale Bros in 1992 in Tampa Bay,
+  starting with hand-lettered signs and painted storefront windows. Youngest
+  brother Joey later joined. Their parents are artists — the family artistic
+  tradition goes back to their grandparents. No formal art education; the craft
+  is entirely self-taught and family-transmitted. They have painted for the
+  Tampa Bay Rays, the Buccaneers, L'Oreal, and dozens of local businesses. They
+  collaborated on set design for Harmony Korine's Spring Breakers.
+
+  In 2023, Johnny launched Overspray, a street art shop and graffiti school in
+  Gulfport. After Hurricane Milton, they painted free signs for businesses. They
+  have painted SHINE every year since its inception.
+
+searchMuralDescription: |
+  A photorealistic great horned owl rendered in detailed gray, brown, and cream
+  tones dominates the wall. The owl faces forward with piercing orange-amber
+  eyes. Behind it, a military-style star emblem in dark gray and radiating
+  sunburst stripes in teal, coral, and orange fan outward against a warm orange
+  background. Signed "Vitale Broz" in a small blue tag at lower left.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE festival every year since inception; Spring Breakers set design; Tampa Bay Rays City Connect campaign"
+
+furtherWork:
+  - name: "vitalebrothers.com"
+    url: "https://vitalebrothers.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog: "22 April 2026 — New mural added, GPS from Rob's photo"
+sourceNotes:
+  - "Photo by Rob 2026-04-21, GPS from EXIF"
+  - "https://www.fox13news.com/news/vitale-brothers-paint-the-town-with-murals"
+  - "https://vitalebrothers.com/"

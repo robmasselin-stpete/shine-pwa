@@ -11,40 +11,115 @@ category: shine
 img: "images/murals/2025/dreamweaver.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Abiding Light"
 building: Vernis Bowling
 instagram: dream.weavin
 basedIn: "Tampa, FL"
 
-artistBio: |
-  Taylor "Dreamweaver" Smith is a St. Petersburg-based street artist and
-  muralist whose work invokes a sense of reverence for the natural world.
-  With a background in fine art, her evolving style integrates expressive
-  abstraction and realism to capture the spirit of life through light and
-  color — often featuring portraiture, vivid patterns, and striking color
-  combinations. She creates murals, canvas works, and live painting
-  activations for communities and brands both locally and nationwide. A
-  recurring SHINE artist, Dreamweaver painted at the 2022 festival and
-  returned for 2025 Origins on the 600 block of Central Avenue, where the
-  SHINE movement started in 2012.
+fieldNotes:
+  - "Painted her first mural at age seven"
+  - "Mother-daughter duo with Denise Weaver"
+  - "Known as Dreamweaver"
 
-muralDescription: |
+artistBio: |
+  She painted her first mural at seven, on her aunt's backyard shed in Waco,
+  Texas. She has not stopped.
+
+  Taylor Smith — Dreamweaver — grew up between Portland, Oregon and just south
+  of Atlanta, born in Dallas. She studied communications and fine art at Georgia
+  College and State University, with a minor in graphic design, graduating in
+  2017. Before that, she took private painting lessons as a kid and apprenticed
+  at a tattoo shop at 16 — too young to actually tattoo under Georgia law, but
+  old enough to learn.
+
+  She spent time doing live painting at music festivals — Electric Daisy
+  Carnival in Vegas, Okeechobee, Electric Forest — before relocating to Florida
+  around 2019. She works almost entirely in spray paint, blending expressive
+  abstraction with realism. Nature runs through everything: wildlife, water,
+  birds, flora. She is left-handed.
+
+  She has painted an estimated 120 to 150 murals, 15 to 20 in St. Pete alone.
+  Other projects include the Clearwater Municipal Parking Garage and a sea
+  turtle mural at Coachman Park for Art Oasis 2024, and "The Garden Within" in
+  downtown Kissimmee for Osceola Arts. She is a resident artist at AER Tampa and
+  a member of Few and Far, an international women's graffiti crew.
+
+  For SHINE she painted in 2022 at 1510 1st Ave N and returned for SHINE Origins
+  2025 at the Vernis Bowling building on the 600 block — where the SHINE
+  movement started in 2012.
+
+searchBio: |
+  She painted her first mural at seven, on her aunt Carolyn's backyard shed in
+  Waco, Texas. She has not stopped.
+
+  Taylor Smith — professionally Dreamweaver — was born in Dallas, Texas, grew up
+  between Portland, Oregon and just south of Atlanta, Georgia. She earned a BA
+  in Communications and Fine Art with a minor in Graphic Design from Georgia
+  College and State University in 2017. She took private painting lessons
+  throughout elementary and middle school and did a tattoo apprenticeship at 16
+  — eight months, but Georgia age restrictions meant she couldn't actually
+  tattoo.
+
+  After college she started live painting at concerts and festivals in Atlanta
+  (2017), worked in restaurant service, graphic design, and creative event
+  production, then relocated to Florida around 2018-2019. She went full-time as
+  an artist around 2020. She works primarily in spray paint and aerosol,
+  blending expressive abstraction with realism. Nature is the constant —
+  wildlife, water, birds, flora and fauna. She also paints on canvas, airbrush,
+  skateboard decks, surfboards, shoes, and backpacks. She is left-handed.
+
+  She has painted an estimated 120 to 150 murals, with 15 to 20 in St. Pete.
+  Festival credits include SHINE 2022 (mural at 1510 1st Ave N, Yacht Power
+  Products building), SHINE Origins 2025 (Vernis Bowling building at 696 1st Ave
+  N), Art Oasis Mural Festival 2024 (Clearwater Municipal Parking Garage and a
+  marine-themed sea turtle mural at Coachman Park Dockmaster's Office), Wynwood
+  Mural Festival, Paint Memphis 2019, and Art Basel. She has done live painting
+  at Electric Daisy Carnival (Las Vegas), Okeechobee Music Festival, and
+  Electric Forest Festival.
+
+  Other projects include "The Garden Within" at 219-231 Broadway in downtown
+  Kissimmee for Osceola Arts' ARTisNOW Public Murals Project (2025). She was
+  Artist in Residence at Parc at Wesley Chapel, Tampa (2023) and is a resident
+  artist at AER Tampa. She is a contributor to Few and Far, an international
+  women's graffiti crew, and collaborates with fellow artist "Slim Gee" under
+  KindMinds Art (@kindmindsart). She teaches spray painting and mural techniques
+  to youth communities and is listed on Creative Pinellas as "an avid supporter
+  of improving our communities through public art and collaboration."
+
+  Profiled in Voyage MIA Magazine (January 2020) and The Artisan Magazine.
+  Contact: Dreamweavin.murals@gmail.com. Website: weavindreams.com. Instagram:
+  @dream.weavin.
+
+searchMuralDescription: |
   A multi-story mural wrapping around a lavender building, featuring a white
-  egret with delicate plumage nestled among enormous, lush flower petals in
-  deep pinks, corals, oranges, and purples. The bird's long neck rises
-  elegantly through the blooms on the left wall, while the right wall
-  continues with swirling petals and soft round forms in warm sunset tones.
-  The scale is dramatic — the egret spans several stories — and the
-  soft-focus, almost photorealistic rendering gives the whole piece a
-  dreamlike, ethereal quality.
+  egret with delicate plumage nestled among enormous, lush flower petals in deep
+  pinks, corals, oranges, and purples. The bird's long neck rises elegantly
+  through the blooms on the left wall, while the right wall continues with
+  swirling petals and soft round forms in warm sunset tones. The scale is
+  dramatic — the egret spans several stories — and the soft-focus, almost
+  photorealistic rendering gives the whole piece a dreamlike, ethereal quality.
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "SHINE 2022 and 2025 Origins festival artist"
+artistAwards: "SHINE 2022 selected artist; SHINE Origins 2025 selected artist; Art Oasis Mural Festival 2024; Few and Far international women's graffiti crew member"
+
+furtherWork:
+  - name: "weavindreams.com"
+    url: "https://weavindreams.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-06-16 — Title set to 'Abiding Light' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:
   - "https://stpeteartsalliance.org/dream-weaver-2022"
   - "https://www.tampabay.com/life-culture/entertainment/2025/12/04/shine-mural-festival-st-petersburg-florida-arts-hurricane/"
   - "https://www.graffitistreet.com/shine-st-petersburg-street-art-mural-festival-florida-2022/"
+  - "https://voyagemia.com/interview/meet-taylor-smith-dreamweaver-designs-st-pete-fl/"
+  - "https://www.artistsalapts.com/taylor-smith"
+  - "https://monochronicle.com/artist/dreamweaver/"
+  - "https://weavindreams.com/aboutdreamweaver"
+  - "https://theartisanmagazine.com/i-am-dreamweavin-my-way-and-bringing-life-to-life-through-art/"
+  - "https://www.osceolaarts.org/post/new-mural-the-garden-within-blooms-in-downtown-kissimmee"
+  - "https://creativepinellas.org/artist/taylor-smith/"
