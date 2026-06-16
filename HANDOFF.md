@@ -1,6 +1,20 @@
 # Mural Quest — Session Handoff
 
-## 2026-06-05 update (latest)
+## 2026-06-16 update (latest)
+
+- **v1.3 / build 128 submitted to App Store review** (state WAITING_FOR_REVIEW),
+  auto-release on approval. Rob checks ASC daily; no monitoring needed.
+- **Git working tree is now COMMITTED + PUSHED** (`3ec8086`) — supersedes the
+  June 5 note below about the tree being "dirty but pre-existing." First commit
+  since Apr 7; ~2 months of work (70 new murals, images, routes) now in history
+  on the public GitHub `robmasselin-stpete/shine-pwa`.
+- Build env + signing were fixed headlessly (CoreSimulator/platform install;
+  created the account's first Apple Distribution cert + App Store profile).
+  Build flow now wrapped in `assets/wip/mq_build.sh` (gitignored) with an
+  uncommitted-work guard. Full detail: memory `project_v13_submission_staged.md`.
+- Ads are now live in the **downtown guide**; observing v1.3 + ads for ~1 month.
+
+## 2026-06-05 update
 
 ### How to resume
 

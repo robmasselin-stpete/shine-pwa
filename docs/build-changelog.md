@@ -1,5 +1,20 @@
 # Mural Quest — Build Changelog
 
+## Build 128 — v1.3 (June 16, 2026) — submitted for review
+- App Store **v1.3** (build 128) submitted; auto-release on approval. First
+  release since 1.2; ~2 months of working-tree changes shipped together.
+- 70 new murals + photos; titles/details for the 2025 SHINE murals; expanded
+  artist write-ups (incl. NeSpoon); Downtown North walking tour gained an
+  Artist Jones stop.
+- Rate prompt: `maybeRequestReview` (2nd open OR 3rd mural reached on foot) +
+  native `AppRating` plugin.
+- Tour bottom-panel redesign, compass/haptic tuning, cheat-sheet updates.
+- Build hygiene: excluded `*.pdf` and `data/source-cache/` from the Capacitor
+  bundle (app 692 → 509 MB); set up Apple Distribution cert + App Store profile
+  (account previously had none); added an uncommitted-work guard to the build
+  script. Working tree committed (`3ec8086`) and pushed.
+- (Gap: builds 101–127 were shipped without changelog entries.)
+
 ## Build 100 (April 20, 2026)
 - Pelican logo stickers for non-tour murals on tour detail map (replaces gray squares)
 - Pelican stickers for other tour stops (not current/next) so you can see what's coming

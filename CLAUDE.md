@@ -55,9 +55,20 @@ routes.js artifact.
 ## Build / ship checklist
 
 `npm run cap:sync` (NOT `npx cap sync`) → bump build in `ios/App/App/Info.plist`
-and `ios/App/App.xcodeproj/project.pbxproj` → `xcodebuild archive` →
-`xcodebuild -exportArchive` with `/Users/robasselin/shine-pwa/ExportOptions.plist`.
-Full details and credentials are in MEMORY.md.
+and `ios/App/App.xcodeproj/project.pbxproj` → run the archive+export+upload, then
+create/attach the App Store version and submit.
+
+The whole archive → export → upload is wrapped in `assets/wip/mq_build.sh`
+(gitignored — carries ASC account IDs; public repo). It uses **manual signing**
+via `assets/wip/ExportOptions-manual.plist` against the Apple Distribution cert
+(the account had none — it was created via the ASC API; see MEMORY.md). The
+ASC version-create + submit-for-review flow is automated in
+`assets/wip/mq_submit.py` (`--submit` to actually submit).
+
+`mq_build.sh` has an **uncommitted-work guard**: it refuses to archive if the git
+tree is dirty (so you never ship uncommitted code). Override a deliberate dirty
+build with `MQ_ALLOW_DIRTY=1 bash assets/wip/mq_build.sh`. Full details, credentials,
+and current build/version status are in MEMORY.md.
 
 ## Key files
 
