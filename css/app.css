@@ -4463,3 +4463,115 @@ a {
 .help-arrow svg { display: block; }
 
 #tab-help.help-active { color: var(--teal); }
+
+/* ========================================
+   SHINE Book — Explore banner + detail page
+   ======================================== */
+/* Banner — top item of the Explore list under the SHINE filter; scrolls naturally */
+.book-banner {
+  margin: 14px 20px 4px;
+  height: 128px;
+  display: flex;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(135deg, #10a39d 0%, var(--teal) 45%, var(--teal-dark) 100%);
+  box-shadow: 0 10px 24px -8px rgba(14, 145, 140, .45), inset 0 1px 0 rgba(255, 255, 255, .16);
+  transition: transform 0.15s ease;
+}
+.book-banner:active { transform: scale(0.98); }
+.book-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 140% at 100% 0%, rgba(255, 255, 255, .12), transparent 55%);
+  pointer-events: none;
+}
+.book-banner .bb-cover { width: 97px; flex: none; overflow: hidden; }
+.book-banner .bb-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.book-banner .bb-body {
+  flex: 1;
+  padding: 0 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  z-index: 1;
+}
+.book-banner .bb-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #c8f1ed;
+}
+.book-banner .bb-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.1; }
+.book-banner .bb-cta { font-family: var(--font-display); font-weight: 500; font-size: 12.5px; color: #eafffb; margin-top: 6px; }
+
+/* Detail page — rendered inside the reused detail overlay */
+.bookd { min-height: 100%; background: var(--bg); }
+.bookd .bd-cover {
+  padding: calc(var(--safe-top) + 80px) 0 22px;
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+}
+.bookd .bd-cover img {
+  width: 55%;
+  border-radius: 8px;
+  box-shadow: 0 14px 32px -10px rgba(0, 0, 0, .26);
+  display: block;
+}
+.bookd .bd-body { padding: 14px 24px calc(var(--safe-bottom) + 40px); }
+.bookd .bd-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.bookd .bd-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 23px;
+  color: var(--text);
+  line-height: 1.14;
+  margin: 7px 0 14px;
+  letter-spacing: -.01em;
+}
+.bookd .bd-body p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #48474a;
+  margin-bottom: 13px;
+  font-weight: 400;
+}
+.bookd .bd-buy {
+  display: block;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(135deg, #10a39d, var(--teal-dark));
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px;
+  border-radius: 15px;
+  margin-top: 6px;
+  box-shadow: 0 10px 22px -6px rgba(14, 145, 140, .5), inset 0 1px 0 rgba(255, 255, 255, .18);
+  text-decoration: none;
+}
+.bookd .bd-buy:active { transform: scale(0.99); }
+.bookd .bd-partner {
+  font-family: var(--font-body);
+  text-align: center;
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 18px;
+  font-style: italic;
+}

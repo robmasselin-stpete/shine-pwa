@@ -1002,7 +1002,22 @@ function renderExplore() {
     return;
   }
 
+  // The official SHINE book banner — shown only under the SHINE filter,
+  // sits at the top of the list and scrolls away naturally with the grid.
+  const showBookBanner = state.exploreFilter && state.exploreFilter.includes('shine');
+  const bookBannerHTML = showBookBanner ? `
+    <div class="book-banner" id="book-banner" role="button" tabindex="0">
+      <div class="bb-cover"><img src="images/shine-book-cover.jpg" alt="The official SHINE book"></div>
+      <div class="bb-body">
+        <div class="bb-eyebrow">The Official SHINE Book</div>
+        <div class="bb-title">A Decade of Murals</div>
+        <div class="bb-cta">Take SHINE Home &rsaquo;</div>
+      </div>
+    </div>
+  ` : '';
+
   views.explore.innerHTML = `
+    ${bookBannerHTML}
     <div class="mural-grid">
       ${filtered.map(m => `
         <div class="mural-card${m.gone ? ' mural-gone' : ''}" data-id="${m.id}">
@@ -1015,6 +1030,9 @@ function renderExplore() {
       `).join('')}
     </div>
   `;
+
+  const bookBanner = views.explore.querySelector('#book-banner');
+  if (bookBanner) bookBanner.addEventListener('click', openBookDetail);
 
   views.explore.querySelectorAll('.mural-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -4238,6 +4256,36 @@ $('#detail-back').addEventListener('click', () => {
   detailPage.hidden = true;
   state.selectedMural = null;
 });
+
+// =============================================
+// The official SHINE book — detail page
+// =============================================
+const SHINE_BOOK_URL = 'https://muralquest.app';
+
+/** Build the SHINE book detail page (reuses the detail overlay + back button). */
+function buildBookDetailHTML() {
+  return `
+    <div class="bookd">
+      <div class="bd-cover"><img src="images/shine-book-cover.jpg" alt="SHINE: A Decade of Murals — book cover"></div>
+      <div class="bd-body">
+        <div class="bd-eyebrow">The Official SHINE Book</div>
+        <div class="bd-title">SHINE: A Decade of Murals</div>
+        <p>Celebrate ten years of the internationally recognized SHINE Mural Festival with this premium book documenting the murals, artists, and community impact that helped transform St. Petersburg, Florida into a global destination for public art.</p>
+        <p>A collector's edition featuring more than 250 pages of full-color photography, artist profiles, behind-the-scenes stories, and reflections from muralists and community leaders — both a visual centerpiece and a historical archive.</p>
+        <a class="bd-buy" href="${SHINE_BOOK_URL}" target="_blank" rel="noopener">Take SHINE Home &rsaquo;</a>
+        <div class="bd-partner">Published by the St. Petersburg Arts Alliance</div>
+      </div>
+    </div>
+  `;
+}
+
+/** Open the SHINE book detail overlay (tapped from the Explore banner). */
+function openBookDetail() {
+  state.selectedMural = null;
+  detailPage.hidden = false;
+  detailContent.innerHTML = buildBookDetailHTML();
+  detailPage.scrollTop = 0;
+}
 
 // =============================================
 // Artist alias lookup

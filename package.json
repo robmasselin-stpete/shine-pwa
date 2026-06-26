@@ -2,7 +2,7 @@
   "name": "mural-quest",
   "private": true,
   "scripts": {
-    "cap:copy": "rsync -a --exclude node_modules --exclude ios --exclude www --exclude .git --exclude .claude --exclude '*.avif' --exclude '*.pdf' --exclude legacy-fixes --exclude __pycache__ . www/",
+    "cap:copy": "rsync -a --exclude node_modules --exclude ios --exclude www --exclude .git --exclude .claude --exclude assets/wip --exclude '*.avif' --exclude '*.pdf' --exclude legacy-fixes --exclude __pycache__ . www/",
     "cap:sync": "npm run cap:copy && npx cap sync"
   },
   "dependencies": {
