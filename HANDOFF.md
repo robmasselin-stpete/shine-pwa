@@ -1,6 +1,52 @@
 # Mural Quest — Session Handoff
 
-## 2026-06-16 update (latest)
+## 2026-06-26 update (latest) — SHINE book card + v1.4 on TestFlight
+
+- **SHINE book feature shipped to TestFlight as v1.4 (build 129).** Upload
+  succeeded; in Apple processing at handoff time (appears for internal testers
+  ~5–15 min after). Did NOT run `mq_submit.py` — TestFlight only, no App Store
+  submission.
+- **What the feature does:** "The Official SHINE Book" banner at the top of the
+  Explore list, shown **only when the SHINE filter is active**, scrolling away
+  naturally with the grid. Tapping it opens a book detail page (reuses the
+  existing detail overlay + back button) with the SHINE cover, copy, SPAA
+  credit, and a **"Take SHINE Home"** buy button.
+  - Buy button → `https://muralquest.app` **(placeholder)**. `SHINE_BOOK_URL`
+    in `js/app.js` — one-line swap once SPAA gives the real store/pre-order link.
+  - Code: `renderExplore()` injects `.book-banner`; `openBookDetail()` +
+    `buildBookDetailHTML()` near the detail-back handler in `js/app.js`; styles
+    appended to `css/app.css`; cover bundled at `images/shine-book-cover.jpg`.
+- **On branch `shine-book-card`** (commit `757b3d6`). LOCAL only — not pushed.
+  `main` left clean (it's the v1.3-in-review/approved baseline). Merge to main +
+  re-run `mq_submit.py` when ready to put the book feature in the App Store.
+- **⚠ v1.3 is now APPROVED/released, not "waiting for review."** Apple closed
+  the 1.3 train (`train version '1.3' is closed for new build submissions`),
+  which forced the bump to 1.4. The 2026-06-16 note below is stale on this.
+- **Bundle-hygiene fix:** `cap:copy` in `package.json` now excludes
+  `assets/wip`. Previously the rsync copied the whole repo root into `www/` →
+  iOS bundle, so ~10MB of book-card mockups AND the credential-carrying
+  `assets/wip/mq_build.sh` were shipping inside the app. Now excluded. (Stale
+  `www/assets/wip` + `ios/App/App/public/assets/wip` were removed before sync.)
+- **Demo artifact:** `assets/wip/book-card/mockup-demo.html` — self-contained,
+  single-file clickable prototype (inlined CSS + base64 images) used to iterate
+  the design with Rob before building. Openable on any phone via AirDrop/email.
+
+## 2026-06-26 update — Netlify retirement
+
+- **Web PWA retired from Netlify** (native iOS app is the product now).
+  - `shinepwa.netlify.app` and `legendary-bonbon-a5b20a.netlify.app` now
+    301-redirect to muralquest.app (deployed a tiny `_redirects` placeholder).
+    Site records kept — NOT deleted, so the PWA can be redeployed anytime via
+    `netlify deploy --prod`.
+  - `legendary-bonbon` was auto-deploying from the `shine-pwa` GitHub repo;
+    set `stop_builds: true` so a future `git push` won't resurrect it. The repo
+    link still exists (paused, not severed). `shinepwa` had no repo link
+    (manual deploys only).
+  - Deleted the dead duplicate `transcendent-truffle-be5840` (was already 404,
+    also linked to the shine-pwa repo).
+  - `muralquest.app` (marketing site) left untouched and live.
+
+## 2026-06-16 update
 
 - **v1.3 / build 128 submitted to App Store review** (state WAITING_FOR_REVIEW),
   auto-release on approval. Rob checks ASC daily; no monitoring needed.
