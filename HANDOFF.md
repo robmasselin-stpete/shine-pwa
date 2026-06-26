@@ -30,6 +30,14 @@
 - **Demo artifact:** `assets/wip/book-card/mockup-demo.html` — self-contained,
   single-file clickable prototype (inlined CSS + base64 images) used to iterate
   the design with Rob before building. Openable on any phone via AirDrop/email.
+- **TestFlight install note:** installing 1.4 (129) via the TestFlight link
+  REPLACES the App Store version on that device (same bundle id
+  `com.muralquest.stpete`; iOS allows one install). Expected behavior — affects
+  only devices that opt into TestFlight, NOT the public App Store listing (still
+  1.3/128). Data carries over (129 > 128 = upgrade-in-place). Test build shows
+  an orange dot and expires in 90 days. To restore production: delete the app,
+  reinstall from the App Store. Rob installed 129 on his phone and confirmed the
+  swap.
 
 ## 2026-06-26 update — Netlify retirement
 
