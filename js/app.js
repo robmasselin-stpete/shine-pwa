@@ -4260,7 +4260,7 @@ $('#detail-back').addEventListener('click', () => {
 // =============================================
 // The official SHINE book — detail page
 // =============================================
-const SHINE_BOOK_URL = 'https://muralquest.app';
+const SHINE_BOOK_URL = 'https://secure.lglforms.com/form_engine/s/zEZNdCmYxuxJxx8CFzRmpg';
 
 /** Build the SHINE book detail page (reuses the detail overlay + back button). */
 function buildBookDetailHTML() {
@@ -4270,7 +4270,7 @@ function buildBookDetailHTML() {
       <div class="bd-body">
         <div class="bd-eyebrow">The Official SHINE Book</div>
         <div class="bd-title">SHINE: A Decade of Murals</div>
-        <p>Celebrate ten years of the internationally recognized SHINE Mural Festival with this premium book documenting the murals, artists, and community impact that helped transform St. Petersburg, Florida into a global destination for public art.</p>
+        <p>Celebrate ten years of the internationally recognized SHINE Mural Festival with this premium hardcover coffee table book, documenting the murals, artists, and community impact that helped transform St. Petersburg, Florida, into a global destination for public art.</p>
         <p>A collector's edition featuring more than 250 pages of full-color photography, artist profiles, behind-the-scenes stories, and reflections from muralists and community leaders — both a visual centerpiece and a historical archive.</p>
         <a class="bd-buy" href="${SHINE_BOOK_URL}" target="_blank" rel="noopener">Take SHINE Home &rsaquo;</a>
         <div class="bd-partner">Published by the St. Petersburg Arts Alliance</div>
