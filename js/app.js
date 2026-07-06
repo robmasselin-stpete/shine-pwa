@@ -1011,7 +1011,7 @@ function renderExplore() {
       <div class="bb-body">
         <div class="bb-eyebrow">The Official SHINE Book</div>
         <div class="bb-title">A Decade of Murals</div>
-        <div class="bb-cta">Take SHINE Home &rsaquo;</div>
+        <div class="bb-cta">To order your SHINE mural book &rsaquo;</div>
       </div>
     </div>
   ` : '';
@@ -4272,7 +4272,7 @@ function buildBookDetailHTML() {
         <div class="bd-title">SHINE: A Decade of Murals</div>
         <p>Celebrate ten years of the internationally recognized SHINE Mural Festival with this premium hardcover coffee table book, documenting the murals, artists, and community impact that helped transform St. Petersburg, Florida, into a global destination for public art.</p>
         <p>A collector's edition featuring more than 250 pages of full-color photography, artist profiles, behind-the-scenes stories, and reflections from muralists and community leaders — both a visual centerpiece and a historical archive.</p>
-        <a class="bd-buy" href="${SHINE_BOOK_URL}" target="_blank" rel="noopener">Take SHINE Home &rsaquo;</a>
+        <a class="bd-buy" href="${SHINE_BOOK_URL}" target="_blank" rel="noopener">To order your SHINE mural book &rsaquo;</a>
         <div class="bd-partner">Published by the St. Petersburg Arts Alliance</div>
       </div>
     </div>
