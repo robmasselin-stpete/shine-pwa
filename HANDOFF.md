@@ -1,6 +1,105 @@
 # Mural Quest — Session Handoff
 
-## 2026-06-26 update (latest) — SHINE book card + v1.4 on TestFlight
+## 2026-07-06 update (latest) — v1.4 (131) SUBMITTED to App Store for review
+
+- **v1.4 (build 131) SUBMITTED for App Store review** — state `WAITING_FOR_REVIEW`,
+  releaseType `AFTER_APPROVAL` (auto-releases to all users on approval, ~24–48h).
+  Review submission id `9c0099d1-1be0-49f5-92e0-f9e40115042f`. This puts the SHINE
+  book card feature (with the real LGL buy link + "To order your SHINE mural book"
+  CTA) into the public App Store, superseding the live 1.3/128.
+  - Done via `assets/wip/mq_submit.py --submit` (updated from 1.3/128 → 1.4/131,
+    new "What's New" copy about The Official SHINE Book). Export compliance was
+    automatic (`ITSAppUsesNonExemptEncryption = false` in Info.plist). Screenshots
+    carried over from 1.3 (9 shots). ASC version id `39a4959c-7fc1-4049-8795-b6b7de67e3a9`.
+  - **"What's New" published:** "The Official SHINE Book is here. Celebrate ten
+    years of the SHINE Mural Festival with 'SHINE: A Decade of Murals'… Filter
+    Explore by SHINE to preview the book and order your copy. Plus minor fixes
+    and refinements."
+- **⚠ STILL TODO — merge `shine-book-card` → main.** The submitted code lives on
+  branch `shine-book-card` (commits `3855d4d`, `11b7b85`), LOCAL only. `main` is
+  still the 1.3 baseline. Merge it so main reflects what's now shipping. (The ASC
+  submission is independent of git — the merge is repo hygiene, not a blocker.)
+- SPAA TestFlight (131) is moot for the public path now — 1.4 is going to the App
+  Store directly. If SPAA still wants a TestFlight preview, 131 is uploaded and can
+  be added to the SPAA group + submitted for Beta App Review.
+
+## (superseded) book card copy/link finalized + v1.4 (131) on TestFlight
+
+- **CURRENT BUILD = v1.4 (131).** Supersedes 130. Two builds went up this session:
+  - **130** — book-card copy fix + real LGL buy link. Commit `3855d4d`.
+  - **131** — CTA text changed from "Take SHINE Home" to **"To order your SHINE
+    mural book"** on BOTH the Explore banner (`bb-cta`) and the book detail buy
+    button (`bd-buy`). Commit `11b7b85`. Verified rendering via headless Chrome
+    (banner fits one line, no clip). **Use 131 for the Kent/Paul screenshots** —
+    130 still has the old "Take SHINE Home" wording.
+- **SHINE book card copy + real buy link shipped as v1.4 (TestFlight).**
+  Uploaded to App Store Connect and confirmed "Upload succeeded / EXPORT
+  SUCCEEDED / DONE." NOT submitted to the App Store (TestFlight only).
+  - **Copy change:** book detail paragraph 1 now says "premium **hardcover
+    coffee table book**, documenting…" and "St. Petersburg, Florida**,** into a
+    global destination…". Everything else (eyebrow, title, para 2 about 250
+    pages, CTA, SPAA credit) was already correct.
+  - **Real buy link:** `SHINE_BOOK_URL` in `js/app.js` now points at the LGL
+    order form → `https://secure.lglforms.com/form_engine/s/zEZNdCmYxuxJxx8CFzRmpg`
+    (was the `https://muralquest.app` placeholder). Drives the "Take SHINE Home"
+    button on the book detail page.
+  - Verified rendering before build via headless Chrome (extension wasn't
+    connected) — cover, copy, teal CTA, SPAA credit all render correctly.
+  - **Committed** `js/app.js` on branch `shine-book-card` as `3855d4d`. Branch is
+    LOCAL only (not pushed); `main` still the clean 1.3 baseline.
+- **Build bumps 129 → 130 → 131.** Each bump = `CFBundleVersion` (Info.plist) +
+  `CURRENT_PROJECT_VERSION` (×2 in project.pbxproj) + the scratch paths in
+  `mq_build.sh`. Note `ios/` is entirely **gitignored**, so the native version
+  bump lives only locally — the mq_build.sh dirty-guard only covers web assets.
+  Built with `MQ_ALLOW_DIRTY=1` because untracked `assets/wip` artifacts (mockups,
+  logos) trip the guard but are bundle-excluded (`cap:copy` excludes `assets/wip`).
+- **⏳ NEXT STEPS (Rob's manual, in ASC once 131 finishes processing):**
+  1. Rob is taking **screenshots of 131 for Kent + Paul (SPAA) to approve.**
+  2. After their OK: TestFlight → **SPAA** external group → **Builds** → add
+     **1.4 (131)** → **Submit for Beta App Review** and LET IT RUN to approval
+     (don't stop it — stopping is what broke Kent's access on 129; see below).
+  3. Then "submit for the next build" per Rob — i.e. that's the go-ahead to push
+     the following build once SPAA signs off.
+  - Likely an Apple **export-compliance** email for 130 → answer encryption =
+    **No** (exempt).
+- **App Store live is still v1.3 / build 128.** Book feature is TestFlight-only
+  until `shine-book-card` is merged to main + `mq_submit.py --submit` is run.
+  Confirmed with Rob: ASC TestFlight list showing "1.3 / 129" earlier was just the
+  1.4 build (129) in the build list — no version mismatch.
+
+### TestFlight external-testing gotcha (learned this cycle)
+
+External groups (SPAA) can only install a build **after it passes Apple's Beta App
+Review.** A freshly uploaded build shows "Ready to Submit" and external testers
+see "No Builds Available" / "This beta isn't accepting any new testers right now"
+until it's submitted AND approved. Rob accidentally **stopped** the 129 review,
+which is what blocked tester Kent Lynn (`kwlynn@verizon.net`). Fix = re-submit via
+the SPAA group's Builds tab (or remove+re-add the group to the build to force the
+submit prompt). Internal testers skip Beta App Review; that's why Rob's own phone
+got 129 immediately. Decided NOT to automate Beta App Review submission into
+`mq_submit.py` — no further TestFlights expected right now, manual click is fine.
+
+### SPAA logo deliverables (this session)
+
+Made "Mural Quest" wordmark logos for the SPAA website (pelican mark + title-case
+"Mural Quest" in **Quicksand 600**). Sent to SPAA; copies on Rob's Desktop as
+`MuralQuest-Logo-White.png` and `MuralQuest-Logo-Transparent.png` (both 1146×960,
+for light backgrounds). Masters + intermediates live in
+`assets/wip/icon-variants/` (`mural-quest-logo-white.png` / `-transparent.png`,
+plus `titlecase-500/600/700.png` and preview HTMLs). The transparent version has
+the pelican's white background properly knocked out (corner flood-fill, interior
+whites preserved). Font is **Quicksand** (`assets/wip/fonts/Quicksand-{500,600,
+700}.ttf`) — the brand wordmark font. Note: title-case "Mural Quest" is a NEW
+treatment; the four older `mq-icon-*` variants are lowercase or all-caps only.
+
+### Live mural count
+
+**189 live murals** in the app (202 YAMLs − 11 `status: research` − 1
+`status: painted-over` − 1 template). Rob is standardizing marketing copy on
+**"185+"** (safe round-down). Older "175+" still appears in the marketing-site
+hero eyebrow and the promo video caption if he wants those updated to match.
+
+## 2026-06-26 update — SHINE book card + v1.4 on TestFlight
 
 - **SHINE book feature shipped to TestFlight as v1.4 (build 129).** Upload
   succeeded; in Apple processing at handoff time (appears for internal testers
