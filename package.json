@@ -6,6 +6,7 @@
     "cap:sync": "npm run cap:copy && npx cap sync"
   },
   "dependencies": {
+    "@capacitor/android": "^8.4.1",
     "@capacitor/cli": "^8.2.0",
     "@capacitor/core": "^8.2.0",
     "@capacitor/haptics": "^8.0.1",

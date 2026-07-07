@@ -1,6 +1,53 @@
 # Mural Quest — Session Handoff
 
-## 2026-07-06 update (latest) — v1.4 (131) SUBMITTED to App Store for review
+## 2026-07-07 update (latest) — Android spike SUCCEEDED + content-architecture plan
+
+- **Android spike done — the app builds AND runs on Android**, zero code changes.
+  Capacitor 8 project scaffolded (`npx cap add android`), debug APK built, booted
+  in an emulator (Pixel 7 / API 36), Mural Quest ran with the full UI, map, and all
+  plugins (Haptics/Keyboard/StatusBar). Same `com.muralquest.stpete` id, "Mural
+  Quest" label, Android 7+ (minSdk 24 / targetSdk 36).
+- **KEY BLOCKER for Play: app size.** Debug APK = **402 MB**, because the web bundle
+  is 414 MB — **386 MB of it is mural photos**. Google Play won't take a 402 MB APK
+  (~200 MB practical limit). iOS already ships this (415 MB) and Apple allowed it,
+  so it's fine on iOS today but blocks Play.
+- **This ties into the deferred "instant updates" idea.** Rob wants to push daily
+  content updates during the SHINE festival (new murals, titles, stories, routes)
+  WITHOUT App Store/Play review. Image hosting (needed for Android size) + remote
+  data (needed for daily updates) are the **same architectural pattern** — decided
+  to treat them as ONE project. Full plan written to
+  **`docs/CONTENT-ARCHITECTURE-PLAN.md`**. Highlights:
+  - **Thumbnails are only 6.9 MB** (`images/thumbs/`, used by grid + map); the
+    373 MB is full-res detail photos (`images/murals/`, shown one at a time). So:
+    **bundle thumbnails (browsing works 100% offline) + remote-host full-res
+    photos (load on tap, cache after).** App shrinks 415 MB → ~25 MB on BOTH
+    platforms. This neatly solves the walking-tour offline concern.
+  - Data (`data.js`, ES-module `export const murals`) + routes (`routes.js`,
+    `ROUTE_PATHS`) also move to a fetched-at-launch JSON manifest w/ bundled
+    fallback → enables daily updates, no review. Apple/Google both ALLOW OTA
+    content/data updates (just not executable code).
+  - **Recommended hosting: Cloudflare R2** (zero egress fees, 386 MB fits free
+    tier) w/ `cdn.muralquest.app`; Netlify is the lower-friction fallback.
+  - **Rollout: iOS first** (remote images → remote data), validate, THEN Android.
+  - New `publish-content` step replaces "rebuild app": edit YAML → build-data.py →
+    publish → live in minutes. Editor PWAs unchanged.
+- **Android toolchain installed on this Mac** (was absent): openjdk@21 + Android
+  command-line tools (SDK at `/opt/homebrew/share/android-commandlinetools`),
+  platform-tools, platforms;android-36, build-tools;36.0.0, emulator +
+  `system-images;android-36;google_apis;arm64-v8a`, AVD named `mq_pixel`. To build:
+  `export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home`
+  + `export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools`, then
+  `cd android && ./gradlew assembleDebug`. Rob may want Android Studio later for
+  interactive device testing + Play submission.
+- **Git:** on branch **`android-spike`** (based on current `main` = the shipped
+  v1.4/131). `android/` is **gitignored** (1.6 GB w/ build outputs; regenerable via
+  `npm i && npx cap add android && npm run cap:sync`), matching the iOS convention.
+  Committed: `@capacitor/android` dep in package.json, the plan doc, this handoff.
+- **Prior "Android shelved" decision (2026-05-25) is now REACTIVATED** — the
+  calculus changed (app feature-frozen → low sync cost; festival daily-update use
+  case). Memory updated.
+
+## 2026-07-06 update — v1.4 (131) SUBMITTED to App Store for review
 
 - **v1.4 (build 131) SUBMITTED for App Store review** — state `WAITING_FOR_REVIEW`,
   releaseType `AFTER_APPROVAL` (auto-releases to all users on approval, ~24–48h).

@@ -12,6 +12,7 @@ fix-legacy-images.sh
 session-handoff.md
 www/
 ios/
+android/
 
 # ASC build/signing scripts with hardcoded account identifiers (public repo — keep local only)
 assets/wip/mq_build.sh
