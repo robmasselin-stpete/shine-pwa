@@ -1,5 +1,10 @@
 # Mural Quest — Session Handoff
 
+> **CURRENT LIVE: App Store v1.4 (build 131) — APPROVED & RELEASED**, confirmed
+> live by the SHINE team. Supersedes 1.3/128. Includes the SHINE book card with the
+> real LGL order link + "To order your SHINE mural book" CTA. Next planned version
+> is **v1.5** = the content-architecture refactor (see `docs/CONTENT-ARCHITECTURE-PLAN.md`).
+
 ## 2026-07-07 update (latest) — Android spike SUCCEEDED + content-architecture plan
 
 - **Android spike done — the app builds AND runs on Android**, zero code changes.
@@ -47,8 +52,11 @@
   calculus changed (app feature-frozen → low sync cost; festival daily-update use
   case). Memory updated.
 
-## 2026-07-06 update — v1.4 (131) SUBMITTED to App Store for review
+## 2026-07-06 update — v1.4 (131) submitted to App Store → APPROVED & LIVE (2026-07-07)
 
+- **✅ RESOLVED: v1.4 (131) was APPROVED by Apple and auto-released — now LIVE in
+  the public App Store**, confirmed by the SHINE team. It is the current production
+  version, superseding 1.3/128.
 - **v1.4 (build 131) SUBMITTED for App Store review** — state `WAITING_FOR_REVIEW`,
   releaseType `AFTER_APPROVAL` (auto-releases to all users on approval, ~24–48h).
   Review submission id `9c0099d1-1be0-49f5-92e0-f9e40115042f`. This puts the SHINE
