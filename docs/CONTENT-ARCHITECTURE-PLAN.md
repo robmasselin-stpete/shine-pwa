@@ -209,6 +209,44 @@ anything already on device.
 
 ---
 
+## Analytics (self-hosted, first-party — decided 2026-07-11)
+
+Goal (Rob): **general usage patterns** — what screens people use, how they move
+through the app. Approach: **self-hosted on Cloudflare** (full data ownership, same
+infra as the content hosting, no third party). Fold into v1.5.
+
+**Architecture** (all Cloudflare, same account as R2):
+- **Collector:** a Cloudflare **Worker** at e.g. `analytics.muralquest.app/e` that
+  accepts small JSON event POSTs.
+- **Storage:** **Cloudflare D1** (SQLite) for the event log — simple SQL queries
+  ("sessions/day, screen views, top murals"), free tier, full row-level ownership.
+  (Cloudflare **Analytics Engine** is the alternative if event volume ever gets
+  large — better at high-write aggregation; D1 is the pragmatic pick at St. Pete
+  scale and lets you run arbitrary queries.)
+- **Client:** `js/analytics.js` in the web bundle:
+  - Anonymous **install/session id** (random, stored locally — NOT a device id).
+    Keeps it first-party: no PII, no ad IDs, no cross-app tracking.
+  - Events to capture: `app_open`, `screen_view` (map/explore/tours/detail/
+    cheatsheet), `mural_open` (id), `filter_used` (which), `tour_start` /
+    `tour_complete` (id), `book_card_tap`, `book_buy_click`, `search` (term).
+  - **Offline-resilient:** queue events in localStorage, flush via
+    `navigator.sendBeacon` when online (walking-tour app, spotty signal).
+  - Payload shape: `{ sid, ts, event, props }`.
+- **Dashboard:** small admin Worker endpoint (or Cloudflare dashboard / direct SQL)
+  for "sessions per day, top murals, filter usage, book-buy conversions."
+
+**Privacy / App Store:** anonymous session id + usage-only data, not linked to
+identity, no ATT prompt needed. Requires a simple privacy-label update ("Usage
+Data, not linked to you"). Stay strictly first-party to keep it that way.
+
+**Effort:** Worker + D1 schema ~½ day; client events + offline queue ~½ day; a
+basic query/dashboard ~½ day. Ships with v1.5 (needs an app update to add the
+client instrumentation).
+
+**Note:** even though "general usage" is the stated goal, capturing
+`book_buy_click` is nearly free and gives SPAA a conversion number — worth
+including from day one.
+
 ## Open decisions
 
 1. Hosting: R2 (recommended) vs Netlify (lower friction). Rob to confirm.
