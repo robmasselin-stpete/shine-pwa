@@ -239,10 +239,11 @@ before the festival — Apple review + a real offline test both cost calendar ti
 
 - **v1.5 (target: live + validated by ~September)** — the plumbing. Content
   architecture (remote images + data/routes, offline fallback), the publish step,
-  self-hosted analytics, remote-serving for post-release murals, plus housekeeping
-  (update "175+" → "185+"; optional WebP/AVIF re-compress to shrink the 386MB +
-  cut egress). Then a **dry-run daily update** in Sept/Oct to prove the workflow
-  before it matters.
+  self-hosted analytics, remote-serving for post-release murals, the **in-app
+  Instagram feed** (Cloudflare Worker + Graph API — independent of the refactor, so
+  splittable if the timeline tightens), plus housekeeping (update "175+" → "185+";
+  optional WebP/AVIF re-compress to shrink the 386MB + cut egress). Then a
+  **dry-run daily update** in Sept/Oct to prove the workflow before it matters.
 - **v1.6 (target: before November)** — festival polish on top of the proven
   plumbing: **"Mural of the day" / "New this week"** surface (leverages the daily
   habit; `added`/`festival` fields may already support it), a **SHINE 2026
@@ -304,6 +305,41 @@ Day" surface (v1.6), and the Instagram post.
 - **Prereq:** v1.5 (CDN + publish; images public).
 - **Build:** v1.6 or parallel (mostly server-side, independent of the app binary).
 - Ties into the v1.6 "Mural of the Day" feature — same daily action drives it.
+
+## In-app Instagram feed (decided 2026-07-15 — bundled into v1.5)
+
+A "what's new" surface in the app showing recent Mural Quest IG posts (photo +
+caption + tap-out to IG). During the festival, every daily post appears in the app
+automatically. **Independent of the CDN refactor** — no dependency on v1.5's content
+architecture — so it's low-risk to bundle and easy to split back out if v1.5's
+timeline tightens before November.
+
+**Distinction:** this is a *social/news feed* (IG posts), NOT the same as a new
+mural appearing on the **map/grid** with full metadata (that's the content
+pipeline). Complementary: the feed gives instant "fresh daily" energy; the pipeline
+handles permanent structured records.
+
+**Build path chosen: Cloudflare Worker + Instagram Graph API** (over a third-party
+widget). Rationale:
+- **Reuses the same Meta app + token** as the v1.6 auto-posting feature — one
+  Instagram integration, not two.
+- Same Cloudflare infra as analytics + content hosting — no new vendor, no monthly
+  widget fee.
+- Native-looking feed view (not an embedded iframe); Worker-side caching gives
+  offline support + API rate-limit protection.
+- Tradeoff (own the ~60-day token refresh) is already being taken on for
+  auto-posting, so not incremental.
+
+**Shape:**
+- Worker endpoint fetches `/{ig-user-id}/media` (image, caption, permalink,
+  timestamp), caches the result (e.g. 15–30 min TTL).
+- App reads the cached feed JSON from the Worker; renders a feed/grid view; taps
+  open the post in Instagram. Cache last-fetched feed for offline.
+- Uses the Business/Creator account + Meta app (confirmed available).
+
+**Note on Meta API:** the old Instagram Basic Display API was sunset Dec 2024; use
+the Graph API media endpoint against the Business/Creator account (linked FB Page)
+— which is exactly the setup here.
 
 ## Analytics (self-hosted, first-party — decided 2026-07-11)
 
