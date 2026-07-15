@@ -1,0 +1,14 @@
+name = "mural-quest-analytics"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+# First-party analytics collector for the Mural Quest app.
+# Custom domain on the muralquest.app zone (same zone as cdn.muralquest.app).
+routes = [
+  { pattern = "analytics.muralquest.app", custom_domain = true }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mural-quest-analytics"
+database_id = "9801fbfa-6c3d-402a-b069-04c65b11c699"

@@ -30,3 +30,6 @@ assets/wip/ExportOptions-manual.plist
 
 # Cloudflare wrangler local state
 .wrangler/
+
+# Worker build state
+workers/**/.wrangler/
