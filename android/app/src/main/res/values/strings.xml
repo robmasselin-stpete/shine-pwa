@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mural Quest</string>
+    <string name="title_activity_main">Mural Quest</string>
+    <string name="package_name">com.muralquest.stpete</string>
+    <string name="custom_url_scheme">com.muralquest.stpete</string>
+</resources>
