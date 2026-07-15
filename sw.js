@@ -14,7 +14,7 @@
  * When adding a new mural, add its image path here too.
  */
 
-const CACHE_NAME = 'shine-v144';      // App shell — bump on code changes
+const CACHE_NAME = 'shine-v145';      // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1'; // Map tiles — rarely needs bumping
 const IMG_CACHE = 'shine-images-v9'; // Mural images — bump when images change
 const FONT_CACHE = 'shine-fonts-v1'; // CDN fonts/libs — rarely needs bumping
@@ -26,7 +26,9 @@ const SHELL_ASSETS = [
   './css/app.css',
   './css/fonts.css',
   './js/app.js',
-  './js/data.js',
+  './js/data.js',          // bundled content fallback
+  './js/content.js',       // v1.5 OTA content layer
+  './js/content-meta.js',  // v1.5 bundled content version marker
   './js/photos.js',
   './manifest.json',
   './images/icons/icon-192.png',
@@ -212,6 +214,14 @@ self.addEventListener('fetch', (e) => {
 
   // Skip non-GET requests
   if (e.request.method !== 'GET') return;
+
+  // v1.5 OTA content manifest — NEVER let the service worker cache or serve it.
+  // content.js fetches this (cache: 'no-store') to detect published updates; if the
+  // SW cached it, the catch-all cacheFirst below would serve a stale copy forever
+  // and shadow every OTA update. Bypass entirely (no respondWith) so the browser's
+  // own no-store fetch hits the network. Offline is handled in content.js (falls
+  // back to the localStorage cache, then the bundled data.js).
+  if (url.pathname.endsWith('/content.json')) return;
 
   // Tools (route-editor, yaml-editor) — always network, never cache
   if (url.pathname.includes('/tools/')) return;
