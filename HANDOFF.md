@@ -1,9 +1,23 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT LIVE: App Store v1.4 (build 131) — APPROVED & RELEASED**, confirmed
-> live by the SHINE team. Supersedes 1.3/128. Includes the SHINE book card with the
-> real LGL order link + "To order your SHINE mural book" CTA. Next planned version
-> is **v1.5** = the content-architecture refactor (see `docs/CONTENT-ARCHITECTURE-PLAN.md`).
+> **CURRENT LIVE (App Store): v1.4 (build 131).** **v1.5 (build 132) is BUILT +
+> UPLOADED to App Store Connect (2026-07-15) — TestFlight field-test stage**, not
+> yet submitted to the App Store. v1.5 = the content-architecture refactor (OTA
+> data + image split + analytics + IG posting). Plan: `docs/CONTENT-ARCHITECTURE-PLAN.md`.
+>
+> **v1.5 shipped this session (all on branch `v1.5`, pushed):**
+> - **OTA content** — app fetches `content.json` from R2/`cdn.muralquest.app` at
+>   launch (bundled `data.js` fallback). Publish live with `scripts/publish-content.py`
+>   (no app build). SW bypasses content.json so it can't shadow updates.
+> - **Image split** — bundle 414MB→**35MB**. 384px WebP card tier bundled
+>   (`images/cards/`, `generate-cards.py`); full-res on CDN (`publish-images.py`).
+> - **Analytics** — `workers/analytics/` at `analytics.muralquest.app` + D1; client
+>   `js/analytics.js`. Stats: `analytics.muralquest.app/stats?key=<STATS_KEY secret>`.
+> - **Instagram posting** (NO in-app feed — Rob's call) — `workers/ig-feed/` at
+>   `ig.muralquest.app` + `scripts/ig_post.py` / `publish-content.py --post <id>`.
+> - **185+** count fix.
+> - **NEXT:** field-test 132 on iPhone (CDN images, offline, OTA cycle) → then merge
+>   `v1.5`→main + submit 132 to App Store. Then fold in Android (bundle now fits Play).
 
 ## 2026-07-07 update (latest) — Android spike SUCCEEDED + content-architecture plan
 
