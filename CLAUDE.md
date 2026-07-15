@@ -70,6 +70,30 @@ tree is dirty (so you never ship uncommitted code). Override a deliberate dirty
 build with `MQ_ALLOW_DIRTY=1 bash assets/wip/mq_build.sh`. Full details, credentials,
 and current build/version status are in MEMORY.md.
 
+## Content OTA (v1.5) — update data WITHOUT an app build
+
+As of v1.5, mural **data** (not the app code or images yet) can be pushed live
+over-the-air, bypassing App Store / Play review. Use this for festival daily
+updates:
+
+    edit data/murals/*.yaml  →  python3 scripts/publish-content.py  →  live in ~1 min
+
+- `build-data.py` now emits `js/content.json` (the OTA manifest — same short-key
+  shape as `data.js`, verified byte-identical) plus `js/content-meta.js` (the
+  bundled version marker; tracked). `content.json` is **gitignored** (regenerated +
+  uploaded each publish).
+- `scripts/publish-content.py` runs `build-data.py`, uploads `content.json` to the
+  Cloudflare **R2 bucket `muralquest-content`** (served at `https://cdn.muralquest.app`),
+  and verifies the live version. Needs `wrangler` authenticated (`npx wrangler whoami`).
+- Client: `js/content.js` fetches the manifest at launch and applies it if newer
+  than the bundle (mutating the `murals`/`pois`/`YEARS` arrays in place; all
+  existing `app.js` references keep working). Bundled `data.js` is the offline
+  fallback — remote is never required. `CONTENT_BASE_URL` in `content.js` = the CDN.
+- The service worker (`sw.js`) **bypasses `content.json`** so it can't shadow OTA
+  updates with a stale cache. If you touch the SW's fetch routing, preserve that.
+- Images are still bundled in v1.5 — publishing images OTA comes with the
+  image-split step. Full design: `docs/CONTENT-ARCHITECTURE-PLAN.md`.
+
 ## Key files
 
 - `data/murals/*.yaml` — source of truth for mural metadata
@@ -78,8 +102,10 @@ and current build/version status are in MEMORY.md.
 - `data/routes/*.geojson` — route-editor load state (do NOT trust as source of truth for runtime)
 - `js/app.js` — `ROUTE_DEFS` around line 1785, route lookups at 2211/3684
 - `js/data.js` — generated artifact from build-data.py (don't hand-edit)
+- `js/content.js` — v1.5 OTA content layer (fetch-with-fallback); `js/content-meta.js` — bundled version marker (tracked); `js/content.json` — OTA manifest (gitignored, uploaded to R2)
 - `js/routes.js` — runtime route paths in {from, to, path} format (apply route-editor pastes here)
-- `scripts/build-data.py` — YAML → data.js. Safe to run after YAML edits.
+- `scripts/build-data.py` — YAML → data.js **and** content.json + content-meta.js. Safe to run after YAML edits.
+- `scripts/publish-content.py` — build + push content.json live to R2 (OTA; no app build). See "Content OTA" above.
 - `scripts/build-routes.py` — **DEPRECATED for routes.js; do not run.**
 - `tools/yaml-editor.html` — mural metadata editor PWA
 - `tools/route-editor.html` — tour route editor PWA
