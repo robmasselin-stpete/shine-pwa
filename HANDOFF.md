@@ -1,9 +1,10 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT LIVE (App Store): v1.4 (build 131).** **v1.5 (build 132) is BUILT +
-> UPLOADED to App Store Connect (2026-07-15) — TestFlight field-test stage**, not
-> yet submitted to the App Store. v1.5 = the content-architecture refactor (OTA
-> data + image split + analytics + IG posting). Plan: `docs/CONTENT-ARCHITECTURE-PLAN.md`.
+> **CURRENT LIVE (App Store): v1.4 (build 131).** **v1.5 is on TestFlight —
+> latest build 133 (2026-07-15), field-test stage**, not yet submitted to the App
+> Store. (Builds 132→133 same session; 133 adds on-device fixes below.) v1.5 = the
+> content-architecture refactor (OTA data + image split + analytics + IG posting).
+> Plan: `docs/CONTENT-ARCHITECTURE-PLAN.md`.
 >
 > **v1.5 shipped this session (all on branch `v1.5`, pushed):**
 > - **OTA content** — app fetches `content.json` from R2/`cdn.muralquest.app` at
@@ -16,8 +17,38 @@
 > - **Instagram posting** (NO in-app feed — Rob's call) — `workers/ig-feed/` at
 >   `ig.muralquest.app` + `scripts/ig_post.py` / `publish-content.py --post <id>`.
 > - **185+** count fix.
-> - **NEXT:** field-test 132 on iPhone (CDN images, offline, OTA cycle) → then merge
->   `v1.5`→main + submit 132 to App Store. Then fold in Android (bundle now fits Play).
+> - **On-device fixes (build 133, latest TestFlight):** progressive detail hero
+>   (bundled card instant → CDN full-res swap, kills tap lag); WiFi-preferred
+>   background prefetch of all full-res for full offline (`@capacitor/network`);
+>   **crisper 720px cards** (was fuzzy 384px). Bundle ~63MB. **Test 133 on iPhone.**
+> - **NEXT (iOS):** confirm 133 on iPhone (crisp cards, no lag, offline) → merge
+>   `v1.5`→main + submit 133 to App Store (draft "What's New"). Watch for iOS cache
+>   eviction of the 373MB prefetch; if it evicts, switch to a ~1080px detail tier.
+
+## 2026-07-15 — Android / Google Play + DUNS (in progress)
+
+- **Decision: go ORGANIZATION accounts on both Apple + Google** (Rob got a DUNS).
+  Rationale: org avoids Google Play's **20-tester/14-day** closed-testing gauntlet
+  (required for new *personal* Play accounts) and is cleaner long-term.
+- **DUNS number: `145568362`** (one number serves both Apple + Google). Rob has a
+  registered business entity (required for org accounts).
+- **⛔ BLOCKED on Google Play by the "verify you have an Android device" step** —
+  Rob has no physical Android device, and our emulator uses a `google_apis` image
+  (no Play Store app), so it can't do the Play Store sign-in / QR scan Google wants.
+  **Rob is buying a cheap Android device** (WiFi-only budget Android ~$50–100, or a
+  used Pixel 6a/7a ~$120–180 recommended for real GPS testing).
+- **Unblock sequence once the device arrives:** (1) finish Google Play account
+  verification with the device → (2) change account type to **Organization** →
+  (3) enter DUNS `145568362` (org name + address must EXACTLY match the D&B record,
+  or verification fails). ⚠ Google may not allow switching this personal account to
+  org after the fact — may need Play support or a fresh org account. Check at that step.
+- **Android app itself is ready:** same v1.5 code runs on Android (re-verified
+  2026-07-15 on the emulator — 185+/map/tours render, no crash). Remaining Android
+  platform work before Play submit: back-button handler, safe-area insets, ads
+  config, then a signed AAB (63MB, fits Play). Not started; after iOS v1.5 ships.
+- Android toolchain + emulator (`mq_pixel`) installed on Rob's Mac (see spike note
+  below). Build APK: `cd android && ./gradlew assembleDebug` (JAVA_HOME=openjdk@21,
+  ANDROID_HOME=/opt/homebrew/share/android-commandlinetools).
 
 ## 2026-07-07 update (latest) — Android spike SUCCEEDED + content-architecture plan
 
