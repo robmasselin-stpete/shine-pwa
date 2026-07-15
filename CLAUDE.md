@@ -131,6 +131,26 @@ Anonymous usage analytics on Cloudflare (no PII, no IP, no cross-app tracking).
   the repo. Rotate/set with `echo <key> | npx wrangler secret put STATS_KEY` from
   `workers/analytics/`.
 
+## Instagram posting (v1.5) — opt-in, per-mural
+
+**No in-app Instagram feed** (Rob's call — see memory `feedback-no-ig-feed-in-app`).
+Instead, a Rob-side tool posts a chosen mural to the Mural Quest IG when he wants.
+
+- **Worker** `workers/ig-feed/` → `ig.muralquest.app`. `POST /post` (gated by
+  `POST_KEY` secret) creates + publishes an IG media container from a public image
+  URL; holds the `IG_TOKEN` secret (Instagram Login flow, `graph.instagram.com`).
+  `?dry=1` creates the container but does NOT publish (safe test).
+- **CLI** `scripts/ig_post.py <id>` (or `publish-content.py --post <id>`): builds an
+  IG-compliant 1080px image (blurred fill, no bars) → uploads to R2 `images/ig/` →
+  drafts a caption from the mural's data (MQ voice) → you edit → confirm → post.
+  `--dry-run` tests without publishing; `--caption "…" --yes` scripts it.
+- **Secrets:** `IG_TOKEN` (long-lived, expires ~60 days — refresh then re-`secret put`)
+  and `POST_KEY` live in the Worker. The local `.mq-ig-post-key` (gitignored) holds
+  only the POST key for the CLI. Meta app: "Mural Quest-IG", account
+  `mural_quest_st_pete`.
+- Future: auto-post caption via Claude API if `ANTHROPIC_API_KEY` is set (currently
+  drafts from the mural's existing bio/desc); token auto-refresh cron.
+
 ## Key files
 
 - `data/murals/*.yaml` — source of truth for mural metadata
