@@ -32,7 +32,7 @@ import { ROUTE_PATHS } from './routes.js';
 // above BEFORE the init code below renders — so first paint shows the freshest
 // content already on device. hydrateContent() then fetches the CDN in the
 // background for next launch.
-import { hydrateContent } from './content.js';
+import { hydrateContent, CONTENT_BASE_URL } from './content.js';
 
 // =============================================
 // =============================================
@@ -775,7 +775,7 @@ function showProximityBanner(mural, dist) {
   const el = document.createElement('div');
   el.className = 'proximity-banner';
   el.innerHTML = `
-    <img class="proximity-banner-img" src="${mural.img || ''}" alt="${mural.a}" onerror="this.style.background='#ddd'">
+    <img class="proximity-banner-img" src="${cardSrc(mural.img)}" data-img="${mural.img || ''}" alt="${mural.a}" onerror="mqCardErr(this)">
     <div class="proximity-banner-info">
       <div class="proximity-banner-artist">${mural.a}</div>
       <div class="proximity-banner-title">${mural.t || ''}</div>
@@ -1027,7 +1027,7 @@ function renderExplore() {
     <div class="mural-grid">
       ${filtered.map(m => `
         <div class="mural-card${m.gone ? ' mural-gone' : ''}" data-id="${m.id}">
-          <img class="mural-card-img" src="${m.img || ''}" alt="${m.a}" loading="lazy" onerror="this.style.background='#ddd'">
+          <img class="mural-card-img" src="${cardSrc(m.img)}" data-img="${m.img || ''}" alt="${m.a}" loading="lazy" onerror="mqCardErr(this)">
           <div class="mural-card-info">
             <div class="mural-card-artist">${m.a}</div>
             <div class="mural-card-meta">${m.bldg || m.loc || ''} · ${m.y || (m.cat === 'commercial' ? 'Commissioned' : 'Pre-SHINE')}</div>
@@ -1066,15 +1066,41 @@ const routePolylines = []; // Route polylines on the main map
 // At this zoom level and above, markers switch from colored dots to thumbnail images
 const ICON_ZOOM_THRESHOLD = 16;
 
-// Convert full image path to thumbnail path: images/murals/… → images/thumbs/…
-function thumbPath(img) { return img.replace('images/murals/', 'images/thumbs/'); }
+// ─── v1.5 image split ────────────────────────────────────────────────────────
+// Cards (384px WebP, ~15KB) are bundled for every small display (grid, map icons,
+// tour pins/stops, popups). Full-res photos (373MB) live on the CDN and load ONLY
+// in the detail view. Post-release murals (added via OTA) have no bundled card, so
+// onerror falls back to the CDN card, then CDN full-res, then a grey placeholder.
+// Offline, the full-res detail hero falls back to the bundled card.
+const CDN_BASE = CONTENT_BASE_URL ? CONTENT_BASE_URL.replace(/\/$/, '') : '';
+function toCdn(path) { return (CDN_BASE && path) ? CDN_BASE + '/' + path.replace(/^\//, '') : (path || ''); }
+// images/murals/2025/x.jpeg → images/cards/2025/x.webp
+function cardPath(img) { return img ? img.replace('images/murals/', 'images/cards/').replace(/\.(jpe?g|png)$/i, '.webp') : ''; }
+function cardSrc(img) { return cardPath(img); }   // bundled card (all small displays)
+function fullSrc(img) { return toCdn(img); }      // CDN full-res (detail hero)
 
-// Preload all thumbnail images into browser cache
+// Card image failed to load: bundled card missing (OTA mural) → CDN card → CDN
+// full-res → grey. Attach via onerror on any card <img> that has data-img set.
+window.mqCardErr = function (el) {
+  const img = el.dataset.img, s = el.dataset.s || '0';
+  if (img && CDN_BASE && s === '0') { el.dataset.s = '1'; el.src = toCdn(cardPath(img)); return; }
+  if (img && CDN_BASE && s === '1') { el.dataset.s = '2'; el.src = toCdn(img); return; }
+  el.onerror = null; el.style.background = '#ddd';
+};
+// Full-res (detail) failed — likely offline: fall back to bundled card → CDN card → grey.
+window.mqFullErr = function (el) {
+  const img = el.dataset.img, s = el.dataset.s || '0';
+  if (img && s === '0') { el.dataset.s = '1'; el.src = cardPath(img); return; }
+  if (img && CDN_BASE && s === '1') { el.dataset.s = '2'; el.src = toCdn(cardPath(img)); return; }
+  el.onerror = null; el.style.background = '#ddd';
+};
+
+// Preload the bundled card tier into browser cache (fast, ~3MB total).
 function preloadThumbnails() {
   murals.forEach(m => {
     if (m.img) {
       const i = new Image();
-      i.src = thumbPath(m.img);
+      i.src = cardSrc(m.img);
     }
   });
 }
@@ -1179,7 +1205,7 @@ function initMap() {
     // Image icon marker (zoomed in)
     const icon = L.divIcon({
       className: 'mural-map-icon',
-      html: `<img src="${thumbPath(m.img)}" alt="${m.a}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`,
+      html: `<img src="${cardSrc(m.img)}" data-img="${m.img}" onerror="mqCardErr(this)" alt="${m.a}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`,
       iconSize: [48, 48],
       iconAnchor: [24, 24],
     });
@@ -1557,7 +1583,7 @@ function showNearestPopup(mural, routes, scopeLabel) {
   el.className = 'nearest-popup';
   el.innerHTML = `
     <div class="nearest-popup-top">
-      <img src="${mural.img}" alt="${mural.a}">
+      <img src="${cardSrc(mural.img)}" data-img="${mural.img || ''}" onerror="mqCardErr(this)" alt="${mural.a}">
       <div class="nearest-popup-info">
         <h4>${mural.a}</h4>
         <p>${distStr}${mural.t ? ' \u2022 ' + mural.t : ''}</p>
@@ -1588,7 +1614,7 @@ function showPoiPopup(poi) {
       <div class="poi-popup-linked-row">
         ${linked.map(m => `
           <div class="poi-popup-linked-card" onclick="window.dismissNearestPopup();window.openMuralFromPoi(${m.id})">
-            <img src="${m.img || ''}" alt="${m.a}" loading="lazy" onerror="this.style.background='#ddd'">
+            <img src="${cardSrc(m.img)}" data-img="${m.img || ''}" alt="${m.a}" loading="lazy" onerror="mqCardErr(this)">
             <div class="poi-popup-linked-name">${m.a}</div>
           </div>
         `).join('')}
@@ -1886,7 +1912,7 @@ function buildTourCard(mural, num, type) {
   const cls = type === 'faded' ? ' faded' : '';
   return `
     <div class="tour-stop-card${cls}" data-id="${mural.id}">
-      <img class="tour-stop-img" src="${mural.img || ''}" alt="${mural.a}" onerror="this.style.background='#ddd'">
+      <img class="tour-stop-img" src="${cardSrc(mural.img)}" data-img="${mural.img || ''}" alt="${mural.a}" onerror="mqCardErr(this)">
       <div class="tour-stop-body">
         <div class="tour-stop-num">${num}</div>
         <div class="tour-stop-text">
@@ -3491,7 +3517,7 @@ function renderTourBottom() {
     if (!card) return;
     card.dataset.id = stop.id;
     const img = card.querySelector('.tour-stop-img');
-    if (img) { img.src = stop.img || ''; img.alt = stop.a; }
+    if (img) { img.src = cardSrc(stop.img); img.dataset.img = stop.img || ''; img.onerror = () => mqCardErr(img); img.alt = stop.a; }
     const numEl = card.querySelector('.tour-stop-num');
     if (numEl) numEl.textContent = num;
   }
@@ -3814,7 +3840,7 @@ function fetchTourSegment() {
   const nowMarker = L.marker([nowStop.lat, nowStop.lng], {
     icon: L.divIcon({
       className: 'tour-map-pin',
-      html: `<div class="tour-pin from"><img src="${nowStop.img || ''}" alt="${nowStop.a}"><span class="tour-pin-num">${idx + 1}</span></div>`,
+      html: `<div class="tour-pin from"><img src="${cardSrc(nowStop.img)}" data-img="${nowStop.img || ''}" onerror="mqCardErr(this)" alt="${nowStop.a}"><span class="tour-pin-num">${idx + 1}</span></div>`,
       iconSize: [44, 44], iconAnchor: [22, 22],
     })
   }).addTo(tourMap);
@@ -3824,7 +3850,7 @@ function fetchTourSegment() {
   const activeMarker = L.marker([activeStop.lat, activeStop.lng], {
     icon: L.divIcon({
       className: 'tour-map-pin',
-      html: `<div class="tour-pin to"><img src="${activeStop.img || ''}" alt="${activeStop.a}"><span class="tour-pin-num">${activeNum}</span></div>`,
+      html: `<div class="tour-pin to"><img src="${cardSrc(activeStop.img)}" data-img="${activeStop.img || ''}" onerror="mqCardErr(this)" alt="${activeStop.a}"><span class="tour-pin-num">${activeNum}</span></div>`,
       iconSize: [48, 48], iconAnchor: [24, 24],
     })
   }).addTo(tourMap);
@@ -3838,7 +3864,7 @@ function fetchTourSegment() {
     const tp = L.marker([s.lat, s.lng], {
       icon: L.divIcon({
         className: 'tour-map-pin',
-        html: `<div class="tour-pin from" style="width:36px;height:36px;border-color:#aaa;filter:grayscale(0.6) opacity(0.7)"><img src="${s.img || ''}" alt="${s.a}"><span class="tour-pin-num" style="background:#aaa">${i + 1}</span></div>`,
+        html: `<div class="tour-pin from" style="width:36px;height:36px;border-color:#aaa;filter:grayscale(0.6) opacity(0.7)"><img src="${cardSrc(s.img)}" data-img="${s.img || ''}" onerror="mqCardErr(this)" alt="${s.a}"><span class="tour-pin-num" style="background:#aaa">${i + 1}</span></div>`,
         iconSize: [40, 40], iconAnchor: [20, 20],
       }),
       zIndexOffset: -500,
@@ -4025,12 +4051,12 @@ function buildDetailBodyHTML(mural) {
 
   return `
     <div class="detail-hero-wrap">
-      <img class="detail-hero" src="${mural.img || ''}" alt="${mural.a}" onerror="this.parentElement.style.display='none'">
+      <img class="detail-hero" src="${fullSrc(mural.img)}" data-img="${mural.img || ''}" alt="${mural.a}" onerror="mqFullErr(this)">
       ${mural.gone ? `<div class="detail-gone-banner">This mural is no longer on site — building was torn down</div>` : ''}
     </div>
     ${mural.oimg ? `<div class="detail-original-wrap">
       <div class="detail-original-label">When it was new</div>
-      <div class="detail-hero-wrap"><img class="detail-hero" src="${mural.oimg}" alt="${mural.a} — original" onerror="this.parentElement.parentElement.style.display='none'"></div>
+      <div class="detail-hero-wrap"><img class="detail-hero" src="${fullSrc(mural.oimg)}" alt="${mural.a} — original" onerror="this.parentElement.parentElement.style.display='none'"></div>
     </div>` : ''}
     <div class="detail-body ${TEXT_SIZES[textSizeIdx].class}">
       <button class="detail-font-btn" onclick="cycleTextSize()"><span style="font-size:1em">A</span><span style="font-size:0.65em">A</span></button>
@@ -4189,7 +4215,7 @@ function buildDetailBodyHTML(mural) {
           <div class="detail-nearby-row">
             ${nearby.map(m => `
               <div class="detail-nearby-card" data-id="${m.id}">
-                <img src="${m.img || ''}" alt="${m.a}" loading="lazy">
+                <img src="${cardSrc(m.img)}" data-img="${m.img || ''}" onerror="mqCardErr(this)" alt="${m.a}" loading="lazy">
                 <div class="detail-nearby-card-artist">${m.a}</div>
                 <div class="detail-nearby-card-dist">${formatDistance(m.dist)}</div>
               </div>
@@ -4204,7 +4230,7 @@ function buildDetailBodyHTML(mural) {
           <div class="detail-nearby-row">
             ${moreByArtist.map(m => `
               <div class="detail-nearby-card" data-id="${m.id}">
-                <img src="${m.img || ''}" alt="${m.a}" loading="lazy">
+                <img src="${cardSrc(m.img)}" data-img="${m.img || ''}" onerror="mqCardErr(this)" alt="${m.a}" loading="lazy">
                 <div class="detail-nearby-card-artist">${m.loc}</div>
                 <div class="detail-nearby-card-dist">${m.y}</div>
               </div>
