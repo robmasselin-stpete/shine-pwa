@@ -17,7 +17,7 @@
  * The OTA content manifest (content.json) is bypassed entirely (see fetch handler).
  */
 
-const CACHE_NAME = 'shine-v146';       // App shell — bump on code changes
+const CACHE_NAME = 'shine-v147';       // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1';  // Map tiles — rarely needs bumping
 const IMG_CACHE = 'shine-images-v10'; // Card tier + CDN full-res — bumped for v1.5 image split
 const FONT_CACHE = 'shine-fonts-v1';  // CDN fonts/libs — rarely needs bumping
@@ -32,6 +32,7 @@ const SHELL_ASSETS = [
   './js/data.js',          // bundled content fallback
   './js/content.js',       // v1.5 OTA content layer
   './js/content-meta.js',  // v1.5 bundled content version marker
+  './js/analytics.js',     // v1.5 first-party analytics
   './js/photos.js',
   './manifest.json',
   './card-manifest.json',

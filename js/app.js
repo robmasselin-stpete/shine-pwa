@@ -33,6 +33,10 @@ import { ROUTE_PATHS } from './routes.js';
 // content already on device. hydrateContent() then fetches the CDN in the
 // background for next launch.
 import { hydrateContent, CONTENT_BASE_URL } from './content.js';
+// v1.5 first-party analytics (anonymous, best-effort). window.mqTrack lets inline
+// handlers (e.g. the book buy link) fire events too.
+import { track as mqTrack } from './analytics.js';
+window.mqTrack = mqTrack;
 
 // =============================================
 // =============================================
@@ -373,6 +377,7 @@ document.getElementById('tab-help').addEventListener('click', () => {
 function switchTab(tab) {
   if (state.helpVisible) closeHelp();
   state.tab = tab;
+  mqTrack('screen_view', { tab });
   $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   Object.entries(views).forEach(([key, el]) => { el.hidden = key !== tab; });
 
@@ -931,6 +936,7 @@ function renderFilterPills() {
   filterPills.querySelectorAll('.year-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       const cat = btn.dataset.filter;
+      mqTrack('filter_used', { filter: cat || 'all' });
       if (!cat) {
         state.exploreFilter = null;
       } else {
@@ -984,7 +990,13 @@ function renderYearSubPills() {
 searchInput.addEventListener('input', (e) => {
   state.searchQuery = e.target.value.trim();
   renderExplore();
+  // Debounced so we log the settled term, not every keystroke.
+  clearTimeout(searchTrackTimer);
+  searchTrackTimer = setTimeout(() => {
+    if (state.searchQuery.length >= 2) mqTrack('search', { term: state.searchQuery.slice(0, 60) });
+  }, 1200);
 });
+let searchTrackTimer;
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') { e.preventDefault(); searchInput.blur(); }
 });
@@ -4250,6 +4262,7 @@ function buildDetailBodyHTML(mural) {
  */
 function openDetail(mural) {
   state.selectedMural = mural;
+  mqTrack('mural_open', { id: mural && mural.id });
   detailPage.hidden = false;
   detailRouteCache = { lat: null, lng: null, muralId: null, dist: null, dur: null, pending: false };
 
@@ -4304,7 +4317,7 @@ function buildBookDetailHTML() {
         <div class="bd-title">SHINE: A Decade of Murals</div>
         <p>Celebrate ten years of the internationally recognized SHINE Mural Festival with this premium hardcover coffee table book, documenting the murals, artists, and community impact that helped transform St. Petersburg, Florida, into a global destination for public art.</p>
         <p>A collector's edition featuring more than 250 pages of full-color photography, artist profiles, behind-the-scenes stories, and reflections from muralists and community leaders — both a visual centerpiece and a historical archive.</p>
-        <a class="bd-buy" href="${SHINE_BOOK_URL}" target="_blank" rel="noopener">To order your SHINE mural book &rsaquo;</a>
+        <a class="bd-buy" href="${SHINE_BOOK_URL}" target="_blank" rel="noopener" onclick="window.mqTrack && window.mqTrack('book_buy_click', {})">To order your SHINE mural book &rsaquo;</a>
         <div class="bd-partner">Published by the St. Petersburg Arts Alliance</div>
       </div>
     </div>
@@ -4314,6 +4327,7 @@ function buildBookDetailHTML() {
 /** Open the SHINE book detail overlay (tapped from the Explore banner). */
 function openBookDetail() {
   state.selectedMural = null;
+  mqTrack('book_card_tap', {});
   detailPage.hidden = false;
   detailContent.innerHTML = buildBookDetailHTML();
   detailPage.scrollTop = 0;
@@ -4738,6 +4752,7 @@ initMap();
 preloadThumbnails();
 flashFabLabels();
 handleDeepLink();
+mqTrack('app_open', {});
 
 // v1.5: fetch the latest OTA content in the background (non-blocking). Newer
 // content is cached and applied on next launch. Offline / no-CDN → silent no-op.
