@@ -11,11 +11,11 @@
 import { murals, pois, YEARS } from './data.js';
 import { BUNDLED_CONTENT } from './content-meta.js';
 
-// Where the OTA manifest lives. Empty string = no remote configured yet
-// (bundled + cache only). Set to the CDN origin once it exists, e.g.
-// 'https://cdn.muralquest.app'. Dev/test override without editing this file:
-// window.__MQ_CONTENT_BASE__ or localStorage 'mq_content_base'.
-export const CONTENT_BASE_URL = '';
+// Where the OTA manifest lives — Cloudflare R2 bucket 'muralquest-content' via its
+// custom domain. Empty string would disable remote (bundled/cache only).
+// Dev/test override without editing this file: window.__MQ_CONTENT_BASE__ or
+// localStorage 'mq_content_base'.
+export const CONTENT_BASE_URL = 'https://cdn.muralquest.app';
 
 const CACHE_KEY = 'mq_content_v1';
 const FETCH_TIMEOUT_MS = 6000;
