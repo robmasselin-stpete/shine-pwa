@@ -995,7 +995,7 @@ searchInput.addEventListener('keydown', (e) => {
 /** Render the Explore tab — 2-column card grid of filtered murals. Full innerHTML replace. */
 function renderExplore() {
   const sub = document.getElementById('explore-subtitle');
-  if (sub) sub.textContent = '175+ Murals in St. Petersburg, Florida';
+  if (sub) sub.textContent = '185+ Murals in St. Petersburg, Florida';
   const filtered = getFilteredMurals();
 
   if (filtered.length === 0) {
@@ -1140,7 +1140,7 @@ function initMap() {
   floatHeader.className = 'map-float-header';
   floatHeader.innerHTML = `
     <div class="tab-title-row" id="map-title-row" role="button" aria-label="About Mural Quest"><img class="tab-logo" src="images/logo-pelican.png" alt=""><h1 class="map-float-title">Mural Quest</h1></div>
-    <p class="map-float-subtitle">175+ Murals in St. Petersburg, Florida</p>
+    <p class="map-float-subtitle">185+ Murals in St. Petersburg, Florida</p>
     <div class="filter-pills" id="map-cat-pills"></div>
     <div class="filter-pills" id="map-year-pills" hidden></div>
   `;
@@ -1661,7 +1661,7 @@ function showOutOfRangePopup() {
   el.innerHTML = `
     <button class="nearest-popup-close" onclick="this.parentElement.remove()">&times;</button>
     <p>You're not in St. Pete yet!</p>
-    <small>175+ murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>
+    <small>185+ murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>
   `;
   document.getElementById('map-container').appendChild(el);
   nearestPopupEl = el;
@@ -2193,7 +2193,7 @@ function renderTourPicker() {
     <div class="tour-picker-layout">
       <div class="tours-large-title">
         <div class="tab-title-row"><img class="tab-logo" src="images/logo-pelican.png" alt=""><h1>Tours</h1></div>
-        <p class="explore-subtitle">175+ Murals in St. Petersburg, Florida</p>
+        <p class="explore-subtitle">185+ Murals in St. Petersburg, Florida</p>
         <p>Scroll to Browse, Tap Go</p>
       </div>
       <div class="tour-list-scroll" id="tour-list-scroll">
@@ -4365,7 +4365,7 @@ function showOutOfRangeOnDetail() {
   if (toast) toast.remove();
   toast = document.createElement('div');
   toast.className = 'detail-range-toast';
-  toast.innerHTML = `<p>You're not in St. Pete yet!</p><small>175+ murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>`;
+  toast.innerHTML = `<p>You're not in St. Pete yet!</p><small>185+ murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>`;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3000);
 }
