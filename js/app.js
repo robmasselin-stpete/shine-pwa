@@ -1117,6 +1117,50 @@ function preloadThumbnails() {
   });
 }
 
+// Progressive detail hero: the bundled card shows instantly, then the CDN full-res
+// swaps in once it loads (no blank flash, no perceived lag). Offline, the full-res
+// load fails silently and the card stays.
+function upgradeDetailHero() {
+  const hero = detailContent.querySelector('.detail-hero[data-full]');
+  if (!hero) return;
+  const full = hero.getAttribute('data-full');
+  if (!full) return;
+  const pre = new Image();
+  pre.onload = () => { hero.src = full; };
+  pre.src = full;
+}
+
+// Background: cache every full-res photo for full offline use, WiFi-preferred.
+// Same total download as the old bundled app — just deferred so the install stays
+// ~35MB (required for Google Play + fast installs). Runs once; the SW caches each
+// into IMG_CACHE, so after this the detail view is instant AND works offline.
+let _fullResPrefetched = false;
+async function prefetchFullRes() {
+  if (_fullResPrefetched || !CDN_BASE) return;
+  let onWifi = null;
+  try {
+    if (window.Capacitor?.nativePromise) {
+      const s = await window.Capacitor.nativePromise('Network', 'getStatus');
+      if (s && s.connectionType) onWifi = (s.connectionType === 'wifi');
+    }
+  } catch { onWifi = null; }
+  if (onWifi === null) {
+    // Web / no plugin: skip on explicit data-saver, otherwise assume broadband.
+    onWifi = !(navigator.connection && navigator.connection.saveData);
+  }
+  if (!onWifi) return;
+  _fullResPrefetched = true;
+  const urls = murals.filter(m => m.img).map(m => fullSrc(m.img));
+  let i = 0;
+  async function worker() {
+    while (i < urls.length) {
+      const url = urls[i++];
+      try { await fetch(url); } catch {}
+    }
+  }
+  await Promise.all(Array.from({ length: 4 }, worker));  // gentle: 4 at a time
+}
+
 // (RB_CARD_H, updateRouteBarPositions, setupRouteBarTouch removed — horizontal pills)
 
 /**
@@ -4063,7 +4107,7 @@ function buildDetailBodyHTML(mural) {
 
   return `
     <div class="detail-hero-wrap">
-      <img class="detail-hero" src="${fullSrc(mural.img)}" data-img="${mural.img || ''}" alt="${mural.a}" onerror="mqFullErr(this)">
+      <img class="detail-hero" src="${cardSrc(mural.img)}" data-img="${mural.img || ''}" data-full="${fullSrc(mural.img)}" alt="${mural.a}" onerror="mqCardErr(this)">
       ${mural.gone ? `<div class="detail-gone-banner">This mural is no longer on site — building was torn down</div>` : ''}
     </div>
     ${mural.oimg ? `<div class="detail-original-wrap">
@@ -4267,6 +4311,7 @@ function openDetail(mural) {
   detailRouteCache = { lat: null, lng: null, muralId: null, dist: null, dur: null, pending: false };
 
   detailContent.innerHTML = buildDetailBodyHTML(mural);
+  upgradeDetailHero();
 
   detailContent.querySelectorAll('.detail-nearby-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -4753,6 +4798,12 @@ preloadThumbnails();
 flashFabLabels();
 handleDeepLink();
 mqTrack('app_open', {});
+
+// Background: after the app settles, cache all full-res photos for offline (WiFi-
+// preferred). Deferred so it never competes with first paint. Retry when the
+// connection returns (e.g. user gets home / back on WiFi).
+setTimeout(prefetchFullRes, 4000);
+window.addEventListener('online', () => setTimeout(prefetchFullRes, 2000));
 
 // v1.5: fetch the latest OTA content in the background (non-blocking). Newer
 // content is cached and applied on next launch. Offline / no-CDN → silent no-op.

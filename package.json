@@ -12,6 +12,7 @@
     "@capacitor/haptics": "^8.0.1",
     "@capacitor/ios": "^8.2.0",
     "@capacitor/keyboard": "^8.0.2",
+    "@capacitor/network": "^8.0.1",
     "@capacitor/status-bar": "^8.0.1",
     "@netlify/blobs": "^8.0.0",
     "stripe": "^17.0.0"
