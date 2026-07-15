@@ -25,7 +25,8 @@ import glob
 import yaml
 import json
 import re
-from datetime import date
+import hashlib
+from datetime import date, datetime, timezone
 
 # Resolve paths relative to project root
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -33,6 +34,9 @@ PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 MURALS_DIR = os.path.join(PROJECT_ROOT, 'data', 'murals')
 CONFIG_FILE = os.path.join(PROJECT_ROOT, 'data', 'config.yaml')
 OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'js', 'data.js')
+# v1.5 content-architecture: OTA manifest + bundled version marker
+CONTENT_JSON_FILE = os.path.join(PROJECT_ROOT, 'js', 'content.json')
+CONTENT_META_FILE = os.path.join(PROJECT_ROOT, 'js', 'content-meta.js')
 
 # Fields required in every YAML file — validation will error if any are missing
 REQUIRED_FIELDS = ['id', 'artist', 'year', 'lat', 'lng', 'address', 'category', 'img']
@@ -424,6 +428,156 @@ def generate_data_js(murals, config, pois=None):
     return '\n'.join(lines) + '\n'
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# v1.5 content-architecture: JSON manifest for OTA content updates.
+# content.json mirrors the SAME data + short-key shape as data.js (the bundled
+# fallback) so the app consumes either identically. The client fetches this from
+# the CDN and applies it if newer than the bundled baseline. Keep the field
+# selection here in sync with mural_to_js / poi_to_js.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def text_normalize(s):
+    """Same content normalization as js_string_escape (smart quotes, paragraph
+    breaks, whitespace) but WITHOUT the JS single-quote escaping — json.dump
+    handles JSON escaping. Produces a Python str with real \\n\\n for paragraphs,
+    so the runtime string matches data.js exactly."""
+    if s is None:
+        return ''
+    s = str(s)
+    s = s.replace('‘', "'").replace('’', "'")
+    s = s.replace('“', '"').replace('”', '"')
+    s = s.replace('\r', '')
+    s = re.sub(r'\n\n+', '\x00', s)
+    s = s.replace('\n', ' ')
+    s = s.replace('\x00', '\n\n')
+    s = re.sub(r' {2,}', ' ', s)
+    return s.strip()
+
+
+def mural_to_dict(m):
+    """Mirror of mural_to_js as a dict (same short keys, same conditional omissions)."""
+    d = {
+        'id': m.get('id', 0),
+        'a': text_normalize(m.get('artist', '')),
+        't': text_normalize(m.get('title', '')),
+        'loc': text_normalize(m.get('address', '')),
+        'bldg': text_normalize(m.get('building', '')),
+        'lat': m.get('lat'),
+        'lng': m.get('lng'),
+        'y': m.get('year', 0),
+        'cat': text_normalize(m.get('category', 'shine')),
+        'ig': text_normalize(m.get('instagram', '')),
+        'bio': text_normalize((m.get('artistBio', '') or '').strip()),
+        'desc': text_normalize((m.get('searchMuralDescription', '') or '').strip()),
+        'imp': [text_normalize(s) for s in (m.get('impressions') or []) if s],
+        'img': text_normalize(m.get('img', '')),
+        'from': text_normalize(m.get('basedIn', '')),
+        'aud': text_normalize(m.get('audio', '') or ''),
+        'insp': text_normalize((m.get('muralInspiration', '') or '').strip()),
+        'maw': text_normalize((m.get('muralAwards', '') or '').strip()),
+        'aaw': text_normalize((m.get('artistAwards', '') or '').strip()),
+    }
+    raw_gal = m.get('furtherWork') or []
+    gal = [{'name': text_normalize(g.get('name', '')), 'url': text_normalize(g.get('url', ''))}
+           for g in raw_gal if g]
+    d['fw'] = gal if gal else None
+    original_img = text_normalize(m.get('originalImg', '') or '')
+    if original_img:
+        d['oimg'] = original_img
+    search_bio = text_normalize((m.get('searchBio', '') or '').strip())
+    if search_bio:
+        d['sbio'] = search_bio
+    if m.get('gone'):
+        d['gone'] = True
+        if m.get('goneDate'):
+            d['goneDate'] = text_normalize(m.get('goneDate', ''))
+        if m.get('goneReason'):
+            d['goneReason'] = text_normalize(m.get('goneReason', ''))
+    fn = [text_normalize(n) for n in (m.get('fieldNotes') or []) if n]
+    if fn:
+        d['fn'] = fn
+    atw = [text_normalize(n) for n in (m.get('alongTheWay') or []) if n]
+    if atw:
+        d['atw'] = atw
+    sn = m.get('sourceNotes')
+    if sn:
+        if isinstance(sn, str):
+            sn = [sn]
+        urls = [u.strip() for u in sn
+                if isinstance(u, str) and u.strip().startswith(('http://', 'https://'))]
+        if urls:
+            d['src'] = [text_normalize(u) for u in urls]
+    return d
+
+
+def poi_to_dict(p):
+    """Mirror of poi_to_js as a dict."""
+    return {
+        'id': p.get('id', 0),
+        'name': text_normalize(p.get('name', '')),
+        'type': text_normalize(p.get('type', '')),
+        'lat': p.get('lat'),
+        'lng': p.get('lng'),
+        'addr': text_normalize(p.get('address', '')),
+        'bldg': text_normalize(p.get('building', '')),
+        'web': text_normalize(p.get('website', '')),
+        'ig': text_normalize(p.get('instagram', '')),
+        'hrs': text_normalize(p.get('hours', '')),
+        'headline': text_normalize((p.get('headline', '') or '').strip()),
+        'img': text_normalize((p.get('image', '') or '').strip()),
+        'desc': text_normalize((p.get('description', '') or '').strip()),
+        'lm': [int(x) for x in (p.get('linkedMurals') or [])],
+    }
+
+
+def build_content_manifest(murals, config, pois=None):
+    """Build the OTA content manifest dict + its deterministic content hash.
+    version = epoch-ms (monotonic, for the client's 'is remote newer' check);
+    hash = sha256 of the content only (excludes timestamp, so identical content
+    dedupes across builds)."""
+    pois = pois or []
+    sorted_murals = sorted(murals, key=lambda m: (-m.get('year', 0), (m.get('artist', '') or '').lower()))
+    sorted_pois = sorted(pois, key=lambda p: p.get('id', 0))
+    mural_dicts = [mural_to_dict(m) for m in sorted_murals]
+    poi_dicts = [poi_to_dict(p) for p in sorted_pois]
+    years = list(config.get('YEARS', []))
+
+    content_core = {'schemaVersion': 1, 'murals': mural_dicts, 'pois': poi_dicts, 'YEARS': years}
+    canonical = json.dumps(content_core, sort_keys=True, ensure_ascii=False, separators=(',', ':'))
+    content_hash = hashlib.sha256(canonical.encode('utf-8')).hexdigest()[:12]
+
+    now = datetime.now(timezone.utc)
+    manifest = {
+        'schemaVersion': 1,
+        'generated': now.isoformat(),
+        'version': int(now.timestamp() * 1000),
+        'hash': content_hash,
+        'counts': {'murals': len(mural_dicts), 'pois': len(poi_dicts)},
+        'YEARS': years,
+        'murals': mural_dicts,
+        'pois': poi_dicts,
+    }
+    return manifest
+
+
+def write_content_artifacts(manifest):
+    """Write js/content.json (OTA manifest / CDN upload target) and
+    js/content-meta.js (tiny, importable bundled-version marker for the client)."""
+    with open(CONTENT_JSON_FILE, 'w', encoding='utf-8') as f:
+        json.dump(manifest, f, ensure_ascii=False, separators=(',', ':'))
+        f.write('\n')
+    meta = (
+        '// GENERATED by build-data.py — bundled content baseline for js/content.js.\n'
+        '// version = epoch-ms of this build; the client applies remote content only if newer.\n'
+        'export const BUNDLED_CONTENT = '
+        + json.dumps({'version': manifest['version'], 'hash': manifest['hash'],
+                      'generated': manifest['generated']})
+        + ';\n'
+    )
+    with open(CONTENT_META_FILE, 'w', encoding='utf-8') as f:
+        f.write(meta)
+
+
 def list_stale(murals):
     """Print murals still marked as legacy/needing enhancement."""
     stale = [m for m in murals if m.get('source', 'legacy') == 'legacy']
@@ -517,6 +671,12 @@ def main():
         with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
             f.write(output)
         print(f"\n✓ Generated {OUTPUT_FILE} with {len(murals)} murals")
+
+        # v1.5: also emit the OTA content manifest + bundled-version marker
+        manifest = build_content_manifest(murals, config, pois)
+        write_content_artifacts(manifest)
+        print(f"✓ Generated {CONTENT_JSON_FILE} (v{manifest['version']}, hash {manifest['hash']}, "
+              f"{manifest['counts']['murals']} murals + {manifest['counts']['pois']} POIs)")
 
     print_stats(murals)
 

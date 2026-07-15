@@ -27,6 +27,12 @@
 import { murals, YEARS, YEAR_COLORS, CATEGORY_COLORS, pois } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
 import { ROUTE_PATHS } from './routes.js';
+// v1.5 content layer. Importing it runs a synchronous boot step that applies any
+// cached OTA content (newer than the bundle) to the murals/pois/YEARS arrays
+// above BEFORE the init code below renders — so first paint shows the freshest
+// content already on device. hydrateContent() then fetches the CDN in the
+// background for next launch.
+import { hydrateContent } from './content.js';
 
 // =============================================
 // =============================================
@@ -4706,6 +4712,14 @@ initMap();
 preloadThumbnails();
 flashFabLabels();
 handleDeepLink();
+
+// v1.5: fetch the latest OTA content in the background (non-blocking). Newer
+// content is cached and applied on next launch. Offline / no-CDN → silent no-op.
+hydrateContent().then(r => {
+  if (r && r.status && r.status !== 'no-remote' && r.status !== 'up-to-date') {
+    console.log('[content]', r.status, r.version || '', r.error || '');
+  }
+}).catch(() => {});
 
 // Tap any .tab-title-row (pelican logo + title) on any tab to open About / Feedback
 document.addEventListener('click', e => {
