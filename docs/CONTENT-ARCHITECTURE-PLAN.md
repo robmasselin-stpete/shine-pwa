@@ -379,6 +379,28 @@ client instrumentation).
 `book_buy_click` is nearly free and gives SPAA a conversion number — worth
 including from day one.
 
+## Technical must-haves (found 2026-07-15 — don't skip in v1.5)
+
+- **Service worker reconciliation (`sw.js`).** The app has a SW with offline
+  caching ("Offline — using cached data"). It currently caches the app shell +
+  bundled data. With remote content, the SW must NOT serve stale cached data that
+  shadows an OTA update: version the SW cache, bypass/short-TTL the content
+  manifest, and define how remote images are cached (SW cache vs Filesystem). This
+  is the most likely source of "I published but the app didn't update" bugs — get
+  it right early.
+- **`data.js` → JSON.** Data is currently an ES-module (`export const murals`);
+  convert to fetchable JSON (`content.json`) with a bundled fallback copy. Same for
+  routes (`ROUTE_PATHS`).
+- **Content versioning + cache-bust.** Manifest carries a version; clients refresh
+  only when strictly newer; immutable/hashed URLs for images so caching is safe.
+- **Rollback.** A bad publish must be recoverable — keep the prior `content.json`
+  and re-point, or a one-command "revert to last good." Bundled fallback means a
+  bad publish never bricks offline users.
+- **Backwards compatibility.** Users on ≤1.4 have no remote-fetch code — they keep
+  working from their bundled copy (they shipped with full images). CDN content is
+  additive; old versions simply don't see updates. Removing full-res from the v1.5
+  bundle does NOT break older installs. No forced-update needed.
+
 ## Open decisions
 
 1. Hosting: R2 (recommended) vs Netlify (lower friction). Rob to confirm.
