@@ -30,8 +30,12 @@
 - **Decision: go ORGANIZATION accounts on both Apple + Google** (Rob got a DUNS).
   Rationale: org avoids Google Play's **20-tester/14-day** closed-testing gauntlet
   (required for new *personal* Play accounts) and is cleaner long-term.
-- **DUNS number: `145568362`** (one number serves both Apple + Google). Rob has a
-  registered business entity (required for org accounts).
+- **Business entity: Pelican Digital LLC** (Florida). FL document #
+  **`L26000196949`** (Sunbiz). This is the legal entity for the Apple + Google
+  organization accounts.
+- **DUNS number: `145568362`** (one number serves both Apple + Google), tied to
+  Pelican Digital LLC. Org name + address entered on the platforms must match the
+  D&B / Sunbiz records exactly.
 - **⛔ BLOCKED on Google Play by the "verify you have an Android device" step** —
   Rob has no physical Android device, and our emulator uses a `google_apis` image
   (no Play Store app), so it can't do the Play Store sign-in / QR scan Google wants.
