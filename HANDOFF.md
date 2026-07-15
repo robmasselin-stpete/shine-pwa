@@ -21,9 +21,16 @@
 >   (bundled card instant → CDN full-res swap, kills tap lag); WiFi-preferred
 >   background prefetch of all full-res for full offline (`@capacitor/network`);
 >   **crisper 720px cards** (was fuzzy 384px). Bundle ~63MB. **Test 133 on iPhone.**
-> - **NEXT (iOS):** confirm 133 on iPhone (crisp cards, no lag, offline) → merge
->   `v1.5`→main + submit 133 to App Store (draft "What's New"). Watch for iOS cache
->   eviction of the 373MB prefetch; if it evicts, switch to a ~1080px detail tier.
+> - **⚠ DIRECTION CHANGE (2026-07-15): v1.5 is NOT shipping yet.** No deadline forces
+>   it, and background location (for narrated tours) faces heavy store review whenever
+>   it ships — so rather than ship v1.5 now + a v1.6 later (2× review/testing), **v1.5
+>   grows to include the foreground service + background location and becomes the JOINT
+>   iOS + Android launch, both complete.** HOLD App Store submission. Keep field-testing
+>   133 on iPhone meanwhile (validates OTA/offline/images). Watch for iOS cache eviction
+>   of the 373MB prefetch; if it evicts, switch to a ~1080px detail tier.
+> - **In parallel now:** Rob starts **ElevenLabs** narration content (independent of the
+>   plumbing); Claude does **foreground-service groundwork** (see Android section). S23
+>   arrives ~2026-07-18 → real background/GPS/haptic testing.
 
 ## 2026-07-15 — Android / Google Play + DUNS (in progress)
 
@@ -46,10 +53,27 @@
   (3) enter DUNS `145568362` (org name + address must EXACTLY match the D&B record,
   or verification fails). ⚠ Google may not allow switching this personal account to
   org after the fact — may need Play support or a fresh org account. Check at that step.
-- **Android app itself is ready:** same v1.5 code runs on Android (re-verified
-  2026-07-15 on the emulator — 185+/map/tours render, no crash). Remaining Android
-  platform work before Play submit: back-button handler, safe-area insets, ads
-  config, then a signed AAB (63MB, fits Play). Not started; after iOS v1.5 ships.
+- **DECISION (REVISED 2026-07-15) — v1.5 WILL add a foreground service + background
+  location.** Earlier plan was screen-on-only tours (web Geolocation + `navigator.
+  wakeLock`, no foreground service — same as the live iOS app). Rob reversed it: since
+  there's no ship deadline and narrated tours need background tracking anyway, do it
+  once in v1.5 rather than screen-on-v1.5 + foreground-v1.6 (2× review/testing). The
+  foreground service (persistent notification + continuous location) is the delivery
+  layer for the **ElevenLabs narrated tours** (phone-in-pocket, proximity-triggered
+  audio). Groundwork starting now (background-geolocation plugin); real testing on the
+  S23 + store-review justification to follow.
+- **✅ Android GPS wired (milestone one done 2026-07-15):** manifest now has
+  `ACCESS_FINE_LOCATION`/`COARSE`; `MainActivity` requests the runtime permission on
+  launch → Capacitor's WebChromeClient grants the WebView's web geolocation. Verified
+  on emulator: prompt fires → granted → coordinate returns → location dot on the map.
+  `android/` SOURCE now tracked in git (was ignored). NOTE: this is the *foreground*
+  web-geolocation path; the foreground-service work replaces/augments it for background.
+- **Test device: refurb Samsung Galaxy S23 5G (128GB) — bought 2026-07-15.** Flagship
+  = real haptic FEEL tuning (an A-series motor is too weak to judge feel) + Samsung
+  Device Care worst-case background behavior + representative of many real users.
+- **Android app runs:** same v1.5 code (re-verified on emulator — 185+/map/tours, no
+  crash). Remaining platform work before Play submit: **location permission (in
+  progress)**, back-button handler, safe-area insets, ads config, signed AAB (63MB).
 - Android toolchain + emulator (`mq_pixel`) installed on Rob's Mac (see spike note
   below). Build APK: `cd android && ./gradlew assembleDebug` (JAVA_HOME=openjdk@21,
   ANDROID_HOME=/opt/homebrew/share/android-commandlinetools).
