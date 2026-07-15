@@ -25,8 +25,13 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 CONTENT_JSON = os.path.join(PROJECT_ROOT, 'js', 'content.json')
 CARD_MANIFEST = os.path.join(PROJECT_ROOT, 'card-manifest.json')  # root — SW fetches ./card-manifest.json
-MAX_DIM = 384
-WEBP_QUALITY = 72
+# Cards render as a SQUARE crop (object-fit:cover) in a ~190pt grid cell → ~570px
+# on a 3x iPhone. Size by the SHORTER side so the square crop is always crisp;
+# cap the longer side so panoramas don't bloat. Aspect is preserved (the card also
+# serves as the progressive detail-hero placeholder).
+MIN_SIDE = 720
+MAX_SIDE = 1280
+WEBP_QUALITY = 80
 
 
 def card_path(img):
@@ -61,7 +66,13 @@ def main():
             continue
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         im = Image.open(src).convert('RGB')
-        im.thumbnail((MAX_DIM, MAX_DIM))  # max dimension, preserves aspect
+        w, h = im.size
+        s = MIN_SIDE / min(w, h)            # shorter side → MIN_SIDE
+        nw, nh = round(w * s), round(h * s)
+        if max(nw, nh) > MAX_SIDE:          # cap the longer side
+            s2 = MAX_SIDE / max(nw, nh)
+            nw, nh = round(nw * s2), round(nh * s2)
+        im = im.resize((nw, nh), Image.LANCZOS)
         im.save(dst, 'WEBP', quality=WEBP_QUALITY, method=4)
         total_bytes += os.path.getsize(dst)
         made += 1
