@@ -60,8 +60,17 @@
   once in v1.5 rather than screen-on-v1.5 + foreground-v1.6 (2× review/testing). The
   foreground service (persistent notification + continuous location) is the delivery
   layer for the **ElevenLabs narrated tours** (phone-in-pocket, proximity-triggered
-  audio). Groundwork starting now (background-geolocation plugin); real testing on the
-  S23 + store-review justification to follow.
+  audio).
+  - **✅ GROUNDWORK DONE (2026-07-15):** `@capacitor-community/background-geolocation`
+    installed + configured, Android APK compiles clean. `js/geo-background.js` =
+    start/stopBackgroundTour() wrapper (native-only) — the integration point, NOT yet
+    wired into tours. iOS Info.plist set (local): NSLocation usage strings +
+    `UIBackgroundModes=[location,audio]`. Uses a foreground service (NOT
+    `ACCESS_BACKGROUND_LOCATION`) — review-friendly. Store-review justification +
+    checklist: **`docs/BACKGROUND-LOCATION-REVIEW.md`**.
+  - **NEXT (needs S23):** wire `geo-background.js` into tour start/stop; build the
+    prominent-disclosure screen; test background survival on the S23 (Samsung Device
+    Care) + battery; hook proximity → ElevenLabs narration audio.
 - **✅ Android GPS wired (milestone one done 2026-07-15):** manifest now has
   `ACCESS_FINE_LOCATION`/`COARSE`; `MainActivity` requests the runtime permission on
   launch → Capacitor's WebChromeClient grants the WebView's web geolocation. Verified
