@@ -91,8 +91,29 @@ updates:
   fallback — remote is never required. `CONTENT_BASE_URL` in `content.js` = the CDN.
 - The service worker (`sw.js`) **bypasses `content.json`** so it can't shadow OTA
   updates with a stale cache. If you touch the SW's fetch routing, preserve that.
-- Images are still bundled in v1.5 — publishing images OTA comes with the
-  image-split step. Full design: `docs/CONTENT-ARCHITECTURE-PLAN.md`.
+### Image split (v1.5)
+
+The app bundle is ~35 MB (was 414 MB). Full-res photos live on the CDN; a small
+bundled **card tier** serves every small display.
+
+- **Cards** — `scripts/generate-cards.py` builds `images/cards/**` (384px WebP,
+  ~2.9 MB for 189) from `images/murals/**`, and writes `card-manifest.json` (root;
+  the SW precaches from it). Grid, map icons, tour pins/stops, popups, and the
+  proximity banner all use cards via `cardSrc()` in app.js.
+- **Full-res** — the detail hero uses `fullSrc()` → `cdn.muralquest.app/images/murals/…`.
+  `scripts/publish-images.py` uploads cards + full-res to R2 (`--cards-only` for
+  just the small tier).
+- **Bundle** — `cap:copy` excludes `images/murals` + `images/thumbs` (old 96px,
+  superseded) + `js/content.json`, and uses `--delete --delete-excluded` so `www/`
+  is a clean mirror (no stale files). `images/cards` IS bundled.
+- **onerror fallback** (app.js `mqCardErr`/`mqFullErr`): bundled card → CDN card →
+  CDN full → grey; detail full-res → bundled card offline. So OTA-added murals
+  (no bundled card) still show via the CDN.
+
+**Adding a mural mid-festival:** add the photo → `generate-cards.py` →
+`publish-images.py --cards-only` (upload its card + full-res) → `publish-content.py`
+(push the data manifest). The new mural then appears on next app launch, images
+served from the CDN.
 
 ## Key files
 
