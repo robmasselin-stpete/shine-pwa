@@ -115,6 +115,22 @@ bundled **card tier** serves every small display.
 (push the data manifest). The new mural then appears on next app launch, images
 served from the CDN.
 
+## Analytics (v1.5) — first-party, self-hosted
+
+Anonymous usage analytics on Cloudflare (no PII, no IP, no cross-app tracking).
+
+- **Worker** `workers/analytics/` → deployed at `analytics.muralquest.app`. `POST /e`
+  ingests event batches into **D1** (`mural-quest-analytics`). `GET /stats?key=…`
+  returns aggregates (total, sessions, by-event, by-day, top murals). Deploy with
+  `cd workers/analytics && npx wrangler deploy`; schema in `schema.sql`.
+- **Client** `js/analytics.js` — `track(event, props)` (also `window.mqTrack`),
+  anonymous session id, offline queue, `sendBeacon` flush. Events wired in app.js:
+  `app_open`, `screen_view`, `mural_open`, `filter_used`, `search`, `book_card_tap`,
+  `book_buy_click`.
+- **STATS_KEY** (the `/stats` admin gate) is a Cloudflare Worker **secret** — NOT in
+  the repo. Rotate/set with `echo <key> | npx wrangler secret put STATS_KEY` from
+  `workers/analytics/`.
+
 ## Key files
 
 - `data/murals/*.yaml` — source of truth for mural metadata
