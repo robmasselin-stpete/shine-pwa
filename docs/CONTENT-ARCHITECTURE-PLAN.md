@@ -255,6 +255,56 @@ Rationale: ship the *capability* (v1.5) with margin, prove it with a dry run, th
 layer festival *features* (v1.6). Don't let mural-of-the-day or push block the
 plumbing that daily updates actually depend on.
 
+## Daily mural auto-publish → app + Instagram (decided 2026-07-15)
+
+Rob's daily festival photo should, from ~one action, (a) go live in the app and
+(b) post to the Mural Quest Instagram. IG is a **Business/Creator account linked to
+a Facebook Page** (confirmed), so the official Instagram Content Publishing API is
+available. Chosen automation level: **"prepare then approve"** — assemble
+everything automatically, Rob taps approve, then it publishes to both. NOT fully
+unattended (a wrong artist/caption/photo going public is hard to walk back).
+
+**One action feeds three outputs:** app data (new mural), the app's "Mural of the
+Day" surface (v1.6), and the Instagram post.
+
+### Pipeline
+1. **Intake:** Rob drops the photo (or runs one command) + minimal facts (artist,
+   title).
+2. **Auto-assemble** (script/service):
+   - Thumb + optimized full-res via existing `add-photo.py` / `generate-thumbnails.sh`.
+   - **GPS from photo EXIF** → lat/lng (fallback: prompt).
+   - **Draft bio/description** via Claude API using `data/mural-quest-bio-style-card.md`.
+   - **Draft IG caption** via Claude (artist, title, location + hashtag set:
+     #StPete #StPeteArt #MuralQuest #SHINEStPete #StreetArt #DTSP).
+   - Write YAML, run `build-data.py` (staged, not yet published).
+3. **Review + approve:** show the assembled entry + drafted caption + the photo as
+   it'll appear. Rob edits/approves. (Could extend `yaml-editor.html` or a small
+   local review page.)
+4. **On approve, publish both:**
+   - Content → CDN (new mural live in app; thumb + full-res uploaded — remote
+     thumbnail is required since the mural post-dates the shipped app).
+   - Instagram → Graph API two-step: `POST /{ig-user-id}/media` (image_url = the
+     public CDN URL, caption) → `POST /{ig-user-id}/media_publish`.
+
+### Instagram Graph API notes
+- **Prereq is the CDN**: the API requires the image at a **public URL** — the same
+  remote-hosting v1.5 builds. (This is why IG automation depends on v1.5.)
+- Meta app with `instagram_content_publish` + `instagram_basic` + pages perms.
+- **Long-lived token (~60 days) needs periodic refresh** — an ongoing ops task;
+  keep the token server-side (Cloudflare Worker secret), not on a laptop. The
+  publish step can be a Worker endpoint Rob triggers on approve.
+- Rate limit ~25 posts/24h (plenty).
+- **Aspect-ratio constraint:** IG accepts ~4:5 to 1.91:1. Mural photos can be very
+  tall/wide — the assemble step may need to crop/pad the *IG copy* to a compliant
+  ratio (the app can still show the original). Real detail, not a blocker.
+- Simpler alternative if the Graph API ops feel heavy: Buffer/Later/Zapier/Make
+  can post to IG (small monthly cost, less token maintenance).
+
+### Sequencing
+- **Prereq:** v1.5 (CDN + publish; images public).
+- **Build:** v1.6 or parallel (mostly server-side, independent of the app binary).
+- Ties into the v1.6 "Mural of the Day" feature — same daily action drives it.
+
 ## Analytics (self-hosted, first-party — decided 2026-07-11)
 
 Goal (Rob): **general usage patterns** — what screens people use, how they move
