@@ -1,0 +1,14 @@
+name = "mural-quest-ig-feed"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+# In-app Instagram feed for Mural Quest. Proxies + caches the account's recent
+# media so the app never sees the IG token and IG's rate limits are respected.
+# Custom domain on the muralquest.app zone.
+routes = [
+  { pattern = "ig.muralquest.app", custom_domain = true }
+]
+
+# IG_TOKEN (long-lived Instagram User access token) is set as a secret:
+#   echo <token> | npx wrangler secret put IG_TOKEN
+# It never lives in this file or the repo.
