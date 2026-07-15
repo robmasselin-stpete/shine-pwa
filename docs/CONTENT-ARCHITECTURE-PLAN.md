@@ -209,6 +209,52 @@ anything already on device.
 
 ---
 
+## Festival daily-update workflow (the driving use case)
+
+Rob photographs a mural every day during SHINE and wants it live that day. This is
+the concrete workload v1.5 must support.
+
+**Today:** photo → `add-photo.py` → `generate-thumbnails.sh` → `build-data.py` →
+`data.js` → **rebuild app + Apple review (1–2 days)**. Can't do daily.
+
+**After v1.5:** photo → same scripts → **`publish` to CDN → live in minutes**, every
+day, no build, no review.
+
+**Critical refinement (surfaced by this workflow):** the plan bundles thumbnails for
+offline browsing, but a mural added *mid-festival* wasn't in the app at build time —
+so **new murals must have their thumbnail (and full-res) served remotely and cached
+on device.** Rule: *bundled thumbnails for the baseline (build-time) murals + remote
+thumbnails/full-res for anything published after release.* Without this, newly-added
+murals render as blank cards. The existing scripts (`scripts/add-photo.py`,
+`generate-thumbnails.sh`) already produce both sizes — the `publish` step just needs
+to upload them and bump the content version.
+
+**Time-saver to check:** if daily photos are geotagged, `add-photo.py` could auto-
+place the mural from the photo's GPS EXIF — nearly one-step add in the field.
+
+## Timeline & phasing (SHINE 2026 = November 2026)
+
+~4 months of runway from July 2026. Work backwards so v1.5 is live AND field-tested
+before the festival — Apple review + a real offline test both cost calendar time.
+
+- **v1.5 (target: live + validated by ~September)** — the plumbing. Content
+  architecture (remote images + data/routes, offline fallback), the publish step,
+  self-hosted analytics, remote-serving for post-release murals, plus housekeeping
+  (update "175+" → "185+"; optional WebP/AVIF re-compress to shrink the 386MB +
+  cut egress). Then a **dry-run daily update** in Sept/Oct to prove the workflow
+  before it matters.
+- **v1.6 (target: before November)** — festival polish on top of the proven
+  plumbing: **"Mural of the day" / "New this week"** surface (leverages the daily
+  habit; `added`/`festival` fields may already support it), a **SHINE 2026
+  collection/filter**, and — bigger lift — **push notifications** ("new mural added
+  today"; native APNs + permission flow).
+- **Android** — after iOS v1.5 validates the remote-content architecture. Not on
+  the festival critical path; nice-to-have by November, not required.
+
+Rationale: ship the *capability* (v1.5) with margin, prove it with a dry run, then
+layer festival *features* (v1.6). Don't let mural-of-the-day or push block the
+plumbing that daily updates actually depend on.
+
 ## Analytics (self-hosted, first-party — decided 2026-07-11)
 
 Goal (Rob): **general usage patterns** — what screens people use, how they move
