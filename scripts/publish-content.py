@@ -27,6 +27,8 @@ routes/YEARS metadata). Image publishing comes with the image-split step.
 Usage:
   python3 scripts/publish-content.py            # build + upload + verify
   python3 scripts/publish-content.py --dry-run  # build only; show what would upload
+  python3 scripts/publish-content.py --post 210 # publish, then post mural #210 to IG
+                                                # (drafts a caption you edit + confirm)
 """
 import json
 import os
@@ -98,6 +100,18 @@ def main():
                   "Edge cache may still be catching up — re-check in a minute.")
     except Exception as e:
         print(f"⚠ Uploaded, but could not verify the live URL: {e}")
+
+    # 4. Optionally post a mural to Instagram (opt-in, per-mural).
+    if '--post' in sys.argv:
+        try:
+            mid = sys.argv[sys.argv.index('--post') + 1]
+        except IndexError:
+            print("⚠ --post needs a mural id, e.g. --post 210")
+            return
+        print(f"\n→ Instagram post for mural #{mid}…")
+        sys.path.insert(0, os.path.join(PROJECT_ROOT, 'scripts'))
+        import ig_post
+        ig_post.post_mural(mid)
 
 
 if __name__ == '__main__':

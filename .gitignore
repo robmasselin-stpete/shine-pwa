@@ -33,3 +33,6 @@ assets/wip/ExportOptions-manual.plist
 
 # Worker build state
 workers/**/.wrangler/
+
+# Local IG posting key (Worker POST_KEY) — never commit
+.mq-ig-post-key
