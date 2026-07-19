@@ -6,7 +6,6 @@
     "cap:sync": "npm run cap:copy && npx cap sync"
   },
   "dependencies": {
-    "@capacitor-community/background-geolocation": "^1.2.26",
     "@capacitor/android": "^8.4.1",
     "@capacitor/app": "^8.1.1",
     "@capacitor/cli": "^8.2.0",
