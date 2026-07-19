@@ -251,32 +251,25 @@ function _narrationCtx() {
   return walkAudioCtx;
 }
 
-/** Play an audio URL via Web Audio. onEnd fires when the clip finishes/stops.
- *  TEMP: step toasts (A→E) so we can see exactly where playback stops on device. */
+/** Play an audio URL via Web Audio (same context as the compass beep). onEnd fires
+ *  when the clip finishes/stops. Fetch → decode → BufferSource on the shared context. */
 function playAudioUrl(url, onEnd) {
-  if (!url) { showToast('A0 no url'); return; }
+  if (!url) return;
   const ctx = _narrationCtx();
-  showToast('A ctx=' + ctx.state);
   if (_narrationSrc) { try { _narrationSrc.stop(); } catch (e) {} _narrationSrc = null; }
   _audioPlaying = true;
   fetch(url)
-    .then(r => { showToast('B http ' + r.status); return r.arrayBuffer(); })
-    .then(arr => { showToast('C bytes=' + arr.byteLength); return new Promise((res, rej) => ctx.decodeAudioData(arr, res, rej)); })
+    .then(r => r.arrayBuffer())
+    .then(arr => new Promise((res, rej) => ctx.decodeAudioData(arr, res, rej)))
     .then(buf => {
-      showToast('D decoded ' + Math.round(buf.duration) + 's ctx=' + ctx.state);
       const src = ctx.createBufferSource();
       src.buffer = buf;
       src.connect(ctx.destination);
       src.onended = () => { if (_narrationSrc === src) { _narrationSrc = null; _audioPlaying = false; if (onEnd) onEnd(); } };
       src.start();
       _narrationSrc = src;
-      setTimeout(() => showToast('E playing ctx=' + ctx.state), 300);
     })
-    .catch(e => {
-      _audioPlaying = false;
-      if (onEnd) onEnd();
-      showToast('ERR ' + ((e && (e.name || e.message)) || 'failed'));
-    });
+    .catch(e => { _audioPlaying = false; if (onEnd) onEnd(); console.warn('[narration] play failed', e); });
 }
 
 /** Stop any playing narration. */
