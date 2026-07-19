@@ -236,51 +236,59 @@ function toggleFurtherWork(btn) {
 window.toggleFurtherWork = toggleFurtherWork;
 
 // Audio clip player
-let _audioPlayer = null;
+// Audio playback. On iOS the WKWebView won't route HTML5 audio (new Audio()) to the
+// speaker, so narration plays NATIVELY via the AVPlayer-backed NativeAudio plugin
+// (AppDelegate.swift) — reliable through the silent switch + backgroundable for tours.
+// On web/PWA (no native bridge) it falls back to an HTML5 Audio element.
+let _audioPlayer = null;    // web fallback element
+let _audioPlaying = false;  // play-state (native gives no 'ended' callback)
+
+function _nativeAudio() {
+  const cap = window.Capacitor;
+  return (cap && cap.isNativePlatform && cap.isNativePlatform() && cap.nativePromise) ? cap : null;
+}
+
+/** Play an audio URL. Native AVPlayer on device; HTML5 Audio on web. */
+function playAudioUrl(url, onEnd) {
+  if (!url) return;
+  const cap = _nativeAudio();
+  if (cap) {
+    try { cap.nativePromise('NativeAudio', 'play', { url }); } catch (e) { /* silent */ }
+    _audioPlaying = true;
+    return;
+  }
+  try {
+    if (_audioPlayer) { try { _audioPlayer.pause(); } catch (e) {} }
+    _audioPlayer = new Audio(url);
+    _audioPlayer.play().catch(() => {});
+    _audioPlayer.addEventListener('ended', () => { _audioPlayer = null; _audioPlaying = false; if (onEnd) onEnd(); });
+    _audioPlaying = true;
+  } catch (e) { /* silent */ }
+}
+
+/** Stop any playing audio (native or web). */
+function stopAudioUrl() {
+  const cap = _nativeAudio();
+  if (cap) { try { cap.nativePromise('NativeAudio', 'stop', {}); } catch (e) {} }
+  if (_audioPlayer) { try { _audioPlayer.pause(); } catch (e) {} _audioPlayer = null; }
+  _audioPlaying = false;
+}
+
+/** Detail-page "Listen" button — tap to play, tap again to stop. */
 function toggleAudioClip(url) {
   const btn = document.getElementById('audio-btn');
-  if (_audioPlayer && !_audioPlayer.paused) {
-    _audioPlayer.pause();
-    _audioPlayer.currentTime = 0;
-    _audioPlayer = null;
+  if (_audioPlaying) {
+    stopAudioUrl();
     if (btn) btn.classList.remove('playing');
     return;
   }
-  _audioPlayer = new Audio(url);
+  playAudioUrl(url, () => { if (btn) btn.classList.remove('playing'); });
   if (btn) btn.classList.add('playing');
-  _audioPlayer.addEventListener('error', () => {
-    const e = _audioPlayer && _audioPlayer.error;
-    showToast('Audio error: ' + (e ? 'media code ' + e.code : 'load failed'));
-    if (btn) btn.classList.remove('playing');
-  });
-  const _p = _audioPlayer.play();
-  if (_p && _p.catch) _p.catch(err => {
-    showToast('Play blocked: ' + ((err && err.name) || 'error'));
-    if (btn) btn.classList.remove('playing');
-  });
-  _audioPlayer.addEventListener('ended', () => {
-    if (btn) btn.classList.remove('playing');
-    _audioPlayer = null;
-  });
 }
 
-/** Play a narration clip (stops any current playback first). Not a toggle —
- *  used for tour auto-play on arrival. Silent if url is empty or play() is blocked. */
+/** Play a narration clip (tour auto-play on arrival). Stops any current playback. */
 function playNarration(url) {
-  if (!url) return;
-  try {
-    if (_audioPlayer) { try { _audioPlayer.pause(); } catch (e) {} }
-    const btn = document.getElementById('audio-btn');
-    if (btn) btn.classList.remove('playing');
-    _audioPlayer = new Audio(url);
-    _audioPlayer.addEventListener('error', () => {
-      const e = _audioPlayer && _audioPlayer.error;
-      showToast('Audio error: ' + (e ? 'media code ' + e.code : 'load failed'));
-    });
-    const _p = _audioPlayer.play();
-    if (_p && _p.catch) _p.catch(err => showToast('Play blocked: ' + ((err && err.name) || 'error')));
-    _audioPlayer.addEventListener('ended', () => { _audioPlayer = null; });
-  } catch (e) { /* silent */ }
+  playAudioUrl(url);
 }
 
 /** Tour narration setting — auto-play a mural's clip when you arrive on a tour.
@@ -3602,7 +3610,7 @@ function renderTourLoop() {
     const b = e.currentTarget;
     b.classList.toggle('on', on);
     b.setAttribute('aria-pressed', String(on));
-    if (!on && _audioPlayer) { try { _audioPlayer.pause(); } catch (err) {} _audioPlayer = null; }
+    if (!on) stopAudioUrl();
     showToast(on ? 'Narration on — plays as you arrive' : 'Narration off');
   });
 
