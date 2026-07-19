@@ -58,6 +58,26 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — GOTCHA: bg-geo plugin merged foreground-service perms (stripped)
+
+- During Play internal-testing setup, the **App content ▸ Foreground service permissions**
+  declaration flagged that the app requests `FOREGROUND_SERVICE_LOCATION`. **We never
+  declared it** — the `@capacitor-community/background-geolocation` plugin (installed for
+  the FUTURE narrated-tours foreground service, NOT wired into this build) merges in
+  `FOREGROUND_SERVICE` + `FOREGROUND_SERVICE_LOCATION` permissions AND a
+  `com.equimaps.capacitor_background_geolocation.BackgroundGeolocationService`
+  (type=location) via manifest merge.
+- **Fix:** stripped all three from `android/app/src/main/AndroidManifest.xml` via
+  `tools:node="remove"` (needs `xmlns:tools` on `<manifest>`). Rebuilt → **versionCode 2**.
+  Verified merged manifest no longer contains FOREGROUND_SERVICE* or the service;
+  ACCESS_FINE/COARSE_LOCATION (foreground GPS) remain. This keeps the app out of Play's
+  foreground-service-location declaration + background-location review until we actually
+  ship the feature.
+- **⚠ WHEN implementing background location (post-S23):** remove those three
+  `tools:node="remove"` overrides so the plugin's service + permissions merge back in,
+  THEN do the full disclosure/review per `docs/BACKGROUND-LOCATION-REVIEW.md`.
+- Uploaded **v2** AAB to the internal track (v1 had the permission; v2 doesn't).
+
 ## 2026-07-19 — Android release signing + signed AAB (for Play testing)
 
 - **Upload keystore created + Gradle signing wired.** Ready to upload to Play.

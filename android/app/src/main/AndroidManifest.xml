@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -33,6 +34,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
+
+        <!-- The @capacitor-community/background-geolocation plugin (installed for the
+             FUTURE narrated-tours foreground service) merges in a location foreground
+             service. It is NOT wired into this build (geo-background.js is never called),
+             so strip it here to avoid shipping/declaring an unused foreground service.
+             Remove this override when background location is actually implemented. -->
+        <service
+            android:name="com.equimaps.capacitor_background_geolocation.BackgroundGeolocationService"
+            tools:node="remove" />
     </application>
 
     <!-- Permissions -->
@@ -42,4 +52,11 @@
          are screen-on only — no background/foreground-service location. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Same as the service above: strip the foreground-service (location) permissions
+         the background-geolocation plugin merges in, since this build doesn't run it.
+         Removing these keeps the app out of Google Play's foreground-service-location
+         declaration + background-location review until the feature actually ships. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" tools:node="remove" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" tools:node="remove" />
 </manifest>
