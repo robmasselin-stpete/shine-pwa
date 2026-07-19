@@ -58,6 +58,24 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — iOS build 137 (Web Audio narration — reuse the path that works)
+
+- Diagnosis that cracked it: (a) SW is NOT registered on native (index.html:238) so builds
+  weren't stale — the new code WAS running; (b) **Apple Music did NOT duck when tapping
+  Listen** → the `.duckOthers` session never engaged → the AppDelegate `NativeAudio` plugin
+  was never actually invoked (CAPBridgedPlugin auto-registration in AppDelegate is
+  unreliable); (c) the compass **beep works and uses the Web Audio API** (`walkAudioCtx`).
+  Also: TestFlight/Release builds are NOT Web-Inspector-inspectable ('No Inspectable
+  Applications') — can't use Safari Web Inspector without setting webView.isInspectable.
+- **FIX (137): narration plays via Web Audio** — the proven path. `playAudioUrl()` fetches
+  the clip → `decodeAudioData` → `AudioBufferSourceNode` on the shared `walkAudioCtx`.
+  Replaces both the silent WKWebView HTML5 path and the never-invoked native plugin. A
+  diagnostic toast fires on any fetch/decode error so we're not blind. app.js?v=148, SW v153.
+- If 137 still fails, the toast text (EncodingError / NotSupportedError / etc.) pinpoints the
+  Web Audio failure. The AppDelegate NativeAudio plugin + AVAudioSession block are left in
+  place (harmless, unused by JS now); revisit proper native audio only if Web Audio can't do
+  background playback for the pocketed-phone tours.
+
 ## 2026-07-19 — iOS build 136 (NATIVE audio playback — the real fix)
 
 - Build 135 (setActive) STILL silent, and crucially **no error toast** — meaning JS
