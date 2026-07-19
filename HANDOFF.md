@@ -69,11 +69,23 @@
 - **DUNS number: `145568362`** (one number serves both Apple + Google), tied to
   Pelican Digital LLC. Org name + address entered on the platforms must match the
   D&B / Sunbiz records exactly.
-- **⛔ BLOCKED on Google Play by the "verify you have an Android device" step** —
-  Rob has no physical Android device, and our emulator uses a `google_apis` image
-  (no Play Store app), so it can't do the Play Store sign-in / QR scan Google wants.
-  **Rob is buying a cheap Android device** (WiFi-only budget Android ~$50–100, or a
-  used Pixel 6a/7a ~$120–180 recommended for real GPS testing).
+- **✅ UNBLOCKED (2026-07-19): physical Android phone in hand + Google Play login
+  done.** The "verify you have an Android device" step that blocked account setup is
+  cleared. Remaining account work: confirm whether it landed as **personal** or
+  **organization** (org = avoids the 20-tester/14-day closed-testing gauntlet); if
+  still personal, do the org conversion + enter DUNS `145568362` (org name + address
+  must EXACTLY match the D&B record). See sequence below.
+  - **✅ DONE 2026-07-19: account converted to ORGANIZATION.** Pelican Digital LLC.
+    - **Developer account ID: `7682684932099684983`**. Account owner rob.m.asselin@gmail.com.
+    - Org address on file: 520 25th Ave N, Saint Petersburg FL 33704-2824.
+    - **Website `muralquest.app` verified** (green check) — this was the gate to org
+      conversion. Verified via Google Search Console (HTML-file method): the file
+      `google8d2fd99c7e84a397.html` was deployed to the muralquest.app Netlify site root
+      (content `google-site-verification: google8d2fd99c7e84a397.html`). ⚠ **Leave that
+      file in place permanently** — removing it un-verifies the site. It lives in
+      `~/muralquest-website/google8d2fd99c7e84a397.html` (not this repo).
+    - Org account means **no 20-tester/14-day closed-testing gauntlet** — can go
+      straight to production track when ready.
 - **Unblock sequence once the device arrives:** (1) finish Google Play account
   verification with the device → (2) change account type to **Organization** →
   (3) enter DUNS `145568362` (org name + address must EXACTLY match the D&B record,
@@ -97,12 +109,23 @@
   - **NEXT (needs S23, ~Fri 2026-07-18):** wire `geo-background.js` into tour start/stop;
     build the prominent-disclosure screen; test background survival on the S23 (Samsung
     Device Care) + battery; hook proximity → ElevenLabs narration audio.
-  - **S23 verification checklist (code already done, just needs a real-device pass):**
-    (1) **back button** — overlay-close order, return-to-map, press-twice-to-exit toast;
-    (2) **safe-area/edge-to-edge** — top header + bottom tab bar NOT clipped under the
-    One UI status/nav bars, status-bar icons legible (if insets read 0, add the native
-    inset shim per the Play-readiness bullet above); (3) **foreground GPS** — permission
-    prompt + live `watchPosition` dot on the map; (4) **haptics** feel tuning.
+  - **S23 verification pass — RESULTS (2026-07-19, Galaxy S23 / Android 16):**
+    - ✅ **Location permission prompt** fires on launch (Precise/Approximate,
+      While-using-the-app) — MainActivity runtime request works on real hardware.
+    - ✅ **Map + pins + geolocation** render.
+    - ✅ **Safe-area top** — header clears the status bar.
+    - ✅ **Safe-area bottom** — was BROKEN (tab bar under nav buttons), native inset shim
+      added + re-verified fixed (see Play-readiness bullet above).
+    - ✅ **Back → returns to map** from another tab.
+    - ✅ **Back → double-back-to-exit** with "Press back again to exit" toast; never a
+      silent first-press exit (Play-friendly). Confirmed exits on 2nd back within 2s.
+    - ✅ **No crash** (process stayed alive through the pass; logcat clean).
+    - ✅ **Detail back** (manual) — open a mural → back → closes detail, not exit.
+    - ✅ **Live GPS blue dot** (manual) — tracks on the map.
+    - ✅ **Haptics** (manual) — feel good on the S23 motor (the reason for the flagship).
+    - **→ Android build FUNCTIONALLY VERIFIED end-to-end on real hardware (2026-07-19).**
+    - APK on device is the debug build (402 MB, full-res bundled). Release AAB (~63 MB,
+      images excluded) is a separate build step for actual Play upload.
 - **✅ Android GPS wired (milestone one done 2026-07-15):** manifest now has
   `ACCESS_FINE_LOCATION`/`COARSE`; `MainActivity` requests the runtime permission on
   launch → Capacitor's WebChromeClient grants the WebView's web geolocation. Verified
@@ -126,11 +149,17 @@
     + dark icons via `@capacitor/status-bar`. The CSS already uses `env(safe-area-inset-*)`
     (`--safe-top`/`--safe-bottom`) throughout, so layout is inset-aware. Deliberately did
     NOT call `setOverlaysWebView` (avoids clipping where env() reads 0).
-  - **⚠ FLAG (version variance):** on **Android 15+ edge-to-edge is forced**, so the OS
-    may ignore the status-bar bg/overlay calls AND env() insets must actually populate.
-    Verify on emulator / S23: (a) status-bar icons legible, (b) top header + bottom tab
-    bar not clipped under the system bars. If env() insets read 0 while edge-to-edge,
-    add a small native inset shim (read insets natively → set `--safe-top`/`--safe-bottom`).
+  - **✅ RESOLVED on S23 (2026-07-19): env() insets DID read 0 → native shim added.**
+    Real-device test on the **Galaxy S23, Android 16 (SDK 36)** confirmed the bottom tab
+    bar was overlapped by the system nav buttons — Android WebView doesn't populate
+    `env(safe-area-inset-*)` (unlike iOS WKWebView), and Android 16 forces edge-to-edge.
+    **Fix:** `MainActivity.onCreate` now sets a `ViewCompat.setOnApplyWindowInsetsListener`
+    on the bridge WebView that reads the real system-bar insets and injects them into
+    `--safe-top`/`--safe-bottom`/`--safe-left`/`--safe-right` (px÷density) via
+    `evaluateJavascript`, re-applied on every insets change. iOS unaffected (native code
+    doesn't run there; env() stands). Rebuilt + reinstalled → tab bar now clears the nav
+    bar, top header clears the status bar. **No app.js/CSS change needed** — the shim
+    feeds the same vars the CSS already uses.
   - Bumped `js/app.js?v=144` (index.html) + SW `CACHE_NAME shine-v149`. `cap:sync` run
     (registers `@capacitor/app` in the gitignored native gradle files). Minor dep drift:
     `@capacitor/core` went to 8.4.1 vs `ios@8.2.0` — compatible within 8.x, align later.
