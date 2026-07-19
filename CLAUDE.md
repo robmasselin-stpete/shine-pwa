@@ -163,6 +163,7 @@ Instead, a Rob-side tool posts a chosen mural to the Mural Quest IG when he want
 - `js/routes.js` — runtime route paths in {from, to, path} format (apply route-editor pastes here)
 - `scripts/build-data.py` — YAML → data.js **and** content.json + content-meta.js. Safe to run after YAML edits.
 - `scripts/publish-content.py` — build + push content.json live to R2 (OTA; no app build). See "Content OTA" above.
+- `scripts/gen-narration.py` — draft per-mural ElevenLabs narration scripts via the Claude API → `data/narration/*.txt` for review. Scripts apply via each mural's `audio:` YAML field (→ `aud` in data.js/content.json). Key: `ANTHROPIC_API_KEY` env or gitignored `.mq-anthropic-key`. See `docs/NARRATION.md`.
 - `scripts/build-routes.py` — **DEPRECATED for routes.js; do not run.**
 - `tools/yaml-editor.html` — mural metadata editor PWA
 - `tools/route-editor.html` — tour route editor PWA

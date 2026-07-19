@@ -4827,3 +4827,72 @@ if (returnMural) {
   const m = murals.find(mu => mu.id === mid);
   if (m) showDetail(m);
 }
+
+// =============================================
+// Native (Android) integration — status bar + hardware back button
+// =============================================
+// No bundler here, so the App / StatusBar plugins are reached via
+// window.Capacitor.Plugins (bare ES imports fail — see CLAUDE.md). All no-ops on
+// web; iOS keeps its own status-bar behavior. Requires @capacitor/app +
+// @capacitor/status-bar to be synced into the native project (npm run cap:sync).
+(function initNative() {
+  const cap = window.Capacitor;
+  if (!cap || !cap.isNativePlatform || !cap.isNativePlatform()) return;
+  const P = cap.Plugins || {};
+
+  // ── Status bar: cream background + dark icons to match the app's light UI.
+  // NOTE: not calling setOverlaysWebView — Capacitor's default keeps the WebView
+  // below the status bar, so no content is clipped even where env(safe-area-inset)
+  // reads 0. On Android 15+ (edge-to-edge is forced) these calls may be ignored by
+  // the OS; verify the status-bar look + that the top header isn't clipped on the
+  // emulator / S23, and add a native inset shim only if env() insets read 0.
+  if (P.StatusBar) {
+    try { P.StatusBar.setStyle({ style: 'LIGHT' }); } catch (e) {}          // dark icons on light bg
+    try { P.StatusBar.setBackgroundColor({ color: '#F7F4EF' }); } catch (e) {} // Android-only; cream
+  }
+
+  // ── Hardware/gesture back button (Android). Mirrors the app's on-screen
+  // back/close actions, deepest overlay first; at the root, press back twice to
+  // exit (Play-friendly — never a silent hard exit on the first press).
+  const App = P.App;
+  if (!App || !App.addListener) return;
+
+  let lastBack = 0;
+  App.addListener('backButton', () => {
+    // 1) Fullscreen photo lightbox
+    const lb = document.querySelector('.photo-lightbox:not(.closing)');
+    if (lb) {
+      lb.classList.add('closing');
+      lb.addEventListener('animationend', () => lb.remove(), { once: true });
+      return;
+    }
+    // 2) Any dialog overlay (About, Discover Mode settings, etc.)
+    const dialog = document.querySelector('.discover-dialog-overlay');
+    if (dialog) { dialog.remove(); return; }
+    // 3) Map help annotations
+    if (state.helpVisible) { closeHelp(); return; }
+    // 4) GoTo (single-mural navigation) mode
+    if (state.gotoMode) { exitGotoMode(); return; }
+    // 5) Detail page (a mural OR the SHINE book — both use #detail-page)
+    if (detailPage && !detailPage.hidden) {
+      stopDetailCompass();
+      detailPage.hidden = true;
+      state.selectedMural = null;
+      return;
+    }
+    // 6) Not on the default (map) tab → return home
+    if (state.tab !== 'map') { switchTab('map'); return; }
+    // 7) Root: press back twice within 2s to exit
+    const now = Date.now();
+    if (now - lastBack < 2000) { App.exitApp(); return; }
+    lastBack = now;
+    const old = document.querySelector('.discover-toast');
+    if (old) old.remove();
+    const toast = document.createElement('div');
+    toast.className = 'discover-toast';
+    toast.textContent = 'Press back again to exit';
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('visible'));
+    setTimeout(() => { toast.classList.remove('visible'); setTimeout(() => toast.remove(), 400); }, 2000);
+  });
+})();

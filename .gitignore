@@ -44,3 +44,6 @@ workers/**/.wrangler/
 
 # Local IG posting key (Worker POST_KEY) — never commit
 .mq-ig-post-key
+
+# Anthropic API key for scripts/gen-narration.py — never commit
+.mq-anthropic-key

@@ -31,6 +31,32 @@
 > - **In parallel now:** Rob starts **ElevenLabs** narration content (independent of the
 >   plumbing); Claude does **foreground-service groundwork** (see Android section). S23
 >   arrives ~2026-07-18 → real background/GPS/haptic testing.
+> - **✅ NARRATION TOOLING (2026-07-15):** `scripts/gen-narration.py` drafts per-mural
+>   audio scripts via the Claude API (opus-4-8) → `data/narration/*.txt` for review.
+>   Scripts land in each mural's `audio:` YAML field → `aud` in data.js/content.json.
+>   Full workflow + secure API-key setup: **`docs/NARRATION.md`**. Rob: drop in the key,
+>   then `python3 scripts/gen-narration.py --route downtown-north`.
+
+## 2026-07-15 — Narration script tooling (ElevenLabs tours)
+
+- **`scripts/gen-narration.py`** — drafts per-mural spoken-narration scripts from
+  existing mural data (`insp`/`bio`/`desc`) via the **Claude API** (`claude-opus-4-8`,
+  adaptive thinking), in the app's bio voice tuned for audio (~100–150 words, numbers
+  spelled out, no URLs/handles, end on a real detail). Writes to
+  `data/narration/{id}-{slug}.txt` for **review** — never auto-applies. Flags:
+  `--route <id>` (reads ordered ids from `ROUTE_DEFS`), `--ids`, `--all`, `--force`,
+  `--print`. Full doc: **`docs/NARRATION.md`**.
+- **Data path:** the script text goes in a mural's **`audio:`** YAML field →
+  `build-data.py` emits it as **`aud`** in both `js/data.js` and `js/content.json`.
+  All 189 murals currently have an empty `aud`. Apply = paste final → build-data.py →
+  publish-content.py (OTA, no rebuild).
+- **API key handling (never committed):** reads `ANTHROPIC_API_KEY` env, else a
+  gitignored **`.mq-anthropic-key`** file at repo root (added to `.gitignore`). Rob
+  sets it in his own shell / on disk — not pasted in chat (same model as
+  `.mq-ig-post-key`). Anthropic Python SDK installed (`pip3 install anthropic`, 0.116.0).
+- **NEXT:** Rob drops in the key → `gen-narration.py --route downtown-north` (16 stops)
+  → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
+  foreground-service background-location work; S23 ~2026-07-18).
 
 ## 2026-07-15 — Android / Google Play + DUNS (in progress)
 
@@ -68,9 +94,15 @@
     `UIBackgroundModes=[location,audio]`. Uses a foreground service (NOT
     `ACCESS_BACKGROUND_LOCATION`) — review-friendly. Store-review justification +
     checklist: **`docs/BACKGROUND-LOCATION-REVIEW.md`**.
-  - **NEXT (needs S23):** wire `geo-background.js` into tour start/stop; build the
-    prominent-disclosure screen; test background survival on the S23 (Samsung Device
-    Care) + battery; hook proximity → ElevenLabs narration audio.
+  - **NEXT (needs S23, ~Fri 2026-07-18):** wire `geo-background.js` into tour start/stop;
+    build the prominent-disclosure screen; test background survival on the S23 (Samsung
+    Device Care) + battery; hook proximity → ElevenLabs narration audio.
+  - **S23 verification checklist (code already done, just needs a real-device pass):**
+    (1) **back button** — overlay-close order, return-to-map, press-twice-to-exit toast;
+    (2) **safe-area/edge-to-edge** — top header + bottom tab bar NOT clipped under the
+    One UI status/nav bars, status-bar icons legible (if insets read 0, add the native
+    inset shim per the Play-readiness bullet above); (3) **foreground GPS** — permission
+    prompt + live `watchPosition` dot on the map; (4) **haptics** feel tuning.
 - **✅ Android GPS wired (milestone one done 2026-07-15):** manifest now has
   `ACCESS_FINE_LOCATION`/`COARSE`; `MainActivity` requests the runtime permission on
   launch → Capacitor's WebChromeClient grants the WebView's web geolocation. Verified
@@ -81,8 +113,27 @@
   = real haptic FEEL tuning (an A-series motor is too weak to judge feel) + Samsung
   Device Care worst-case background behavior + representative of many real users.
 - **Android app runs:** same v1.5 code (re-verified on emulator — 185+/map/tours, no
-  crash). Remaining platform work before Play submit: **location permission (in
-  progress)**, back-button handler, safe-area insets, ads config, signed AAB (63MB).
+  crash). Remaining platform work before Play submit: **ads config, signed AAB (63MB)**,
+  and on-device verification of the items below. (Location ✅, back-button ✅,
+  safe-area/status-bar ✅ code-complete — see next bullet.)
+- **✅ Play-readiness code (2026-07-15, code-complete, needs on-device verify):**
+  - **Hardware back button** — added `@capacitor/app`; handler at the END of `js/app.js`
+    (`initNative()`, native-only). Closes the deepest overlay first (photo lightbox →
+    dialog overlay → map help → GoTo mode → detail page), else returns to the map tab,
+    else **press-back-twice-to-exit** with a toast (never a silent first-press exit —
+    Play-friendly). Reached via `window.Capacitor.Plugins.App` (no bundler).
+  - **Status bar / safe-area** — same `initNative()` sets a cream (`#F7F4EF`) status bar
+    + dark icons via `@capacitor/status-bar`. The CSS already uses `env(safe-area-inset-*)`
+    (`--safe-top`/`--safe-bottom`) throughout, so layout is inset-aware. Deliberately did
+    NOT call `setOverlaysWebView` (avoids clipping where env() reads 0).
+  - **⚠ FLAG (version variance):** on **Android 15+ edge-to-edge is forced**, so the OS
+    may ignore the status-bar bg/overlay calls AND env() insets must actually populate.
+    Verify on emulator / S23: (a) status-bar icons legible, (b) top header + bottom tab
+    bar not clipped under the system bars. If env() insets read 0 while edge-to-edge,
+    add a small native inset shim (read insets natively → set `--safe-top`/`--safe-bottom`).
+  - Bumped `js/app.js?v=144` (index.html) + SW `CACHE_NAME shine-v149`. `cap:sync` run
+    (registers `@capacitor/app` in the gitignored native gradle files). Minor dep drift:
+    `@capacitor/core` went to 8.4.1 vs `ios@8.2.0` — compatible within 8.x, align later.
 - Android toolchain + emulator (`mq_pixel`) installed on Rob's Mac (see spike note
   below). Build APK: `cd android && ./gradlew assembleDebug` (JAVA_HOME=openjdk@21,
   ANDROID_HOME=/opt/homebrew/share/android-commandlinetools).

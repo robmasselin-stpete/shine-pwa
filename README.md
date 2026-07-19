@@ -39,8 +39,10 @@ shine-pwa/
 │       ├── 002-amy-ilic-volpe-2025.yaml
 │       └── ...             # 115 total (49 enhanced, 67 legacy)
 ├── scripts/
-│   ├── build-data.py       # YAML → data.js compiler with validation
+│   ├── build-data.py       # YAML → data.js + content.json compiler with validation
 │   ├── extract-card.py     # PDF detail card → YAML extractor
+│   ├── gen-narration.py    # Draft ElevenLabs tour narration scripts via the Claude API
+│   ├── publish-content.py  # Push content.json live to R2 (OTA content updates)
 │   ├── migrate.py          # One-time: original data.js → YAML (reference)
 │   ├── add-photo.py        # Helper for adding mural photos
 │   ├── requirements.txt    # Python deps: pyyaml, PyPDF2
@@ -59,7 +61,8 @@ shine-pwa/
     ├── DATA-PIPELINE.md    # Build script internals, field mapping, validation
     ├── ADDING-A-MURAL.md   # Step-by-step mural addition checklist
     ├── ENHANCING-WITH-CLAUDE.md  # Bio enhancement workflow with Claude
-    └── DETAIL-CARD-FORMATS.md    # PDF parsing reference for extract-card.py
+    ├── DETAIL-CARD-FORMATS.md    # PDF parsing reference for extract-card.py
+    └── NARRATION.md              # ElevenLabs tour narration script workflow
 ```
 
 ## Architecture
@@ -224,4 +227,5 @@ git add -A && git commit -m "update" && git push
 - [docs/DATA-PIPELINE.md](docs/DATA-PIPELINE.md) — Build script internals, field mapping, validation rules
 - [docs/ADDING-A-MURAL.md](docs/ADDING-A-MURAL.md) — Step-by-step mural addition workflow
 - [docs/ENHANCING-WITH-CLAUDE.md](docs/ENHANCING-WITH-CLAUDE.md) — Bio enhancement workflow with Claude
+- [docs/NARRATION.md](docs/NARRATION.md) — ElevenLabs tour narration script workflow (`gen-narration.py`, API-key setup)
 - [docs/DETAIL-CARD-FORMATS.md](docs/DETAIL-CARD-FORMATS.md) — PDF parsing reference for extract-card.py
