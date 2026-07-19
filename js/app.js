@@ -302,6 +302,12 @@ function playNarration(url) {
   playAudioUrl(url);
 }
 
+// app.js is an ES module, so functions are module-scoped, NOT global. The detail-page
+// "Listen" button uses an inline onclick="toggleAudioClip(...)" which needs the function
+// on window — without this it throws a silent ReferenceError and nothing happens. THIS
+// is why Listen never played, regardless of the audio backend (session/native/Web Audio).
+window.toggleAudioClip = toggleAudioClip;
+
 /** Tour narration setting — auto-play a mural's clip when you arrive on a tour.
  *  Default ON (it's a narrated tour); the tour-page toggle opts out. */
 function tourNarrateOn() { return localStorage.getItem('mq_tour_narrate') !== 'off'; }
