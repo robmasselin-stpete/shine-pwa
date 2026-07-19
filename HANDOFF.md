@@ -58,6 +58,31 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — ✅ Mural Quest LIVE on Google Play Internal Testing
+
+- **Android app is on Play internal testing** (the TestFlight analog — no review wait,
+  up to 100 testers, auto-updates). Full setup done this session:
+  - Org account (Pelican Digital LLC), website verified, app created as
+    `com.muralquest.stpete` (matches iOS bundle id).
+  - **v2 (versionCode 2, versionName 1.5)** signed AAB (39 MB) live on the **Internal
+    testing** track, "Available to internal testers." v1 had the stray foreground-service
+    permission; v2 is the clean build (foreground GPS only).
+  - Store listing complete (name/short/full desc, icon 512, feature graphic 1024×500,
+    4 phone screenshots — all generated to spec in `assets/wip/play-listing/` +
+    `~/Desktop/mural-quest-play-assets/`).
+  - All App content declarations done: privacy policy (muralquest.app/privacy.html),
+    app access (no restriction), ads (No), content rating (Everyone),
+    target audience (18+), data safety (App interactions + in-app search history only;
+    anonymous; location NOT collected — used on-device), advertising ID (No),
+    financial/health/news/government (all No/none).
+  - **App submitted for review** (Submission ID 1, "In review") → clears the
+    `(unreviewed)` temp name on approval.
+  - **3 testers** ("First Android Testers" email list) assigned; share the Internal
+    testing → Testers → Copy-link invite so they can install.
+- **Play publishing recap for future builds:** bump `versionCode` in
+  `android/app/build.gradle` → `./gradlew bundleRelease` → upload the AAB to a track →
+  publish. Keystore + signing already wired (see the release-signing section below).
+
 ## 2026-07-19 — GOTCHA: bg-geo plugin merged foreground-service perms (stripped)
 
 - During Play internal-testing setup, the **App content ▸ Foreground service permissions**
