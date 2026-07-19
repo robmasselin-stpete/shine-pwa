@@ -3581,6 +3581,12 @@ function renderTourLoop() {
     state.tourWalking = false;
     state.tourArrived = false;
     state.tourGoneTooFar = false;
+    // Jumping ahead = arriving at that mural — play its narration (tap is a user
+    // gesture, so the Web Audio context unlocks fine here).
+    if (tourNarrateOn()) {
+      const m = state.tourStops[nextIdx];
+      if (m && m.aud) playNarration(m.aud);
+    }
     hapticVibrate(200);
     renderTourBottom();
   });
@@ -3590,6 +3596,9 @@ function renderTourLoop() {
     state.tourWalking = true;
     state.tourArrived = false;
     state.tourGoneTooFar = false;
+    // Unlock the shared audio context on this gesture so GPS-arrival narration (fired
+    // later without a gesture) can play. Web Audio needs a prior user-gesture unlock.
+    _narrationCtx();
     bearingDetentArmed = true; bearingMedFiredLeft = false; bearingMedFiredRight = false; bearingHardFired = false;
     hapticVibrate(200);
     requestWakeLock();
