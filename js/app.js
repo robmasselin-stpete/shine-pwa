@@ -248,7 +248,16 @@ function toggleAudioClip(url) {
   }
   _audioPlayer = new Audio(url);
   if (btn) btn.classList.add('playing');
-  _audioPlayer.play();
+  _audioPlayer.addEventListener('error', () => {
+    const e = _audioPlayer && _audioPlayer.error;
+    showToast('Audio error: ' + (e ? 'media code ' + e.code : 'load failed'));
+    if (btn) btn.classList.remove('playing');
+  });
+  const _p = _audioPlayer.play();
+  if (_p && _p.catch) _p.catch(err => {
+    showToast('Play blocked: ' + ((err && err.name) || 'error'));
+    if (btn) btn.classList.remove('playing');
+  });
   _audioPlayer.addEventListener('ended', () => {
     if (btn) btn.classList.remove('playing');
     _audioPlayer = null;
@@ -264,7 +273,12 @@ function playNarration(url) {
     const btn = document.getElementById('audio-btn');
     if (btn) btn.classList.remove('playing');
     _audioPlayer = new Audio(url);
-    _audioPlayer.play().catch(() => {});
+    _audioPlayer.addEventListener('error', () => {
+      const e = _audioPlayer && _audioPlayer.error;
+      showToast('Audio error: ' + (e ? 'media code ' + e.code : 'load failed'));
+    });
+    const _p = _audioPlayer.play();
+    if (_p && _p.catch) _p.catch(err => showToast('Play blocked: ' + ((err && err.name) || 'error')));
     _audioPlayer.addEventListener('ended', () => { _audioPlayer = null; });
   } catch (e) { /* silent */ }
 }
