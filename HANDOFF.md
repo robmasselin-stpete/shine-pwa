@@ -58,6 +58,25 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — iOS build 139 — ROOT CAUSE: Listen onclick never fired
+
+- **THE actual bug (builds 134–138 all fixed the wrong layer):** the detail-page Listen
+  button uses inline `onclick="toggleAudioClip(...)"`, but **app.js is an ES module** so
+  its functions are module-scoped, NOT global. `toggleAudioClip` was never exposed to
+  `window` → the inline onclick threw a silent ReferenceError → **the function was never
+  called.** No sound, no toast, nothing — regardless of the audio backend. Present since
+  the button was added 2026-03-30.
+- Diagnosed via a step-trace (A→E toasts in playAudioUrl): tapping Listen produced NOT EVEN
+  the first unconditional toast → the function wasn't running at all.
+- **FIX (139): `window.toggleAudioClip = toggleAudioClip;`** (like the app's other inline-
+  handler exposures: toggleLike, startDirections, etc. — audio was just missed).
+- Audio backend now = Web Audio API (build 137) which is the proven-working path (compass
+  beep). Tour arrival narration (`playNarration`) was always called directly (not inline
+  onclick) so it was only ever blocked by the backend, now Web Audio.
+- 139 keeps the A→E trace toasts to confirm the full chain; **once audio is confirmed, do a
+  cleanup build to strip the trace toasts** (leave only a plain error toast or none).
+- app.js?v=150, SW v155.
+
 ## 2026-07-19 — iOS build 137 (Web Audio narration — reuse the path that works)
 
 - Diagnosis that cracked it: (a) SW is NOT registered on native (index.html:238) so builds
