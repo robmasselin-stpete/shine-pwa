@@ -58,6 +58,24 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — iOS build 136 (NATIVE audio playback — the real fix)
+
+- Build 135 (setActive) STILL silent, and crucially **no error toast** — meaning JS
+  `play()` resolved with no error. The WKWebView simply does not route HTML5 audio
+  (`new Audio()`) to the speaker on iOS, and app-level AVAudioSession config can't
+  override the webview's own audio handling. Dead end.
+- **FIX (build 136): play narration NATIVELY via AVPlayer.** Added a `NativeAudio`
+  CAPBridgedPlugin in AppDelegate.swift (`play`/`stop`, AVPlayer + `.playback` session).
+  `js/app.js` routes audio through `playAudioUrl()`/`stopAudioUrl()` → on native calls
+  `Capacitor.nativePromise('NativeAudio','play',{url})`; HTML5 Audio kept as web/PWA
+  fallback. This is the reliable path (speaker + silent-switch + backgroundable for
+  pocketed-phone tours — WKWebView audio also PAUSES when backgrounded, AVPlayer doesn't).
+- ⚠ The NativeAudio plugin lives in `ios/App/App/AppDelegate.swift` (**gitignored**) —
+  re-apply if the iOS project is regenerated, alongside the AVAudioSession block + Info.plist.
+- Minor known cosmetic: native gives no 'ended' event, so the detail Listen button's
+  'playing' highlight lingers until the next tap. Add `notifyListeners` end-event later
+  if it matters. app.js?v=147, SW shine-v152. Diagnostic toasts removed.
+
 ## 2026-07-19 — iOS build 135 (audio session activate + error surfacing)
 
 - Build 134's `setCategory` alone left WKWebView audio silent (Listen button + tour arrival
