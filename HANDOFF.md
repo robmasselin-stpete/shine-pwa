@@ -58,6 +58,31 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — ✅ Narration audio pipeline LIVE (Downtown North, 16 murals)
+
+- **Full narration pipeline built + shipped OTA.** Downtown North (16 murals) now has
+  spoken narration in Rob's ElevenLabs cloned voice, playable via the detail-page
+  speaker button on any v1.5+ (OTA-capable) build. Pipeline:
+  1. `scripts/gen-narration.py` (Claude API) drafted scripts → `data/narration/*.txt`.
+     Rob reviewed/edited all 16.
+  2. `scripts/gen-audio.py` (ElevenLabs API, voice **j4oeEFBclPuKY5zSUU3p**, multilingual
+     v2, **64 kbps mono**) renders scripts → `audio/{id}.mp3`. Key: `ELEVENLABS_API_KEY`
+     env or gitignored `.mq-elevenlabs-key`.
+  3. `scripts/publish-audio.py` uploads to R2 → `cdn.muralquest.app/audio/{id}.mp3`.
+  4. Each mural's `audio:` YAML field → `aud` in data.js/content.json → app plays it.
+  5. `publish-content.py` pushed OTA (content.json version 1784482274461).
+- **Voice-tuning lessons (for the rest of the routes):** ellipses (`...`) in a script make
+  ElevenLabs *trail off / hesitate* — NOT a clean pause. Use periods for sentence pauses,
+  em-dash `—` for a beat, and `<break time="1.0s" />` for a deliberate longer pause. The
+  16 scripts were cleaned of ellipses (→ period at sentence boundaries, comma mid-sentence).
+- **ElevenLabs plan = Starter (~30k chars/mo).** 16 clips ≈ 13k chars. All 189 murals ≈
+  160k chars → would need Creator tier (100k/mo) or spreading across months.
+- **Reaches:** iOS v1.5 TestFlight (build 133) + Android v2 internal (once installs land).
+  NOT iOS v1.4 App Store (pre-OTA) — public gets it when v1.5 ships to the App Store.
+- **NEXT:** verify the speaker button renders on build 133 (if not, it's in the next
+  TestFlight build — data is correct regardless). Then run the same 4-step pipeline on
+  the other routes (the-edge, methodist-town, etc.) as Rob writes/reviews their scripts.
+
 ## 2026-07-19 — ✅ Mural Quest LIVE on Google Play Internal Testing
 
 - **Android app is on Play internal testing** (the TestFlight analog — no review wait,
