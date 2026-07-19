@@ -58,6 +58,18 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — iOS build 135 (audio session activate + error surfacing)
+
+- Build 134's `setCategory` alone left WKWebView audio silent (Listen button + tour arrival
+  both no sound). **Build 135 adds `AVAudioSession.setActive(true)`** in AppDelegate — the
+  missing piece (category must be activated for the WKWebView to adopt it).
+- Also added temporary on-screen error surfacing in `toggleAudioClip`/`playNarration`: a
+  `.play()` rejection or media error shows a toast (`Play blocked: <name>` / `Audio error:
+  media code <n>`) so the cause is visible without Safari Web Inspector. If 135 still fails,
+  the toast text pinpoints it (NotAllowedError=gesture/autoplay, code 4=source, 2=network,
+  3=decode). Remove the toasts once audio is confirmed working.
+- app.js?v=146, app.css?v=121, SW shine-v151.
+
 ## 2026-07-19 — iOS build 134 (audio playback fix + tour narration auto-play)
 
 - **Built + uploaded iOS build 134 to TestFlight** (v1.5, build 133 → 134). iOS-only this
