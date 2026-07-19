@@ -3105,6 +3105,32 @@ a {
   background: rgba(14, 145, 140, 0.1);
 }
 
+/* Narration toggle in the tour nav — auto-play a mural's clip on arrival. */
+.tour-narrate-btn {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--teal);
+  background: transparent;
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tour-narrate-btn.on {
+  background: var(--teal);
+  color: #fff;
+}
+.tour-narrate-btn:active {
+  opacity: 0.85;
+}
+
 .active-tour-progress {
   display: flex;
   align-items: center;

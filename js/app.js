@@ -255,6 +255,25 @@ function toggleAudioClip(url) {
   });
 }
 
+/** Play a narration clip (stops any current playback first). Not a toggle —
+ *  used for tour auto-play on arrival. Silent if url is empty or play() is blocked. */
+function playNarration(url) {
+  if (!url) return;
+  try {
+    if (_audioPlayer) { try { _audioPlayer.pause(); } catch (e) {} }
+    const btn = document.getElementById('audio-btn');
+    if (btn) btn.classList.remove('playing');
+    _audioPlayer = new Audio(url);
+    _audioPlayer.play().catch(() => {});
+    _audioPlayer.addEventListener('ended', () => { _audioPlayer = null; });
+  } catch (e) { /* silent */ }
+}
+
+/** Tour narration setting — auto-play a mural's clip when you arrive on a tour.
+ *  Default ON (it's a narrated tour); the tour-page toggle opts out. */
+function tourNarrateOn() { return localStorage.getItem('mq_tour_narrate') !== 'off'; }
+function setTourNarrate(on) { localStorage.setItem('mq_tour_narrate', on ? 'on' : 'off'); }
+
 // =============================================
 // State — single mutable object drives all UI
 // =============================================
@@ -810,19 +829,24 @@ function showProximityBanner(mural, dist) {
   proximityBannerTimeout = setTimeout(dismissProximityBanner, 12000);
 }
 
-/** Show a brief toast: "Use direction lights to discover mural" */
-function showDiscoverToast() {
+/** Show a brief toast with a custom message (reuses the .discover-toast style). */
+function showToast(message, ms = 2500) {
   const existing = document.querySelector('.discover-toast');
   if (existing) existing.remove();
   const toast = document.createElement('div');
   toast.className = 'discover-toast';
-  toast.textContent = 'Use direction lights to find this mural';
+  toast.textContent = message;
   document.body.appendChild(toast);
   requestAnimationFrame(() => toast.classList.add('visible'));
   setTimeout(() => {
     toast.classList.remove('visible');
     setTimeout(() => toast.remove(), 400);
-  }, 3500);
+  }, ms);
+}
+
+/** Show a brief toast: "Use direction lights to discover mural" */
+function showDiscoverToast() {
+  showToast('Use direction lights to find this mural', 3500);
 }
 
 /** Dismiss the proximity banner if showing. */
@@ -2711,6 +2735,13 @@ function updateCompassArc() {
     state.tourIndex = nextIdx;
     state.tourWalking = false;
     state.tourArrived = false;
+    // Auto-play this mural's narration on arrival (if enabled + it has a clip).
+    // Fires once per arrival: tourWalking is now false, so this block won't re-run
+    // until the user starts the next leg.
+    if (tourNarrateOn()) {
+      const arrived = state.tourStops[nextIdx];
+      if (arrived && arrived.aud) playNarration(arrived.aud);
+    }
     releaseWakeLock();
     renderTourBottom();
     return;
@@ -3407,6 +3438,10 @@ function renderTourLoop() {
         <div class="active-tour-nav-row2">
           <button class="tour-reverse-nav-btn">Reverse Tour</button>
           <button class="tour-skip-btn">Jump To Next</button>
+          <button class="tour-narrate-btn ${tourNarrateOn() ? 'on' : ''}" aria-pressed="${tourNarrateOn()}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            Narration
+          </button>
         </div>
       </div>
 
@@ -3544,6 +3579,17 @@ function renderTourLoop() {
     state.tourDirection = state.tourDirection === 'fwd' ? 'back' : 'fwd';
     renderTourBottom();
     fetchTourSegment();
+  });
+
+  // Narration toggle — auto-play a mural's clip on arrival during the tour
+  views.loops.querySelector('.tour-narrate-btn')?.addEventListener('click', (e) => {
+    const on = !tourNarrateOn();
+    setTourNarrate(on);
+    const b = e.currentTarget;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-pressed', String(on));
+    if (!on && _audioPlayer) { try { _audioPlayer.pause(); } catch (err) {} _audioPlayer = null; }
+    showToast(on ? 'Narration on — plays as you arrive' : 'Narration off');
   });
 
   // Initial bottom panel fill
