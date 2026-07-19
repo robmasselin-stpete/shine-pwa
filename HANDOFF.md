@@ -58,6 +58,29 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — ✅ Narration audio WORKING on device (builds 139–141)
+
+- **139:** fixed the root cause (`window.toggleAudioClip` exposure) → Listen button plays.
+- **140:** wired tour narration to **Jump To Next** (tap = gesture, testable without walking)
+  + unlock the shared Web Audio context on walk-start (for GPS-arrival playback). Confirmed:
+  Jump plays the mural's clip ('E playing ctx=running').
+- **141 (cleanup, CURRENT):** stripped the A-E diagnostic toasts (silent console.warn on
+  error now); **reverted the AppDelegate `.playback`/setActive AVAudioSession experiment +
+  removed the unused NativeAudio plugin** — Web Audio routes to the speaker on its own, and
+  the session takeover was the likely cause of the 'haptics seem off' symptom (CHHapticEngine).
+- **Audio architecture (final):** narration plays via the **Web Audio API** — fetch the CDN
+  mp3 → `decodeAudioData` → `AudioBufferSourceNode` on the shared `walkAudioCtx` (same
+  context as the compass beep). No native plugin, no AVAudioSession config. `playAudioUrl()`
+  / `stopAudioUrl()` in app.js; Listen button (`window.toggleAudioClip`) + tour Jump + GPS
+  arrival all route through it.
+- **TO VERIFY on 141:** Listen + tour narration still play (no toasts), and **haptics back to
+  normal**. If haptics are still off, it's unrelated to the audio session — investigate separately.
+- **Known open items:** (a) silent-switch / background playback for pocketed-phone tours not
+  yet verified (Web Audio usually ignores the silent switch, but untested; the removed
+  .playback would have guaranteed it — revisit haptic-safely if needed with the S23 bg work);
+  (b) native Listen-button 'playing' highlight lingers after a clip ends (no ended event wired
+  to the button state — cosmetic). app.js?v=152, SW v157.
+
 ## 2026-07-19 — iOS build 139 — ROOT CAUSE: Listen onclick never fired
 
 - **THE actual bug (builds 134–138 all fixed the wrong layer):** the detail-page Listen
