@@ -236,41 +236,48 @@ function toggleFurtherWork(btn) {
 window.toggleFurtherWork = toggleFurtherWork;
 
 // Audio clip player
-// Audio playback. On iOS the WKWebView won't route HTML5 audio (new Audio()) to the
-// speaker, so narration plays NATIVELY via the AVPlayer-backed NativeAudio plugin
-// (AppDelegate.swift) — reliable through the silent switch + backgroundable for tours.
-// On web/PWA (no native bridge) it falls back to an HTML5 Audio element.
-let _audioPlayer = null;    // web fallback element
-let _audioPlaying = false;  // play-state (native gives no 'ended' callback)
+// Audio playback via the Web Audio API — the SAME mechanism as the working compass
+// beep (walkAudioCtx, declared below). iOS WKWebView won't route HTML5 audio
+// (new Audio()) to the speaker, and the AppDelegate native-plugin path didn't engage
+// (music never ducked → plugin not invoked), but Web Audio demonstrably plays sound in
+// this app. Fetch the clip, decode it, and play it through the shared AudioContext.
+let _narrationSrc = null;   // current AudioBufferSourceNode
+let _audioPlaying = false;
 
-function _nativeAudio() {
-  const cap = window.Capacitor;
-  return (cap && cap.isNativePlatform && cap.isNativePlatform() && cap.nativePromise) ? cap : null;
+/** Shared AudioContext (reuses the beep's walkAudioCtx). Resumes it (iOS unlock). */
+function _narrationCtx() {
+  if (!walkAudioCtx) walkAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (walkAudioCtx.state === 'suspended') { try { walkAudioCtx.resume(); } catch (e) {} }
+  return walkAudioCtx;
 }
 
-/** Play an audio URL. Native AVPlayer on device; HTML5 Audio on web. */
+/** Play an audio URL via Web Audio. onEnd fires when the clip finishes/stops. */
 function playAudioUrl(url, onEnd) {
   if (!url) return;
-  const cap = _nativeAudio();
-  if (cap) {
-    try { cap.nativePromise('NativeAudio', 'play', { url }); } catch (e) { /* silent */ }
-    _audioPlaying = true;
-    return;
-  }
-  try {
-    if (_audioPlayer) { try { _audioPlayer.pause(); } catch (e) {} }
-    _audioPlayer = new Audio(url);
-    _audioPlayer.play().catch(() => {});
-    _audioPlayer.addEventListener('ended', () => { _audioPlayer = null; _audioPlaying = false; if (onEnd) onEnd(); });
-    _audioPlaying = true;
-  } catch (e) { /* silent */ }
+  const ctx = _narrationCtx();
+  if (_narrationSrc) { try { _narrationSrc.stop(); } catch (e) {} _narrationSrc = null; }
+  _audioPlaying = true;
+  fetch(url)
+    .then(r => r.arrayBuffer())
+    .then(arr => new Promise((res, rej) => ctx.decodeAudioData(arr, res, rej)))
+    .then(buf => {
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      src.connect(ctx.destination);
+      src.onended = () => { if (_narrationSrc === src) { _narrationSrc = null; _audioPlaying = false; if (onEnd) onEnd(); } };
+      src.start();
+      _narrationSrc = src;
+    })
+    .catch(e => {
+      _audioPlaying = false;
+      if (onEnd) onEnd();
+      showToast('Audio: ' + ((e && (e.name || e.message)) || 'failed'));
+    });
 }
 
-/** Stop any playing audio (native or web). */
+/** Stop any playing narration. */
 function stopAudioUrl() {
-  const cap = _nativeAudio();
-  if (cap) { try { cap.nativePromise('NativeAudio', 'stop', {}); } catch (e) {} }
-  if (_audioPlayer) { try { _audioPlayer.pause(); } catch (e) {} _audioPlayer = null; }
+  if (_narrationSrc) { try { _narrationSrc.stop(); } catch (e) {} _narrationSrc = null; }
   _audioPlaying = false;
 }
 
