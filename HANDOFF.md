@@ -58,6 +58,39 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — iOS build 134 (audio playback fix + tour narration auto-play)
+
+- **Built + uploaded iOS build 134 to TestFlight** (v1.5, build 133 → 134). iOS-only this
+  round (Rob's call — Android testers not up yet; shared JS lands in the next Android build).
+- **WHY narration was silent (fixed):** tapping "Listen" played nothing because iOS's
+  default audio session mutes WKWebView HTML5 audio (`new Audio()`) and respects the ring/
+  silent switch. The compass **beep** uses Web Audio (plays through silent), which is why it
+  worked. **Fix:** `AppDelegate.swift` `didFinishLaunchingWithOptions` now sets
+  `AVAudioSession` category `.playback`, mode `.spokenAudio`, option `.duckOthers` (category
+  only, no setActive — iOS activates on play, so opening the app never interrupts music).
+  Plays through the silent switch AND backgroundable (with `UIBackgroundModes=audio`) — what
+  the pocketed-phone tours need. ⚠ **`ios/` is gitignored** — this AppDelegate change lives
+  ONLY locally; re-apply (add `import AVFoundation` + the setCategory block) if the iOS
+  project is regenerated, alongside the Info.plist keys.
+- **NEW FEATURE — tour narration auto-play on arrival** (`js/app.js`, shipped in 134):
+  walking a tour, when you reach a stop (existing 15m arrival threshold in `updateCompassArc`),
+  the mural's clip auto-plays if it has one. A **"Narration" toggle** on the tour nav (default
+  ON) opts out. Helpers: `playNarration()`, `tourNarrateOn()`/`setTourNarrate()`, generic
+  `showToast()`. Screen-on works now; phone-in-pocket extends when the background-location
+  foreground service lands. Manual per-mural "Listen" button stays as replay/browse.
+- **⚠ REMOVED `@capacitor-community/background-geolocation`** — its latest (1.2.26) pins
+  `capacitor-swift-pm <8`, conflicting with the Capacitor 8 plugins once `@capacitor/app` was
+  added → iOS archive failed to resolve SPM. It was unused (geo-background.js not wired), so
+  removed to unblock the build. `geo-background.js` + `docs/BACKGROUND-LOCATION-REVIEW.md`
+  stay. **When doing the S23 background-location work, find a Capacitor-8-compatible geolocation
+  plugin** (or CocoaPods path, or the plugin may ship a Cap-8 release by then).
+- **Also added this session:** `@capacitor/app` (hardware back button, Android) + the native
+  safe-area inset shim + status-bar config (see Android sections). Cache bumps: app.js?v=145,
+  app.css?v=120, SW shine-v150.
+- **NEXT:** when 134 finishes processing, install via TestFlight and verify: (1) per-mural
+  "Listen" button now plays your voice; (2) on a Downtown North tour, narration auto-plays on
+  arrival + the Narration toggle works. If good, the audio session + tour narration are proven.
+
 ## 2026-07-19 — ✅ Narration audio pipeline LIVE (Downtown North, 16 murals)
 
 - **Full narration pipeline built + shipped OTA.** Downtown North (16 murals) now has
