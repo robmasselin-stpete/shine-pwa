@@ -47,3 +47,8 @@ workers/**/.wrangler/
 
 # Anthropic API key for scripts/gen-narration.py — never commit
 .mq-anthropic-key
+
+# Android release signing — NEVER commit the keystore or its passwords.
+# If the upload key is lost it can be reset via Play App Signing, but back it up.
+android/keystore/
+android/keystore.properties

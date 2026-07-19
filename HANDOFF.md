@@ -58,6 +58,34 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-19 — Android release signing + signed AAB (for Play testing)
+
+- **Upload keystore created + Gradle signing wired.** Ready to upload to Play.
+  - Keystore: `android/keystore/mural-quest-upload.jks` (**gitignored** — NEVER commit).
+    Alias `upload`, RSA 2048, valid until **2053**. SHA-256 fingerprint:
+    `47:F8:D5:8D:EA:F5:34:DC:72:19:90:3E:EF:C6:B7:57:24:54:CE:18:89:22:D5:A8:5B:8F:53:3C:98:04:AA:1D`.
+  - Password lives in `android/keystore.properties` (**gitignored**, chmod 600):
+    `storeFile / storePassword / keyAlias / keyPassword`. **BACK THIS UP** (password
+    manager). With Play App Signing the upload key CAN be reset if lost, but don't rely on it.
+  - `android/app/build.gradle` now loads `keystore.properties` and signs `release` when
+    present (falls back to unsigned if the file is absent — safe for fresh clones/CI).
+    This build.gradle change IS committed (no secrets in it); the keystore + properties are not.
+  - **versionCode 1, versionName "1.5"** (first Android build; matches the v1.5 release).
+- **Signed AAB built:** `android/app/build/outputs/bundle/release/app-release.aab` — **39 MB**,
+  `jar verified` (signed). Rebuild: `cd android && ./gradlew bundleRelease`
+  (JAVA_HOME=openjdk@21, ANDROID_HOME=/opt/homebrew/share/android-commandlinetools).
+  Bump `versionCode` in `android/app/build.gradle` before each new upload.
+- **NEXT (Rob, Play Console clicks): Internal testing** = the TestFlight analog (no review
+  wait, up to 100 testers). Steps: create the app → App content declarations (privacy
+  policy `muralquest.app/privacy.html`, data safety, content rating, target audience,
+  app access) → Testing ▸ Internal testing ▸ create release ▸ upload the AAB → add tester
+  emails (email list) ▸ share the opt-in link. Testers install from Play.
+- **⚠ Bundle hygiene (not blocking):** the AAB still carries dev cruft the `cap:copy`
+  rsync doesn't exclude — `data/` (raw YAMLs, 12MB), `screenshots/` (9MB), `docs/`,
+  `scripts/`, `tools/`, `mockups/`, `package-lock.json`. Same issue affects the iOS
+  bundle. Trimming these `cap:copy` excludes would roughly halve the bundle. Do before
+  public launch.
+
 ## 2026-07-15 — Android / Google Play + DUNS (in progress)
 
 - **Decision: go ORGANIZATION accounts on both Apple + Google** (Rob got a DUNS).
