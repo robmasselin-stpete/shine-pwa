@@ -58,6 +58,29 @@
   → review drafts → apply. Then wire proximity → audio into the tour flow (needs the
   foreground-service background-location work; S23 ~2026-07-18).
 
+## 2026-07-20 — Android keyboard fix + on-device DevTools debugging
+
+- **Bug:** on the Explore search, focusing the input collapsed the layout — the fixed
+  header/search bar got shoved off the top (blank above the keyboard). **Root cause:**
+  Android 16 forces edge-to-edge, and `windowSoftInputMode` was unset → defaulted to a
+  broken resize that shrank the WebView viewport to **96px** (screen is 780 CSS px) when
+  the keyboard opened. **Fix:** `android:windowSoftInputMode="adjustNothing"` on
+  MainActivity (keyboard overlays, no resize/pan) + `Keyboard.resize:"none"` in
+  capacitor.config.json. Verified on S23: innerHeight 390, #search-bar top 0. `adjustResize`
+  did NOT work (still collapsed); `adjustNothing` is the fix. capacitor.config resize:none is
+  shared — watch iOS keyboard on the next iOS build (top search bar should be unaffected).
+  In the debug APK on the S23; ships to Play in the next Android AAB.
+- **⭐ On-device WebView debugging (the Android superpower — use this, don't guess):**
+  debug APKs expose a DevTools endpoint. To run JS in the live app from the terminal:
+    1. `SOCK=$(adb shell cat /proc/net/unix | grep -o webview_devtools_remote_[0-9]* | sort -u | head -1)`
+    2. `adb forward tcp:9222 localabstract:$SOCK`
+    3. `curl -s localhost:9222/json/list` → gives the page's webSocketDebuggerUrl
+    4. Node 22+ (have v25) has global WebSocket — connect + send `Runtime.evaluate` to run
+       arbitrary JS in the page. Helper saved this session at scratchpad `dt-eval.mjs`.
+  This let us read `window.innerHeight`/element rects live and pinpoint the 96px collapse in
+  minutes. iOS Release/TestFlight builds are NOT inspectable — this is Android-only, and it's
+  why the Android track is far less painful to debug than the iOS audio saga was.
+
 ## 2026-07-19 — ✅ Narration audio WORKING on device (builds 139–141)
 
 - **139:** fixed the root cause (`window.toggleAudioClip` exposure) → Listen button plays.
