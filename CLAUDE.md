@@ -104,7 +104,9 @@ bundled **card tier** serves every small display.
   `scripts/publish-images.py` uploads cards + full-res to R2 (`--cards-only` for
   just the small tier).
 - **Bundle** — `cap:copy` excludes `images/murals` + `images/thumbs` (old 96px,
-  superseded) + `js/content.json`, and uses `--delete --delete-excluded` so `www/`
+  superseded) + `audio` (narration streams from the CDN via each mural's `aud`
+  URL — the app never reads a bundled copy, so bundling it was ~29 MB of dead
+  weight) + `js/content.json`, and uses `--delete --delete-excluded` so `www/`
   is a clean mirror (no stale files). `images/cards` IS bundled.
 - **onerror fallback** (app.js `mqCardErr`/`mqFullErr`): bundled card → CDN card →
   CDN full → grey; detail full-res → bundled card offline. So OTA-added murals
