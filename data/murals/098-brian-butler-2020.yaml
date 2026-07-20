@@ -9,6 +9,7 @@ lng: -82.649909
 address: 1101 1st Ave N
 category: shine
 img: "images/murals/2020/brian-butler.jpeg"
+audio: "https://cdn.muralquest.app/audio/98.mp3"
 
 # ── Optional ──
 title: ""
@@ -118,11 +119,15 @@ searchBio: |
   bold color, dark gritty work. Contact: BrianButler@upperhandart.com.
 
 searchMuralDescription: |
-  A large-scale nature scene wraps the MUV Dispensary building, featuring dense
-  tropical foliage, birds in flight, and flowing organic linework. The
-  composition covers multiple faces of the building, creating an immersive green
-  canopy effect. Bold outlines define the plant forms while softer color fills
-  give the whole piece a hand-illustrated, almost storybook quality.
+  "Carbon Punishment" is a dual-wall environmental piece on the MUV Dispensary
+  building addressing ocean acidification. Sea life is rendered in the colors of
+  the pH spectrum — shells painted in acidic hues, riddled with polluted cracks
+  and small skulls, illustrating how a carbon-saturated, acidifying ocean
+  physically damages marine life. The lettering is a jagged, heavy typographic
+  treatment that nods to Tampa Bay's death-metal heritage. Painted for SHINE
+  2020 / PangeaSeed's Sea Walls: Artists for Oceans, the mural spans two walls of
+  the single-story building at 1101 1st Ave N, and is paired with original
+  grindcore music tracks composed to accompany it (the "enviro-METAL" concept).
 
 muralInspiration: ""
 muralAwards: ""
@@ -139,6 +144,11 @@ sourceNotes:
   - "https://arts.aventuramall.com/brian-butler"
   - "https://www.juxtapoz.com/news/news/show-drawn-10-years-of-concert-drawing-with-brian-butler/"
   - "https://stpeteartsalliance.org/brian-butler-2020"
+  # Carbon Punishment mural imagery (ocean acidification, pH-spectrum shells,
+  # cracks/skulls, death-metal typography, grindcore audio, two walls):
+  - "https://seawalls.org/mural/carbon-punishment/"
+  - "https://www.cltampa.com/arts-entertainment/visual-art/article/21146034/st-pete-artist-to-display-carbon-punishment-piece-at-shine-mural-festival"
 revisionLog:
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
+  - "2026-07-20 — Corrected searchMuralDescription: prior text described a 'tropical foliage / green canopy' scene that did not match the actual mural. Rewrote to the real Carbon Punishment (ocean acidification) imagery from Sea Walls + CL Tampa. Narration rewritten to match."

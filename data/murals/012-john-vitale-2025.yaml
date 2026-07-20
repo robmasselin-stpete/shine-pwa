@@ -9,6 +9,7 @@ lng: -82.668868
 address: 2606 Fairfield Ave S
 category: shine
 img: "images/murals/2025/john-vitale-factory.jpeg"
+audio: "https://cdn.muralquest.app/audio/12.mp3"
 
 # ── Optional ──
 title: ""
@@ -47,7 +48,12 @@ artistBio: |
   They have painted SHINE every year since its inception — "The Cool Kids" in
   2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
   2025, Johnny painted two solo murals: one on the 600 block where it all began,
-  and another at The Factory on Fairfield Ave South with Sionna "Sio" Macleish.
+  and another at The Factory on Fairfield Ave South shared with Sionna "Sio"
+  MacLeish, a close collaborator. Johnny painted the left panel — a 1950s pin-up
+  with a pink hibiscus framing the old Thunderbird motel sign; Sio painted the
+  right — a roseate spoonbill in soft pink against pale blue polka dots, topped
+  with a bold orange sun. Sio has shown her own work at Overspray's Hot Walls in
+  Gulfport.
 
 searchBio: |
   Their first mural came from a sketch on a paper napkin, handed to a restaurant
@@ -139,3 +145,10 @@ sourceNotes:
   - "https://www.fox13news.com/news/vitale-brothers-paint-the-town-with-murals"
   - "https://monochronicle.com/artist/vitale-brothers/"
   - "https://www.paradisenewsfl.com/artists-spotlight-nov-2025/"
+  # Sionna "Sio" MacLeish: close collaborator of Johnny Vitale (NOT his daughter
+  # — per Rob, they work closely together). Painted the right panel (roseate
+  # spoonbill) of the shared SHINE 2025 wall at The Factory.
+  #   - Relationship + panel split: Rob (owner/primary knowledge), 2026.
+  #   - "Sio" nickname + Overspray Hot Walls showing (Gulfport): thegabber.com
+  - "https://thegabber.com/the-inaugural-hot-walls-at-overspray-in-gulfport/"
+  - "https://ilovetheburg.com/st-pete-shine-origins/"
