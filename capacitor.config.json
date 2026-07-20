@@ -10,6 +10,7 @@
       "style": "Light"
     },
     "Keyboard": {
+      "resize": "none",
       "resizeOnFullScreen": true
     }
   }
