@@ -37,6 +37,10 @@ OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'js', 'data.js')
 # v1.5 content-architecture: OTA manifest + bundled version marker
 CONTENT_JSON_FILE = os.path.join(PROJECT_ROOT, 'js', 'content.json')
 CONTENT_META_FILE = os.path.join(PROJECT_ROOT, 'js', 'content-meta.js')
+# Narration audio precache list — the service worker fetches ./audio-manifest.json
+# on install and precaches every clip so tours play offline (audio streams from the
+# CDN and is NOT bundled; see cap:copy exclude + sw.js AUDIO_CACHE).
+AUDIO_MANIFEST_FILE = os.path.join(PROJECT_ROOT, 'audio-manifest.json')
 
 # Fields required in every YAML file — validation will error if any are missing
 REQUIRED_FIELDS = ['id', 'artist', 'year', 'lat', 'lng', 'address', 'category', 'img']
@@ -578,6 +582,17 @@ def write_content_artifacts(manifest):
         f.write(meta)
 
 
+def write_audio_manifest(murals):
+    """Write audio-manifest.json — the sorted, de-duped list of narration clip
+    URLs (each mural's `audio:` field). The service worker precaches these on
+    install so tours play offline. Returns the count written."""
+    urls = sorted({(m.get('audio') or '').strip() for m in murals} - {''})
+    with open(AUDIO_MANIFEST_FILE, 'w', encoding='utf-8') as f:
+        json.dump(urls, f, ensure_ascii=False, indent=0)
+        f.write('\n')
+    return len(urls)
+
+
 def list_stale(murals):
     """Print murals still marked as legacy/needing enhancement."""
     stale = [m for m in murals if m.get('source', 'legacy') == 'legacy']
@@ -677,6 +692,9 @@ def main():
         write_content_artifacts(manifest)
         print(f"✓ Generated {CONTENT_JSON_FILE} (v{manifest['version']}, hash {manifest['hash']}, "
               f"{manifest['counts']['murals']} murals + {manifest['counts']['pois']} POIs)")
+
+        n_audio = write_audio_manifest(murals)
+        print(f"✓ Generated {AUDIO_MANIFEST_FILE} ({n_audio} narration clips to precache)")
 
     print_stats(murals)
 

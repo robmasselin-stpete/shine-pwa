@@ -17,10 +17,11 @@
  * The OTA content manifest (content.json) is bypassed entirely (see fetch handler).
  */
 
-const CACHE_NAME = 'shine-v157';       // App shell — bump on code changes
+const CACHE_NAME = 'shine-v158';       // App shell — bump on code changes
 const TILE_CACHE = 'shine-tiles-v1';  // Map tiles — rarely needs bumping
 const IMG_CACHE = 'shine-images-v11'; // Card tier + CDN full-res — bumped for v1.5 image split
 const FONT_CACHE = 'shine-fonts-v1';  // CDN fonts/libs — rarely needs bumping
+const AUDIO_CACHE = 'shine-audio-v1'; // Narration clips (CDN) — precached on install for offline tours
 
 // These files are precached on install — the app works offline immediately
 const SHELL_ASSETS = [
@@ -36,6 +37,7 @@ const SHELL_ASSETS = [
   './js/photos.js',
   './manifest.json',
   './card-manifest.json',
+  './audio-manifest.json',
   './images/icons/icon-192.png',
   './images/icons/icon-512.png'
 ];
@@ -43,18 +45,25 @@ const SHELL_ASSETS = [
 
 // Install: precache the app shell + the bundled card tier (~3MB of 384px WebP,
 // read from card-manifest.json so it stays in sync automatically — no hand-kept
-// list). Full-res photos are NOT precached; they live on the CDN and get cached
-// on first view in the detail page (see cacheFirstImage). Each card is cached
-// individually so one failure doesn't block the rest.
+// list) + every narration clip (~28MB, read from audio-manifest.json) so tours
+// play fully offline. Full-res photos are NOT precached; they live on the CDN and
+// get cached on first view in the detail page (see cacheFirstImage). Audio streams
+// from the CDN too but IS precached here (it's short and needed mid-walk in dead
+// zones). Each item is cached individually so one failure doesn't block the rest.
+function precacheFromManifest(manifestUrl, cacheName, label) {
+  return fetch(manifestUrl).then(r => (r.ok ? r.json() : [])).catch(() => [])
+    .then(urls => caches.open(cacheName).then(cache =>
+      Promise.all(urls.map(url =>
+        cache.add(url).catch(err => console.warn('SW: failed to cache ' + label, url, err))
+      ))
+    ));
+}
+
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then(c => c.addAll(SHELL_ASSETS))
-      .then(() => fetch('./card-manifest.json').then(r => (r.ok ? r.json() : [])).catch(() => []))
-      .then(cards => caches.open(IMG_CACHE).then(cache =>
-        Promise.all(cards.map(url =>
-          cache.add(url).catch(err => console.warn('SW: failed to cache card', url, err))
-        ))
-      ))
+      .then(() => precacheFromManifest('./card-manifest.json', IMG_CACHE, 'card'))
+      .then(() => precacheFromManifest('./audio-manifest.json', AUDIO_CACHE, 'clip'))
       .then(() => self.skipWaiting())
   );
 });
@@ -62,7 +71,7 @@ self.addEventListener('install', (e) => {
 // Activate: delete any old caches not in the current version list
 // Then tell all open tabs to reload so they get fresh files
 self.addEventListener('activate', (e) => {
-  const keep = [CACHE_NAME, TILE_CACHE, IMG_CACHE, FONT_CACHE];
+  const keep = [CACHE_NAME, TILE_CACHE, IMG_CACHE, FONT_CACHE, AUDIO_CACHE];
   e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => !keep.includes(k)).map(k => caches.delete(k)))
@@ -99,6 +108,13 @@ self.addEventListener('fetch', (e) => {
   // Map tiles — network first so you get current tiles, fall back to cached for offline
   if (url.hostname.includes('tile') || url.hostname.includes('carto') || url.hostname.includes('basemaps')) {
     e.respondWith(networkFirstTile(e.request));
+    return;
+  }
+
+  // Narration clips — cache first (precached on install from audio-manifest.json;
+  // any not precached get cached on first play). Kept in its own AUDIO_CACHE.
+  if (url.pathname.includes('/audio/') || url.pathname.endsWith('.mp3')) {
+    e.respondWith(cacheFirstAudio(e.request));
     return;
   }
 
@@ -151,6 +167,17 @@ async function cacheFirstImage(req) {
   try {
     const r = await fetch(req);
     if (r.ok) { const cache = await caches.open(IMG_CACHE); cache.put(req, r.clone()); }
+    return r;
+  } catch { return new Response('', {status:503}); }
+}
+
+/** Cache-first for narration clips. Precached on install; any misses cache on first play. */
+async function cacheFirstAudio(req) {
+  const c = await caches.match(req);
+  if (c) return c;
+  try {
+    const r = await fetch(req);
+    if (r.ok) { const cache = await caches.open(AUDIO_CACHE); cache.put(req, r.clone()); }
     return r;
   } catch { return new Response('', {status:503}); }
 }
