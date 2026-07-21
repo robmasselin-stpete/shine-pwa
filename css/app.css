@@ -649,6 +649,13 @@ a {
   margin: -8px 0 6px;
 }
 
+/* When the search field is focused (body.searching, toggled in app.js), the
+   Android keyboard shrinks the viewport. Hide the title row, subtitle and bottom
+   tab bar so the results fill the space above the keyboard instead of a sliver. */
+body.searching .tab-title-row,
+body.searching .explore-subtitle,
+body.searching #tab-bar { display: none !important; }
+
 .search-input-wrap {
   display: flex;
   align-items: center;

@@ -1056,6 +1056,14 @@ let searchTrackTimer;
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') { e.preventDefault(); searchInput.blur(); }
 });
+// While the search field is focused, the Android WebView shrinks its viewport to
+// sit above the keyboard (Android 15/16 IME behaviour — not controllable via
+// adjustNothing). In that shortened viewport the big title/subtitle + bottom tab
+// bar squeeze the results to a sliver. Reclaim the space: `body.searching` hides
+// the header title, subtitle and tab bar so the results fill the area above the
+// keyboard. Removed on blur. (css/app.css)
+searchInput.addEventListener('focus', () => document.body.classList.add('searching'));
+searchInput.addEventListener('blur', () => document.body.classList.remove('searching'));
 
 // =============================================
 // Explore view (mural grid)

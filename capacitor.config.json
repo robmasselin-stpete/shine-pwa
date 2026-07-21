@@ -11,7 +11,7 @@
     },
     "Keyboard": {
       "resize": "none",
-      "resizeOnFullScreen": true
+      "resizeOnFullScreen": false
     }
   }
 }
