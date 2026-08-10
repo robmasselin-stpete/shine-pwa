@@ -89,6 +89,44 @@
     </div>
   </div>
 
+  <!-- Subscription paywall (native only; shown at launch until access is confirmed) -->
+  <div id="paywall" class="paywall" hidden data-state="checking">
+    <div class="paywall-content">
+      <div class="paywall-hero">
+        <img src="images/icons/icon-192.png" alt="Mural Quest" class="paywall-logo">
+        <h1 class="paywall-title">MURAL QUEST</h1>
+        <p class="paywall-subtitle">St. Petersburg, FL</p>
+      </div>
+
+      <p class="paywall-checking">Checking your access…</p>
+
+      <div class="paywall-offer">
+        <p class="paywall-tagline">Your self-guided tour of St. Pete's world-class street art</p>
+        <ul class="paywall-features">
+          <li>Interactive map of 180+ murals</li>
+          <li>Curated walking &amp; bike tours</li>
+          <li>Audio narration as you arrive at each mural</li>
+          <li>Artist &amp; mural stories</li>
+          <li>GPS directions to every mural</li>
+          <li>Works offline — no signal needed</li>
+        </ul>
+        <button id="paywall-subscribe" class="paywall-subscribe">
+          <span class="paywall-subscribe-label">Unlock Mural Quest</span>
+          <span class="paywall-price" id="paywall-price">$6.99 · one year</span>
+        </button>
+        <p id="paywall-msg" class="paywall-msg" hidden></p>
+        <button id="paywall-restore" class="paywall-restore">Restore Purchase</button>
+        <p class="paywall-legal">
+          One year of full access for a single $6.99 purchase. This does <strong>not</strong> auto-renew — you won't be charged again. Buy another year whenever you like.
+          <br>
+          <a href="https://www.muralquest.app/terms" target="_blank" rel="noopener">Terms of Use</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.muralquest.app/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- App shell -->
   <div id="app">
 

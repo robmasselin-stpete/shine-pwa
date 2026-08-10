@@ -1,68 +1,75 @@
-# Mural Quest — Subscription Plan ($6.99/year)
+# Mural Quest — Access Plan (non-renewing $6.99/year)
 
-Convert the app from **paid** ($6.99 one-time) to **free download + auto-renewable
-subscription** ($6.99/year, no intro offer). Grandfather the ~35 existing paid
-owners with a free year.
+Convert the app from **paid** ($6.99 one-time) to **free download + a $6.99
+NON-RENEWING one-year purchase** (manual renewal — it does NOT auto-renew; Rob's
+explicit choice). Grandfather the ~35 existing paid owners with a free year.
 
-## Current state (Aug 2026)
-- **Paid app**, $6.99 one-time in App Store Connect. ~35 owners (own it forever).
-- **No purchase code** in the app — the old Stripe PWA gate is fully removed.
-- Cross-platform: iOS live on the App Store, Android in Play internal testing.
-- Flat pricing decided: **$6.99/year, everyone, no introductory offer.**
-  (Apple can't make a first year *pricier* than renewal, so the earlier
-  "$6.99 then $4.99" idea isn't possible; we settled on flat $6.99/yr.)
+Implemented with **RevenueCat** (`@revenuecat/purchases-capacitor`), cross-platform
+for iOS + Android.
 
-## Decision needed: purchase mechanism
+## Why non-renewing
+Rob does not want auto-renew ("cheezy"). Apple's **non-renewing subscription** is a
+first-class In-App Purchase type: buy a fixed year, no auto-charge, re-buy manually
+when it lapses. Trade-off accepted: lower recurring revenue (people forget to
+renew), and the app tracks the 1-year expiry itself (Apple doesn't).
 
-| | **RevenueCat** (recommended) | **Native** (StoreKit 2 + Play Billing) |
-|---|---|---|
-| Cross-platform | One SDK for iOS + Android | Two separate integrations |
-| Entitlements / restore | Handled by SDK + dashboard | Hand-rolled |
-| Grandfathering | Exposes original purchase date | Read `AppTransaction` (iOS) / Play API |
-| Receipt validation | Server-side, done for you | You build/host it |
-| Cost | Free < $2.5k/mo revenue (we're ~$245/yr) | No fee |
-| Downside | 3rd-party dep + account; purchase data flows through them | Much more code + edge cases to maintain |
-| Capacitor plugin | `@revenuecat/purchases-capacitor` | community IAP plugins, less turnkey |
+## Current state
+- Paid app, $6.99 one-time, ~35 owners (own it forever).
+- Flat price: **$6.99 for one year**, non-renewing.
+- Cross-platform: iOS live; Android in Play internal testing.
 
-**Recommendation: RevenueCat.** For a solo operator shipping to both stores with
-grandfathering, it removes the two riskiest chunks (receipt validation +
-cross-store entitlement logic). We're far under the free tier.
-
-## Store setup (Rob's actions — I can't do these)
+## Store setup (Rob's actions)
 
 ### App Store Connect
-1. **Pricing and Availability → change from Paid to Free.** Existing owners keep the app.
-2. **Subscriptions →** create a subscription group (e.g. "Mural Quest Access") and an
-   auto-renewable product, id `mq_yearly`, **$6.99/year**.
-3. Add the required subscription **localization, display name, and review screenshot**.
-4. Add **Terms of Use (EULA)** + **Privacy Policy** URLs (Apple rejects subs without these).
+1. The auto-renewable `mq_yearly` we created earlier is the WRONG type now — **leave
+   it unsubmitted or delete it.** (Product IDs can't be reused, hence the new id below.)
+2. **In-App Purchases → create** a **Non-Renewing Subscription**:
+   - Product ID: **`mq_year`** ← my code keys off this exactly.
+   - Reference Name: `Mural Quest — 1 Year`
+   - Price: **$6.99**
+   - Localization: Display Name `Mural Quest`, description.
+3. **Pricing and Availability → Paid → Free** — **only at ship time**, in the same
+   release as the paywall build. (Flipping early makes the app free with no gate = lost revenue.)
+4. **Terms of Use (EULA) + Privacy Policy URLs** — required or Apple rejects. The
+   paywall links to `muralquest.app/terms` and `/privacy` — these must be live.
 
 ### Google Play
-1. **Monetize → Subscriptions →** create `mq_yearly`, **$6.99/year**.
-2. App is already free on Play.
+- Google Play has no "non-renewing" type. Closest is a **one-time product (INAPP)**
+  `mq_year` at $6.99; the app enforces the 1-year window (same code path). Create it
+  under Monetize → In-app products when we get to Android.
 
-## Code (I build, once products exist + mechanism chosen)
-1. **Paywall screen** — repurpose the removed gate UI shell: features list,
-   "Subscribe — $6.99/year", "Restore Purchases", Terms/Privacy links.
-2. **Entitlement gate on launch** — `hasAccess()` returns true if the user has an
-   active subscription OR is grandfathered; otherwise show the paywall.
-3. **Purchase + restore flow** — via the chosen SDK.
-4. **Grandfathering** — detect an original *paid* purchase that predates the
-   subscription build (StoreKit `AppTransaction.originalAppVersion` /
-   RevenueCat original-purchase date) and grant a **1-year** entitlement from the
-   switch. (Could also make it permanent — only 35 people; Rob's call.)
+### RevenueCat
+1. Free account → create a Project → add the iOS app (bundle `com.muralquest.stpete`).
+2. Connect App Store (App Store Connect API key) so RevenueCat can read purchases.
+3. Add the product **`mq_year`**; put it in the **default Offering** as a package.
+4. (Android later: add the Play app + `mq_year` INAPP product.)
+5. Grab the **public iOS SDK key** (`appl_…`) → paste into `js/subscription.js`.
 
-## App Review notes
-- Subscription paywalls must show price, period, and auto-renew terms, plus links
-  to a functional EULA + Privacy Policy and a **Restore Purchases** button, or
-  Apple rejects. Google is similar.
-- Apple guideline: you **cannot** remove functionality existing paid users had
-  without grandfathering them — which is exactly why step "Grandfathering" exists.
+## Code — built (this pass)
+- `js/subscription.js` — RevenueCat layer: configure, price, purchase, restore,
+  and access = *(non-renewing purchase within the last year)* OR *(grandfathered
+  legacy buyer)*. Expiry computed from `nonSubscriptionTransactions` purchase date.
+- Paywall UI — `#paywall` in `index.html` + CSS. Honest copy: "one year… does not
+  auto-renew." Subscribe + Restore + Terms/Privacy links.
+- Gate — `initAccessGate()` in `app.js`: on native, covers the app until access is
+  confirmed; web stays open.
+- Plugin synced into the iOS native project (SPM).
+
+## Grandfathering
+Legacy paid buyers detected by `originalApplicationVersion` (CFBundleVersion at
+original purchase) `< 145` (first non-renewing build). They get free access until
+`GRANDFATHER_UNTIL` (2027-08-31) — ~a year. Constants in `subscription.js`.
+
+## Testing note
+In StoreKit **sandbox**, `originalApplicationVersion` is often `"1.0"`, so a sandbox
+tester looks grandfathered and skips the paywall. To test the actual purchase flow,
+temporarily raise/disable the grandfather check or use a sandbox account whose
+original version is ≥ 145.
 
 ## Sequence
-1. ✅ Stripe cleanup (commit 5f27716).
-2. ⬜ Rob: choose RevenueCat vs native.
-3. ⬜ Rob: create the `mq_yearly` products in ASC + Play; switch app to Free; add EULA/Privacy URLs.
-4. ⬜ Claude: build paywall + entitlement gate + purchase/restore + grandfather.
-5. ⬜ Test with sandbox purchases on TestFlight / Play internal.
-6. ⬜ Submit (both stores scrutinize subscriptions harder than normal updates).
+1. ✅ Stripe cleanup.
+2. ✅ Code built (RevenueCat non-renewing gate + paywall).
+3. ⬜ Rob: create `mq_year` non-renewing IAP in ASC; make RevenueCat account; send me the `appl_…` key.
+4. ⬜ Claude: paste the key; build to TestFlight; sandbox-test purchase + restore + grandfather.
+5. ⬜ At ship: flip Paid → Free; submit the IAP with the app version; ensure EULA/Privacy live.
+6. ⬜ Android: create Play product + RevenueCat Android app; test.

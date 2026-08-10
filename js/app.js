@@ -37,6 +37,8 @@ import { hydrateContent, CONTENT_BASE_URL } from './content.js';
 // handlers (e.g. the book buy link) fire events too.
 import { track as mqTrack } from './analytics.js';
 window.mqTrack = mqTrack;
+// Access gate — RevenueCat non-renewing $6.99/year (native only; see subscription.js).
+import { subscriptionsSupported, initSubscription, hasAccess, purchase, restore, getPriceString } from './subscription.js';
 
 // =============================================
 // Platform detection
@@ -51,6 +53,68 @@ if (isCapacitor) {
 const isStandalone = isCapacitor || window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
 const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isAndroid = /android/i.test(navigator.userAgent);
+
+// =============================================
+// Access gate (native paywall)
+// =============================================
+// On a native build the whole app sits behind a one-year, non-renewing purchase.
+// The #paywall overlay covers the app (which keeps rendering behind it) until
+// access is confirmed — active purchase within the year, or a grandfathered legacy
+// buyer. On the web / any non-native build there's no store, so the app is open.
+(function initAccessGate() {
+  if (!subscriptionsSupported()) return;
+  const paywall = document.getElementById('paywall');
+  if (!paywall) return;
+  // Cover the app immediately (before the async check) so content isn't usable.
+  paywall.hidden = false;
+  paywall.dataset.state = 'checking';
+
+  initSubscription().then(() => {
+    if (hasAccess()) { paywall.hidden = true; return; }
+    showPaywallOffer(paywall);
+  }).catch(() => { showPaywallOffer(paywall); });
+})();
+
+function showPaywallOffer(paywall) {
+  paywall.dataset.state = 'offer';
+  getPriceString().then(ps => {
+    const el = document.getElementById('paywall-price');
+    if (el && ps) el.textContent = ps + ' · one year';
+  });
+  const subBtn = document.getElementById('paywall-subscribe');
+  const restoreBtn = document.getElementById('paywall-restore');
+  const msgEl = document.getElementById('paywall-msg');
+  const setMsg = (t, isErr) => {
+    if (!msgEl) return;
+    msgEl.textContent = t || '';
+    msgEl.hidden = !t;
+    msgEl.classList.toggle('error', !!isErr);
+  };
+  const grant = () => { paywall.hidden = true; }; // app is already rendered behind
+  let busy = false;
+
+  if (subBtn) subBtn.addEventListener('click', async () => {
+    if (busy) return;
+    busy = true; subBtn.disabled = true; setMsg('');
+    try {
+      if (await purchase()) { grant(); return; }
+      // user cancelled — leave the paywall, no error
+    } catch (e) {
+      setMsg('Purchase could not be completed. Please try again.', true);
+    } finally { busy = false; subBtn.disabled = false; }
+  });
+
+  if (restoreBtn) restoreBtn.addEventListener('click', async () => {
+    if (busy) return;
+    busy = true; setMsg('Checking…');
+    try {
+      if (await restore()) { grant(); return; }
+      setMsg('No active purchase found on this account.', true);
+    } catch (e) {
+      setMsg('Could not restore. Please try again.', true);
+    } finally { busy = false; }
+  });
+}
 
 
 // =============================================
