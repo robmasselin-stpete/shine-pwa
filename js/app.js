@@ -3524,6 +3524,10 @@ function renderTourLoop() {
       <!-- Bottom panel -->
       <div class="tour-mode-header-outer">
         <span class="tour-mode-label">Explore the Mural</span>
+        <button class="tour-repeat-btn" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          Repeat Audio
+        </button>
       </div>
       <div class="tour-divider-line tour-divider-top"></div>
       <div class="active-tour-bottom">
@@ -3609,6 +3613,13 @@ function renderTourLoop() {
     }
     hapticVibrate(200);
     renderTourBottom();
+  });
+
+  // Repeat Audio — replay the current mural's narration (explicit, ignores the
+  // auto-narrate toggle). Tap is a user gesture, so the Web Audio context unlocks.
+  views.loops.querySelector('.tour-repeat-btn')?.addEventListener('click', () => {
+    const cur = state.tourStops[state.tourIndex];
+    if (cur && cur.aud) playNarration(cur.aud);
   });
 
   // Action button — "Take me to the next mural" starts walking
@@ -3721,6 +3732,10 @@ function renderTourBottom() {
       modeLabel.className = 'tour-mode-label';
     }
   }
+
+  // Repeat Audio button — only in explore mode, and only if this mural has a clip.
+  const repeatBtn = views.loops.querySelector('.tour-repeat-btn');
+  if (repeatBtn) repeatBtn.hidden = walking || !stops[currIdx] || !stops[currIdx].aud;
 
   // Artist name
   const artistEl = views.loops.querySelector('.active-tour-bottom .tour-stop-artist');
@@ -4262,18 +4277,6 @@ function buildDetailBodyHTML(mural) {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
             </button>
             <span class="detail-action-label">Tour</span>
-          </div>
-          <div class="detail-action-item">
-            <button id="seen-btn" class="seen-btn ${hasSeen(mural.id) ? 'seen' : ''}" onclick="toggleSeenFromDetail(${mural.id})">
-              <svg class="seen-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <span class="detail-action-label">Seen</span>
-          </div>
-          <div class="detail-action-item">
-            <button id="like-btn" class="like-btn ${hasLiked(mural.id) ? 'liked' : ''}" onclick="toggleLike(${mural.id})">
-              <svg class="like-heart" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <span class="detail-action-label">FAV</span>
           </div>
           ${mural.lat && mural.lng ? `<div class="detail-action-item">
             <button class="detail-goto-pill" data-mural-id="${mural.id}">

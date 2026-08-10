@@ -3560,6 +3560,10 @@ body.searching #tab-bar { display: none !important; }
 }
 .tour-mode-header-outer {
   padding: 4px 12px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 .tour-mode-label {
   font-family: var(--font-display);
@@ -3569,6 +3573,24 @@ body.searching #tab-bar { display: none !important; }
   transition: color 0.3s;
   white-space: nowrap;
 }
+/* Repeat Audio pill — matches the tour nav-row buttons (Reverse/Jump/Narration) */
+.tour-repeat-btn {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--teal);
+  background: transparent;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tour-repeat-btn:active { opacity: 0.85; }
 .tour-mode-label.walking-label {
   color: #E8736C;
 }
