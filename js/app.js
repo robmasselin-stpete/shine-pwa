@@ -243,6 +243,8 @@ window.toggleFurtherWork = toggleFurtherWork;
 // this app. Fetch the clip, decode it, and play it through the shared AudioContext.
 let _narrationSrc = null;   // current AudioBufferSourceNode
 let _audioPlaying = false;
+let _narrationReq = 0;      // monotonic token — invalidates an in-flight fetch/decode when a newer clip is requested
+let _narrationTimer = null; // pending delayed start (arrival narration waits out the "ta-da" tone)
 
 /** Shared AudioContext (reuses the beep's walkAudioCtx). Resumes it (iOS unlock). */
 function _narrationCtx() {
@@ -256,12 +258,17 @@ function _narrationCtx() {
 function playAudioUrl(url, onEnd) {
   if (!url) return;
   const ctx = _narrationCtx();
+  const myReq = ++_narrationReq;   // token for this request
   if (_narrationSrc) { try { _narrationSrc.stop(); } catch (e) {} _narrationSrc = null; }
   _audioPlaying = true;
   fetch(url)
     .then(r => r.arrayBuffer())
     .then(arr => new Promise((res, rej) => ctx.decodeAudioData(arr, res, rej)))
     .then(buf => {
+      // A newer clip was requested while this one was fetching/decoding — drop it, so
+      // rapid "jump to next" taps can't stack several narrations playing at once.
+      if (myReq !== _narrationReq) return;
+      if (_narrationSrc) { try { _narrationSrc.stop(); } catch (e) {} _narrationSrc = null; }
       const src = ctx.createBufferSource();
       src.buffer = buf;
       src.connect(ctx.destination);
@@ -269,11 +276,13 @@ function playAudioUrl(url, onEnd) {
       src.start();
       _narrationSrc = src;
     })
-    .catch(e => { _audioPlaying = false; if (onEnd) onEnd(); console.warn('[narration] play failed', e); });
+    .catch(e => { if (myReq === _narrationReq) { _audioPlaying = false; if (onEnd) onEnd(); } console.warn('[narration] play failed', e); });
 }
 
-/** Stop any playing narration. */
+/** Stop any playing narration (and cancel a pending/in-flight one). */
 function stopAudioUrl() {
+  _narrationReq++;                 // invalidate any in-flight fetch/decode
+  if (_narrationTimer) { clearTimeout(_narrationTimer); _narrationTimer = null; }  // cancel a pending delayed start
   if (_narrationSrc) { try { _narrationSrc.stop(); } catch (e) {} _narrationSrc = null; }
   _audioPlaying = false;
 }
@@ -290,9 +299,17 @@ function toggleAudioClip(url) {
   if (btn) btn.classList.add('playing');
 }
 
-/** Play a narration clip (tour auto-play on arrival). Stops any current playback. */
-function playNarration(url) {
-  playAudioUrl(url);
+/** Play a narration clip (tour auto-play). Stops any current OR pending playback first,
+ *  so a newly-triggered mural always replaces the previous one (no stacking). `delayMs`
+ *  defers the start — used on GPS arrival so the arrival "ta-da" tone finishes first. */
+function playNarration(url, delayMs = 0) {
+  stopAudioUrl();
+  if (!url) return;
+  if (delayMs > 0) {
+    _narrationTimer = setTimeout(() => { _narrationTimer = null; playAudioUrl(url); }, delayMs);
+  } else {
+    playAudioUrl(url);
+  }
 }
 
 // app.js is an ES module, so functions are module-scoped, NOT global. The detail-page
@@ -2780,7 +2797,9 @@ function updateCompassArc() {
     // until the user starts the next leg.
     if (tourNarrateOn()) {
       const arrived = state.tourStops[nextIdx];
-      if (arrived && arrived.aud) playNarration(arrived.aud);
+      // Delay 2s so the arrival "ta-da" tone finishes before narration starts (they
+      // overlapped otherwise). playNarration also stops any prior/pending clip.
+      if (arrived && arrived.aud) playNarration(arrived.aud, 2000);
     }
     releaseWakeLock();
     renderTourBottom();
