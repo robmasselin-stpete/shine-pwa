@@ -39,16 +39,6 @@ import { track as mqTrack } from './analytics.js';
 window.mqTrack = mqTrack;
 
 // =============================================
-// =============================================
-// App access — gate removed (App Store distribution only)
-// =============================================
-function setCookieAccess() {}
-function getCookieAccess() { return null; }
-function setEmailCookie() {}
-function getEmailCookie() { return null; }
-function hasAccess() { return true; }
-function grantAccess() {}
-
 // Platform detection
 const isCapacitor = window.Capacitor?.isNativePlatform?.() ?? false;
 
@@ -62,9 +52,6 @@ const isStandalone = isCapacitor || window.matchMedia('(display-mode: standalone
 const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isAndroid = /android/i.test(navigator.userAgent);
 
-// No paywall — always show the app
-document.getElementById('gate-page').hidden = true;
-document.getElementById('app').hidden = false;
 
 // =============================================
 // Splash Screen — shows first 4 app opens
