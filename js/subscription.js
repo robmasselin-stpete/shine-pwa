@@ -18,6 +18,11 @@ const RC_API_KEY_IOS = 'REVENUECAT_IOS_KEY';        // appl_… from RevenueCat 
 const RC_API_KEY_ANDROID = 'REVENUECAT_ANDROID_KEY'; // goog_… (Android)
 const PRODUCT_ID = 'mq_year';                        // the non-renewing In-App Purchase id (ASC + Play + RevenueCat)
 const ACCESS_DURATION_MS = 365 * 24 * 60 * 60 * 1000; // one year of access per purchase
+// Manual admin grants: a RevenueCat entitlement (attached to NO product) that Rob
+// grants/extends/revokes per-customer from the dashboard — e.g. "give this person
+// another year." Kept separate from PRODUCT_ID so a normal purchase never turns
+// into lifetime access; used only for comps and extensions.
+const COMP_ENTITLEMENT = 'comp';
 
 // Grandfathering: iOS users who bought the paid app keep full access free until
 // GRANDFATHER_UNTIL. Detected via CFBundleVersion at original purchase: paid builds
@@ -75,6 +80,13 @@ function latestPurchaseMs(customerInfo) {
 function computeAccess(customerInfo) {
   _expiryMs = 0;
   if (!customerInfo) return false;
+  // 0) Manual comp / extension granted from the RevenueCat dashboard.
+  const active = customerInfo.entitlements && customerInfo.entitlements.active;
+  if (active && active[COMP_ENTITLEMENT]) {
+    const exp = active[COMP_ENTITLEMENT].expirationDate; // null = no expiry (lifetime comp)
+    _expiryMs = exp ? Date.parse(exp) : 0;
+    return true;
+  }
   // 1) Non-renewing purchase still inside its year?
   const last = latestPurchaseMs(customerInfo);
   if (last) {
