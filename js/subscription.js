@@ -29,7 +29,7 @@ const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-12-31T23:59:59Z');
 // original-purchase data, so without this everyone looks grandfathered and skips
 // the paywall. Forces the paywall on so subscribe/restore is testable. (Real
 // subscriptions still grant access — only grandfathering is suppressed.)
-const TESTING_FORCE_PAYWALL = true;
+const TESTING_FORCE_PAYWALL = false;
 
 // ⚠️ TEST ONLY — shows an on-screen readout of the raw StoreKit original-purchase
 // values + which path granted access, so grandfathering can be verified on-device
