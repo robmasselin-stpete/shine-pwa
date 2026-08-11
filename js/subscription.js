@@ -22,11 +22,10 @@
 // DATE (AppTransaction.originalPurchaseDate) — robust, no version-string ambiguity:
 // an original purchase before the go-live moment = a legacy buyer.
 // LAUNCH cutoff: original purchase before this = legacy buyer = free for life.
-// Set ~2 weeks out so it lands AFTER we flip Paid→Free at release — guarantees no
-// paying customer is ever excluded (the flip happens well before this). Any brand-
-// new free download in the gap between release and this date is also grandfathered
-// (negligible with no promotion).
-const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-08-25T00:00:00Z');
+// Set to end of Aug 16 2026 — lands after the Paid→Free flip at release, so no
+// paying customer is excluded. Rule: don't run promotions until after this date
+// (any free download before it is grandfathered). Edge cases → hand out an Offer Code.
+const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-08-17T00:00:00Z');
 
 // ⚠️ TEST ONLY — shows an on-screen readout of the raw StoreKit original-purchase
 // values + which path granted access, so grandfathering can be verified on-device
