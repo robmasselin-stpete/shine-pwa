@@ -21,9 +21,12 @@
 // and gets access FREE FOR LIFE (no expiry). Detected by the original-purchase
 // DATE (AppTransaction.originalPurchaseDate) — robust, no version-string ambiguity:
 // an original purchase before the go-live moment = a legacy buyer.
-// ⚠️ SET THIS to the actual Paid→Free flip time before shipping (must be after the
-// last legacy purchase and before the first new-user free download).
-const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-12-31T23:59:59Z');
+// LAUNCH cutoff: original purchase before this = legacy buyer = free for life.
+// Set ~2 weeks out so it lands AFTER we flip Paid→Free at release — guarantees no
+// paying customer is ever excluded (the flip happens well before this). Any brand-
+// new free download in the gap between release and this date is also grandfathered
+// (negligible with no promotion).
+const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-08-25T00:00:00Z');
 
 // ⚠️ TEST ONLY — MUST be false before shipping. StoreKit sandbox fakes the
 // original-purchase data, so without this everyone looks grandfathered and skips
@@ -34,7 +37,7 @@ const TESTING_FORCE_PAYWALL = false;
 // ⚠️ TEST ONLY — shows an on-screen readout of the raw StoreKit original-purchase
 // values + which path granted access, so grandfathering can be verified on-device
 // (release builds aren't web-inspectable). Set false for production.
-const DEBUG_ACCESS = true;
+const DEBUG_ACCESS = false;
 
 // -------------------------------------------------------------------------------
 function cap() { return window.Capacitor || null; }
