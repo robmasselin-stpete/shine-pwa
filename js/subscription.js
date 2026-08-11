@@ -28,12 +28,6 @@
 // (negligible with no promotion).
 const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-08-25T00:00:00Z');
 
-// ⚠️ TEST ONLY — MUST be false before shipping. StoreKit sandbox fakes the
-// original-purchase data, so without this everyone looks grandfathered and skips
-// the paywall. Forces the paywall on so subscribe/restore is testable. (Real
-// subscriptions still grant access — only grandfathering is suppressed.)
-const TESTING_FORCE_PAYWALL = false;
-
 // ⚠️ TEST ONLY — shows an on-screen readout of the raw StoreKit original-purchase
 // values + which path granted access, so grandfathering can be verified on-device
 // (release builds aren't web-inspectable). Set false for production.
@@ -64,8 +58,12 @@ function computeAccess(info) {
   // 1) Active subscription (or a redeemed Offer Code period).
   if (info.active) { _expiryMs = info.expirationMs || 0; _reason = 'subscription'; return true; }
   // 2) Legacy buyer — original purchase before go-live = free for life (no expiry).
-  //    Suppressed while TESTING_FORCE_PAYWALL so the paywall is testable in sandbox.
-  if (!TESTING_FORCE_PAYWALL) {
+  //    ONLY in the real production environment: in Sandbox/TestFlight/App Review the
+  //    original-purchase date is a fixed 2013 placeholder, which would wave the
+  //    reviewer past the paywall (→ rejection). Forcing production-only means the
+  //    reviewer always sees the paywall and can test subscribing, while real
+  //    customers are grandfathered in production.
+  if (String(info.environment).toLowerCase() === 'production') {
     const opd = info.originalPurchaseMs;
     if (opd && opd < GRANDFATHER_PURCHASE_BEFORE) { _expiryMs = 0; _reason = 'grandfather'; return true; }
   }
@@ -107,6 +105,7 @@ export function accessDebug() {
     active: _lastInfo ? _lastInfo.active : null,
     oav: _lastInfo ? _lastInfo.originalAppVersion : null,
     opdMs: _lastInfo ? _lastInfo.originalPurchaseMs : null,
+    env: _lastInfo ? _lastInfo.environment : null,
   };
 }
 
