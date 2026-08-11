@@ -79,7 +79,7 @@ function showPaywallOffer(paywall) {
   paywall.dataset.state = 'offer';
   getPriceString().then(ps => {
     const el = document.getElementById('paywall-price');
-    if (el && ps) el.textContent = ps + ' · one year';
+    if (el && ps) el.textContent = ps + ' / year';
   });
   const subBtn = document.getElementById('paywall-subscribe');
   const restoreBtn = document.getElementById('paywall-restore');
