@@ -138,13 +138,16 @@ public class MQStore: CAPPlugin, CAPBridgedPlugin {
             }
         }
         var originalAppVersion = ""
+        var originalPurchaseMs: Double = 0
         if #available(iOS 16.0, *) {
             if let verification = try? await AppTransaction.shared,
                case .verified(let appTx) = verification {
                 originalAppVersion = appTx.originalAppVersion
+                originalPurchaseMs = appTx.originalPurchaseDate.timeIntervalSince1970 * 1000
             }
         }
-        return ["active": active, "expirationMs": expirationMs, "originalAppVersion": originalAppVersion]
+        return ["active": active, "expirationMs": expirationMs,
+                "originalAppVersion": originalAppVersion, "originalPurchaseMs": originalPurchaseMs]
     }
 
     @objc func checkAccess(_ call: CAPPluginCall) {

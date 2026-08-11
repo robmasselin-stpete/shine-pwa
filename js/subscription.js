@@ -17,18 +17,24 @@
 // is built, subscriptionsSupported() is false on Android, so the Android build is
 // ungated (it's still internal-testing only).
 
-// Grandfathering: iOS users who bought the paid app keep full access free until
-// GRANDFATHER_UNTIL. Detected via CFBundleVersion at original purchase
-// (AppTransaction.originalAppVersion): paid builds are < 145; the first
-// subscription build (and every new install) is ≥ 145.
-const SUBSCRIPTION_FIRST_BUILD = 145;
-const GRANDFATHER_UNTIL = Date.parse('2027-08-31T23:59:59Z');
+// Grandfathering: anyone who bought the app BEFORE it went free is a legacy buyer
+// and gets access FREE FOR LIFE (no expiry). Detected by the original-purchase
+// DATE (AppTransaction.originalPurchaseDate) — robust, no version-string ambiguity:
+// an original purchase before the go-live moment = a legacy buyer.
+// ⚠️ SET THIS to the actual Paid→Free flip time before shipping (must be after the
+// last legacy purchase and before the first new-user free download).
+const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-12-31T23:59:59Z');
 
-// ⚠️ TEST ONLY — MUST be false before shipping. In StoreKit sandbox every tester's
-// originalAppVersion is "1.0", so everyone looks grandfathered and skips the
-// paywall. This forces the paywall on so the subscribe/restore flow is testable.
-// (Real subscriptions still grant access — only grandfathering is suppressed.)
+// ⚠️ TEST ONLY — MUST be false before shipping. StoreKit sandbox fakes the
+// original-purchase data, so without this everyone looks grandfathered and skips
+// the paywall. Forces the paywall on so subscribe/restore is testable. (Real
+// subscriptions still grant access — only grandfathering is suppressed.)
 const TESTING_FORCE_PAYWALL = true;
+
+// ⚠️ TEST ONLY — shows an on-screen readout of the raw StoreKit original-purchase
+// values + which path granted access, so grandfathering can be verified on-device
+// (release builds aren't web-inspectable). Set false for production.
+const DEBUG_ACCESS = true;
 
 // -------------------------------------------------------------------------------
 function cap() { return window.Capacitor || null; }
@@ -43,21 +49,22 @@ export function subscriptionsSupported() {
 }
 
 let _access = false;
-let _expiryMs = 0; // when access ends (subscription/grant expiry), 0 = none/unknown
+let _expiryMs = 0;      // when access ends (0 = none / no expiry, incl. free-for-life)
+let _reason = 'none';   // 'subscription' | 'grandfather' | 'undetermined' | 'none'
+let _lastInfo = null;   // raw checkAccess payload (for the debug readout)
+let _determined = false; // did the last checkAccess actually complete?
 
 function computeAccess(info) {
   _expiryMs = 0;
+  _reason = 'none';
   if (!info) return false;
-  // 1) Active subscription (or redeemed Offer Code period).
-  if (info.active) { _expiryMs = info.expirationMs || 0; return true; }
-  // 2) Grandfathered legacy paid buyer (suppressed while TESTING_FORCE_PAYWALL).
+  // 1) Active subscription (or a redeemed Offer Code period).
+  if (info.active) { _expiryMs = info.expirationMs || 0; _reason = 'subscription'; return true; }
+  // 2) Legacy buyer — original purchase before go-live = free for life (no expiry).
+  //    Suppressed while TESTING_FORCE_PAYWALL so the paywall is testable in sandbox.
   if (!TESTING_FORCE_PAYWALL) {
-    const oav = info.originalAppVersion;
-    const buildNum = oav ? parseInt(oav, 10) : NaN;
-    if (!isNaN(buildNum) && buildNum < SUBSCRIPTION_FIRST_BUILD && Date.now() < GRANDFATHER_UNTIL) {
-      _expiryMs = GRANDFATHER_UNTIL;
-      return true;
-    }
+    const opd = info.originalPurchaseMs;
+    if (opd && opd < GRANDFATHER_PURCHASE_BEFORE) { _expiryMs = 0; _reason = 'grandfather'; return true; }
   }
   return false;
 }
@@ -69,19 +76,36 @@ export async function initSubscription() {
 
 /** Re-check the subscription/entitlement state. Returns the boolean. */
 export async function refreshAccess() {
-  if (!subscriptionsSupported()) return _access;
+  if (!subscriptionsSupported()) { _determined = true; return _access; }
   try {
     const info = await callStore('checkAccess');
+    _lastInfo = info;
     _access = computeAccess(info);
+    _determined = true;
   } catch (e) {
     console.warn('[access] checkAccess failed', e);
+    _determined = false; // couldn't reach StoreKit — the gate fails OPEN (never lock out a real buyer)
   }
   return _access;
 }
 
 export function hasAccess() { return _access; }
-/** Epoch ms when access ends (0 if none/unknown). */
+/** Epoch ms when access ends (0 if none / no expiry). */
 export function accessExpiryMs() { return _expiryMs; }
+/** False if the last check couldn't reach StoreKit — the gate should fail open. */
+export function accessDetermined() { return _determined; }
+/** Test-build readout: whether to show it + the raw values that drove the decision. */
+export function accessDebug() {
+  return {
+    show: DEBUG_ACCESS,
+    reason: _reason,
+    access: _access,
+    determined: _determined,
+    active: _lastInfo ? _lastInfo.active : null,
+    oav: _lastInfo ? _lastInfo.originalAppVersion : null,
+    opdMs: _lastInfo ? _lastInfo.originalPurchaseMs : null,
+  };
+}
 
 /** Localized price string for the paywall (e.g. "$6.99"). '' if unavailable. */
 export async function getPriceString() {
@@ -107,6 +131,7 @@ export async function purchase() {
 export async function restore() {
   if (!subscriptionsSupported()) return false;
   const info = await callStore('restore');
+  _lastInfo = info;
   _access = computeAccess(info);
   return _access;
 }

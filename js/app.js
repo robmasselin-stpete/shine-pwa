@@ -37,8 +37,8 @@ import { hydrateContent, CONTENT_BASE_URL } from './content.js';
 // handlers (e.g. the book buy link) fire events too.
 import { track as mqTrack } from './analytics.js';
 window.mqTrack = mqTrack;
-// Access gate — RevenueCat non-renewing $6.99/year (native only; see subscription.js).
-import { subscriptionsSupported, initSubscription, hasAccess, purchase, restore, getPriceString } from './subscription.js';
+// Access gate — native StoreKit auto-renewable $6.99/year (iOS only; see subscription.js).
+import { subscriptionsSupported, initSubscription, hasAccess, purchase, restore, getPriceString, accessDetermined, accessDebug } from './subscription.js';
 
 // =============================================
 // Platform detection
@@ -57,10 +57,11 @@ const isAndroid = /android/i.test(navigator.userAgent);
 // =============================================
 // Access gate (native paywall)
 // =============================================
-// On a native build the whole app sits behind a one-year, non-renewing purchase.
-// The #paywall overlay covers the app (which keeps rendering behind it) until
-// access is confirmed — active purchase within the year, or a grandfathered legacy
-// buyer. On the web / any non-native build there's no store, so the app is open.
+// On the iOS build the whole app sits behind the $6.99/year subscription. The
+// #paywall overlay covers the app (which keeps rendering behind it) until access
+// is confirmed — an active subscription, or a grandfathered legacy buyer (free for
+// life). On web / Android there's no store yet, so the app is open.
+// Fail-open: if we can't reach StoreKit at all, don't lock anyone out.
 (function initAccessGate() {
   if (!subscriptionsSupported()) return;
   const paywall = document.getElementById('paywall');
@@ -70,10 +71,30 @@ const isAndroid = /android/i.test(navigator.userAgent);
   paywall.dataset.state = 'checking';
 
   initSubscription().then(() => {
-    if (hasAccess()) { paywall.hidden = true; return; }
+    renderAccessDebug();
+    if (hasAccess() || !accessDetermined()) { paywall.hidden = true; return; }
     showPaywallOffer(paywall);
-  }).catch(() => { showPaywallOffer(paywall); });
+  }).catch(() => { renderAccessDebug(); paywall.hidden = true; }); // error → fail open
 })();
+
+// Test-build only: on-screen readout of the raw StoreKit original-purchase values
+// and which path granted access, so grandfathering can be verified on a real device
+// (release/TestFlight builds aren't web-inspectable). Controlled by DEBUG_ACCESS.
+function renderAccessDebug() {
+  const d = accessDebug();
+  if (!d || !d.show) return;
+  let el = document.getElementById('access-debug');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'access-debug';
+    el.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:5000;background:rgba(0,0,0,.82);'
+      + 'color:#3f6;font:11px/1.45 ui-monospace,monospace;padding:7px 12px;white-space:pre-wrap;';
+    document.body.appendChild(el);
+  }
+  const opd = d.opdMs ? new Date(d.opdMs).toISOString() : '(none)';
+  el.textContent = `ACCESS DEBUG — reason=${d.reason} access=${d.access} determined=${d.determined}\n`
+    + `active=${d.active}  originalAppVersion=${d.oav}\noriginalPurchaseDate=${opd}`;
+}
 
 function showPaywallOffer(paywall) {
   paywall.dataset.state = 'offer';
