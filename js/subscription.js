@@ -24,6 +24,12 @@
 const SUBSCRIPTION_FIRST_BUILD = 145;
 const GRANDFATHER_UNTIL = Date.parse('2027-08-31T23:59:59Z');
 
+// ⚠️ TEST ONLY — MUST be false before shipping. In StoreKit sandbox every tester's
+// originalAppVersion is "1.0", so everyone looks grandfathered and skips the
+// paywall. This forces the paywall on so the subscribe/restore flow is testable.
+// (Real subscriptions still grant access — only grandfathering is suppressed.)
+const TESTING_FORCE_PAYWALL = true;
+
 // -------------------------------------------------------------------------------
 function cap() { return window.Capacitor || null; }
 function callStore(method, args) { return cap().nativePromise('MQStore', method, args || {}); }
@@ -44,12 +50,14 @@ function computeAccess(info) {
   if (!info) return false;
   // 1) Active subscription (or redeemed Offer Code period).
   if (info.active) { _expiryMs = info.expirationMs || 0; return true; }
-  // 2) Grandfathered legacy paid buyer.
-  const oav = info.originalAppVersion;
-  const buildNum = oav ? parseInt(oav, 10) : NaN;
-  if (!isNaN(buildNum) && buildNum < SUBSCRIPTION_FIRST_BUILD && Date.now() < GRANDFATHER_UNTIL) {
-    _expiryMs = GRANDFATHER_UNTIL;
-    return true;
+  // 2) Grandfathered legacy paid buyer (suppressed while TESTING_FORCE_PAYWALL).
+  if (!TESTING_FORCE_PAYWALL) {
+    const oav = info.originalAppVersion;
+    const buildNum = oav ? parseInt(oav, 10) : NaN;
+    if (!isNaN(buildNum) && buildNum < SUBSCRIPTION_FIRST_BUILD && Date.now() < GRANDFATHER_UNTIL) {
+      _expiryMs = GRANDFATHER_UNTIL;
+      return true;
+    }
   }
   return false;
 }
