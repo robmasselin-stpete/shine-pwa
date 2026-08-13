@@ -57,11 +57,11 @@ const isAndroid = /android/i.test(navigator.userAgent);
 // =============================================
 // Access gate (native paywall)
 // =============================================
-// On the iOS build the whole app sits behind the $6.99/year subscription. The
-// #paywall overlay covers the app (which keeps rendering behind it) until access
-// is confirmed — an active subscription, or a grandfathered legacy buyer (free for
-// life). On web / Android there's no store yet, so the app is open.
-// Fail-open: if we can't reach StoreKit at all, don't lock anyone out.
+// On the native iOS and Android builds the whole app sits behind the $6.99/year
+// subscription. The #paywall overlay covers the app (which keeps rendering behind
+// it) until access is confirmed — an active subscription, or (iOS only) a
+// grandfathered legacy buyer (free for life). On web there's no store, so the app
+// is open. Fail-open: if we can't reach the store at all, don't lock anyone out.
 (function initAccessGate() {
   if (!subscriptionsSupported()) return;
   const paywall = document.getElementById('paywall');
@@ -102,6 +102,16 @@ function showPaywallOffer(paywall) {
     const el = document.getElementById('paywall-price');
     if (el && ps) el.textContent = ps + ' / year';
   });
+  // The paywall legal copy defaults to Apple wording (App Store / Apple EULA). On
+  // Android, swap to Google Play wording + Google Play terms — Apple's EULA link
+  // doesn't apply there.
+  if (window.Capacitor?.getPlatform?.() === 'android') {
+    const legal = document.getElementById('paywall-legal');
+    if (legal) legal.innerHTML =
+      '$6.99 per year. Renews automatically; cancel anytime in Google Play &rarr; Subscriptions — Google reminds you before each renewal.'
+      + '<br><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Terms of Use</a>'
+      + '&nbsp;·&nbsp;<a href="https://muralquest.app/privacy" target="_blank" rel="noopener">Privacy Policy</a>';
+  }
   const subBtn = document.getElementById('paywall-subscribe');
   const restoreBtn = document.getElementById('paywall-restore');
   const msgEl = document.getElementById('paywall-msg');

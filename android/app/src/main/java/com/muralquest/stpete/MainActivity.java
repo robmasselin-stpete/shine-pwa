@@ -16,6 +16,10 @@ import com.getcapacitor.BridgeActivity;
 public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        // Register the native Play Billing subscription plugin. Must be called BEFORE
+        // super.onCreate() so Capacitor's bridge picks it up (mirrors iOS MQStore).
+        registerPlugin(MQStore.class);
+
         super.onCreate(savedInstanceState);
 
         // The app uses the web Geolocation API (navigator.geolocation) in the WebView

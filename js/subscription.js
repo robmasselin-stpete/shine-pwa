@@ -13,9 +13,11 @@
 // from a redeemed Offer Code — that's how Rob comps someone a year) OR a
 // grandfathered legacy buyer of the old PAID app.
 //
-// Android note: this native plugin is iOS-only. Until a Play Billing equivalent
-// is built, subscriptionsSupported() is false on Android, so the Android build is
-// ungated (it's still internal-testing only).
+// Platform note: the native MQStore plugin exists on BOTH iOS (StoreKit 2) and
+// Android (Google Play Billing) and returns the same {active, expirationMs} shape,
+// so the access logic below is shared. Grandfathering is iOS-only — it keys off the
+// production originalPurchaseDate, a field Android's Play Billing doesn't provide, so
+// that branch is naturally skipped on Android (there are no legacy Android buyers).
 
 // Grandfathering: anyone who bought the app BEFORE it went free is a legacy buyer
 // and gets access FREE FOR LIFE (no expiry). Detected by the original-purchase
@@ -36,12 +38,13 @@ const DEBUG_ACCESS = false;
 function cap() { return window.Capacitor || null; }
 function callStore(method, args) { return cap().nativePromise('MQStore', method, args || {}); }
 
-/** True only on the iOS app, where the native StoreKit plugin exists. */
+/** True on the native iOS or Android app, where the MQStore plugin exists. */
 export function subscriptionsSupported() {
   const c = cap();
-  return !!(c && c.isNativePlatform && c.isNativePlatform()
-    && typeof c.nativePromise === 'function'
-    && c.getPlatform && c.getPlatform() === 'ios');
+  if (!(c && c.isNativePlatform && c.isNativePlatform()
+    && typeof c.nativePromise === 'function' && c.getPlatform)) return false;
+  const p = c.getPlatform();
+  return p === 'ios' || p === 'android';
 }
 
 let _access = false;
