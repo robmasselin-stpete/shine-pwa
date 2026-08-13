@@ -473,6 +473,11 @@ let compassSmoothedHeading = null;
 let compassGpsWatchId = null;
 const COMPASS_ARC_DOTS = 21;
 const COMPASS_ARC_SPAN_DEG = 140;
+// Magnetic declination for St. Petersburg, FL (WMM ~2026: ~6.8° West → negative).
+// iOS's webkitCompassHeading is already true-north; Android's (360 - alpha) is
+// MAGNETIC north, so we add this to convert it to true north — matching the
+// true-north bearing() math and the iOS reading. Nudge if the WMM value drifts.
+const MAGNETIC_DECLINATION = -6.8;
 let compassGrantedThisSession = false;
 let lastCompassEventTime = 0;     // timestamp of last deviceorientation event
 let compassWatchdogId = null;     // interval ID for compass liveness check
@@ -2756,10 +2761,11 @@ function startCompassListener(arcEl) {
   }
 
   compassHandler = (e) => {
-    // iOS: webkitCompassHeading (0=N, clockwise). Android: 360 - alpha.
+    // iOS: webkitCompassHeading (0=N, clockwise, already true-north).
+    // Android: 360 - alpha is MAGNETIC north → add declination to get true north.
     let heading = e.webkitCompassHeading != null
       ? e.webkitCompassHeading
-      : (e.alpha != null ? (360 - e.alpha) % 360 : null);
+      : (e.alpha != null ? ((360 - e.alpha) % 360 + MAGNETIC_DECLINATION + 360) % 360 : null);
     if (heading == null) return;
 
     lastCompassEventTime = Date.now();
@@ -3008,9 +3014,10 @@ function startDetailCompassListener(arcEl, mural) {
   }
 
   detailCompassHandler = (e) => {
+    // iOS webkitCompassHeading is true-north; Android magnetic → add declination.
     let heading = e.webkitCompassHeading != null
       ? e.webkitCompassHeading
-      : (e.alpha != null ? (360 - e.alpha) % 360 : null);
+      : (e.alpha != null ? ((360 - e.alpha) % 360 + MAGNETIC_DECLINATION + 360) % 360 : null);
     if (heading == null) return;
 
     const ALPHA = 0.3;
