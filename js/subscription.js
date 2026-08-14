@@ -34,7 +34,7 @@ const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-08-22T00:00:00Z');
 // ⚠️ TEST ONLY — shows an on-screen readout of the raw StoreKit original-purchase
 // values + which path granted access, so grandfathering can be verified on-device
 // (release builds aren't web-inspectable). Set false for production.
-const DEBUG_ACCESS = true;  // ⚠️ TEMP for v10 Android paywall diagnosis — set false before production
+const DEBUG_ACCESS = false;
 
 // -------------------------------------------------------------------------------
 function cap() { return window.Capacitor || null; }
