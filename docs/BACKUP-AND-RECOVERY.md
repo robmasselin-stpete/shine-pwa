@@ -25,15 +25,29 @@ in an **encrypted** store (password manager, or an encrypted DMG — see below),
 | **Service API keys** | `.mq-anthropic-key`, `.mq-elevenlabs-key`, `.mq-ig-post-key` | Regenerable from each service. |
 | **iOS native project** | whole `ios/` dir (gitignored) | `native-ref/AppDelegate.swift` (tracked) backs up the native plugins (MQStore + AppRating). The rest regenerates via `npx cap add ios`; then reapply AppDelegate from native-ref + the Info.plist edits (no background modes, When-In-Use only). |
 
-## 3. Whole-machine safety net → Time Machine
-A **Time Machine** backup to an external drive captures *everything* at once — the full
-`~/shine-pwa` (including gitignored files), the login Keychain (signing cert), and
-`~/.appstoreconnect`. This is the simplest complete recovery. Turn it on if it isn't.
+## 3. Full snapshot → the air-gapped 2 TB drive (kept disconnected)
+Instead of Time Machine, a **dated full copy** of the project + secrets to the offline
+2 TB drive. Being disconnected makes it ransomware-/accident-proof. Connect it, run one
+`rsync` into a dated folder, disconnect. Excludes only the big regenerable dirs
+(`node_modules`, build caches) — includes `.git`, `ios/`, the keystore, keys, and scripts.
+
+```bash
+# Replace YOURDRIVE with the mounted volume name (see: ls /Volumes)
+DEST="/Volumes/YOURDRIVE/mural-quest-backups/$(date +%Y-%m-%d)"
+mkdir -p "$DEST"
+rsync -a --exclude node_modules --exclude .gradle --exclude 'build' \
+      --exclude Pods --exclude 'DerivedData' ~/shine-pwa/ "$DEST/shine-pwa/"
+cp ~/.appstoreconnect/AuthKey_*.p8 "$DEST/"      # ASC API key (lives outside the repo)
+# also drop the exported iOS cert .p12 into "$DEST/"
+```
+The project (minus node_modules/build) is well under 1 GB, so keep many dated snapshots.
+Optional: format the drive **APFS (Encrypted)** so the plain secrets on it are safe if
+the drive is ever lost/stolen.
 
 ## When to back up
-- **Git push + tag** after every release and every working session.
-- **Refresh the vault** only when a key/keystore/cert changes (rare).
-- **Time Machine** runs automatically.
+- **Git push + tag** after every release and every working session (off-site copy).
+- **Air-gapped drive**: connect + run the rsync snapshot after each release (and periodically).
+- **Refresh the encrypted vault** only when a key/keystore/cert changes (rare).
 
 ## Recovery playbook (new Mac / disaster)
 1. `git clone` the repo, `git checkout <release tag>`.
