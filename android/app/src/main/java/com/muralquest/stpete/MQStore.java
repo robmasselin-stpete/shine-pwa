@@ -67,12 +67,19 @@ public class MQStore extends Plugin {
 
     @Override
     public void load() {
-        billingClient = BillingClient.newBuilder(getContext())
-            .setListener(purchasesUpdatedListener)
-            .enablePendingPurchases(PendingPurchasesParams.newBuilder().build())
-            .build();
-        // Warm the connection; individual calls reconnect if it dropped.
-        connect(null, null);
+        // Wrap in try/catch: if BillingClient init throws, the plugin must STILL register —
+        // otherwise the JS bridge reports "unable to find plugin : MQStore" and the gate
+        // fails open (no paywall). Billing 8.0.0 requires a product type enabled on
+        // PendingPurchasesParams or build() throws, which is what was unregistering us.
+        try {
+            billingClient = BillingClient.newBuilder(getContext())
+                .setListener(purchasesUpdatedListener)
+                .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build())
+                .build();
+            connect(null, null); // warm the connection; calls reconnect if it dropped
+        } catch (Throwable t) {
+            android.util.Log.e("MQStore", "Play Billing init failed", t);
+        }
     }
 
     /**
@@ -81,6 +88,7 @@ public class MQStore extends Plugin {
      * JS promise hangs).
      */
     private void connect(final Runnable onReady, final Runnable onError) {
+        if (billingClient == null) { if (onError != null) onError.run(); return; } // init failed → fail open
         if (billingClient.isReady()) {
             if (onReady != null) onReady.run();
             return;
