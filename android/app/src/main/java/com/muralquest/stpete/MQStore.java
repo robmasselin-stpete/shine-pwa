@@ -18,6 +18,7 @@ import com.android.billingclient.api.ProductDetails;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
+import com.android.billingclient.api.QueryProductDetailsResult;
 import com.android.billingclient.api.QueryPurchasesParams;
 
 import java.util.ArrayList;
@@ -190,7 +191,10 @@ public class MQStore extends Plugin {
             .build());
         billingClient.queryProductDetailsAsync(
             QueryProductDetailsParams.newBuilder().setProductList(products).build(),
-            (BillingResult result, List<ProductDetails> list) -> {
+            (BillingResult result, QueryProductDetailsResult queryResult) -> {
+                // Billing 8.0.0: callback returns QueryProductDetailsResult, not List<ProductDetails>.
+                List<ProductDetails> list = queryResult != null
+                    ? queryResult.getProductDetailsList() : null;
                 if (result.getResponseCode() == BillingClient.BillingResponseCode.OK
                     && list != null && !list.isEmpty()) {
                     cb.run(list.get(0));

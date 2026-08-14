@@ -63,6 +63,7 @@ const isAndroid = /android/i.test(navigator.userAgent);
 // grandfathered legacy buyer (free for life). On web there's no store, so the app
 // is open. Fail-open: if we can't reach the store at all, don't lock anyone out.
 (function initAccessGate() {
+  renderAccessDebug(); // (DEBUG_ACCESS only) show platform/supported/nativePromise even if we early-return below
   if (!subscriptionsSupported()) return;
   const paywall = document.getElementById('paywall');
   if (!paywall) return;
@@ -92,8 +93,9 @@ function renderAccessDebug() {
     document.body.appendChild(el);
   }
   const opd = d.opdMs ? new Date(d.opdMs).toISOString() : '(none)';
-  el.textContent = `ACCESS DEBUG — reason=${d.reason} access=${d.access} determined=${d.determined}\n`
-    + `active=${d.active}  originalAppVersion=${d.oav}\noriginalPurchaseDate=${opd}`;
+  el.textContent = `ACCESS DEBUG — platform=${d.platform} supported=${d.supported} nativePromise=${d.np}\n`
+    + `reason=${d.reason} access=${d.access} determined=${d.determined} active=${d.active}\n`
+    + `err=${d.err || '(none)'}\noriginalAppVersion=${d.oav}  env=${d.env}  origPurchase=${opd}`;
 }
 
 function showPaywallOffer(paywall) {

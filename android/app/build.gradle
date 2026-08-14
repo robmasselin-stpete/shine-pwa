@@ -16,7 +16,7 @@ android {
         applicationId "com.muralquest.stpete"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
+        versionCode 10
         versionName "1.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
@@ -61,7 +61,7 @@ dependencies {
     // Google Play Billing — powers the native MQStore subscription plugin (mq_yearly,
     // $6.99/yr). Play enforces a rolling minimum Billing Library version; bump this to
     // the latest stable before cutting the v8 build if Play flags it at upload.
-    implementation "com.android.billingclient:billing:7.1.1"
+    implementation "com.android.billingclient:billing:8.0.0"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"

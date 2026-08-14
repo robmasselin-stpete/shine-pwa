@@ -34,7 +34,7 @@ const GRANDFATHER_PURCHASE_BEFORE = Date.parse('2026-08-22T00:00:00Z');
 // ⚠️ TEST ONLY — shows an on-screen readout of the raw StoreKit original-purchase
 // values + which path granted access, so grandfathering can be verified on-device
 // (release builds aren't web-inspectable). Set false for production.
-const DEBUG_ACCESS = false;
+const DEBUG_ACCESS = true;  // ⚠️ TEMP for v10 Android paywall diagnosis — set false before production
 
 // -------------------------------------------------------------------------------
 function cap() { return window.Capacitor || null; }
@@ -54,6 +54,7 @@ let _expiryMs = 0;      // when access ends (0 = none / no expiry, incl. free-fo
 let _reason = 'none';   // 'subscription' | 'grandfather' | 'undetermined' | 'none'
 let _lastInfo = null;   // raw checkAccess payload (for the debug readout)
 let _determined = false; // did the last checkAccess actually complete?
+let _lastError = '';     // last checkAccess error message (debug readout only)
 
 function computeAccess(info) {
   _expiryMs = 0;
@@ -88,6 +89,7 @@ export async function refreshAccess() {
     _access = computeAccess(info);
     _determined = true;
   } catch (e) {
+    _lastError = (e && (e.message || e.errorMessage)) || String(e); // for the debug readout
     console.warn('[access] checkAccess failed', e);
     _determined = false; // couldn't reach StoreKit — the gate fails OPEN (never lock out a real buyer)
   }
@@ -101,8 +103,13 @@ export function accessExpiryMs() { return _expiryMs; }
 export function accessDetermined() { return _determined; }
 /** Test-build readout: whether to show it + the raw values that drove the decision. */
 export function accessDebug() {
+  const c = cap();
   return {
     show: DEBUG_ACCESS,
+    platform: (c && c.getPlatform) ? c.getPlatform() : '(no cap)',
+    supported: subscriptionsSupported(),
+    np: c ? typeof c.nativePromise : '(no cap)',
+    err: _lastError || '',
     reason: _reason,
     access: _access,
     determined: _determined,
