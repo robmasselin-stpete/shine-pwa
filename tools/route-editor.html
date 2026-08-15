@@ -158,6 +158,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   <button id="show-all">All Murals</button>
   <button id="toggle-sidebar">Stops</button>
   <button id="toggle-paths" class="active">Paths</button>
+  <button id="toggle-rings" title="Show trigger-radius rings around every mural">◯ Rings</button>
+  <select id="ring-radius" title="Trigger radius (alert distance)">
+    <option value="15.24">50 ft</option>
+    <option value="30.48" selected>100 ft</option>
+    <option value="60.96">200 ft</option>
+    <option value="91.44">300 ft</option>
+  </select>
   <button id="add-poi">+ POI</button>
   <button id="add-commercial">+ Commercial</button>
   <button id="delete-point" class="danger" style="display:none">Delete Point</button>
@@ -295,6 +302,37 @@ function makeIcon(color, label, size = 28) {
     iconAnchor: [tap/2, tap/2],
   });
 }
+
+// ── Trigger-radius rings (interference check; display-only, own layer — doesn't touch route/export logic) ──
+const ringLayer = L.layerGroup();
+let ringsOn = false;
+let ringRadiusM = 30.48; // 100 ft default (matches app RADIUS_OPTIONS)
+function drawRings() {
+  ringLayer.clearLayers();
+  if (!ringsOn) return;
+  let n = 0;
+  murals.forEach(m => {
+    if (m.lat == null || m.lng == null) return;
+    const pos = (typeof changes !== 'undefined' && changes[m.id]) ? changes[m.id] : { lat: m.lat, lng: m.lng };
+    L.circle([pos.lat, pos.lng], {
+      radius: ringRadiusM, color: '#e8663a', weight: 1,
+      fillColor: '#e8663a', fillOpacity: 0.10, interactive: false,
+    }).addTo(ringLayer);
+    n++;
+  });
+  const st = document.getElementById('status');
+  if (st) st.textContent = `Rings: ${n} murals @ ${document.getElementById('ring-radius').selectedOptions[0].text} — overlaps show darker`;
+}
+document.getElementById('toggle-rings').addEventListener('click', (e) => {
+  ringsOn = !ringsOn;
+  e.currentTarget.classList.toggle('active', ringsOn);
+  if (ringsOn) ringLayer.addTo(map); else map.removeLayer(ringLayer);
+  drawRings();
+});
+document.getElementById('ring-radius').addEventListener('change', (e) => {
+  ringRadiusM = parseFloat(e.target.value);
+  drawRings();
+});
 
 // ── Clear helpers ──
 function clearRouteMarkers() {
