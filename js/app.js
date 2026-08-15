@@ -780,8 +780,10 @@ function hapticCollision() {
 /** Short radar blip sound — plays via Web Audio as audio backup for haptics. */
 function playRadarBlip() {
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const now = ctx.currentTime;
+    ensureWalkAudio();
+    const ctx = walkAudioCtx;         // reuse the shared context — do NOT spawn a new one
+    if (!ctx) return;                 // (Android WebView caps concurrent AudioContexts ~6;
+    const now = ctx.currentTime;      //  a per-call new context leaked and killed all audio)
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.type = 'sine';
@@ -824,7 +826,9 @@ function playArrivalHaptic() {
 /** Play a loud arrival chord using Web Audio API. */
 function playArrivalTone() {
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    ensureWalkAudio();
+    const ctx = walkAudioCtx;         // reuse the shared context (see playRadarBlip note)
+    if (!ctx) return;
     const now = ctx.currentTime;
     // C major chord: C4, E4, G4 — full volume, longer sustain
     [261.63, 329.63, 392.00].forEach((freq, i) => {
