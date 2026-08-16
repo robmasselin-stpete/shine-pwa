@@ -19,8 +19,9 @@ cp tools/*.html "$OUT/tools/"
 cp js/data.js js/routes.js "$OUT/js/"
 # yaml-editor loads these directly
 cp data/murals/*.yaml data/murals/_index.json "$OUT/data/murals/"
-# land on the dashboard at the site root too
-cp tools/index.html "$OUT/index.html"
+# Root → the real dashboard at /tools/ (whose relative links resolve correctly).
+# Do NOT copy index.html to root: its links are relative to /tools/, so they 404 from root.
+printf '/    /tools/    302\n' > "$OUT/_redirects"
 
 echo "→ deploying $(ls "$OUT/tools" | wc -l | tr -d ' ') tool pages + data snapshot to Cloudflare Pages ($PROJECT)…"
 npx wrangler pages deploy "$OUT" --project-name "$PROJECT" --commit-dirty=true
