@@ -87,6 +87,8 @@ TEMPLATE = r"""<!doctype html><html><head><meta charset="utf-8">
 </style></head><body>
 <h1>Narration Review — <span id="n"></span> clips</h1>
 <div class="bar">
+  <input id="search" placeholder="Search artist / title / #id…" oninput="applyFilter()"
+    style="font:14px inherit;padding:6px 10px;border:1px solid #ccc;border-radius:7px;min-width:220px;margin-right:8px">
   <button onclick="exportEdits()">Export my edits</button>
   <button onclick="clearSaved()" style="background:#fff;color:#777;border-color:#ccc">Clear saved</button>
   <span class="count" id="chg">0 edited</span>
@@ -105,6 +107,7 @@ document.getElementById('n').textContent = DATA.length;
 const list = document.getElementById('list');
 DATA.forEach(r=>{
   const c=document.createElement('div'); c.className='card'; c.dataset.id=r.id; c.dataset.rev = r.rev?'1':'0';
+  c.dataset.search = ('#'+r.id+' '+r.artist+' '+(r.title||'')).toLowerCase();
   const badge = r.rev ? `<span class="rev" title="${(r.rev.note||'').replace(/"/g,'&quot;')}">✎ revised ${r.rev.date}</span>` : '';
   const cb = r.aud.includes('?')?'&':'?';
   c.innerHTML = `<div class="hdr"><label class="chk"><input type="checkbox" class="check"> reviewed</label>#${r.id} — ${r.artist}${r.title?' · "'+r.title+'"':''}${badge}</div>
@@ -127,9 +130,13 @@ function updateRevCount(){ const n=document.querySelectorAll('.card .check:check
 function applyFilter(){
   const only=document.getElementById('only-rev').checked;
   const hide=document.getElementById('hide-checked').checked;
+  const q=(document.getElementById('search').value||'').trim().toLowerCase();
   document.querySelectorAll('.card').forEach(c=>{
     const isRev=c.dataset.rev==='1'; const isChk=c.querySelector('.check').checked;
-    let show=true; if(only&&!isRev)show=false; if(hide&&isChk)show=false;
+    let show=true;
+    if(only&&!isRev)show=false;
+    if(hide&&isChk)show=false;
+    if(q&&!c.dataset.search.includes(q))show=false;
     c.style.display=show?'':'none';
   });
 }
