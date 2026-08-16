@@ -393,7 +393,14 @@ function populateForm(data, rawYaml) {
   document.getElementById('editor-title').textContent = `${data.artist || ''}${data.title ? ' — ' + data.title : ''}`;
 
   const img = document.getElementById('img-preview');
-  if (data.img) { img.src = '../' + data.img.replace(/^"|"$/g, ''); img.style.display = ''; }
+  if (data.img) {
+    const rel = data.img.replace(/^"|"$/g, '');
+    // Local dev has ../images on disk; the hosted (Cloudflare) build doesn't, so fall
+    // back to the CDN, which serves every mural photo.
+    img.onerror = function(){ img.onerror = null; img.src = 'https://cdn.muralquest.app/' + rel; };
+    img.src = '../' + rel;
+    img.style.display = '';
+  }
   else { img.style.display = 'none'; }
 
   document.getElementById('f-id').value = data.id || '';
