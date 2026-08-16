@@ -1,0 +1,95 @@
+name: Publish content to CDN
+
+# Makes "commit = live" real: on a push that touches mural data or images, rebuild the
+# OTA manifest and push it (plus any changed images) to the Cloudflare R2 bucket that the
+# app reads at launch (cdn.muralquest.app). Mirrors scripts/publish-content.py +
+# scripts/publish-images.py, but automated so the capture PWA (SHINE 2026) can go live
+# with a single git commit — no local machine, no app build.
+#
+# Secrets required (repo → Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN   — token with "Workers R2 Storage: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID  — the Cloudflare account id (not secret, but stored here)
+
+on:
+  push:
+    branches: [v1.5]
+    paths:
+      - 'data/murals/**'
+      - 'data/config.yaml'
+      - 'images/murals/**'
+      - 'images/cards/**'
+      - 'scripts/build-data.py'
+  workflow_dispatch: {}   # allow manual "Run workflow" from the Actions tab
+
+concurrency:
+  group: publish-content        # never let two publishes race the R2 object
+  cancel-in-progress: false
+
+env:
+  BUCKET: muralquest-content
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with history for change detection)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pyyaml
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build OTA manifest (content.json)
+        run: python3 scripts/build-data.py
+
+      - name: Upload content.json to R2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4 r2 object put "$BUCKET/content.json" \
+            --file js/content.json \
+            --content-type application/json \
+            --cache-control "public, max-age=60" \
+            --remote
+
+      - name: Upload changed images to R2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          BEFORE='${{ github.event.before }}'
+          AFTER='${{ github.sha }}'
+          # First push to a branch reports an all-zero "before"; fall back to this commit only.
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            RANGE="$AFTER^..$AFTER"
+          else
+            RANGE="$BEFORE..$AFTER"
+          fi
+          echo "Changed images in $RANGE:"
+          FILES=$(git diff --name-only --diff-filter=d "$RANGE" -- 'images/murals/**' 'images/cards/**' || true)
+          if [ -z "$FILES" ]; then echo "  (none)"; exit 0; fi
+          echo "$FILES"
+          ctype() { case "${1##*.}" in
+              webp) echo image/webp;; jpg|jpeg) echo image/jpeg;; png) echo image/png;;
+              *) echo application/octet-stream;; esac; }
+          while IFS= read -r f; do
+            [ -f "$f" ] || continue
+            echo "→ $f"
+            npx --yes wrangler@4 r2 object put "$BUCKET/$f" \
+              --file "$f" \
+              --content-type "$(ctype "$f")" \
+              --cache-control "public, max-age=86400" \
+              --remote
+          done <<< "$FILES"
+
+      - name: Done
+        run: echo "✓ content.json + images live on cdn.muralquest.app (edge refresh ~60s)"
