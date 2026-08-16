@@ -162,6 +162,32 @@ Refinements to include:
 - **No-GPS fallback.** If location is denied/unavailable, skip the distance calc and just show
   the maps buttons (the maps app resolves "from here" itself).
 
+## 6. Field-editable narration (scoped 2026-08-16)
+Today the narration **text** is NOT in the mural YAML — it lives in `data/narration/{id}-
+{slug}.txt`, and the mural YAML only holds the `audio:` MP3 URL. The text is build-time
+source for ElevenLabs; the app never shows it, it only plays the audio.
+
+**The catch:** editing the text (in a `.txt` OR a YAML field) does NOT change what visitors
+hear — the audio must be **regenerated in Rob's cloned voice and re-uploaded**. That regen
+currently runs on the Mac (`gen-audio.py` + ElevenLabs key), so it can't happen from the iPad
+in the field as-is.
+
+**To make "change narration at the wall" real (3 parts, extends the commit=live infra):**
+1. **Consolidate narration text into the mural YAML** (single place to edit a mural; fits the
+   field-commit model). Keep it build-time source only — NOT exported to data.js/content.json
+   (the app needs only the audio URL, not the text).
+2. **Audio-regen GitHub Action** — on a commit that changes a mural's narration text, CI calls
+   ElevenLabs (voice `MbDP6IqOIFzS6HLtx2BX`) → uploads the new MP3 to R2 → bumps the `audio:`
+   `?v=` → live in ~1–2 min. Needs the **ElevenLabs API key as a repo secret** (like the
+   Cloudflare token). Same "commit = live" pattern, extended to audio.
+3. **Field tool that commits** — upgrade the narration-review tool (or the capture PWA) to
+   commit via the GitHub contents API + PAT, so edits go live without exporting to Claude.
+
+Flow: at the wall an artist wants a tweak → edit text on the iPad → commit → audio re-renders
+in Rob's voice → live. **Weigh:** each regen spends ElevenLabs credits (Rob has extra;
+auto-regen-per-edit could add up — maybe a "publish audio" button rather than regen-on-every-
+keystroke-commit); the field tool needs the same PAT/GitHub-API plumbing as the capture PWA.
+
 ## Timeline
 - **Aug–early Sept:** GitHub Action + `build-data.py` changes + app UI (build-viewer, chip,
   badge, distance-aware directions) + capture PWA. Test with 1–2 dummy construction murals.
