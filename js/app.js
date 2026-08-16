@@ -4725,7 +4725,7 @@ function getHelpAnnotations() {
       {
         text: 'Your compass\npoints to the mural',
         color: '#FFFFFF',
-        top: 'calc(50% - 3cm)', left: '2cm', transform: 'translateY(-50%)',
+        top: 'calc(50% - 5cm)', left: '3cm', transform: 'translateY(-50%)',
         isLarge: true
       },
       {

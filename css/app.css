@@ -4280,11 +4280,11 @@ body.searching #tab-bar { display: none !important; }
 
 .help-label {
   font-family: var(--font-hand);
-  font-size: 37px; font-weight: 700; line-height: 1.2;
+  font-size: 28px; font-weight: 700; line-height: 1.2;
   text-shadow: 0 1px 4px rgba(0,0,0,0.5);
   white-space: pre;
 }
-.help-label-lg { font-size: 37px; }
+.help-label-lg { font-size: 28px; }
 
 .help-arrow { pointer-events: none; }
 .help-arrow svg { display: block; }
