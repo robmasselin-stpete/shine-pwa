@@ -1,137 +1,116 @@
-# SHINE 2026 — Live Festival Plan (progress loops + 2026 tour)
+# SHINE 2026 — Feature Spec (finalized 2026-08-16)
 
-Two features for SHINE 2026 (~25 murals, festival ~early–mid Oct 2026):
+Daily construction-photo capture during SHINE (Nov 8–17, 2026 + lead-up), shown as a
+swipeable build-viewer in the app. Two workstreams:
 
-- **A. Daily progress loops** — a photo a day per mural, auto-aligned into a
-  client-side time-lapse on the mural detail page ("watch it come together").
-- **B. A compass-guided 2026 tour** — walk to the in-progress murals; no baked
-  street path (compass/GPS to each stop), so it can populate live over OTA.
+1. **Mural Quest app changes** — additive schema, "Shine 2026" filter chip, construction
+   badge, build-viewer on the detail page. (App code → needs a build + store review.)
+2. **Capture PWA** — a separate standalone iPad PWA that publishes daily photos straight
+   to this GitHub repo. (No native build.)
 
-**Locked decisions (Rob):** ~25 murals · client-side loop · auto-align in a tool
-(OpenCV) · compass-guided tour · loop lives on the **mural detail page**, which
-should carry *every* bit of info for the artist.
-
----
-
-## The one rule that shapes everything: build vs OTA
-
-- **OTA (live during the festival, ~1 min, NO App Store review):** mural data,
-  GPS locations, images, audio, the daily progress frames, status flips. Runs
-  through the existing pipeline: `data/murals/*.yaml → build-data.py →
-  content.json on cdn.muralquest.app → js/content.js applies it at launch`.
-- **App build + Apple review (must be APPROVED before ~Sept, buffer for a
-  rejection like the v1.6 EULA one):** any new *app UI*, any new *field the app
-  must render*, and tour route logic. `ROUTE_DEFS`/`routes.js` are bundled, not OTA.
-
-**Strategy: ship the new app *code* in a build before the festival; feed it
-*data* live during the festival.**
+**Design rule:** every mural uses the SAME schema and SAME detail component. Construction
+murals just populate more of it. No separate "under construction" type or detail view.
 
 ---
 
-## Data model (YAML → content.json, OTA)
+## Locked decisions (Rob, 2026-08-16)
+- **Publish pipeline = GitHub Action on push.** A commit to `data/murals/**` or
+  `images/murals/**` triggers CI that runs `build-data.py`, uploads `content.json` to R2,
+  and uploads images to R2 — so "one button → live" is real. (Today NO CI exists;
+  `content.json` is gitignored/R2-only and only `publish-content.py`/`publish-images.py`
+  push live. This Action is the linchpin that makes the capture PWA work.)
+- **Additive schema.** Keep existing single `img`; add optional `photos[]`. 189 existing
+  murals untouched — no migration, no invented dates.
+- **Reuse `year` + `category`** for the SHINE tag. No new `festivalYear` field. "Shine
+  2026" = `category === 'shine' && year === 2026`.
+- **No tour / no routes** for these murals (supersedes the old compass-tour idea).
+  Discoverability = filter chip + badge only.
+- **Alignment = live 40%-opacity ghost overlay** in the capture PWA (align by eye
+  in-camera). Supersedes the earlier OpenCV auto-align tool idea.
 
-Add to each 2026 mural's YAML:
+---
+
+## 1. Schema (additive)
+Add to a mural's YAML (`data/murals/*.yaml`) only where relevant:
 
 ```yaml
-# ordered daily frames; aligned + web-optimized, hosted on the CDN
-progress:
-  - { d: "2026-10-05", img: "images/murals/2026/progress/207/2026-10-05.webp" }
-  - { d: "2026-10-06", img: "images/murals/2026/progress/207/2026-10-06.webp" }
-status: in-progress        # in-progress | complete  (drives the "being painted now" badge)
-festival: 2026             # marks it as a SHINE-2026 tour stop (so the tour auto-populates)
-tourOrder: 3               # optional: fixed walk order; else the tour orders by proximity
+photos:                                  # optional; construction murals populate it
+  - { url: "images/murals/2026/207/2026-11-08.webp", dateTaken: "2026-11-08" }
+  - { url: "images/murals/2026/207/2026-11-09.webp", dateTaken: "2026-11-09" }
+underConstruction: true                  # drives badge + filter; Rob flips to false when done
+# SHINE tag reuses existing fields: category: shine + year: 2026 (no new field)
 ```
 
-- `build-data.py` exports these as short keys (e.g. `prg`, `stat`, `fest`,
-  `ord`) alongside the existing ones (`a`, `t`, `img`, `aud`, …). `content.js`
-  applies them in place — no client change needed to *receive* them.
-- Progress frames are **CDN-hosted and streamed** (like full-res photos via
-  `fullSrc()`), NOT bundled — they're added daily after the app ships. The SW
-  caches each on first view.
+- `build-data.py` exports `photos` + `underConstruction` into `data.js`/`content.json`
+  (short keys TBD, avoid collisions with existing a/t/img/aud/y/…).
+- **Hero image logic:** `photos.length ? photos[last].url : img`. So the newest photo is
+  the hero once construction has photos; existing murals keep `img`. Post-festival Rob
+  flips `underConstruction:false` — the latest photo stays the hero, it's just a normal
+  record with a photo history.
+- OTA note: `content.js` replaces mural objects wholesale, so seeding `photos`/
+  `underConstruction` via OTA is safe — old app builds ignore unknown fields; the new
+  build (with the build-viewer) renders them. No crash risk during the transition.
+
+## 2. Explore: filter chip + badge (app build)
+- New **"Shine 2026"** filter chip alongside Vintage/Commissioned → shows
+  `category==='shine' && year===2026`. **Temporary festival chip**; post-festival fold
+  back into the existing year/shine grouping (manual follow-up, not dynamic logic).
+- Murals with `underConstruction===true` get a **distinct static badge/dot** on the map
+  pin and list — reuse the existing badge/icon pattern (e.g. the SHINE book icon) for
+  consistency, don't invent a new style.
+
+## 3. Build-viewer (mural detail page, app build)
+Replaces the single hero at the top of the detail view — visually different only when
+`photos.length > 1`.
+- Swipeable strip through `photos`, oldest → newest, **date stamp overlaid** per frame.
+- **Opens on the most recent photo** (current state), not the oldest.
+- Optional autoplay/loop toggle (NOT on by default); when tapped, ~1/3 sec per frame,
+  looping. Manual forward/back controls.
+- `photos.length === 1` (or 0 → `img`) collapses to a plain static image — same component,
+  no special-cased branch elsewhere.
+- Rest of the detail view (bio, description) unchanged; renders whatever's available
+  day-to-day even if incomplete.
+
+## 4. Capture PWA (separate project; publishes to this repo)
+On-site iPad tool: pick mural → camera with yesterday's photo ghosted at 40% for framing
+→ capture → optional note → **Publish** = commit to the repo → GitHub Action makes it live.
+
+**Flow:** select active construction mural (or create day-1 record) → camera (ghost overlay
+if a prior photo exists) → capture → note + auto date (today) → Publish. Supports a
+lightweight multi-mural session (capture several sites in one outing).
+
+**Publish (per the GitHub Action decision):**
+- Fetch current mural YAML via GitHub contents API; append `{url, dateTaken}` to `photos`
+  (or create the record for a new mural).
+- **Downscale the capture client-side** (~1080px WebP) before committing — camera files are
+  large; build-viewer frames should be light. (Default; flag if you want full-res kept.)
+- Commit the image + YAML in one push. The **Action** then rebuilds + uploads content.json
+  and the image (and a card for the newest photo) to R2 → live in ~1–2 min.
+- **Fail loudly** in the UI (this runs on festival days) — clear success/failure.
+
+**Tech:** `getUserMedia` for camera; installable PWA on the iPad home screen. GitHub REST
+contents API (base64 + prev-SHA) for create-or-update. Auth = a **fine-grained GitHub PAT**
+scoped to this repo's contents (read/write), stored in the iPad's localStorage — acceptable
+for a single-user tool on Rob's own device.
 
 ---
 
-## Feature A — the progress loop
+## App-code vs OTA (the deadline that matters)
+- **Needs an app build + store review (target: submit ~early Sept):** build-viewer,
+  "Shine 2026" chip, construction badge, `build-data.py` photos/underConstruction export.
+- **OTA / no build (live during the festival):** the daily `photos[]` data and
+  `underConstruction` flips — *once the rendering code above is already shipped.*
 
-### The hard part: alignment
-Freehand day-to-day photos won't line up; an unaligned loop looks like jitter.
-Approach = **physical consistency + auto-align tool**:
-1. Shoot from a marked spot / same stance each day, keeping the **wall edges and
-   surroundings in frame** (those are the fixed features the aligner locks onto —
-   the painting itself changes and can't be the anchor).
-2. The tool feature-matches (ORB/SIFT) each day's photo to a **reference frame**
-   (day 1, or a designated frame), estimates a homography, warps + crops to the
-   reference. Day-1 blank-wall → day-7 full-mural matching is the risky case;
-   matching on the fixed border/context handles it. If it can't get a confident
-   fit, it **falls back to the raw photo and flags it** for a manual crop.
+## Open implementation defaults (I'll assume these unless you object)
+- Frame path: `images/murals/2026/<id>/<ISO-date>.webp`.
+- Capture PWA downscales to ~1080px WebP before commit.
+- The Action generates a **card** for the newest photo so the Explore grid / map pin look
+  right for OTA-added construction murals.
+- ~25 SHINE 2026 murals, artists/locations TBD — seed placeholder records over time; the
+  capture tool creates a record on the fly on day 1.
 
-### Tool: `scripts/add-progress-photo.py`
-`add-progress-photo.py <mural_id> <photo.jpg> [--date YYYY-MM-DD] [--ref <first-frame>]`
-1. Align + crop the photo to the mural's reference frame (OpenCV).
-2. Encode to WebP (~900–1080px; ample for the detail-page loop, light to stream).
-3. Save to `images/murals/2026/progress/<id>/<date>.webp`.
-4. Append `{d, img}` to the mural's YAML `progress` list.
-5. Chain the existing publish steps: `publish-images.py --cards-only`-style
-   upload of the new frame to R2 + `publish-content.py` → **live in ~1 min.**
-- Dependency: `pip install opencv-python` (note in the tool's header).
-- One command per day per mural to add today's frame.
-
-### App UI (needs a build)
-- On the **mural detail page**, when `prg` has ≥2 frames: a **"Watch it come
-  together"** player — cycles the frames (play/pause, day/date label, optional
-  scrub bar), cross-fade or hard-cut, preloading the next frame. Pure client-side
-  animation over the OTA image list.
-- The detail page is the hub: full artist bio/awards/links (already there) + the
-  loop + status. "Every bit of info for the artist" lives here.
-
----
-
-## Feature B — compass-guided 2026 tour
-
-- **Free discovery already exists:** add the 25 murals with `y: 2026` and they
-  appear under the **2026 year filter** on Map + Explore. Zero new code.
-- **The guided tour (needs a build):** a **dynamic "SHINE 2026" tour** whose stops
-  are sourced from the *current data* — every mural with `festival: 2026` — rather
-  than a hardcoded `ROUTE_DEFS` id list. That way stops appear as murals are added
-  OTA, with no app update.
-  - **Compass-only:** guidance uses GPS→mural bearing + arrival (already how the
-    compass/arrival work); no `routes.js` street path required. You lose only the
-    drawn route line — acceptable for a "find them" festival tour.
-  - **Order:** by `tourOrder` if set, else nearest-neighbor by proximity.
-  - **"In the making":** `status: in-progress` badges the stop ("Being painted
-    now") on the tour/map/detail.
-
----
-
-## What must ship in the app build (before Apple review, ~early Sept)
-1. `build-data.py` — export `progress`, `status`, `festival`, `tourOrder`.
-2. Detail-page **progress-loop player** (app.js + app.css).
-3. **Dynamic SHINE-2026 compass tour** (stops from `festival: 2026`, compass-only,
-   proximity/`tourOrder` ordering).
-4. **Status badge** ("Being painted now") on detail/map/tour.
-5. SW: cache the progress-frame CDN path (fits the existing image caching).
-
-## What stays OTA (live during the festival, no review)
-- The 25 murals' data + locations (as walls firm up).
-- **Daily progress frames** (the ingest tool).
-- Status flips (in-progress → complete).
-- The tour auto-populates from `festival: 2026` murals.
-
----
-
-## Timeline / critical path
-- **Aug–early Sept:** build the app code (above) + the `add-progress-photo.py`
-  tool; test the loop + tour with a couple of dummy 2026 murals.
-- **~Early/mid Sept:** submit the app version. **Budget for a rejection + resubmit**
-  (v1.6 got bounced once). Aim for approval with weeks to spare before Oct 10.
-- **Pre-festival:** add 2026 mural stubs (artist, tentative wall) via OTA.
-- **During festival:** one `add-progress-photo.py` run per mural per day; confirm
-  locations; flip statuses. All OTA — no deadline pressure once the app is live.
-
-## Open items to nail before building
-- Reference-frame choice per mural (day 1 vs a designated clean shot) and the
-  alignment confidence threshold / manual-fallback UX.
-- Loop playback feel: auto-play on detail open vs tap-to-play; speed; cross-fade.
-- Exact short keys in build-data.py (avoid collisions with existing a/t/img/…).
-- Whether progress frames also want a tiny bundled "poster" (first frame) so the
-  loop has something to show instantly offline before the CDN frames load.
+## Timeline
+- **Aug–early Sept:** GitHub Action + `build-data.py` changes + app UI (build-viewer, chip,
+  badge) + capture PWA. Test with 1–2 dummy construction murals end-to-end.
+- **~Early/mid Sept:** submit the app build (budget for a rejection + resubmit).
+- **During festival (Nov 8–17):** daily captures via the PWA → live over OTA, no build.
