@@ -126,8 +126,25 @@ for a single-user tool on Rob's own device.
 - ~25 SHINE 2026 murals, artists/locations TBD — seed placeholder records over time; the
   capture tool creates a record on the fly on day 1.
 
+## 5. Distance-aware directions (app-wide improvement; scoped 2026-08-16)
+The 2026 murals are spread across town, so on-foot compass guidance is wrong for
+cross-town hops — and a compass pinned to the screen while driving is unsafe. Positioning
+principle: **the app is a discovery + on-foot proximity guide, not a turn-by-turn
+navigator.** So gate the in-app directions by straight-line distance from the user's GPS:
+- **Under 1 mile:** in-app walking guidance as today. No change, no map buttons.
+- **Over 1 mile:** replace walking guidance with a nudge — *"That's about X miles away —
+  better by car"* — and THREE buttons: **Apple Maps**, **Google Maps**, and **Walk anyway**
+  (proceeds to the normal in-app compass for the committed walker).
+- Rob's calls: do NOT always show map buttons (leaving the app is friction / hard to get
+  back) — only when far. Keep the walk-anyway escape hatch (not paternalistic).
+- Handoff = simple deep links (Apple `maps.apple.com/?daddr=lat,lng`, Google
+  `google.com/maps/dir/?api=1&destination=lat,lng`). Small effort; rides the SHINE build.
+- To check when building: what the current detail-page "Directions" button does today
+  (in-app compass vs already a handoff); whether the threshold should also affect the
+  compass tour for any far stops.
+
 ## Timeline
 - **Aug–early Sept:** GitHub Action + `build-data.py` changes + app UI (build-viewer, chip,
-  badge) + capture PWA. Test with 1–2 dummy construction murals end-to-end.
+  badge, distance-aware directions) + capture PWA. Test with 1–2 dummy construction murals.
 - **~Early/mid Sept:** submit the app build (budget for a rejection + resubmit).
 - **During festival (Nov 8–17):** daily captures via the PWA → live over OTA, no build.
