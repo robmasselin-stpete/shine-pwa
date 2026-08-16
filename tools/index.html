@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mural Quest — Tools</title>
+<style>
+  :root { --orange:#e8663a; --ink:#1a1a1a; }
+  * { box-sizing:border-box; }
+  body { font:16px/1.5 -apple-system,'Helvetica Neue',Arial,sans-serif; color:var(--ink);
+         background:#faf7f4; margin:0; padding:32px 20px 60px; }
+  .wrap { max-width:920px; margin:0 auto; }
+  h1 { font-size:26px; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { color:#777; margin:0 0 8px; }
+  .server-note { font-size:13px; color:#8a6d3b; background:#fcf3e3; border:1px solid #f0e0c0;
+                 border-radius:8px; padding:8px 12px; margin:14px 0 24px; }
+  .server-note code { background:#fff; border:1px solid #eadfce; border-radius:4px; padding:1px 6px; font-size:12px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+  a.tool { display:block; text-decoration:none; color:inherit; background:#fff;
+           border:1px solid #e3ddd6; border-radius:12px; padding:18px 18px 16px;
+           transition:transform .08s, box-shadow .08s, border-color .08s; }
+  a.tool:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:var(--orange); }
+  .ico { font-size:26px; }
+  .tool h2 { font-size:17px; margin:8px 0 4px; }
+  .tool p { font-size:13.5px; color:#666; margin:0; }
+  .tag { display:inline-block; font-size:11px; font-weight:600; color:#b8471f;
+         background:#faf0ec; border-radius:10px; padding:1px 8px; margin-left:6px; vertical-align:middle; }
+  h3.section { font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:#999;
+               margin:34px 0 12px; border-bottom:1px solid #e6ddd3; padding-bottom:6px; }
+  .cheat { background:#fff; border:1px solid #e3ddd6; border-radius:12px; padding:16px 18px; }
+  .cheat code { display:block; font:12.5px/1.7 ui-monospace,Menlo,monospace; color:#333; white-space:pre-wrap; }
+  .cheat .lbl { color:#999; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>MURAL QUEST — Tools</h1>
+  <p class="sub">One launcher for the editors and review tools.</p>
+  <div class="server-note">
+    These tools load mural data via <code>../js/data.js</code>, so open this page through the
+    local server (this URL should start with <code>http://127.0.0.1:8000</code>), not as a file.
+    To start it: <code>python3 -m http.server 8000</code> from the repo, then open
+    <code>http://127.0.0.1:8000/tools/</code>. (Or double-click <code>open-tools.command</code>.)
+  </div>
+
+  <h3 class="section">Editors</h3>
+  <div class="grid">
+    <a class="tool" href="yaml-editor.html">
+      <div class="ico">📝</div>
+      <h2>YAML Editor</h2>
+      <p>Edit mural metadata — bio, GPS, Instagram, categories. Emits paste-ready blocks to apply.</p>
+    </a>
+    <a class="tool" href="route-editor.html">
+      <div class="ico">🗺️</div>
+      <h2>Route Editor <span class="tag">+ trigger rings</span></h2>
+      <p>Edit tour routes, stops, paths, and GPS nudges. Toggle rings to check trigger-zone overlap.</p>
+    </a>
+  </div>
+
+  <h3 class="section">Review &amp; audio</h3>
+  <div class="grid">
+    <a class="tool" href="narration-review.html">
+      <div class="ico">🎙️</div>
+      <h2>Narration Review</h2>
+      <p>Play, edit, and mark the 84 tour narrations. Search by artist, auto-saves, revision badges.</p>
+    </a>
+    <a class="tool" href="print-yamls.html">
+      <div class="ico">🖨️</div>
+      <h2>Print YAMLs</h2>
+      <p>Printable review sheet of all mural YAML data.</p>
+    </a>
+  </div>
+
+  <h3 class="section">Maps &amp; outreach</h3>
+  <div class="grid">
+    <a class="tool" href="overview-map.html">
+      <div class="ico">🧭</div>
+      <h2>Routes Overview Map</h2>
+      <p>All tour routes on a single map for a bird's-eye view.</p>
+    </a>
+    <a class="tool" href="artist-outreach.html">
+      <div class="ico">✉️</div>
+      <h2>Artist Outreach</h2>
+      <p>Track outreach status to the mural artists.</p>
+    </a>
+  </div>
+
+  <h3 class="section">Reference</h3>
+  <div class="grid">
+    <a class="tool" href="business-ids.html">
+      <div class="ico">🔖</div>
+      <h2>Business &amp; IDs</h2>
+      <p>Company, Apple, Google Play, and infrastructure IDs. Local-only (not committed).</p>
+    </a>
+  </div>
+
+  <h3 class="section">Publish cheat-sheet (run from the repo root in Terminal)</h3>
+  <div class="cheat">
+    <code><span class="lbl"># start the tools server</span>
+python3 -m http.server 8000
+
+<span class="lbl"># regenerate the narration review page (after editing scripts / _revisions.json)</span>
+python3 scripts/build-narration-review.py
+
+<span class="lbl"># mural data → live (OTA, no app build), ~1 min</span>
+python3 scripts/publish-content.py
+
+<span class="lbl"># narration audio (Rob's voice) → generate + upload</span>
+python3 scripts/gen-audio.py --ids 6,7 --voice MbDP6IqOIFzS6HLtx2BX --force
+python3 scripts/publish-audio.py --ids 6,7</code>
+  </div>
+</div>
+</body>
+</html>

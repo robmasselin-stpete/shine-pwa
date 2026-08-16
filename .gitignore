@@ -58,3 +58,4 @@ audio/
 # If the upload key is lost it can be reset via Play App Signing, but back it up.
 android/keystore/
 android/keystore.properties
+tools/business-ids.html
