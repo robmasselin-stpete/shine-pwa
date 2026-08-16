@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Mural Quest</title>
+<meta name="description" content="Download Mural Quest — a walking guide to the murals of St. Petersburg, Florida.">
+<!-- Smart app link: auto-sends iOS → App Store, Android → Google Play; everyone else sees both. -->
+<style>
+  :root { --orange:#e8663a; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; }
+  body {
+    font:16px/1.5 -apple-system,'Helvetica Neue',Arial,sans-serif; color:#1a1a1a;
+    background:#faf7f4; display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .card { max-width:360px; width:100%; text-align:center; }
+  .logo { width:104px; height:104px; border-radius:23px; box-shadow:0 6px 20px rgba(0,0,0,.15); margin-bottom:18px; }
+  h1 { font-size:26px; margin:0 0 4px; letter-spacing:.5px; }
+  .sub { color:#777; margin:0 0 24px; }
+  a.btn {
+    display:block; text-decoration:none; font-weight:600; font-size:17px;
+    padding:14px 18px; border-radius:12px; margin:10px 0;
+    background:#111; color:#fff;
+  }
+  a.btn.alt { background:#fff; color:#111; border:1px solid #ddd; }
+  .note { color:#999; font-size:13px; margin-top:18px; }
+  a.plain { color:var(--orange); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="/images/icons/icon-192.png" alt="Mural Quest"
+         onerror="this.style.display='none'">
+    <h1>MURAL QUEST</h1>
+    <p class="sub">A walking guide to the murals of St.&nbsp;Petersburg, FL</p>
+
+    <a class="btn" id="ios" href="https://apps.apple.com/app/id6761023231">Download on the App Store</a>
+    <a class="btn alt" id="android" href="https://play.google.com/store/apps/details?id=com.muralquest.stpete">Get it on Google Play</a>
+
+    <p class="note">Redirecting you to your app store… <a class="plain" href="https://muralquest.app">muralquest.app</a></p>
+  </div>
+
+<script>
+  var ua = navigator.userAgent || navigator.vendor || '';
+  var isAndroid = /android/i.test(ua);
+  // iPadOS 13+ reports as Mac; detect touch to catch it.
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+  var IOS_URL = document.getElementById('ios').href;
+  var PLAY_URL = document.getElementById('android').href;
+  if (isAndroid) { location.replace(PLAY_URL); }
+  else if (isIOS) { location.replace(IOS_URL); }
+  // desktop / unknown: no redirect — both buttons are shown above.
+</script>
+</body>
+</html>
