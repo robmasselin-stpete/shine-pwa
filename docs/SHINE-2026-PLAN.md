@@ -143,6 +143,25 @@ navigator.** So gate the in-app directions by straight-line distance from the us
   (in-app compass vs already a handoff); whether the threshold should also affect the
   compass tour for any far stops.
 
+### 5a. 2026 mural-to-mural navigation flow (scoped 2026-08-16)
+Primary flow (Rob): Map page → turn on the **"Shine 2026"** filter → 2026 pins show → tap
+the next mural → app computes distance **from current GPS** → the 1-mile rule (above) applies.
+Reframe: it's **"from wherever you are → selected mural,"** not literally "at a mural" — same
+logic works planning from home or across town, so no need to detect which mural you're at.
+
+Refinements to include:
+- **Distance on the pin callout.** Tapping a 2026 pin shows a light popup — e.g. *"Cecilia
+  Lueza · 0.4 mi"* — with the walk/maps choice inline, so you can compare several pins and
+  pick the next without diving into full detail pages each time (better for festival hopping).
+- **"Nearest 2026 murals" sorted list** as a complement to the map — sorted by distance from
+  current GPS ("0.3 mi, 1.1 mi, 2.4 mi…"). Directly answers "what's closest to me right now?"
+  Consider a toggle on the filtered view.
+- **Straight-line distance is a rough proxy.** The rule uses haversine (no routing); St. Pete
+  water/barriers mean a 0.9 mi straight-line hop can be ~1.4 mi by road. Accept as rough for
+  v1 (optionally nudge threshold to ~0.8 mi to compensate).
+- **No-GPS fallback.** If location is denied/unavailable, skip the distance calc and just show
+  the maps buttons (the maps app resolves "from here" itself).
+
 ## Timeline
 - **Aug–early Sept:** GitHub Action + `build-data.py` changes + app UI (build-viewer, chip,
   badge, distance-aware directions) + capture PWA. Test with 1–2 dummy construction murals.
