@@ -88,6 +88,23 @@ lightweight multi-mural session (capture several sites in one outing).
   and the image (and a card for the newest photo) to R2 → live in ~1–2 min.
 - **Fail loudly** in the UI (this runs on festival days) — clear success/failure.
 
+**Undo / revert (festival-day safety — required):**
+- Because every publish is a git commit, undo = a commit that removes the bad entry, which
+  re-triggers the Action → corrected state live in ~1–2 min. Nothing is ever truly lost
+  (full git history).
+- The capture PWA needs a clear **"Undo last publish"** button per mural: fetch the YAML,
+  pop the most recent `photos[]` entry, commit → republish. One tap, with a confirm.
+- Also support **removing a specific frame** from a mural's strip (not just the last), for
+  the "wrong photo three entries back" case.
+- Leaving the orphaned image file in the repo is harmless (removing the `photos[]` entry
+  hides it from the app); optional cleanup later. The revert only needs to edit the YAML.
+- Caveat to state in the UI: users who already launched and cached the bad photo keep it
+  until their next app launch (~1 min edge cache after republish). New/relaunching users
+  get the corrected data immediately.
+- **Dedupe guard (complementary):** before publishing, warn if `dateTaken` already exists
+  for that mural, or if the new image matches the previous one (hash), to catch the
+  "same photo went out twice" case *before* it ships.
+
 **Tech:** `getUserMedia` for camera; installable PWA on the iPad home screen. GitHub REST
 contents API (base64 + prev-SHA) for create-or-update. Auth = a **fine-grained GitHub PAT**
 scoped to this repo's contents (read/write), stored in the iPad's localStorage — acceptable
