@@ -842,8 +842,9 @@ function playArrivalTone() {
       osc.type = 'triangle';
       osc.frequency.value = freq;
       gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(1.0, now + 0.03);
-      gain.gain.linearRampToValueAtTime(0.8, now + 1.0);
+      // Halved (was 1.0/0.8) — arrival chord was too loud vs the narration.
+      gain.gain.linearRampToValueAtTime(0.5, now + 0.03);
+      gain.gain.linearRampToValueAtTime(0.4, now + 1.0);
       gain.gain.linearRampToValueAtTime(0, now + 2.5);
       osc.connect(gain);
       gain.connect(ctx.destination);
@@ -857,7 +858,7 @@ function playArrivalTone() {
       osc.type = 'sine';
       osc.frequency.value = 523.25;
       gain.gain.setValueAtTime(0, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(1.0, ctx.currentTime + 0.02);
+      gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.02);
       gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 1.2);
       osc.connect(gain);
       gain.connect(ctx.destination);
@@ -871,7 +872,7 @@ function playArrivalTone() {
       osc.type = 'sine';
       osc.frequency.value = 659.25;
       gain.gain.setValueAtTime(0, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(1.0, ctx.currentTime + 0.02);
+      gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.02);
       gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 1.0);
       osc.connect(gain);
       gain.connect(ctx.destination);
@@ -3825,7 +3826,7 @@ function renderTourBottom() {
   const modeLabel = views.loops.querySelector('.tour-mode-label');
   if (modeLabel) {
     if (walking) {
-      modeLabel.textContent = 'Navigating to Next Mural';
+      modeLabel.textContent = 'Nav to Next Mural';
       modeLabel.className = 'tour-mode-label walking-label';
     } else {
       modeLabel.textContent = 'Explore the Mural';
@@ -4165,7 +4166,7 @@ function fetchTourSegment() {
     const sq = L.marker([m.lat, m.lng], {
       icon: L.divIcon({
         className: '',
-        html: `<div style="width:66px;height:66px;display:flex;align-items:center;justify-content:center"><img src="images/logo-pelican.png" style="width:48px;height:48px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4));opacity:0.85"></div>`,
+        html: `<div style="width:66px;height:66px;display:flex;align-items:center;justify-content:center"><img src="images/logo-pelican.png" style="width:48px;height:48px;filter:grayscale(1) drop-shadow(0 1px 2px rgba(0,0,0,0.4));opacity:0.6"></div>`,
         iconSize: [66, 66], iconAnchor: [33, 33],
       }),
       zIndexOffset: -1000,
