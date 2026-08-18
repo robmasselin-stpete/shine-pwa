@@ -68,7 +68,7 @@ export default {
         // GROUP BY the expression (not the alias): the events table has its OWN `id` column
         // (row PK), so `GROUP BY id` was grouping by unique row id → every mural showed n=1.
         // CAST to INTEGER also folds numeric vs string ids logged by different app builds.
-        rows("SELECT CAST(json_extract(props,'$.id') AS INTEGER) id, COUNT(*) n FROM events WHERE event='mural_open' AND json_extract(props,'$.id') IS NOT NULL GROUP BY CAST(json_extract(props,'$.id') AS INTEGER) ORDER BY n DESC LIMIT 20"),
+        rows("SELECT CAST(json_extract(props,'$.id') AS INTEGER) id, COUNT(*) n FROM events WHERE event='mural_open' AND json_extract(props,'$.id') IS NOT NULL GROUP BY CAST(json_extract(props,'$.id') AS INTEGER) ORDER BY n DESC LIMIT 250"),
       ]);
       return json({ total, byEvent, byDay, topMurals });
     }

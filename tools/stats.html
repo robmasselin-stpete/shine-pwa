@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mural Quest — Stats</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing:border-box; }
+  body { font:15px/1.5 -apple-system,'Helvetica Neue',Arial,sans-serif; color:#1a1a1a;
+         background:#faf7f4; margin:0; padding:20px 26px 60px; }
+  .wrap { max-width:1000px; margin:0 auto; }
+  a.back { color:#e8663a; text-decoration:none; font-size:14px; }
+  h1 { font-size:24px; margin:6px 0 2px; }
+  .sub { color:#777; margin:0 0 14px; font-size:14px; }
+  .keybar { font-size:13px; color:#999; margin-bottom:14px; }
+  .keybar a { color:#e8663a; cursor:pointer; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:0 0 18px; }
+  .stat { background:#fff; border:1px solid #e3ddd6; border-radius:10px; padding:12px 14px; }
+  .stat .num { font-size:26px; font-weight:700; color:#b8471f; }
+  .stat .lbl { font-size:12px; color:#777; text-transform:uppercase; letter-spacing:.05em; }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.08em; color:#999;
+       margin:24px 0 10px; border-bottom:1px solid #e6ddd3; padding-bottom:6px; }
+  #map { height:460px; border:1px solid #e3ddd6; border-radius:12px; }
+  .legend { font-size:12px; color:#777; margin-top:6px; }
+  .legend span { display:inline-block; width:11px; height:11px; border-radius:50%; vertical-align:middle; margin:0 3px 0 10px; }
+  table { width:100%; border-collapse:collapse; background:#fff; border:1px solid #e3ddd6; border-radius:10px; overflow:hidden; }
+  td, th { padding:7px 12px; border-top:1px solid #efe8df; text-align:left; font-size:14px; }
+  th { background:#faf0ec; color:#b8471f; border-top:none; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  td.n { text-align:right; font-weight:700; color:#b8471f; width:70px; }
+  .bars { display:flex; align-items:flex-end; gap:3px; height:120px; background:#fff; border:1px solid #e3ddd6; border-radius:10px; padding:12px; }
+  .bar { flex:1; background:#e8663a; border-radius:3px 3px 0 0; min-height:2px; position:relative; }
+  .bar span { position:absolute; bottom:-16px; left:50%; transform:translateX(-50%) rotate(0); font-size:9px; color:#999; white-space:nowrap; }
+  .events { display:flex; flex-wrap:wrap; gap:8px; }
+  .ev { background:#fff; border:1px solid #e3ddd6; border-radius:8px; padding:6px 12px; font-size:13px; }
+  .ev b { color:#b8471f; }
+  #prompt { background:#fff; border:1px solid #e3ddd6; border-radius:12px; padding:20px; max-width:420px; }
+  #prompt input { width:100%; padding:9px 12px; border:1px solid #ccc; border-radius:7px; font:14px inherit; margin:8px 0; }
+  #prompt button { font:14px inherit; padding:8px 16px; border-radius:7px; border:1px solid #e8663a; background:#e8663a; color:#fff; cursor:pointer; }
+  .err { color:#c00; font-size:13px; margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Tools</a>
+  <h1>Mural Quest — Stats</h1>
+  <p class="sub">Anonymous first-party analytics · heat map = mural opens</p>
+
+  <div id="prompt" hidden>
+    <div>Enter the analytics <b>STATS_KEY</b> (stored in this browser only):</div>
+    <input id="key-input" type="password" placeholder="STATS_KEY" autocomplete="off">
+    <button onclick="saveKey()">Load stats</button>
+    <div class="err" id="key-err" hidden></div>
+  </div>
+
+  <div id="dash" hidden>
+    <div class="keybar">Key stored in this browser · <a onclick="clearKey()">change key</a> · <a onclick="load()">refresh</a></div>
+    <div class="cards" id="cards"></div>
+
+    <h2>Heat map — mural opens</h2>
+    <div id="map"></div>
+    <div class="legend">Circle size + color = number of opens.
+      <span style="background:#c9c4bd"></span>0
+      <span style="background:#f6c344"></span>low
+      <span style="background:#ef7d33"></span>mid
+      <span style="background:#d63b2f"></span>high</div>
+
+    <h2>Top murals</h2>
+    <table id="top"><thead><tr><th>#</th><th>Artist · title</th><th class="n">Opens</th></tr></thead><tbody></tbody></table>
+
+    <h2>Activity by day</h2>
+    <div class="bars" id="bars"></div>
+
+    <h2>Events</h2>
+    <div class="events" id="events"></div>
+  </div>
+</div>
+
+<script type="module">
+import { murals } from '../js/data.js';
+const API = 'https://analytics.muralquest.app/stats';
+const muralById = {}; murals.forEach(m => muralById[m.id] = m);
+let map, heatLayer;
+
+window.saveKey = () => {
+  const v = document.getElementById('key-input').value.trim();
+  if (v) { localStorage.setItem('mq_stats_key', v); document.getElementById('key-err').hidden = true; load(); }
+};
+window.clearKey = () => { localStorage.removeItem('mq_stats_key'); showPrompt(); };
+window.load = load;
+
+function showPrompt(msg) {
+  document.getElementById('dash').hidden = true;
+  document.getElementById('prompt').hidden = false;
+  const e = document.getElementById('key-err');
+  if (msg) { e.textContent = msg; e.hidden = false; }
+}
+
+function color(frac) {
+  if (frac <= 0) return '#c9c4bd';
+  if (frac < 0.34) return '#f6c344';
+  if (frac < 0.67) return '#ef7d33';
+  return '#d63b2f';
+}
+
+async function load() {
+  const key = localStorage.getItem('mq_stats_key');
+  if (!key) return showPrompt();
+  let d;
+  try {
+    const res = await fetch(`${API}?key=${encodeURIComponent(key)}&_=${Date.now()}`);
+    if (res.status === 401) return showPrompt('That key was rejected. Try again.');
+    if (!res.ok) return showPrompt('Stats request failed (HTTP ' + res.status + ').');
+    d = await res.json();
+  } catch (e) { return showPrompt('Network error reaching the stats endpoint.'); }
+
+  document.getElementById('prompt').hidden = true;
+  document.getElementById('dash').hidden = false;
+
+  // Summary cards
+  const opensTotal = d.topMurals.reduce((s, r) => s + r.n, 0);
+  document.getElementById('cards').innerHTML = [
+    ['Events', d.total.n], ['Sessions', d.total.sessions],
+    ['Mural opens', opensTotal], ['Murals opened', d.topMurals.length],
+  ].map(([l, n]) => `<div class="stat"><div class="num">${n ?? 0}</div><div class="lbl">${l}</div></div>`).join('');
+
+  // Heat map
+  const counts = {}; d.topMurals.forEach(r => counts[r.id] = r.n);
+  const maxN = Math.max(1, ...d.topMurals.map(r => r.n));
+  if (!map) {
+    map = L.map('map').setView([27.771, -82.649], 14);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      { maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(map);
+    heatLayer = L.layerGroup().addTo(map);
+  }
+  heatLayer.clearLayers();
+  const pts = [];
+  murals.forEach(m => {
+    if (m.lat == null || m.lng == null) return;
+    const n = counts[m.id] || 0;
+    const frac = n / maxN;
+    L.circleMarker([m.lat, m.lng], {
+      radius: 5 + frac * 22, color: '#fff', weight: n ? 1 : 0.5,
+      fillColor: color(frac), fillOpacity: n ? 0.8 : 0.35,
+    }).bindPopup(`<b>#${m.id} ${m.a || ''}</b>${m.t ? ' · "' + m.t + '"' : ''}<br>${n} open${n === 1 ? '' : 's'}`).addTo(heatLayer);
+    if (n) pts.push([m.lat, m.lng]);
+  });
+  if (pts.length) map.fitBounds(pts, { padding: [30, 30], maxZoom: 15 });
+
+  // Top murals table
+  document.querySelector('#top tbody').innerHTML = d.topMurals.slice(0, 25).map(r => {
+    const m = muralById[r.id] || {};
+    const name = (m.a || '(unknown)') + (m.t ? ` · "${m.t}"` : '');
+    return `<tr><td>${r.id}</td><td>${name}</td><td class="n">${r.n}</td></tr>`;
+  }).join('');
+
+  // By-day bars (chronological)
+  const days = [...d.byDay].reverse();
+  const maxDay = Math.max(1, ...days.map(x => x.n));
+  document.getElementById('bars').innerHTML = days.map(x =>
+    `<div class="bar" style="height:${Math.round(x.n / maxDay * 100)}%" title="${x.day}: ${x.n} events, ${x.sessions} sessions"><span>${x.day.slice(5)}</span></div>`
+  ).join('');
+
+  // Events
+  document.getElementById('events').innerHTML = d.byEvent.map(e =>
+    `<div class="ev">${e.event} <b>${e.n}</b></div>`).join('');
+}
+
+if (localStorage.getItem('mq_stats_key')) load(); else showPrompt();
+</script>
+</body>
+</html>
