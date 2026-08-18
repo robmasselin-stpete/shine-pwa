@@ -4356,7 +4356,7 @@ function initBuildViewer() {
     dots.forEach((d, j) => d.classList.toggle('on', j === idx));
   };
   const stop = () => { if (bvTimer) { clearInterval(bvTimer); bvTimer = null; } playBtn.textContent = '▶'; };
-  const play = () => { bvTimer = setInterval(() => show(idx + 1), 333); playBtn.textContent = '⏸'; };
+  const play = () => { bvTimer = setInterval(() => show(idx + 1), 500); playBtn.textContent = '⏸'; };
   bv.querySelector('.bv-prev').addEventListener('click', (e) => { e.stopPropagation(); stop(); show(idx - 1); });
   bv.querySelector('.bv-next').addEventListener('click', (e) => { e.stopPropagation(); stop(); show(idx + 1); });
   playBtn.addEventListener('click', (e) => { e.stopPropagation(); bvTimer ? stop() : play(); });
