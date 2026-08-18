@@ -17,7 +17,9 @@ const CORS = {
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), {
     status,
-    headers: { 'Content-Type': 'application/json', ...CORS },
+    // no-store so the /stats endpoint always returns fresh aggregates (Cloudflare was
+    // edge-caching the response by URL, serving stale numbers on repeat requests).
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...CORS },
   });
 
 export default {
