@@ -3499,19 +3499,53 @@ function exitGotoMode() {
   }
 }
 
-/** Wire the GoTo pill button click handler for a mural. */
+const DRIVE_THRESHOLD_M = 1609.34;   // 1 mile — beyond this, hand off to a maps app for driving
+
+/** Wire the GoTo pill button click handler for a mural (distance-aware). */
 function wireGotoButton(mural) {
   const pill = detailContent.querySelector('.detail-goto-pill');
   if (pill) {
     pill.addEventListener('click', (e) => {
       e.preventDefault();
-      if (state.gotoMode) {
-        exitGotoMode();
-      } else {
+      if (state.gotoMode) { exitGotoMode(); return; }
+      // Distance-aware: walkable (<1 mi) → in-app compass; far or no-GPS → maps + walk-anyway.
+      const hasGps = state.userLat != null && state.userLng != null;
+      const dist = hasGps ? haversine(state.userLat, state.userLng, mural.lat, mural.lng) : null;
+      if (hasGps && dist < DRIVE_THRESHOLD_M) {
         enterGotoMode(mural);
+      } else {
+        showDirectionsChoice(mural, dist);
       }
     });
   }
+}
+
+/** Far / no-GPS directions sheet: driving handoff to Apple/Google Maps, plus "Walk anyway". */
+function showDirectionsChoice(mural, distM) {
+  document.querySelector('.dir-choice')?.remove();
+  const miles = distM != null ? distM / 1609.34 : null;
+  const milesStr = miles != null ? (miles < 10 ? miles.toFixed(1) : Math.round(miles)) : null;
+  const iosDrive = `https://maps.apple.com/?daddr=${mural.lat},${mural.lng}&dirflg=d`;
+  const gDrive = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=driving`;
+  const el = document.createElement('div');
+  el.className = 'dir-choice';
+  el.innerHTML = `
+    <div class="dir-choice-backdrop"></div>
+    <div class="dir-choice-sheet">
+      <div class="dir-choice-title">${milesStr != null ? `That's about ${milesStr} miles away` : 'Get directions'}</div>
+      <div class="dir-choice-sub">${milesStr != null ? 'A bit far to walk — driving will get you there better.' : 'Open in a maps app for turn-by-turn.'}</div>
+      <a class="dir-choice-btn" href="${iosDrive}" target="_blank" rel="noopener" data-maps>Apple Maps</a>
+      <a class="dir-choice-btn" href="${gDrive}" target="_blank" rel="noopener" data-maps>Google Maps</a>
+      <button class="dir-choice-btn walk" data-walk>Walk anyway</button>
+      <button class="dir-choice-cancel" data-cancel>Cancel</button>
+    </div>`;
+  document.body.appendChild(el);
+  const close = () => el.remove();
+  el.querySelector('.dir-choice-backdrop').addEventListener('click', close);
+  el.querySelector('[data-cancel]').addEventListener('click', close);
+  el.querySelectorAll('[data-maps]').forEach(a =>
+    a.addEventListener('click', () => { sessionStorage.setItem('mq_return_mural', mural.id); close(); }));
+  el.querySelector('[data-walk]').addEventListener('click', () => { close(); enterGotoMode(mural); });
 }
 
 /** Wire the Tour pill button — always shows dropdown with tour name(s). */

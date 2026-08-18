@@ -1430,6 +1430,27 @@ body.searching #tab-bar { display: none !important; }
   border-top: 1px solid rgba(255,255,255,0.15);
 }
 
+/* ── Distance-aware directions sheet (far / no-GPS handoff) ── */
+.dir-choice { position: fixed; inset: 0; z-index: 6000; display: flex; align-items: flex-end; justify-content: center; }
+.dir-choice-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+.dir-choice-sheet {
+  position: relative; width: 100%; max-width: 460px; background: var(--card, #fff);
+  border-radius: 18px 18px 0 0; padding: 22px 20px calc(20px + env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.25);
+  animation: dir-up 0.18s ease both;
+}
+@keyframes dir-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.dir-choice-title { font-size: 19px; font-weight: 700; text-align: center; }
+.dir-choice-sub { font-size: 14px; color: #777; text-align: center; margin: 4px 0 18px; }
+.dir-choice-btn {
+  display: block; width: 100%; text-align: center; text-decoration: none;
+  font-size: 16px; font-weight: 600; padding: 14px; border-radius: 12px; margin: 10px 0;
+  background: var(--teal); color: #fff; border: none; cursor: pointer;
+}
+.dir-choice-btn.walk { background: var(--card, #fff); color: var(--teal); border: 1.5px solid var(--teal); }
+.dir-choice-cancel { display: block; width: 100%; text-align: center; background: none; border: none;
+  color: #999; font-size: 15px; padding: 12px; margin-top: 4px; cursor: pointer; }
+
 /* ── SHINE 2026 build-viewer ── */
 /* Fixed-size frame so every photo fills the same box — the ‹ › buttons (and layout)
    never jump between frames of differing dimensions. object-fit: cover keeps framing. */
