@@ -24,5 +24,7 @@ cp data/murals/*.yaml data/murals/_index.json "$OUT/data/murals/"
 printf '/    /tools/    302\n' > "$OUT/_redirects"
 
 echo "→ deploying $(ls "$OUT/tools" | wc -l | tr -d ' ') tool pages + data snapshot to Cloudflare Pages ($PROJECT)…"
-npx wrangler pages deploy "$OUT" --project-name "$PROJECT" --commit-dirty=true
-echo "✓ done. Root = dashboard; tools also at /tools/"
+# --branch main publishes to PRODUCTION (mural-tools.pages.dev). Without it, wrangler
+# deploys to a per-git-branch PREVIEW url and the production alias stays stale.
+npx wrangler pages deploy "$OUT" --project-name "$PROJECT" --branch main --commit-dirty=true
+echo "✓ done → https://mural-tools.pages.dev  (dashboard at root; tools at /tools/)"
