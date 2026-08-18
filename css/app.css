@@ -1398,6 +1398,41 @@ body.searching #tab-bar { display: none !important; }
 .detail-original-wrap {
   border-top: 1px solid rgba(255,255,255,0.15);
 }
+
+/* ── SHINE 2026 build-viewer ── */
+.build-viewer { cursor: default; }
+.build-viewer .bv-img { transition: opacity .12s; }
+.bv-date {
+  position: absolute; top: 10px; left: 10px; z-index: 2;
+  background: rgba(0,0,0,0.6); color: #fff; font-size: 13px; font-weight: 600;
+  padding: 3px 9px; border-radius: 20px; letter-spacing: .02em;
+}
+.bv-badge {
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  background: var(--orange, #e8663a); color: #fff; font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .04em;
+  box-shadow: 0 1px 4px rgba(0,0,0,.35);
+}
+.bv-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 40px; height: 40px; border-radius: 50%; border: none;
+  background: rgba(0,0,0,0.45); color: #fff; font-size: 26px; line-height: 1;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.bv-prev { left: 8px; }
+.bv-next { right: 8px; }
+.bv-play {
+  position: absolute; bottom: 10px; right: 10px; z-index: 3;
+  width: 40px; height: 40px; border-radius: 50%; border: none;
+  background: rgba(0,0,0,0.55); color: #fff; font-size: 15px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.bv-dots {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 3;
+  display: flex; gap: 6px;
+}
+.bv-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.45); }
+.bv-dot.on { background: #fff; }
 .detail-original-label {
   text-align: center;
   font-size: 11px;

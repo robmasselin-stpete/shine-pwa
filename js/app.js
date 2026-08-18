@@ -4318,6 +4318,58 @@ function openPhotoLightbox(src) {
   });
 }
 
+// ── SHINE 2026 build-viewer (swipeable progress-photo strip on the detail hero) ──
+let bvTimer = null;   // autoplay interval (module-level so we can clear it on detail change)
+
+/** Render the build-viewer markup. photos = [{u,d}], oldest→newest; opens on newest. */
+function buildViewerHTML(m, photos) {
+  const last = photos.length - 1;
+  const data = encodeURIComponent(JSON.stringify(photos));
+  return `
+    <div class="detail-hero-wrap build-viewer" data-photos="${data}" data-idx="${last}">
+      <img class="detail-hero bv-img" src="${fullSrc(photos[last].u)}" data-img="${photos[last].u}" alt="${m.a}" onerror="mqCardErr(this)">
+      ${photos[last].d ? `<div class="bv-date">${photos[last].d}</div>` : '<div class="bv-date"></div>'}
+      ${m.uc ? '<div class="bv-badge">Being painted now</div>' : ''}
+      <button class="bv-nav bv-prev" aria-label="Previous photo">‹</button>
+      <button class="bv-nav bv-next" aria-label="Next photo">›</button>
+      <button class="bv-play" aria-label="Play time-lapse">▶</button>
+      <div class="bv-dots">${photos.map((p, i) => `<span class="bv-dot${i === last ? ' on' : ''}"></span>`).join('')}</div>
+    </div>`;
+}
+
+/** Wire the build-viewer after the detail page renders (prev/next/play/swipe). */
+function initBuildViewer() {
+  if (bvTimer) { clearInterval(bvTimer); bvTimer = null; }
+  const bv = detailContent.querySelector('.build-viewer');
+  if (!bv) return;
+  let photos; try { photos = JSON.parse(decodeURIComponent(bv.dataset.photos)); } catch (e) { return; }
+  if (!photos || photos.length < 2) return;
+  let idx = photos.length - 1;
+  const img = bv.querySelector('.bv-img');
+  const dateEl = bv.querySelector('.bv-date');
+  const dots = Array.from(bv.querySelectorAll('.bv-dot'));
+  const playBtn = bv.querySelector('.bv-play');
+  const show = (i) => {
+    idx = ((i % photos.length) + photos.length) % photos.length;
+    img.src = fullSrc(photos[idx].u); img.dataset.img = photos[idx].u;
+    dateEl.textContent = photos[idx].d || '';
+    dots.forEach((d, j) => d.classList.toggle('on', j === idx));
+  };
+  const stop = () => { if (bvTimer) { clearInterval(bvTimer); bvTimer = null; } playBtn.textContent = '▶'; };
+  const play = () => { bvTimer = setInterval(() => show(idx + 1), 333); playBtn.textContent = '⏸'; };
+  bv.querySelector('.bv-prev').addEventListener('click', (e) => { e.stopPropagation(); stop(); show(idx - 1); });
+  bv.querySelector('.bv-next').addEventListener('click', (e) => { e.stopPropagation(); stop(); show(idx + 1); });
+  playBtn.addEventListener('click', (e) => { e.stopPropagation(); bvTimer ? stop() : play(); });
+  let sx = null;
+  bv.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+  bv.addEventListener('touchend', (e) => {
+    if (sx == null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) { stop(); show(idx + (dx < 0 ? 1 : -1)); }
+    sx = null;
+  });
+}
+
 function buildDetailBodyHTML(mural) {
   const muralTours = ROUTE_DEFS.filter(r => r.ids && r.ids.includes(mural.id));
   const photos = fieldPhotos.filter(p => p.muralId === mural.id);
@@ -4335,11 +4387,17 @@ function buildDetailBodyHTML(mural) {
     )
   );
 
+  // SHINE 2026 build-viewer: >1 progress photo → swipeable strip; else static hero.
+  // Hero = newest photo if any photos exist, else the single img.
+  const bvPhotos = mural.ph || [];
+  const heroImg = bvPhotos.length ? bvPhotos[bvPhotos.length - 1].u : mural.img;
+
   return `
+    ${bvPhotos.length > 1 ? buildViewerHTML(mural, bvPhotos) : `
     <div class="detail-hero-wrap">
-      <img class="detail-hero" src="${cardSrc(mural.img)}" data-img="${mural.img || ''}" data-full="${fullSrc(mural.img)}" alt="${mural.a}" onerror="mqCardErr(this)">
+      <img class="detail-hero" src="${cardSrc(heroImg)}" data-img="${heroImg || ''}" data-full="${fullSrc(heroImg)}" alt="${mural.a}" onerror="mqCardErr(this)">
       ${mural.gone ? `<div class="detail-gone-banner">This mural is no longer on site — building was torn down</div>` : ''}
-    </div>
+    </div>`}
     ${mural.oimg ? `<div class="detail-original-wrap">
       <div class="detail-original-label">When it was new</div>
       <div class="detail-hero-wrap"><img class="detail-hero" src="${fullSrc(mural.oimg)}" alt="${mural.a} — original" onerror="this.parentElement.parentElement.style.display='none'"></div>
@@ -4530,6 +4588,7 @@ function openDetail(mural) {
 
   detailContent.innerHTML = buildDetailBodyHTML(mural);
   upgradeDetailHero();
+  initBuildViewer();   // SHINE 2026: wire the progress-photo strip if present
 
   detailContent.querySelectorAll('.detail-nearby-card').forEach(card => {
     card.addEventListener('click', () => {

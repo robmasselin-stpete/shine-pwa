@@ -53,6 +53,7 @@ EXPORT_FIELDS = [
     'img', 'basedIn',
     'searchMuralDescription', 'muralInspiration', 'muralAwards', 'artistAwards',
     'impressions', 'furtherWork',
+    'photos', 'underConstruction',   # SHINE 2026 build-viewer + construction flag
 ]
 
 # Provenance fields — stripped from output
@@ -219,6 +220,19 @@ def _build_along_the_way(m):
     return f"[{items}]"
 
 
+def _build_photos(m):
+    """SHINE 2026 build-viewer: photos [{url,dateTaken}] → JS array [{u,d}], '' if none.
+    Additive — existing murals keep their single `img`; construction murals populate this."""
+    photos = m.get('photos') or []
+    items = []
+    for p in photos:
+        if not p or not p.get('url'):
+            continue
+        items.append(f"{{u:'{js_string_escape(p.get('url',''))}',"
+                     f"d:'{js_string_escape(p.get('dateTaken',''))}'}}")
+    return f"[{','.join(items)}]" if items else ''
+
+
 def _build_sources(m):
     """Build a JS array string of fetchable URLs from sourceNotes (URL entries only).
     Non-URL notes (e.g. 'GPS from Rob's photo...') are dropped from the export."""
@@ -307,6 +321,8 @@ def mural_to_js(m):
         + (f",fn:{fn_str}" if (fn_str := _build_field_notes(m)) else '')
         + (f",atw:{atw_str}" if (atw_str := _build_along_the_way(m)) else '')
         + (f",src:{src_str}" if (src_str := _build_sources(m)) else '')
+        + (',uc:true' if m.get('underConstruction') else '')            # SHINE 2026
+        + (f",ph:{ph_str}" if (ph_str := _build_photos(m)) else '')     # SHINE 2026 build-viewer
         + '}'
     )
 
@@ -497,6 +513,12 @@ def mural_to_dict(m):
             d['goneDate'] = text_normalize(m.get('goneDate', ''))
         if m.get('goneReason'):
             d['goneReason'] = text_normalize(m.get('goneReason', ''))
+    if m.get('underConstruction'):                                       # SHINE 2026
+        d['uc'] = True
+    ph = [{'u': text_normalize(p.get('url', '')), 'd': text_normalize(p.get('dateTaken', ''))}
+          for p in (m.get('photos') or []) if p and p.get('url')]        # SHINE 2026 build-viewer
+    if ph:
+        d['ph'] = ph
     fn = [text_normalize(n) for n in (m.get('fieldNotes') or []) if n]
     if fn:
         d['fn'] = fn
