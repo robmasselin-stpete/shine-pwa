@@ -73,6 +73,10 @@ export function contentState() {
 // on the NEXT launch (via the boot step above) — simple and robust. Live
 // mid-session re-render is a documented follow-up (would call a re-render hook here).
 export async function hydrateContent() {
+  // Dev preview (python server on 127.0.0.1): keep the local bundled data.js authoritative
+  // so the live CDN content.json can't overwrite locally-added test murals (e.g. the SHINE
+  // 2026 dummy). Real apps use capacitor://localhost or https://localhost, not 127.0.0.1.
+  if (typeof location !== 'undefined' && location.hostname === '127.0.0.1') return { status: 'dev-skip' };
   const base = baseUrl();
   if (!base) return { status: 'no-remote' };
   let timer;
