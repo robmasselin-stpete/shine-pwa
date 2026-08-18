@@ -228,7 +228,13 @@
 
   <!-- Service Worker registration -->
   <script>
-    if ('serviceWorker' in navigator && !window.Capacitor?.isNativePlatform?.()) {
+    // Dev preview (python http.server on 127.0.0.1): never register the SW — it caches
+    // app.js/data.js and hides local edits. Also unregister any existing one. The real
+    // iOS/Android apps use capacitor://localhost or https://localhost (not 127.0.0.1),
+    // and muralquest.app is its own host, so this only affects the dev server.
+    if (location.hostname === '127.0.0.1') {
+      navigator.serviceWorker?.getRegistrations?.().then(rs => rs.forEach(r => r.unregister()));
+    } else if ('serviceWorker' in navigator && !window.Capacitor?.isNativePlatform?.()) {
       navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
         .then(reg => {
           console.log('SW registered, scope:', reg.scope);
