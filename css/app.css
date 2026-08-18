@@ -503,6 +503,22 @@ body.searching #tab-bar { display: none !important; }
   color: #fff;
 }
 
+/* SHINE 2026 festival chip — teal-tinted even when inactive so it stands out.
+   Explore uses data-filter; the map uses data-cat — style both. */
+.year-pill[data-filter="shine2026"],
+.year-pill[data-cat="shine2026"] {
+  background: var(--teal-light);
+  border-color: var(--teal);
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+.year-pill[data-filter="shine2026"].active,
+.year-pill[data-cat="shine2026"].active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
 .year-pill.year-sub {
   font-family: var(--font-body);
   font-size: 11px;
@@ -594,14 +610,14 @@ body.searching #tab-bar { display: none !important; }
 .mural-card { position: relative; }
 .mural-card-uc-badge {
   position: absolute; top: 8px; left: 8px; z-index: 2;
-  background: var(--orange, #e8663a); color: #fff;
+  background: var(--teal); color: #fff;
   font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
   padding: 3px 8px; border-radius: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.3);
 }
-.mural-map-icon.uc img { border: 2px solid var(--orange, #e8663a); box-sizing: border-box; }
+.mural-map-icon.uc img { border: 2px solid var(--teal); box-sizing: border-box; }
 .map-icon-uc-dot {
   position: absolute; top: -3px; right: -3px; width: 12px; height: 12px;
-  background: var(--orange, #e8663a); border: 2px solid #fff; border-radius: 50%;
+  background: var(--teal); border: 2px solid #fff; border-radius: 50%;
 }
 
 .mural-card-img {
@@ -1426,7 +1442,7 @@ body.searching #tab-bar { display: none !important; }
 }
 .bv-badge {
   position: absolute; top: 10px; right: 10px; z-index: 2;
-  background: var(--orange, #e8663a); color: #fff; font-size: 12px; font-weight: 700;
+  background: var(--teal); color: #fff; font-size: 12px; font-weight: 700;
   padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .04em;
   box-shadow: 0 1px 4px rgba(0,0,0,.35);
 }

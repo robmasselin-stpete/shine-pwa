@@ -1434,7 +1434,7 @@ function initMap() {
     // Circle marker (zoomed out) — construction murals get a distinct orange dot.
     const dot = L.circleMarker([m.lat, m.lng], {
       radius: m.uc ? 8 : 7,
-      fillColor: m.uc ? '#e8663a' : color,
+      fillColor: m.uc ? '#0E918C' : color,
       color: '#fff',
       weight: 2,
       fillOpacity: 0.9,
@@ -1932,6 +1932,7 @@ function renderMapCatPills() {
   catPillsEl.innerHTML = `
     <button class="year-pill ${t === 'all' ? 'active' : ''}" data-cat="all">All</button>
     <button class="year-pill ${t === 'shine' ? 'active' : ''}" data-cat="shine">SHINE<sup>&reg;</sup></button>
+    <button class="year-pill ${t === 'shine2026' ? 'active' : ''}" data-cat="shine2026">Shine 2026</button>
     <button class="year-pill ${t === 'vintage' ? 'active' : ''}" data-cat="vintage">Vintage</button>
     <button class="year-pill ${t === 'commercial' ? 'active' : ''}" data-cat="commercial">Commissioned</button>
   `;
@@ -1963,6 +1964,9 @@ function updateMapMarkers() {
   } else if (tab === 'shine') {
     visibleYears = state.activeMapYears || SHINE_YEARS;
     visibleCats = ['shine'];
+  } else if (tab === 'shine2026') {
+    visibleYears = [2026];
+    visibleCats = ['shine', 'shine-legacy'];
   } else if (tab === 'vintage') {
     visibleYears = state.activeMapYears || [...VINTAGE_YEARS, 0];
     visibleCats = ['shine', 'shine-legacy'];
