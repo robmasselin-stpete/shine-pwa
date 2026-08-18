@@ -150,9 +150,8 @@ Reframe: it's **"from wherever you are → selected mural,"** not literally "at 
 logic works planning from home or across town, so no need to detect which mural you're at.
 
 Refinements to include:
-- **Distance on the pin callout.** Tapping a 2026 pin shows a light popup — e.g. *"Cecilia
-  Lueza · 0.4 mi"* — with the walk/maps choice inline, so you can compare several pins and
-  pick the next without diving into full detail pages each time (better for festival hopping).
+- **Distance on the pin callout.** ~~Tapping a 2026 pin shows a light popup with distance.~~
+  **DROPPED (2026-08-18, Rob) — not building this.**
 - **"Nearest 2026 murals" sorted list** as a complement to the map — sorted by distance from
   current GPS ("0.3 mi, 1.1 mi, 2.4 mi…"). Directly answers "what's closest to me right now?"
   Consider a toggle on the filtered view.
@@ -188,8 +187,15 @@ in Rob's voice → live. **Weigh:** each regen spends ElevenLabs credits (Rob ha
 auto-regen-per-edit could add up — maybe a "publish audio" button rather than regen-on-every-
 keystroke-commit); the field tool needs the same PAT/GitHub-API plumbing as the capture PWA.
 
-## Timeline
-- **Aug–early Sept:** GitHub Action + `build-data.py` changes + app UI (build-viewer, chip,
-  badge, distance-aware directions) + capture PWA. Test with 1–2 dummy construction murals.
-- **~Early/mid Sept:** submit the app build (budget for a rejection + resubmit).
-- **During festival (Nov 8–17):** daily captures via the PWA → live over OTA, no build.
+## Timeline (COMPRESSED — Rob 2026-08-18: ship binary in AUGUST, demo to SHINE early Sept)
+- ✅ **Done (Aug 18):** GitHub Action (commit=live), build-data schema (photos/uc), build-viewer,
+  "Shine 2026" chip (Explore + Map), construction badge (teal), distance-aware directions.
+- **Aug (next few days):** remove dummy mural #999 + regen clean data.js; bump build numbers;
+  **ship the binary** (iOS + Android). Also carries the staged field fixes (compass, cheat-sheet,
+  Downtown North path, pelican gray, "Nav to Next Mural", arrival-chord volume).
+- **Late Aug:** binary approved + live (budget for a rejection + resubmit).
+- **Late Aug–early Sept:** build the **capture PWA** (own repo + fine-grained PAT).
+- **Early Sept:** run the photo-pipeline test plan (docs/SHINE-2026-PHOTO-TEST-PLAN.md) + the
+  **live SHINE demo** for advertising.
+- **Sept–Oct:** buffer + seed real 2026 mural stubs.
+- **Nov 8–17:** live festival — daily captures via the PWA → live over OTA, no build.
