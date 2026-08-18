@@ -1055,6 +1055,7 @@ function getFilteredMurals() {
   if (filters && filters.length > 0) {
     list = list.filter(m => {
       if (filters.includes('shine') && m.cat !== 'commercial' && SHINE_YEARS.includes(m.y)) return true;
+      if (filters.includes('shine2026') && m.cat !== 'commercial' && m.y === 2026) return true;   // SHINE 2026 festival chip (temporary)
       if (filters.includes('vintage') && m.cat !== 'commercial' && (VINTAGE_YEARS.includes(m.y) || m.y === 0)) return true;
       if (filters.includes('commercial') && m.cat === 'commercial') return true;
       return false;
@@ -1102,6 +1103,7 @@ function renderFilterPills() {
   filterPills.innerHTML = `
     <button class="year-pill ${!f ? 'active' : ''}" data-filter="">All</button>
     <button class="year-pill ${isActive('shine') ? 'active' : ''}" data-filter="shine">SHINE<sup>&reg;</sup></button>
+    <button class="year-pill ${isActive('shine2026') ? 'active' : ''}" data-filter="shine2026">Shine 2026</button>
     <button class="year-pill ${isActive('vintage') ? 'active' : ''}" data-filter="vintage">Vintage</button>
     <button class="year-pill ${isActive('commercial') ? 'active' : ''}" data-filter="commercial">Commissioned</button>
   `;
