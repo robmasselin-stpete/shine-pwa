@@ -63,7 +63,10 @@ export default {
         env.DB.prepare('SELECT COUNT(*) n, COUNT(DISTINCT sid) sessions FROM events').first(),
         rows('SELECT event, COUNT(*) n FROM events GROUP BY event ORDER BY n DESC LIMIT 30'),
         rows('SELECT day, COUNT(*) n, COUNT(DISTINCT sid) sessions FROM events GROUP BY day ORDER BY day DESC LIMIT 30'),
-        rows("SELECT json_extract(props,'$.id') id, COUNT(*) n FROM events WHERE event='mural_open' GROUP BY id ORDER BY n DESC LIMIT 20"),
+        // GROUP BY the expression (not the alias): the events table has its OWN `id` column
+        // (row PK), so `GROUP BY id` was grouping by unique row id → every mural showed n=1.
+        // CAST to INTEGER also folds numeric vs string ids logged by different app builds.
+        rows("SELECT CAST(json_extract(props,'$.id') AS INTEGER) id, COUNT(*) n FROM events WHERE event='mural_open' AND json_extract(props,'$.id') IS NOT NULL GROUP BY CAST(json_extract(props,'$.id') AS INTEGER) ORDER BY n DESC LIMIT 20"),
       ]);
       return json({ total, byEvent, byDay, topMurals });
     }
