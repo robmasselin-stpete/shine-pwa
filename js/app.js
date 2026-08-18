@@ -489,7 +489,12 @@ const COMPASS_ARC_SPAN_DEG = 140;
 // iOS's webkitCompassHeading is already true-north; Android's (360 - alpha) is
 // MAGNETIC north, so we add this to convert it to true north — matching the
 // true-north bearing() math and the iOS reading. Nudge if the WMM value drifts.
-const MAGNETIC_DECLINATION = -6.8;
+// Field test 2026-08-18 (Downtown North, iOS + Android side by side): iOS (true north) was
+// spot-on; Android with the −6.8° declination correction read ~10° LOW (consistently). Backing
+// it out leaves Android ~3° off — i.e. this Samsung's deviceorientation already reports ~true
+// north, so subtracting declination over-corrected. Set to 0 (no correction). If a device that
+// reports RAW magnetic ever shows a ~7° bias, revisit per-device instead of a blanket constant.
+const MAGNETIC_DECLINATION = 0;
 let compassGrantedThisSession = false;
 let lastCompassEventTime = 0;     // timestamp of last deviceorientation event
 let compassWatchdogId = null;     // interval ID for compass liveness check
