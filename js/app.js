@@ -1220,8 +1220,9 @@ function renderExplore() {
     ${bookBannerHTML}
     <div class="mural-grid">
       ${filtered.map(m => `
-        <div class="mural-card${m.gone ? ' mural-gone' : ''}" data-id="${m.id}">
-          <img class="mural-card-img" src="${cardSrc(m.img)}" data-img="${m.img || ''}" alt="${m.a}" loading="lazy" onerror="mqCardErr(this)">
+        <div class="mural-card${m.gone ? ' mural-gone' : ''}${m.uc ? ' mural-uc' : ''}" data-id="${m.id}">
+          <img class="mural-card-img" src="${cardSrc(m.uc && m.ph && m.ph.length ? m.ph[m.ph.length - 1].u : m.img)}" data-img="${m.img || ''}" alt="${m.a}" loading="lazy" onerror="mqCardErr(this)">
+          ${m.uc ? '<div class="mural-card-uc-badge">Being painted now</div>' : ''}
           <div class="mural-card-info">
             <div class="mural-card-artist">${m.a}</div>
             <div class="mural-card-meta">${m.bldg || m.loc || ''} · ${m.y || (m.cat === 'commercial' ? 'Commissioned' : 'Pre-SHINE')}</div>
@@ -1430,10 +1431,10 @@ function initMap() {
     if (!m.lat || !m.lng) return;
     const color = m.cat === 'commercial' ? '#999' : (YEAR_COLORS[m.y] || '#999');
 
-    // Circle marker (zoomed out)
+    // Circle marker (zoomed out) — construction murals get a distinct orange dot.
     const dot = L.circleMarker([m.lat, m.lng], {
-      radius: 7,
-      fillColor: color,
+      radius: m.uc ? 8 : 7,
+      fillColor: m.uc ? '#e8663a' : color,
       color: '#fff',
       weight: 2,
       fillOpacity: 0.9,
@@ -1442,8 +1443,8 @@ function initMap() {
 
     // Image icon marker (zoomed in)
     const icon = L.divIcon({
-      className: 'mural-map-icon',
-      html: `<img src="${cardSrc(m.img)}" data-img="${m.img}" onerror="mqCardErr(this)" alt="${m.a}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`,
+      className: 'mural-map-icon' + (m.uc ? ' uc' : ''),
+      html: `<img src="${cardSrc(m.uc && m.ph && m.ph.length ? m.ph[m.ph.length - 1].u : m.img)}" data-img="${m.img}" onerror="mqCardErr(this)" alt="${m.a}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">${m.uc ? '<span class="map-icon-uc-dot"></span>' : ''}`,
       iconSize: [48, 48],
       iconAnchor: [24, 24],
     });
