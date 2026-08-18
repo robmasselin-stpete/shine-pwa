@@ -83,11 +83,30 @@ const API = 'https://analytics.muralquest.app/stats';
 const muralById = {}; murals.forEach(m => muralById[m.id] = m);
 let map, heatLayer;
 
+// Persist the key in BOTH localStorage and a long-lived first-party cookie. Safari's
+// tracking-prevention can wipe localStorage (esp. on http/localhost) between sessions;
+// the cookie survives that, so the key sticks across close/reopen.
+function setKey(v) {
+  try { localStorage.setItem('mq_stats_key', v); } catch (e) {}
+  document.cookie = 'mq_stats_key=' + encodeURIComponent(v) + '; max-age=31536000; path=/; SameSite=Strict';
+}
+function getKey() {
+  let v = null;
+  try { v = localStorage.getItem('mq_stats_key'); } catch (e) {}
+  if (v) return v;
+  const m = document.cookie.match(/(?:^|;\s*)mq_stats_key=([^;]+)/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function delKey() {
+  try { localStorage.removeItem('mq_stats_key'); } catch (e) {}
+  document.cookie = 'mq_stats_key=; max-age=0; path=/; SameSite=Strict';
+}
+
 window.saveKey = () => {
   const v = document.getElementById('key-input').value.trim();
-  if (v) { localStorage.setItem('mq_stats_key', v); document.getElementById('key-err').hidden = true; load(); }
+  if (v) { setKey(v); document.getElementById('key-err').hidden = true; load(); }
 };
-window.clearKey = () => { localStorage.removeItem('mq_stats_key'); showPrompt(); };
+window.clearKey = () => { delKey(); showPrompt(); };
 window.load = load;
 
 function showPrompt(msg) {
@@ -105,7 +124,7 @@ function color(frac) {
 }
 
 async function load() {
-  const key = localStorage.getItem('mq_stats_key');
+  const key = getKey();
   if (!key) return showPrompt();
   let d;
   try {
@@ -167,7 +186,7 @@ async function load() {
     `<div class="ev">${e.event} <b>${e.n}</b></div>`).join('');
 }
 
-if (localStorage.getItem('mq_stats_key')) load(); else showPrompt();
+if (getKey()) load(); else showPrompt();
 </script>
 </body>
 </html>
