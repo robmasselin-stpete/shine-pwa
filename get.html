@@ -5,24 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get Mural Quest</title>
 <meta name="description" content="Download Mural Quest — a walking guide to the murals of St. Petersburg, Florida.">
-<!-- Smart app link: auto-sends iOS → App Store, Android → Google Play; everyone else sees both. -->
+<!-- Smart app link: iOS → App Store, Android → Google Play; others see both.
+     Lead-source tracking: a ?s=<source> tag (per QR code) is logged to first-party
+     analytics and passed to the stores as a campaign tag (Apple ct / Play referrer). -->
 <style>
   :root { --orange:#e8663a; }
   * { box-sizing:border-box; }
   html,body { margin:0; height:100%; }
-  body {
-    font:16px/1.5 -apple-system,'Helvetica Neue',Arial,sans-serif; color:#1a1a1a;
-    background:#faf7f4; display:flex; align-items:center; justify-content:center; padding:24px;
-  }
+  body { font:16px/1.5 -apple-system,'Helvetica Neue',Arial,sans-serif; color:#1a1a1a;
+    background:#faf7f4; display:flex; align-items:center; justify-content:center; padding:24px; }
   .card { max-width:360px; width:100%; text-align:center; }
   .logo { width:104px; height:104px; border-radius:23px; box-shadow:0 6px 20px rgba(0,0,0,.15); margin-bottom:18px; }
   h1 { font-size:26px; margin:0 0 4px; letter-spacing:.5px; }
   .sub { color:#777; margin:0 0 24px; }
-  a.btn {
-    display:block; text-decoration:none; font-weight:600; font-size:17px;
-    padding:14px 18px; border-radius:12px; margin:10px 0;
-    background:#111; color:#fff;
-  }
+  a.btn { display:block; text-decoration:none; font-weight:600; font-size:17px;
+    padding:14px 18px; border-radius:12px; margin:10px 0; background:#111; color:#fff; }
   a.btn.alt { background:#fff; color:#111; border:1px solid #ddd; }
   .note { color:#999; font-size:13px; margin-top:18px; }
   a.plain { color:var(--orange); }
@@ -30,27 +27,46 @@
 </head>
 <body>
   <div class="card">
-    <img class="logo" src="/images/icons/icon-192.png" alt="Mural Quest"
-         onerror="this.style.display='none'">
+    <img class="logo" src="/images/icons/icon-192.png" alt="Mural Quest" onerror="this.style.display='none'">
     <h1>MURAL QUEST</h1>
     <p class="sub">A walking guide to the murals of St.&nbsp;Petersburg, FL</p>
-
-    <a class="btn" id="ios" href="https://apps.apple.com/app/id6761023231">Download on the App Store</a>
-    <a class="btn alt" id="android" href="https://play.google.com/store/apps/details?id=com.muralquest.stpete">Get it on Google Play</a>
-
+    <a class="btn" id="ios" href="#">Download on the App Store</a>
+    <a class="btn alt" id="android" href="#">Get it on Google Play</a>
     <p class="note">Redirecting you to your app store… <a class="plain" href="https://muralquest.app">muralquest.app</a></p>
   </div>
 
 <script>
+(function () {
+  var IOS_BASE  = 'https://apps.apple.com/app/id6761023231';
+  var PLAY_BASE = 'https://play.google.com/store/apps/details?id=com.muralquest.stpete';
+  var ANALYTICS = 'https://analytics.muralquest.app/e';
+
+  // lead source from ?s= (e.g. downtown-guide, galleries, hotels); default "direct"
+  var src = (new URLSearchParams(location.search).get('s') || 'direct')
+              .toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'direct';
+
+  // Store links carry a campaign tag so App Store Connect / Play Console attribute installs.
+  var iosUrl  = IOS_BASE  + '?ct=' + encodeURIComponent(src);
+  var playUrl = PLAY_BASE + '&referrer=' + encodeURIComponent('utm_source=' + src + '&utm_medium=qr');
+  document.getElementById('ios').href = iosUrl;
+  document.getElementById('android').href = playUrl;
+
+  // Log the scan to first-party analytics (best-effort; never block the redirect).
+  try {
+    var sid = 'qr-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+    var payload = JSON.stringify({ events: [{ event: 'qr_scan', sid: sid, ts: Date.now(), props: { source: src } }] });
+    if (navigator.sendBeacon) navigator.sendBeacon(ANALYTICS, new Blob([payload], { type: 'application/json' }));
+    else fetch(ANALYTICS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true });
+  } catch (e) {}
+
   var ua = navigator.userAgent || navigator.vendor || '';
   var isAndroid = /android/i.test(ua);
-  // iPadOS 13+ reports as Mac; detect touch to catch it.
   var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
-  var IOS_URL = document.getElementById('ios').href;
-  var PLAY_URL = document.getElementById('android').href;
-  if (isAndroid) { location.replace(PLAY_URL); }
-  else if (isIOS) { location.replace(IOS_URL); }
-  // desktop / unknown: no redirect — both buttons are shown above.
+  // small delay so the beacon has a beat to fire before we navigate away
+  if (isAndroid) setTimeout(function(){ location.replace(playUrl); }, 120);
+  else if (isIOS) setTimeout(function(){ location.replace(iosUrl); }, 120);
+  // desktop/unknown: no redirect — both buttons are shown.
+})();
 </script>
 </body>
 </html>

@@ -72,6 +72,9 @@
     <h2>Activity by day</h2>
     <div class="bars" id="bars"></div>
 
+    <h2>QR lead sources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa">(scans per code)</span></h2>
+    <table id="qr"><thead><tr><th>Source</th><th class="n">Scans</th></tr></thead><tbody></tbody></table>
+
     <h2>Events</h2>
     <div class="events" id="events"></div>
   </div>
@@ -180,6 +183,12 @@ async function load() {
   document.getElementById('bars').innerHTML = days.map(x =>
     `<div class="bar" style="height:${Math.round(x.n / maxDay * 100)}%" title="${x.day}: ${x.n} events, ${x.sessions} sessions"><span>${x.day.slice(5)}</span></div>`
   ).join('');
+
+  // QR lead sources
+  const qr = d.qrSources || [];
+  document.querySelector('#qr tbody').innerHTML = qr.length
+    ? qr.map(r => `<tr><td>${r.source}</td><td class="n">${r.n}</td></tr>`).join('')
+    : '<tr><td colspan="2" style="color:#999">No scans yet</td></tr>';
 
   // Events
   document.getElementById('events').innerHTML = d.byEvent.map(e =>

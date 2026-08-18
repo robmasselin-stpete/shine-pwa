@@ -61,7 +61,7 @@ export default {
         return json({ error: 'unauthorized' }, 401);
       }
       const rows = async (sql) => (await env.DB.prepare(sql).all()).results;
-      const [total, byEvent, byDay, topMurals] = await Promise.all([
+      const [total, byEvent, byDay, topMurals, qrSources] = await Promise.all([
         env.DB.prepare('SELECT COUNT(*) n, COUNT(DISTINCT sid) sessions FROM events').first(),
         rows('SELECT event, COUNT(*) n FROM events GROUP BY event ORDER BY n DESC LIMIT 30'),
         rows('SELECT day, COUNT(*) n, COUNT(DISTINCT sid) sessions FROM events GROUP BY day ORDER BY day DESC LIMIT 30'),
@@ -69,8 +69,10 @@ export default {
         // (row PK), so `GROUP BY id` was grouping by unique row id → every mural showed n=1.
         // CAST to INTEGER also folds numeric vs string ids logged by different app builds.
         rows("SELECT CAST(json_extract(props,'$.id') AS INTEGER) id, COUNT(*) n FROM events WHERE event='mural_open' AND json_extract(props,'$.id') IS NOT NULL GROUP BY CAST(json_extract(props,'$.id') AS INTEGER) ORDER BY n DESC LIMIT 250"),
+        // QR lead-source scans (from the app-download redirect page).
+        rows("SELECT json_extract(props,'$.source') source, COUNT(*) n FROM events WHERE event='qr_scan' AND json_extract(props,'$.source') IS NOT NULL GROUP BY json_extract(props,'$.source') ORDER BY n DESC LIMIT 50"),
       ]);
-      return json({ total, byEvent, byDay, topMurals });
+      return json({ total, byEvent, byDay, topMurals, qrSources });
     }
 
     return new Response('mural-quest analytics', { status: 200, headers: CORS });
