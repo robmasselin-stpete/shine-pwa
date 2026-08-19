@@ -83,7 +83,7 @@ def main():
         f.write('\n')
 
     print(f"✓ Card tier: {made} generated, {skipped} up-to-date, {len(manifest)} total "
-          f"(~{total_bytes/1024/1024:.1f} MB @ {MAX_DIM}px WebP)")
+          f"(~{total_bytes/1024/1024:.1f} MB @ ≤{MAX_SIDE}px WebP)")
     print(f"✓ Wrote {CARD_MANIFEST}")
     if missing:
         print(f"⚠ {len(missing)} mural images missing on disk (no card generated):")

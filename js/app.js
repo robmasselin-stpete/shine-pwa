@@ -4186,15 +4186,15 @@ function fetchTourSegment() {
     state.tourMarkers.push(tp);
   });
 
-  // Pelican stickers for murals NOT on this tour — tap to view details
+  // Grayed square mural thumbnails for murals NOT on this tour — tap to view details
   const tourIdSet = new Set(stops.map(s => s.id));
   murals.forEach(m => {
     if (!m.lat || !m.lng || tourIdSet.has(m.id)) return;
     const sq = L.marker([m.lat, m.lng], {
       icon: L.divIcon({
         className: '',
-        html: `<div style="width:66px;height:66px;display:flex;align-items:center;justify-content:center"><img src="images/logo-pelican.png" style="width:48px;height:48px;filter:grayscale(1) drop-shadow(0 1px 2px rgba(0,0,0,0.4));opacity:0.6"></div>`,
-        iconSize: [66, 66], iconAnchor: [33, 33],
+        html: `<img src="${cardSrc(m.img)}" data-img="${m.img || ''}" onerror="mqCardErr(this)" alt="${m.a}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;border:2px solid #ccc;box-shadow:0 1px 3px rgba(0,0,0,0.3);filter:grayscale(1);opacity:0.75">`,
+        iconSize: [40, 40], iconAnchor: [20, 20],
       }),
       zIndexOffset: -1000,
     }).addTo(tourMap);
