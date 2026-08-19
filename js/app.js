@@ -26,7 +26,7 @@
 
 import { murals, YEARS, YEAR_COLORS, CATEGORY_COLORS, pois } from './data.js';
 import { fieldPhotos, ARTIST_ALIASES } from './photos.js';
-import { ROUTE_PATHS } from './routes.js';
+import { ROUTE_DEFS, ROUTE_PATHS } from './routes.js';
 // v1.5 content layer. Importing it runs a synchronous boot step that applies any
 // cached OTA content (newer than the bundle) to the murals/pois/YEARS arrays
 // above BEFORE the init code below renders — so first paint shows the freshest
@@ -2095,33 +2095,12 @@ function calcRouteTotalDist(orderedMurals) {
 }
 
 // Tour color palette for picker map
-const TOUR_COLORS = {
-  'downtown-north':  '#E53935',
-  'the-edge':        '#1E88E5',
-  'methodist-town':  '#7B1FA2',
-  'tropicana-field': '#43A047',
-  'central-ave':     '#FB8C00',
-  'arts-district':   '#F06292',
-  'pinellas-trail':  '#00897B',
-};
-
-// Neighborhood walking routes + bike tour
-const ROUTE_DEFS = [
-  { id: 'downtown-north', name: 'Downtown North', desc: 'Where SHINE started. The 600 block, the waterfront, the Cordova Inn — 16 murals in the heart of it.',
-    ids: [6, 116, 23, 30, 1, 36, 66, 129, 109, 110, 7, 9, 111, 115, 73, 24] },
-  { id: 'the-edge', name: 'The Edge', desc: 'The brewery belt. Green Bench to the Edge — 12 murals between the craft beer and the train tracks.',
-    ids: [119, 80, 75, 120, 57, 135, 40, 130, 89, 98, 43, 34] },
-  { id: 'methodist-town', name: 'Methodist Town', desc: 'Seven walls along MLK. Shorter walk, bigger stories.',
-    ids: [4, 108, 61, 60, 24, 114, 64] },
-  { id: 'tropicana-field', name: 'Tropicana Field', desc: 'The stadium loop. Fifteen murals around Tropicana Field — including a Morning Breath wall from 2015 that\'s now a narrow sliver between two buildings. The rest of it is still in there, behind the wall.',
-    ids: [59, 103, 163, 133, 171, 138, 52, 170, 87, 123, 125, 16, 194, 18, 131] },
-  { id: 'central-ave', name: 'Central Ave', desc: 'The main drag. Ten murals along Central — one of the avenues that defines the city.',
-    ids: [48, 122, 62, 55, 156, 173, 76, 174, 71, 88, 38, 151, 101] },
-  { id: 'arts-district', name: 'Arts District', desc: 'Warehouses turned canvases. Thirteen murals deep in the district where the studios are.',
-    ids: [140, 136, 90, 84, 72, 29, 93, 121, 50, 79, 167, 168] },
-  { id: 'pinellas-trail', name: 'Pinellas Trail', desc: 'Fifteen murals strung along the Pinellas Trail — a long, thin route best for serious walkers or bikes.',
-    ids: [26, 78, 32, 58, 170, 168, 29, 157, 8, 46, 39, 166, 189, 12, 25] },
-];
+// Route colors — derived from ROUTE_DEFS (bundled + any OTA-applied routes), so a
+// route added over OTA carries its own color. TOUR_COLORS[id] lookups are unchanged.
+// ROUTE_DEFS + ROUTE_PATHS now live in routes.js (generated from data/routes.json)
+// and are overlaid with newer OTA routes by content.js before this runs.
+const TOUR_COLORS = {};
+ROUTE_DEFS.forEach(d => { if (d.color) TOUR_COLORS[d.id] = d.color; });
 
 // All routes off by default
 hiddenRoutes = new Set(ROUTE_DEFS.map(d => d.id));
@@ -2534,6 +2513,13 @@ function loadRouteCoords(def) {
         const toId = ordered[(i + 1) % ordered.length].id;
         const seg = rd.segments.find(s => s.from === fromId && s.to === toId);
         if (seg && seg.path) coords.push(...seg.path);
+      }
+      // Fallback for legacy plain-array segments (no from/to endpoints): use the
+      // curated path geometry directly. These routes' hand-drawn paths would
+      // otherwise be ignored, forcing an OSRM network fetch that fails offline.
+      if (!coords.length) {
+        const flat = rd.segments.flatMap(s => (s && s.path) ? s.path : (Array.isArray(s) ? s : []));
+        if (flat.length > 1) coords.push(...flat);
       }
       if (coords.length) {
         tourPickerCache.set(def.id, coords);
@@ -4397,7 +4383,7 @@ function initBuildViewer() {
     dots.forEach((d, j) => d.classList.toggle('on', j === idx));
   };
   const stop = () => { if (bvTimer) { clearInterval(bvTimer); bvTimer = null; } playBtn.textContent = '▶'; };
-  const play = () => { bvTimer = setInterval(() => show(idx + 1), 500); playBtn.textContent = '⏸'; };
+  const play = () => { bvTimer = setInterval(() => show(idx + 1), 1500); playBtn.textContent = '⏸'; };
   bv.querySelector('.bv-prev').addEventListener('click', (e) => { e.stopPropagation(); stop(); show(idx - 1); });
   bv.querySelector('.bv-next').addEventListener('click', (e) => { e.stopPropagation(); stop(); show(idx + 1); });
   playBtn.addEventListener('click', (e) => { e.stopPropagation(); bvTimer ? stop() : play(); });

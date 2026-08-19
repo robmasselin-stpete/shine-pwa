@@ -170,12 +170,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   <button id="delete-point" class="danger" style="display:none">Delete Point</button>
   <button id="split-segment" style="display:none;background:#29B6F6;color:#000;border-color:#29B6F6">Split Here</button>
   <button id="add-segment" style="display:none;background:#4CAF50;color:#fff;border-color:#4CAF50">+ Segment</button>
+  <button id="gen-paths" style="background:#AB47BC;color:#fff;border-color:#AB47BC">⚡ Generate Paths</button>
   <button id="delete-segment" class="danger" style="display:none">Delete Segment</button>
   <button id="undo-btn" style="display:none;background:#FFA726;color:#000;border-color:#FFA726">Undo</button>
   <span class="spacer"></span>
   <span class="mode-label" id="mode-label"></span>
   <span class="info" id="status"></span>
-  <span style="font-size:10px;color:#666">v11</span>
+  <span style="font-size:10px;color:#666">v12</span>
   <button class="primary" id="copy-changes">Export All</button>
   <button class="primary" id="copy-current" style="background:#1E88E5;border-color:#1E88E5">Export Route</button>
 </div>
@@ -210,7 +211,7 @@ const ROUTE_DEFS = [
   { id: 'the-edge', name: 'The Edge',
     ids: [119, 80, 75, 120, 57, 135, 40, 130, 89, 98, 43, 34] },
   { id: 'methodist-town', name: 'Methodist Town',
-    ids: [4, 108, 61, 60, 24, 114, 64] },
+    ids: [4, 61, 108, 60, 24, 114, 64] },
   { id: 'tropicana-field', name: 'Tropicana Field',
     ids: [59, 103, 163, 133, 171, 138, 52, 170, 87, 123, 125, 16, 194, 18, 131] },
   { id: 'central-ave', name: 'Central Ave',
@@ -711,8 +712,81 @@ function cancelAddSegment() {
   if (!poiMode) document.getElementById('mode-label').textContent = '';
 }
 
+// ── Generate Paths: auto-route every leg (stop i → stop i+1) via Valhalla
+//    walking/bike directions and store as tagged {from,to,path} segments.
+//    Uses live stop positions (including nudges) so paths start/end on the pins.
+const VALHALLA_URL = 'https://valhalla1.openstreetmap.de/route';
+
+/** Decode Valhalla's precision-6 encoded polyline → [[lat,lng], ...]. */
+function decodePolyline6(encoded) {
+  const coords = [];
+  let i = 0, lat = 0, lng = 0;
+  while (i < encoded.length) {
+    let shift = 0, result = 0, b;
+    do { b = encoded.charCodeAt(i++) - 63; result |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+    lat += (result & 1) ? ~(result >> 1) : (result >> 1);
+    shift = 0; result = 0;
+    do { b = encoded.charCodeAt(i++) - 63; result |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+    lng += (result & 1) ? ~(result >> 1) : (result >> 1);
+    coords.push([Math.round(lat / 1e6 * 1e5) / 1e5, Math.round(lng / 1e6 * 1e5) / 1e5]);
+  }
+  return coords;
+}
+
+async function generatePaths() {
+  if (!selectedRoute) { alert('Select a route first'); return; }
+  const routeId = selectedRoute.id;
+  const ids = selectedRoute.ids || [];
+  if (ids.length < 2) { alert('Route needs at least 2 stops'); return; }
+
+  // Live positions in stop order (respect any nudges tracked in `changes`).
+  const locs = [], missing = [];
+  ids.forEach(id => {
+    const m = muralById[id];
+    if (!m) { missing.push(id); return; }
+    const pos = changes[id] || { lat: m.lat, lng: m.lng };
+    locs.push({ lat: pos.lat, lon: pos.lng });
+  });
+  if (missing.length) { alert('Missing mural(s), fix the stop list first: #' + missing.join(', #')); return; }
+
+  const costing = routeId.includes('bike') ? 'bicycle' : 'pedestrian';
+  if (editPaths[routeId] && editPaths[routeId].segments && editPaths[routeId].segments.length) {
+    if (!confirm(`Replace the existing path for "${selectedRoute.name}" with freshly routed ${costing} legs?\n\n(You can Undo, and re-tweak any leg afterward.)`)) return;
+  }
+
+  const btn = document.getElementById('gen-paths');
+  const orig = btn.textContent;
+  btn.textContent = 'Routing…'; btn.disabled = true;
+  try {
+    const res = await fetch(VALHALLA_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ locations: locs, costing, directions_options: { units: 'miles' } }),
+    });
+    const data = await res.json();
+    if (!data.trip || !Array.isArray(data.trip.legs)) throw new Error(data.error || 'no trip returned');
+    const legs = data.trip.legs;
+    if (legs.length !== ids.length - 1) console.warn('Valhalla legs', legs.length, 'expected', ids.length - 1);
+
+    if (!editPaths[routeId]) editPaths[routeId] = { segments: [], distance: 0 };
+    pushUndo(routeId);
+    const segments = legs.map((leg, i) => ({ from: ids[i], to: ids[i + 1], path: decodePolyline6(leg.shape || '') }));
+    const dist = data.trip.summary && data.trip.summary.length ? data.trip.summary.length : 0;
+    editPaths[routeId] = { segments, distance: Math.round(dist * 100) / 100 };
+    pathDirty[routeId] = true;
+    showRoutePaths(routeId);
+    updateStatus();
+    alert(`Generated ${segments.length} tagged legs (${dist.toFixed(2)} mi).\nAll blue = tagged. Review, tweak any leg, then Export Route.`);
+  } catch (e) {
+    alert('Routing failed: ' + (e && e.message ? e.message : e) + '\n\nTry again, or check that every stop sits on a walkable street.');
+  } finally {
+    btn.textContent = orig; btn.disabled = false;
+  }
+}
+
 // Wire into map click — handled in the map click listener below
 
+document.getElementById('gen-paths').addEventListener('click', generatePaths);
 document.getElementById('delete-point').addEventListener('click', deleteSelectedVertex);
 document.getElementById('delete-segment').addEventListener('click', deleteSelectedSegment);
 document.getElementById('split-segment').addEventListener('click', splitAtVertex);
@@ -1047,28 +1121,45 @@ function updateSidebar() {
     if (m) stops.push(m);
     else missingIds.push(id);
   });
-  if (missingIds.length) {
-    html += `<div style="background:#e53935;color:#fff;padding:6px 8px;border-radius:4px;font-size:11px;margin-bottom:8px">⚠ Missing murals (not in data.js): ${missingIds.join(', ')} — try hard refresh</div>`;
-  }
   const routeIdSet = new Set(selectedRoute.ids);
   const available = murals.filter(m => m.lat && m.lng && !routeIdSet.has(m.id)).sort((a, b) => a.id - b.id);
 
-  let html = `<h3>${selectedRoute.name} — ${stops.length} stops</h3>`;
+  const total = selectedRoute.ids.length;
+  let html = `<h3>${selectedRoute.name} — ${total} stops${missingIds.length ? ` (${missingIds.length} missing)` : ''}</h3>`;
+  if (missingIds.length) {
+    html += `<div style="background:#e53935;color:#fff;padding:6px 8px;border-radius:4px;font-size:11px;margin-bottom:8px">⚠ Missing murals (not in data.js): ${missingIds.join(', ')} — add these murals</div>`;
+  }
   html += `<div class="section-label">Route stops (drag to reorder)</div>`;
 
-  stops.forEach((m, i) => {
-    const moved = !!changes[m.id];
-    const pos = changes[m.id] || { lat: m.lat, lng: m.lng };
-    html += `<div class="stop-item" draggable="true" data-idx="${i}" data-id="${m.id}">
-      <div class="stop-reorder">
-        <button class="reorder-btn" data-dir="up" data-idx="${i}" ${i === 0 ? 'disabled' : ''}>▲</button>
-        <button class="reorder-btn" data-dir="down" data-idx="${i}" ${i === stops.length - 1 ? 'disabled' : ''}>▼</button>
-      </div>
-      <span class="num">${i+1}</span>
+  // Render EVERY stop by its true index in selectedRoute.ids (missing murals as
+  // placeholder rows) so sidebar numbers match the map pins and data-idx is the
+  // real index — otherwise removeStop/moveStop (which splice selectedRoute.ids)
+  // hit the wrong element whenever a mural is missing.
+  selectedRoute.ids.forEach((id, idx) => {
+    const last = idx === total - 1;
+    const reorder = `<div class="stop-reorder">
+        <button class="reorder-btn" data-dir="up" data-idx="${idx}" ${idx === 0 ? 'disabled' : ''}>▲</button>
+        <button class="reorder-btn" data-dir="down" data-idx="${idx}" ${last ? 'disabled' : ''}>▼</button>
+      </div>`;
+    const m = muralById[id];
+    if (!m) {
+      html += `<div class="stop-item" draggable="true" data-idx="${idx}" data-id="${id}" style="border-color:#e53935;background:#3a2020">
+      ${reorder}
+      <span class="num" style="background:#e53935">${idx+1}</span>
+      <span class="name" style="color:#e53935">#${id} — MISSING<small>add this mural to data.js</small></span>
+      <button class="remove-btn" data-idx="${idx}" title="Remove">&times;</button>
+    </div>`;
+      return;
+    }
+    const moved = !!changes[id];
+    const pos = changes[id] || { lat: m.lat, lng: m.lng };
+    html += `<div class="stop-item" draggable="true" data-idx="${idx}" data-id="${m.id}">
+      ${reorder}
+      <span class="num">${idx+1}</span>
       <span class="name">#${m.id} ${m.a}<small>${m.t || ''}</small></span>
       <span class="coords">${pos.lat.toFixed(5)}, ${pos.lng.toFixed(5)}</span>
       ${moved ? '<span class="moved">moved</span>' : ''}
-      <button class="remove-btn" data-idx="${i}" title="Remove">&times;</button>
+      <button class="remove-btn" data-idx="${idx}" title="Remove">&times;</button>
     </div>`;
   });
 
@@ -1142,8 +1233,8 @@ function updateSidebar() {
   sb.querySelectorAll('.stop-item').forEach(el => {
     el.addEventListener('click', (e) => {
       if (e.target.classList.contains('remove-btn')) return;
-      const idx = parseInt(el.dataset.idx);
-      const marker = routeMarkers[idx];
+      const id = parseInt(el.dataset.id);
+      const marker = routeMarkers.find(mk => mk.muralId === id);
       if (marker) { map.setView(marker.getLatLng(), 18); marker.openPopup(); }
     });
   });

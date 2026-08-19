@@ -9,6 +9,7 @@
 // enhancement, never a requirement — the app is fully functional offline.
 
 import { murals, pois, YEARS } from './data.js';
+import { ROUTE_DEFS, ROUTE_PATHS } from './routes.js';
 import { BUNDLED_CONTENT } from './content-meta.js';
 
 // Where the OTA manifest lives — Cloudflare R2 bucket 'muralquest-content' via its
@@ -37,11 +38,32 @@ function replaceInPlace(target, next) {
   for (const item of next) target.push(item);
 }
 
+// Replace an object's keys in place — preserves identity (ROUTE_PATHS lookups).
+function replaceObjInPlace(target, next) {
+  if (!next || typeof next !== 'object') return;
+  for (const k of Object.keys(target)) delete target[k];
+  for (const k of Object.keys(next)) target[k] = next[k];
+}
+
+// Apply OTA routes onto ROUTE_DEFS (defs) + ROUTE_PATHS (geometry) in place.
+// Skipped entirely if the manifest has no routes, so a routes-less manifest
+// never wipes the bundled routes.
+function applyRoutes(routes) {
+  if (!Array.isArray(routes) || !routes.length) return;
+  replaceInPlace(ROUTE_DEFS, routes.map(r => ({
+    id: r.id, name: r.name, desc: r.desc, color: r.color, ids: r.ids,
+  })));
+  const paths = {};
+  for (const r of routes) paths[r.id] = { distance: r.distance || 0, segments: r.segments || [] };
+  replaceObjInPlace(ROUTE_PATHS, paths);
+}
+
 function applyContent(data) {
   if (!data) return;
   replaceInPlace(murals, data.murals);
   replaceInPlace(pois, data.pois);
   replaceInPlace(YEARS, data.YEARS);
+  applyRoutes(data.routes);
 }
 
 // Highest content version currently applied to the in-memory arrays.
@@ -93,7 +115,7 @@ export async function hydrateContent() {
     localStorage.setItem(CACHE_KEY, JSON.stringify({
       version: remote.version,
       hash: remote.hash,
-      data: { murals: remote.murals, pois: remote.pois, YEARS: remote.YEARS },
+      data: { murals: remote.murals, pois: remote.pois, YEARS: remote.YEARS, routes: remote.routes },
     }));
     return { status: 'cached', version: remote.version, appliesNextLaunch: true };
   } catch (e) {
