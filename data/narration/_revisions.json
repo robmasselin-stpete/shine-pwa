@@ -3,37 +3,185 @@
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
-  "4": {
+  "101": {
+    "date": "2026-08-16",
+    "note": "'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
+  },
+  "103": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
-  "6": {
+  "108": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
-  "7": {
+  "109": {
     "date": "2026-08-18",
     "note": "revised script + Rob's cloned voice"
   },
-  "8": {
+  "110": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
-  "9": {
-    "date": "2026-08-18",
+  "111": {
+    "date": "2026-08-15",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "112": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
+  },
+  "113": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
+  },
+  "114": {
+    "date": "2026-08-15",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "115": {
+    "date": "2026-08-15",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "116": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice | 'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
+  },
+  "119": {
+    "date": "2026-08-16",
     "note": "revised script + Rob's cloned voice"
   },
   "12": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
+  "120": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "121": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "122": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "123": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "125": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "129": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "130": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "131": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "133": {
+    "date": "2026-08-16",
+    "note": "revised + Rob's voice. 'Reed' (first word) = intentional PHONETIC for 'Read' (imperative) \u2014 voice said 'red'. Artist name 'Reeder' unchanged."
+  },
+  "135": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "136": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "138": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "139": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
+  },
+  "140": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "151": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "156": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "157": {
+    "date": "2026-08-16",
+    "note": "revised + Rob's voice. NOTE: 'NOAH' is an intentional PHONETIC spelling for NOAA (the ocean agency) \u2014 do not 'fix' to 'NOAA'."
+  },
+  "159": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
+  },
   "16": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
+  "163": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "166": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice | 'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
+  },
+  "167": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "168": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "170": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "171": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "174": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "175": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
+  },
   "18": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
+  },
+  "189": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "194": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "195": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
+  },
+  "20": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
   },
   "23": {
     "date": "2026-08-18",
@@ -79,6 +227,10 @@
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
+  "4": {
+    "date": "2026-08-15",
+    "note": "revised script + Rob's cloned voice"
+  },
   "40": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
@@ -111,7 +263,15 @@
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
+  "58": {
+    "date": "2026-08-16",
+    "note": "revised script + Rob's cloned voice | 'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
+  },
   "59": {
+    "date": "2026-08-15",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "6": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
@@ -135,12 +295,20 @@
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
+  "7": {
+    "date": "2026-08-18",
+    "note": "revised script + Rob's cloned voice"
+  },
   "71": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
   "72": {
     "date": "2026-08-15",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "73": {
+    "date": "2026-08-16",
     "note": "revised script + Rob's cloned voice"
   },
   "75": {
@@ -156,6 +324,10 @@
     "note": "revised script + Rob's cloned voice"
   },
   "79": {
+    "date": "2026-08-15",
+    "note": "revised script + Rob's cloned voice"
+  },
+  "8": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
@@ -175,9 +347,17 @@
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
   },
+  "9": {
+    "date": "2026-08-18",
+    "note": "revised script + Rob's cloned voice"
+  },
   "90": {
     "date": "2026-08-15",
     "note": "revised script + Rob's cloned voice"
+  },
+  "92": {
+    "date": "2026-08-19",
+    "note": "new narration + Rob's cloned voice"
   },
   "93": {
     "date": "2026-08-15",
@@ -185,154 +365,6 @@
   },
   "98": {
     "date": "2026-08-15",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "101": {
-    "date": "2026-08-16",
-    "note": "'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
-  },
-  "103": {
-    "date": "2026-08-15",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "108": {
-    "date": "2026-08-15",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "109": {
-    "date": "2026-08-18",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "110": {
-    "date": "2026-08-15",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "111": {
-    "date": "2026-08-15",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "114": {
-    "date": "2026-08-15",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "115": {
-    "date": "2026-08-15",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "116": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice | 'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
-  },
-  "119": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "120": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "121": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "122": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "123": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "129": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "130": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "131": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "133": {
-    "date": "2026-08-16",
-    "note": "revised + Rob's voice. 'Reed' (first word) = intentional PHONETIC for 'Read' (imperative) \u2014 voice said 'red'. Artist name 'Reeder' unchanged."
-  },
-  "135": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "136": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "138": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "140": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "151": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "156": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "157": {
-    "date": "2026-08-16",
-    "note": "revised + Rob's voice. NOTE: 'NOAH' is an intentional PHONETIC spelling for NOAA (the ocean agency) \u2014 do not 'fix' to 'NOAA'."
-  },
-  "163": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "166": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice | 'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
-  },
-  "167": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "168": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "170": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "171": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "174": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "189": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "194": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "58": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice | 'Myze' = intentional PHONETIC for Chad Mize (voice said 'meeze') \u2014 do not 'fix' to 'Mize'."
-  },
-  "73": {
-    "date": "2026-08-16",
-    "note": "revised script + Rob's cloned voice"
-  },
-  "125": {
-    "date": "2026-08-16",
     "note": "revised script + Rob's cloned voice"
   }
 }

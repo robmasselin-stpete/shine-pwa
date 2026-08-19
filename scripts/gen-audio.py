@@ -44,7 +44,7 @@ KEY_FILE = ROOT / ".mq-elevenlabs-key"
 
 # Rob's cloned voice + the settings tuned during cloning (from HANDOFF: Stability 35,
 # Similarity 80, Style 25, Speaker boost on, Speed 1.1, Multilingual v2).
-DEFAULT_VOICE_ID = "j4oeEFBclPuKY5zSUU3p"
+DEFAULT_VOICE_ID = "MbDP6IqOIFzS6HLtx2BX"  # "Rob Narration" — Rob's current cloned voice
 MODEL_ID = "eleven_multilingual_v2"
 OUTPUT_FORMAT = "mp3_44100_64"  # 64 kbps mono — ample for a single spoken voice, ~half the size
 VOICE_SETTINGS = {

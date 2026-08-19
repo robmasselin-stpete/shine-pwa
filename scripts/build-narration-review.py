@@ -43,15 +43,21 @@ def main():
         if os.path.basename(f).startswith("_"):
             continue
         d = yaml.safe_load(open(f))
-        if not d or not d.get("audio"):
+        if not d:
             continue
         rid = d.get("id")
+        has_audio = bool(d.get("audio"))
+        has_draft = rid in narr
+        # Include a mural if it has rendered audio OR a draft script to review.
+        # Draft-only (no audio yet) clips show a "not rendered" marker instead of a player.
+        if not has_audio and not has_draft:
+            continue
         rows.append({
             "id": rid,
             "artist": d.get("artist", ""),
             "title": d.get("title", "") or "",
             "year": d.get("year", ""),
-            "aud": d.get("audio", ""),
+            "aud": d.get("audio", "") or "",
             "text": narr.get(rid, "(no narration script file found)"),
             "rev": revisions.get(str(rid)),
         })
@@ -110,9 +116,12 @@ DATA.forEach(r=>{
   c.dataset.search = ('#'+r.id+' '+r.artist+' '+(r.title||'')).toLowerCase();
   const badge = r.rev ? `<span class="rev" title="${(r.rev.note||'').replace(/"/g,'&quot;')}">✎ revised ${r.rev.date}</span>` : '';
   const cb = r.aud.includes('?')?'&':'?';
+  const player = r.aud
+    ? `<audio controls preload="none" src="${r.aud}${cb}cb=${CB}"></audio>`
+    : `<div style="color:#b26a00;font-size:13px;font-weight:600;margin:6px 0">⧗ draft — audio not rendered yet</div>`;
   c.innerHTML = `<div class="hdr"><label class="chk"><input type="checkbox" class="check"> reviewed</label>#${r.id} — ${r.artist}${r.title?' · "'+r.title+'"':''}${badge}</div>
     <div class="sub">${r.year||''}</div>
-    <audio controls preload="none" src="${r.aud}${cb}cb=${CB}"></audio>
+    ${player}
     <textarea>${r.text.replace(/</g,'&lt;')}</textarea>`;
   const ta=c.querySelector('textarea');
   const LS='mq_narr_'+r.id;
