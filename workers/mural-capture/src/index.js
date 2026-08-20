@@ -52,8 +52,6 @@ export default {
     } catch { return json({ error: 'bad_base64' }, 400); }
     if (bytes.length > 8 * 1024 * 1024) return json({ error: 'image too large (>8MB)' }, 413);
 
-    const imgKey = `images/murals/2026/${muralId}-${date}.jpeg`;
-
     // ── load current content.json ──
     const cObj = await env.BUCKET.get('content.json');
     if (!cObj) return json({ error: 'content.json missing on R2' }, 500);
@@ -61,11 +59,11 @@ export default {
     const mural = (data.murals || []).find(m => m.id === muralId);
     if (!mural) return json({ error: `mural #${muralId} not in content.json` }, 404);
 
-    // dedupe: same date already present?
+    // Unique key so MULTIPLE photos per day are allowed: first of a date →
+    // <id>-<date>.jpeg, then <id>-<date>-2.jpeg, <id>-<date>-3.jpeg, …
     mural.ph = mural.ph || [];
-    if (mural.ph.some(p => p.d === date && p.u === imgKey)) {
-      return json({ error: `photo for ${date} already exists on #${muralId}`, photoCount: mural.ph.length }, 409);
-    }
+    const sameDate = mural.ph.filter(p => p.d === date).length;
+    const imgKey = `images/murals/2026/${muralId}-${date}${sameDate ? '-' + (sameDate + 1) : ''}.jpeg`;
 
     if (body.dry) {
       return json({ ok: true, dry: true, wouldWrite: imgKey, muralId, currentPhotos: mural.ph.length });
