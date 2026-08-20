@@ -223,4 +223,5 @@ Instead, a Rob-side tool posts a chosen mural to the Mural Quest IG when he want
 - `workers/mural-capture/` — Capture Worker (`capture.muralquest.app`); POST /photo → R2 + content.json
 - `assets/wip/mq_play_upload.py` — hands-free AAB → Google Play (service account; key `.mq-play-key.json`)
 - Gitignored keys: `.mq-play-key.json` (Play), `.mq-capture-key` (Capture Worker POST key), plus the existing `.mq-anthropic-key` / `.mq-elevenlabs-key` / `.mq-stats-key` / `.mq-ig-post-key`. Held test murals: `.mq-held/`.
+- `docs/DEV-FLOWCHART.md` — **system map: how data flows through every program/location** (start here)
 - `docs/DATA-PIPELINE.md`, `docs/ADDING-A-MURAL.md`, `docs/ARCHITECTURE.md`, `docs/SHINE-2026-OTA-TEST.md` — deeper reference
