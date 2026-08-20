@@ -61,3 +61,4 @@ android/keystore.properties
 .mq-stats-key
 .mq-held/
 .mq-capture-key
+.mq-play-key.json
