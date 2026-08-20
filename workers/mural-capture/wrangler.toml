@@ -1,0 +1,19 @@
+name = "mural-quest-capture"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+# SHINE 2026 field capture endpoint. The Progress Capture PWA
+# (mural-tools.pages.dev/tools/mural-capture.html) POSTs a photo here; the Worker
+# uploads it to R2 and appends it to the mural's photos in content.json — live
+# over OTA, no app build, no Mac. Custom domain on the muralquest.app zone.
+routes = [
+  { pattern = "capture.muralquest.app", custom_domain = true }
+]
+
+# Binds the same R2 bucket the CDN serves (cdn.muralquest.app).
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "muralquest-content"
+
+# POST_KEY gates the endpoint — set as a secret (never in this file/repo):
+#   echo <key> | npx wrangler secret put POST_KEY

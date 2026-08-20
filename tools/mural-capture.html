@@ -1,0 +1,212 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Mural Quest — Progress Capture</title>
+<style>
+ :root{--teal:#0E918C;--teal-dark:#0A706C;--bg:#111;--panel:#1c1c1e;}
+ *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+ body{margin:0;font:15px/1.4 -apple-system,Helvetica,Arial,sans-serif;background:var(--bg);color:#eee}
+ header{padding:10px 14px;background:#000;display:flex;align-items:center;gap:10px}
+ header h1{font-size:16px;margin:0;font-weight:700}
+ header .v{font-size:11px;color:#666;margin-left:auto}
+ .wrap{padding:12px;max-width:640px;margin:0 auto}
+ label{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#888;display:block;margin:12px 0 4px}
+ select,input[type=text],input[type=date]{width:100%;padding:10px;border-radius:8px;border:1px solid #333;background:var(--panel);color:#eee;font-size:15px}
+ .row{display:flex;gap:8px;align-items:center}
+ .chk{display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;margin-top:8px}
+ button{font:15px inherit;padding:11px 16px;border-radius:9px;border:none;background:var(--teal);color:#fff;font-weight:600;cursor:pointer}
+ button.sec{background:#333;color:#eee}
+ button:disabled{opacity:.4}
+ .stage{position:relative;width:100%;aspect-ratio:4/3;background:#000;border-radius:12px;overflow:hidden;margin-top:12px}
+ .stage video,.stage img,.stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+ .ghost{pointer-events:none}
+ .grid{position:absolute;inset:0;pointer-events:none;
+   background-image:linear-gradient(rgba(255,255,255,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.25) 1px,transparent 1px);
+   background-size:33.33% 33.33%}
+ .opacity-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+ .opacity-row input[type=range]{flex:1}
+ .actions{display:flex;gap:10px;margin-top:12px}
+ .actions button{flex:1}
+ .hint{font-size:12px;color:#888;margin-top:8px}
+ .out{background:var(--panel);border:1px solid #333;border-radius:10px;padding:12px;margin-top:12px;font:12px ui-monospace,Menlo,monospace;white-space:pre-wrap;color:#cfe}
+ .badge{display:inline-block;background:var(--teal);color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:2px 8px;margin-left:6px;text-transform:uppercase}
+ .err{background:#3a1f1f;border:1px solid #a33;color:#fbb;padding:10px;border-radius:8px;margin-top:10px;font-size:13px}
+ .hidden{display:none}
+</style></head><body>
+<header><h1>Progress Capture</h1><span class="v">v2 · sends over OTA</span></header>
+<div class="wrap">
+
+  <label>Mural</label>
+  <select id="mural"><option value="">Loading…</option></select>
+  <div class="chk"><input type="checkbox" id="uc-only"> <label style="margin:0;text-transform:none;letter-spacing:0;color:#aaa">Under-construction only</label></div>
+
+  <label>Date taken</label>
+  <input type="date" id="date">
+
+  <div id="ref-info" class="hint"></div>
+
+  <!-- Camera / capture stage -->
+  <div class="stage" id="stage">
+    <video id="video" playsinline autoplay muted class="hidden"></video>
+    <img id="ghost" class="ghost hidden" alt="">
+    <canvas id="canvas" class="hidden"></canvas>
+    <div class="grid hidden" id="grid"></div>
+  </div>
+
+  <div class="opacity-row hidden" id="opacity-row">
+    <span style="font-size:12px;color:#888">Align overlay</span>
+    <input type="range" id="opacity" min="0" max="100" value="45">
+    <span class="chk" style="margin:0"><input type="checkbox" id="grid-toggle" checked> grid</span>
+  </div>
+
+  <div class="actions">
+    <button id="start" class="sec">Start camera</button>
+    <button id="shoot" class="hidden">● Capture</button>
+    <button id="retake" class="sec hidden">Retake</button>
+    <button id="send" class="hidden">Send to app</button>
+    <button id="dl" class="sec hidden">Download</button>
+  </div>
+
+  <div id="err" class="err hidden"></div>
+  <div id="out" class="out hidden"></div>
+</div>
+
+<script type="module">
+const CDN = 'https://cdn.muralquest.app';
+const $ = id => document.getElementById(id);
+let murals = [], current = null, refImg = null, capturedBlob = null;
+
+// ── today's date default (browser Date is fine here) ──
+$('date').value = new Date().toISOString().slice(0,10);
+
+// ── load live murals from the CDN manifest ──
+(async () => {
+  try {
+    const c = await (await fetch(CDN + '/content.json', {cache:'no-store'})).json();
+    murals = c.murals || [];
+    renderList();
+  } catch (e) { showErr('Could not load murals from the CDN: ' + e.message); }
+})();
+
+$('uc-only').addEventListener('change', renderList);
+function renderList(){
+  const ucOnly = $('uc-only').checked;
+  let list = murals.filter(m => !ucOnly || m.uc);
+  list.sort((a,b)=> (b.uc?1:0)-(a.uc?1:0) || a.id-b.id);
+  const sel = $('mural');
+  sel.innerHTML = '<option value="">— pick a mural —</option>' +
+    list.map(m => `<option value="${m.id}">#${m.id} ${m.a}${m.uc?' — being painted':''}${m.t?' · '+m.t:''}</option>`).join('');
+}
+
+$('mural').addEventListener('change', () => {
+  current = murals.find(m => String(m.id) === $('mural').value) || null;
+  refImg = null;
+  if (!current) { $('ref-info').textContent=''; setGhost(''); return; }
+  // Reference = latest progress photo, else the mural's img — for onion-skin alignment.
+  const ph = current.ph || [];
+  const refU = ph.length ? ph[ph.length-1].u : current.img;
+  refImg = refU ? (refU.startsWith('http') ? refU : CDN + '/' + refU) : '';
+  const n = ph.length;
+  $('ref-info').innerHTML = n
+    ? `Aligning to the most recent of <b>${n}</b> photo(s)` + (ph[n-1].d?` (${ph[n-1].d})`:'') + `. This will be photo #${n+1}.`
+    : `No progress photos yet — aligning to the mural's base image. This will be the <b>first</b> photo.`;
+  setGhost(refImg);
+});
+
+function setGhost(url){
+  const g = $('ghost');
+  if (url) { g.src = url; } else { g.removeAttribute('src'); g.classList.add('hidden'); }
+}
+
+// ── camera ──
+let stream = null;
+$('start').addEventListener('click', async () => {
+  if (!current) { showErr('Pick a mural first.'); return; }
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:'environment' }, audio:false });
+    const v = $('video'); v.srcObject = stream; await v.play();
+    v.classList.remove('hidden');
+    if (refImg){ $('ghost').classList.remove('hidden'); $('opacity-row').classList.remove('hidden'); applyOpacity(); }
+    $('grid').classList.toggle('hidden', !$('grid-toggle').checked);
+    $('start').classList.add('hidden'); $('shoot').classList.remove('hidden');
+    hideErr();
+  } catch (e) { showErr('Camera error: ' + e.message + ' (allow camera access; must be https).'); }
+});
+
+$('opacity').addEventListener('input', applyOpacity);
+function applyOpacity(){ $('ghost').style.opacity = $('opacity').value/100; }
+$('grid-toggle').addEventListener('change', () => $('grid').classList.toggle('hidden', !$('grid-toggle').checked || $('canvas').classList.contains('hidden') && $('video').classList.contains('hidden')));
+
+// ── capture ──
+$('shoot').addEventListener('click', () => {
+  const v = $('video'), cv = $('canvas');
+  const vw = v.videoWidth, vh = v.videoHeight;
+  // crop the video's centre to the 4:3 stage, then downscale to <=1280 long edge
+  const targetAR = 4/3, vAR = vw/vh;
+  let sx=0, sy=0, sw=vw, sh=vh;
+  if (vAR > targetAR){ sw = vh*targetAR; sx=(vw-sw)/2; } else { sh = vw/targetAR; sy=(vh-sh)/2; }
+  let ow = sw, oh = sh, MAX=1280;
+  if (Math.max(ow,oh) > MAX){ const s = MAX/Math.max(ow,oh); ow=Math.round(ow*s); oh=Math.round(oh*s); }
+  cv.width=ow; cv.height=oh;
+  cv.getContext('2d').drawImage(v, sx,sy,sw,sh, 0,0,ow,oh);
+  cv.classList.remove('hidden'); v.classList.add('hidden');
+  $('shoot').classList.add('hidden');
+  $('retake').classList.remove('hidden'); $('send').classList.remove('hidden'); $('dl').classList.remove('hidden');
+  // keep ghost on top so you can verify alignment
+  cv.toBlob(b => capturedBlob = b, 'image/jpeg', 0.88);
+});
+
+$('retake').addEventListener('click', () => {
+  $('canvas').classList.add('hidden'); $('video').classList.remove('hidden');
+  $('retake').classList.add('hidden'); $('send').classList.add('hidden'); $('dl').classList.add('hidden');
+  $('shoot').classList.remove('hidden'); $('out').classList.add('hidden');
+  capturedBlob = null;
+});
+
+// ── Capture Worker: field-autonomous publish over OTA (no Mac) ──
+const WORKER = 'https://capture.muralquest.app/photo';
+function getKey(){
+  let k = localStorage.getItem('mq_capture_key');
+  if (!k){ k = (prompt('Enter the Capture key (one-time; saved on this device):')||'').trim(); if (k) localStorage.setItem('mq_capture_key', k); }
+  return k;
+}
+
+// Download fallback — save the frame, publish from the Mac if the Worker is down.
+$('dl').addEventListener('click', () => {
+  if (!capturedBlob || !current) return;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(capturedBlob); a.download = `${current.id}-${$('date').value}.jpeg`; a.click();
+});
+
+// Send → POST to the Capture Worker → live in the app over OTA in ~1 min.
+$('send').addEventListener('click', async () => {
+  if (!capturedBlob || !current) return;
+  const key = getKey(); if (!key){ showErr('No Capture key entered.'); return; }
+  const date = $('date').value;
+  const btn = $('send'), label = btn.textContent; btn.textContent='Sending…'; btn.disabled=true; hideErr();
+  try {
+    const b64 = $('canvas').toDataURL('image/jpeg', 0.88);
+    const res = await fetch(WORKER, {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
+      body: JSON.stringify({ muralId: current.id, date, imageBase64: b64 }),
+    });
+    const j = await res.json().catch(()=>({}));
+    if (!res.ok){
+      if (res.status===401) localStorage.removeItem('mq_capture_key');
+      throw new Error(j.error || ('HTTP '+res.status));
+    }
+    $('out').classList.remove('hidden');
+    $('out').textContent = `✓ LIVE — photo #${j.photoCount} on #${j.muralId} (${date}).\n${j.imageUrl}\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
+    // update local state so the NEXT capture onion-skins against the photo just sent
+    current.ph = current.ph || []; current.ph.push({ u: j.imageUrl.replace('https://cdn.muralquest.app/',''), d: date });
+    setGhost(j.imageUrl);
+  } catch (e) {
+    showErr('Send failed: ' + e.message + (String(e.message).includes('unauthorized') ? ' — re-enter the key and retry.' : ''));
+  } finally { btn.textContent=label; btn.disabled=false; }
+});
+
+function showErr(m){ const e=$('err'); e.textContent=m; e.classList.remove('hidden'); }
+function hideErr(){ $('err').classList.add('hidden'); }
+</script>
+</body></html>
