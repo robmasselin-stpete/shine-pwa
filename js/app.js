@@ -4457,12 +4457,12 @@ function buildDetailBodyHTML(mural) {
             </button>
             <span class="detail-action-label">Listen</span>
           </div>` : ''}
-          <div class="detail-action-item">
-            <button class="detail-tour-pill${muralTours.length === 0 ? ' dimmed' : ''}" data-mural-id="${mural.id}">
+          ${muralTours.length > 0 ? `<div class="detail-action-item">
+            <button class="detail-tour-pill" data-mural-id="${mural.id}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
             </button>
             <span class="detail-action-label">Tour</span>
-          </div>
+          </div>` : ''}
           ${mural.lat && mural.lng ? `<div class="detail-action-item">
             <button class="detail-goto-pill" data-mural-id="${mural.id}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
