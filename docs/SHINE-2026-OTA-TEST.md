@@ -26,7 +26,24 @@ python3 scripts/publish-content.py                # pushes content.json (the mur
 → On next launch the shipped app shows the stub with the teal **"Being painted now"**
 badge and the placeholder image (no photos yet).
 
-## Add a daily progress photo (the actual test)
+## Field path (no Mac) — Progress Capture PWA + Worker
+`mural-tools.pages.dev/tools/mural-capture.html` → pick the under-construction
+mural, Start camera (onion-skin overlay of the previous photo for alignment),
+Capture, **Send**. It POSTs to the **Capture Worker** (`capture.muralquest.app`,
+gated by `POST_KEY`; enter the key from `.mq-capture-key` once per device), which
+uploads the frame to R2 and appends it to the mural's `ph` in `content.json` — live
+over OTA in ~1 min. This is the SHINE daily-update workflow: capture on the iPad,
+live in the app, no Mac, no build.
+
+⚠️ **Consistency caveat:** the Worker writes `content.json` **directly on R2**; it
+does NOT update the source YAML. So if `publish-content.py` is later run from the
+Mac (it rebuilds `content.json` from YAMLs), Worker-added photos are **overwritten
+/ lost**. During the festival, either (a) only add photos via the Worker and don't
+run `publish-content.py` for these murals, or (b) build a `sync-photos-from-live.py`
+reconcile step (fetch live `content.json` → write each mural's `ph` back into its
+YAML) to run before any Mac publish. **TODO before the festival: build the reconcile.**
+
+## Add a daily progress photo — Mac / CLI path (the actual test)
 1. Drop the photo in `images/murals/2026/` (e.g. `shine2026-day1.jpeg`).
 2. Add it to the YAML's `photos:` list, newest last:
    ```yaml
