@@ -32,7 +32,7 @@ import { ROUTE_DEFS, ROUTE_PATHS } from './routes.js';
 // above BEFORE the init code below renders — so first paint shows the freshest
 // content already on device. hydrateContent() then fetches the CDN in the
 // background for next launch.
-import { hydrateContent, CONTENT_BASE_URL } from './content.js';
+import { hydrateContent, CONTENT_BASE_URL, setContentAppliedHandler } from './content.js';
 // v1.5 first-party analytics (anonymous, best-effort). window.mqTrack lets inline
 // handlers (e.g. the book buy link) fire events too.
 import { track as mqTrack } from './analytics.js';
@@ -3485,53 +3485,19 @@ function exitGotoMode() {
   }
 }
 
-const DRIVE_THRESHOLD_M = 1609.34;   // 1 mile — beyond this, hand off to a maps app for driving
-
-/** Wire the GoTo pill button click handler for a mural (distance-aware). */
+/** Wire the GoTo pill button — toggles the in-app compass directions to the mural. */
 function wireGotoButton(mural) {
   const pill = detailContent.querySelector('.detail-goto-pill');
   if (pill) {
     pill.addEventListener('click', (e) => {
       e.preventDefault();
-      if (state.gotoMode) { exitGotoMode(); return; }
-      // Distance-aware: walkable (<1 mi) → in-app compass; far or no-GPS → maps + walk-anyway.
-      const hasGps = state.userLat != null && state.userLng != null;
-      const dist = hasGps ? haversine(state.userLat, state.userLng, mural.lat, mural.lng) : null;
-      if (hasGps && dist < DRIVE_THRESHOLD_M) {
-        enterGotoMode(mural);
+      if (state.gotoMode) {
+        exitGotoMode();
       } else {
-        showDirectionsChoice(mural, dist);
+        enterGotoMode(mural);
       }
     });
   }
-}
-
-/** Far / no-GPS directions sheet: driving handoff to Apple/Google Maps, plus "Walk anyway". */
-function showDirectionsChoice(mural, distM) {
-  document.querySelector('.dir-choice')?.remove();
-  const miles = distM != null ? distM / 1609.34 : null;
-  const milesStr = miles != null ? (miles < 10 ? miles.toFixed(1) : Math.round(miles)) : null;
-  const iosDrive = `https://maps.apple.com/?daddr=${mural.lat},${mural.lng}&dirflg=d`;
-  const gDrive = `https://www.google.com/maps/dir/?api=1&destination=${mural.lat},${mural.lng}&travelmode=driving`;
-  const el = document.createElement('div');
-  el.className = 'dir-choice';
-  el.innerHTML = `
-    <div class="dir-choice-backdrop"></div>
-    <div class="dir-choice-sheet">
-      <div class="dir-choice-title">${milesStr != null ? `That's about ${milesStr} miles away` : 'Get directions'}</div>
-      <div class="dir-choice-sub">${milesStr != null ? 'A bit far to walk — driving will get you there better.' : 'Open in a maps app for turn-by-turn.'}</div>
-      <a class="dir-choice-btn" href="${iosDrive}" target="_blank" rel="noopener" data-maps>Apple Maps</a>
-      <a class="dir-choice-btn" href="${gDrive}" target="_blank" rel="noopener" data-maps>Google Maps</a>
-      <button class="dir-choice-btn walk" data-walk>Walk anyway</button>
-      <button class="dir-choice-cancel" data-cancel>Cancel</button>
-    </div>`;
-  document.body.appendChild(el);
-  const close = () => el.remove();
-  el.querySelector('.dir-choice-backdrop').addEventListener('click', close);
-  el.querySelector('[data-cancel]').addEventListener('click', close);
-  el.querySelectorAll('[data-maps]').forEach(a =>
-    a.addEventListener('click', () => { sessionStorage.setItem('mq_return_mural', mural.id); close(); }));
-  el.querySelector('[data-walk]').addEventListener('click', () => { close(); enterGotoMode(mural); });
 }
 
 /** Wire the Tour pill button — always shows dropdown with tour name(s). */
@@ -4397,6 +4363,48 @@ function initBuildViewer() {
   });
 }
 
+/** The detail hero block — build-viewer strip (>1 progress photo) or static hero.
+ *  Shared by buildDetailBodyHTML and the live OTA refresh so a new photo can pop in
+ *  without rebuilding (and resetting the scroll of) the whole detail page. */
+function detailHeroHTML(mural) {
+  const bvPhotos = mural.ph || [];
+  const heroImg = bvPhotos.length ? bvPhotos[bvPhotos.length - 1].u : mural.img;
+  return bvPhotos.length > 1 ? buildViewerHTML(mural, bvPhotos) : `
+    <div class="detail-hero-wrap">
+      <img class="detail-hero" src="${cardSrc(heroImg)}" data-img="${heroImg || ''}" data-full="${fullSrc(heroImg)}" alt="${mural.a}" onerror="mqCardErr(this)">
+      ${mural.gone ? `<div class="detail-gone-banner">This mural is no longer on site — building was torn down</div>` : ''}
+    </div>`;
+}
+
+/** v1.7 live OTA re-render: called when newer content is applied mid-session. Surgically
+ *  refreshes the open detail's hero (so a new progress photo pops in without a scroll reset),
+ *  or refreshes the current list/map. */
+function liveContentUpdate() {
+  try {
+    if (detailPage && !detailPage.hidden && state.selectedMural) {
+      const fresh = murals.find(m => m.id === state.selectedMural.id);
+      if (fresh) {
+        state.selectedMural = fresh;
+        const wrap = detailContent.querySelector('.detail-hero-wrap');
+        if (wrap) {
+          wrap.outerHTML = detailHeroHTML(fresh);
+          initBuildViewer();
+          const nw = detailContent.querySelector('.detail-hero-wrap');
+          if (nw) nw.addEventListener('click', () => openPhotoLightbox(nw.querySelector('.detail-hero').src));
+        }
+      }
+      return;
+    }
+    if (state.tab === 'explore' && views.explore) {
+      const sc = views.explore.scrollTop;
+      renderExplore();
+      views.explore.scrollTop = sc;
+    } else if (state.tab === 'map') {
+      updateMapMarkers();
+    }
+  } catch (e) { /* live refresh is best-effort */ }
+}
+
 function buildDetailBodyHTML(mural) {
   const muralTours = ROUTE_DEFS.filter(r => r.ids && r.ids.includes(mural.id));
   const photos = fieldPhotos.filter(p => p.muralId === mural.id);
@@ -4414,17 +4422,8 @@ function buildDetailBodyHTML(mural) {
     )
   );
 
-  // SHINE 2026 build-viewer: >1 progress photo → swipeable strip; else static hero.
-  // Hero = newest photo if any photos exist, else the single img.
-  const bvPhotos = mural.ph || [];
-  const heroImg = bvPhotos.length ? bvPhotos[bvPhotos.length - 1].u : mural.img;
-
   return `
-    ${bvPhotos.length > 1 ? buildViewerHTML(mural, bvPhotos) : `
-    <div class="detail-hero-wrap">
-      <img class="detail-hero" src="${cardSrc(heroImg)}" data-img="${heroImg || ''}" data-full="${fullSrc(heroImg)}" alt="${mural.a}" onerror="mqCardErr(this)">
-      ${mural.gone ? `<div class="detail-gone-banner">This mural is no longer on site — building was torn down</div>` : ''}
-    </div>`}
+    ${detailHeroHTML(mural)}
     ${mural.oimg ? `<div class="detail-original-wrap">
       <div class="detail-original-label">When it was new</div>
       <div class="detail-hero-wrap"><img class="detail-hero" src="${fullSrc(mural.oimg)}" alt="${mural.a} — original" onerror="this.parentElement.parentElement.style.display='none'"></div>
@@ -5109,13 +5108,27 @@ mqTrack('app_open', {});
 setTimeout(prefetchFullRes, 4000);
 window.addEventListener('online', () => setTimeout(prefetchFullRes, 2000));
 
-// v1.5: fetch the latest OTA content in the background (non-blocking). Newer
-// content is cached and applied on next launch. Offline / no-CDN → silent no-op.
+// v1.5/1.7: fetch the latest OTA content in the background (non-blocking). v1.7
+// applies it live (mutates the arrays + re-renders via liveContentUpdate) instead
+// of waiting for the next launch. Offline / no-CDN → silent no-op.
+setContentAppliedHandler(liveContentUpdate);
 hydrateContent().then(r => {
   if (r && r.status && r.status !== 'no-remote' && r.status !== 'up-to-date') {
     console.log('[content]', r.status, r.version || '', r.error || '');
   }
 }).catch(() => {});
+
+// Snappy live poll — but ONLY while a mural is being painted (any uc:true). Outside
+// the festival there are no under-construction murals, so this stays idle and battery/
+// data are normal; the app still does the one fetch on launch above. ETag → cheap 304s.
+const CONTENT_POLL_MS = 15000;
+const festivalLive = () => Array.isArray(murals) && murals.some(m => m && m.uc);
+setInterval(() => {
+  if (document.visibilityState === 'visible' && festivalLive()) hydrateContent().catch(() => {});
+}, CONTENT_POLL_MS);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && festivalLive()) hydrateContent().catch(() => {});
+});
 
 // Tap any .tab-title-row (pelican logo + title) on any tab to open About / Feedback
 document.addEventListener('click', e => {

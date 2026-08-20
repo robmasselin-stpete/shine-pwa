@@ -68,6 +68,11 @@ function applyContent(data) {
 
 // Highest content version currently applied to the in-memory arrays.
 let appliedVersion = BUNDLED_CONTENT.version;
+// v1.7 live OTA: ETag lets the poll ask "changed?" cheaply (304, no body) most of
+// the time; onApplied lets app.js re-render the current screen when content lands.
+let lastEtag = null;
+let onApplied = null;
+export function setContentAppliedHandler(fn) { onApplied = fn; }
 export function appliedContentVersion() { return appliedVersion; }
 export function contentState() {
   return { appliedVersion, bundledVersion: BUNDLED_CONTENT.version, base: baseUrl() };
@@ -106,18 +111,25 @@ export async function hydrateContent() {
     const ctrl = new AbortController();
     timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
     const res = await fetch(base.replace(/\/$/, '') + '/content.json',
-      { signal: ctrl.signal, cache: 'no-store' });
+      { signal: ctrl.signal, cache: 'no-store', headers: lastEtag ? { 'If-None-Match': lastEtag } : {} });
     clearTimeout(timer);
+    if (res.status === 304) return { status: 'up-to-date' };  // cheap poll — unchanged
     if (!res.ok) return { status: 'http-' + res.status };
+    lastEtag = res.headers.get('ETag') || lastEtag;
     const remote = await res.json();
     if (!remote || typeof remote.version !== 'number') return { status: 'bad-manifest' };
     if (remote.version <= appliedVersion) return { status: 'up-to-date', version: remote.version };
+    // Cache for next launch AND apply live now — mutate the in-memory arrays and
+    // let app.js re-render, so new content (e.g. a progress photo) appears without a restart.
     localStorage.setItem(CACHE_KEY, JSON.stringify({
       version: remote.version,
       hash: remote.hash,
       data: { murals: remote.murals, pois: remote.pois, YEARS: remote.YEARS, routes: remote.routes },
     }));
-    return { status: 'cached', version: remote.version, appliesNextLaunch: true };
+    applyContent(remote);
+    appliedVersion = remote.version;
+    if (typeof onApplied === 'function') { try { onApplied(remote.version); } catch (e) {} }
+    return { status: 'applied', version: remote.version, live: true };
   } catch (e) {
     if (timer) clearTimeout(timer);
     return { status: 'error', error: String((e && e.message) || e) };

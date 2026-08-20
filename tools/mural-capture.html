@@ -123,7 +123,8 @@ let stream = null;
 $('start').addEventListener('click', async () => {
   if (!current) { showErr('Pick a mural first.'); return; }
   try {
-    stream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:'environment' }, audio:false });
+    stream = await navigator.mediaDevices.getUserMedia({
+      video:{ facingMode:'environment', width:{ideal:3840}, height:{ideal:2160} }, audio:false });
     const v = $('video'); v.srcObject = stream; await v.play();
     v.classList.remove('hidden');
     if (refImg){ $('ghost').classList.remove('hidden'); $('opacity-row').classList.remove('hidden'); applyOpacity(); }
@@ -145,7 +146,7 @@ $('shoot').addEventListener('click', () => {
   const targetAR = 4/3, vAR = vw/vh;
   let sx=0, sy=0, sw=vw, sh=vh;
   if (vAR > targetAR){ sw = vh*targetAR; sx=(vw-sw)/2; } else { sh = vw/targetAR; sy=(vh-sh)/2; }
-  let ow = sw, oh = sh, MAX=1280;
+  let ow = sw, oh = sh, MAX=1600;
   if (Math.max(ow,oh) > MAX){ const s = MAX/Math.max(ow,oh); ow=Math.round(ow*s); oh=Math.round(oh*s); }
   cv.width=ow; cv.height=oh;
   cv.getContext('2d').drawImage(v, sx,sy,sw,sh, 0,0,ow,oh);
@@ -153,7 +154,7 @@ $('shoot').addEventListener('click', () => {
   $('shoot').classList.add('hidden');
   $('retake').classList.remove('hidden'); $('send').classList.remove('hidden'); $('dl').classList.remove('hidden');
   // keep ghost on top so you can verify alignment
-  cv.toBlob(b => capturedBlob = b, 'image/jpeg', 0.88);
+  cv.toBlob(b => capturedBlob = b, 'image/jpeg', 0.92);
 });
 
 $('retake').addEventListener('click', () => {
@@ -185,7 +186,7 @@ $('send').addEventListener('click', async () => {
   const date = $('date').value;
   const btn = $('send'), label = btn.textContent; btn.textContent='Sending…'; btn.disabled=true; hideErr();
   try {
-    const b64 = $('canvas').toDataURL('image/jpeg', 0.88);
+    const b64 = $('canvas').toDataURL('image/jpeg', 0.92);
     const res = await fetch(WORKER, {
       method:'POST',
       headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
