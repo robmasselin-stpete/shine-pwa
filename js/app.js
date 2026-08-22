@@ -5134,8 +5134,13 @@ const festivalLive = () => Array.isArray(murals) && murals.some(m => m && m.uc);
 setInterval(() => {
   if (document.visibilityState === 'visible' && festivalLive()) hydrateContent().catch(() => {});
 }, CONTENT_POLL_MS);
+// Always re-check content when the app returns to the foreground — NOT gated on
+// festivalLive(). Otherwise the festival's FIRST uc mural can't bootstrap: with no
+// uc mural loaded yet, the poll is idle, so an already-open app would need a full
+// force-quit to see it. Ungating this makes a simple background→reopen enough. It's
+// cheap — ETag makes it a 304 no-op whenever nothing changed.
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible' && festivalLive()) hydrateContent().catch(() => {});
+  if (document.visibilityState === 'visible') hydrateContent().catch(() => {});
 });
 
 // Tap any .tab-title-row (pelican logo + title) on any tab to open About / Feedback
