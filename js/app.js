@@ -908,6 +908,9 @@ function releaseWakeLock() {
 // Re-acquire wake lock + kick compass when app returns from background
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
+    // Resume the shared audio context — iOS SUSPENDS it on background / screen-lock,
+    // which silenced all sound (narration + tones) until a full app restart.
+    if (walkAudioCtx && walkAudioCtx.state === 'suspended') walkAudioCtx.resume().catch(() => {});
     // Re-acquire wake lock if we were navigating
     if (state.tourWalking) requestWakeLock();
     // Kick compass listeners back to life
@@ -922,6 +925,11 @@ document.addEventListener('visibilitychange', () => {
     }
   }
 });
+
+// Fallback: iOS can require a user gesture to un-suspend audio — resume on any touch.
+document.addEventListener('touchend', () => {
+  if (walkAudioCtx && walkAudioCtx.state === 'suspended') walkAudioCtx.resume().catch(() => {});
+}, { passive: true });
 
 /** Check all murals for proximity and alert on the first match. */
 function checkProximityAlerts() {
@@ -2690,7 +2698,7 @@ function buildCompassArcHTML() {
       <div class="compass-arc-dots">${dots}</div>
       <span class="compass-arrow compass-arrow-right" hidden>&rarr;</span>
     </div>
-    <div class="compass-cal-hint" hidden>Compass calibrating — accuracy improves as you walk</div>
+    <div class="compass-cal-hint" hidden>Compass off? Wave the phone in a figure-8 to calibrate.</div>
     <button class="compass-enable-btn" hidden>Enable Compass</button>
   `;
 }
@@ -3611,7 +3619,7 @@ function renderTourLoop() {
             <span class="hud-time" id="tour-nav-time"></span>
           </div>
           <button class="compass-enable-btn" hidden>Enable Compass</button>
-          <div class="compass-cal-hint" hidden>Compass calibrating — accuracy improves as you walk</div>
+          <div class="compass-cal-hint" hidden>Compass off? Wave the phone in a figure-8 to calibrate.</div>
         </div>
       </div>
 
@@ -4485,7 +4493,7 @@ function buildDetailBodyHTML(mural) {
             </div>
             <div class="detail-nav-address">${mural.bldg ? mural.bldg + ' — ' : ''}${mural.loc || 'St. Petersburg, FL'}</div>
             <button class="compass-enable-btn" hidden>Enable Compass</button>
-            <div class="compass-cal-hint" hidden>Compass calibrating — accuracy improves as you walk</div>
+            <div class="compass-cal-hint" hidden>Compass off? Wave the phone in a figure-8 to calibrate.</div>
           </div>
         ` : `
           <div class="detail-nav-live">
