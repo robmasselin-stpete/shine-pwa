@@ -2,8 +2,8 @@
 //
 // POST /photo  (gated by POST_KEY)
 //   body: { muralId, date: "YYYY-MM-DD", imageBase64, dry? }
-//   → uploads images/murals/2026/<id>-<date>.jpeg to R2, appends {u,d} to the
-//     mural's `ph` in content.json, bumps the version. Live over OTA in ~1 min.
+//   → uploads images/murals/2026/<id>-<date>-<HHMMSS>.jpeg to R2, appends {u,d} to
+//     the mural's `ph` in content.json, bumps the version. Live over OTA in ~1 min.
 //
 // The image full-res is served from cdn.muralquest.app; the app's build-viewer
 // reads it directly (no bundled card needed — grid thumbnails fall back to full-res).
@@ -59,11 +59,30 @@ export default {
     const mural = (data.murals || []).find(m => m.id === muralId);
     if (!mural) return json({ error: `mural #${muralId} not in content.json` }, 404);
 
-    // Unique key so MULTIPLE photos per day are allowed: first of a date →
-    // <id>-<date>.jpeg, then <id>-<date>-2.jpeg, <id>-<date>-3.jpeg, …
+    // Key carries a UTC time token, so MULTIPLE photos per day are allowed AND no
+    // name is ever written twice: <id>-<date>-<HHMMSS>.jpeg.
+    //
+    // It used to be derived from ph.length (<id>-<date>.jpeg, then -2, -3, …). That
+    // breaks whenever photos are removed from `ph` while their objects remain: the
+    // counter walks back over names that already exist, R2 takes the new bytes, but
+    // the CDN keeps serving the old frame — these objects are cached `immutable` for
+    // a year. Silent, and it bit us live in the field on 2026-08-24: fresh captures
+    // displayed as the previous day's photos with no error anywhere.
+    //
+    // Indexing off the bucket instead of ph.length is NOT enough on its own — the
+    // edge cache outlives the object, so a deleted photo's name can be reclaimed by
+    // a later capture and resurrect the deleted frame from cache. Only a never-reused
+    // key is safe, hence the time token.
     mural.ph = mural.ph || [];
-    const sameDate = mural.ph.filter(p => p.d === date).length;
-    const imgKey = `images/murals/2026/${muralId}-${date}${sameDate ? '-' + (sameDate + 1) : ''}.jpeg`;
+    const now = new Date();
+    const hhmmss = [now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds()]
+      .map(n => String(n).padStart(2, '0')).join('');
+    const baseKey = `images/murals/2026/${muralId}-${date}-${hhmmss}`;
+    // Belt-and-braces for two sends inside the same second.
+    const listed = await env.BUCKET.list({ prefix: baseKey });
+    const taken = new Set((listed.objects || []).map(o => o.key));
+    let imgKey = `${baseKey}.jpeg`;
+    for (let n = 1; taken.has(imgKey); ) imgKey = `${baseKey}-${++n}.jpeg`;
 
     if (body.dry) {
       return json({ ok: true, dry: true, wouldWrite: imgKey, muralId, currentPhotos: mural.ph.length });
