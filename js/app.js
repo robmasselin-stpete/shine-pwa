@@ -503,11 +503,12 @@ let compassWatchdogId = null;     // interval ID for compass liveness check
 const SHINE_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
 const VINTAGE_YEARS = [2019, 2018, 2017, 2016, 2015];
 
-// Displayed mural count, rounded DOWN to the nearest 5 — 189 murals reads "185+".
-// Computed from the live `murals` array rather than hardcoded, so murals added over
-// OTA move the number with no app build. (It was pinned at '185+' in five places,
-// which meant every content milestone needed a submission just to change a string.)
-const muralCountLabel = () => `${Math.floor(murals.length / 5) * 5}+`;
+// Displayed mural count — a MARKETING figure, set deliberately and NOT derived from
+// murals.length. It exists to signal "a lot, not 20"; nobody buys or doesn't buy over
+// 175 vs 200, and the library is always about to grow past whatever a query says.
+// Defined once and used in 5 places, so changing it is a one-line edit.
+// Artists are quoted as "140+" in store and press copy. Keep both in step.
+const MURAL_COUNT_LABEL = '200+';
 
 // =============================================
 // DOM refs
@@ -1203,7 +1204,7 @@ searchInput.addEventListener('blur', () => document.body.classList.remove('searc
 /** Render the Explore tab — 2-column card grid of filtered murals. Full innerHTML replace. */
 function renderExplore() {
   const sub = document.getElementById('explore-subtitle');
-  if (sub) sub.textContent = `${muralCountLabel()} Murals in St. Petersburg, Florida`;
+  if (sub) sub.textContent = `${MURAL_COUNT_LABEL} Murals in St. Petersburg, Florida`;
   const filtered = getFilteredMurals();
 
   if (filtered.length === 0) {
@@ -1393,7 +1394,7 @@ function initMap() {
   floatHeader.className = 'map-float-header';
   floatHeader.innerHTML = `
     <div class="tab-title-row" id="map-title-row" role="button" aria-label="About Mural Quest"><img class="tab-logo" src="images/logo-pelican.png" alt=""><h1 class="map-float-title">Mural Quest</h1></div>
-    <p class="map-float-subtitle">${muralCountLabel()} Murals in St. Petersburg, Florida</p>
+    <p class="map-float-subtitle">${MURAL_COUNT_LABEL} Murals in St. Petersburg, Florida</p>
     <div class="filter-pills" id="map-cat-pills"></div>
     <div class="filter-pills" id="map-year-pills" hidden></div>
   `;
@@ -1914,7 +1915,7 @@ function showOutOfRangePopup() {
   el.innerHTML = `
     <button class="nearest-popup-close" onclick="this.parentElement.remove()">&times;</button>
     <p>You're not in St. Pete yet!</p>
-    <small>${muralCountLabel()} murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>
+    <small>${MURAL_COUNT_LABEL} murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>
   `;
   document.getElementById('map-container').appendChild(el);
   nearestPopupEl = el;
@@ -2429,7 +2430,7 @@ function renderTourPicker() {
     <div class="tour-picker-layout">
       <div class="tours-large-title">
         <div class="tab-title-row"><img class="tab-logo" src="images/logo-pelican.png" alt=""><h1>Tours</h1></div>
-        <p class="explore-subtitle">${muralCountLabel()} Murals in St. Petersburg, Florida</p>
+        <p class="explore-subtitle">${MURAL_COUNT_LABEL} Murals in St. Petersburg, Florida</p>
         <p>Scroll to Browse, Tap Go</p>
       </div>
       <div class="tour-list-scroll" id="tour-list-scroll">
@@ -4741,7 +4742,7 @@ function showOutOfRangeOnDetail() {
   if (toast) toast.remove();
   toast = document.createElement('div');
   toast.className = 'detail-range-toast';
-  toast.innerHTML = `<p>You're not in St. Pete yet!</p><small>${muralCountLabel()} murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>`;
+  toast.innerHTML = `<p>You're not in St. Pete yet!</p><small>${MURAL_COUNT_LABEL} murals are waiting for you. Grab a flight, catch an Uber, road-trip it — however you get here, the walls are worth it.</small>`;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3000);
 }
