@@ -11,6 +11,9 @@
 - 156 murals, 100% bio coverage, 6 walking routes
 - Compass, haptics, arrival detection, radar blip all working
 - Netlify web version live at shinestpetenew.netlify.app
+  <!-- STALE (checked 2026-08-25): that host now 404s — the web PWA was retired from
+       Netlify 2026-06-26 and the canonical site is https://muralquest.app. Left in place
+       because this file is a point-in-time launch snapshot. -->
 - App Store Connect account active, builds uploading successfully
 - No App Store listing submitted yet — app is in TestFlight only
 
@@ -52,7 +55,7 @@
 | App description (4000 chars max) | Not started | Write in Mural Quest voice. Use marketing brief as source. |
 | Subtitle (30 chars max) | Not started | e.g., "Walk St. Pete's Mural Scene" |
 | Keywords (100 chars) | Not started | e.g., "murals,street art,St Petersburg,SHINE,walking tour,mural map,art guide" |
-| Privacy policy URL | Done | shinestpetenew.netlify.app/privacy.html |
+| Privacy policy URL | Done | **https://muralquest.app/privacy.html** (verified 200 on 2026-08-25). Was `shinestpetenew.netlify.app/privacy.html`, which now **404s** — confirm the live value in App Store Connect and Play Console, since a dead privacy URL is a compliance flag. |
 | Support URL | Needed | Could use Netlify URL or a simple contact page |
 | Category | — | Travel or Navigation (primary), Lifestyle (secondary) |
 | Age rating | — | 4+ (no objectionable content) |

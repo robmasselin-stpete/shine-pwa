@@ -2,7 +2,11 @@
 
 A progressive web app for exploring murals from the [SHINE Mural Festival](https://stpeteshinemuralproject.com/) in St. Petersburg, Florida. Browse by year, category, or location — get walking directions and curated routes.
 
-**Live:** https://legendary-bonbon-a5b20a.netlify.app/
+**Live:** https://muralquest.app — plus native apps on the App Store and Google Play.
+
+> The old Netlify hosts (`legendary-bonbon-a5b20a`, `shinepwa`) were retired 2026-06-26 and
+> 301-redirect here. `shinestpetenew.netlify.app` was missed in that retirement and currently
+> **404s** — see HANDOFF.md.
 
 ## Tech Stack
 

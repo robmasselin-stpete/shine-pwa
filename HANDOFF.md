@@ -599,6 +599,23 @@ hero eyebrow and the promo video caption if he wants those updated to match.
   reinstall from the App Store. Rob installed 129 on his phone and confirmed the
   swap.
 
+## 2026-08-25 follow-up — one Netlify host was MISSED in the retirement
+
+`shinestpetenew.netlify.app` did **not** get the `_redirects` placeholder the other two
+got below. It returns a hard **404** from Netlify for any user agent, so old QR codes,
+rack cards, printed material, or store-listing fields pointing at it dead-end instead of
+landing on muralquest.app.
+
+It looks alive to anyone who visited before: it's a PWA, so `sw.js` keeps serving the
+cached app shell from the browser — a build older than `main`, showing "150+ murals
+across St. Petersburg", a string that exists nowhere in the current codebase. That's how
+it surfaced.
+
+**To do:** deploy the same `_redirects` placeholder to `shinestpetenew` so it 301s to
+muralquest.app, and confirm the privacy-policy URL in App Store Connect / Play Console
+isn't still pointing at `shinestpetenew.netlify.app/privacy.html` (that path 404s;
+`muralquest.app/privacy.html` is live).
+
 ## 2026-06-26 update — Netlify retirement
 
 - **Web PWA retired from Netlify** (native iOS app is the product now).
