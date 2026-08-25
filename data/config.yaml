@@ -22,7 +22,14 @@ YEARS:
   - 2015
 
 # Year-to-color mapping for map markers
+# NOTE: YEAR_COLORS is bundled into data.js only — it is NOT in the OTA manifest,
+# so adding a year here needs an app build. (YEARS is in the manifest but is not
+# read by app.js; SHINE_YEARS/VINTAGE_YEARS there are the real buckets.)
 YEAR_COLORS:
+  # 2026 is provisional — during the festival these pins appear alone under the
+  # "Shine 2026" tab, so nothing needs distinguishing. Pick the real value in the
+  # post-festival build, when 2026 sits on the map beside every other SHINE year.
+  2026: "#00B4D8"
   2025: "#1E5B8A"
   2024: "#2E86C1"
   2023: "#48A9A6"
