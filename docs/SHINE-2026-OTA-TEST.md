@@ -35,13 +35,22 @@ uploads the frame to R2 and appends it to the mural's `ph` in `content.json` —
 over OTA in ~1 min. This is the SHINE daily-update workflow: capture on the iPad,
 live in the app, no Mac, no build.
 
-⚠️ **Consistency caveat:** the Worker writes `content.json` **directly on R2**; it
-does NOT update the source YAML. So if `publish-content.py` is later run from the
-Mac (it rebuilds `content.json` from YAMLs), Worker-added photos are **overwritten
-/ lost**. During the festival, either (a) only add photos via the Worker and don't
-run `publish-content.py` for these murals, or (b) build a `sync-photos-from-live.py`
-reconcile step (fetch live `content.json` → write each mural's `ph` back into its
-YAML) to run before any Mac publish. **TODO before the festival: build the reconcile.**
+✅ **Consistency — handled (built 2026-08-25).** The Worker writes `content.json`
+**directly on R2** and does NOT update the source YAML, so a Mac `publish-content.py`
+(which rebuilds `content.json` from YAMLs) would erase Worker-added photos. That
+reconcile is now **built into `publish-content.py` as step 0**: it fetches the live
+manifest and writes each mural's `ph` (and `uc`) back into its YAML *before* the
+rebuild, so a Mac publish is lossless and needs no special care during the festival.
+
+- **Fails closed.** If the live manifest can't be fetched, nothing is built or
+  uploaded — better to not publish than to publish a manifest missing field photos.
+- `--no-reconcile` skips the pull-down. Only use it when you know nothing has been
+  shot via the Worker; it *will* drop live photos otherwise.
+- **Orphan warning.** If a mural has live photos but no local YAML (held in
+  `.mq-held/`, or deleted), it's listed as being DROPPED from the manifest before
+  the publish proceeds.
+- YAML rewriting is surgical — only the `photos:`/`underConstruction:` blocks are
+  touched, so comments, bio formatting, and every other field survive intact.
 
 ## Add a daily progress photo — Mac / CLI path (the actual test)
 1. Drop the photo in `images/murals/2026/` (e.g. `shine2026-day1.jpeg`).

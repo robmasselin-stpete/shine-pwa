@@ -8,6 +8,11 @@ This is the v1.5 festival workflow. Instead of rebuilding + resubmitting the app
     edit data/murals/*.yaml  →  python3 scripts/publish-content.py  →  live
 
 Steps:
+  0. RECONCILE — pull Worker-written progress photos DOWN from the live manifest
+     into the source YAMLs first. The SHINE 2026 Capture Worker writes photos
+     straight into content.json on R2 and never touches the YAML, so without this
+     step step 1 would rebuild from YAML and silently erase every photo shot in
+     the field. Fails closed: if the live manifest can't be read, nothing publishes.
   1. Run build-data.py — regenerates js/data.js + js/content.json and bumps the
      content version. Aborts the publish if validation fails (never ships a broken
      manifest).
@@ -25,13 +30,19 @@ Note: images are still bundled in v1.5 — this publishes DATA only (murals, POI
 routes/YEARS metadata). Image publishing comes with the image-split step.
 
 Usage:
-  python3 scripts/publish-content.py            # build + upload + verify
-  python3 scripts/publish-content.py --dry-run  # build only; show what would upload
+  python3 scripts/publish-content.py            # reconcile + build + upload + verify
+  python3 scripts/publish-content.py --dry-run  # reconcile + build only; show what would upload
+  python3 scripts/publish-content.py --no-reconcile
+                                                # SKIP the photo pull-down. Only safe when
+                                                # you know no Worker photos exist live —
+                                                # it will drop any that do.
   python3 scripts/publish-content.py --post 210 # publish, then post mural #210 to IG
                                                 # (drafts a caption you edit + confirm)
 """
+import glob
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -40,19 +51,153 @@ import urllib.request
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 CONTENT_JSON = os.path.join(PROJECT_ROOT, 'js', 'content.json')
+MURALS_DIR = os.path.join(PROJECT_ROOT, 'data', 'murals')
+MURAL_INDEX = os.path.join(MURALS_DIR, '_index.json')
 
 BUCKET = 'muralquest-content'
 OBJECT_KEY = 'content.json'
 PUBLIC_URL = 'https://cdn.muralquest.app/content.json'
 CACHE_CONTROL = 'public, max-age=60'  # bounded edge staleness for festival updates
 
+# Cloudflare bot-blocks the default 'Python-urllib' UA (403).
+UA = 'Mozilla/5.0 (mural-quest publish-content)'
+
 
 def run(cmd):
     return subprocess.run(cmd, cwd=PROJECT_ROOT)
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Step 0 — reconcile Worker-written photos back into the YAML source.
+#
+# The Capture Worker (capture.muralquest.app) appends progress photos to `ph`
+# and sets `uc` directly in content.json on R2; it never updates data/murals/*.yaml.
+# build-data.py rebuilds content.json FROM the YAMLs, so publishing without first
+# pulling those photos down deletes them from the live app with no error.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def fetch_live_manifest():
+    req = urllib.request.Request(
+        PUBLIC_URL + f'?reconcile={int(time.time())}',
+        headers={'Cache-Control': 'no-cache', 'User-Agent': UA})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        return json.loads(resp.read().decode())
+
+
+def yaml_path_for(mural_id, index):
+    """Resolve a mural id to its YAML path via _index.json, falling back to a glob."""
+    fn = index.get(str(mural_id))
+    if fn:
+        p = os.path.join(MURALS_DIR, fn)
+        if os.path.exists(p):
+            return p
+    hits = glob.glob(os.path.join(MURALS_DIR, f'{mural_id}-*.yaml'))
+    return hits[0] if hits else None
+
+
+def _find_block(lines, key):
+    """Span [start, end) of a top-level `key:` and its indented continuation lines."""
+    for i, line in enumerate(lines):
+        if re.match(rf'^{re.escape(key)}\s*:', line):
+            j = i + 1
+            while j < len(lines) and (lines[j][:1] in (' ', '\t') or not lines[j].strip()):
+                j += 1
+            while j > i + 1 and not lines[j - 1].strip():  # don't swallow the blank separator
+                j -= 1
+            return i, j
+    return None
+
+
+def _set_block(text, key, new_lines):
+    """Replace (or insert) a top-level key's block, preserving all other formatting."""
+    lines = text.split('\n')
+    span = _find_block(lines, key)
+    if span:
+        start, end = span
+        lines[start:end] = new_lines
+    else:
+        # Insert before artistBio: — present in every mural — else append.
+        anchor = next((i for i, l in enumerate(lines) if l.startswith('artistBio:')), None)
+        block = new_lines + ['']
+        if anchor is None:
+            lines = lines + [''] + new_lines
+        else:
+            lines[anchor:anchor] = block
+    return '\n'.join(lines)
+
+
+def _photos_block(photos):
+    if not photos:
+        return ['photos: []']
+    out = ['photos:']
+    for p in photos:
+        url = str(p.get('u', '')).replace('"', '\\"')
+        date = str(p.get('d', '')).replace('"', '\\"')
+        out.append(f'  - {{ url: "{url}", dateTaken: "{date}" }}')
+    return out
+
+
+def reconcile_photos():
+    """Pull live Worker-written photos/uc down into the YAMLs. Returns False to abort."""
+    print("→ Reconciling Worker photos from live (cdn.muralquest.app)…")
+    try:
+        live = fetch_live_manifest()
+    except Exception as e:
+        print(f"✗ Could not read the live manifest: {e}")
+        print("  Refusing to publish — a rebuild right now could erase field photos.")
+        print("  Re-run when you have a connection, or --no-reconcile if you're certain.")
+        return False
+
+    index = {}
+    if os.path.exists(MURAL_INDEX):
+        with open(MURAL_INDEX, encoding='utf-8') as f:
+            index = json.load(f)
+
+    live_with_photos = [m for m in live.get('murals', []) if m.get('ph')]
+    if not live_with_photos:
+        print("  No Worker photos live — nothing to reconcile.")
+        return True
+
+    changed, orphans = [], []
+    for m in live_with_photos:
+        mid, photos = m['id'], m['ph']
+        path = yaml_path_for(mid, index)
+        if not path:
+            orphans.append((mid, len(photos)))
+            continue
+        with open(path, encoding='utf-8') as f:
+            text = original = f.read()
+        text = _set_block(text, 'photos', _photos_block(photos))
+        if m.get('uc'):
+            text = _set_block(text, 'underConstruction', ['underConstruction: true'])
+        if text != original:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(text)
+            changed.append((mid, len(photos), os.path.basename(path)))
+
+    for mid, n, fn in changed:
+        print(f"  ✓ #{mid}: wrote {n} photo(s) back into {fn}")
+    if not changed:
+        print(f"  {len(live_with_photos)} mural(s) with photos — YAMLs already in sync.")
+
+    if orphans:
+        print("\n  ⚠ LIVE PHOTOS WITH NO LOCAL YAML — these murals will be DROPPED "
+              "from the manifest:")
+        for mid, n in orphans:
+            print(f"      #{mid} ({n} photo(s)) — held in .mq-held/ or deleted?")
+        print("  If that's not what you want, restore the YAML before publishing.\n")
+    return True
+
+
 def main():
     dry = '--dry-run' in sys.argv
+
+    # 0. Reconcile — pull Worker-written photos down BEFORE the rebuild reads the YAMLs.
+    if '--no-reconcile' in sys.argv:
+        print("⚠ --no-reconcile: skipping the photo pull-down. Any Worker photos "
+              "live right now will be erased by this publish.")
+    elif not reconcile_photos():
+        sys.exit(1)
 
     # 1. Build — regenerate content.json (bumps version), abort on validation error.
     print("→ Building content (build-data.py)…")
