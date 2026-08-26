@@ -2,7 +2,7 @@
   {
     "id": "downtown-north",
     "name": "Downtown North",
-    "desc": "Where SHINE started. The 600 block, the waterfront, the Cordova Inn \u2014 16 murals in the heart of it.",
+    "desc": "Where SHINE started. The 600 block, the waterfront, the Cordova Inn — 16 murals in the heart of it.",
     "color": "#E53935",
     "ids": [
       6,
@@ -529,7 +529,7 @@
   {
     "id": "the-edge",
     "name": "The Edge",
-    "desc": "The brewery belt. Green Bench to the Edge \u2014 12 murals between the craft beer and the train tracks.",
+    "desc": "The brewery belt. Green Bench to the Edge — 14 murals between the craft beer and the train tracks.",
     "color": "#1E88E5",
     "ids": [
       119,
@@ -874,7 +874,7 @@
   {
     "id": "methodist-town",
     "name": "Methodist Town",
-    "desc": "Seven walls along MLK. Shorter walk, bigger stories.",
+    "desc": "Eleven walls along MLK. Shorter walk, bigger stories.",
     "color": "#7B1FA2",
     "ids": [
       4,
@@ -1230,7 +1230,7 @@
   {
     "id": "tropicana-field",
     "name": "Tropicana Field",
-    "desc": "The stadium loop. Fifteen murals around Tropicana Field \u2014 including a Morning Breath wall from 2015 that's now a narrow sliver between two buildings. The rest of it is still in there, behind the wall.",
+    "desc": "The stadium loop. Fifteen murals around Tropicana Field — including a Morning Breath wall from 2015 that's now a narrow sliver between two buildings. The rest of it is still in there, behind the wall.",
     "color": "#43A047",
     "ids": [
       59,
@@ -1846,7 +1846,7 @@
   {
     "id": "central-ave",
     "name": "Central Ave",
-    "desc": "The main drag. Ten murals along Central \u2014 one of the avenues that defines the city.",
+    "desc": "The main drag. Fourteen murals along Central — one of the avenues that defines the city.",
     "color": "#FB8C00",
     "ids": [
       48,
@@ -2523,7 +2523,7 @@
   {
     "id": "arts-district",
     "name": "Arts District",
-    "desc": "Warehouses turned canvases. Thirteen murals deep in the district where the studios are.",
+    "desc": "Warehouses turned canvases. Twenty-one murals deep in the district where the studios are.",
     "color": "#F06292",
     "ids": [
       140,
@@ -3178,7 +3178,7 @@
   {
     "id": "pinellas-trail",
     "name": "Pinellas Trail",
-    "desc": "Fifteen murals strung along the Pinellas Trail \u2014 a long, thin route best for serious walkers or bikes.",
+    "desc": "Fifteen murals strung along the Pinellas Trail — a long, thin route best for serious walkers or bikes.",
     "color": "#00897B",
     "ids": [
       26,
