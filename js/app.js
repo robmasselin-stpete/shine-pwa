@@ -510,6 +510,16 @@ const VINTAGE_YEARS = [2019, 2018, 2017, 2016, 2015];
 // Artists are quoted as "140+" in store and press copy. Keep both in step.
 const MURAL_COUNT_LABEL = '200+';
 
+// CARTO basemaps require an API key as of 2026 — without one every tile comes back
+// stamped "API KEY REQUIRED" (it shipped that way in 1.7.4). Free tier, no account,
+// 5M tile requests/month. Raster (PNG) is the service enforcing it today; CARTO says
+// vector will follow and that this same key covers both, so the eventual raster→vector
+// migration doesn't need a new one. Requested via carto.com/basemaps/apikey.
+// Attribution (CARTO + OpenStreetMap) is a condition of use — keep it on every map.
+const CARTO_KEY = 'cb1_26kz_1_0dbb1e7c24f5ee38e47deb59';
+const cartoTiles = (style) =>
+  `https://{s}.basemaps.cartocdn.com/${style}/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`;
+
 // =============================================
 // DOM refs
 // =============================================
@@ -1418,7 +1428,7 @@ function initMap() {
   });
 
   // Base tiles (no labels) — sits below markers
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+  L.tileLayer(cartoTiles('rastertiles/voyager_nolabels'), {
     attribution: '\u00a9 OpenStreetMap \u00a9 CARTO',
     maxZoom: 19,
     keepBuffer: 6,
@@ -1428,7 +1438,7 @@ function initMap() {
   leafletMap.createPane('labels');
   leafletMap.getPane('labels').style.zIndex = 650;
   leafletMap.getPane('labels').style.pointerEvents = 'none';
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', {
+  L.tileLayer(cartoTiles('rastertiles/voyager_only_labels'), {
     maxZoom: 19,
     pane: 'labels',
   }).addTo(leafletMap);
@@ -2252,7 +2262,7 @@ function ensureRotaryMap(i) {
     keyboard: false,
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  L.tileLayer(cartoTiles('light_all'), {
     maxZoom: 19,
   }).addTo(m);
 
@@ -2495,7 +2505,7 @@ function initTourPickerMap() {
     attributionControl: false,
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  L.tileLayer(cartoTiles('rastertiles/voyager'), {
     maxZoom: 19,
   }).addTo(tourPickerMap);
 
@@ -3277,7 +3287,7 @@ function enterGotoMode(mural) {
     zoomControl: false,
     attributionControl: false,
   });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  L.tileLayer(cartoTiles('rastertiles/voyager'), {
     maxZoom: 19,
   }).addTo(gotoMap);
   L.DomEvent.disableScrollPropagation(container);
@@ -3953,7 +3963,7 @@ function initTourMap() {
     attributionControl: false,
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  L.tileLayer(cartoTiles('rastertiles/voyager'), {
     maxZoom: 19,
   }).addTo(tourMap);
 
