@@ -19,7 +19,6 @@ basedIn: "Tampa, FL"
 
 fieldNotes:
   - "Painted her first mural at age seven"
-  - "Mother-daughter duo with Denise Weaver"
   - "Known as Dreamweaver"
 
 artistBio: |
@@ -111,6 +110,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: removed the mother-daughter duo field note. No source knows a Denise Weaver; her own site, the St. Petersburg Arts Alliance credit for this wall, Creative Pinellas and a long Artisan Magazine interview all describe Taylor Smith working solo. Unsubstantiated, so dropped per Rob"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-06-16 — Title set to 'Abiding Light' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:
