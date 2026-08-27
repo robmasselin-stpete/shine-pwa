@@ -28,9 +28,8 @@ artistBio: |
 
   Isac Gres was born in 1993 in Bayamo, Cuba. He studied cubism, hyperrealism,
   surrealism, and conceptual thinking at the E.I.A Jose Marti Perez art academy,
-  then spent three years studying psychology at the Celia Sanchez Manduley
-  institute, followed by a year of mandatory military service. He left Cuba on
-  November 12, 2019, established a tattoo studio called Isac Ink in Uruguay,
+  then served in the Cuban army before studying psychology at the Celia
+  Sanchez Manduley institute. He left Cuba in 2019, established a tattoo studio called Isac Ink in Uruguay,
   then relocated to Miami in 2022 to reunite with family before settling in St.
   Petersburg.
 
@@ -50,9 +49,8 @@ searchBio: |
 
   Isac Gres was born November 29, 1993 in Bayamo, Cuba. He studied cubism,
   hyperrealism, surrealism, and conceptual thinking at the E.I.A Jose Marti
-  Perez art academy, then spent three years studying psychology at the Celia
-  Sanchez Manduley institute, followed by a year of mandatory military service
-  in Cuba's army. He left Cuba on November 12, 2019 and traveled through 12
+  Perez art academy, then served in Cuba's army before studying psychology at the Celia Sanchez
+  Manduley institute. He left Cuba in 2019 and traveled through 12
   countries including the Darien Gap. He established "Isac Ink" tattoo studio in
   Uruguay (approximately 2019-2022), then relocated to Miami in 2022 to reunite
   with family. He worked at a tattoo studio while painting before settling in
@@ -63,9 +61,8 @@ searchBio: |
   Fragmented figures, dreamlike landscapes, hybrid beings. Recurring symbols
   include pathways and doorways, jellyfish (resilience and immortality), and
   apples (knowledge and identity). Light drives everything: "Color for me means
-  light...and also good energy." He is represented by Patti Suzette Art and has
-  exhibited in South Carolina and multiple galleries nationwide. He has an NFT
-  collection on OpenSea.
+  light...and also good energy." He is represented by Patti Suzette Art and has exhibited in South Carolina
+  and multiple galleries nationwide.
 
   For SHINE Origins 2025 he painted the tallest wall of his career — a
   surrealist design with melting clocks (a nod to Dali) on the Melting Pot
@@ -91,6 +88,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: no source gives a day-level departure date; the source reverses this order and gives no durations; no source mentions an NFT collection or OpenSea"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://ilovetheburg.com/st-pete-shine-origins/"

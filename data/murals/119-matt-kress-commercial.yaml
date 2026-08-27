@@ -6,7 +6,7 @@ artist: Matt Kress
 year: 0
 lat: 27.772306
 lng: -82.646803
-address: "1st St N & Dr. MLK Jr St N"
+address: "1st Ave N & Dr. MLK Jr St N"
 category: commercial
 img: "images/murals/commercial/unknown-1503.jpeg"
 audio: "https://cdn.muralquest.app/audio/119.mp3?v=2"
@@ -106,5 +106,6 @@ sourceNotes:
   - "https://blog.artstorefronts.com/artist-matt-kress/"
   - "https://www.axios.com/local/tampa-bay/2024/06/25/mooney-anomaly-plane-mural-st-petersburg"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: 1st St N and MLK St N are parallel and never meet; the wall is at 913 1st Ave N and the pin already matched"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "16 April 2026 — Full research, bio rewrite with Mooney Anomaly hook, searchBio added"

@@ -28,7 +28,7 @@ artistBio: |
 
   Taj Francis — Taj Tenfold — was born in 1989 in St. Andrew parish, Jamaica and
   studied Illustration at the Edna Manley College of the Visual and Performing
-  Arts in Kingston (2007-2011). His work explores African ancestry and human
+  Arts in Kingston. His work explores African ancestry and human
   identity through a surreal lens, drawing on Japanese Manga, hip-hop, Baroque
   painting, vintage vinyl art, and Jamaican Reggae aesthetics.
 
@@ -49,7 +49,7 @@ searchBio: |
 
   Taj Francis — Taj Tenfold — was born in 1989 in the parish of St. Andrew,
   Jamaica. He studied Illustration at the Edna Manley College of the Visual and
-  Performing Arts in Kingston (2007-2011). He is based in Kingston. His work
+  Performing Arts in Kingston. He is based in Kingston. His work
   explores nuances of human behavior and identity relating to African ancestry
   through a surreal lens. Influences include Japanese Manga, hip-hop, Baroque
   paintings, vintage vinyl and poster art, Pop Art, and Jamaican Reggae
@@ -99,6 +99,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: no source documents the 2007-2011 attendance years; the school and major are sourced and kept"
   - "16 April 2026 — New mural added from screenshot reference"
   - "16 April 2026 — Research corrected: SHINE 2019 not 2017, title is Sewing Seeds not Seas, address 1720 Central Ave"
   - "2026-05-12 — Confirmed photo is Rob's (iPhone EXIF audit)"

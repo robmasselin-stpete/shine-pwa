@@ -20,13 +20,14 @@ basedIn: "Arizona"
 fieldNotes:
   - "Portraiture as storytelling"
   - "Bold, vibrant colors and cultural identity"
-  - "Local Florida artist"
+  - "Painted this wall while based in Tampa"
 
 artistBio: |
   She uses portraiture as storytelling — bold, vibrant colors carrying cultural
   imagery and narratives that go untold elsewhere.
 
-  Egypt Hagan is originally from Los Angeles, now based in Tampa. Her first solo
+  Egypt Hagan is originally from Los Angeles. She was based in Tampa when she
+  painted this wall and now works from Arizona. Her first solo
   exhibition was in New York in 2014. She has done international commissions and
   community work, including "The Silent Symphony" — a mural commissioned by
   Burlington City Arts and Vermont's Office of Racial Equity for Juneteenth
@@ -128,6 +129,7 @@ artistAwards: "SHINE 2022 selected artist"
 furtherWork: []
 
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: she is now based in Arizona per her own site; Tampa was current in 2021-22; stale field note: she has since moved to Arizona"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

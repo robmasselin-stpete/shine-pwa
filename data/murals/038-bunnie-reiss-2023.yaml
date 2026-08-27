@@ -45,7 +45,8 @@ artistBio: |
   Lepus, the winter constellation she can see from her porch. People can sit
   inside it. She says it was "made for people to fall in love."
 
-  She's painted walls in over 20 countries, with documented locations including
+  She's painted walls across the US and abroad — Mexico, the Philippines,
+  Canada, Italy, France, and India — with documented locations including
   "Magic Buffalo" in Buffalo, NY (via the Albright-Knox Museum), Carbondale, CO,
   El Segundo, CA, and the high-desert towns of Joshua Tree and Yucca Valley.
   Solo shows at Superchief Gallery LA; group exhibitions at Paradigm Gallery
@@ -55,7 +56,7 @@ artistBio: |
   covering the previous ten years.
 
 searchBio: |
-  Bunnie Reiss is a muralist based near Joshua Tree, California who paints
+  Bunnie Reiss is a muralist based in Detroit, Michigan who paints
   folk-art walls full of animals, flowers, and dense patterning. She was born in
   Maryland and raised mostly in Colorado, and her work consistently reflects her
   Eastern European family background. She moved to California more than 20 years
@@ -182,6 +183,7 @@ sourceNotes:
   - "https://bunniereiss.com/murals"
   - "https://bunniereiss.com/sculpture"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: she now lives in Detroit per her own site; the record's own basedIn already said so; no source supports a 20-country count; replaced with the countries her own site documents"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Display bio rebuilt from searchBio material (cave-painting hook, Sky Rabbit detail, documented mural locations)."

@@ -38,8 +38,7 @@ artistBio: |
   characters and paint people I meet," he says. "Each painting is a unique
   avatar for a city, a mood, memory or mostly a person."
 
-  He painted the United Nations 75th anniversary mural in Manhattan. A 17-story
-  building in Boulogne-sur-Mer, France. A collaboration with Francisco Bosoletti
+  He painted the United Nations 75th anniversary mural in Manhattan. A seaside building in Boulogne-sur-Mer, France. A collaboration with Francisco Bosoletti
   for Urban Nation's "One Wall" project in Berlin. A glow-in-the-dark mural for
   Tourism Toronto. Festivals across Canada, the US, and Europe.
 
@@ -75,9 +74,8 @@ searchBio: |
 
   Major projects include the United Nations 75th anniversary mural in Manhattan,
   painted with Street Art for Mankind as part of the #UN75Murals series and tied
-  to the Zero Hunger campaign. He painted a 17-story building in
-  Boulogne-sur-Mer, France for the Festival Street Art de la ville de
-  Boulogne-sur-Mer in 2022, depicting a fair-skinned woman in black — the same
+  to the Zero Hunger campaign. He painted a seaside building in Boulogne-sur-Mer, France for the city's
+  urban art festival in 2022, depicting a fair-skinned woman in black — the same
   enigmatic figure he later returned to on the Walker-Whitney Plaza wall in St.
   Petersburg. In 2018 he collaborated with Argentine artist Francisco Bosoletti
   on Urban Nation's Epic ONE WALL Crossover project in Berlin, where Jarus
@@ -146,6 +144,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: the 17-story figure belongs to a headline about a different wall; no source gives Boulogne a story count; no source gives the Boulogne wall a story count"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Added instagram.com/youngjarus to sourceNotes per user request. WebFetch could not extract IG bio/post content (login wall) — no new facts integrated. Fixed incorrect @jarus handle reference in searchBio to @youngjarus (matches the YAML's instagram: field)."
