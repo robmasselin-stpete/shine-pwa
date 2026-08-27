@@ -30,7 +30,7 @@ artistBio: |
 
   She has painted walls across Mexico City, Guadalajara, Playa del Carmen, New
   Delhi (for the St+Art India Foundation's Lodhi Art District), Lima, Wynwood,
-  Berlin, Barcelona, and Buenos Aires. She has been featured on Colossal and in
+  Berlin and Barcelona. She has been featured on Colossal and in
   Juxtapoz.
 
   "La Emperatriz" at 1975 3rd Ave S in St. Petersburg's Warehouse Arts District
@@ -41,8 +41,7 @@ searchBio: |
   Her monochromatic women have appeared on walls from New Delhi to Wynwood to
   Mexico City — always in shades of gray, always tangled in leaves.
 
-  Paola Delfín is a Mexican muralist and illustrator based in Mexico City. She
-  studied graphic design at Universidad Iberoamericana in Mexico City and has
+  Paola Delfín is a Mexican muralist and illustrator based in Mexico City. She studied graphic design and took painting courses at institutions including the Academia de San Carlos in Mexico City and has
   been active professionally since approximately 2012-2013. Her signature is
   large-scale monochromatic murals — predominantly black-and-white or gray-blue
   palettes — centered on the female form intertwined with botanical elements.
@@ -54,8 +53,7 @@ searchBio: |
   Guadalajara, Playa del Carmen, New Delhi (Lodhi Art District for St+Art India
   Foundation — one of her most internationally recognized pieces), Lima
   (Barranco district), Wynwood (Miami), Berlin, Barcelona, and Buenos Aires.
-  Festival credits include SHINE Mural Festival (St. Petersburg), St+Art India
-  Foundation, and POW! WOW!. She has been featured on Colossal, in Juxtapoz, and
+  Festival credits include SHINE Mural Festival (St. Petersburg). She has been featured on Colossal, in Juxtapoz, and
   in Street Art News.
 
   "La Emperatriz" at 1975 3rd Ave S in St. Petersburg's Warehouse Arts District
@@ -83,6 +81,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Fact-check: No source names Universidad Iberoamericana; es.wikipedia describes her as self-taught with study at the Academia de San Carlos. Removed unsupported Buenos Aires, St+Art India and POW! WOW! credits."
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Reclassified per Rob: this is SHINE 2019 (was tagged 'commercial' with year 0). File renamed 170-paola-delfin-commercial.yaml → 170-paola-delfin-2019.yaml."
 sourceNotes:

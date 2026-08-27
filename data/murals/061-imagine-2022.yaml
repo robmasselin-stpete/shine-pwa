@@ -15,11 +15,11 @@ audio: "https://cdn.muralquest.app/audio/61.mp3?v=3"
 title: ""
 building: RetroTiques
 instagram: imagine876
-basedIn: "Kathmandu, Nepal"
+basedIn: "Boston, MA"
 
 fieldNotes:
   - "Has a master's from Harvard"
-  - "Founded Nepal's first contemporary art gallery"
+  - "Founded Nepal's first Children's Art Museum"
   - "Hyperrealistic photomurals"
 
 artistBio: |
@@ -134,6 +134,7 @@ furtherWork:
     url: "https://www.imagine876.com"
 
 revisionLog:
+  - "2026-08-27 — Fact-check: basedIn said Kathmandu; she was born in Nepal but lives in the Boston area, as the record's own bio already said (publicart.northeastern.edu, imagine876.com, gardnermuseum.org). fieldNotes said contemporary art gallery; sources say Children's Art Museum."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

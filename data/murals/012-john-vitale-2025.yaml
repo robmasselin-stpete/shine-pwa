@@ -45,7 +45,7 @@ artistBio: |
   mural technique to classes of up to twenty students. After Hurricane Milton,
   they painted free signs for businesses that lost theirs.
 
-  They have painted SHINE every year since its inception — "The Cool Kids" in
+  They have been involved with SHINE since its inception — "The Cool Kids" in
   2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
   2025, Johnny painted two solo murals: one on the 600 block where it all began,
   and another at The Factory on Fairfield Ave South shared with Sionna "Sio"
@@ -96,8 +96,7 @@ searchBio: |
   Wildstyle, and advanced mural classes to groups of up to 20 students. The
   five-artist teaching team includes John Vitale, Nicole Salgar, Hinson
   Thehealer, Digital (LA), and Jujmo. After Hurricane Milton, they painted free
-  signs for businesses that lost theirs. They host events like Hot Walls during
-  SHINE.
+  signs for businesses that lost theirs. They host events like Hot Walls at Overspray Art Space in Gulfport.
 
   SHINE participation: The Cool Kids (2015, 2063 Central Ave — faces of the
   artists' children), Bait and Switch (2019 — red snapper and sea turtle), SHINE
@@ -109,7 +108,7 @@ searchBio: |
   landmarks).
 
   Studio: 5013 20th Ave S., Gulfport, FL. Website: vitalebrothers.com.
-  Instagram: @johnvitale (solo), @vitalebros (collective).
+  Instagram: @johnnyvitale (solo), @vitalebros (collective).
 
 searchMuralDescription: |
   A multi-panel vintage Florida postcard mural inside The Factory. The left
@@ -132,6 +131,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Fact-check: Hot Walls is an Overspray Art Space event in Gulfport, not a SHINE event (thegabber.com). 'Painted SHINE every year' overstates the cited source, which says involved 'in various ways' since inception (stpetecatalyst.com). Solo handle is @johnnyvitale, per vitalebrothers.com."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://ilovetheburg.com/st-pete-shine-origins/"

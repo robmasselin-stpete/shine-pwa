@@ -122,8 +122,7 @@ searchBio: |
   Mural Festival artist — 2015, 2023, and 2025. He was profiled by the National
   Endowment for the Arts in October 2016 ("Art Talk with Michael Vasquez" by
   Paulette Beete) and by Miami New Times in June 2015 ("Artist Michael Vasquez
-  Brings Humanity to the Underrepresented" by Liz Tracy). He lives and works in
-  Miami. His website is michaelvasquez.info.
+  Brings Humanity to the Underrepresented" by Liz Tracy). He lives and works in St. Petersburg. His website is michaelvasquez.info.
 
 searchMuralDescription: |
   A large photorealistic scene depicting a group of young men hanging around a
@@ -143,6 +142,7 @@ furtherWork:
   - name: "michaelvasquez.info"
     url: "http://www.michaelvasquez.info"
 revisionLog:
+  - "2026-08-27 — Fact-check: His own site (a cited source) says born, lives and works in St. Petersburg; the Miami claim traces to a 2016 NEA profile."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

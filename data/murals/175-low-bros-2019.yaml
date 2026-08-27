@@ -61,7 +61,7 @@ searchBio: |
   Per the lowbros.de archive site and the active christophflorin.com, the duo's
   studio is at Bogenstraße 19, 20144 Hamburg, Germany. Hamburg remains their
   current base. Recent exhibitions under the Christoph Florin rebrand include
-  "Window Views" and "What's Cooking" at H.D. Gallery in Paris (2024), the
+  "Window Views" at H.D. Gallery in Paris (2024), the
   Knotenpunkt group show at Affenfaust Gallery (2024), "Postalgia" at Mirus
   Gallery in Denver, "Con.txt" at Urban Spree Gallery in Berlin, and "98
   Windows" at Mirus Gallery in San Francisco. Art-fair participation includes
@@ -75,7 +75,7 @@ searchBio: |
   Public Event. Working categories on the active site span Paintings,
   Sculptures, Projects, and Exhibitions, with named works including "Jet Set"
   (paintings) and "The Medium is the Message" (sculptures). New Instagram
-  handle: @christoph_florin. Contact: ih@christophflorin.com.
+  handle: @christoph_florin. Contact: hello@christophflorin.com.
 
 searchMuralDescription: |
   A wide 120-by-25-foot mural spanning the full length of a commercial building
@@ -100,6 +100,8 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Fact-check: What's Cooking was shown at Urban Art Fair Paris in 2023 (presented with H.D. Gallery), not an H.D. Gallery exhibition in 2024; only Window Views is the 2024 H.D. Gallery show."
+  - "2026-08-27 — Fact-check: Email was a scrape artifact; his contact page lists hello@christophflorin.com."
   - "22 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Appended lowbros.de + christophflorin.com (homepage, /about, /selected-works) findings to searchBio: Hamburg studio address (Bogenstraße 19), recent Christoph Florin rebrand exhibitions (H.D. Gallery Paris, Affenfaust, Mirus Denver, Urban Spree, Mirus SF), art-fair history (Urban Art Fair Paris, Scope Miami, Juxtapoz Clubhouse, Context, Affordable Artfair), Art Collection Berlin + private collections in 7 countries, multiple ADC Awards 2020 (Gold/Silver/Bronze across categories), named works Jet Set + The Medium is the Message, new IG @christoph_florin, contact email. Added 4 URLs to sourceNotes."
 sourceNotes:

@@ -54,8 +54,7 @@ searchBio: |
   to Portland, Oregon around 2009-2010. His work focuses on "the energy,
   movement, balance, and harmony of the chaos around us" — layered graphic
   design and nature elements exploring urban growth versus preserving nature,
-  motivated by childhood displacement across cultures. He has been featured in
-  Hi-Fructose magazine. Notable murals include "A Place We Call Home" in the PDX
+  motivated by childhood displacement across cultures.  Notable murals include "A Place We Call Home" in the PDX
   Airport North Pedestrian Tunnel (with Alex Chui, via Portland Street Art
   Alliance and Port of Portland), "Hello Bear!" at Groundwork Coffee in
   Portland, a mural celebrating historically significant Black women at the
@@ -97,12 +96,11 @@ searchBio: |
 
 searchMuralDescription: |
   A massive mural spanning roughly twenty-five by a hundred and seventy-five
-  feet along the Pinellas Trail at Bama Sea Products. A stylized bald eagle head
-  dominates the right side — sharp blue eye and curved beak rendered in warm
-  yellows, oranges, and teal with mosaic-like geometric patterning. The left
-  side dissolves into abstract geometric triangles in teal, coral, mint,
-  lavender, and white, creating a crystalline fractured effect that transitions
-  from the figurative eagle into pure abstraction. The palette shifts from cool
+  feet along the Pinellas Trail at Bama Sea Products. The right side shows local marine life — a red grouper, a spotted eagle ray, a
+  green moray eel and elkhorn and staghorn corals — rendered in warm yellows,
+  oranges and teal. The left two-thirds is a numbered infographic of seven
+  Florida fishing towns: Madeira Beach, Cortez, Steinhatchee, Apalachicola,
+  Matlacha and Key West. The palette shifts from cool
   teals and mints to warm golds and corals. The piece highlights Florida fishery
   culture and ocean ecology through a graphic, infographic-inspired style. It
   was the largest SHINE mural of 2019.
@@ -120,6 +118,8 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Fact-check: searchMuralDescription described a bald eagle head and crystalline abstraction that are not on this wall. Ocean Conservancy, who co-funded it and were on site, describe yellowfin grouper, moray eel, spotted eagle ray and threatened corals; the record's own photo shows a numbered infographic of Florida fishing towns. 'Spotted eagle ray' appears to have become 'bald eagle'."
+  - "2026-08-27 — Fact-check: No source supports a Hi-Fructose feature; the magazine's own site search returns nothing for the artist."
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Full research and bio, Claude-enhanced. Title corrected to The 8th Funky Fish Town"
 sourceNotes:

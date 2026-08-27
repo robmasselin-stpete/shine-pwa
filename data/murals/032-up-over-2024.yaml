@@ -37,14 +37,12 @@ artistBio: |
   Pete (originally painted for First Citrus Bank) is a local landmark. They have
   also painted for the Tampa Bay Buccaneers and Duke Energy.
 
-  For SHINE's 10th anniversary in 2024, they painted at 2214 2nd Ave North — a
-  full-circle moment: the festival's founder painting alongside the city's most
-  prolific muralists.
+  They painted for SHINE's 10th anniversary in 2024 — a full-circle moment: the
+  festival's founder painting alongside the city's most prolific muralists.
 
 searchBio: |
   Tes One co-founded the SHINE Mural Festival. The Vitale Bros have been
-  painting Tampa Bay walls since 1992. In September 2020, they started painting
-  together under the name Up & Over.
+  painting Tampa Bay walls since 1992. In 2020, they started painting together under the name Up & Over.
 
   Leon "Tes One" Bedore (born c. 1977) started tagging at fourteen in 1992 and
   came up through the Pinellas County Center for the Arts at Gibbs High School.
@@ -87,7 +85,7 @@ searchBio: |
   and Starbucks. The studio's stated mission is to "create art that resonates
   with its surroundings and connects with the people who experience it."
 
-  For SHINE's 10th anniversary in 2024, Up & Over painted at 2214 2nd Ave North.
+  Up & Over painted for SHINE's 10th anniversary in 2024.
   Instagram: @upandovermurals. Website: upandovermurals.com. Contact:
   hello@upandovermurals.com / (813) 370-0870.
 
@@ -109,6 +107,8 @@ artistAwards: "Tes One: SHINE Mural Festival co-founder (2015); Morean Arts Cent
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Fact-check: Both bios placed the 2024 SHINE wall at 2214 2nd Ave North, contradicting the record's own address and GPS (201 17th Street South, Modera, from Rob's field photo). No source puts a 2024 Up & Over / Vitale / Tes One SHINE wall at that address, so the street reference was removed rather than replaced."
+  - "2026-08-27 — Fact-check: No source gives a month-level formation date for Up & Over."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-03 — Reframed searchBio with upandovermurals.com content: tagline (STAY UP & GET OVER), service-area list, 14 named projects (Viva Tampa / Immaculate / Begin Anywhere / Sauvignon / DPR Construction / Transcendance / Buccaneers Godwin+Brady / Clean Current / DFCU Financial / Bloom / Mother Earth / Colossal / Dream Big / SalonCentric), additional clients (Accenture, Facebook, Visit Tampa Bay, Starbucks, Tampa Foundation), studio contact. Display bio not changed; flagging that 'First Citrus Bank' wraparound is now branded DFCU Financial per studio site."
 sourceNotes:

@@ -27,8 +27,7 @@ artistBio: |
   outside the usual aesthetic canons.
 
   Marina Capdevila holds a degree in art from the University of Barcelona and a
-  postgraduate in artistic illustration from Eina School. She spent time at the
-  Willem de Kooning Academy in Amsterdam. Her style uses powerful color with
+  postgraduate in artistic illustration from Eina School. She spent time at the Willem de Kooning Academy in Rotterdam. Her style uses powerful color with
   soft shading inspired by Renaissance sfumato technique, rendered through
   exaggeration and irony — elderly people rendered as vibrant, vital, alive.
 
@@ -128,6 +127,7 @@ furtherWork:
     url: "https://www.marinacapdevila.com"
 
 revisionLog:
+  - "2026-08-27 — Fact-check: The Willem de Kooning Academy is in Rotterdam, not Amsterdam — as the record's own SHINE sourceNote states."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

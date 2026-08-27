@@ -6,7 +6,7 @@ artist: Cecilia Lueza
 year: 2018
 lat: 27.765763
 lng: -82.663528
-address: 2612 22nd St S
+address: 515 22nd St S
 category: commercial
 img: images/murals/commercial/cecilia-lueza-encounter.jpeg
 audio: "https://cdn.muralquest.app/audio/140.mp3?v=2"
@@ -45,8 +45,8 @@ artistBio: |
   Art Miami, and the Florida Department of State collection.
 
   She is a four-time SHINE artist — "Common Ground" in 2016 (the intersection),
-  "Encounter" and "The Blue Hour" in 2018, "The Sky Is the Limit" in 2019, and
-  "Radiance" at the Haddy Factory for SHINE 2025 Origins.
+  "The Blue Hour" in 2018, "The Sky Is the Limit" in 2019, and "Radiance" at the
+  Haddy Factory for SHINE 2025 Origins.
 
 searchBio: |
   She painted an entire intersection. Fifty volunteers helped. Then a storm
@@ -82,7 +82,7 @@ searchBio: |
   "Luminarium" at the Arts and Innovation Center in Rockville MD (interactive
   wall sculptures with fiber optics and LEDs activated by sound), "Time Flies
   Sundial" at River Terrace Education Campus in Washington DC, multiple school
-  commissions for the DC Department of General Services, "Delta" and "Nova" in
+  commissions for the DC Department of General Services, "Delta" in Tarpon Springs and "Nova" in
   Jacksonville, "Dual Nature" in Reno, "Journey of Hope" in Fort Myers, "Nexus"
   in Tampa, "Caleidoscopio" in Toledo, "Sea Orb" in Jacksonville, and "Golden
   Hour" at the Orange County Administration Center in Orlando (2026).
@@ -106,9 +106,7 @@ searchBio: |
 
   She is a four-time SHINE artist: "Common Ground" (2016) — a street mural at
   Central Ave and 5th Street outside Florida CraftArt, painted with 50+
-  volunteers, washed away by a storm, painted again; "Encounter" (2018) at the
-  ArtsXchange in the Warehouse Arts District; "The Blue Hour" (2018) at ONE St.
-  Petersburg; "The Sky Is the Limit" (2019) — a 164 x 11 foot ground mural at
+  volunteers, washed away by a storm, painted again; "The Blue Hour" (2018) at ONE St. Petersburg; "The Sky Is the Limit" (2019) — a 164 x 11 foot ground mural at
   North Shore Park pier; and "Radiance" (2025) at the Haddy Factory for SHINE
   Origins. Instagram: @cecilialuezaap. Website: lueza.com.
 
@@ -141,6 +139,8 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Fact-check: Removed Encounter from the SHINE list — it is a commissioned ArtsXchange wall, not a festival mural (stpetecatalyst.com). Same error previously corrected in #4 and #210."
+  - "2026-08-27 — Fact-check: Address corrected to the ArtsXchange campus at 515 22nd Street South (matches the record's own building field, its GPS, and sibling records #010/#019). Delta is in Tarpon Springs, not Jacksonville (lueza.com/public-sculpture)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "GPS from user photo. User photo replaces stock image. Originally painted 2018, restored April 2023. Address approximate from GPS — entrance to ArtsXchange campus on 22nd St S in the Warehouse Arts District."

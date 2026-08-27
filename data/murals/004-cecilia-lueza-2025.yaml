@@ -45,7 +45,7 @@ artistBio: |
   Art Miami, and the Florida Department of State collection.
 
   She is a four-time SHINE artist — "Common Ground" in 2016 (the intersection),
-  "Encounter" and "The Blue Hour" in 2018, "The Sky Is the Limit" in 2019, and
+  "The Blue Hour" in 2018, "The Sky Is the Limit" in 2019, and
   "Radiance" at the Haddy Factory for SHINE 2025 Origins.
 
 searchBio: |
@@ -106,9 +106,7 @@ searchBio: |
 
   She is a four-time SHINE artist: "Common Ground" (2016) — a street mural at
   Central Ave and 5th Street outside Florida CraftArt, painted with 50+
-  volunteers, washed away by a storm, painted again; "Encounter" (2018) at the
-  ArtsXchange in the Warehouse Arts District; "The Blue Hour" (2018) at ONE St.
-  Petersburg; "The Sky Is the Limit" (2019) — a 164 x 11 foot ground mural at
+  volunteers, washed away by a storm, painted again; "The Blue Hour" (2018) at ONE St. Petersburg; "The Sky Is the Limit" (2019) — a 164 x 11 foot ground mural at
   North Shore Park pier; and "Radiance" (2025) at the Haddy Factory for SHINE
   Origins. Instagram: @cecilialuezaap. Website: lueza.com.
 
@@ -131,6 +129,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Fact-check: Removed Encounter from the SHINE list — a commissioned ArtsXchange wall, not a festival mural. Same correction as #140 and #210; missed here on the first pass."
   - '2026-08-27 — Fact-check: Delta is at Icaria on Pinellas, Tarpon Springs FL (2020), not Jacksonville; only Nova is Jacksonville. Source: lueza.com/public-sculpture, creativepinellas.org." "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed'
 sourceNotes:
   - "https://www.lueza.com/mural-art/"
