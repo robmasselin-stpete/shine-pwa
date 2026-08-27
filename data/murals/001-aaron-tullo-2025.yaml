@@ -29,11 +29,10 @@ artistBio: |
   He played at St. Petersburg High School, made second-team All-County as a
   sophomore, and tried out for the USA Baseball Youth National Team at 16. The
   Brewers took him in the 17th round of the 2006 draft — he turned them down for
-  college. They took him again in 2007 out of the University of Tennessee. This
-  time he signed.
-
-  He pitched in the Brewers' minor league system for roughly six years before
-  injuries ended it. He was around 25.
+  college. They took him again in 2007, that time out of St. Petersburg College. He
+  went back to school instead, finishing at Tennessee. He turned pro with the
+  Angels organization in 2010 and pitched roughly six years, the back half in
+  independent ball, before injuries ended it. He was around 25.
 
   What came next was a pivot, not a restart. Tullo studied at St. Petersburg
   College and the University of Tennessee (arts and sciences), and his eye for
@@ -60,15 +59,15 @@ searchBio: |
   Aaron James Tullo was born March 9, 1988 in St. Petersburg, Florida. He
   attended St. Petersburg High School under coach Stefan Futch, made second-team
   All-County as a sophomore in 2004, and was selected to try out for the USA
-  Baseball Youth National Team at age 16. A throwing arm injury in the summer of
-  2005 complicated things, but the Milwaukee Brewers still drafted him in the
+  Baseball Youth National Team at age 16. A throwing arm injury in the summer of 2004 complicated things, but the Milwaukee Brewers still drafted him in the
   17th round (512th overall) of the 2006 MLB Draft out of high school. He turned
   them down and went to college.
 
-  At the University of Tennessee he pitched as a right-hander — 10 appearances
-  as a freshman in 2007 with a 3.72 ERA and 56 strikeouts in 36.1 innings. The
-  Brewers drafted him again in 2007, 47th round. He signed and entered their
-  minor league system. He pitched professionally for roughly six years before
+  At St. Petersburg College he pitched as a right-hander — 10 appearances as a
+  freshman in 2007 with a 3.72 ERA and 56 strikeouts in 36.1 innings. He
+  transferred to the University of Tennessee, pitching there in 2009 and 2010. The Brewers drafted him again in 2007, 47th round, out of St. Petersburg
+  College. He did not sign. He turned pro in 2010, signing as a free agent
+  with the Los Angeles Angels organization. He pitched professionally for roughly six years before
   injuries ended his baseball career around age 25. He also attended St.
   Petersburg College and is described as a USF graduate.
 
@@ -115,6 +114,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Tullo: 2007 draft was out of St. Petersburg College, unsigned; pro career was Angels + indy, not Brewers; Tullo: arm injury was summer 2004; 2005 was the re-aggravation; Tullo: those freshman numbers are St. Petersburg College, not Tennessee; Tullo: he did not sign in 2007; first pro contract was the Angels in 2010"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-06-16 — Title set to 'Golden Dawn' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:

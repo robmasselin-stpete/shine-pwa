@@ -33,9 +33,9 @@ artistBio: |
   and Entertainment.
 
   His mural projects span the country: Denver, Chattanooga, Atlanta, Austin,
-  Miami, Las Vegas, Los Angeles, Kansas City, Flint, and Binghamton, New York —
-  where he painted "Cultivate Kindness," a 40-foot mural with West Side Middle
-  School students. In St. Pete, he painted murals at CASA Family Justice Center
+  Miami, Las Vegas, Los Angeles, Kansas City, Flint, and Binghamton, New York. In Charleston, West Virginia he painted
+  "Cultivate Kindness," a 40-foot mural made with West Side Middle School
+  students. In St. Pete, he painted murals at CASA Family Justice Center
   on Arlington Ave (domestic violence survivor themes) and a portrait of Betty
   Reid Soskin at the Florida Botanical Gardens in Largo.
 
@@ -59,9 +59,9 @@ searchBio: |
 
   His mural projects span the country: Denver, Chattanooga, Atlanta, Austin,
   Miami, Las Vegas, Los Angeles, Kansas City, Flint, and Binghamton, New York.
-  In Binghamton he painted "Cultivate Kindness," a 40-foot mural completed with
-  West Side Middle School students, and "Spread Love," approximately 40 feet
-  tall on the M&T Bank building at 68 Exchange Street, Binghamton, NY 13901.
+  In Charleston, West Virginia he painted "Cultivate Kindness," a 40-foot
+  mural completed with West Side Middle School students. In Binghamton he
+  painted "Spread Love," approximately 40 feet tall on the M&T Bank building at 68 Exchange Street, Binghamton, NY 13901.
   "Spread Love" was painted with Golden Paintworks Mural & Theme Paint and Kobra
   spray paint, and was recognized by Broome County executive Brian Garner with a
   certificate of recognition. The mural depicts the butterfly effect of good
@@ -135,6 +135,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY; Cultivate Kindness is in Charleston WV; only Spread Love is in Binghamton"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:

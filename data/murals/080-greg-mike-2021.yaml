@@ -35,9 +35,9 @@ artistBio: |
   He founded ABV Gallery and Agency in Atlanta in 2008 and launched the
   OuterSpace Project in 2015, producing over a hundred murals across the city.
   Clients include Nike, Coca-Cola, Google, Spotify, BMW, Adidas, Converse, the
-  Atlanta Braves and Falcons, Ford Mustang, and Topgolf. He received the Key to
-  the City of Worcester, Massachusetts, and was named Best Established Visual
-  Artist and a Notable Georgian by Georgia Trend.
+  Atlanta Braves and Falcons, Ford Mustang, and Topgolf. He received the Key to the City of Worcester, Massachusetts, was named Best
+  Established Visual Artist by Creative Loafing, and a Notable Georgian by
+  Georgia Trend.
 
   For SHINE 2021, he painted in St. Petersburg.
 
@@ -130,6 +130,7 @@ furtherWork:
   - name: "gregmike.com"
     url: "https://www.gregmike.com"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Best Established Visual Artist was Creative Loafing, not Georgia Trend"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

@@ -45,10 +45,10 @@ artistBio: |
   mural technique to classes of up to twenty students. After Hurricane Milton,
   they painted free signs for businesses that lost theirs.
 
-  They have painted SHINE every year since its inception — "The Cool Kids" in
-  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
-  2025, Johnny painted two solo murals: one on the 600 block where it all began,
-  and another at The Factory on Fairfield Ave South with his daughter Sionna.
+  They have been involved with SHINE since its inception — "The Cool Kids" in
+  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins 2025, Johnny painted two murals: a solo wall on the 600
+  block where it all began, and another at The Factory on Fairfield Ave South
+  shared with his collaborator Sionna Sio MacLeish.
 
 searchBio: |
   Their first mural came from a sketch on a paper napkin, handed to a restaurant
@@ -63,8 +63,7 @@ searchBio: |
   collaborated on set design for Harmony Korine's Spring Breakers.
 
   In 2023, Johnny launched Overspray, a street art shop and graffiti school in
-  Gulfport. After Hurricane Milton, they painted free signs for businesses. They
-  have painted SHINE every year since its inception.
+  Gulfport. After Hurricane Milton, they painted free signs for businesses. They have been involved with SHINE since its inception.
 
 searchMuralDescription: |
   A photorealistic great horned owl rendered in detailed gray, brown, and cream
@@ -84,6 +83,8 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year"
+  - "27 August 2026 — Fact-check fleet: Sionna Sio MacLeish is a collaborator, not Vitale's daughter; the Factory wall was shared, not solo"
   - "22 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-21, GPS from EXIF"

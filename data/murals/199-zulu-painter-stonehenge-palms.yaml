@@ -29,9 +29,9 @@ artistBio: |
   Entertainment.
 
   His mural projects span the country: Denver, Chattanooga, Atlanta, Austin,
-  Miami, Las Vegas, Los Angeles, Kansas City, Flint, and Binghamton, New York —
-  where he painted "Cultivate Kindness," a 40-foot mural with West Side Middle
-  School students. He is a four-time SHINE artist (2016, 2017, 2018, 2024) and
+  Miami, Las Vegas, Los Angeles, Kansas City, Flint, and Binghamton, New York. In Charleston, West Virginia he painted
+  "Cultivate Kindness," a 40-foot mural made with West Side Middle School
+  students. He is a four-time SHINE artist (2016, 2017, 2018, 2024) and
   returned for SHINE Origins 2025. He received a St. Pete Arts Alliance Muse
   Award in 2022.
 
@@ -101,6 +101,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY"
   - "2026-05-04 — New mural added by Rob: Zulu Painter's Stonehenge Park palm silhouettes wall under the Tyrone Blvd overpass. GPS from photo IMG_0254.jpeg EXIF (27.79917, -82.73745). Year unknown — flagged for follow-up. Bio body adapted from #019 Zulu Painter SHINE Origins 2025 yaml."
 sourceNotes:
   - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0254.jpeg)"

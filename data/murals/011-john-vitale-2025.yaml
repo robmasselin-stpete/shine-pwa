@@ -39,7 +39,7 @@ artistBio: |
   mural technique to classes of up to twenty students. After Hurricane Milton,
   they painted free signs for businesses that lost theirs.
 
-  They have painted SHINE every year since its inception — "The Cool Kids" in
+  They have been involved with SHINE since its inception — "The Cool Kids" in
   2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
   2025, Johnny painted two solo murals: one on the 600 block where it all began,
   and another at The Factory on Fairfield Ave South with Sionna "Sio" Macleish.
@@ -116,7 +116,7 @@ muralInspiration: |
   right prior to receiving care.
 
 muralAwards: ""
-artistAwards: "SHINE festival artist every year since inception; set design for Spring Breakers (Harmony Korine)"
+artistAwards: "SHINE festival artist since 2015; set design for Spring Breakers (Harmony Korine)"
 
 furtherWork:
   - name: "vitalebrothers.com"
@@ -125,6 +125,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year; artistAwards hedged: painted walls documented from 2015 on"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://ilovetheburg.com/vitale-bros-power-to-the-patients-st-pete-obey/"

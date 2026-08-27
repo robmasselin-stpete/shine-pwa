@@ -34,8 +34,7 @@ artistBio: |
   stencil work, graffiti, aerosol portraits, and solid color blocks.
 
   They founded Mergeculture Gallery in Tampa Heights (2017) and co-founded the
-  Heights Walls community mural program. Clients include T-Mobile, the City of
-  Tampa, and the Tampa Convention Center. Their SHINE 2018 mural "Notice Us"
+  Heights Walls community mural program. Clients include the City of Tampa, the Tampa Convention Center, and Valspar. Their SHINE 2018 mural "Notice Us"
   depicted an endangered Florida panther.
 
 searchBio: |
@@ -79,7 +78,7 @@ searchBio: |
   campaign and is located on the Feeding Tampa Bay building just outside Ybor
   City.
 
-  Brand and institutional clients include T-Mobile, the City of Tampa, the Tampa
+  Brand and institutional clients include the City of Tampa, the Tampa
   Convention Center, and Valspar. For SHINE Mural Festival 2018, Illsol painted
   "Notice Us" — a mural depicting an endangered Florida panther — in St.
   Petersburg. They have credited Palehorse Design (Chris Parks), Chad Mize, and
@@ -108,7 +107,8 @@ searchMuralDescription: |
   background. The palette balances the warm realism of the panther against cool
   abstract elements in teals, corals, and greens.
 
-muralInspiration: "A plea on behalf of Florida's endangered wildlife. The Florida Panther was nearly declared extinct in the 1990s, with only 120-230 adults remaining. 'Notice Us' asks humans to recognize the impact of development on Florida's fragile ecosystem."
+muralInspiration: "A plea on behalf of Florida's endangered wildlife. The Florida panther was nearly declared extinct in the 1990s; roughly 120-230
+adults survive today. 'Notice Us' asks humans to recognize the impact of development on Florida's fragile ecosystem."
 muralAwards: ""
 artistAwards: "Founded Mergeculture Gallery (2017); co-founded Heights Walls; SHINE 2018"
 
@@ -117,6 +117,7 @@ furtherWork:
     url: ""
 
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: T-Mobile appears in no source; replaced with Valspar, which does; T-Mobile appears in no source; 120-230 is the present-day FWC estimate, not the 1990s low"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

@@ -35,7 +35,7 @@ artistBio: |
   of local businesses. They call themselves the "mural police" — restoring
   damaged walls around the city for free.
 
-  They have painted SHINE every year since its inception.
+  They have been involved with SHINE since its inception.
 
 searchBio: |
   Vitale Bros — see full bio on their other entries (ids 27, 73, 142, 156,
@@ -84,6 +84,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year"
   - "2026-05-14 — New mural added by Rob: sixth Vitale Bros in Mural Quest, the spray-can monster mascot on the side of their own Overspray shop in Gulfport. GPS from photo IMG_0292.jpeg EXIF (27.75087, -82.70133). Signed 'VITALE BROS' lower right. Address pending exact street number — note that Vitale Bros own this wall."
 sourceNotes:
   - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0292.jpeg)"

@@ -122,7 +122,7 @@ searchMuralDescription: |
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "SHINE festival artist every year since inception; set design for Spring Breakers (Harmony Korine)"
+artistAwards: "SHINE festival artist since 2015; set design for Spring Breakers (Harmony Korine)"
 
 furtherWork:
   - name: "vitalebrothers.com"
@@ -131,6 +131,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: artistAwards hedged: painted walls documented from 2015 on"
   - "2026-08-27 — Fact-check: Hot Walls is an Overspray Art Space event in Gulfport, not a SHINE event (thegabber.com). 'Painted SHINE every year' overstates the cited source, which says involved 'in various ways' since inception (stpetecatalyst.com). Solo handle is @johnnyvitale, per vitalebrothers.com."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:

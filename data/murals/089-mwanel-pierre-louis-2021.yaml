@@ -45,9 +45,9 @@ artistBio: |
   5th-anniversary exhibition "Exploring the New Contemporary Movement" at the
   Honolulu Museum of Art.
 
-  For SHINE 2021, he painted a woman with flowing locs on the side of Green
-  Bench Brewing — face rendered tight, background falling into warm washes of
-  orange and earth.
+  For SHINE 2021, he painted a woman with flowing locs on the side of Green Bench Brewing —
+  face rendered tight, set against flat shapes of magenta, teal, and yellow on
+  black.
 
 searchBio: |
   Mwanel Pierre-Louis is a Miami-based painter born in New York to Haitian
@@ -91,10 +91,10 @@ searchBio: |
   panel, 36" tondo, shown in Memories and Manifesting (Gallery II).
 
   His 2021 SHINE Mural Festival contribution in St. Petersburg, Florida is on
-  the side of Green Bench Brewing. The portrait shows a woman with flowing locs
-  against layered washes of warm color, and demonstrates his signature approach
-  of pairing photorealistic faces with loose, expressive abstraction around the
-  edges.
+  the side of Green Bench Brewing. The portrait shows a woman with flowing locs against flat, hard-edged shapes
+  of magenta, teal, and yellow on a black ground, and demonstrates his
+  signature approach of pairing a closely rendered face with bold graphic
+  abstraction around it.
 
   His personal website is mwanel.com, which organizes work by year from 2016
   through 2025 and includes sections for Digital, Murals, Product, Editorial /
@@ -103,16 +103,18 @@ searchBio: |
 
 searchMuralDescription: |
   A striking portrait of a woman with long locs dominates the side of Green
-  Bench Brewing. The face is rendered with photorealistic detail while the
-  background dissolves into expressive washes of warm oranges, reds, and earth
-  tones. The contrast between the precise portrait work and the loose, painterly
-  surroundings gives the piece real presence from across the street.
+  Bench Brewing. The face is rendered in close detail in plum and magenta tones, while the
+  background is a black ground broken by flat geometric shapes in magenta and
+  teal and long ribbons of yellow. The contrast between the precise portrait
+  work and the hard-edged graphic surroundings gives the piece real presence
+  from across the street.
 
 muralInspiration: ""
 muralAwards: ""
 artistAwards: ""
 furtherWork: []
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: palette corrected against the field photo: black ground with magenta/teal/yellow, no warm washes; palette corrected against the field photo; palette corrected against the field photo"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Display bio rewritten with hook anchored to this wall ('photorealistic faces that dissolve into pure abstraction at the edges'). Body bulked with Thinkspace solo, gallery shows (Talon/Antler/Spoke Art/Nucleus), POW!WOW! Hawai'i Honolulu Museum exhibition, and full client list."
