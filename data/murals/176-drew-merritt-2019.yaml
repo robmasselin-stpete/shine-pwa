@@ -80,7 +80,8 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "22 April 2026 — New mural added, GPS from Rob's photo"
+revisionLog:
+  - "22 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-21, GPS from EXIF"
   - "https://www.visitstpeteclearwater.com/profile/mask-off-edge-district/140781"

@@ -52,7 +52,8 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "26 April 2026 — New mural added, GPS from Rob's photo"
+revisionLog:
+  - "26 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-26, GPS from EXIF"
   - "Signed Donnelly 2K14 on wall"

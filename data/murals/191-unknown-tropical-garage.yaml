@@ -40,7 +40,8 @@ status: research  # unidentified artist — kept for ongoing research, not expor
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "26 April 2026 — New mural added, GPS from Rob's photo"
+revisionLog:
+  - "26 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-26, GPS from EXIF"
   - "Artist unknown, residential garage door"

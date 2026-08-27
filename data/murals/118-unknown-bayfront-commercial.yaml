@@ -112,7 +112,8 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://creativepinellas.org/artist/elizabeth-barenis/"

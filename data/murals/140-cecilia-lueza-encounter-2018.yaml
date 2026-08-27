@@ -140,7 +140,8 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "GPS from user photo. User photo replaces stock image. Originally painted 2018, restored April 2023. Address approximate from GPS — entrance to ArtsXchange campus on 22nd St S in the Warehouse Arts District."
   - "stpetecatalyst.com/art-news-new-life-for-bold-mural-artwalk-weekend/"

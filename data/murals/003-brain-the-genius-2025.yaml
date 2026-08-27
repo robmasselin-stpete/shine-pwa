@@ -64,7 +64,8 @@ artistAwards: "SHINE 2020 Bright Spot artist; SHINE Origins 2025 selected artist
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://ilovetheburg.com/st-pete-shine-origins/"
   - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"

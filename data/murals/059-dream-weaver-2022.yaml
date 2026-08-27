@@ -109,7 +109,8 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "Photo by Rob Asselin. Bio from approved 2025 profile. 2026-03-05."
   - "https://voyagemia.com/interview/meet-taylor-smith-dreamweaver-designs-st-pete-fl/"

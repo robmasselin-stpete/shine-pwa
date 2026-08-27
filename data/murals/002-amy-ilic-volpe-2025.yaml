@@ -79,7 +79,8 @@ artistAwards: "2022 Gasparilla Festival of the Arts Emerging Artist Recipient; A
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+revisionLog:
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "Enhanced from photo, 2026-03-05"
   - "https://notrealart.com/artist-amy-ilic-volpe-paintings-cultivate-childlike-glee/"

@@ -80,7 +80,8 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "20 April 2026 — New mural added, GPS from Rob's photo"
+revisionLog:
+  - "20 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-20, GPS from EXIF"
   - "Artist: Ya La'Ford, signed on plaque"
