@@ -20,7 +20,7 @@ basedIn: "Berlin, Germany"
 fieldNotes:
   - "Co-founded The Weird — international graffiti crew"
   - "Vibrant character-based murals"
-  - "St. Pete local artist"
+  - "Berlin-based, born in the GDR"
 
 artistBio: |
   He co-founded The Weird — an international graffiti crew alongside Nychos, Low
@@ -151,5 +151,6 @@ sourceNotes:
   - "https://larswunderlich.myportfolio.com/about"
   - "https://gallery1to1.com/looktheweird"
 revisionLog:
+  - '2026-08-27 — Fact-check: fieldNotes said "St. Pete local artist" and ships to the app; he is Berlin-based, born Neubrandenburg 1981, and was one of SHINE 2018''s international artists. Contradicted the record''s own basedIn: Berlin, Germany.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

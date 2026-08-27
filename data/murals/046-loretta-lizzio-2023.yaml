@@ -129,6 +129,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - '2026-08-27 — Fact-check: Removed a sourceNote about Hannah Eddy (a different SHINE 2023 artist) that had been copied in from a sibling record; it contains no mention of Lizzio.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
@@ -140,4 +141,3 @@ sourceNotes:
   - "https://www.lorettalizzio.com/about"
   - "https://www.lorettalizzio.com/curriculum-vitae"
   - "https://www.thedrawingarm.com.au/artists/loretta-lizzio"
-  - "https://southwestcontemporary.com/hannah-eddy-paints-life-and-death/"

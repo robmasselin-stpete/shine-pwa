@@ -15,7 +15,7 @@ audio: "https://cdn.muralquest.app/audio/92.mp3?v=1"
 title: ""
 building: The Factory St. Pete
 instagram: rickywatts
-basedIn: "San Francisco, CA"
+basedIn: "Sebastopol, CA"
 
 artistBio: |
   Google made him their Artist in Residence. He painted the lobby of Building 42
@@ -27,7 +27,7 @@ artistBio: |
   abstract, fluid shapes with psychedelic color gradients that evolved from
   letter-based canvas work.
 
-  He has painted fifty-plus large-scale murals since 2004 and mounted over a
+  He has painted fifty-plus large-scale murals since 2012 and mounted over a
   hundred group exhibitions and twenty solo shows, including at Sotheby's
   Oakland and Modern Eden. Clients include Google, Louis Vuitton, YouTube,
   Mercedes Benz, IBM, and Outside Lands. He has painted for POW! WOW!, the Las
@@ -132,6 +132,7 @@ furtherWork:
   - name: "watts.art"
     url: "https://watts.art"
 revisionLog:
+  - '2026-08-27 — Fact-check: San Francisco is his birthplace, not his base — his own site says he works from a Sebastopol studio; searchBio already said Northern California. Mural list on watts.art begins 2012; 2004 was his first solo show.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

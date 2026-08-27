@@ -44,7 +44,7 @@ artistBio: |
   Art Miami, and the Florida Department of State collection.
 
   She is a four-time SHINE artist — "Common Ground" in 2016 (the intersection),
-  "Encounter" and "The Blue Hour" in 2018, "The Sky Is the Limit" in 2019, and
+  "The Blue Hour" in 2018, "The Sky Is the Limit" in 2019, and
   "Radiance" at the Haddy Factory for SHINE 2025 Origins.
 
 searchBio: |
@@ -81,7 +81,7 @@ searchBio: |
   "Luminarium" at the Arts and Innovation Center in Rockville MD (interactive
   wall sculptures with fiber optics and LEDs activated by sound), "Time Flies
   Sundial" at River Terrace Education Campus in Washington DC, multiple school
-  commissions for the DC Department of General Services, "Delta" and "Nova" in
+  commissions for the DC Department of General Services, "Delta" in Tarpon Springs and "Nova" in
   Jacksonville, "Dual Nature" in Reno, "Journey of Hope" in Fort Myers, "Nexus"
   in Tampa, "Caleidoscopio" in Toledo, "Sea Orb" in Jacksonville, and "Golden
   Hour" at the Orange County Administration Center in Orlando (2026).
@@ -132,7 +132,9 @@ furtherWork:
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "24 May 2026 — New entry. Photo and GPS sent directly to Rob by Cecilia Lueza. Bio reused from #4 (canonical Lueza bio, style card v1). Mural description written from the photo. Rob reviewed."
+revisionLog:
+  - '2026-08-27 — Fact-check: Removed "Encounter" from the list of SHINE festival murals — lueza.com dates it to August 2018 and SHINE 2018 ran Oct 5-14; only "The Blue Hour" is her documented SHINE 2018 wall (stpeteartsalliance.org/cecilia-lueza-2).'
+  - '2026-08-27 — Fact-check: Delta is at Icaria on Pinellas, Tarpon Springs FL (2020), not Jacksonville; only Nova is Jacksonville. Source: lueza.com/public-sculpture, creativepinellas.org." "24 May 2026 — New entry. Photo and GPS sent directly to Rob by Cecilia Lueza. Bio reused from #4 (canonical Lueza bio, style card v1). Mural description written from the photo. Rob reviewed.'
 sourceNotes:
   - "Photo sent directly to Rob by Cecilia Lueza (artist-supplied, authoritative). GPS 27.771342, -82.634121 provided by Rob. ONE St. Petersburg residential tower at 1st Ave N and 1st St N, downtown St. Pete."
   - "https://www.lueza.com/mural-art/"

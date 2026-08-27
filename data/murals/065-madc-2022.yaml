@@ -18,14 +18,13 @@ basedIn: "Germany"
 
 artistBio: |
   In 2010 she painted a 700-square-metre wall along the Berlin-Halle train line.
-  It is likely the largest graffiti mural ever painted by a single person. She
-  has broken her own record twice since.
+  It is likely the largest graffiti mural ever painted by a single person.
 
   Claudia Walde — MadC — was born in 1980 in Bautzen, Germany and raised in
   Ethiopia. She studied at Burg Giebichenstein University of Art and Design,
   Central Saint Martins in London, and earned a master's in graphic design. Her
   style evolved from street lettering to transparent layered compositions in
-  spray paint — including her own "Spectra" transparent paint.
+  spray paint — including Spectra transparent paint.
 
   She has painted a control tower at Punta Cana airport, a permanent
   installation at the Hessisches Landesmuseum Darmstadt, and glass works with
@@ -36,8 +35,7 @@ artistBio: |
 
 searchBio: |
   In 2010 she painted a 700-square-metre wall along the Berlin-Halle train line.
-  It is likely the largest graffiti mural ever painted by a single person. She
-  has broken her own record twice since.
+  It is likely the largest graffiti mural ever painted by a single person.
 
   Claudia Walde — MadC, nicknamed "The Mad One" for her radical approach to
   graffiti — was born in 1980 in Bautzen, Lusatia, Germany and raised in
@@ -140,6 +138,7 @@ furtherWork:
     url: "https://madc.tv"
 
 revisionLog:
+  - '2026-08-27 — Fact-check: Spectra is a paint she experimented with, not one she owns (Wikipedia, HENI); her paint-brand tie is Molotow. "Broken her own record twice since" is documented nowhere and contradicted by the same bio, which names only the 2018 1000-Wall Chicago.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
