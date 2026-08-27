@@ -12,7 +12,7 @@ img: images/murals/2022/van-der-luc.jpeg
 audio: "https://cdn.muralquest.app/audio/72.mp3?v=2"
 
 # ── Optional ──
-title: "Tank School"
+title: ""
 building: Allums Auto
 instagram: van_der_luc_
 basedIn: "Bogota, Colombia"
@@ -38,8 +38,8 @@ artistBio: |
   EMERGE live painting event at Station House. By 2022 he was a full SHINE mural
   artist.
 
-  For SHINE 2022 he painted "Tank School" on the side of Allums Auto in the
-  Warehouse Arts District — a white polar bear striding across a green landscape
+  For SHINE 2022 he painted the side of Allums Auto in the Warehouse Arts
+  District — a white polar bear striding across a green landscape
   with a robot on its back, an umbrella studded with stars, and a drone
   delivering art supplies in the corner.
 
@@ -59,8 +59,8 @@ searchBio: |
   EMERGE live painting event at Station House. By 2022 he was a full SHINE mural
   artist.
 
-  For SHINE 2022 he painted "Tank School" on the side of Allums Auto in the
-  Warehouse Arts District — a white polar bear striding across a green landscape
+  For SHINE 2022 he painted the side of Allums Auto in the Warehouse Arts
+  District — a white polar bear striding across a green landscape
   with a robot on its back, an umbrella studded with stars, and a drone
   delivering art supplies in the corner. Instagram: @van_der_luc_.
 
@@ -86,6 +86,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Tank School is an earlier Van Der Luc work used as a sample image in the lineup article, not this wall; Tank School is a different, earlier work"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "10 April 2026 — Fixed hollow opener, restructured with hook and paragraph breaks"
 sourceNotes:

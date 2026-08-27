@@ -26,7 +26,8 @@ artistBio: |
   She painted a 50,000-square-foot grain elevator in Wichita, Kansas. It broke
   the record for the largest acrylic mural by a single artist.
 
-  Nathalia Gallego Sanchez — Gleo — was born in 1992 in Cali, Colombia. She
+  Nathalia Gallego Sanchez — Gleo — was born in 1992 in Bogota, Colombia, and
+  moved to Cali at nine. She
   studied chemistry by day and fine arts at a night institute before earning her
   bachelor's in visual arts and graphic design from Universidad del Valle. She
   found formal study too theoretical and went her own way. She uses acrylics,
@@ -109,7 +110,7 @@ searchBio: |
 
   For SHINE Mural Festival 2021, she painted in St. Petersburg, Florida.
 
-  Website: gleo.com. Instagram: @gleo_co.
+  Website: gleoart.com. Instagram: @gleo_co.
 
 searchMuralDescription: |
   A wide panoramic mural across the full building wall showing multiple
@@ -125,6 +126,7 @@ muralAwards: ""
 artistAwards: "Largest acrylic mural by single artist (Wichita, 2018); Dinero 40 under 40 (Colombia); SHINE 2021"
 furtherWork: []
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: born in Bogota and moved to Cali at nine, per the record's own Dinero profile; her verified Instagram links gleoart.com; gleo.com serves no site"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Added IG URL (instagram.com/gleo_co) to sourceNotes."

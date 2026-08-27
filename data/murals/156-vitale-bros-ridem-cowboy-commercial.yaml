@@ -51,7 +51,8 @@ artistBio: |
   shared with his collaborator Sionna Sio MacLeish.
 
 searchBio: |
-  See Vitale Bros entries (ids 11, 12, 38, 73, 142) for full search bio.
+  See Vitale Bros entries (ids 11, 12, 27, 73, 129, 142, 208) for full search
+  bio.
 
 searchMuralDescription: |
   A vibrant retro-style mural framed by a painted trompe-l'oeil wooden frame
@@ -75,6 +76,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: id 38 is Bunnie Reiss, not a Vitale record; corrected the pointer list"
   - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year; artistAwards hedged: painted walls documented from 2015 on"
   - "27 August 2026 — Fact-check fleet: Sionna Sio MacLeish is a collaborator, not Vitale's daughter; the Factory wall was shared, not solo"
   - "15 April 2026 — New mural added, GPS from Rob's photo"

@@ -29,9 +29,8 @@ artistBio: |
   Ashley Cantero is a Tampa native — visual artist, muralist, and illustrator.
   Her style features precise line work and bold female characters with intense
   emotional energy, drawing from retro charm, the supernatural, and sci-fi. At
-  FloridaRAMA she created immersive 3D diorama installations ("Drive-In," "Swamp
-  Motel") and an eight-wall retro-futuristic mural, "Cosmic Dreams and Sunshine
-  Beams."
+  FloridaRAMA she created a pair of immersive 3D diorama installations,
+  "Drive-In" and "Swamp Motel."
 
   For SHINE 2022, she painted at 2421 Central Avenue.
 
@@ -64,9 +63,7 @@ searchBio: |
   sign, and a drive-in movie theater on a hill. "Swamp Motel" is a swamp-like
   setting with a lurking alien creature, a hungry alligator, a retro motel, and
   a honeymooning couple. Both dioramas were built from foam blocks, balsa wood,
-  foam core board, spray foam, felt, fabric, resin, and paint. She also painted
-  the eight-wall retro-futuristic mural "Cosmic Dreams and Sunshine Beams"
-  inside FloridaRAMA.
+  foam core board, spray foam, felt, fabric, resin, and paint.
 
   For SHINE Mural Festival 2022, she painted at 2421 Central Avenue in St.
   Petersburg, Florida. SHINE is the curated, invitation-only festival produced
@@ -110,6 +107,7 @@ furtherWork:
   - name: "ashleycantero.com"
     url: ""
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: dropped the eight-wall mural Cosmic Dreams and Sunshine Beams. FloridaRAMA's own artist page credits her with exactly two works, the dioramas Drive-In and Swamp Motel, and describes them as a pair of dioramas; no mural by that title appears there, on the FloridaRAMA site, or on her own site. Verified directly 27 Aug 2026 (this record lost its verifier agent to a machine sleep and was re-checked by hand)"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

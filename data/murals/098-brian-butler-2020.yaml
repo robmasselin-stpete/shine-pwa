@@ -20,7 +20,7 @@ basedIn: "Miami, Florida"
 fieldNotes:
   - "Drew over 2,000 live concert performances"
   - "From the crowd, with a sketchbook"
-  - "San Francisco-based illustrator"
+  - "Miami-based illustrator"
 
 artistBio: |
   He drew over two thousand live concert performances from the audience. He
@@ -149,6 +149,7 @@ sourceNotes:
   - "https://seawalls.org/mural/carbon-punishment/"
   - "https://www.cltampa.com/arts-entertainment/visual-art/article/21146034/st-pete-artist-to-display-carbon-punishment-piece-at-shine-mural-festival"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: he is Miami-based, per SPAA and the record's own basedIn field"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-07-20 — Corrected searchMuralDescription: prior text described a 'tropical foliage / green canopy' scene that did not match the actual mural. Rewrote to the real Carbon Punishment (ocean acidification) imagery from Sea Walls + CL Tampa. Narration rewritten to match."

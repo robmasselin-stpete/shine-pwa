@@ -23,9 +23,8 @@ artistBio: |
 
   Tracey Jones — Artist Jones — is based in Tampa. She holds a degree in graphic
   design and spent ten-plus years as a graphic and web designer before
-  transitioning to fine art painting. She was born in Trinidad and Tobago, and
-  the Caribbean tones show — vibrant-colored portraits of powerful Black and
-  brown people in mixed media, with composition informed by her design training.
+  transitioning to fine art painting. She paints vibrant-colored portraits of powerful Black and brown people in
+  mixed media, with composition informed by her design training.
 
   Clients include the Tampa Bay Lightning, the Tampa Bay Buccaneers, Outback,
   and Walmart. She participated in the City of Tampa's Art on the Block program
@@ -124,6 +123,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: Trinidad and Tobago birth is unsourced for Tracey Jones and appears to have bled over from Nneka Jones, a different artist"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Checked theartistjones.com per user request — redirects 301 to traceyrjones.com (already cited). Squarespace site homepage truncated by WebFetch and all subpaths (/about, /work, /murals, /portfolio) returned 404 — no extractable new content. theartistjones.com added to sources for completeness."

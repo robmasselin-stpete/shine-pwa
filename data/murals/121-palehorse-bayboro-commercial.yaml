@@ -19,7 +19,7 @@ basedIn: "St. Petersburg, FL"
 
 fieldNotes:
   - "Co-founded SHINE with his wife Michelle"
-  - "Designed album art for Shinedown"
+  - "Gig posters for Foo Fighters and Queens of the Stone Age"
   - "The architect behind the festival"
 
 artistBio: |
@@ -119,6 +119,7 @@ furtherWork:
     url: ""
 
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: no source connects him to Shinedown; replaced with credits his own portfolio documents"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

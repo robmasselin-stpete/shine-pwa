@@ -18,12 +18,12 @@ instagram: oliooolio
 basedIn: "Jacksonville, FL"
 
 fieldNotes:
-  - "Left Hangzhou at thirteen for education"
+  - "Left China at thirteen for education"
   - "Each mural tells a story of displacement"
   - "Delicate, dreamlike figurative work"
 
 artistBio: |
-  She left Hangzhou, China at thirteen for education. Each of her paintings
+  She left China at thirteen for education. Each of her paintings
   takes over a hundred hours.
 
   Lili Yuan is based in Jacksonville, Florida. She studied economics in China,
@@ -37,7 +37,7 @@ artistBio: |
   like water."
 
 searchBio: |
-  She left Hangzhou, China at thirteen for education. Each of her paintings
+  She left China at thirteen for education. Each of her paintings
   takes over a hundred hours.
 
   Lili Yuan is based in Jacksonville, Florida, and works as a painter and
@@ -121,5 +121,6 @@ sourceNotes:
   - "https://stpeteartsalliance.org/lili-yuan/"
   - "https://seawalls.org/mural/gift/"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: no source names Hangzhou or any Chinese hometown; no source names Hangzhou"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

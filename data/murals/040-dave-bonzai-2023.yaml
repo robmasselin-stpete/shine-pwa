@@ -127,8 +127,7 @@ searchMuralDescription: |
   against a gradient sky of deep purple, hot pink, and fiery red. A green
   geometric tree shape with horizontal stripes rises behind the lettering, and
   sharp diagonal lines in pink and white cut across the black background, giving
-  the piece a retro synthwave energy. Signed "@DaBonzai" in the lower right
-  corner. Bonzai described it as "a modern piece with a retro twist that the
+  the piece a retro synthwave energy. Signed "@DAVEBONZAI" in the lower right corner. Bonzai described it as "a modern piece with a retro twist that the
   people of St Pete could relate to."
 
 muralInspiration: ""
@@ -140,6 +139,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: the field photo shows @DAVEBONZAI; @DaBonzai is a different account"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Fixed location: confirmed London-based (Southampton-born) via Wood Street Walls, ArtRabbit, 2024 Derry mural coverage. Removed inaccurate 'St. Pete local artist' fieldNote."

@@ -26,10 +26,9 @@ artistBio: |
   She studied metalsmithing to continue work her late father began. Art runs in
   the family — both her parents were artists.
 
-  Sarah Sheppard grew up in Dallas, studied photography, drawing, painting,
-  graphic design, ceramics, and fabric art at the University of North Texas, and
-  has lived in St. Petersburg for over twelve years. She also trained in
-  metalsmithing at the Creative Jewelry Academy.
+  Sarah Sheppard grew up in Dallas, studied photography, drawing, painting, graphic design, ceramics, and fabric
+  art, and has lived in St. Petersburg for over twelve years. She also trained in metalsmithing at the Creative Side Jewelry Academy in
+  Austin.
 
   Her style is colorful, high-contrast figurative work — new romanticism,
   movement as metaphor for continuous loss and seeking. She started her mural
@@ -105,7 +104,7 @@ searchBio: |
   rewarding part of mural work — weather, public visibility of every mistake,
   and the conversations with passersby and children who light up at the work.
 
-  Website: sarahsheppardsart.com. Instagram: @thee.divine.sarah. Facebook:
+  Website: sarahsheppardsart.com. Instagram: @sarah.g.sheppard. Facebook:
   theedivinesarah. Phone: 727.417.2687.
 
 searchMuralDescription: |
@@ -123,6 +122,7 @@ muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: school is the Creative Side Jewelry Academy, per her own words in Voyage Houston; no reachable source names the school; subject list is sourced, the institution is not; current handle is sarah.g.sheppard, per her own site and SPAA; the record's own instagram field already said so"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

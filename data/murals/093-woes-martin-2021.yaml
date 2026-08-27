@@ -20,13 +20,14 @@ basedIn: "Los Angeles, CA"
 fieldNotes:
   - "Signature character: a stressed-out panda"
   - "Represents anxiety and modern life"
-  - "British artist, international murals"
+  - "American artist, international murals"
 
 artistBio: |
   His signature character is a stressed-out panda. It represents struggle and
   perseverance. There is also a hipster Chewbacca.
 
-  Aaron "Angry Woebots" Martin — Woes — was born and raised on Oahu, Hawaii.
+  Aaron "Angry Woebots" Martin — Woes — was born on Oahu, Hawaii, and grew up
+  between Southern California, Nevada, and Hawaii.
   Self-taught through graffiti, hip hop, and comics. He paints acrylic on wood
   and canvas in minimal color palettes with detailed character design, plus
   aerosol murals, resin sculptures, and vinyl toys.
@@ -109,6 +110,7 @@ muralAwards: ""
 artistAwards: "SHINE 2021 selected artist"
 furtherWork: []
 revisionLog:
+  - "27 August 2026 — Fact-check fleet: he is American, born on Oahu — no source calls him British; born on Oahu but raised mostly on the mainland, per his own bio"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
