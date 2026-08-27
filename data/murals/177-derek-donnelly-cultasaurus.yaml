@@ -73,12 +73,12 @@ muralAwards: ""
 artistAwards: "Multiple Best of the Bay wins; Inaugural Artmaker 2026 at Ruth Eckerd Hall; SHINE 2025 artist liaison"
 
 furtherWork:
-  - name: "derekdonnelly.com"
-    url: "https://derekdonnelly.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
-revisionLog: "22 April 2026 — New mural added, GPS from Rob's photo"
+revisionLog:
+  - "22 April 2026 — New mural added, GPS from Rob's photo"
+  - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
 sourceNotes:
   - "Photo by Rob 2026-04-21, GPS from EXIF"
   - "https://stpetecatalyst.com/muralist-derek-donnelly-wants-art-scene-changes/"

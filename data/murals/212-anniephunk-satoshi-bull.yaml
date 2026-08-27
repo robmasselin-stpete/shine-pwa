@@ -82,12 +82,11 @@ muralAwards: ""
 artistAwards: ""
 
 furtherWork:
-  - name: "missphunk.com"
-    url: "https://www.missphunk.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "2026-06-16 — New mural added by Rob: charging bull + anime woman + crypto 'genesis block' sun on the side of Satoshi Hideout (425 2nd St N). Photo from Rob (IMG_7214.jpeg, 2026-05-28); signature close-up IMG_7215.jpeg reads 'AnniePhunk'. Forwarded photos' EXIF GPS (27.78708, -82.64674) is bogus (identical stamp across all three forwarded photos) — discarded; Rob set final GPS via route-editor: 27.776765, -82.635410 (Satoshi Hideout wall, 425 2nd St N). (Was provisionally geocoded to 27.776945/-82.635316.) Year 2022 per St Pete Catalyst. Category commercial. Attribution: on-wall signature 'AnniePhunk' (authoritative for this wall); 2022 press credited Satoshi Hideout murals to gatsbynotart w/ concept by Clear ph — relationship between the two not asserted. Artist bio initially thin (no web presence found at add time)."
   - "2026-06-16 — Rob supplied artist links: Instagram @miss.phunk (display name 'Annie Phunk'), website missphunk.com. Updated artist field 'AnniePhunk' → 'Annie Phunk' (the wall signature is the run-together 'AnniePhunk'); added IG + website; light bio enrichment (painter, realist oil — portraits and pop-leaning still lifes per her IG grid)."
 sourceNotes:

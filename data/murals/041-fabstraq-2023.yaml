@@ -112,12 +112,11 @@ muralAwards: ""
 artistAwards: "Bay News 9 Everyday Hero; SHINE 2023 selected artist"
 
 furtherWork:
-  - name: "fabstraq.com"
-    url: "https://fabstraq.com"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:

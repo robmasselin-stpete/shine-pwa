@@ -99,14 +99,13 @@ muralInspiration: ""
 muralAwards: ""
 artistAwards: "Best in Show, ArtLoud Tampa (2010); Best of Show, Kissimmee Sculpture Experience"
 furtherWork:
-  - name: "artandsculptures.com"
-    url: "https://artandsculptures.com"
   - name: "Instagram @olesonart"
     url: "https://www.instagram.com/olesonart/"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "2026-05-04 — New mural added by Rob: James Oleson neo-surrealist grinning face wall at Stonehenge Park, St. Petersburg. GPS from photo IMG_0255.jpeg EXIF (27.79915, -82.73745). Year not documented in public sources — flagged for follow-up. Lower-right cursive signature unidentified. Bio compiled from St. Pete Arts Alliance directory, Morean Arts Center profile, Crow's Nest 'Perennial Bloom' coverage, and @olesonart Instagram."
 sourceNotes:
   - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0255.jpeg)"

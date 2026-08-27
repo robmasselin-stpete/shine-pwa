@@ -136,9 +136,8 @@ muralInspiration: "Commissioned by Josh of Zen Glass Studio, who gave Sheppard f
 muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
-  - name: "sarahsheppardsart.com"
-    url: "http://www.sarahsheppardsart.com"
 revisionLog:
+  - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Display bio rewritten anchored to THIS wall: compass-as-question hook, octopus-mermaid yin-yang concept, Josh free-rein commission story, Creative Loafing Dec 2014 inclusion alongside Coolidge/Mize/Donnelly/J&S Signs/Bask/Kosharek. Differentiates from #50 and #111 (her SHINE walls)."

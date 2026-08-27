@@ -89,8 +89,6 @@ muralAwards: ""
 artistAwards: ""
 
 furtherWork:
-  - name: "kosharek.art"
-    url: "https://kosharek.art"
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
@@ -103,5 +101,6 @@ sourceNotes:
   - "https://creativepinellas.org/magazine/bees-in-the-hive-discovering-mail-art-with-jennifer-kosharek/"
   - "https://www.fox13news.com/news/artist-uses-beached-sailboat-st-pete-spread-message-hope-after-hurricanes"
 revisionLog:
+  - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "16 April 2026 — Full research, bio rewrite with hook, searchBio added"
