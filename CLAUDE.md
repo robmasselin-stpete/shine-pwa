@@ -136,6 +136,20 @@ updates:
   fallback — remote is never required. `CONTENT_BASE_URL` in `content.js` = the CDN.
 - The service worker (`sw.js`) **bypasses `content.json`** so it can't shadow OTA
   updates with a stale cache. If you touch the SW's fetch routing, preserve that.
+
+### GOTCHA: the editor tools serve a SNAPSHOT, not the repo
+
+`tools/*.html` fetch `../data/murals/*.yaml` **relative to wherever they are served**.
+On `mural-tools.pages.dev` that is a point-in-time copy pushed by
+`scripts/deploy-tools.sh` — it does **not** re-run on its own. So after editing YAMLs,
+the editors keep showing the OLD data and it looks like the publish silently failed.
+The app is unaffected (`content.json` goes straight to R2 and is verified each publish).
+
+Refresh it with `python3 scripts/publish-content.py --tools` (publish + redeploy the
+snapshot) or `bash scripts/deploy-tools.sh` on its own. `--tools` is **opt-in** on
+purpose: it uploads 200+ files and adds ~15s, which you don't want on the festival
+photo fast path.
+
 ### Image split (v1.5)
 
 The app bundle is ~35 MB (was 414 MB). Full-res photos live on the CDN; a small
@@ -218,6 +232,8 @@ Instead, a Rob-side tool posts a chosen mural to the Mural Quest IG when he want
 - `scripts/build-data.py` — YAML + data/routes.json → data.js, routes.js, content.json + content-meta.js. Safe to run after edits.
 - `docs/SHINE-2026-OTA-TEST.md` — repeatable daily-photo OTA test procedure (uses held stub #900)
 - `scripts/publish-content.py` — build + push content.json live to R2 (OTA; no app build). See "Content OTA" above.
+  `--tools` also refreshes the editor snapshot on mural-tools.pages.dev (opt-in; the editors are stale without it).
+- `scripts/deploy-tools.sh` — push tools/*.html + a CURRENT snapshot of the YAMLs to Cloudflare Pages. Re-run after YAML edits.
 - `scripts/gen-narration.py` — draft per-mural ElevenLabs narration scripts via the Claude API → `data/narration/*.txt` for review. Scripts apply via each mural's `audio:` YAML field (→ `aud` in data.js/content.json). Key: `ANTHROPIC_API_KEY` env or gitignored `.mq-anthropic-key`. See `docs/NARRATION.md`.
 - `scripts/build-routes.py` — **DEPRECATED for routes.js; do not run.**
 - `tools/yaml-editor.html` — mural metadata editor PWA

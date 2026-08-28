@@ -38,6 +38,12 @@ Usage:
                                                 # it will drop any that do.
   python3 scripts/publish-content.py --post 210 # publish, then post mural #210 to IG
                                                 # (drafts a caption you edit + confirm)
+  python3 scripts/publish-content.py --tools     # publish, then refresh the editor tools
+                                                # snapshot on mural-tools.pages.dev so the
+                                                # YAML/route editors show the new data.
+                                                # Opt-in: it adds ~15s and 200+ file
+                                                # uploads, which you don't want on the
+                                                # festival fast path.
 """
 import glob
 import json
@@ -246,7 +252,20 @@ def main():
     except Exception as e:
         print(f"⚠ Uploaded, but could not verify the live URL: {e}")
 
-    # 4. Optionally post a mural to Instagram (opt-in, per-mural).
+    # 4. Optionally refresh the editor-tools snapshot (opt-in).
+    # tools/*.html read data/murals/*.yaml relative to wherever they're SERVED, so the
+    # copy on mural-tools.pages.dev is a point-in-time snapshot, not the repo. Without
+    # this, the YAML editor keeps showing pre-edit data and looks like the publish failed.
+    if '--tools' in sys.argv:
+        print("\n→ Refreshing the editor tools snapshot (mural-tools.pages.dev)…")
+        rc = subprocess.call(['bash', os.path.join(PROJECT_ROOT, 'scripts', 'deploy-tools.sh')])
+        if rc == 0:
+            print("✓ Tools snapshot refreshed — the editors now show this data.")
+        else:
+            print(f"⚠ Tools deploy failed (exit {rc}). The OTA publish above still "
+                  "succeeded; re-run `bash scripts/deploy-tools.sh` when convenient.")
+
+    # 5. Optionally post a mural to Instagram (opt-in, per-mural).
     if '--post' in sys.argv:
         try:
             mid = sys.argv[sys.argv.index('--post') + 1]
