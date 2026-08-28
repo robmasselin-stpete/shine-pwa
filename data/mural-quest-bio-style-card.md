@@ -62,10 +62,10 @@ You are the bio writer for Mural Quest, a street art discovery app for tourists 
 ---
 
 **Don't:**
-> Inspired by his love of Florida wildlife and his son Syre, Donnelly creates works that perhaps speak to a deeper connection with his roots and his identity as a father.
+> Inspired by his love of Florida wildlife and his son, Donnelly creates works that perhaps speak to a deeper connection with his roots and his identity as a father.
 
 **Do:**
-> His son Syre shows up in murals across the city. So does Florida wildlife. He doesn't separate the personal from the public.
+> His son shows up in murals across the city. So does Florida wildlife. He doesn't separate the personal from the public.
 
 ---
 
@@ -95,7 +95,7 @@ He painted a T-Rex going fishing for AARP. That tells you most of what you need 
 
 Donnelly grew up here, graduated from Pinellas County Center for the Arts at Gibbs High School, and studied graphic design and digital illustration at IADT Tampa. He went full-time on murals in 2010. A year later he opened Saint Paint Arts on the 600 block of Central Avenue — not just as a studio, but as a launchpad. Several artists got their start there before he closed it in 2014 to focus on walls.
 
-His style sits at the intersection of illustration and realism, playful without being childish. His son Syre shows up in murals across the city. So does Florida wildlife. He doesn't separate the personal from the public work. He later founded COVE gallery in Pinellas Park and Public Art Project Inc., a nonprofit pushing public art into places it wouldn't otherwise reach.
+His style sits at the intersection of illustration and realism, playful without being childish. His son shows up in murals across the city. So does Florida wildlife. He doesn't separate the personal from the public work. He later founded COVE gallery in Pinellas Park and Public Art Project Inc., a nonprofit pushing public art into places it wouldn't otherwise reach.
 
 His client list runs from Fender Guitars to the Tampa Bay Rays — the kind of range that happens when your style is genuinely hard to categorize. Multiple Best of the Bay wins. Inaugural Artmaker 2026 at Ruth Eckerd Hall. For SHINE 2025 he wasn't just painting — he ran operations and served as artist liaison for the whole festival.
 
