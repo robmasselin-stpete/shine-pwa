@@ -21,8 +21,8 @@ artistBio: |
   years.
 
   Jake Jacquillard — Tasko — is a Tampa Bay graffiti writer and wildstyle
-  specialist. Self-taught, no formal education. His work is "loud, colorful and
-  in your face" — flashy lettering in spray paint with fifteen-plus years of
+  specialist. Self-taught, no formal education. His work is loud, colorful and in your face — flashy lettering in spray
+  paint with fifteen-plus years of
   practice. He wants people to see graffiti as art, not vandalism.
 
   He organized "Letter Headz," a writer event in Pinellas. For SHINE 2018, he
@@ -40,8 +40,7 @@ searchBio: |
   skating with friends one day, his buddy had a can of paint, and he did "this
   bubble letter crap" — then started tagging his name everywhere he went. A few
   years later he saw a wall full of burners and was hooked. He is self-taught,
-  with no formal education in art. He describes his work as "loud, colorful and
-  in your face" — flashy lettering in spray paint with fifteen-plus years of
+  with no formal education in art. His work is loud, colorful and in your face — flashy lettering in spray paint with fifteen-plus years of
   practice. He wants people to see graffiti as art, not vandalism.
 
   He runs "Letter Headz," a writer event in Pinellas. The first edition was a
@@ -89,8 +88,7 @@ searchBio: |
   DeYoung (October 9, 2018) and the MRCNN Hip Hop interview "Tampa Bay Writer
   TASKO" by L. Reed.
 
-  Instagram: @the_one_of_many_ (current working handle, confirmed by Rob —
-  supersedes the @tasko handle listed on the MRCNN contact card). Letter Headz
+  Instagram: @the_one_of_many_ (current working handle, confirmed by Rob). Letter Headz
   Instagram is also active under the Letter Headz handle.
 
 searchMuralDescription: |
@@ -111,6 +109,7 @@ artistAwards: "SHINE 2018 Open Call; SHINE 2022 selected artist"
 furtherWork: []
 
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the quoted phrase appears in no source and has no traceable speaker; kept as description, dropped as a quotation; the quoted phrase appears in no source; the MRCNN interview never has him describe his own style; the MRCNN card lists no @tasko handle — 'TASKO' is a link label whose href is the_one_of_many_"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Updated Instagram handle reference in searchBio to @the_one_of_many_ (current working handle per Rob); old @tasko handle (from MRCNN) flagged as superseded. IG URL added to sourceNotes."

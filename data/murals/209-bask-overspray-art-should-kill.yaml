@@ -30,14 +30,12 @@ artistBio: |
   media on wood and canvas, and is known for rich textures and anti-iconic
   imagery deconstructing media.
 
-  His art appeared in Iron Man 3. His work is in the permanent collection of
-  the Jacksonville Museum of Modern Art and the Florida International Museum.
-  He shows at Parlor Gallery in Asbury Park and Signari Gallery. For SHINE,
-  he painted in both 2014 and 2020.
+  His art appeared in Iron Man 3. His work is in the permanent collection of the Jacksonville Museum of Modern
+  Art, and has been shown at the Florida International Museum.
+  He shows at Parlor Gallery in Asbury Park and Signari Gallery. For SHINE, he painted in both 2015 and 2020.
 
 searchBio: |
-  BASK — see full bio on his other entry (id 134). This is a 2026 wall at
-  Overspray in Gulfport — the Vitale Bros' street-art shop and graffiti
+  BASK — see full bio on his other entry (id 134). This is a wall at Overspray in Gulfport — the Vitale Bros' street-art shop and graffiti
   school. The phrase "BECAUSE ART SHOULD KILL" (which is what the BASK name
   itself stands for) is painted in red drippy stencil text across a
   weathered black-and-white tableau of two figures squaring up to fight: one
@@ -51,9 +49,9 @@ searchBio: |
   or 1984) and is self-taught. His work explores the parallels between state
   propaganda and American consumerism. He works in mixed media on wood and
   canvas with rich textures and anti-iconic imagery. His art appeared in
-  Iron Man 3. Permanent collection: Jacksonville Museum of Modern Art and
-  the Florida International Museum. He shows at Parlor Gallery (Asbury Park)
-  and Signari Gallery. SHINE artist 2014 and 2020.
+  Iron Man 3. Permanent collection: Jacksonville Museum of Modern Art. Shown at the
+  Florida International Museum. He shows at Parlor Gallery (Asbury Park)
+  and Signari Gallery. SHINE artist 2015 and 2020.
 
   Instagram: @knownasbask.
 
@@ -82,6 +80,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: SHINE was founded in 2015; SPAA's own 2020 page says BASK 'returns after painting a SHINE mural in 2015, our first year'; SHINE was founded in 2015; his SHINE years are 2015 and 2020; the source says shown at the Florida International Museum, collected by Jacksonville MoMA — shown-at is not collected-by; shown-at is not collected-by; no source establishes a painting year; the record's own year field is 0 and Rob's photo only proves it existed by May 2026"
   - "2026-05-14 — New mural added by Rob: second BASK in Mural Quest, the 'BECAUSE ART SHOULD KILL' wall at Overspray in Gulfport. GPS from photo IMG_0293.jpeg EXIF (27.75087, -82.70136). 'BASK' tag visible at bottom. Address pending exact street number."
 sourceNotes:
   - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0293.jpeg)"

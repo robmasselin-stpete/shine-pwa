@@ -1,8 +1,8 @@
-# Lyko Creative — 2025
+# Lyko Creations — 2025
 
 # ── Required ──
 id: 165
-artist: Lyko Creative
+artist: Lyko Creations
 year: 2025
 lat: 27.762862
 lng: -82.67437
@@ -67,6 +67,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the brand is Lyko Creations; the record's own bios and lykocreations.com agree; the brand is Lyko Creations, not Lyko Creative"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; FAIL → rewrite. Removed unverified 'Detroit roots' (no source); removed 'fuses street art, graffiti, impressionism' (style claim only on inaccessible website page); removed 'Ceara Rae' (3rd co-artist not in any source — sources name only Sasha, Erickson, Shaffer); kept 'Lyko' verified, removed 'Zachary' speculation."
   - "2026-05-03 — Display bio rewritten with hook anchored to the political story (Florida SB 1662 removal of 5 St. Pete street murals → Love Thy Neighbor Project response on private property). Names the 5 removed murals. Closes with the contrast: this wall is a quieter Florida nature scene, but the gesture is the same."

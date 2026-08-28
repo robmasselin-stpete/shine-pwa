@@ -59,9 +59,7 @@ searchBio: |
   in St. Petersburg.
 
   He is the co-founder of the Bloom Art Center, located at 910 5th Avenue North
-  in downtown St. Petersburg. He is described in St. Pete press coverage as a
-  "renowned sculptor and muralist" who curates exhibits at the Bloom property to
-  complement existing murals around the building.
+  in downtown St. Petersburg.
 
   His awards include Best in Show at ArtLoud Tampa (2010) and Best of Show at
   the Kissimmee Sculpture Experience. His sculpture work sits in permanent
@@ -105,6 +103,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the only St. Pete press in sourceNotes contains neither the quoted phrase nor the curating claim"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "2026-05-04 — New mural added by Rob: James Oleson neo-surrealist grinning face wall at Stonehenge Park, St. Petersburg. GPS from photo IMG_0255.jpeg EXIF (27.79915, -82.73745). Year not documented in public sources — flagged for follow-up. Lower-right cursive signature unidentified. Bio compiled from St. Pete Arts Alliance directory, Morean Arts Center profile, Crow's Nest 'Perennial Bloom' coverage, and @olesonart Instagram."
 sourceNotes:

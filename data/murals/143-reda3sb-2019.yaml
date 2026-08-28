@@ -63,7 +63,7 @@ searchBio: |
   experience the same universal feelings." The piece functions as a humanist
   statement about shared emotional experience.
 
-  He also runs Delgado's Painting LLC. Instagram: @reda3sb.
+  Instagram: @reda3sb.
 
 searchMuralDescription: |
   A panoramic composition of hyper-realistic female faces and features — eyes,
@@ -82,6 +82,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the cited Delgado's Painting account is a Houston company with no established connection to him"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced"
   - "10 April 2026 — Deep research, full bio rewrite, Rob reviewed"
 sourceNotes:

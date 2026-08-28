@@ -14,7 +14,7 @@ img: images/murals/2021/ya-la-ford.jpeg
 title: "Love Shines"
 building: Smith & Associates Real Estate
 instagram: yalaford
-basedIn: "Tampa, FL"
+basedIn: "St. Petersburg, FL"
 
 artistBio: |
   She has an MFA and a law degree. She represented the United States at the
@@ -31,9 +31,8 @@ artistBio: |
   of Trustees of the Museum of Fine Arts in St. Petersburg. She designed an
   Arrow McLaren SP IndyCar and was a featured artist for Super Bowl 2021.
 
-  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is
-  in the collections of Tropicana Field, Al Lang Stadium, the Morean Arts
-  Center, and the Boston Public Library. She has shown at The James Museum, The
+  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is in the collections of Tropicana Field, Al Lang Stadium, and the
+  Morean Arts Center. She has shown at The James Museum, The
   Ringling Museum of Art, and Florida CraftArt.
 
   For SHINE 2021, she painted in St. Petersburg.
@@ -66,9 +65,8 @@ searchBio: |
   Petersburg. She designed an Arrow McLaren SP IndyCar and was a featured artist
   at Super Bowl 2021, with work collected by all National Football League Owners
   as part of the Super Bowl collection. Her client list includes the Tampa Bay
-  Rays, Toronto Blue Jays, and Nike. Her work is held in the collections of
-  Tropicana Field, Al Lang Stadium, the Morean Arts Center, and the Boston
-  Public Library.
+  Rays, Toronto Blue Jays, and Nike. Her work is held in the collections of Tropicana Field, Al Lang Stadium, and
+  the Morean Arts Center.
 
   Documented installations and locations across St. Petersburg include the Hyatt
   entrance, the back entrance of the Morean Arts Center, the entryway of the
@@ -135,6 +133,7 @@ furtherWork:
   - name: "yalaford.com"
     url: "https://www.yalaford.com"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: St Pete Catalyst places her in Historic Kenwood; Creative Pinellas calls St. Petersburg her chosen home town; no source mentions the Boston Public Library"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

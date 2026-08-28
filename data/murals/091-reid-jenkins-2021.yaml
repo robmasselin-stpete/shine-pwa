@@ -17,8 +17,7 @@ instagram: reidmjenkins
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  He painted his two daughters in sunflowers on the side of a distillery. His
-  son Syre shows up in murals across the rest of the city.
+  He painted his two daughters in sunflowers on the side of a distillery.
 
   Reid Jenkins is a St. Petersburg native. He graduated from the Pinellas County
   Center for the Arts at Gibbs High School — the same program that produced
@@ -78,6 +77,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: Syre is Derek Donnelly's son, not Reid Jenkins's — the sentence bled in from the Donnelly bio, which carries it in five records"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-03 — New hook anchored to this wall: his two daughters in sunflowers on the side of a distillery, with Syre (his son in other walls) as the rhyme. Body adds the painted yellow butterfly + teal wall details."
 sourceNotes:

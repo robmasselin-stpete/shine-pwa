@@ -14,7 +14,7 @@ img: "images/murals/commercial/ya-la-ford-golden-wave.jpeg"
 title: Golden Wave
 building: Morean Arts Center
 instagram: yalaford
-basedIn: "Tampa, FL"
+basedIn: "St. Petersburg, FL"
 
 artistBio: |
   She has an MFA and a law degree. She represented the United States at the
@@ -31,9 +31,8 @@ artistBio: |
   of Trustees of the Museum of Fine Arts in St. Petersburg. She designed an
   Arrow McLaren SP IndyCar and was a featured artist for Super Bowl 2021.
 
-  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is
-  in the collections of Tropicana Field, Al Lang Stadium, the Morean Arts
-  Center, and the Boston Public Library. She has shown at The James Museum, The
+  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is in the collections of Tropicana Field, Al Lang Stadium, and the
+  Morean Arts Center. She has shown at The James Museum, The
   Ringling Museum of Art, and Florida CraftArt.
 
   For SHINE 2021, she painted in St. Petersburg.
@@ -53,9 +52,8 @@ searchBio: |
   of Trustees of the Museum of Fine Arts in St. Petersburg. She designed an
   Arrow McLaren SP IndyCar and was a featured artist for Super Bowl 2021.
 
-  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is
-  in the collections of Tropicana Field, Al Lang Stadium, the Morean Arts
-  Center, and the Boston Public Library. She has shown at The James Museum, The
+  Clients include the Tampa Bay Rays, Toronto Blue Jays, and Nike. Her work is in the collections of Tropicana Field, Al Lang Stadium, and the
+  Morean Arts Center. She has shown at The James Museum, The
   Ringling Museum of Art, and Florida CraftArt.
 
   For SHINE 2021, she painted in St. Petersburg.
@@ -81,6 +79,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: St Pete Catalyst places her in Historic Kenwood; Creative Pinellas calls St. Petersburg her chosen home town; no source mentions the Boston Public Library"
   - "20 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-20, GPS from EXIF"
