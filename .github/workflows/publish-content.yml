@@ -15,6 +15,7 @@ on:
     branches: [v1.5]
     paths:
       - 'data/murals/**'
+      - 'data/routes.json'   # routes ship over OTA too (v1.7) — build-data.py reads this
       - 'data/config.yaml'
       - 'images/murals/**'
       - 'images/cards/**'
