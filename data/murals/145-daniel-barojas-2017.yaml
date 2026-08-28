@@ -15,7 +15,7 @@ audio: "https://cdn.muralquest.app/audio/145.mp3?v=1"
 title: "Tlaloc"
 building: ""
 instagram: r5imaging
-basedIn: Mexico
+basedIn: "St. Petersburg, FL"
 
 artistBio: |
   He painted Tlaloc, the Aztec god of water and rain, as an offering — an
@@ -39,8 +39,7 @@ searchMuralDescription: |
   headdress, rendered in sharp geometric patterns. The face is framed by
   outstretched wing-like forms filled with interlocking cube patterns in coral,
   teal, and brown. Crashing ocean waves in deep blues and teals flank both
-  sides. A teal hexagonal cube pattern fills the background. Signed "@R3Imaging"
-  in the lower right. The palette is dominated by teal, coral, green, gold, and
+  sides. A teal hexagonal cube pattern fills the background. Signed "@R5Imaging" in the lower right. The palette is dominated by teal, coral, green, gold, and
   deep blue.
 
 muralInspiration: ""
@@ -62,6 +61,7 @@ sourceNotes:
   - "https://www.visitstpeteclearwater.com/article/murals-edge-district"
   - "GPS from Rob's photo IMG_1960.jpeg taken April 8, 2026. @R5Imaging tag visible on wall. Located in the Edge District."
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: his handle is r5imaging — the record's own instagram field, artistBio and sourceNotes all say R5; Creative Pinellas: born in Mexico City, currently resides in St. Petersburg"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "26 April 2026 — Audit: alias was wrong (R3 → R5), Instagram was wrong (r3imaging → r5imaging). Softened Mesoamerican-mythology overgeneralization. Added verified URLs and award credentials."
   - "2026-05-03 — Reclassified per Rob: this is SHINE 2017 (was tagged 'commercial' with year 0). File renamed 145-daniel-barojas-commercial.yaml → 145-daniel-barojas-2017.yaml. Display bio rewritten with Tlaloc-as-ofrenda hook and SHINE 2017 framing."

@@ -39,8 +39,7 @@ artistBio: |
 
 searchBio: |
   The Ink Werkz Crew is a St. Petersburg-based collaborative collective made up
-  of Reid Jenkins (@reidjenkinsart), Scott Hillis (@hillis727), and Sovoth Chan
-  (@doke_727). The three painted together at the inaugural SHINE Mural Festival
+  of Reid Jenkins (@reidjenkinsart), Scott Hillis (@hillis727), and Sovoth Chan (@duke_727). The three painted together at the inaugural SHINE Mural Festival
   in late 2015 at 1610 Central Avenue.
 
   Their collaborative work leans into geometric forms, lightning-bolt linework,
@@ -71,6 +70,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the studio's own Instagram lists @duke_727; the record's own artistBio agrees"
   - "29 April 2026 — New mural added, GPS from Rob's photo IMG_0218 taken 2026-04-29"
   - "2026-05-03 — New hook ('Three friends painted this at SHINE's first year in 2015. A decade later, a building covers most of it. The signatures are still there.'). Updated to reflect current state: a building (not just an ATM kiosk) was built in front, only a slice of the original artwork plus the signatures are visible. Per Rob (May 2026 visit)."
 sourceNotes:

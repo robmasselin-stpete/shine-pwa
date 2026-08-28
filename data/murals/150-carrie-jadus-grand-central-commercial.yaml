@@ -95,13 +95,13 @@ searchMuralDescription: |
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: ""
 
 furtherWork: []
 
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: removed a duplicate empty artistAwards key that was discarding the real value"
   - "28 August 2026 — Fact-check fleet: the source names three assistants and gives no duration; the two-week figure belongs to the Dog Bar mural"
   - "28 August 2026 — Fact-check fleet: the cited article attributes the selection to the client, not the artist"
   - "15 April 2026 — New mural added, GPS from Rob's photo"

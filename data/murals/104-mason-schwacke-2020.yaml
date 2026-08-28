@@ -43,8 +43,7 @@ artistBio: |
 searchBio: |
   Mason Schwacke is a St. Petersburg, Florida-based muralist. He has been
   painting murals in the Tampa Bay area for over a decade. He has exhibited at
-  the Morean Arts Center and shown work at Portspace Gallery in Gulfport. He is
-  also associated with the Art Asylum creative community.
+  the Morean Arts Center and shown work at Portspace Gallery in Gulfport.
 
   For SHINE 2020, the festival partnered with PangeaSeed Foundation's Sea Walls
   program. Schwacke teamed up with C.J. Thomas (Christian Thomas) of Commitment
@@ -87,6 +86,7 @@ sourceNotes:
   - "Migrated from data.js 2026-03-05 (legacy note)"
   - "Photo by Rob — confirmed iPhone EXIF audit 2026-05-12"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: no source names Art Asylum; the only St. Pete entity by that name has no visible link to him"
   - "5 March 2026 — Migrated from data.js"
   - "26 April 2026 — Audited; softened 'grew up in St. Petersburg' → 'based in St. Petersburg' (no source for grew-up); '7+ years' → 'over a decade' (figure was from 2020 source); 'group shows at Portspace' → 'shown at Portspace'; dropped 'Latin for prosperity' parenthetical (gloss not in source); 'NOAA scientists' → 'in consultation with NOAA'."
   - "2026-05-12 — Confirmed photo is Rob's (iPhone EXIF audit)"

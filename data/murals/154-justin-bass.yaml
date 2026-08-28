@@ -48,24 +48,23 @@ searchBio: |
   Thomas Benoist, ran for nearly four months and carried 1,205 passengers
   before shutting down. It is the origin point of commercial aviation.
 
-  Justin Bass turned that flight into a mural on Central Avenue 112 years later.
+  Justin Bass turned that flight into a mural on Central Avenue more than a
+  century later.
   In his version a flamingo stands in for the Benoist, a rider for Mayor Pheil,
   and the city of St. Petersburg itself is the cargo. A pink flamingo flies
   escort. A second winged flamingo dives in from the upper right. Puffy
-  blue-gray clouds and small triangular shapes fill the teal-green sky. The
-  flamingo is the 112-year update — same route, different vibe.
+  blue-gray clouds and small triangular shapes fill the teal-green sky. The flamingo is the modern update — same route, different vibe.
 
   Bass works as an artist, designer, and restoration specialist under the brand
   DropTheLove. His LinkedIn title is "Artist / Designer / Restorations at
   DropTheLove." He has collaborated with Miami-based scenic artist and designer
-  Ryan Zook (@zookart, ryanzookart.com) — the pair were described as "the
-  dynamic duo" by Project In The Paint. He also goes by "Jb Jb" on Instagram
+  Ryan Zook (@zookart, ryanzookart.com) — the two have worked together repeatedly. He also goes by "Jb Jb" on Instagram
   and "jmovement" on Facebook and Flickr.
 
   The mural wraps the parking garage wall at the Tru by Hilton on Central
   Avenue in St. Petersburg. It is an exterior piece, distinct from the hotel's
-  interior lobby art by Mike Traina. Two blocks from the waterfront where the
-  Benoist took off in 1914.
+  interior lobby art by Mike Traina. About a mile and a half west of the waterfront where the Benoist took off in
+  1914.
 
   Instagram: @dropthelove. TikTok: @justinbass511.
 
@@ -83,8 +82,7 @@ muralInspiration: |
   piloted by Tony Jannus, carrying former mayor Abram C. Pheil to Tampa in
   23 minutes. Pheil paid $400 at auction for the seat. Bass's mural retells
   that flight in surreal pastel: the flamingo stands in for the Benoist, the
-  rider for Mayor Pheil, and St. Pete itself is along for the ride. The
-  boombox is the 112-year update.
+  rider for Mayor Pheil, and St. Pete itself is along for the ride. The boombox is the modern update.
 muralAwards: ""
 artistAwards: ""
 
@@ -93,6 +91,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the record's own coords put it ~1.5 miles from the takeoff site, not two blocks; 112 years implies a 2026 painting date that no source establishes; the record's own year field is 0; 112 years implies an unestablished 2026 date; a direct quotation attributed to a publication that appears in no sourceNotes and could not be corroborated"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Research completed, minimal bio (very thin online footprint)"
   - "22 May 2026 — Rob identified the mural inspiration: the 1914 Benoist XIV flight. Researched the flight (see sourceNotes); rewrote artistBio with a 1914-Benoist hook, expanded searchBio with a full historical paragraph, and filled muralInspiration tying the imagery (pelican = Benoist, rider = Mayor Pheil, city = cargo, boombox = 2026 update) to the actual event."

@@ -26,8 +26,7 @@ artistBio: |
   lettering. Nature, the outdoors, and mental health run through the work. She
   has done a Reef Organization project in the Florida Keys.
 
-  Clients include Salesforce, Adobe, Dickies, PepsiCo, John Deere, Stihl, the
-  NFL, and AstraZeneca. For SHINE 2022, she painted two murals in St.
+  Clients include Salesforce, Adobe, Dickies, Grow Financial, and Rapid7. For SHINE 2022, she painted two murals in St.
   Petersburg.
 
 searchBio: |
@@ -114,6 +113,8 @@ furtherWork:
     url: "https://sydbloom.com"
 
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: ATTRIBUTION UNVERIFIED. No source in the pooled Sydney Prusso evidence base (this record's 4 URLs plus the 8 on sibling #69) connects her to Fairgrounds St. Pete / FloridaRAMA. Her own studio site lists commissions and Fairgrounds is not among them, and SPAA's only Prusso record is the 2022 SHINE wall. The wall carries no visible signature, and its cool geometric palette does not match the warm 1960s-70s poster style her sources describe. Fairgrounds commissioned 60+ artists at its 2021 opening, so a Prusso wall there is plausible but undocumented. NOT reassigned - unlike #164 there is no positive evidence of another artist. Needs Rob's field knowledge or a signature check on site"
+  - "28 August 2026 — Fact-check fleet: only the clients on her own logo strip are supported; PepsiCo, John Deere, Stihl, the NFL and AstraZeneca appear in no source"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-03 — Expanded searchBio (~600-1000 words, 612 words) integrating cached source + sydbloom.com (about, brand-collabs, illustration). Added named brand projects (Apothecary, Grow Financial, Gallimufry, Fresh Kitchen, Pom Pattern Portfolio, Good Good Good Newspaper). Added 3 sydbloom.com URLs to sourceNotes."
 # ── Provenance (not exported to data.js) ──

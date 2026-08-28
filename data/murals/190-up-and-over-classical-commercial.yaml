@@ -6,7 +6,7 @@ artist: Up & Over
 year: 0
 lat: 27.772300
 lng: -82.663400
-address: 2214 5th Ave S
+address: 136 22nd St N
 category: commercial
 img: "images/murals/commercial/vitale-bros-classical-face.jpeg"
 
@@ -43,6 +43,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the stored GPS (from Rob's photo) reverse-geocodes to 136 22nd St N, 652 m from the address given"
   - "26 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-26, GPS from EXIF"

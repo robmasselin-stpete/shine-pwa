@@ -23,9 +23,9 @@ artistBio: |
   graffiti shop in Gulfport. Signed "CHRIS DYER '25" across the top.
 
   Chris Dyer was born in Ottawa in 1979, moved to Lima, Peru at four, and
-  returned to Canada at seventeen. He studied illustration at Dawson College
-  in Montreal and trained under visionary masters Alex Grey, Robert Venosa,
-  and Amanda Sage. His style fuses psychedelic imagery, Incan and
+  returned to Canada at seventeen. He studied illustration at Dawson College in Montreal and has exhibited
+  alongside visionary artists including Alex Grey, Robert Venosa, and Amanda
+  Sage. His style fuses psychedelic imagery, Incan and
   pre-Columbian influences, sacred geometry, and 1980s skate culture.
 
   He founded the Positive Creations brand in 2003 — clothing, tapestries,
@@ -76,6 +76,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: sources describe him as having SHOWN WITH these artists, not trained under them"
   - "2026-05-14 — New mural added by Rob: fourth Chris Dyer in Mural Quest, a 2025 visionary totem on the side of Overspray in Gulfport. GPS from photo IMG_0291.jpeg EXIF (27.75088, -82.70128). Signed 'CHRIS DYER 25' top. Address pending exact street number."
 sourceNotes:
   - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0291.jpeg)"

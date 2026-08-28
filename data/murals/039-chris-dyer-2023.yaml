@@ -26,9 +26,9 @@ artistBio: |
   He has painted in forty-five countries. His mural is in the Bob Marley Museum.
 
   Chris Dyer was born in Ottawa in 1979, moved to Lima, Peru at four, and
-  returned to Canada at seventeen. He studied illustration at Dawson College in
-  Montreal and trained under visionary masters Alex Grey, Robert Venosa, and
-  Amanda Sage. His style fuses psychedelic imagery, Incan and pre-Columbian
+  returned to Canada at seventeen. He studied illustration at Dawson College in Montreal and has exhibited
+  alongside visionary artists including Alex Grey, Robert Venosa, and Amanda
+  Sage. His style fuses psychedelic imagery, Incan and pre-Columbian
   influences, sacred geometry, and 1980s skate culture.
 
   He founded the Positive Creations brand in 2003 — clothing, tapestries, books,
@@ -150,6 +150,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: sources describe him as having SHOWN WITH these artists, not trained under them"
   - "2026-08-27 — Fact-check: fieldNotes said based in Montreal; he relocated to St. Pete/Gulfport around 2022 and the record's own basedIn already said St. Petersburg. Sources: en.wikipedia.org/wiki/Chris_Dyer_(artist), positivecreations.ca/about/bio, stpeteartsalliance.org/chris-dyer-2023."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
