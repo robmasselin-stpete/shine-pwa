@@ -39,7 +39,7 @@ artistBio: |
   Museum. He has shown at the Saatchi Gallery in London, Wynwood Walls, and the
   Kemper Museum of Contemporary Art.
 
-  He is a three-time SHINE artist — 2015, 2023, and 2025.
+  He is a two-time SHINE artist — 2015 and 2023.
 
 searchBio: |
   His work hangs in the Smithsonian. Swizz Beats and Michael B. Jordan collect
@@ -142,6 +142,7 @@ furtherWork:
   - name: "michaelvasquez.info"
     url: "http://www.michaelvasquez.info"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: SPAA's database lists only 2015 and 2023; the 2025 wall was a St. Pete Pier commission, not SHINE"
   - "2026-08-27 — Fact-check: His own site (a cited source) says born, lives and works in St. Petersburg; the Miami claim traces to a 2016 NEA profile."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

@@ -116,15 +116,7 @@ searchBio: |
   nature. Off the wall he spends time at home with his wife and dog, and brings
   family on the road when he can.
 
-  He has a separate venture, HOXXOH Champagne, producing fully luminous
-  champagne bottles — Hoxxoh Gold, Hoxxoh Ruby, Hoxxoh Grand Cru, and Hoxxoh
-  Saphir Demi-Sec, plus the Hox cuvée line including HOX Grand Cru Blanc de
-  Blancs 2014, HOX Grande Réserve, HOX Grande Réserve Blanc de Blancs and HOX
-  Grande Réserve Rosé. The Saphir label includes a 0.45-carat sapphire cut in a
-  champagne-drop shape. Best sommelier in the world Andreas Larsson endorsed the
-  Grand Cru.
-
-  Website: elhoxxoh.com and hoxxoh.com. Instagram: @hoxxoh. TikTok: @hoxxoh.
+  Website: elhoxxoh.com. Instagram: @hoxxoh. TikTok: @hoxxoh.
 
 searchMuralDescription: |
   A huge panoramic piece spanning the full length of the Morean Workshop
@@ -147,6 +139,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: hoxxoh.com is an unrelated French champagne brand, not the artist; nothing connects him to it"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:

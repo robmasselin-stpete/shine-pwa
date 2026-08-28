@@ -1,13 +1,13 @@
-# John Vitale — 2025
+# Vitale Bros — Power to the Patients (2021)
 
 # ── Required ──
 id: 11
-artist: John Vitale
-year: 2025
+artist: Vitale Bros
+year: 2021
 lat: 27.771652
 lng: -82.644567
-address: 790 Central Ave
-category: shine
+address: 719 Central Ave (behind the Morean Arts Center)
+category: commercial
 img: "images/murals/2025/john-vitale-600.jpeg"
 
 # ── Optional ──
@@ -40,9 +40,9 @@ artistBio: |
   they painted free signs for businesses that lost theirs.
 
   They have been involved with SHINE since its inception — "The Cool Kids" in
-  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins
-  2025, Johnny painted two solo murals: one on the 600 block where it all began,
-  and another at The Factory on Fairfield Ave South with Sionna "Sio" Macleish.
+  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins 2025, Johnny painted two murals: a solo wall on the 600
+  block where it all began, and another at The Factory on Fairfield Ave South
+  shared with Sionna "Sio" MacLeish.
 
 searchBio: |
   Their first mural came from a sketch on a paper napkin, handed to a restaurant
@@ -85,8 +85,7 @@ searchBio: |
   Wildstyle, and advanced mural classes to groups of up to 20 students. The
   five-artist teaching team includes John Vitale, Nicole Salgar, Hinson
   Thehealer, Digital (LA), and Jujmo. After Hurricane Milton, they painted free
-  signs for businesses that lost theirs. They host events like Hot Walls during
-  SHINE.
+  signs for businesses that lost theirs. They host events like Hot Walls.
 
   SHINE participation: The Cool Kids (2015, 2063 Central Ave — faces of the
   artists' children), Bait and Switch (2019 — red snapper and sea turtle), SHINE
@@ -125,6 +124,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: this is the 2021 Power to the Patients wall, not a 2025 SHINE mural; sources and the pin both put it at 719 Central, behind the Morean Arts Center; every source credits this wall to Vitale Bros as a studio, not to Johnny individually; a Power to the Patients campaign wall, not a SHINE festival mural; the Factory wall was shared, not solo; the only source dates Hot Walls to July and does not tie it to SHINE"
   - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year; artistAwards hedged: painted walls documented from 2015 on"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:

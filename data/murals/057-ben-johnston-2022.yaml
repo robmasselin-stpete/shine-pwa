@@ -18,12 +18,12 @@ instagram: ben_johnston
 basedIn: "Toronto, Canada"
 
 fieldNotes:
-  - "Drew a 1,485-square-metre mural for Sierra Nevada Brewery"
-  - "Australian artist, international muralist"
+  - "Drew a 1,600-square-foot mural for Sierra Nevada Brewery"
+  - "South African-born, Toronto-based"
   - "Intricate line work at building scale"
 
 artistBio: |
-  He drew a 1,485-square-metre mural for Sierra Nevada Brewery with nothing but
+  He drew a 1,600-square-foot mural for Sierra Nevada Brewery with nothing but
   Sharpies and scaffolding.
 
   Ben Johnston grew up in Cape Town, South Africa, briefly studied industrial
@@ -42,7 +42,7 @@ artistBio: |
   For SHINE 2022, he painted in St. Petersburg.
 
 searchBio: |
-  He drew a 1,485-square-metre mural for Sierra Nevada Brewery with nothing but
+  He drew a 1,600-square-foot mural for Sierra Nevada Brewery with nothing but
   Sharpies and scaffolding. Ben Johnston is a typographic artist and muralist
   who creates large-scale painted works in public space. He grew up in Cape
   Town, South Africa, briefly studied industrial design, and is otherwise
@@ -132,6 +132,7 @@ furtherWork:
   - name: "benjohnston.ca"
     url: "https://www.benjohnston.ca"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the mural is 1,600 sq ft (~149 m2) per the artist's own archived project page; 1,485 m2 was a botched conversion off by a factor of ten; he is from Cape Town and based in Toronto; no source calls him Australian"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

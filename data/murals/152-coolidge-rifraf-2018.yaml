@@ -1,17 +1,17 @@
-# Sebastian Coolidge & Rif Raf Giraffe — 2018
+# Sebastian Coolidge & Rif Raf Giraffe — 2017
 
 # ── Required ──
 id: 152
 artist: Sebastian Coolidge & Rif Raf Giraffe
-year: 2018
+year: 2017
 lat: 27.771525
 lng: -82.662163
 address: "Central Ave"
-category: shine
+category: commercial
 img: "images/murals/2018/coolidge-rifraf.jpeg"
 
 # ── Optional ──
-title: ""
+title: "Inside The Machine"
 building: ""
 instagram: sebastiancoolidge
 basedIn: "St. Petersburg, FL / Kansas City, MO"
@@ -39,7 +39,7 @@ artistBio: |
   characters reflecting societal behaviors, ranging from comedic to political.
   Clients include Tiffany & Co. and Giphy Arts.
 
-  For SHINE 2018 they collaborated on this mural in St. Petersburg. The two
+  They collaborated on this mural in St. Petersburg in 2017. The two
   share Kansas City roots and have worked together repeatedly — Wynwood in 2015
   (with Oleson Art and Zulu Painter), SpraySeeMO 2018, and KC's Crossroads
   district in 2021.
@@ -90,7 +90,7 @@ searchBio: |
   expanded to Miami and Los Angeles. They co-run Upper Level Gallery in Kansas
   City. He has painted in London, Barcelona, Mexico, and Hawaii.
 
-  For SHINE 2018 they collaborated on a mural in St. Petersburg. The two share
+  They collaborated on this mural in St. Petersburg in 2017. The two share
   Kansas City roots and have worked together repeatedly: Wynwood, Miami (2015,
   with Oleson Art and Zulu Painter), SpraySeeMO 2018 (514 Southwest Blvd, KC),
   American Shaman CBD (2018, with Jake Merten), KC Crossroads (2021, with Ghost
@@ -110,7 +110,7 @@ searchMuralDescription: |
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "SHINE 2018 selected artists; SpraySeeMO co-founder (Rif Raf Giraffe)"
+artistAwards: "SpraySeeMO co-founder (Rif Raf Giraffe)"
 
 furtherWork:
   - name: "rifrafgiraffe.com"
@@ -119,6 +119,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: Rif Raf Giraffe's own portfolio dates this wall to 2017; neither artist appears on the SHINE 2018 lineup or the 37-artist recap; the artist titles this wall Inside The Machine; not a SHINE mural; the artist dates it 2017; neither artist appears on any SHINE 2018 roster"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Full research and bio, Claude-enhanced"
 sourceNotes:

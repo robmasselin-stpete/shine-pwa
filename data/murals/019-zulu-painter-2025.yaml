@@ -20,7 +20,7 @@ artistBio: |
   He calls them "Mindful Murals." He wants to grow art everywhere.
 
   Carlos Culbertson — Zulu Painter — is a native West Virginian who started
-  pursuing art at age eight. He holds a degree in fine arts painting and now
+  pursuing art at age eight. He now
   works out of a studio at the ArtsXchange on 22nd Street South. He paints in
   acrylic and spray paint, favors reclaimed materials, and has worked as a
   scenic artist for Disney on Ice, the Science Channel, HSN, and SeaWorld Parks
@@ -33,9 +33,10 @@ artistBio: |
   on Arlington Ave (domestic violence survivor themes) and a portrait of Betty
   Reid Soskin at the Florida Botanical Gardens in Largo.
 
-  He is a four-time SHINE artist — "Moon Beam Dream 2" in 2016, "Legacy" with
-  Thirst in 2017, "Wisdom, Growth, Progress" in 2018, and the AMIKids wall in
-  2024. He received a St. Pete Arts Alliance Muse Award in 2022. He also
+  He is a five-time SHINE artist — "Moon Beam Dream 2" in 2016, "Legacy" with
+  Thirst in 2017, "Wisdom, Growth, Progress" in 2018, the AMIKids wall in
+  2024, and "The Hero's Journey for Love and Community" for SHINE Origins
+  2025. He received a St. Pete Arts Alliance Muse Award in 2022. He also
   collaborated with Reid Jenkins and Iboms on "Imagine Gas Plant and Laurel
   Park" at Campbell Park Recreational Center.
 
@@ -43,8 +44,7 @@ searchBio: |
   He calls them "Mindful Murals." He wants to grow art everywhere.
 
   Carlos Culbertson — Zulu Painter — is a native West Virginian who started
-  pursuing art at elementary school age and never looked back. He holds a degree
-  in fine arts painting and works out of his studio at the ArtsXchange in St.
+  pursuing art at elementary school age and never looked back. He works out of his studio at the ArtsXchange in St.
   Petersburg, located at 515 22nd Street South, Studio 111, St. Petersburg, FL
   33712. He works in acrylic and spray paint, favors reclaimed materials, and
   produces work across traditional mediums, body paint, special effects, and
@@ -62,7 +62,7 @@ searchBio: |
   using Golden Paintworks Mural & Theme Paint and Kobra Spray Paint. The mural
   depicts the butterfly effect of good deeds: watering a single rose creates the
   outlines of others. He was presented with a certificate of recognition for the
-  piece by Broome County executive Brian Garner. He has painted at Paint Memphis
+  piece by Broome County executive Jason T. Garnar. He has painted at Paint Memphis
   2019, the 2018 Colorado Black Arts Festival, the 48 Hour Mural Competition in
   Jacksonville, Florida (September 29, 2023), the HULAWEEN Spirit of Suwannee
   Lake Music and Art Festival, and the Art With Me Art and Music Festival in
@@ -82,9 +82,10 @@ searchBio: |
   2022. Children at the event helped complete a section of the canvas designed
   for that purpose.
 
-  He is a four-time SHINE Mural Festival artist: "Moon Beam Dream 2" in 2016,
+  He is a five-time SHINE Mural Festival artist: "Moon Beam Dream 2" in 2016,
   "Legacy" with Thirst in 2017, "Wisdom, Growth, Progress" in 2018 as part of
-  his 22nd Street Legacy series, and the AMIKids wall in 2024. He returned to
+  his 22nd Street Legacy series, the AMIKids wall in 2024, and SHINE Origins
+  2025. He returned to
   SHINE for SHINE Origins 2025, painting at 31st Street and 7th Avenue South
   alongside Elizabeth Barenis, Amy Volpe, Karel Garcia, Brain the Genius,
   Jenipher Chandley, and Rebekah Lazaridis. He also collaborated with Reid
@@ -95,10 +96,7 @@ searchBio: |
   fellow 2022 honorees Matthew McGee, Gloria Muñoz, David and Becky Ramsey, Chad
   Mize, and Matthew Walker. The ceremony was held March 4, 2022 at the Morean
   Center for Clay in the Warehouse Arts District, hosted by Paul Wilborn and
-  Eugenie Bondurant. He has also been recognized with a 2021 Business Arts
-  Award, was a winner of the 2021 UF Big Idea Competition, has been published in
-  a Springer Scientific Journal, and was featured in the Innovate Gainesville
-  Book.
+  Eugenie Bondurant.
 
   His SHINE Festival murals are featured in the St. Petersburg Arts Alliance's
   accessible audio tour, including the 22nd Street Legacy series ("Wisdom,
@@ -134,6 +132,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: none of the pooled sources mention these four awards or credits; no biographical source mentions any degree; Broome County's executive is Jason T. Garnar; SHINE Origins 2025 is a fifth appearance, per SPAA's own directory; SHINE Origins 2025 is a fifth appearance"
   - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

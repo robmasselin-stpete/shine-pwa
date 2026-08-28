@@ -72,7 +72,7 @@ searchBio: |
 
   Documented exhibition history is extensive. Recent shows include World Wide
   Walls in Honolulu, Hawaii (2023), the Bishop Museum in Honolulu (2019 and
-  2023), Shine on St Pete in Saint Petersburg, Florida (2023), and the Teenage
+  2023), Shine on St Pete in Saint Petersburg, Florida (2022), and the Teenage
   Kicks Festival in Rennes, France (2023). 2018 included Urban Art Fair Paris,
   Kolly Gallery in Zurich, Above the Radar in Burlington, Art Souterrain and
   Quartier des Spectacles in Montreal, Gallery 123klan in Canada, and Pow Wow
@@ -130,6 +130,7 @@ furtherWork:
   - name: "123klan.com"
     url: "https://www.123klan.com"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: 123Klan appeared in SHINE 2022, per the lineup announcement"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──

@@ -38,7 +38,7 @@ artistBio: |
   Museum. He has shown at the Saatchi Gallery in London, Wynwood Walls, and the
   Kemper Museum of Contemporary Art.
 
-  He is a three-time SHINE artist — 2015, 2023, and 2025. For the Pier's 5th
+  He is a two-time SHINE artist — 2015 and 2023. For the Pier's 5th
   anniversary in 2025, he painted "Sandcastles with Father – Spa Beach," a
   deeply personal mural that revisits his recurring theme of reimagined
   fatherhood. Growing up without a father figure, Vasquez often explores
@@ -64,7 +64,7 @@ searchBio: |
   Museum. He has shown at the Saatchi Gallery in London, Wynwood Walls, and the
   Kemper Museum of Contemporary Art.
 
-  He is a three-time SHINE artist — 2015, 2023, and 2025. His 2015 SHINE mural
+  He is a two-time SHINE artist — 2015 and 2023. His 2015 SHINE mural
   "Fishing with Father" featured the iconic inverted pyramid pier and explored
   themes of fatherhood and belonging. His 2023 SHINE mural "The Mangrove Refuge"
   depicted a displaced Lao family finding refuge at Gandy Beach circa 1980. For
@@ -107,6 +107,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: SPAA's database lists only 2015 and 2023; the 2025 wall was a St. Pete Pier commission, not SHINE"
   - "23 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-23, GPS from EXIF"

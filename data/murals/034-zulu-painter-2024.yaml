@@ -26,7 +26,7 @@ artistBio: |
   He calls them "Mindful Murals." He wants to grow art everywhere.
 
   Carlos Culbertson — Zulu Painter — is a native West Virginian who started
-  pursuing art at age eight. He holds a degree in fine arts painting and now
+  pursuing art at age eight. He now
   works out of a studio at the ArtsXchange on 22nd Street South. He paints in
   acrylic and spray paint, favors reclaimed materials, and has worked as a
   scenic artist for Disney on Ice, the Science Channel, HSN, and SeaWorld Parks
@@ -39,9 +39,10 @@ artistBio: |
   on Arlington Ave (domestic violence survivor themes) and a portrait of Betty
   Reid Soskin at the Florida Botanical Gardens in Largo.
 
-  He is a four-time SHINE artist — "Moon Beam Dream 2" in 2016, "Legacy" with
-  Thirst in 2017, "Wisdom, Growth, Progress" in 2018, and the AMIKids wall in
-  2024. He received a St. Pete Arts Alliance Muse Award in 2022. He also
+  He is a five-time SHINE artist — "Moon Beam Dream 2" in 2016, "Legacy" with
+  Thirst in 2017, "Wisdom, Growth, Progress" in 2018, the AMIKids wall in
+  2024, and "The Hero's Journey for Love and Community" for SHINE Origins
+  2025. He received a St. Pete Arts Alliance Muse Award in 2022. He also
   collaborated with Reid Jenkins and Iboms on "Imagine Gas Plant and Laurel
   Park" at Campbell Park Recreational Center.
 
@@ -49,7 +50,7 @@ searchBio: |
   He calls them "Mindful Murals." He wants to grow art everywhere.
 
   Carlos Culbertson — Zulu Painter — is a native West Virginian who started
-  pursuing art at age eight. He holds a degree in fine arts painting and works
+  pursuing art at age eight. He works
   out of a studio at the ArtsXchange in St. Petersburg, Florida — 515 22nd St.
   S, Studio 111, St. Petersburg, FL 33712, open Monday through Friday 9 a.m. to
   6 p.m. He paints in acrylic and spray paint, favors reclaimed materials, and
@@ -63,7 +64,7 @@ searchBio: |
   mural completed with West Side Middle School students. In Binghamton he
   painted "Spread Love," approximately 40 feet tall on the M&T Bank building at 68 Exchange Street, Binghamton, NY 13901.
   "Spread Love" was painted with Golden Paintworks Mural & Theme Paint and Kobra
-  spray paint, and was recognized by Broome County executive Brian Garner with a
+  spray paint, and was recognized by Broome County executive Jason T. Garnar with a
   certificate of recognition. The mural depicts the butterfly effect of good
   deeds — watering the rose benefits the initial receiver and creates beauty for
   others through the outline of additional roses. Other festival appearances and
@@ -135,6 +136,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: no biographical source mentions any degree; Broome County's executive is Jason T. Garnar; SHINE Origins 2025 is a fifth appearance, per SPAA's own directory"
   - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY; Cultivate Kindness is in Charleston WV; only Spread Love is in Binghamton"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

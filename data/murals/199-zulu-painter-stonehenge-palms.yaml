@@ -22,7 +22,7 @@ artistBio: |
   silhouettes and stopped.
 
   Carlos Culbertson — Zulu Painter — is a native West Virginian who started
-  pursuing art at age eight. He holds a degree in fine arts painting and works
+  pursuing art at age eight. He works
   out of a studio at the ArtsXchange on 22nd Street South. He paints in acrylic
   and spray paint, favors reclaimed materials, and has worked as a scenic artist
   for Disney on Ice, the Science Channel, HSN, and SeaWorld Parks and
@@ -43,8 +43,7 @@ searchBio: |
   Pinellas Trail in St. Petersburg, Florida.
 
   Carlos Culbertson — Zulu Painter — is a native West Virginian who started
-  pursuing art in elementary school and never looked back. He holds a degree in
-  fine arts painting and works out of his studio at the ArtsXchange in St.
+  pursuing art in elementary school and never looked back. He works out of his studio at the ArtsXchange in St.
   Petersburg, located at 515 22nd Street South, Studio 111. He works in acrylic
   and spray paint, favors reclaimed materials, and produces work across
   traditional mediums, body paint, special effects, and scenic art. He calls his
@@ -72,9 +71,7 @@ searchBio: |
   31st St & 7th Ave South. He collaborated with Reid Jenkins and Iboms on
   "Imagine Gas Plant and Laurel Park" at Campbell Park Recreational Center.
 
-  In 2022 he received a St. Petersburg Arts Alliance Muse Award. He has also
-  been recognized with a 2021 Business Arts Award, was a winner of the 2021 UF
-  Big Idea Competition, and was featured in the Innovate Gainesville Book.
+  In 2022 he received a St. Petersburg Arts Alliance Muse Award.
 
   Studio open Mon–Fri, 9am–6pm. Contact: info@zulupainter.com, 727-768-4737.
   Website: zulupainter.com. Instagram: @zulupainter1. Facebook:
@@ -101,6 +98,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: none of the pooled sources mention these three awards or credits; no biographical source mentions any degree"
   - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY"
   - "2026-05-04 — New mural added by Rob: Zulu Painter's Stonehenge Park palm silhouettes wall under the Tyrone Blvd overpass. GPS from photo IMG_0254.jpeg EXIF (27.79917, -82.73745). Year unknown — flagged for follow-up. Bio body adapted from #019 Zulu Painter SHINE Origins 2025 yaml."
 sourceNotes:

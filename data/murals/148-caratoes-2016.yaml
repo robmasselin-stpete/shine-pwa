@@ -36,7 +36,7 @@ artistBio: |
   Her practice spans murals, metal sculptures, installations, wearable
   performance suits, and immersive environments. The STRAAT Museum in Amsterdam
   holds her "Untitled" (2016, spray and latex on polyester); she has shown at
-  the Urban Nation Museum Berlin (Wall Poetry, 2015), painted at HKwalls Sham
+  Urban Nation's Wall Poetry in Reykjavik (2015), painted at HKwalls Sham
   Shui Po (2016), Mural Festival Montreal, and Wide Open Walls Sacramento, and
   been featured in Juxtapoz and Hi-Fructose. Clients include Nike, Facebook,
   Four Seasons, and Tiger Beer (the Air-Ink campaign — ink made from
@@ -44,7 +44,7 @@ artistBio: |
 
   "Making a wall pretty isn't my sole responsibility," she has said. "It's also
   my chance to put a message on a wall for everyone to see in their own time."
-  She painted SHINE 2016 (this wall) and returned for SHINE 2022.
+  She painted SHINE 2016 (this wall).
 
 searchBio: |
   Two faces dissolve into waves and leaves on a grayscale wall. The only color
@@ -73,9 +73,8 @@ searchBio: |
   time." On gender bias: "I wanted to do things people say girls can't do."
 
   Documented mural and festival credits include HKwalls 2016 in Sham Shui Po,
-  Hong Kong; Mural Festival Montreal; Wide Open Walls Sacramento; the Urban
-  Nation "Wall Poetry — We Paint the Music, You Love to Hear" project (Berlin,
-  September 30, 2015), pairing ten street artists with ten audio artists; the
+  Hong Kong; Mural Festival Montreal; Wide Open Walls Sacramento; the Urban Nation "Wall Poetry — We Paint the Music, You Love to Hear"
+  project (Reykjavik, 2015), pairing ten street artists with ten audio artists; the
   inaugural Urban Nation Museum opening (Berlin, 2017); and "Ode to Mother" in
   Reykjavik, Iceland. Her self-described count is 30-plus murals across 24
   locations including Bali and Iceland. The STRAAT Museum Amsterdam holds a 2016
@@ -96,8 +95,7 @@ searchBio: |
   emerging from flowing organic forms (waves, leaves, curving lines), pale pink
   accents the only color in an otherwise grayscale palette of grays, whites, and
   blacks, geometric bridge-like structures and dashed road lines weaving through
-  the organics. Signed "CARATOES" in the lower left. She returned for SHINE
-  2022.
+  the organics. Signed "CARATOES" in the lower left.
 
   Instagram: @caratoes. Website: caratoes.com.
 
@@ -121,6 +119,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: Wall Poetry took place in Reykjavik with Iceland Airwaves, not Berlin; Wall Poetry took place in Reykjavik, not Berlin; no source places Caratoes at SHINE 2022"
   - "15 April 2026 — New mural added, GPS from Rob's photo, bio written to style card v1"
   - "26 April 2026 — Audit found entry was attributed to wrong artist. The SHINE 2016 muralist signing 'Caratoes' is Cara To (Belgian-Hong Kong), not Carla Sá Fernandes (Portuguese painter). File renamed; bio rewritten; Instagram and basedIn corrected."
   - "2026-05-03 — Display bio rewritten with hook anchored to this wall (faces dissolving into grayscale + soft pink), expanded with concrete sourced detail (Zottegem birthplace, biochem→game-design→Wieden+Kennedy Amsterdam→nomadic-since-2013, STRAAT Untitled 2016, Tiger Beer Air-Ink, HKwalls/Wide Open Walls/Mural Festival Montreal/Wall Poetry Berlin, Nike/Facebook/Four Seasons clients, two direct quotes). SearchBio expanded to ~700 words. 8 new URLs added to sourceNotes (Urban Nation, HKwalls, Mural Festival Montreal, SCMP, Sassy Hong Kong, Wide Open Walls, Art Public Montréal, The Dusty Rebel)."

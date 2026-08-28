@@ -96,18 +96,10 @@ searchBio: |
   Her paintings have appeared on the walls of local boutiques and galleries, and
   she sells work directly off the walls of Bar@548. Beyond canvas, she works
   through fashion, choreography, poetry, and public arts installations to
-  amplify the healing power of art. Recent painted works documented through
-  Creative Pinellas include "Beyond the Exhibition: The Artistic Journey
+  amplify the healing power of art. As a condition of her Creative Pinellas grant she kept a blog documenting
+  the work, with posts including "Beyond the Exhibition: The Artistic Journey
   Continues," "Navigating the Artistic Path: A Guide for Emerging Artists,"
-  "Embracing Growth: My Journey as an Emerging Artist in 2023," "A Visual
-  Artist's Journey of Inspiration," "Tranquil Reflection: Finding Inner Peace
-  through the Thorns of Life," "Resilience Blooms: Surrendering to Growth,"
-  "Lotus Unfolding: Embracing Healing and Growth," "The Hollowed Resilience: A
-  Woman Shielded from the Storms of the Past," "Journey to Serenity: Embracing
-  Home amidst Life's Trials," "Unfounded Terror: The Petrification of Unhealed
-  Trauma," "Transcendence: A Deep Connection Through Art," "Ophidian Epiphanies:
-  A Journey of Healing and Renewal," "The Transformative Power of Art," and
-  "Difficulty Creates Inspiration." Other titled pieces include "fire lily" and
+  and "Embracing Growth: My Journey as an Emerging Artist in 2023." Other titled pieces include "fire lily" and
   "I paint My heart."
 
   She was profiled by Robin O'Dell in The Artisan Magazine on June 5, 2025, in a
@@ -144,6 +136,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: these are titles of blog posts she wrote for Creative Pinellas, not titles of paintings"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Rewrote display bio hook: removed 'survivor of economic hardship and domestic abuse' lead per user direction ('i dont want to lead with survival'). New hook anchors to THIS wall — painted with her daughter Becka — making 'Stronger Together' literal. Female-form fragility/strength substance retained in body. SearchBio unchanged."
