@@ -21,7 +21,7 @@ artistBio: |
   He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
   former golf course where Ruth used to play.
 
-  Blake Emory is a Florida native, born 1983, now based in St. Petersburg. With
+  Blake Emory is a Florida native now based in St. Petersburg. With
   his brother James — out of Santa Fe — he runs ESP Gallery and the Emory Arts
   collective. The day job is wide: Neo-Renaissance figure painting, Etherealism, sculpture, set design,
   experimental film. He doesn't pick a lane.
@@ -89,6 +89,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: neither biographical source carries a birth year; that sourceNotes URL is Emory Blake the former NFL receiver, a different person"
   - "28 August 2026 — Fact-check fleet: his own gallery names the movement Etherealism; Optic Modernism appears in no source; his own gallery names the movement Etherealism; instagram.com/emory_blake is Emory Blake the former NFL receiver, a different person with a transposed name; that handle belongs to a different person"
   - "1 May 2026 — New mural added per Rob; bio + collab attribution from research. GPS placeholder (1st Ave S & 20th St S corner) — to be replaced with EXIF when Rob uploads photo. Image filename reserved; image not yet on disk."
 sourceNotes:
@@ -96,7 +97,7 @@ sourceNotes:
   - "https://www.tampabay.com/life-culture/history/2025/05/10/babe-ruth-sculpture-st-petersburg-yankees-baseball/"
   - "https://marcolinas.com/collections/blake-emory"
   - "https://www.emorybrothersart.com/biography"
-  - "https://www.instagram.com/emory_blake/"
+
   - "https://stpetersburgfoodies.com/craft-beer/cage-brewing-beer-games-music-in-st-pete/"
   - "Rob met Blake Emory in person at Cage Brewing on 2026-05-01 while Blake was touching up his own mural — primary-source attribution confirmed."
 verification:

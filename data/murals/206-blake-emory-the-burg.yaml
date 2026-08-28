@@ -23,7 +23,7 @@ artistBio: |
   corner. Cursive "St Pete," ornate "The Burg" lettering. Painted on the side
   of a corner shop at 14th Ave S and 16th St S.
 
-  Blake Emory is a Florida native, born 1983, now based in St. Petersburg.
+  Blake Emory is a Florida native now based in St. Petersburg.
   With his brother James — out of Santa Fe — he runs ESP Gallery and the
   Emory Arts collective. The day job is wide: Neo-Renaissance figure painting, Etherealism, sculpture, set design,
   experimental film. He
@@ -78,13 +78,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: neither biographical source carries a birth year; that sourceNotes URL is Emory Blake the former NFL receiver, a different person"
   - "28 August 2026 — Fact-check fleet: his own gallery names the movement Etherealism; Optic Modernism appears in no source; instagram.com/emory_blake is Emory Blake the former NFL receiver, a different person with a transposed name; that handle belongs to a different person"
   - "2026-05-14 — New mural added by Rob: fourth Blake Emory in Mural Quest, a commercial wall on 16th St S featuring pelican-with-sub, Skyway, sea turtles, pirate, and 'St Pete / The Burg' lettering. GPS from photo IMG_0289.jpeg EXIF (27.75665, -82.65449). Attribution per Rob (in-person artist relationship)."
 sourceNotes:
   - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0289.jpeg)"
   - "Attribution per Rob — Rob has met Blake Emory in person and confirmed authorship of his St. Pete walls"
   - "https://www.emorybrothersart.com/biography"
-  - "https://www.instagram.com/emory_blake/"
+
 verification:
   date: 2026-05-14
   method: Rob in-person artist relationship + on-wall composition cue

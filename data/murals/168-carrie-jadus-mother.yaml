@@ -57,8 +57,8 @@ searchBio: |
   professional artist since 2016, she uses "the business plan of a Toymaker as a
   model" — multiple product lines to sustain income.
 
-  Her SHINE 2015 murals include the Nikola Tesla portrait at 22nd St S and 5th
-  Ave S, painted with assistant Tara Radosevich over two weeks, and "Little Miss
+  Her SHINE 2015 murals include the Nikola Tesla portrait at 22nd St S and 5th Ave S, painted with an
+  all-female crew — Tara Radosevich, Jules Cozine and Suzy Shultz, and "Little Miss
   Sisyphus," a girl pushing an enormous reflective sphere up a mountain. At
   Grand Central Brewhouse she painted "Last Call" (2020), a 50x30 ft mural of
   six musical icons: Bob Marley, Bono, Bruce Springsteen, Lady Gaga, Eddie
@@ -94,6 +94,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the source names three assistants and gives no duration; the two-week figure belongs to the Dog Bar mural"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "29 April 2026 — Replaced placeholder bio with canonical Carrie Jadus bio (matches #149/#150 for consistency). Added Instagram handle and verified source URLs."
   - "29 April 2026 — Filled building (ArtsXchange) and address (515 22nd St S — confirmed by mural serial number 'AXΔ515 22ND ST S.O.'). Added muralInspiration narrative from carriejadus.com/murals.html and Creative Pinellas."

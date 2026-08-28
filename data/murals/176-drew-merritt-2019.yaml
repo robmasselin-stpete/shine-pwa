@@ -67,8 +67,7 @@ searchMuralDescription: |
   pried open to reveal rows of teeth. The alligator's scales and the woman's
   skin are painted with equal hyperrealistic precision. Lavender nail polish is
   visible on her fingertips. The background is bare white wall, making the
-  figures appear to emerge from the surface. The model is Kari Michelle. Painted
-  entirely in spray paint.
+  figures appear to emerge from the surface. Painted entirely in spray paint.
 
 muralInspiration: ""
 muralAwards: ""
@@ -81,6 +80,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: a named private individual with no citation; removed rather than left unsourced"
   - "22 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-21, GPS from EXIF"

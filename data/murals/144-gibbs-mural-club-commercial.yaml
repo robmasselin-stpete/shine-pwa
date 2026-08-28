@@ -37,8 +37,8 @@ artistBio: |
   Their St. Petersburg Distillery mural at 800 31st Street South is "Raising
   Local Spirits" / "Voyage Under the Sea" — a sponge diver and a giant octopus
   retrieving rum barrels from a sunken ship. It references the site's
-  rum-running history. Senior club president Anderson Bray, a four-year member,
-  painted with the octopus team. His take: "It is really exciting to have it
+  rum-running history. Senior club president Anderson Bray, a four-year member, painted with the
+  octopus team. Her take: "It is really exciting to have it
   right across the street because I can tell my friends, 'Hey I did this.'"
 
   McAllister's principle: "Once you're in the mural club, you're always in the
@@ -118,6 +118,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: The Gabber, this record's own source, refers to Anderson Bray as she"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced"
   - "10 April 2026 — Deep research, full bio rewrite, Rob reviewed"
 sourceNotes:

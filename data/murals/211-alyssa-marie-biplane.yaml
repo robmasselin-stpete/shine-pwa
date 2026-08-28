@@ -58,8 +58,7 @@ searchBio: |
   This wall sits on the hangar facing First Street at Albert Whitted Airport.
   It depicts a bright yellow Stearman biplane — a classic open-cockpit trainer
   — emerging head-on from the hangar, propeller rendered as a translucent
-  spinning disc. The piece was commissioned in 2024 through a collaboration
-  between Friends of Albert Whitted Airport, the City of St. Petersburg, and
+  spinning disc. The piece was commissioned through a collaboration between Friends of Albert Whitted Airport, the City of St. Petersburg, and
   the St. Petersburg Arts Alliance, with funding from the charitable fund of
   William and Katherine McMannis, and unveiled in January 2024. A companion
   mural by St. Petersburg muralist and art educator Brian McAllister, titled
@@ -94,6 +93,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: it was already painted at the 1 January 2024 unveiling, so it cannot have been commissioned in 2024"
   - "2026-06-16 — New mural added by Rob: Alyssa Marie yellow Stearman biplane on the Albert Whitted Airport hangar (First St side). Photo from Rob (IMG_7213.jpeg, 2026-05-28). Forwarded photo's EXIF GPS (27.78708, -82.64674) is ~1.5mi N of the airport — bogus, discarded. Rob set final GPS via route-editor: 27.764316, -82.633739 (Albert Whitted hangar, First St S side). Year 2024 (unveiled Jan 2024). Category commercial (commissioned public art via FOAWA/City/SPAA — not a SHINE festival mural). Bio researched fresh; not copied from any site."
 sourceNotes:
   - "Photo by Rob (forwarded), IMG_7213.jpeg dated 2026-05-28; EXIF GPS unreliable (re-stamped on forward) — GPS to be set manually"

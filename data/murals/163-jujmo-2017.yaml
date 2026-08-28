@@ -15,7 +15,7 @@ audio: "https://cdn.muralquest.app/audio/163.mp3?v=2"
 title: "Aquatic Forest"
 building: ""
 instagram: jujmo
-basedIn: "St. Petersburg, FL"
+basedIn: "Tampa, FL"
 
 fieldNotes:
   - "Grew up as a military kid between bases overseas"
@@ -86,6 +86,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: every source and this record's own bio place her in Tampa"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; FIXED title: 'Space Rainbows' was wrong (that's a Ricky Watts mural). Per SPAA, Jujmo's 2017 mural at 1701 1st Ave S is 'Aquatic Forest.' Removed unsourced 'cute forward' style quote."
 sourceNotes:

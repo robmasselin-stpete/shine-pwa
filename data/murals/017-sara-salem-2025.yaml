@@ -80,11 +80,11 @@ searchBio: |
   the Phi Phi Artland brand.
 
   She won the Art Wave contest at Countryside Mall with her mural "Retro in
-  Colors," a piece combining nostalgic elements with a modern twist. She
-  designed and led the LMCU Community Mural Project in 2024, sponsored by St.
-  Pete Arts Alliance and St. Pete City, with the Phi Phi Artland team as
-  designer and the St. Pete Artful Community as painter. She returned in 2025
-  with the St. Pete Community Mural, again sponsored by St. Pete Arts Alliance.
+  Colors," a piece combining nostalgic elements with a modern twist. She designed and led the St. Pete Community Mural in 2024 at 22nd and
+  Central, sponsored by St. Pete Arts Alliance and the City of St. Petersburg,
+  with the Phi Phi Artland team as designer and the St. Pete Artful Community
+  as painter. She returned in 2025 with the LMCU Community Mural Project as
+  part of SHINE.
 
   For SHINE Mural Festival 2025, the festival's eleventh year and the first to
   include local St. Petersburg artists, Salem created "Sol," a community mural
@@ -143,6 +143,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the two projects were swapped: LMCU is the 2025 SHINE wall, the community mural at 22nd and Central was 2024"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Corrected mural title to 'Sol' per artist request via Rob (Sara Salem confirmed directly). 'We Are St. Pete' is the rallying line painted across the design, not the title. Updated artistBio + searchBio refs; description retains the painted-text mention."

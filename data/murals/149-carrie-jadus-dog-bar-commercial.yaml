@@ -56,8 +56,8 @@ searchBio: |
   professional artist since 2016, she uses "the business plan of a Toymaker as a
   model" — multiple product lines to sustain income.
 
-  Her SHINE 2015 murals include the Nikola Tesla portrait at 22nd St S and 5th
-  Ave S, painted with assistant Tara Radosevich over two weeks, and "Little Miss
+  Her SHINE 2015 murals include the Nikola Tesla portrait at 22nd St S and 5th Ave S, painted with an
+  all-female crew — Tara Radosevich, Jules Cozine and Suzy Shultz, and "Little Miss
   Sisyphus," a girl pushing an enormous reflective sphere up a mountain. At
   Grand Central Brewhouse she painted "Last Call" (2020), a 50x30 ft mural of
   six musical icons: Bob Marley, Bono, Bruce Springsteen, Lady Gaga, Eddie
@@ -91,6 +91,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the source names three assistants and gives no duration; the two-week figure belongs to the Dog Bar mural"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; dropped 'Resonance' title for Tesla mural (sources call it just 'Tesla'); 'Soft Water Gallery' → 'Soft Water Studios'. Note: agent flagged this as Grand Central Brewhouse — verified that the Dog Bar location is correct (the wall faces Dog Bar; Grand Central is on the opposite side of the building)."
 sourceNotes:
