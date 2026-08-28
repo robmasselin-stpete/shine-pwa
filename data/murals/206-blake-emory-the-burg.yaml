@@ -13,7 +13,7 @@ img: "images/murals/commercial/blake-emory-the-burg.jpeg"
 # ── Optional ──
 title: "St Pete / The Burg"
 building: ""
-instagram: emory_blake
+instagram: ""
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
@@ -25,8 +25,8 @@ artistBio: |
 
   Blake Emory is a Florida native, born 1983, now based in St. Petersburg.
   With his brother James — out of Santa Fe — he runs ESP Gallery and the
-  Emory Arts collective. The day job is wide: Neo-Renaissance figure
-  painting, Optic Modernism, sculpture, set design, experimental film. He
+  Emory Arts collective. The day job is wide: Neo-Renaissance figure painting, Etherealism, sculpture, set design,
+  experimental film. He
   doesn't pick a lane.
 
   His murals are scattered across St. Pete in places people don't expect,
@@ -44,7 +44,7 @@ searchBio: |
   commission, very different in tone from his Neo-Renaissance gallery and
   Cage Brewing work.
 
-  Instagram: @emory_blake. Galleries: ESP Gallery, Marcolina's. Website:
+  Galleries: ESP Gallery, Marcolina's. Website:
   emorybrothersart.com.
 
 searchMuralDescription: |
@@ -78,6 +78,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: his own gallery names the movement Etherealism; Optic Modernism appears in no source; instagram.com/emory_blake is Emory Blake the former NFL receiver, a different person with a transposed name; that handle belongs to a different person"
   - "2026-05-14 — New mural added by Rob: fourth Blake Emory in Mural Quest, a commercial wall on 16th St S featuring pelican-with-sub, Skyway, sea turtles, pirate, and 'St Pete / The Burg' lettering. GPS from photo IMG_0289.jpeg EXIF (27.75665, -82.65449). Attribution per Rob (in-person artist relationship)."
 sourceNotes:
   - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0289.jpeg)"

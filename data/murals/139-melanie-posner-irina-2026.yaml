@@ -41,8 +41,7 @@ searchBio: |
   in under five days, then went straight to Walt Disney World to paint scenic
   art for Star Wars: Galaxy's Edge.
 
-  Melanie "Mel" Posner was born around 1993 in a small town just outside
-  Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
+  Melanie "Mel" Posner was born around 1993 in Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
   the University of Tampa in 2016, where she also studied art therapy. She was
   previously based in Gulfport, Florida, and is now in Los Angeles.
 
@@ -110,6 +109,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the only source calls her a Philadelphia native, not suburban"
   - "28 August 2026 — Fact-check fleet: her own portfolio places it at the LGBT Center in Hollywood, not West Hollywood"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "10 April 2026 — Deep research, full bio with hook, copied to all 3 Posner files"

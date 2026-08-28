@@ -56,8 +56,7 @@ searchBio: |
   piece — graphic silhouettes and flat color rather than Posner's usual
   photorealism — celebrating connection, diversity, and care.
 
-  Melanie "Mel" Posner was born around 1993 in a small town just outside
-  Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
+  Melanie "Mel" Posner was born around 1993 in Philadelphia. She moved to Tampa in 2013 and earned her BFA in Painting from
   the University of Tampa in 2016, where she also studied art therapy. She was
   previously based in Gulfport, Florida, and is now in Los Angeles. Her usual
   style is photorealistic portraits of women — oversized expressive eyes,
@@ -116,6 +115,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the only source calls her a Philadelphia native, not suburban"
   - "28 August 2026 — Fact-check fleet: her own portfolio places it at the LGBT Center in Hollywood, not West Hollywood; her verified handle is therealmelpoz; the record's own instagram field already said so"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten + searchBio populated using context from #120 (Mint House Posner). Hook anchored to this wall's heart/diverse-silhouettes design. Notes that this is an awareness/community piece — flat graphic style rather than her usual photorealism. Cross-references to other Posner walls (#120 Mint House, #139 Iryna memorial, #119 SHINE 2018 New Beginnings)."

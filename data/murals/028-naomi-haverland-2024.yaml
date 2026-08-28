@@ -19,7 +19,7 @@ basedIn: "Orlando, FL"
 fieldNotes:
   - "Used microscopes inside the Discovery Center to study live plankton"
   - "Known for hyper-realistic portraits and anamorphic optical illusions"
-  - "Ringling College of Art and Design graduate"
+  - "No formal art education — self-taught"
 
 artistBio: |
   The microscopic creatures swirling on this wall? She studied them live, under
@@ -136,6 +136,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: contradicts her own bio and this record's own text, both of which say no formal art education"
   - "23 April 2026 — Photo from Rob, GPS from EXIF, mural description added, source upgraded"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — New hook anchored to this wall: she used microscopes inside the Discovery Center to study live plankton, then painted them outside. Replaced the self-taught/Denver Chalk Festival opener (moved facts deeper into bio)."

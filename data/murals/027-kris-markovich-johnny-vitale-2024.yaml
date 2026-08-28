@@ -21,9 +21,7 @@ artistBio: |
   the walls.
 
   Kris Markovich is a professional skateboarder who rode for Dogtown, appeared
-  on the cover of Transworld Magazine, featured in Tony Hawk's video games, and
-  was named one of the 15 Most Influential People in the Tampa Art Scene by
-  MergeCulture. He is self-taught as an artist, coming up through skateboard
+  on the cover of Transworld Magazine, and featured in Tony Hawk's video games. He is self-taught as an artist, coming up through skateboard
   graphics and graffiti. His largest mural is at Harrah's Casino in San Diego.
   He has painted from the US West Coast to Dubai.
 
@@ -31,8 +29,9 @@ artistBio: |
   1992. Together they are Anchor Skate Supply's resident artists.
 
   For SHINE 2024, they collaborated on a mural at 501 16th Street South (Anchor
-  Skate Supply), inspired by the Tampa Bay Rays City Connect uniforms, and
-  produced a limited-edition SHINE mural skateboard called "L'Orange."
+  Skate Supply), inspired by the Tampa Bay Rays City Connect uniforms. Each designed a deck
+  for the SHINE skateboard series — Markovich "City of Dreams," Vitale
+  "L'Orange."
 
 searchBio: |
   He turned pro for Dogtown Skateboards in 1990. Thirty years later, he paints
@@ -74,10 +73,8 @@ searchBio: |
   for his local Saint Petersburg skate shop Anchor Skate Supply with a guest
   artist board he designed, and has a signature Kris Markovich wheel made by
   Acid Chemical Company. He had a Thrasher Magazine Mail Drop Book release.
-  MergeCulture named him one of the 15 Most Influential People in the Tampa Art
-  Scene of the last two decades, citing his collaborations with Skatepark of
-  Tampa for Tampa Am and Tampa Pro, where he has painted the pro course and
-  shown alongside Neckface, Stephen Palladino, Lucas Beaufort, Shepard Fairey,
+  He has collaborated with Skatepark of Tampa for Tampa Am and Tampa Pro,
+  painting the pro course and showing alongside Neckface, Stephen Palladino, Lucas Beaufort, Shepard Fairey,
   Jeremy Fish, and Lance Mountain in Ybor City and at Transitions Art Gallery.
 
   Johnny Vitale co-founded the Vitale Bros. with his brother Paul in Tampa Bay
@@ -103,10 +100,9 @@ searchBio: |
 
   Together Markovich and Vitale are Anchor Skate Supply's resident artists. For
   SHINE 2024 they collaborated on a mural at 501 16th Street South — Anchor
-  Skate Supply — inspired by the Tampa Bay Rays City Connect uniforms. They
-  produced a limited-edition SHINE mural skateboard called "L'Orange" as part of
-  Anchor Skate Supply and SHINE St. Petersburg Mural Festival's collaboration
-  honoring the festival's 10th anniversary. The deck series featured five SHINE
+  Skate Supply — inspired by the Tampa Bay Rays City Connect uniforms. Each designed a limited-edition deck for the Anchor Skate Supply and SHINE
+  collaboration honoring the festival's 10th anniversary — Markovich "City of
+  Dreams," Vitale "L'Orange." The deck series featured five SHINE
   artists — Kris Markovich, Johnny Vitale, Jared Wright, Hannah Eddy, and Max
   Sansing — crafted with premium Rock Hard Great Lakes Maple. Markovich, Vitale,
   and Wright signed their skateboard designs.
@@ -127,7 +123,7 @@ searchMuralDescription: |
 
 muralInspiration: "Inspired by the Tampa Bay Rays' City Connect uniforms, which drew from St. Pete's skate culture, neon signs, tattoo culture, and street art."
 muralAwards: ""
-artistAwards: "Markovich: Transworld Magazine cover; 15 Most Influential Tampa Art Scene (MergeCulture); SHINE 2024"
+artistAwards: "Markovich: Transworld Magazine cover; SHINE 2024"
 
 furtherWork:
   - name: "krismarkovich.com"
@@ -136,6 +132,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: MergeCulture's 15 honorees do not include Markovich; he appears only inside another honoree's entry; MergeCulture's 15 honorees do not include Markovich; they designed separate decks, not one joint board"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:

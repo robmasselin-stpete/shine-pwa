@@ -22,15 +22,15 @@ artistBio: |
 
   Ashley Cassens is a Tampa-based representational figure painter and muralist.
   She grew up in Daytona Beach, earned a BFA from Florida Southern College in
-  2006, and an MFA from Florida Atlantic University in 2017. She taught K-12 art
-  for seven years before going full-time as an artist around 2020.
+  2006, and an MFA from Florida Atlantic University in 2017. She taught K-5 art for five years before going full-time as an artist around
+  2020.
 
   Her studio work is intimate figurative portraiture — layered, chromatic oil
   paint on canvas and wood panels, often focused on specific body parts and
   details of people she knows. Her "Eye Traps" series celebrates women through
-  traditional oil painting, patterned fabrics, and fresh color. Her "Some Place
-  Under Neith" series responds to fundamentalist cult pamphlets, addressing
-  women's repression through tiny portrait paintings.
+  traditional oil painting, patterned fabrics, and fresh color. A series of tiny portrait paintings responds to fundamentalist cult
+  pamphlets, addressing women's repression; she learned of the group through
+  the true-crime podcast "Some Place Under Neith."
 
   "Sweet Disposition" wraps the side of 54th Ave Deli Mart in the Lealman area —
   bold botanical imagery flowing from orange blossoms through a bumblebee in
@@ -50,7 +50,7 @@ searchBio: |
   Ambassador of the Arts Scholarship, and the Women in the Visual Arts
   Scholarship (twice).
 
-  She taught K-12 art for seven years and was a teaching assistant at FAU before
+  She taught K-5 art for five years and was a teaching assistant at FAU before
   becoming a full-time artist around 2020. She runs Painting Possibilities LLC
   in Tampa's Northdale area. She is certified in scissor and boom lift safety,
   insured, and background checked. She charges $25-30 per square foot for murals
@@ -61,9 +61,9 @@ searchBio: |
   loved ones. Notable series include "Eye Traps" (celebrating women through oil
   painting and patterned fabrics; two pieces licensed to HomeGoods; shown at
   Elevation Coffee Roasters, Tampa), "Projection Series" (vibrant portraits
-  exploring experiences filtered through screens), and "Some Place Under Neith"
-  (tiny portraits responding to IBLP cult pamphlets, addressing women's
-  repression).
+  exploring experiences filtered through screens), and tiny portraits responding to IBLP cult pamphlets, addressing women's
+  repression (she learned of the group through the true-crime podcast "Some
+  Place Under Neith").
 
   Commercial clients include HomeGoods (licensing), Ann Cox Design, Cori Rose
   Handmade, Creative Pinellas, and various schools, non-profits, national
@@ -102,6 +102,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: her own About page says K-5 for five years; Some Place Under Neith is the true-crime podcast that introduced her to the IBLP, not a series of her paintings; Some Place Under Neith is a podcast, not a series of her paintings"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Full research and bio, Claude-enhanced"
 sourceNotes:

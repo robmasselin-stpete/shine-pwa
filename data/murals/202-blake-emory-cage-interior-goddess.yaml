@@ -13,7 +13,7 @@ img: "images/murals/commercial/blake-emory-cage-interior-goddess.jpeg"
 # ── Optional ──
 title: ""
 building: "Cage Brewing"
-instagram: emory_blake
+instagram: ""
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
@@ -22,8 +22,8 @@ artistBio: |
 
   Blake Emory is a Florida native, born 1983, now based in St. Petersburg. With
   his brother James — out of Santa Fe — he runs ESP Gallery and the Emory Arts
-  collective. The day job is wide: Neo-Renaissance figure painting, Optic
-  Modernism, sculpture, set design, experimental film. He doesn't pick a lane.
+  collective. The day job is wide: Neo-Renaissance figure painting, Etherealism, sculpture, set design,
+  experimental film. He doesn't pick a lane.
 
   His murals are scattered across St. Pete in places people don't expect,
   including a few rooftops. The work doesn't always announce itself — you find
@@ -45,8 +45,8 @@ searchBio: |
   Blake Emory was born in Florida in 1983 and is now based in St. Petersburg,
   with a studio at 1114 Farragut Dr N. With his brother James — based in Santa
   Fe — he runs ESP Gallery and the Emory Arts collective (EMORY ARTS LLC and the
-  affiliated Emory Arts 501(c)(3)). His practice spans Neo-Renaissance figure
-  painting, Optic Modernism, sculpture, set design, and experimental film. He is
+  affiliated Emory Arts 501(c)(3)). His practice spans Neo-Renaissance figure painting, Etherealism, sculpture, set design, and
+  experimental film. He is
   represented by Marcolina's Gallery.
 
   His murals are scattered across St. Petersburg in places people don't expect,
@@ -67,7 +67,7 @@ searchBio: |
   the composition. Year not documented; attribution confirmed by Rob meeting
   Blake Emory in person at Cage Brewing on 2026-05-01.
 
-  Instagram: @emory_blake. Galleries: ESP Gallery, Marcolina's. Website:
+  Galleries: ESP Gallery, Marcolina's. Website:
   emorybrothersart.com.
 
 searchMuralDescription: |
@@ -101,6 +101,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: his own gallery names the movement Etherealism; Optic Modernism appears in no source; his own gallery names the movement Etherealism; instagram.com/emory_blake is Emory Blake the former NFL receiver, a different person with a transposed name; that handle belongs to a different person"
   - "2026-05-06 — New mural added by Rob: second Blake Emory at Cage Brewing, interior (women's-room exterior in covered patio). GPS from photo IMG_0279.jpeg EXIF (27.77072, -82.66113). Year unknown — flagged. Attribution authoritative (Rob met the artist on site 2026-05-01)."
 sourceNotes:
   - "Photo by Rob 2026-05-05, GPS from EXIF (IMG_0279.jpeg)"

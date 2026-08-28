@@ -17,10 +17,9 @@ instagram: karelgarcia.fineartist
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  His SHINE 2025 mural was his first public art installation in America. He
-  trained as an architect in Havana.
+  He trained as an architect in Havana.
 
-  Karel Garcia was born December 27, 1990 in Vedado, Cuba. He earned an
+  Karel Garcia was born December 27, 1990 in Cuba. He earned an
   architecture degree in Havana in 2017, working as an architect while
   exhibiting art privately and participating in projects at the Habana Espacio
   Creativo Center. His focus has always been the human figure — sexuality, the
@@ -37,11 +36,9 @@ artistBio: |
   his own journey from Cuba.
 
 searchBio: |
-  His SHINE 2025 mural was his first public art installation in America. He
-  trained as an architect in Havana.
+  He trained as an architect in Havana.
 
-  Karel Garcia (sometimes listed as Karel Garcia de Leon) was born December 27,
-  1990 in Vedado, Cuba. He earned an architecture degree in Havana, completed in
+  Karel Garcia (sometimes listed as Karel Garcia de Leon) was born December 27, 1990 in Cuba. He earned an architecture degree in Havana, completed in
   2017, and worked as an architect while exhibiting art privately. He
   participated in projects at the Habana Espacio Creativo Center in Havana. His
   focus is the human figure — sexuality, the bond between humans and nature and
@@ -79,6 +76,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: no source supports the first-in-America claim; the source places Vedado with his childhood workshops, not his birth"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
   - "https://creativepinellas.org/artist/karel-garcia/"

@@ -1,8 +1,8 @@
-# Morgan Harper Nichols — Octopus Mural
+# ArtFluent Creatives — Octopus Mural
 
 # ── Required ──
 id: 164
-artist: Morgan Harper Nichols
+artist: ArtFluent Creatives
 year: 0
 lat: 27.770912
 lng: -82.659295
@@ -13,66 +13,37 @@ img: "images/murals/commercial/morgan-harper-nichols.jpeg"
 # ── Optional ──
 title: ""
 building: Art Jewelry Boutique
-instagram: morganharpernichols
+instagram: artfluent.creatives
 basedIn: ""
 
 artistBio: |
-  She started a project to write a million poems to strangers in her lifetime.
-  She has two million followers on Instagram.
+  The poem on the wall is not by the painters. The verse on the scroll is by
+  poet Morgan Harper Nichols, whose name is signed beneath it — which is how
+  this mural has often been miscredited to her.
 
-  Morgan Harper Nichols is a poet, author, and interdisciplinary media artist
-  born in Los Angeles in 1990, raised in Georgia, now based in Athens where she
-  is pursuing a PhD in Communication Studies at the University of Georgia. She
-  earned a BFA in English from Point University and an MFA in Interdisciplinary
-  Media Arts from Lindenwood University. In 2017 she began writing personalized
-  poems for strangers who submit their stories through her website — brief
-  letters of encouragement paired with visual art, sent free and shared
-  anonymously.
+  The octopus is the work of ArtFluent Creatives, a mural and custom-art agency
+  founded by Michelle Sasha. Three of its artists signed the wall at the lower
+  left, beneath the agency's name.
 
-  She has published four books with Zondervan/HarperCollins, including the Wall
-  Street Journal bestseller "All Along You Were Blooming." Clients include
-  Google, Apple, Adobe, Starbucks, COACH, and Hallmark. She was diagnosed with
-  autism at thirty-one.
+  NEEDS RESEARCH: this record's bio was rebuilt on 28 August 2026 after the
+  mural was found to be misattributed. A full artist bio has not yet been
+  written.
 
 searchBio: |
-  She started a project to write a million poems to strangers in her lifetime.
-  She has two million followers on Instagram.
+  The octopus mural wrapping the corner of the Art Jewelry Boutique building is
+  the work of ArtFluent Creatives, a mural and custom-art agency founded by
+  Michelle Sasha (@michellesashacustomart). The agency describes itself as "an
+  agency of talented Artists creating custom art and murals." Three artists
+  signed this wall at the lower left beneath the ArtFluent Creatives name.
 
-  Morgan Harper Nichols (born Morgan Novelate Harper, February 4, 1990, Los
-  Angeles) is a poet, author, and interdisciplinary media artist. Her family
-  moved to Georgia in 1993 where her parents started Kingdom City Church in
-  Stone Mountain. Her younger sister is Christian music artist Jamie Grace. She
-  was homeschooled growing up. She began attending Point University at sixteen
-  and earned a BA in English. She earned an MFA in Interdisciplinary Media Arts
-  from Lindenwood University (2024) and is pursuing a PhD in Communication
-  Studies at the University of Georgia (began August 2024).
+  The parchment scroll at the centre of the mural carries a poem by Morgan
+  Harper Nichols, a poet and author with a large following, and her name is
+  signed beneath the verse. That signature is the likely source of the long-
+  standing misattribution of the whole mural to her; she is the author of the
+  poem, not the painter of the wall.
 
-  In 2017 she began writing personalized poems for strangers — people submit
-  stories via her website and she writes brief letters of encouragement paired
-  with visual art, sent free and shared anonymously on social media. She creates
-  all words and art on an iPad Pro. Her approach is collage-based, drawing from
-  worldbuilding, assemblage, and remixing.
-
-  Books include "Storyteller: 100 Poem Letters" (2017, self-published), "All
-  Along You Were Blooming" (2020, Zondervan — Wall Street Journal bestseller),
-  "How Far You Have Come" (2021, Zondervan), "Peace Is a Practice" (2021,
-  Zondervan), and "You Are Only Just Beginning" (2023, Zondervan). She signed a
-  two-book contract with Zondervan in June 2020.
-
-  Clients include Google, Meta, Apple, Adobe, Starbucks, KIND Snacks, COACH,
-  Paul Mitchell, Skillshare, Hallmark, Instagram, Aerie, and Vogue Singapore.
-  Products found at Target, Barnes & Noble, and Anthropologie. She is Vice
-  President of the Board of Directors for TWLOHA (To Write Love on Her Arms).
-  She founded Garden24, an e-commerce platform and physical shop in Phoenix. She
-  launched the "Storyteller by MHN" app (2019) and "The Morgan Harper Nichols
-  Show" podcast (2019).
-
-  She was diagnosed with autism at thirty-one along with ADHD and sensory
-  processing disorder. She married Patrick Kekoa Nichols on October 17, 2010.
-  They have a son, Jacob.
-
-  Instagram: @morganharpernichols (approximately 2 million followers). Website:
-  morganharpernichols.com. Shop: garden24.co.
+  NEEDS RESEARCH: a full bio for ArtFluent Creatives and the individual signing
+  artists has not yet been written.
 
 searchMuralDescription: |
   An octopus mural wrapping around the corner of a small commercial building
@@ -93,6 +64,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: MISATTRIBUTION CORRECTED. This mural was credited to poet Morgan Harper Nichols and carried her full biography. The wall is signed at lower left by three artists under the name ArtFluent Creatives, an agency founded by Michelle Sasha (instagram.com/artfluent.creatives). The Morgan Harper Nichols connection is real but narrower: the poem on the painted scroll is hers and her name is signed beneath it. Confirmed from Rob's own field photo. The previous bio (approx 600 words of her life story) has been removed. Also: the address may be wrong - the photo shows the boutique at 1916 A Central Ave while this record says 1901"
   - "16 April 2026 — New mural added, GPS from Rob's photos (IMG_0048, IMG_0049)"
   - "26 April 2026 — Audited (PASS). 19/20 claims fully verified, 1 (extended client list) verified via her own CV. Zero hallucinations."
 sourceNotes:

@@ -23,7 +23,7 @@ fieldNotes:
   - "St. Pete local artist"
 
 artistBio: |
-  His solo show "Ego Death" at Mize Gallery sold out in 48 hours. IBOMS stands
+  His show with Chad Mize at Mize Gallery sold out in 48 hours. IBOMS stands
   for "illegal. Beauty. On. My. Streets."
 
   Jabari Jahi Babatu Reed-Diop — IBOMS — is a St. Petersburg native. He attended
@@ -41,7 +41,7 @@ artistBio: |
   Brewhouse. He returned as a SHINE 2021 Bright Spots artist.
 
 searchBio: |
-  His solo show "Ego Death" at Mize Gallery sold out in 48 hours. IBOMS stands
+  His show with Chad Mize at Mize Gallery sold out in 48 hours. IBOMS stands
   for "illegal. Beauty. On. My. Streets." Jabari Jahi Babatu Reed-Diop — IBOMS —
   is a St. Petersburg native based in St. Petersburg, Florida. His artistic
   acumen comes from personal experience and formal education at Douglas Anderson
@@ -67,7 +67,7 @@ searchBio: |
   Chad Mize at Mize Gallery sold out within 48 hours of its debut, with select
   pieces remaining for sale at d-Gallerie afterward.
 
-  He designed a Tampa Bay Rays Artist Print Series in 2019. A portrait of IBOMS
+   A portrait of IBOMS
   by muralist and curator Derek Donnelly is painted in the alley behind the 600
   Block of Central Avenue in St. Petersburg.
 
@@ -142,5 +142,6 @@ sourceNotes:
   - "https://creativepinellas.org/artist/jabari-reed-diop-i-b-o-m-s/"
   - "https://ilovetheburg.com/tampa-bay-murals-iboms/"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the source describes a show with Chad Mize, not a solo show; no pooled source mentions the Tampa Bay Rays"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

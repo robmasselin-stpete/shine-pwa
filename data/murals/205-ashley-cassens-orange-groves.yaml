@@ -46,7 +46,7 @@ searchBio: |
   Scholarship, Ambassador of the Arts Scholarship, and the Women in the Visual
   Arts Scholarship (twice).
 
-  She taught K-12 art for seven years and was a teaching assistant at FAU
+  She taught K-5 art for five years and was a teaching assistant at FAU
   before becoming a full-time artist around 2020. She runs Painting
   Possibilities LLC in Tampa's Northdale area. She is certified in scissor and
   boom lift safety, insured, and background checked. She charges $25-30 per
@@ -57,9 +57,9 @@ searchBio: |
   details of loved ones. Notable series include "Eye Traps" (celebrating women
   through oil painting and patterned fabrics; two pieces licensed to
   HomeGoods; shown at Elevation Coffee Roasters, Tampa), "Projection Series"
-  (vibrant portraits exploring experiences filtered through screens), and
-  "Some Place Under Neith" (tiny portraits responding to IBLP cult pamphlets,
-  addressing women's repression).
+  (vibrant portraits exploring experiences filtered through screens), and tiny portraits responding to IBLP cult pamphlets, addressing women's
+  repression (she learned of the group through the true-crime podcast "Some
+  Place Under Neith").
 
   Commercial clients include HomeGoods (licensing), Ann Cox Design, Cori Rose
   Handmade, Creative Pinellas, and various schools, non-profits, national
@@ -106,6 +106,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: her own About page says K-5 for five years; Some Place Under Neith is a podcast, not a series of her paintings"
   - "2026-05-14 — New mural added by Rob: second Ashley Cassens, citrus + lorikeet + tropical flowers on Florida Orange Groves Winery in South Pasadena. GPS from photo IMG_0290.jpeg EXIF (27.75273, -82.73796), photo dated 2026-05-13. Year 2026; signed lower-left 'ASHLEY CASSENS @ashley.cassens.' Bio carried over from #153 (Sweet Disposition)."
 sourceNotes:
   - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0290.jpeg)"

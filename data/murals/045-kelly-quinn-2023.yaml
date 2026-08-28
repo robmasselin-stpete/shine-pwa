@@ -17,8 +17,7 @@ instagram: kellyofthewild
 basedIn: "St. Petersburg, FL"
 
 artistBio: |
-  She was Artist-in-Residence at The Florida Aquarium — live-painting, teaching
-  classes, collaborating with educators. Conservation is the work.
+  Conservation is the work.
 
   Kelly Quinn grew up in rural Florida and graduated from the University of
   Florida's College of Fine Arts in 2016. That same year she founded Kelly of
@@ -35,8 +34,7 @@ artistBio: |
   She is based in St. Petersburg. For SHINE 2023, she painted locally.
 
 searchBio: |
-  She was Artist-in-Residence at The Florida Aquarium — live-painting, teaching
-  classes, collaborating with educators. Conservation is the work.
+  Conservation is the work.
 
   Kelly Quinn was born and raised in rural Florida on the headwaters of the
   Everglades, surrounded by conservation land. She explored the area looking for
@@ -136,6 +134,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: no source supports an Artist-in-Residence post at The Florida Aquarium; her own full CV does not list it"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:

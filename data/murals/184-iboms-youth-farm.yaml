@@ -37,9 +37,7 @@ artistBio: |
   south St. Pete) anchors most of his other walls — but this one shifted into
   community-mural mode for the kids.
 
-  He works in 2D illustration, 3D sculpture, and digital design. His solo show
-  "Ego Death" at Mize Gallery sold out in 48 hours. He designed a Tampa Bay Rays
-  Artist Print Series in 2019. His SHINE 2020 wall "Where the Bloom Begins" sits
+  He works in 2D illustration, 3D sculpture, and digital design. His show with Chad Mize at Mize Gallery sold out in 48 hours.  His SHINE 2020 wall "Where the Bloom Begins" sits
   at Grand Central Brewhouse on Central Ave, and he returned to SHINE in 2021 as
   a Bright Spots artist.
 
@@ -72,11 +70,11 @@ searchBio: |
   design. At first glance his work may read as simple illustrations or graffiti,
   but each piece carries a deeper message. Recent work features mushroom-headed
   characters exploring "Ego Death." He has shown at d-Gallerie and Mize Gallery
-  (also styled MIZE Gallery) in St. Petersburg. His solo show "Ego Death" with
-  Chad Mize at Mize Gallery sold out within 48 hours of its debut, with select
+  (also styled MIZE Gallery) in St. Petersburg. His show with Chad Mize at Mize Gallery sold out within 48 hours of its
+  debut, with select
   pieces remaining for sale at d-Gallerie afterward.
 
-  He designed a Tampa Bay Rays Artist Print Series in 2019. A portrait of IBOMS
+   A portrait of IBOMS
   by muralist and curator Derek Donnelly is painted in the alley behind the 600
   Block of Central Avenue in St. Petersburg.
 
@@ -121,6 +119,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the source describes a show with Chad Mize, not a solo show; self-contradictory: a solo show with another artist; no pooled source mentions the Tampa Bay Rays"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten + searchBio populated using context from #101 (the SHINE 2020 IBOMS YAML). Hook anchored to existing IBOMS/Youth Farm relationship (he co-created the 'Together We Grow' PSTA bus wrap with the Youth Farm in 2021 — this wall extends that). Added canonical IBOMS sources from #101."
 sourceNotes:

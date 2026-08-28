@@ -26,7 +26,7 @@ artistBio: |
   Carrie Jadus had been an electrical engineer for years before quitting to
   paint full-time, and her style sits in what she calls "the rich and fertile
   ground between realism and impressionism" — figures rendered with photographic
-  care, edges softened. She picked the six musicians for who they are, not just
+  care, edges softened. The brewhouse owner picked the six musicians for who they are, not just
   because they're famous.
 
   Born in Tampa in 1976, she grew up in St. Petersburg from age five, trained at
@@ -102,6 +102,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: the cited article attributes the selection to the client, not the artist"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; added 'Last Call' title (was empty); dropped 'Resonance' title for the Tesla mural in bio (sources call it just 'Tesla'). NOTE: bio names Marley/Bono/Springsteen/LadyGaga/Vedder/Legend per Catalyst; muralDescription names Keith Richards instead of Springsteen+Vedder — Rob to verify which is right from photo."
   - "2026-05-03 — Display bio rewritten anchored to THIS wall (Last Call commission story: Marley/Bono/Springsteen/Gaga/Vedder/Legend at the bar with beers, Kevin Milkey commission, 50x30 ft / 8-foot heads / 3 weeks). Differentiates from #149 (Dog Bar / Awakening Bodhisattva), which previously shared the same generic display bio. Closes with explicit callout to the sister wall on the Dog Bar side."

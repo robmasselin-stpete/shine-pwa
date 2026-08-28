@@ -20,15 +20,13 @@ artistBio: |
   He started making art at ten to process emotions he couldn't name. He is now a
   certified art therapy life coach.
 
-  Shawn Rainey — Fabstraq — is based in Tampa. He has no formal art education.
-  His style is contemporary abstract — vibrant colors and defining lines,
-  one-of-a-kind pieces meant to be thought-provoking. He also works as an audio
-  engineer and music producer, and writes poetry.
+  Shawn Rainey — Fabstraq — is based in Tampa. His style is contemporary abstract — vibrant colors and defining lines,
+  one-of-a-kind pieces meant to be thought-provoking. He also writes poetry.
 
   He volunteers regularly at the Glazer Children's Museum and has done charity
   shows for the National Breast Cancer Foundation and Chemo Angels. Bay News 9
-  profiled him as an "Everyday Hero" for his community work with children. His
-  eventual goal is to travel worldwide establishing art programs.
+  profiled him as an "Everyday Hero" for his community work with children. His stated goal is to share his work with the world and help fellow artists
+  gain visibility.
 
   For SHINE 2023, he painted at Charlie Parker Pottery on 6th Avenue South.
 
@@ -37,14 +35,12 @@ searchBio: |
   certified art therapy life coach.
 
   Shawn Rainey — Fabstraq — is based in Tampa. The name is shorthand for
-  abstract art that makes you feel fabulous. He has no formal art education and
-  credits art as the vehicle that pulled him out of childhood trauma, isolation,
+  abstract art that makes you feel fabulous. He credits art as the vehicle that pulled him out of childhood trauma, isolation,
   and rejection. In his own words: "It helped me with a lot of struggles that I
   was having. It helped me release a lot of emotions and feelings that came
   about that I didn't understand. It was the only thing that made me feel
   alive." His style is contemporary abstract — vibrant colors and defining
-  lines, one-of-a-kind pieces meant to be thought-provoking. He also works as an
-  audio engineer and music producer, and writes poetry.
+  lines, one-of-a-kind pieces meant to be thought-provoking. He also writes poetry.
 
   He volunteers regularly at the Glazer Children's Museum in Tampa, leading
   Member Mornings sessions where each child receives a miniature canvas and is
@@ -57,8 +53,8 @@ searchBio: |
   every child wins.
 
   Beyond the museum work, he has done charity shows benefiting the National
-  Breast Cancer Foundation Inc. and Chemo Angels. His eventual goal is to travel
-  worldwide establishing art programs.
+  Breast Cancer Foundation Inc. and Chemo Angels. His stated goal is to share his work with the world and help fellow artists
+  gain visibility.
 
   He was profiled by Bay News 9 (Spectrum Bay News 9) in their "Everyday Hero"
   segment on August 5, 2019, by Bill Murphy, recognizing his work inspiring
@@ -116,6 +112,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "28 August 2026 — Fact-check fleet: no source mentions audio engineering or music production; his own site states a different goal; no source states he has no formal art education"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
