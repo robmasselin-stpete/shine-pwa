@@ -797,13 +797,12 @@ Recording tips: small carpeted space (closet with clothes is the classic), phone
 
 ### Mural 6 — Derek Donnelly, "Greetings from Hollander Hotel" (~70 sec)
 
-> This is "Greetings from Hollander Hotel," a vintage postcard blown up onto a wall. The kid on the pelican is Donnelly's son. His name is Syre, and you'll see him in other Donnelly murals across the city. The pelican is the city's bird. The bridge in the distance is the Sunshine Skyway. Donnelly's own description: "a celebration of all things local, with my son and our city's bird."
+> This is "Greetings from Hollander Hotel," a vintage postcard blown up onto a wall. The kid on the pelican is Donnelly's son, and you'll see him in other Donnelly murals across the city. The pelican is the city's bird. The bridge in the distance is the Sunshine Skyway. Donnelly's own description: "a celebration of all things local, with my son and our city's bird."
 >
 > Donnelly has painted in St. Pete for ten years. For SHINE 2025, he ran the whole festival. Booked the artists, coordinated the walls, kept the schedule. This is one of two pieces he painted that year, and it's the first time he'd ever been featured as a SHINE artist after a decade of organizing it.
 >
 > Take a minute. The next wall is right here, same building, north face. Chad Mize is your next stop. I'll find you.
 
-**Pronunciation to verify before rendering Syre:** "SIGH-er" (rhymes with *fire*) or "SEER" (one syllable)? Update the script with the spelling, or use the ElevenLabs Pronunciation Dictionary.
 
 ---
 

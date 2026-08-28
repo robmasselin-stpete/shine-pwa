@@ -87,8 +87,8 @@ v2) are preserved in `HANDOFF.md` → "Reference: narrated route scripts". The
 yet; decide where openers live when wiring the tour flow.
 
 ⚠ **Pronunciation:** Rob narrates himself, so he knows the names — the generator keeps
-scripts clean (no pronunciation tags). One known flag: **Syre** (Donnelly's son) —
-confirm "SIGH-er" vs "SEER" before recording.
+scripts clean (no pronunciation tags). Donnelly's son is referred to as "his son" and never by name (Rob's call,
+28 Aug 2026) — no pronunciation flag needed.
 
 ## Status / next
 

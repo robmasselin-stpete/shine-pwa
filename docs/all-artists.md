@@ -394,7 +394,7 @@ got their first real exposure there before he closed it in 2014 to focus on
 walls.
 
 His style sits at the intersection of illustration and realism — playful
-without being childish, bold without being loud. His son Syre shows up in
+without being childish, bold without being loud. His son shows up in
 murals across the city. So does Florida wildlife. He doesn't separate the
 personal from the public work. In 2012, when mentor Bill "Woo" Correira died,
 Donnelly organized the Woomorial — a 40-artist tribute mural on the 600 block
@@ -439,12 +439,12 @@ contributed — Donnelly painted Woo's portrait while others added marine life.
 It became a 600 block landmark.
 
 His style blends illustration and realism — bold character work, signature
-gradients, hand-drawn detail, playful without being childish. His son Syre
+gradients, hand-drawn detail, playful without being childish. His son
 appears in murals across the city, including the Outshine project at Planet
 Retro Records on Dr. MLK Jr. Street N, where he collaborated with Hinson the
 Healer, R2 Romero, and Artist Slim. Florida wildlife is a constant. He has
 painted portraits of Prince, Kurt Cobain, and Tupac Shakur. His canvases
-featuring Syre were exhibited in the "Son-Shine" show at the Wayward Goose.
+featuring his son were exhibited in the "Son-Shine" show at the Wayward Goose.
 
 Donnelly's client list includes AARP, Hilton Hotels, the Tampa Bay Rays, MLB,
 Fender Guitars, St. Petersburg College, Sirata Beach Resort (two murals as
@@ -534,7 +534,7 @@ got their first real exposure there before he closed it in 2014 to focus on
 walls.
 
 His style sits at the intersection of illustration and realism — playful
-without being childish, bold without being loud. His son Syre shows up in
+without being childish, bold without being loud. His son shows up in
 murals across the city. So does Florida wildlife. He doesn't separate the
 personal from the public work. In 2012, when mentor Bill "Woo" Correira died,
 Donnelly organized the Woomorial — a 40-artist tribute mural on the 600 block
@@ -579,12 +579,12 @@ contributed — Donnelly painted Woo's portrait while others added marine life.
 It became a 600 block landmark.
 
 His style blends illustration and realism — bold character work, signature
-gradients, hand-drawn detail, playful without being childish. His son Syre
+gradients, hand-drawn detail, playful without being childish. His son
 appears in murals across the city, including the Outshine project at Planet
 Retro Records on Dr. MLK Jr. Street N, where he collaborated with Hinson the
 Healer, R2 Romero, and Artist Slim. Florida wildlife is a constant. He has
 painted portraits of Prince, Kurt Cobain, and Tupac Shakur. His canvases
-featuring Syre were exhibited in the "Son-Shine" show at the Wayward Goose.
+featuring his son were exhibited in the "Son-Shine" show at the Wayward Goose.
 
 Donnelly's client list includes AARP, Hilton Hotels, the Tampa Bay Rays, MLB,
 Fender Guitars, St. Petersburg College, Sirata Beach Resort (two murals as
@@ -6826,7 +6826,7 @@ got their first real exposure there before he closed it in 2014 to focus on
 walls.
 
 His style sits at the intersection of illustration and realism — playful
-without being childish, bold without being loud. His son Syre shows up in
+without being childish, bold without being loud. His son shows up in
 murals across the city. So does Florida wildlife. He doesn't separate the
 personal from the public work. In 2012, when mentor Bill "Woo" Correira died,
 Donnelly organized the Woomorial — a 40-artist tribute mural on the 600 block
@@ -6871,12 +6871,12 @@ contributed — Donnelly painted Woo's portrait while others added marine life.
 It became a 600 block landmark.
 
 His style blends illustration and realism — bold character work, signature
-gradients, hand-drawn detail, playful without being childish. His son Syre
+gradients, hand-drawn detail, playful without being childish. His son
 appears in murals across the city, including the Outshine project at Planet
 Retro Records on Dr. MLK Jr. Street N, where he collaborated with Hinson the
 Healer, R2 Romero, and Artist Slim. Florida wildlife is a constant. He has
 painted portraits of Prince, Kurt Cobain, and Tupac Shakur. His canvases
-featuring Syre were exhibited in the "Son-Shine" show at the Wayward Goose.
+featuring his son were exhibited in the "Son-Shine" show at the Wayward Goose.
 
 Donnelly's client list includes AARP, Hilton Hotels, the Tampa Bay Rays, MLB,
 Fender Guitars, St. Petersburg College, Sirata Beach Resort (two murals as
@@ -10003,7 +10003,7 @@ artists got their first real exposure there before he closed it in 2014 to
 focus on walls.
 
 His style sits at the intersection of illustration and realism — playful
-without being childish, bold without being loud. His son Syre shows up in
+without being childish, bold without being loud. His son shows up in
 murals across the city. "Sonshine" is likely one of those portraits — a
 monochrome boy in sunglasses reflecting a warm sunset, set against a deep
 starfield, near Planet Retro Records.
@@ -10023,7 +10023,7 @@ artist liaison and operations while producing two murals.
 Petersburg. A monochrome portrait of a young boy wearing sunglasses that
 reflect a warm orange-gold sunset, set against a deep blue-black starfield.
 Signed "Donnelly" in the upper right corner. Some paint peeling visible as
-of April 2026. The boy may be his son Syre, who appears in murals across
+of April 2026. The boy may be his son, who appears in murals across
 the city.
 
 Instagram: @derekdonnelly.
