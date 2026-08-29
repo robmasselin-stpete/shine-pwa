@@ -1,12 +1,22 @@
 // Mural Quest — SHINE 2026 progress-photo capture endpoint.
 //
 // POST /photo  (gated by POST_KEY)
-//   body: { muralId, date: "YYYY-MM-DD", imageBase64, dry? }
-//   → uploads images/murals/2026/<id>-<date>-<HHMMSS>.jpeg to R2, appends {u,d} to
+//   body: { muralId, date: "YYYY-MM-DD", imageBase64, caption?, dry? }
+//   → uploads images/murals/2026/<id>-<date>-<HHMMSS>.jpeg to R2, appends {u,d,c?} to
 //     the mural's `ph` in content.json, bumps the version. Live over OTA in ~1 min.
+//
+// POST /caption  (gated by POST_KEY)
+//   body: { muralId, caption }
+//   → amends `c` on that mural's MOST RECENT photo. An empty caption clears it.
+//     Never touches an image object — this edits content.json only.
 //
 // The image full-res is served from cdn.muralquest.app; the app's build-viewer
 // reads it directly (no bundled card needed — grid thumbnails fall back to full-res).
+//
+// CAPTIONS ARE FORWARD-COMPATIBLE. Shipped app versions (<=1.7.5) read `u` and `d`
+// and ignore unknown keys, so adding `c` breaks nothing. Rob can caption from day one
+// of the festival and every caption already sent lights up when the render ships in a
+// binary. Nothing here needs to be sequenced with that build.
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -17,15 +27,37 @@ const CORS = {
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json', ...CORS } });
 
+const CAPTION_MAX = 140;
+
+// Normalise a caption. Returns {ok:true, caption} where caption is '' for "no caption",
+// or {ok:false, error} to reject. Rejecting on length rather than truncating is
+// deliberate: Rob finds out at the wall, not later in the app.
+function readCaption(raw) {
+  if (raw === undefined || raw === null) return { ok: true, caption: '' };
+  // Strip control characters: this string is rendered into HTML by the app.
+  let c = String(raw)
+    .replace(/[\u0000-\u001F\u007F]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!c) return { ok: true, caption: '' };
+  if ([...c].length > CAPTION_MAX) {
+    return { ok: false, error: `caption_too_long (max ${CAPTION_MAX} chars, got ${[...c].length})` };
+  }
+  return { ok: true, caption: c };
+}
+
 export default {
   async fetch(request, env) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS });
     const url = new URL(request.url);
 
     if (request.method === 'GET') {
-      return json({ ok: true, service: 'mural-quest-capture', usage: 'POST /photo with X-Capture-Key' });
+      return json({
+        ok: true, service: 'mural-quest-capture',
+        usage: 'POST /photo or POST /caption with X-Capture-Key',
+      });
     }
-    if (request.method !== 'POST' || url.pathname !== '/photo') {
+    if (request.method !== 'POST' || (url.pathname !== '/photo' && url.pathname !== '/caption')) {
       return json({ error: 'not_found' }, 404);
     }
 
@@ -36,12 +68,44 @@ export default {
     // ── parse ──
     let body;
     try { body = await request.json(); } catch { return json({ error: 'bad_json' }, 400); }
+
+    // ── POST /caption — amend the caption on the most recent photo ──
+    // Exists so a typo spotted ten seconds later is fixable on the spot. Without it the
+    // only remedy would be sending a duplicate photo.
+    if (url.pathname === '/caption') {
+      const mid = parseInt(body.muralId, 10);
+      if (!mid) return json({ error: 'need muralId' }, 400);
+      const cap = readCaption(body.caption);
+      if (!cap.ok) return json({ error: cap.error }, 400);
+
+      const cObj0 = await env.BUCKET.get('content.json');
+      if (!cObj0) return json({ error: 'content.json missing on R2' }, 500);
+      const data0 = await cObj0.json();
+      const m0 = (data0.murals || []).find(m => m.id === mid);
+      if (!m0) return json({ error: `mural #${mid} not in content.json` }, 404);
+      if (!m0.ph || !m0.ph.length) return json({ error: `mural #${mid} has no photos` }, 404);
+
+      // ph is kept sorted oldest→newest, so the last entry is the most recent photo.
+      const last = m0.ph[m0.ph.length - 1];
+      if (cap.caption) last.c = cap.caption; else delete last.c;
+      data0.version = Date.now();
+
+      await env.BUCKET.put('content.json', JSON.stringify(data0), {
+        httpMetadata: { contentType: 'application/json', cacheControl: 'no-store' },
+      });
+      return json({
+        ok: true, muralId: mid, photo: last,
+        cleared: !cap.caption, version: data0.version,
+      });
+    }
     const muralId = parseInt(body.muralId, 10);
     const date = String(body.date || '').trim();
     const b64 = String(body.imageBase64 || '').replace(/^data:image\/\w+;base64,/, '');
     if (!muralId || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !b64) {
       return json({ error: 'need muralId, date (YYYY-MM-DD), imageBase64' }, 400);
     }
+    const cap = readCaption(body.caption);
+    if (!cap.ok) return json({ error: cap.error }, 400);
 
     // ── decode image ──
     let bytes;
@@ -85,7 +149,8 @@ export default {
     for (let n = 1; taken.has(imgKey); ) imgKey = `${baseKey}-${++n}.jpeg`;
 
     if (body.dry) {
-      return json({ ok: true, dry: true, wouldWrite: imgKey, muralId, currentPhotos: mural.ph.length });
+      return json({ ok: true, dry: true, wouldWrite: imgKey, muralId,
+                   currentPhotos: mural.ph.length, caption: cap.caption });
     }
 
     // ── upload image (immutable) ──
@@ -94,7 +159,9 @@ export default {
     });
 
     // ── append to the mural's photos, bump version, write content.json back ──
-    mural.ph.push({ u: imgKey, d: date });
+    const entry = { u: imgKey, d: date };
+    if (cap.caption) entry.c = cap.caption;  // omitted when empty, never c:''
+    mural.ph.push(entry);
     mural.ph.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0)); // oldest→newest
     mural.uc = true; // being painted
     data.version = Date.now();
@@ -108,6 +175,7 @@ export default {
       muralId,
       date,
       photoCount: mural.ph.length,
+      caption: cap.caption,
       imageUrl: `https://cdn.muralquest.app/${imgKey}`,
       version: data.version,
     });

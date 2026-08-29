@@ -31,6 +31,10 @@
  .out{background:var(--panel);border:1px solid #333;border-radius:10px;padding:12px;margin-top:12px;font:12px ui-monospace,Menlo,monospace;white-space:pre-wrap;color:#cfe}
  .badge{display:inline-block;background:var(--teal);color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:2px 8px;margin-left:6px;text-transform:uppercase}
  .err{background:#3a1f1f;border:1px solid #a33;color:#fbb;padding:10px;border-radius:8px;margin-top:10px;font-size:13px}
+ .cap-row{margin-top:12px}
+ .cap-row label{display:block;font-size:12px;color:#888;margin-bottom:4px}
+ .cap-count{float:right;font-size:11px;color:#666;font-variant-numeric:tabular-nums}
+ .cap-count.over{color:#f88;font-weight:700}
  .hidden{display:none}
 </style></head><body>
 <header><h1>Progress Capture</h1><span class="v">v2 · sends over OTA</span></header>
@@ -57,6 +61,11 @@
     <span style="font-size:12px;color:#888">Align overlay</span>
     <input type="range" id="opacity" min="0" max="100" value="45">
     <span class="chk" style="margin:0"><input type="checkbox" id="grid-toggle" checked> grid</span>
+  </div>
+
+  <div class="cap-row hidden" id="cap-row">
+    <label for="caption">Caption <span class="cap-count" id="cap-count">0/140</span></label>
+    <input type="text" id="caption" maxlength="140" placeholder="Optional — e.g. Outlines up">
   </div>
 
   <div class="actions">
@@ -87,6 +96,14 @@ $('date').value = new Date().toISOString().slice(0,10);
     renderList();
   } catch (e) { showErr('Could not load murals from the CDN: ' + e.message); }
 })();
+
+// live caption counter — maxlength caps typing, this makes the limit visible
+$('caption').addEventListener('input', () => {
+  const n = [...$('caption').value].length;
+  const el = $('cap-count');
+  el.textContent = n + '/140';
+  el.classList.toggle('over', n >= 140);
+});
 
 $('uc-only').addEventListener('change', renderList);
 function renderList(){
@@ -153,6 +170,7 @@ $('shoot').addEventListener('click', () => {
   cv.classList.remove('hidden'); v.classList.add('hidden');
   $('shoot').classList.add('hidden');
   $('retake').classList.remove('hidden'); $('send').classList.remove('hidden'); $('dl').classList.remove('hidden');
+  $('cap-row').classList.remove('hidden');
   // keep ghost on top so you can verify alignment
   cv.toBlob(b => capturedBlob = b, 'image/jpeg', 0.92);
 });
@@ -160,12 +178,16 @@ $('shoot').addEventListener('click', () => {
 $('retake').addEventListener('click', () => {
   $('canvas').classList.add('hidden'); $('video').classList.remove('hidden');
   $('retake').classList.add('hidden'); $('send').classList.add('hidden'); $('dl').classList.add('hidden');
+  $('cap-row').classList.add('hidden');
+  document.querySelectorAll('.fix-caption').forEach(b => b.remove());
   $('shoot').classList.remove('hidden'); $('out').classList.add('hidden');
   capturedBlob = null;
 });
 
 // ── Capture Worker: field-autonomous publish over OTA (no Mac) ──
-const WORKER = 'https://capture.muralquest.app/photo';
+const WORKER_BASE = 'https://capture.muralquest.app';
+const WORKER = WORKER_BASE + '/photo';
+const WORKER_CAPTION = WORKER_BASE + '/caption';
 function getKey(){
   let k = localStorage.getItem('mq_capture_key');
   if (!k){ k = (prompt('Enter the Capture key (one-time; saved on this device):')||'').trim(); if (k) localStorage.setItem('mq_capture_key', k); }
@@ -190,7 +212,8 @@ $('send').addEventListener('click', async () => {
     const res = await fetch(WORKER, {
       method:'POST',
       headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
-      body: JSON.stringify({ muralId: current.id, date, imageBase64: b64 }),
+      body: JSON.stringify({ muralId: current.id, date, imageBase64: b64,
+                            caption: $('caption').value }),
     });
     const j = await res.json().catch(()=>({}));
     if (!res.ok){
@@ -198,7 +221,14 @@ $('send').addEventListener('click', async () => {
       throw new Error(j.error || ('HTTP '+res.status));
     }
     $('out').classList.remove('hidden');
-    $('out').textContent = `✓ LIVE — photo #${j.photoCount} on #${j.muralId} (${date}).\n${j.imageUrl}\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
+    $('out').textContent = `✓ LIVE — photo #${j.photoCount} on #${j.muralId} (${date}).`
+      + (j.caption ? `\nCaption: “${j.caption}”` : '\nNo caption.')
+      + `\n${j.imageUrl}\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
+    // Fix a typo spotted seconds later, without sending a duplicate photo.
+    addFixCaption(current.id, j.caption || '');
+    // Clear the box — otherwise today's caption silently rides along on tomorrow's photo.
+    $('caption').value = ''; $('cap-count').textContent = '0/140';
+    $('cap-count').classList.remove('over');
     // update local state so the NEXT capture onion-skins against the photo just sent
     current.ph = current.ph || []; current.ph.push({ u: j.imageUrl.replace('https://cdn.muralquest.app/',''), d: date });
     setGhost(j.imageUrl);
@@ -206,6 +236,33 @@ $('send').addEventListener('click', async () => {
     showErr('Send failed: ' + e.message + (String(e.message).includes('unauthorized') ? ' — re-enter the key and retry.' : ''));
   } finally { btn.textContent=label; btn.disabled=false; }
 });
+
+// Amend the caption on the photo just sent. Empty input clears it.
+function addFixCaption(muralId, currentCaption){
+  const btn = document.createElement('button');
+  document.querySelectorAll('.fix-caption').forEach(b => b.remove());
+  btn.className = 'sec fix-caption'; btn.style.marginTop = '10px'; btn.textContent = 'Fix caption';
+  btn.addEventListener('click', async () => {
+    const next = prompt('Caption for the photo just sent (blank clears it):', currentCaption);
+    if (next === null) return;                     // cancelled
+    if ([...next].length > 140){ showErr('Caption too long: ' + [...next].length + '/140'); return; }
+    const key = getKey(); if (!key){ showErr('No Capture key entered.'); return; }
+    btn.disabled = true; btn.textContent = 'Saving\u2026';
+    try {
+      const res = await fetch(WORKER_CAPTION, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
+        body: JSON.stringify({ muralId, caption: next }),
+      });
+      const j = await res.json().catch(()=>({}));
+      if (!res.ok) throw new Error(j.error || ('HTTP '+res.status));
+      currentCaption = (j.photo && j.photo.c) || '';
+      $('out').textContent += j.cleared ? '\n✓ Caption cleared.' : `\n✓ Caption now: “${currentCaption}”`;
+    } catch (e) { showErr('Caption update failed: ' + e.message); }
+    finally { btn.disabled = false; btn.textContent = 'Fix caption'; }
+  });
+  $('out').after(btn);
+}
 
 function showErr(m){ const e=$('err'); e.textContent=m; e.classList.remove('hidden'); }
 function hideErr(){ $('err').classList.add('hidden'); }
