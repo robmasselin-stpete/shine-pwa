@@ -1,0 +1,107 @@
+# Straight Edge Creative — Fairgrounds (music wall)
+
+# ── Required ──
+id: 137
+artist: Straight Edge Creative
+year: 0
+lat: 27.763808
+lng: -82.669662
+address: 2606 Fairfield Ave S
+category: commercial
+img: images/murals/commercial/sydney-prusso-fairgrounds.jpeg
+
+# ── Optional ──
+title: ""
+building: Fairgrounds St. Pete (FloridaRAMA)
+instagram: straightedgecreative
+basedIn: "Louisville, KY"
+
+artistBio: |
+  The name is the straight edge — no drink, no drugs. He has been in recovery
+  more than seven years and paints the recovery centre where people get clean.
+
+  Straight Edge Creative is a public and commercial art company founded by
+  Riley Gregor in Louisville, Kentucky. Gregor came up through street art and
+  graffiti before turning professional, and took a BFA from the University of
+  Louisville's Hite Art Institute in 2022. The studio paints large-scale murals
+  and handles branding and event curation.
+
+  The work runs through restaurants, museums, aquatic centres and universities
+  — the Mary T. Meagher Center in Louisville, Origin Park in Clarksville,
+  Caufields Novelty, the Louisville Dive Center — and out across Indiana, North
+  Carolina and Florida. At The Healing Place, a recovery centre, the murals
+  carry the line "Where Hope is Found & Change Happens."
+
+searchBio: |
+  The name is the straight edge — no drink, no drugs. He has been in recovery
+  more than seven years and paints the recovery centre where people get clean.
+
+  Straight Edge Creative is a public and commercial art company based in
+  Louisville, Kentucky, founded and owned by Riley Gregor. The studio describes
+  itself as "a public and commercial art company specializing in large-scale
+  murals, branding, and artistic event curation," and says its process "is
+  directed by client collaboration and conceptual thinking to create a long
+  lasting relationship with both our clients and their communities."
+
+  Gregor began in street art and graffiti before moving into professional
+  muralism, and graduated from the University of Louisville's Hite Art Institute
+  with a BFA in 2022. He is open about being in recovery — more than seven years
+  — and the studio's murals at The Healing Place, a Louisville recovery centre,
+  carry messages including "Where Hope is Found & Change Happens."
+
+  Documented projects include the Mary T. Meagher Center in Louisville (a 50 x
+  13 ft spray-paint exterior and a 20 x 10 ft interior), the Origin Park
+  promotional mural in Clarksville, Indiana (45 x 10 ft), LouLou On Market in
+  Louisville, the Louisville Dive Center, Caufields Novelty, and the Buffalo
+  Construction support centre. Further walls are documented in Jeffersonville
+  and Muncie and Marion, Indiana; Wrightsville Beach, North Carolina;
+  Alexandria; and the University of Louisville.
+
+  This wall is on the front of the Fairgrounds St. Pete building at 2606
+  Fairfield Ave S, in the FloridaRAMA / Factory complex. Eyes on the Streets, a
+  street-art blog covering the neighbourhood, credits it directly: "Straight
+  Edge Creative is responsible for the bright and cheerful music themed painting
+  of the front of this building." Rob independently found video of the studio
+  unveiling the piece at Fairgrounds on its own site. Fairgrounds commissioned
+  more than 60 artists to cover the building exteriors and interiors, and this
+  wall sits among exterior work by Derek Donnelly, Chad Mize, Zulu Painter and
+  Ricky Watts.
+
+  Website: str8edgecreative.com. Instagram: @straightedgecreative. Facebook:
+  straightedgemurals.
+
+searchMuralDescription: |
+  A long horizontal mural across the front of the Fairgrounds St. Pete building
+  — a music-themed composition in flat, hard-edged shapes. A ribbon microphone
+  in blue and cream stands at the right, beside a teal quaver note and ruled
+  staff lines in pale gold. Black and white bars step across the lower half like
+  piano keys. A large black disc at the left reads as a record, overlaid with
+  salmon-pink dots, and a six-pointed pale-teal star anchors the centre. The
+  palette runs teal, pink, black, maroon and blue, with diagonal stripes,
+  chevrons, teardrops and arches filling the field and two windows worked into
+  the design. The register is pop-art graphic — Memphis Design or 1980s
+  postmodern illustration.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "str8edgecreative.com"
+    url: "https://www.str8edgecreative.com"
+
+revisionLog:
+  - "29 August 2026 — REATTRIBUTED. This record was Sydney Prusso's and carried her full biography; the fact-check fleet flagged the attribution as unverified on 28 Aug. Rob then identified the artist as Straight Edge Creative. Confirmed three ways: Eyes on the Streets ('Straight Edge Creative is responsible for the bright and cheerful music themed painting of the front of this building', https://eyesonthestreets.blog/2025/04/10/around-fairgounds/); the wall itself, which carries a ribbon microphone, a music note, staff lines and a record disc matching that description; and video of the studio unveiling the piece at Fairgrounds on str8edgecreative.com. The same blog post credits Prusso with the SEPARATE 'Go Outside, Look Inside' butterflies wall, which is this dataset's #69 — that is the likely origin of the mix-up. Bio rebuilt from str8edgecreative.com. YEAR SET TO 0: the old 2021 came from the Fairgrounds opening date and was reasoning attached to the wrong artist; Rob's video may date it. Image file still named sydney-prusso-fairgrounds.jpeg"
+  - "28 August 2026 — Fact-check fleet: ATTRIBUTION UNVERIFIED. No source in the pooled Sydney Prusso evidence base (this record's 4 URLs plus the 8 on sibling #69) connects her to Fairgrounds St. Pete / FloridaRAMA. Her own studio site lists commissions and Fairgrounds is not among them, and SPAA's only Prusso record is the 2022 SHINE wall. The wall carries no visible signature, and its cool geometric palette does not match the warm 1960s-70s poster style her sources describe. Fairgrounds commissioned 60+ artists at its 2021 opening, so a Prusso wall there is plausible but undocumented. NOT reassigned - unlike #164 there is no positive evidence of another artist. Needs Rob's field knowledge or a signature check on site"
+  - "28 August 2026 — Fact-check fleet: only the clients on her own logo strip are supported; PepsiCo, John Deere, Stihl, the NFL and AstraZeneca appear in no source"
+  - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
+  - "2026-05-03 — Expanded searchBio (~600-1000 words, 612 words) integrating cached source + sydbloom.com (about, brand-collabs, illustration). Added named brand projects (Apothecary, Grow Financial, Gallimufry, Fresh Kitchen, Pom Pattern Portfolio, Good Good Good Newspaper). Added 3 sydbloom.com URLs to sourceNotes."
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "GPS from Rob's photo. Artist identified by Rob, 29 Aug 2026."
+  - "https://eyesonthestreets.blog/2025/04/10/around-fairgounds/"
+  - "https://www.str8edgecreative.com"
+  - "https://www.str8edgecreative.com/about"
+  - "https://www.str8edgecreative.com/work"
+  - "Unveiling video on str8edgecreative.com (found by Rob) — confirms the studio painted this wall."
