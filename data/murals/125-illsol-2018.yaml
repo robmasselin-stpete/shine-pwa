@@ -117,6 +117,7 @@ furtherWork:
     url: ""
 
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED for T-Mobile only. Illsol's own project index lists 20 projects including \"Tampa Convention Center Interior Mural\" and \"Dream Pushers - Commissioned by the City of Tampa\" — so two of the three named clients stand — but T-Mobile appears nowhere in their portfolio or in any coverage. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: T-Mobile appears in no source; replaced with Valspar, which does; T-Mobile appears in no source; 120-230 is the present-day FWC estimate, not the 1990s low"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -129,3 +130,4 @@ sourceNotes:
   - "https://creativepinellas.org/artist/michelle-sawyer/"
   - "https://stpetemuraltour.com/2018/10/10/illsol/"
   - "https://stpeteartsalliance.org/illsol"
+  - "https://illsol.com/projects/"

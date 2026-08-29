@@ -56,7 +56,9 @@ searchBio: |
   reclaimed/industrial materials. His own Instagram bio reads "SCULPTOR PAINTER
   REBARBARIAN." His Morean Arts Center profile lists a Brooksville mailing P.O.
   box (P.O. Box 1293, Brooksville 34605) for sales, but his studio operation is
-  in St. Petersburg.
+  in St. Petersburg. He is the former proprietor of the Bloom Art Center, where
+  he hosted shows including "Perennial Bloom," featuring Bloom Collective
+  artists.
 
   He is the co-founder of the Bloom Art Center, located at 910 5th Avenue North
   in downtown St. Petersburg.
@@ -103,6 +105,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): PARTIALLY RESTORED, in corrected and unquoted form. The direct quotation \"renowned sculptor and muralist\" attributed to St. Pete press remains UNSUPPORTED — no reachable source carries that phrase — so it stays out. But the substance behind it is now sourced: Creative Pinellas calls him \"Muralist/sculptor James Oleson\" and reports that \"The former Bloom Art Center proprietor will be hosting 'Perennial Bloom' an art show featuring Bloom Collective artists.\" That is a hosting/curating role at the Bloom property, so it has been restored as plain fact rather than as a quote."
   - "28 August 2026 — Fact-check fleet: the only St. Pete press in sourceNotes contains neither the quoted phrase nor the curating claim"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "2026-05-04 — New mural added by Rob: James Oleson neo-surrealist grinning face wall at Stonehenge Park, St. Petersburg. GPS from photo IMG_0255.jpeg EXIF (27.79915, -82.73745). Year not documented in public sources — flagged for follow-up. Lower-right cursive signature unidentified. Bio compiled from St. Pete Arts Alliance directory, Morean Arts Center profile, Crow's Nest 'Perennial Bloom' coverage, and @olesonart Instagram."
@@ -115,3 +118,4 @@ sourceNotes:
   - "https://www.wescover.com/p/street-murals-by-james-oleson-at-planet-retro-records--Pr1lwjl5Xm"
   - "https://www.linkedin.com/in/james-oleson-76bb166a/"
   - "https://www.yelp.com/biz/stonehenge-park-st-petersburg"
+  - "https://creativepinellas.org/magazine/a-gilded-night-of-art-in-st-petersburg/"

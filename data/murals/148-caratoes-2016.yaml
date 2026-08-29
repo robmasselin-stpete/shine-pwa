@@ -44,7 +44,8 @@ artistBio: |
 
   "Making a wall pretty isn't my sole responsibility," she has said. "It's also
   my chance to put a message on a wall for everyone to see in their own time."
-  She painted SHINE 2016 (this wall).
+  She painted SHINE 2016 (this wall) and returned for SHINE 2022 with an
+  installation at the Morean Workshop Space.
 
 searchBio: |
   Two faces dissolve into waves and leaves on a grayscale wall. The only color
@@ -119,6 +120,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): RESTORED the SHINE 2022 return. St Pete Rising's 2022 lineup lists \"Caratoes, Hong Kong\" at \"Morean Workshop Space at 2025 3rd Avenue South\", and the Tampa Bay Times/Catalyst coverage describes her 2022 contribution as an installation and performance rather than a wall — restored in that precise form. The Aug 28 check missed it because the only SHINE citation on file, stpeteartsalliance.org/shine-2016, is dead. This also re-aligns artistAwards, which had kept \"SHINE 2016 and 2022\"."
   - "28 August 2026 — Fact-check fleet: Wall Poetry took place in Reykjavik with Iceland Airwaves, not Berlin; Wall Poetry took place in Reykjavik, not Berlin; no source places Caratoes at SHINE 2022"
   - "15 April 2026 — New mural added, GPS from Rob's photo, bio written to style card v1"
   - "26 April 2026 — Audit found entry was attributed to wrong artist. The SHINE 2016 muralist signing 'Caratoes' is Cara To (Belgian-Hong Kong), not Carla Sá Fernandes (Portuguese painter). File renamed; bio rewritten; Instagram and basedIn corrected."
@@ -137,6 +139,8 @@ sourceNotes:
   - "https://artpublicmontreal.ca/en/artiste/caratoes/"
   - "https://www.thedustyrebel.com/post/701102616429625344/ode-to-mother-caratoes-reykjavik"
   - "GPS from Rob's photo, Carla Sa Fernandes shine 2016.jpeg. Tag 'CARATOES' visible on mural."
+  - "https://stpeterising.com/home/2022/9/12/artist-lineup-revealed-for-st-petes-eighth-annual-shine-mural-festival"
+  - "https://www.tampabay.com/life-culture/arts/visual-arts/2022/10/11/shine-mural-festival-returns-st-petersburg/"
 verification:
   date: 2026-04-26
   method: phase1-mechanical + phase2-llm-per-claim

@@ -56,7 +56,9 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED — same finding as sibling record #182. Dyer's own CV confirms Dawson College (2000-2003, Illustration and Design D.E.C.), which the record already reflects; nothing supports the three \"visionary masters\" as teachers. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: sources describe him as having SHOWN WITH these artists, not trained under them"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-23, GPS from EXIF"
+  - "https://positivecreations.ca/about/cv/"

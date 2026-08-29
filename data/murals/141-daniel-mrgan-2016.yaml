@@ -143,6 +143,7 @@ artistAwards: "SHINE 2016 selected artist"
 furtherWork: []
 
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. Creative Loafing's profile is the fullest account of his education and says only \"While studying at Schiller International University and St. Petersburg College, he began making wood burnings of whimsical characters\" — attendance at both, no degree and no major named anywhere. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: his own site and this record's own basedIn field both say Missoula; the blog's most recent post is dated February 2023; the source names no degree or major, only attendance; the posts' own datePublished metadata puts these two years later than stated; SPAA describes it as the east-facing wall"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

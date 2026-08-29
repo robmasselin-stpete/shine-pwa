@@ -99,6 +99,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED for the dates only. The school and the illustration major are well sourced and remain — his own site and Behance both describe him as an illustration-major graduate of Edna Manley College — but neither, nor any third-party profile, gives the 2007-2011 attendance years. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: no source documents the 2007-2011 attendance years; the school and major are sourced and kept"
   - "16 April 2026 — New mural added from screenshot reference"
   - "16 April 2026 — Research corrected: SHINE 2019 not 2017, title is Sewing Seeds not Seas, address 1720 Central Ave"
@@ -113,3 +114,5 @@ sourceNotes:
   - "https://www.cltampa.com/arts/jamaicas-taj-tenfold-leads-artist-lineup-for-2019-st-petersburg-shine-mural-festival-12254798"
   - "https://scenefromthesidewalk.blog/post/615829516343033856/sewing-seas-by-taj-tenfold"
   - "Photo by Rob — confirmed iPhone EXIF audit 2026-05-12"
+  - "https://www.tajtenfold.com/about"
+  - "https://www.behance.net/tajfrancis"

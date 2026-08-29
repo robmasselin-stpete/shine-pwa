@@ -80,6 +80,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): LEFT REMOVED, deliberately. Search-engine summaries do assert that the model is Kari Michelle and point at the St. Pete Arts Alliance mural page as the source, but that page is JavaScript-rendered and returns no such text to any fetch, and no other reachable source names her. Since this identifies a named private individual, an unverifiable search summary is not a good enough basis to restore it. Not re-litigated again unless a first-party citation turns up."
   - "28 August 2026 — Fact-check fleet: a named private individual with no citation; removed rather than left unsourced"
   - "22 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:

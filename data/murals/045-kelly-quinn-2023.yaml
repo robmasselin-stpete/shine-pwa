@@ -25,6 +25,10 @@ artistBio: |
   she serves as art director. Her focus is wildlife and nature — digital
   illustration, acrylic painting, and large-scale conservation-driven murals.
 
+  She served as Artist-in-Residence at The Florida Aquarium, helping develop its
+  artist residency and community arts programs and launching "Paint in the Wild"
+  classes.
+
   Clients include The Florida Aquarium, the Florida Wildlife Corridor Foundation
   (Crystal River Mural), Weedon Island Preserve, Coral Restoration Foundation,
   Biscayne National Park, the National Parks Association, the Oceanic
@@ -134,6 +138,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): RESTORED the Florida Aquarium Artist-in-Residence post in its sourced form. She states it herself — \"I'm also the Artist in Residence at The Florida Aquarium\" (Artsy Shark, 2018) and \"I started working with The Florida Aquarium as their Artist in Residence\" (Sharks4Kids, 2018). Artsy Shark also documents the residency/community arts programme and \"Paint in The Wild\" classes. Live-painting is still unsourced and was not restored."
   - "28 August 2026 — Fact-check fleet: no source supports an Artist-in-Residence post at The Florida Aquarium; her own full CV does not list it"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -145,3 +150,5 @@ sourceNotes:
   - "https://www.kellyquinn.art/"
   - "https://stpeteartsalliance.org/kelly-quinn-2023"
   - "https://fl-wildlife-corridor-foundation.shorthandstories.com/crystal-river-mural/index.html"
+  - "https://www.artsyshark.com/2018/04/02/featured-artist-kelly-quinn/"
+  - "https://www.sharks4kids.com/post/2018/07/29/shark-week-meet-marine-artist-kelly-quinn"

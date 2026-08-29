@@ -112,6 +112,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, all three. The St. Petersburg Arts Alliance bio is the fullest available and describes him only as a painter and poet, \"a certified Art Therapy Life Coach\" — no audio engineering, no music production, no statement about formal education. His own site states a different goal (sharing his art with the world and helping fellow artists), so the \"art programs worldwide\" line stays out. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: no source mentions audio engineering or music production; his own site states a different goal; no source states he has no formal art education"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
@@ -122,3 +123,4 @@ sourceNotes:
   - "https://www.baynews9.com/fl/tampa/news/2019/08/05/everyday-hero--local-artist-inspires-children-to-grow-their-imaginations"
   - "https://thestudioat620.org/events/green-book-of-tampa-bay-group-art-exhibit/"
   - "https://stpetecatalyst.com/local-artists-new-partnership-announced-for-mural-festival/"
+  - "https://stpeteartsalliance.org/fabstraq-2023"

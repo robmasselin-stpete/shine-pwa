@@ -26,8 +26,9 @@ artistBio: |
   She studied metalsmithing to continue work her late father began. Art runs in
   the family — both her parents were artists.
 
-  Sarah Sheppard grew up in Dallas, studied photography, drawing, painting, graphic design, ceramics, and fabric
-  art, and has lived in St. Petersburg for over twelve years. She also trained in metalsmithing at the Creative Side Jewelry Academy in
+  Sarah Sheppard grew up in Dallas and studied photography, drawing, painting,
+  graphic design, ceramics, and fabric art. She
+  has lived in St. Petersburg for over twelve years. She also trained in metalsmithing at the Creative Side Jewelry Academy in
   Austin.
 
   Her style is colorful, high-contrast figurative work — new romanticism,
@@ -46,7 +47,7 @@ searchBio: |
   Sarah Sheppard was born and raised in Dallas, Texas, where her father (her
   mother's college art teacher) shaped her artistic environment from the start.
   She studied photography, drawing, painting, graphic design, ceramics, and
-  fabric art at the University of North Texas before relocating to Florida,
+  fabric art before relocating to Florida,
   where her parents were living, to be closer to family and change scenery.
 
   In Florida, with her parents' help, she launched her own business doing
@@ -122,6 +123,8 @@ muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
 revisionLog:
+  - "29 August 2026 — RETRACTION of the entry below it dated the same day. The \"artist-confirmed\" provenance for \"University of North Texas\" was a MISIDENTIFICATION: Rob was thinking of **Sara Salem** (#017), who supplied her own bio — not Sarah Sheppard. There is no artist provenance for this claim and no reachable source for it either, so UNT has been REMOVED again, this time from the searchBio as well as the display bio (the Aug 28 pass had only stripped the display bio, leaving the two inconsistent). Treat the \"RESOLVED BY THE ARTIST\" entry below as void. Status: UNSUPPORTED, and now checked twice."
+  - "29 August 2026 — Re-verify pass (full web search): STILL UNVERIFIED — flagged for a human check. The University of North Texas attribution could not be confirmed or refuted: her own site (sarahsheppardsart.com) is dead and unarchived, Voyage Houston names the subjects but no institution, and the only trace of \"University of North Texas\" is a search-engine summary that appears to be reading her LinkedIn education field, which cannot be fetched. Because #126 KEPT this in the April audit, this is the one item in this pass where a false positive is genuinely possible; Rob can settle it from her LinkedIn in seconds. Left removed pending that."
   - "27 August 2026 — Fact-check fleet: school is the Creative Side Jewelry Academy, per her own words in Voyage Houston; no reachable source names the school; subject list is sourced, the institution is not; current handle is sarah.g.sheppard, per her own site and SPAA; the record's own instagram field already said so"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

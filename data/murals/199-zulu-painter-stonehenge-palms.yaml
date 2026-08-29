@@ -98,6 +98,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. The 2021 Business Arts Award, the 2021 UF Big Idea Competition win, the Springer publication and the Innovate Gainesville feature appear in no source across the whole pooled Zulu Painter evidence base. What a full search DID turn up, and what sibling record #019 now carries, is the Huntington Museum of Art artist dictionary: he attended West Virginia State College and won the 2003 Verizon HBCU Student Art Competition. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: none of the pooled sources mention these three awards or credits; no biographical source mentions any degree"
   - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY"
   - "2026-05-04 — New mural added by Rob: Zulu Painter's Stonehenge Park palm silhouettes wall under the Tyrone Blvd overpass. GPS from photo IMG_0254.jpeg EXIF (27.79917, -82.73745). Year unknown — flagged for follow-up. Bio body adapted from #019 Zulu Painter SHINE Origins 2025 yaml."
@@ -106,3 +107,4 @@ sourceNotes:
   - "https://www.zulupainter.com/about.html"
   - "https://creativepinellas.org/magazine/the-mindful-murals-of-zulu-painter/"
   - "https://stpeteartsalliance.org/zulupainter-2"
+  - "https://hmoa.org/huntington-artists/"

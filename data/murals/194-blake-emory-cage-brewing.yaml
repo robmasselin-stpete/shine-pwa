@@ -21,10 +21,11 @@ artistBio: |
   He sculpted a bronze Babe Ruth pointing to center field. His house sits on the
   former golf course where Ruth used to play.
 
-  Blake Emory is a Florida native now based in St. Petersburg. With
+  Blake Emory was born in 1983 and raised in Plant City, Florida, and is now
+  based in St. Petersburg. With
   his brother James — out of Santa Fe — he runs ESP Gallery and the Emory Arts
-  collective. The day job is wide: Neo-Renaissance figure painting, Etherealism, sculpture, set design,
-  experimental film. He doesn't pick a lane.
+  collective. The day job is wide: Neo-Renaissance figure painting, Etherealism, Optic
+  Modernism, sculpture, set design, experimental film. He doesn't pick a lane.
 
   His murals are scattered across St. Pete in places people don't expect,
   including a few rooftops. The work doesn't always announce itself — you find
@@ -89,6 +90,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): RESTORED both removals, and applied to BOTH Emory records since they share one bio. \"Optic Modernism\" is used of him by name in press — Food & Beverage Magazine calls him \"one of today's most innovative pioneers in the Optic Modernism movement\" and Drink Me Magazine \"an innovative mind in the Optic Modernism movement\" (both re: EMORY Vodka / the Zebra Love collection). The 1983 birth year is on his gallery bio: \"Blake Emory was born in 1983 and raised in Plant City, Florida, into an unconventional family of artists, inventors, and musicians\", which also gives the birthplace, now added."
   - "28 August 2026 — Fact-check fleet: neither biographical source carries a birth year; that sourceNotes URL is Emory Blake the former NFL receiver, a different person"
   - "28 August 2026 — Fact-check fleet: his own gallery names the movement Etherealism; Optic Modernism appears in no source; his own gallery names the movement Etherealism; instagram.com/emory_blake is Emory Blake the former NFL receiver, a different person with a transposed name; that handle belongs to a different person"
   - "1 May 2026 — New mural added per Rob; bio + collab attribution from research. GPS placeholder (1st Ave S & 20th St S corner) — to be replaced with EXIF when Rob uploads photo. Image filename reserved; image not yet on disk."
@@ -97,6 +99,9 @@ sourceNotes:
   - "https://www.tampabay.com/life-culture/history/2025/05/10/babe-ruth-sculpture-st-petersburg-yankees-baseball/"
   - "https://marcolinas.com/collections/blake-emory"
   - "https://www.emorybrothersart.com/biography"
+  - "https://www.fb101.com/emory-vodka-passionately-inspired-by-new-york-based-artist-blake-emory"
+  - "https://drinkmemag.com/optic-modernism-and-vodka-collide-emory-vodka"
+  - "https://marcolinas.com/pages/blake-emory"
 
   - "https://stpetersburgfoodies.com/craft-beer/cage-brewing-beer-games-music-in-st-pete/"
   - "Rob met Blake Emory in person at Cage Brewing on 2026-05-01 while Blake was touching up his own mural — primary-source attribution confirmed."

@@ -123,6 +123,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, and in fact CONTRADICTED. Her Voyage Tampa interview names \"my hometown of Coatesville, Pennsylvania\" and attributes the international exposure to three childhood years in Singapore for her father's work — not to Caribbean birth. Her own site and the CanvasRebel interview carry no Trinidad or Caribbean reference. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: Trinidad and Tobago birth is unsourced for Tracey Jones and appears to have bled over from Nneka Jones, a different artist"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -133,3 +134,4 @@ sourceNotes:
   - "https://www.traceyrjones.com/"
   - "https://theartistjones.com/"
   - "https://ilovetheburg.com/tampa-bay-born-murals/"
+  - "https://voyagetampa.com/interview/meet-tracey-artist-jones-of-lutz/"

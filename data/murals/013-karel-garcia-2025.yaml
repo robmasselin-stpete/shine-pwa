@@ -19,7 +19,8 @@ basedIn: "St. Petersburg, FL"
 artistBio: |
   He trained as an architect in Havana.
 
-  Karel Garcia was born December 27, 1990 in Cuba. He earned an
+  Karel Garcia was born December 27, 1990 in Cuba, and took drawing and
+  sculpture workshops as a child in Vedado. He earned an
   architecture degree in Havana in 2017, working as an architect while
   exhibiting art privately and participating in projects at the Habana Espacio
   Creativo Center. His focus has always been the human figure — sexuality, the
@@ -76,6 +77,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): PARTIALLY RESTORED the Vedado detail in its sourced form — Creative Pinellas ties Vedado to his childhood art workshops, not his birth, so the bio now says so. The \"first public art installation in America\" claim remains UNSUPPORTED after a full-search pass; leaving it removed."
   - "28 August 2026 — Fact-check fleet: no source supports the first-in-America claim; the source places Vedado with his childhood workshops, not his birth"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:

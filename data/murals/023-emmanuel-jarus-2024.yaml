@@ -144,6 +144,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. The Boulogne-sur-Mer wall is documented in detail by the city's own street-art site and press — Jarus painted there in the first festival edition (2016) and returned in 2022 for a wall at 404 Boulevard Sainte-Beuve facing the sea, depicting his friend Mila — but no source in French or English gives the building a storey count. The \"17-story\" figure appears nowhere. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: the 17-story figure belongs to a headline about a different wall; no source gives Boulogne a story count; no source gives the Boulogne wall a story count"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -158,3 +159,4 @@ sourceNotes:
   - "https://urban-nation.com/artist/young-jarus/"
   - "https://yycbump.ca/artists/emmanuel-jarus/"
   - "https://instagram.com/youngjarus"
+  - "https://streetart.boulogne-sur-mer.fr/jarus/"

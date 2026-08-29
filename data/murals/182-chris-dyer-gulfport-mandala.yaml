@@ -63,8 +63,10 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED — the removal was surgical and correct, and the true fact survived. Dyer's own CV lists \"2000-2003 - Dawson College (Montreal, PQ.) - 'Illustration and Design' D.E.C.\", which the record already reflects. It names no instructors, and no source describes Grey, Venosa or Sage as his teachers — Wikipedia frames it the other way round, as artists he has shown alongside — so that stays out."
   - "28 August 2026 — Fact-check fleet: sources describe him as having SHOWN WITH these artists, not trained under them"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-23, GPS from EXIF"
   - "Private residence, Gulfport"
+  - "https://positivecreations.ca/about/cv/"

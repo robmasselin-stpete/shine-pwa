@@ -31,8 +31,9 @@ artistBio: |
   exterior walls.
 
   Sarah Sheppard grew up in Dallas in a family of artists (both parents — her
-  father was her mother's college art teacher), trained in metalsmithing at Creative Side Jewelry Academy in Austin to
-  continue work her late father began. She moved to Florida during the
+  father was her mother's college art teacher), trained in metalsmithing at
+  Creative Side Jewelry Academy in Austin to continue work her late father
+  began. She moved to Florida during the
   housing boom and ran her own faux-finishing and Venetian-plaster business
   before pivoting to murals. Her style is colorful, high-contrast figurative
   work — new romanticism, movement as metaphor for continuous loss and seeking.
@@ -136,6 +137,8 @@ muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
 revisionLog:
+  - "29 August 2026 — RETRACTION of the entry below it dated the same day. The \"artist-confirmed\" provenance for \"University of North Texas\" was a MISIDENTIFICATION: Rob was thinking of **Sara Salem** (#017), who supplied her own bio — not Sarah Sheppard. There is no artist provenance for this claim and no reachable source for it either, so UNT has been REMOVED again, this time from the searchBio as well as the display bio (the Aug 28 pass had only stripped the display bio, leaving the two inconsistent). Treat the \"RESOLVED BY THE ARTIST\" entry below as void. Status: UNSUPPORTED, and now checked twice."
+  - "29 August 2026 — Re-verify pass (full web search): STILL UNVERIFIED — flagged for a human check, same finding as #050 and #111. This is the record that KEPT the University of North Texas line in the April audit, which is why the job spec called it a weak spot. No fetchable source confirms or refutes it; the Creative Side Jewelry Academy metalsmithing training is likewise uncorroborated. The truncated \"studied at the University of\" fragment stays out either way, since it was broken text. Left removed pending Rob checking her LinkedIn."
   - "28 August 2026 — Fact-check fleet: repairs a sentence left dangling ('studied at the University of') when the unsourced school was removed on 27 Aug; no source names any university"
   - "27 August 2026 — Fact-check fleet: no reachable source names the school; current handle is sarah.g.sheppard"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."

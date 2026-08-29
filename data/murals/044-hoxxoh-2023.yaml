@@ -139,6 +139,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, and in fact CONTRADICTED. HOXXOH Champagne is a French luxury brand created by Adelaide de Castillac, which patented its \"Bubble-Light\" luminous bottle; the Gold/Ruby/Grand Cru/Saphir range is theirs and nothing connects it to Douglas Hoekzema. Name collision only. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: hoxxoh.com is an unrelated French champagne brand, not the artist; nothing connects him to it"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -153,3 +154,4 @@ sourceNotes:
   - "https://upmag.com/hoxxoh/"
   - "https://www.wideopenwalls.com/artists/hoxxoh/"
   - "https://stpeteartsalliance.org/hoxxoh"
+  - "https://hoxxoh.com/en-us/pages/hoxxoh-spirit"

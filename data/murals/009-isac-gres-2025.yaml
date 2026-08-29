@@ -29,7 +29,8 @@ artistBio: |
   Isac Gres was born in 1993 in Bayamo, Cuba. He studied cubism, hyperrealism,
   surrealism, and conceptual thinking at the E.I.A Jose Marti Perez art academy,
   then served in the Cuban army before studying psychology at the Celia
-  Sanchez Manduley institute. He left Cuba in 2019, established a tattoo studio called Isac Ink in Uruguay,
+  Sanchez Manduley institute. He left Cuba on November 12, 2019, established a tattoo studio called Isac Ink
+  in Uruguay,
   then relocated to Miami in 2022 to reunite with family before settling in St.
   Petersburg.
 
@@ -88,6 +89,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): RESTORED the 12 November 2019 departure date — the artist's own site states it verbatim (\"On November 12th, 2019, Isac embarked on a journey into the unknown\"), https://www.isacgres.art/themanbehindtheart. The NFT/OpenSea claim remains UNSUPPORTED after a full-search pass — no mention on his own site, Saatchi Art, MADS Gallery, Patti Suzette or The Artisan Magazine; leaving it removed."
   - "27 August 2026 — Fact-check fleet: no source gives a day-level departure date; the source reverses this order and gives no durations; no source mentions an NFT collection or OpenSea"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:

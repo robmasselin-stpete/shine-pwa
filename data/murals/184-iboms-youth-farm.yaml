@@ -37,7 +37,10 @@ artistBio: |
   south St. Pete) anchors most of his other walls — but this one shifted into
   community-mural mode for the kids.
 
-  He works in 2D illustration, 3D sculpture, and digital design. His show with Chad Mize at Mize Gallery sold out in 48 hours.  His SHINE 2020 wall "Where the Bloom Begins" sits
+  He works in 2D illustration, 3D sculpture, and digital design. In 2019 he
+  became the youngest artist featured in the Tampa Bay Rays' artist print
+  series, designing the poster for their series against the Los Angeles Angels.
+  His show with Chad Mize at Mize Gallery sold out in 48 hours.  His SHINE 2020 wall "Where the Bloom Begins" sits
   at Grand Central Brewhouse on Central Ave, and he returned to SHINE in 2021 as
   a Bright Spots artist.
 
@@ -119,6 +122,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): RESTORED the Tampa Bay Rays credit — the Tampa Bay Times (14 June 2019) ran \"St. Petersburg artist Jabari Reed-Diop the youngest yet to be featured in Tampa Bay Rays art series\", reporting he designed the poster for the Rays' series against the Los Angeles Angels. Separately, the 48-hour Mize Gallery sellout is documented by I Love the Burg (\"his show with Chad Mize completely sold out within 48 hours of its debut\") but is NOT tied by any source to the \"Ego Death\" show specifically — he had more than one Mize Gallery show — so the untitled form stands and the title stays off it."
   - "28 August 2026 — Fact-check fleet: the source describes a show with Chad Mize, not a solo show; self-contradictory: a solo show with another artist; no pooled source mentions the Tampa Bay Rays"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten + searchBio populated using context from #101 (the SHINE 2020 IBOMS YAML). Hook anchored to existing IBOMS/Youth Farm relationship (he co-created the 'Together We Grow' PSTA bus wrap with the Youth Farm in 2021 — this wall extends that). Added canonical IBOMS sources from #101."
@@ -129,3 +133,4 @@ sourceNotes:
   - "https://creativepinellas.org/artist/jabari-reed-diop-i-b-o-m-s/"
   - "https://ilovetheburg.com/tampa-bay-murals-iboms/"
   - "https://www.instagram.com/i.b.o.m.s/"
+  - "https://www.tampabay.com/visual-arts/st-petersburg-artist-jabari-reed-diop-the-youngest-yet-to-be-featured-in-tampa-bay-rays-art-series-20190614/"

@@ -80,6 +80,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. No source dates this Overspray wall. \"Because Art Should Kill\" is documented as the title of his solo show at the University of Tampa's Scarfone/Hartley Gallery, and coverage of Overspray/Hot Walls does not date this particular wall; Rob's 2026-05-13 photo establishes only that it existed by then, which is why year: 0 is correct. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: SHINE was founded in 2015; SPAA's own 2020 page says BASK 'returns after painting a SHINE mural in 2015, our first year'; SHINE was founded in 2015; his SHINE years are 2015 and 2020; the source says shown at the Florida International Museum, collected by Jacksonville MoMA — shown-at is not collected-by; shown-at is not collected-by; no source establishes a painting year; the record's own year field is 0 and Rob's photo only proves it existed by May 2026"
   - "2026-05-14 — New mural added by Rob: second BASK in Mural Quest, the 'BECAUSE ART SHOULD KILL' wall at Overspray in Gulfport. GPS from photo IMG_0293.jpeg EXIF (27.75087, -82.70136). 'BASK' tag visible at bottom. Address pending exact street number."
 sourceNotes:

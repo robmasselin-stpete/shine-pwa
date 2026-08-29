@@ -1,4 +1,27 @@
 # JOB SPEC — re-verify the UNSUPPORTED fact-check findings
+
+> **STATUS: COMPLETE for the 54-item list (run 29 August 2026).** All 54 findings were
+> re-checked with a full web-search budget, pooling sources by artist. 13 restores were
+> applied across 16 records; the rest were confirmed as correctly removed. Every record
+> in the list — restored or not — now carries a dated `Re-verify pass` entry in its
+> `revisionLog`, so no item here should ever be re-litigated a third time. New sources
+> used for a restore were added to that record's `sourceNotes`.
+>
+> **Sarah Sheppard / University of North Texas: CLOSED 29 Aug — stays removed.** It was
+> briefly restored on the understanding that Sarah had supplied the bio herself, then
+> reverted: Rob was thinking of **Sara Salem** (#017), a different artist, who did supply
+> hers. There is no artist provenance and no reachable source for UNT, so it is out of all
+> three records (#50, #111, #126) — this time from the searchBios too, which had quietly
+> kept it while the display bios were stripped. Each revisionLog carries a RETRACTION entry
+> voiding the short-lived "artist-confirmed" note. Do not restore without a real source.
+>
+> **Still outstanding:** the pilot (12 murals) and tour batch 2 (20 murals) findings —
+> see "Not in this list" at the bottom. Those have NOT been re-verified.
+>
+> **Method note for next time:** search-engine result summaries confabulate. Twice in
+> this pass a summary attributed text to a named page that did not contain it (Temple
+> Terrace on Zulu Painter's degree; the SPAA page on Drew Merritt's model). Every restore
+> below was confirmed by fetching the source itself. Do the same.
 Written 29 August 2026. Companion to memory `project-mural-factcheck-sweep`.
 ## Why this exists
 The August 2026 sweep checked all 188 mural bios and applied 209 corrections. About a
@@ -236,3 +259,8 @@ revisionLog entries dated 27 August 2026 and from commits 473d277 and a5fadaa. R
 up, restore all three. Also #104 Mason Schwacke's "shown work at Portspace Gallery in
 Gulfport" was flagged as having the same evidentiary status as the Art Asylum line that
 was removed, but was never itself confirmed — check it here.
+
+## Rule added 29 Aug 2026 (Rob)
+When a restore is justified by a source that is NOT already in that record's
+`sourceNotes`, ADD the URL to `sourceNotes` as part of the same edit. The
+revisionLog says what changed; sourceNotes must carry the evidence.

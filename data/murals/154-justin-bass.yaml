@@ -91,6 +91,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, both items. No source documents a painting date for this wall, so the \"112 years later\" arithmetic — which silently asserts a 2026 painting date off the 1914 first scheduled airline flight — cannot stand. And no publication called Project In The Paint appears in any reachable source, so the \"dynamic duo\" quotation attributed to it has no origin. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: the record's own coords put it ~1.5 miles from the takeoff site, not two blocks; 112 years implies a 2026 painting date that no source establishes; the record's own year field is 0; 112 years implies an unestablished 2026 date; a direct quotation attributed to a publication that appears in no sourceNotes and could not be corroborated"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Research completed, minimal bio (very thin online footprint)"
