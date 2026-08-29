@@ -139,7 +139,14 @@ def _photos_block(photos):
     for p in photos:
         url = str(p.get('u', '')).replace('"', '\\"')
         date = str(p.get('d', '')).replace('"', '\\"')
-        out.append(f'  - {{ url: "{url}", dateTaken: "{date}" }}')
+        # `c` is the Capture Worker's per-photo caption. It only ever exists on the
+        # live manifest, so if it is not written back here a Mac publish silently
+        # erases every caption Rob sent from the field.
+        cap = str(p.get('c', '') or '').replace('"', '\\"')
+        if cap:
+            out.append(f'  - {{ url: "{url}", dateTaken: "{date}", caption: "{cap}" }}')
+        else:
+            out.append(f'  - {{ url: "{url}", dateTaken: "{date}" }}')
     return out
 
 

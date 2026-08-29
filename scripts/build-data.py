@@ -233,8 +233,10 @@ def _build_photos(m):
     for p in photos:
         if not p or not p.get('url'):
             continue
+        cap = (p.get('caption') or '').strip()
+        capjs = f",c:'{js_string_escape(cap)}'" if cap else ''
         items.append(f"{{u:'{js_string_escape(p.get('url',''))}',"
-                     f"d:'{js_string_escape(p.get('dateTaken',''))}'}}")
+                     f"d:'{js_string_escape(p.get('dateTaken',''))}'{capjs}}}")
     return f"[{','.join(items)}]" if items else ''
 
 
@@ -520,8 +522,17 @@ def mural_to_dict(m):
             d['goneReason'] = text_normalize(m.get('goneReason', ''))
     if m.get('underConstruction'):                                       # SHINE 2026
         d['uc'] = True
-    ph = [{'u': text_normalize(p.get('url', '')), 'd': text_normalize(p.get('dateTaken', ''))}
-          for p in (m.get('photos') or []) if p and p.get('url')]        # SHINE 2026 build-viewer
+    # SHINE 2026 build-viewer. `c` (caption) is omitted when empty, never written as
+    # '', so the app can test `p.c` truthily — matching what the Capture Worker writes.
+    ph = []
+    for p in (m.get('photos') or []):
+        if not p or not p.get('url'):
+            continue
+        entry = {'u': text_normalize(p.get('url', '')), 'd': text_normalize(p.get('dateTaken', ''))}
+        cap = text_normalize(p.get('caption', '') or '').strip()
+        if cap:
+            entry['c'] = cap
+        ph.append(entry)
     if ph:
         d['ph'] = ph
     fn = [text_normalize(n) for n in (m.get('fieldNotes') or []) if n]
