@@ -3,12 +3,12 @@
 # ── Required ──
 id: 137
 artist: Straight Edge Creative
-year: 0
+year: 2021
 lat: 27.763808
 lng: -82.669662
 address: 2606 Fairfield Ave S
 category: commercial
-img: images/murals/commercial/sydney-prusso-fairgrounds.jpeg
+img: images/murals/commercial/straight-edge-creative-fairgrounds.jpeg
 
 # ── Optional ──
 title: ""
@@ -91,7 +91,7 @@ furtherWork:
     url: "https://www.str8edgecreative.com"
 
 revisionLog:
-  - "29 August 2026 — REATTRIBUTED. This record was Sydney Prusso's and carried her full biography; the fact-check fleet flagged the attribution as unverified on 28 Aug. Rob then identified the artist as Straight Edge Creative. Confirmed three ways: Eyes on the Streets ('Straight Edge Creative is responsible for the bright and cheerful music themed painting of the front of this building', https://eyesonthestreets.blog/2025/04/10/around-fairgounds/); the wall itself, which carries a ribbon microphone, a music note, staff lines and a record disc matching that description; and video of the studio unveiling the piece at Fairgrounds on str8edgecreative.com. The same blog post credits Prusso with the SEPARATE 'Go Outside, Look Inside' butterflies wall, which is this dataset's #69 — that is the likely origin of the mix-up. Bio rebuilt from str8edgecreative.com. YEAR SET TO 0: the old 2021 came from the Fairgrounds opening date and was reasoning attached to the wrong artist; Rob's video may date it. Image file still named sydney-prusso-fairgrounds.jpeg"
+  - "29 August 2026 — REATTRIBUTED. This record was Sydney Prusso's and carried her full biography; the fact-check fleet flagged the attribution as unverified on 28 Aug. Rob then identified the artist as Straight Edge Creative. Confirmed three ways: Eyes on the Streets ('Straight Edge Creative is responsible for the bright and cheerful music themed painting of the front of this building', https://eyesonthestreets.blog/2025/04/10/around-fairgounds/); the wall itself, which carries a ribbon microphone, a music note, staff lines and a record disc matching that description; and video of the studio unveiling the piece at Fairgrounds on str8edgecreative.com. The same blog post credits Prusso with the SEPARATE 'Go Outside, Look Inside' butterflies wall, which is this dataset's #69 — that is the likely origin of the mix-up. Bio rebuilt from str8edgecreative.com. Year kept at 2021 (Fairgrounds opening) and category commercial, per Rob. Image and card files renamed to match the artist"
   - "28 August 2026 — Fact-check fleet: ATTRIBUTION UNVERIFIED. No source in the pooled Sydney Prusso evidence base (this record's 4 URLs plus the 8 on sibling #69) connects her to Fairgrounds St. Pete / FloridaRAMA. Her own studio site lists commissions and Fairgrounds is not among them, and SPAA's only Prusso record is the 2022 SHINE wall. The wall carries no visible signature, and its cool geometric palette does not match the warm 1960s-70s poster style her sources describe. Fairgrounds commissioned 60+ artists at its 2021 opening, so a Prusso wall there is plausible but undocumented. NOT reassigned - unlike #164 there is no positive evidence of another artist. Needs Rob's field knowledge or a signature check on site"
   - "28 August 2026 — Fact-check fleet: only the clients on her own logo strip are supported; PepsiCo, John Deere, Stihl, the NFL and AstraZeneca appear in no source"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
