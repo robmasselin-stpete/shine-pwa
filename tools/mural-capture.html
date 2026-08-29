@@ -179,7 +179,7 @@ $('retake').addEventListener('click', () => {
   $('canvas').classList.add('hidden'); $('video').classList.remove('hidden');
   $('retake').classList.add('hidden'); $('send').classList.add('hidden'); $('dl').classList.add('hidden');
   $('cap-row').classList.add('hidden');
-  document.querySelectorAll('.fix-caption').forEach(b => b.remove());
+  document.querySelectorAll('.fix-caption, .rm-photo').forEach(b => b.remove());
   $('shoot').classList.remove('hidden'); $('out').classList.add('hidden');
   capturedBlob = null;
 });
@@ -188,6 +188,7 @@ $('retake').addEventListener('click', () => {
 const WORKER_BASE = 'https://capture.muralquest.app';
 const WORKER = WORKER_BASE + '/photo';
 const WORKER_CAPTION = WORKER_BASE + '/caption';
+const WORKER_DELETE  = WORKER_BASE + '/delete';
 function getKey(){
   let k = localStorage.getItem('mq_capture_key');
   if (!k){ k = (prompt('Enter the Capture key (one-time; saved on this device):')||'').trim(); if (k) localStorage.setItem('mq_capture_key', k); }
@@ -226,6 +227,7 @@ $('send').addEventListener('click', async () => {
       + `\n${j.imageUrl}\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
     // Fix a typo spotted seconds later, without sending a duplicate photo.
     addFixCaption(current.id, j.caption || '');
+    addRemovePhoto(current.id, j.imageUrl);
     // Clear the box — otherwise today's caption silently rides along on tomorrow's photo.
     $('caption').value = ''; $('cap-count').textContent = '0/140';
     $('cap-count').classList.remove('over');
@@ -240,7 +242,7 @@ $('send').addEventListener('click', async () => {
 // Amend the caption on the photo just sent. Empty input clears it.
 function addFixCaption(muralId, currentCaption){
   const btn = document.createElement('button');
-  document.querySelectorAll('.fix-caption').forEach(b => b.remove());
+  document.querySelectorAll('.fix-caption, .rm-photo').forEach(b => b.remove());
   btn.className = 'sec fix-caption'; btn.style.marginTop = '10px'; btn.textContent = 'Fix caption';
   btn.addEventListener('click', async () => {
     const next = prompt('Caption for the photo just sent (blank clears it):', currentCaption);
@@ -260,6 +262,38 @@ function addFixCaption(muralId, currentCaption){
       $('out').textContent += j.cleared ? '\n✓ Caption cleared.' : `\n✓ Caption now: “${currentCaption}”`;
     } catch (e) { showErr('Caption update failed: ' + e.message); }
     finally { btn.disabled = false; btn.textContent = 'Fix caption'; }
+  });
+  $('out').after(btn);
+}
+
+// Remove the frame just sent — a blurry capture would otherwise be live until Rob
+// is back at the Mac. Confirms first: this is destructive and one tap from Send.
+function addRemovePhoto(muralId, imageUrl){
+  document.querySelectorAll('.rm-photo').forEach(b => b.remove());
+  const btn = document.createElement('button');
+  btn.className = 'sec rm-photo';
+  btn.style.marginTop = '10px'; btn.style.marginLeft = '8px';
+  btn.textContent = 'Remove photo';
+  btn.addEventListener('click', async () => {
+    if (!confirm('Remove the photo just sent from the app?\n\nThe image file stays on the CDN but the app stops showing it.')) return;
+    const key = getKey(); if (!key){ showErr('No Capture key entered.'); return; }
+    btn.disabled = true; btn.textContent = 'Removing\u2026';
+    try {
+      const res = await fetch(WORKER_DELETE, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
+        body: JSON.stringify({ muralId, url: imageUrl }),
+      });
+      const j = await res.json().catch(()=>({}));
+      if (!res.ok) throw new Error(j.error || ('HTTP '+res.status));
+      $('out').textContent += `\n\u2713 Removed. ${j.remaining} photo(s) left on #${muralId}.`
+        + (j.stillUnderConstruction ? '' : '\nNo photos left \u2014 "Being painted now" badge cleared.');
+      btn.remove();
+      document.querySelectorAll('.fix-caption, .rm-photo').forEach(b => b.remove());
+      // local state must match, or the next capture onion-skins against a dead frame
+      if (current && current.ph) current.ph = current.ph.filter(
+        p => p.u !== imageUrl.replace('https://cdn.muralquest.app/',''));
+    } catch (e) { showErr('Remove failed: ' + e.message); btn.disabled=false; btn.textContent='Remove photo'; }
   });
   $('out').after(btn);
 }

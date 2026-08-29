@@ -478,6 +478,7 @@ function populateForm(data, rawYaml) {
 
   // Raw YAML
   document.getElementById('raw-yaml').value = rawYaml;
+  loadedRawYaml = rawYaml;   // for passthrough of keys this form doesn't model
 }
 
 function renderFwLinks(links) {
@@ -509,6 +510,44 @@ document.getElementById('add-fw').addEventListener('click', () => {
 });
 
 // ── Generate YAML from form ──
+// ── Passthrough for keys the form does not model ────────────────────────────
+// This editor rebuilds the whole YAML from a template and its export is applied by
+// OVERWRITE, so any key without a form control is silently deleted. That has real
+// teeth: `audio` (narration URL) is on 96 murals, and `photos`/`underConstruction`
+// drive the SHINE build-viewer and the "Being painted now" badge.
+//
+// Rather than hardcode a list — which just defers the next silent loss — round-trip
+// every top-level key the template does not emit.
+let loadedRawYaml = '';
+
+const TEMPLATE_KEYS = new Set([
+  'id','artist','year','lat','lng','address','category','img','originalImg',
+  'title','building','instagram','basedIn',
+  'artistBio','searchBio','searchMuralDescription',
+  'muralInspiration','muralAwards','artistAwards',
+  'fieldNotes','alongTheWay','furtherWork',
+  'source','revisionLog','sourceNotes',
+]);
+
+/** Top-level `key:` blocks in raw YAML that the template will not re-emit.
+ *  Returns the verbatim text so formatting, comments and nesting survive. */
+function passthroughBlocks(raw) {
+  if (!raw) return '';
+  const lines = raw.split('\n');
+  const out = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = /^([A-Za-z][A-Za-z0-9_]*):/.exec(lines[i]);
+    if (!m || TEMPLATE_KEYS.has(m[1])) continue;
+    // take the key line plus its indented / blank continuation lines
+    let j = i + 1;
+    while (j < lines.length && (/^\s/.test(lines[j]) || lines[j].trim() === '')) j++;
+    while (j > i + 1 && lines[j - 1].trim() === '') j--;   // don't swallow the separator
+    out.push(lines.slice(i, j).join('\n'));
+    i = j - 1;
+  }
+  return out.length ? out.join('\n') + '\n' : '';
+}
+
 function generateYaml() {
   const q = (v) => v.includes(':') || v.includes('#') || v.includes('"') ? `"${v}"` : v;
   const multiline = (v) => v ? '|\n' + v.split('\n').map(l => '  ' + l).join('\n') : '""';
@@ -578,6 +617,12 @@ function generateYaml() {
   } else {
     y += `\nfurtherWork:\n`;
   }
+
+  // Keys this form does not model (audio, photos, underConstruction, verification,
+  // status, gone*, impressions, …) — round-tripped verbatim so exporting never
+  // deletes them. See passthroughBlocks().
+  const preserved = passthroughBlocks(loadedRawYaml);
+  if (preserved) y += `\n` + preserved;
 
   // Provenance
   y += `\n# ── Provenance (not exported to data.js) ──\n`;

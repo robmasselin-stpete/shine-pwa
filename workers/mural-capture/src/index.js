@@ -10,6 +10,12 @@
 //   → amends `c` on that mural's MOST RECENT photo. An empty caption clears it.
 //     Never touches an image object — this edits content.json only.
 //
+// POST /delete  (gated by POST_KEY)
+//   body: { muralId, url? }
+//   → drops the most recent `ph` entry (or the one matching `url`), clearing `uc`
+//     if that was the last photo. Also content.json only — see the note on the
+//     handler for why the R2 object is deliberately left in place.
+//
 // The image full-res is served from cdn.muralquest.app; the app's build-viewer
 // reads it directly (no bundled card needed — grid thumbnails fall back to full-res).
 //
@@ -54,10 +60,11 @@ export default {
     if (request.method === 'GET') {
       return json({
         ok: true, service: 'mural-quest-capture',
-        usage: 'POST /photo or POST /caption with X-Capture-Key',
+        usage: 'POST /photo, /caption or /delete with X-Capture-Key',
       });
     }
-    if (request.method !== 'POST' || (url.pathname !== '/photo' && url.pathname !== '/caption')) {
+    const ROUTES = ['/photo', '/caption', '/delete'];
+    if (request.method !== 'POST' || !ROUTES.includes(url.pathname)) {
       return json({ error: 'not_found' }, 404);
     }
 
@@ -68,6 +75,52 @@ export default {
     // ── parse ──
     let body;
     try { body = await request.json(); } catch { return json({ error: 'bad_json' }, 400); }
+
+    // ── POST /delete — remove a bad frame shot in the field ──
+    // Without this a blurry capture is live until Rob is back at the Mac, and
+    // publish-content.py would wipe ALL of that mural's photos rather than one.
+    //
+    // The R2 object is intentionally NOT deleted. Progress photos are stored
+    // immutable for a year and the Cloudflare edge cache outlives the object: on
+    // 2026-08-24 a reclaimed key served a deleted frame from cache with no error.
+    // Dropping the ph entry is what the app reads; the orphan object is harmless.
+    if (url.pathname === '/delete') {
+      const mid = parseInt(body.muralId, 10);
+      if (!mid) return json({ error: 'need muralId' }, 400);
+
+      const dObj = await env.BUCKET.get('content.json');
+      if (!dObj) return json({ error: 'content.json missing on R2' }, 500);
+      const dData = await dObj.json();
+      const dM = (dData.murals || []).find(m => m.id === mid);
+      if (!dM) return json({ error: `mural #${mid} not in content.json` }, 404);
+      if (!dM.ph || !dM.ph.length) return json({ error: `mural #${mid} has no photos` }, 404);
+
+      let removed;
+      if (body.url) {
+        // Allow targeting a specific frame; accept a full CDN URL or a bare key.
+        const want = String(body.url).replace('https://cdn.muralquest.app/', '');
+        const i = dM.ph.findIndex(p => p.u === want);
+        if (i < 0) return json({ error: `photo not found on #${mid}`, url: want }, 404);
+        removed = dM.ph.splice(i, 1)[0];
+      } else {
+        removed = dM.ph.pop();          // ph is sorted oldest→newest
+      }
+
+      // Last photo gone → the wall is no longer "being painted now".
+      if (!dM.ph.length) { delete dM.ph; delete dM.uc; }
+      dData.version = Date.now();
+
+      await env.BUCKET.put('content.json', JSON.stringify(dData), {
+        httpMetadata: { contentType: 'application/json', cacheControl: 'no-store' },
+      });
+      return json({
+        ok: true, muralId: mid, removed,
+        remaining: dM.ph ? dM.ph.length : 0,
+        stillUnderConstruction: !!dM.uc,
+        note: 'R2 object left in place by design (immutable cache); the app reads ph.',
+        version: dData.version,
+      });
+    }
 
     // ── POST /caption — amend the caption on the most recent photo ──
     // Exists so a typo spotted ten seconds later is fixable on the spot. Without it the
