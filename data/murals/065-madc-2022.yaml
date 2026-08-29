@@ -18,7 +18,8 @@ basedIn: "Germany"
 
 artistBio: |
   In 2010 she painted a 700-square-metre wall along the Berlin-Halle train line.
-  It is likely the largest graffiti mural ever painted by a single person.
+  It is likely the largest graffiti mural ever painted by a single person. She
+  broke her own record in 2018 with the 1000-Wall in Chicago.
 
   Claudia Walde — MadC — was born in 1980 in Bautzen, Germany and raised in
   Ethiopia. She studied at Burg Giebichenstein University of Art and Design,
@@ -35,7 +36,8 @@ artistBio: |
 
 searchBio: |
   In 2010 she painted a 700-square-metre wall along the Berlin-Halle train line.
-  It is likely the largest graffiti mural ever painted by a single person.
+  It is likely the largest graffiti mural ever painted by a single person. She
+  broke her own record in 2018 with the 1000-Wall in Chicago.
 
   Claudia Walde — MadC, nicknamed "The Mad One" for her radical approach to
   graffiti — was born in 1980 in Bautzen, Lusatia, Germany and raised in
@@ -138,6 +140,7 @@ furtherWork:
     url: "https://madc.tv"
 
 revisionLog:
+  - "29 August 2026 — Re-verify pass (pilot/batch-2 sweep, full web search): PARTIALLY RESTORED. \"Broken her own record twice since\" was wrong on the count and correctly removed — but she did break it ONCE, and that fact was lost from both bio hooks while the record's own detailed searchBio paragraph kept it, leaving the record contradicting itself. GraffitiStreet documents the 2018 Wabash Arts Corridor 1000-Wall in Chicago as \"MadC's largest mural to date\", against Wikipedia's 700-Wall as \"most likely the largest graffiti mural created by a single person\". Restored in the singular in both hooks."
   - '2026-08-27 — Fact-check: Spectra is a paint she experimented with, not one she owns (Wikipedia, HENI); her paint-brand tie is Molotow. "Broken her own record twice since" is documented nowhere and contradicted by the same bio, which names only the 2018 1000-Wall Chicago.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -149,3 +152,4 @@ sourceNotes:
   - "https://madc.tv/about/"
   - "https://heni.com/artists/mad-c"
   - "https://artsandculture.google.com/story/5wVBA7_LEwgA8A"
+  - "https://www.graffitistreet.com/madc-paints-her-largest-mural-to-date-in-the-wabash-arts-corridor-chicago-2018/"

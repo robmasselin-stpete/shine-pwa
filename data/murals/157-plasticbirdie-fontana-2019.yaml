@@ -24,7 +24,8 @@ artistBio: |
   Jeremy Nichols — PlasticBirdie — was born in Tokyo in 1982, grew up in
   suburban Columbus, Ohio, and earned a BFA in Printmaking from Ohio State.
   Blaine Fontana was born in Seattle, raised on Bainbridge Island, and earned a
-  BFA in Communication Art/Design from Otis College. Both are based in Portland,
+  BFA in Communication Art/Design from Otis College. His work was featured in
+  Hi-Fructose Volume 36 (2015). Both are based in Portland,
   Oregon.
 
   Nichols paints the tension between urban growth and nature — layered graphic
@@ -67,7 +68,8 @@ searchBio: |
   spent ten years in Los Angeles, and has lived in Portland for nearly twenty
   years. He earned a BFA in Communication Art/Design from Otis College of Art
   and Design (2002), receiving "Best in Show" for his senior thesis and later
-  named one of seven distinguished Otis alumni (2000-2010). He worked as art
+  named one of seven distinguished Otis alumni (2000-2010). His work was
+  featured in Hi-Fructose Volume 36 (2015). He worked as art
   director at Abound LLC, Metro.Pop magazine, and Drifter apparel before going
   self-employed in January 2003. He runs Fontana Studios with his wife. His
   multidisciplinary practice spans murals, fine art, illustration, graphic
@@ -118,6 +120,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (pilot/batch-2 sweep, full web search): RESTORED the Hi-Fructose credit, REATTRIBUTED. The Aug 27 check was right that Hi-Fructose has nothing on PlasticBirdie — but this is a two-artist record, and the magazine did feature the other half: Hi-Fructose Volume 36 (July 2015) carried \"new works from Portland artist Blaine Fontana\", per the magazine's own issue preview. The sentence had been sitting in Nichols's paragraph, which is why a single-artist search killed it. Moved to Fontana in both bios."
   - "2026-08-27 — Fact-check: searchMuralDescription described a bald eagle head and crystalline abstraction that are not on this wall. Ocean Conservancy, who co-funded it and were on site, describe yellowfin grouper, moray eel, spotted eagle ray and threatened corals; the record's own photo shows a numbered infographic of Florida fishing towns. 'Spotted eagle ray' appears to have become 'bald eagle'."
   - "2026-08-27 — Fact-check: No source supports a Hi-Fructose feature; the magazine's own site search returns nothing for the artist."
   - "15 April 2026 — New mural added, GPS from Rob's photo"
@@ -134,3 +137,4 @@ sourceNotes:
   - "https://www.instagram.com/blainefontana/"
   - "https://www.groundworkcoffee.com/blogs/news/10-questions-with-plastic-birdie-pdx-muralist"
   - "https://www.otis.edu/alumni/blaine-fontana"
+  - "https://hifructose.com/2015/06/17/hi-fructose-vol-36-preview/"

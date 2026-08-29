@@ -15,8 +15,11 @@
 > kept it while the display bios were stripped. Each revisionLog carries a RETRACTION entry
 > voiding the short-lived "artist-confirmed" note. Do not restore without a real source.
 >
-> **Still outstanding:** the pilot (12 murals) and tour batch 2 (20 murals) findings —
-> see "Not in this list" at the bottom. Those have NOT been re-verified.
+> **The pilot and tour batch 2 are now DONE too (same day).** Their commits were
+> `3937a03` (pilot, 14 findings) and `473d277` (batch 2, 32 findings); batch 3 `a5fadaa`
+> was already inside the 54-item list. Most of those findings were CONTRADICTED and needed
+> no re-check; six were absence-based and were re-verified, yielding **3 more restores**
+> (#65 MadC, #157 Blaine Fontana, #170 Paola Delfín). **The whole corpus is now covered.**
 >
 > **Method note for next time:** search-engine result summaries confabulate. Twice in
 > this pass a summary attributed text to a named page that did not contain it (Temple
@@ -247,11 +250,30 @@ full-search pass also found nothing — so this is never re-litigated a third ti
 - **searchBio** (low) — removed: "This is a 2026 wall at Overspray in Gulfport"
   - checker said: No source establishes a painting year. The record's own `year:` field is 0 (unknown) and the revisionLog/verification block never asserts 2026; the only dated evidence is Rob's photo of 2026-05-13, which establishes only that the…
 
-## Not in this list — recover from git
-The pilot (12 murals) and tour batch 2 (20 murals) findings were lost from scratch
-storage before this file was written. Their UNSUPPORTED items are recoverable from the
-revisionLog entries dated 27 August 2026 and from commits 473d277 and a5fadaa. Roughly
-48 findings total across both, of which some fraction were UNSUPPORTED.
+## Pilot + tour batch 2 — DONE 29 August 2026
+Recovered from commits `3937a03` (pilot) and `473d277` (batch 2) by diffing what each
+actually deleted and reading the revisionLog reasons. Of ~46 findings, the great majority
+were CONTRADICTED (a source actively said otherwise) and needed no re-check. Six were
+absence-based:
+
+| Finding | Verdict |
+|---|---|
+| #18 + #113 Morning Breath — "Cunningham studied at the Academy of Art University" | stays removed; no source names any school for either partner |
+| #18 Morning Breath — Apple as a client | stays removed; their own list has no Apple (their monograph is sold on Apple Books — likely the origin) |
+| #32 Up & Over — "September 2020" formation | stays removed; no source dates it to a month |
+| #65 MadC — "broken her own record twice since" | **PARTIALLY RESTORED** — she broke it once, in 2018, with the Chicago 1000-Wall |
+| #157 — "featured in Hi-Fructose magazine" | **RESTORED AND REATTRIBUTED** — true of Blaine Fontana (Vol. 36, 2015), not of PlasticBirdie |
+| #170 Paola Delfín — Universidad Iberoamericana / Buenos Aires / St+Art India / POW! WOW! | **St+Art India RESTORED** (three 2023 murals); the other three stay removed |
+
+**#157 is the instructive one.** The Aug 27 check searched Hi-Fructose for "the artist"
+and found nothing — but this is a *two-artist* record, and the magazine had featured the
+other half. On a shared record, check the claim against **every** artist named before
+calling it unsupported. Same failure family as the pooled-sources problem in
+`reference-mural-bio-sources-are-shared`.
+
+Also found twice in this sweep, as with Sarah Sheppard earlier: a claim stripped from the
+display bio while the searchBio quietly kept it (#170 Buenos Aires, #65 MadC). **When
+removing a claim, remove it from every field in the record.**
 
 ## Known weak spot, flagged during the sweep
 `University of North Texas` was removed from three Sarah Sheppard records (#50, #111,

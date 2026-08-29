@@ -107,6 +107,7 @@ artistAwards: "Tes One: SHINE Mural Festival co-founder (2015); Morean Arts Cent
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (pilot/batch-2 sweep, full web search): CONFIRMED REMOVED. Tes One's own site and the Vitale Bros material describe the Up & Over collaboration without ever dating its formation to a month; nothing supports \"September 2020\" specifically, so the bare year stands. Not re-litigated again."
   - "2026-08-27 — Fact-check: Both bios placed the 2024 SHINE wall at 2214 2nd Ave North, contradicting the record's own address and GPS (201 17th Street South, Modera, from Rob's field photo). No source puts a 2024 Up & Over / Vitale / Tes One SHINE wall at that address, so the street reference was removed rather than replaced."
   - "2026-08-27 — Fact-check: No source gives a month-level formation date for Up & Over."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

@@ -52,8 +52,9 @@ searchBio: |
   She has painted walls in Mexico City (Roma and Condesa neighborhoods),
   Guadalajara, Playa del Carmen, New Delhi (Lodhi Art District for St+Art India
   Foundation — one of her most internationally recognized pieces), Lima
-  (Barranco district), Wynwood (Miami), Berlin, Barcelona, and Buenos Aires.
-  Festival credits include SHINE Mural Festival (St. Petersburg). She has been featured on Colossal, in Juxtapoz, and
+  (Barranco district), Wynwood (Miami), Berlin, and Barcelona.
+  Festival credits include SHINE Mural Festival (St. Petersburg) and the St+Art
+  India Foundation. She has been featured on Colossal, in Juxtapoz, and
   in Street Art News.
 
   "La Emperatriz" at 1975 3rd Ave S in St. Petersburg's Warehouse Arts District
@@ -81,6 +82,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "29 August 2026 — Re-verify pass (pilot/batch-2 sweep, full web search): RESTORED the St+Art India Foundation credit — she painted at least three St+Art India projects in 2023: \"Instante/क्षण\" in New Delhi's Lodhi Art District for The Lodhi Festival, a Mumbai wall for MUAF 2022-23, and \"Life\" in Chennai supported by Asian Paints, documented by St+Art India itself and by Barbara Picci's street-art index. POW! WOW! and Buenos Aires remain UNSUPPORTED after a full search and stay removed — and Buenos Aires has now also been dropped from the searchBio, which had kept it while the display bio was stripped. Universidad Iberoamericana also remains unsupported; the Academia de San Carlos wording is correct."
   - "2026-08-27 — Fact-check: No source names Universidad Iberoamericana; es.wikipedia describes her as self-taught with study at the Academia de San Carlos. Removed unsupported Buenos Aires, St+Art India and POW! WOW! credits."
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Reclassified per Rob: this is SHINE 2019 (was tagged 'commercial' with year 0). File renamed 170-paola-delfin-commercial.yaml → 170-paola-delfin-2019.yaml."
@@ -91,3 +93,5 @@ sourceNotes:
   - "Address: 1975 3rd Ave S, Warehouse Arts District"
   - "https://creativepinellas.org/ (A Ride Through St Pete's Murals)"
   - "https://www.thisiscolossal.com/2020/01/paola-delfin-murals/"
+  - "https://barbarapicci.com/tag/paola-delfin/"
+  - "https://m.facebook.com/startindiafoundation/posts/812953650196911/"
