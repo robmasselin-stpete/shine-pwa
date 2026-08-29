@@ -4367,10 +4367,18 @@ function initBuildViewer() {
   const dateEl = bv.querySelector('.bv-date');
   const dots = Array.from(bv.querySelectorAll('.bv-dot'));
   const playBtn = bv.querySelector('.bv-play');
+  // The caption bar lives outside .build-viewer (it must not catch the lightbox tap),
+  // so reach for it on the shared parent block.
+  const capEl = (bv.closest('.detail-hero-block') || detailContent).querySelector('.bv-caption');
   const show = (i) => {
     idx = ((i % photos.length) + photos.length) % photos.length;
     img.src = fullSrc(photos[idx].u); img.dataset.img = photos[idx].u;
     dateEl.textContent = photos[idx].d || '';
+    if (capEl) {
+      const c = (photos[idx].c || '').trim();
+      capEl.textContent = c;
+      capEl.classList.toggle('empty', !c);
+    }
     dots.forEach((d, j) => d.classList.toggle('on', j === idx));
   };
   const stop = () => { if (bvTimer) { clearInterval(bvTimer); bvTimer = null; } playBtn.textContent = '▶'; };
@@ -4391,14 +4399,34 @@ function initBuildViewer() {
 /** The detail hero block — build-viewer strip (>1 progress photo) or static hero.
  *  Shared by buildDetailBodyHTML and the live OTA refresh so a new photo can pop in
  *  without rebuilding (and resetting the scroll of) the whole detail page. */
+/** Escape text destined for innerHTML. Captions come from the Capture Worker, which
+ *  strips control characters but does NOT escape markup, so a caption containing
+ *  < or & would otherwise be injected raw. */
+function escHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+/** Caption bar markup for one photo. Collapsed (not merely empty) when there is no
+ *  caption, so uncaptioned walls look intentional rather than broken. */
+function captionBarHTML(text) {
+  const c = (text || '').trim();
+  return `<div class="bv-caption${c ? '' : ' empty'}">${escHtml(c)}</div>`;
+}
+
 function detailHeroHTML(mural) {
   const bvPhotos = mural.ph || [];
-  const heroImg = bvPhotos.length ? bvPhotos[bvPhotos.length - 1].u : mural.img;
-  return bvPhotos.length > 1 ? buildViewerHTML(mural, bvPhotos) : `
+  const last = bvPhotos.length ? bvPhotos[bvPhotos.length - 1] : null;
+  const heroImg = last ? last.u : mural.img;
+  // The caption renders for a SINGLE photo too — the build viewer only appears at 2+,
+  // so without this a day-one caption would silently not show.
+  const hero = bvPhotos.length > 1 ? buildViewerHTML(mural, bvPhotos) : `
     <div class="detail-hero-wrap">
       <img class="detail-hero" src="${cardSrc(heroImg)}" data-img="${heroImg || ''}" data-full="${fullSrc(heroImg)}" alt="${mural.a}" onerror="mqCardErr(this)">
       ${mural.gone ? `<div class="detail-gone-banner">This mural is no longer on site — building was torn down</div>` : ''}
     </div>`;
+  return `<div class="detail-hero-block">${hero}${captionBarHTML(last && last.c)}</div>`;
 }
 
 /** v1.7 live OTA re-render: called when newer content is applied mid-session. Surgically
@@ -4410,7 +4438,10 @@ function liveContentUpdate() {
       const fresh = murals.find(m => m.id === state.selectedMural.id);
       if (fresh) {
         state.selectedMural = fresh;
-        const wrap = detailContent.querySelector('.detail-hero-wrap');
+        // Replace the whole block (hero + caption). Targeting .detail-hero-wrap here
+        // would leave the old caption bar behind and stack a new one on every update.
+        const wrap = detailContent.querySelector('.detail-hero-block')
+                  || detailContent.querySelector('.detail-hero-wrap');
         if (wrap) {
           wrap.outerHTML = detailHeroHTML(fresh);
           initBuildViewer();

@@ -1493,6 +1493,30 @@ body.searching #tab-bar { display: none !important; }
   box-shadow: 0 2px 8px rgba(0,0,0,0.45);
   backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
 }
+/* SHINE progress-photo caption. Sits BELOW the image, never over it: a sentence
+   laid over a mural competes with exactly the thing the user opened the app to see.
+   min-height reserves two lines so swiping between photos with captions of different
+   lengths does not shift everything below it under the reader's thumb. */
+.bv-caption {
+  padding: 10px 16px 12px;
+  /* Two lines (2 x 1.45 x 14px = 40.6) + 22px padding. border-box includes padding,
+     so this must be the FULL box height or a two-line caption grows the bar and
+     shoves the body text down mid-swipe. */
+  min-height: 63px;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+/* Fully collapsed when there is no caption, so uncaptioned walls look deliberate
+   rather than leaving a blank gap. */
+.bv-caption.empty {
+  display: none;
+}
+
 .bv-dots {
   position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 3;
   display: flex; gap: 7px;
@@ -1590,6 +1614,16 @@ body.searching #tab-bar { display: none !important; }
 .detail-body.text-large .detail-nav-live {
   font-size: 18px;
   line-height: 1.6;
+}
+.detail-page:has(.detail-body.text-large) .bv-caption {
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 80px;   /* 2 x 1.6 x 18 + 22 */
+}
+.detail-page:has(.detail-body.text-xl) .bv-caption {
+  font-size: 22px;
+  line-height: 1.7;
+  min-height: 97px;   /* 2 x 1.7 x 22 + 22 */
 }
 .detail-body.text-xl .detail-bio,
 .detail-body.text-xl .detail-impression,
