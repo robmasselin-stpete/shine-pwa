@@ -70,8 +70,11 @@ crashed on open, `EXC_BREAKPOINT` in UIKitCore. `Info.plist` carries
 `UIApplicationSceneManifest` → `SceneDelegate` (defined in `AppDelegate.swift`, which also
 forwards URLs/Universal Links to `ApplicationDelegateProxy`). Don't remove either, and
 re-add them if the iOS project is ever regenerated (`npx cap add ios` won't). **After any
-Xcode update**, sim-launch or TestFlight the build before submitting — the new SDK can
-change launch requirements; `mq_build.sh` uses `-sdk iphoneos` (latest) for that reason.
+Xcode update**, run `bash scripts/ios-sim-smoke.sh` before `mq_build.sh` — it builds for the
+newest installed iOS simulator, launches, and fails if the app dies. It warns if the newest
+simulator runtime is older than the SDK (install it: `xcodebuild -downloadPlatform iOS`),
+since an old runtime won't enforce new-SDK launch rules. Then TestFlight on a real phone
+before submitting. `mq_build.sh` uses `-sdk iphoneos` (latest) for the same reason.
 
 The whole archive → export → upload is wrapped in `assets/wip/mq_build.sh`
 (gitignored — carries ASC account IDs; public repo). It uses **manual signing**
