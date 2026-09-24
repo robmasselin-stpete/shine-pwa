@@ -332,9 +332,7 @@ let _narrationTimer = null; // pending delayed start (arrival narration waits ou
 
 /** Shared AudioContext (reuses the beep's walkAudioCtx). Resumes it (iOS unlock). */
 function _narrationCtx() {
-  if (!walkAudioCtx) walkAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  if (walkAudioCtx.state === 'suspended') { try { walkAudioCtx.resume(); } catch (e) {} }
-  return walkAudioCtx;
+  return ensureWalkAudio();   // self-healing: also replaces an iOS-'interrupted' context
 }
 
 /** Play an audio URL via Web Audio (same context as the compass beep). onEnd fires
@@ -616,10 +614,38 @@ function formatDistance(meters) {
 // Discover Mode — Proximity Alerts
 // =============================================
 
-/** Create or resume AudioContext (must be called from user gesture on iOS). */
+/** Create, resume, or REPLACE the shared AudioContext. Call from a user gesture on iOS.
+ *
+ *  iOS/WebKit can park a context in 'interrupted' — a non-standard state outside the
+ *  spec's running/suspended/closed — after a background, a screen lock, or another app
+ *  grabbing the audio session. Every recovery guard here used to test only
+ *  `state === 'suspended'`, so none of them fired for 'interrupted': the context stayed
+ *  dead and a force-quit was the ONLY way to get sound back. Treat anything that is not
+ *  'running' as needing recovery, and throw away a context that cannot be revived so the
+ *  next sound builds a clean one. Returns the live context. */
 function ensureWalkAudio() {
-  if (!walkAudioCtx) walkAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  if (walkAudioCtx.state === 'suspended') walkAudioCtx.resume();
+  const Ctor = window.AudioContext || window.webkitAudioContext;
+  if (walkAudioCtx && walkAudioCtx.state !== 'running' && walkAudioCtx.state !== 'suspended') {
+    try { walkAudioCtx.close(); } catch (e) {}
+    walkAudioCtx = null;              // 'interrupted' / 'closed' — unrecoverable, rebuild
+  }
+  if (!walkAudioCtx) walkAudioCtx = new Ctor();
+  if (walkAudioCtx.state !== 'running') { try { walkAudioCtx.resume(); } catch (e) {} }
+  return walkAudioCtx;
+}
+
+/** Bring audio back after iOS interrupts it (foreground return, or any touch). If
+ *  resume() cannot reach 'running', discard the context — the next ensureWalkAudio()
+ *  then builds a fresh one instead of staying silent until the app is force-quit. */
+function reviveWalkAudio() {
+  if (!walkAudioCtx || walkAudioCtx.state === 'running') return;
+  try { walkAudioCtx.resume().catch(() => {}); } catch (e) {}
+  setTimeout(() => {
+    if (walkAudioCtx && walkAudioCtx.state !== 'running') {
+      try { walkAudioCtx.close(); } catch (e) {}
+      walkAudioCtx = null;
+    }
+  }, 200);
 }
 
 /** Play a pleasant two-note ascending chime (C5 → E5) via Web Audio API. */
@@ -802,8 +828,7 @@ function hapticCollision() {
 /** Short radar blip sound — plays via Web Audio as audio backup for haptics. */
 function playRadarBlip() {
   try {
-    ensureWalkAudio();
-    const ctx = walkAudioCtx;         // reuse the shared context — do NOT spawn a new one
+    const ctx = ensureWalkAudio();         // reuse the shared context — do NOT spawn a new one
     if (!ctx) return;                 // (Android WebView caps concurrent AudioContexts ~6;
     const now = ctx.currentTime;      //  a per-call new context leaked and killed all audio)
     const osc = ctx.createOscillator();
@@ -848,8 +873,7 @@ function playArrivalHaptic() {
 /** Play a loud arrival chord using Web Audio API. */
 function playArrivalTone() {
   try {
-    ensureWalkAudio();
-    const ctx = walkAudioCtx;         // reuse the shared context (see playRadarBlip note)
+    const ctx = ensureWalkAudio();         // reuse the shared context (see playRadarBlip note)
     if (!ctx) return;
     const now = ctx.currentTime;
     // C major chord: C4, E4, G4 — full volume, longer sustain
@@ -925,9 +949,9 @@ function releaseWakeLock() {
 // Re-acquire wake lock + kick compass when app returns from background
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
-    // Resume the shared audio context — iOS SUSPENDS it on background / screen-lock,
-    // which silenced all sound (narration + tones) until a full app restart.
-    if (walkAudioCtx && walkAudioCtx.state === 'suspended') walkAudioCtx.resume().catch(() => {});
+    // Revive the shared audio context — iOS suspends OR 'interrupt's it on background /
+    // screen-lock, which silenced all sound (narration + tones) until a full app restart.
+    reviveWalkAudio();
     // Re-acquire wake lock if we were navigating
     if (state.tourWalking) requestWakeLock();
     // Kick compass listeners back to life
@@ -943,10 +967,8 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-// Fallback: iOS can require a user gesture to un-suspend audio — resume on any touch.
-document.addEventListener('touchend', () => {
-  if (walkAudioCtx && walkAudioCtx.state === 'suspended') walkAudioCtx.resume().catch(() => {});
-}, { passive: true });
+// Fallback: iOS can require a user gesture to un-suspend audio — revive on any touch.
+document.addEventListener('touchend', () => { reviveWalkAudio(); }, { passive: true });
 
 /** Check all murals for proximity and alert on the first match. */
 function checkProximityAlerts() {
