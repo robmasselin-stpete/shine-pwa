@@ -37,6 +37,48 @@
 >   Full workflow + secure API-key setup: **`docs/NARRATION.md`**. Rob: drop in the key,
 >   then `python3 scripts/gen-narration.py --route downtown-north`.
 
+## 2026-09-11 — Tour-referral line added to store copy (App Store description STILL PENDING)
+
+Rob's call: point people who won't or can't walk at the two local operators rather than let
+them read Mural Quest as a competitor. **Store description copy only — no in-app feature, no
+card, no links.** Anyone who won't walk was never going to take a walking tour anyway.
+
+**Verified 2026-09-11 — the two operators are NOT interchangeable. Do not merge them:**
+- **Florida CraftArt** = *guided, but still walking.* Sat 10–11:30am from 501 Central Ave,
+  ~4 blocks and back, 30+ murals, $25 adult / $15 ages 6–18. Monthly bicycle tour $39, 18+.
+  <https://floridacraftart.org/product/mural-tours/>
+- **Star Trolley** = *the non-walking option.* SHINE Mural Tour, 2.5 hrs, open-air trolley,
+  $39, from the ArtsXchange campus. An official collaboration with the **St. Petersburg Arts
+  Alliance** (SHINE's producer) — this referral is aligned with SPAA, not adversarial.
+  <https://www.star-trolley.com/murals/> ·
+  <https://stpeteartsalliance.org/event/shine-mural-tour-a-star-trolley-experience/>
+
+Writing them as one "guided or non-walking" bucket would send someone who *cannot walk* onto
+a walking tour — the exact person the paragraph exists to help. Keep the two clauses separate
+in any future rewrite.
+
+**Shipped this session:**
+- ✅ **Google Play** full description — committed via the Play Developer API using the
+  `.mq-play-key.json` service account (`edits.listings.update` + `commit`), 990→1290 chars.
+  Paragraph sits after the "self-guided street-art tour" line. Play's copy differs from the
+  App Store's (no WHO IT'S FOR section), so the wording was adapted. Awaiting Google's
+  listing review as of writing — API shows it, public page had not yet refreshed.
+  Pre-change text: `~/Desktop/Mural Quest Marketing Plans/MQ_play_description_BACKUP_20260911.txt`
+- ✅ **App Store promotional text** on live v1.7.5 — 153 chars; the field was previously empty.
+  Promotional text is editable with **no new version and no review** — PATCH
+  `/v1/appStoreVersionLocalizations/{id}`. It renders above the description.
+
+**⚠ STILL OPEN — do this at the next App Store build:**
+The App Store **description** does not carry the paragraph. Description is version-scoped and
+cannot be edited while 1.7.5 is READY_FOR_SALE with no editable version open, so it has to
+ride the next submission. Paste section **A** of
+`~/Desktop/Mural Quest Marketing Plans/MQ_description_tour_referral.txt` onto the end of the
+**WHO IT'S FOR** section.
+
+Gotcha: promotional text is copied forward to the next version. If it gets replaced with
+release-specific copy, the referral vanishes entirely unless the description paragraph has
+landed — do both in the same pass.
+
 ## 2026-07-15 — Narration script tooling (ElevenLabs tours)
 
 - **`scripts/gen-narration.py`** — drafts per-mural spoken-narration scripts from
@@ -756,6 +798,12 @@ After cloning:
 During this session, an accidental `build-routes.py` run wiped the `{from, to, path}` segment labels for 5 of 7 routes (arts-district, central-ave, methodist-town, tropicana-field, chna-bike). The route LINES still render on the map via the `s.path || s` fallback in `app.js:1181`, but per-leg navigation (the `find(s => s.from === fromId && s.to === toId)` lookup at app.js:2211 and 3684) returns nothing for those routes.
 
 **To recover:** open `tools/route-editor.html`, load each affected route, re-export the Path Changes payload, paste here. New rule (now in memory): never run build-routes.py again.
+
+### 5. App Store description — tour-referral paragraph not in yet
+Play and the App Store promotional text both carry the Florida CraftArt / Star Trolley
+referral; the **App Store description does not** (version-scoped, needs the next build).
+Copy + full context in the 2026-09-11 section above. Not a decision — just don't ship the
+next release without it.
 
 ---
 
