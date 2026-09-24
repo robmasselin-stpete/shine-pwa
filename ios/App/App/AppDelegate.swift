@@ -53,6 +53,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - SceneDelegate
+// Apps built with the SDK after iOS 26 MUST use the UIScene lifecycle or UIKit traps at
+// launch (build 158, the first Xcode 27 build, crashed on open with EXC_BREAKPOINT inside
+// UIKit's scene setup). Info.plist's UIApplicationSceneManifest points here; the window
+// comes from Main.storyboard. Lives in this already-compiled file (like AppRating below)
+// so no project-file target membership is needed.
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Plugins (e.g. Keyboard) still look for the app delegate's window — hand it ours.
+        (UIApplication.shared.delegate as? AppDelegate)?.window = window
+        // A cold launch from a URL / Universal Link arrives here, not in the app delegate.
+        if let url = connectionOptions.urlContexts.first?.url {
+            _ = ApplicationDelegateProxy.shared.application(UIApplication.shared, open: url, options: [:])
+        }
+        if let activity = connectionOptions.userActivities.first {
+            _ = ApplicationDelegateProxy.shared.application(UIApplication.shared, continue: activity, restorationHandler: { _ in })
+        }
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        _ = ApplicationDelegateProxy.shared.application(UIApplication.shared, open: url, options: [:])
+    }
+
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        _ = ApplicationDelegateProxy.shared.application(UIApplication.shared, continue: userActivity, restorationHandler: { _ in })
+    }
+}
+
 // MARK: - AppRating plugin
 // Local Capacitor plugin: asks iOS to present the native App Store review
 // sheet. Called from JS via Capacitor.nativePromise('AppRating','requestReview',{}).

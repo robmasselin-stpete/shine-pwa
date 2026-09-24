@@ -64,6 +64,15 @@ predate this pipeline, emit the wrong format, and overwrite `routes.js`.
 and `ios/App/App.xcodeproj/project.pbxproj` → run the archive+export+upload, then
 create/attach the App Store version and submit.
 
+**iOS is on the UIScene lifecycle (since build 159) — keep it.** Apps built with the SDK
+after iOS 26 must use UIScene or UIKit traps at launch: build 158 (first Xcode 27 build)
+crashed on open, `EXC_BREAKPOINT` in UIKitCore. `Info.plist` carries
+`UIApplicationSceneManifest` → `SceneDelegate` (defined in `AppDelegate.swift`, which also
+forwards URLs/Universal Links to `ApplicationDelegateProxy`). Don't remove either, and
+re-add them if the iOS project is ever regenerated (`npx cap add ios` won't). **After any
+Xcode update**, sim-launch or TestFlight the build before submitting — the new SDK can
+change launch requirements; `mq_build.sh` uses `-sdk iphoneos` (latest) for that reason.
+
 The whole archive → export → upload is wrapped in `assets/wip/mq_build.sh`
 (gitignored — carries ASC account IDs; public repo). It uses **manual signing**
 via `assets/wip/ExportOptions-manual.plist` against the Apple Distribution cert
