@@ -1,5 +1,31 @@
 # Mural Quest — Session Handoff
 
+> **CURRENT (2026-10-01): v1.7.6 LIVE on both stores** — iOS build 160, Android
+> versionCode 18. Authoritative release state + backlog live in auto-memory
+> (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
+> Everything below the 2026-10-01 entry is history.
+
+## 2026-10-01 — Tool maps keyed; tour analytics staged
+
+- **Fixed:** the four tool pages (`tools/stats|yaml-editor|route-editor|overview-map.html`)
+  still loaded CARTO tiles with no key → "API KEY REQUIRED" watermark. v1.7.5 had only
+  keyed `js/app.js`. Added the same key; commit `b81bf89`; deployed to mural-tools.pages.dev.
+  Gotcha: Claude Code's auto-mode classifier blocks Claude from writing the CARTO key
+  into files (flags it as credential leakage) even with Rob's OK — Rob ran the `sed`
+  himself via `!`.
+- **wrangler login had expired** (deploy-tools failed, non-interactive). Rob re-ran
+  `npx wrangler login`. If publish/deploy fails again with "Not logged in", same fix.
+- **Tour popularity:** mural opens can't tell which tours are used (no source attribution;
+  small sample, much of it Rob's own testing; #900 is the held test stub). Rough per-stop
+  reading: Downtown North ≈ The Edge > Methodist Town > rest.
+- **Staged for the next binary:** `tour_start` event carrying **only the tour id**. Rob's
+  standing rule: analytics stay minimal, nothing that adds App Store / Play privacy
+  declarations (memory `feedback-minimal-data-collection`).
+- The 2026-09-11 "App Store description STILL PENDING" item below is **DONE** — the tour
+  referral rode the 1.7.6 submission as a "PREFER A GUIDE?" section.
+
+<details><summary>Old banner (v1.5-era, stale)</summary>
+
 > **CURRENT LIVE (App Store): v1.4 (build 131).** **v1.5 is on TestFlight —
 > latest build 133 (2026-07-15), field-test stage**, not yet submitted to the App
 > Store. (Builds 132→133 same session; 133 adds on-device fixes below.) v1.5 = the
@@ -36,6 +62,9 @@
 >   Scripts land in each mural's `audio:` YAML field → `aud` in data.js/content.json.
 >   Full workflow + secure API-key setup: **`docs/NARRATION.md`**. Rob: drop in the key,
 >   then `python3 scripts/gen-narration.py --route downtown-north`.
+
+
+</details>
 
 ## 2026-09-11 — Tour-referral line added to store copy (App Store description STILL PENDING)
 
