@@ -41,7 +41,7 @@ const ROUTES = [
 ];
 
 const map = L.map('map').setView([27.770, -82.655], 14);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_26kz_1_0dbb1e7c24f5ee38e47deb59', { maxZoom: 19 }).addTo(map);
 
 // All murals as small gray dots
 const tourIds = new Set(ROUTES.flatMap(r => r.ids));

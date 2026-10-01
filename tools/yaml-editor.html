@@ -447,7 +447,7 @@ function populateForm(data, rawYaml) {
     setTimeout(() => {
       if (window._locMap) { window._locMap.remove(); window._locMap = null; }
       const map = L.map('location-map').setView([lat, lng], 18);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=cb1_26kz_1_0dbb1e7c24f5ee38e47deb59', {
         maxZoom: 20
       }).addTo(map);
       const marker = L.marker([lat, lng], { draggable: true }).addTo(map);
