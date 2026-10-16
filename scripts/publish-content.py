@@ -54,6 +54,13 @@ def run(cmd):
 def main():
     dry = '--dry-run' in sys.argv
 
+    # 0. Pull Capture-Worker photos from the live manifest into the YAMLs first, or
+    #    this rebuild would wipe them (the Worker never writes YAML). Abort if it fails.
+    print("→ Syncing live photos into YAMLs (sync-photos-from-live.py)…")
+    if run([sys.executable, 'scripts/sync-photos-from-live.py'] + (['--dry-run'] if dry else [])).returncode != 0:
+        print("✗ photo sync failed — aborting publish (would wipe Worker-added photos).")
+        sys.exit(1)
+
     # 1. Build — regenerate content.json (bumps version), abort on validation error.
     print("→ Building content (build-data.py)…")
     if run([sys.executable, 'scripts/build-data.py']).returncode != 0:

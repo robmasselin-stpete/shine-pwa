@@ -102,9 +102,11 @@ mural's `ph` in `content.json`, bumps version — live in ~1 min. **Multiple pho
 `-2`,`-3` suffixes. The app's build-viewer (`mural.ph`) + "Being painted now" badge render it.
 
 **⚠️ The Worker writes `content.json` DIRECTLY on R2 — it does NOT update the source YAML.**
-So a Mac `publish-content.py` (rebuilds content.json from YAMLs) would overwrite/lose
-Worker-added photos. Don't run it for 2026 murals mid-festival until a
-`sync-photos-from-live.py` reconcile exists (TODO — see docs/SHINE-2026-OTA-TEST.md).
+A rebuild from YAML would drop Worker-added photos, so **`scripts/sync-photos-from-live.py`
+runs first in both publish paths** (`publish-content.py` and the GitHub publish workflow):
+it merges live `ph`/`uc` into each YAML's `photos:`/`underConstruction:` and aborts the
+publish if the live manifest can't be read. To delete a bad Worker photo, move its url
+from `photos:` to `photosRemoved:` (otherwise the next sync re-adds it).
 
 **Live OTA (v1.7.3):** `content.js` now applies newer content the moment it fetches
 (ETag → cheap 304 polling) and re-renders in place; it polls every 15s **only while any

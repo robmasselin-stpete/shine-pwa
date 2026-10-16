@@ -41,7 +41,8 @@ Mac (it rebuilds `content.json` from YAMLs), Worker-added photos are **overwritt
 / lost**. During the festival, either (a) only add photos via the Worker and don't
 run `publish-content.py` for these murals, or (b) build a `sync-photos-from-live.py`
 reconcile step (fetch live `content.json` → write each mural's `ph` back into its
-YAML) to run before any Mac publish. **TODO before the festival: build the reconcile.**
+YAML) to run before any Mac publish. **Done:** `scripts/sync-photos-from-live.py` now runs
+automatically before every publish (Mac + GitHub workflow).
 
 ## Add a daily progress photo — Mac / CLI path (the actual test)
 1. Drop the photo in `images/murals/2026/` (e.g. `shine2026-day1.jpeg`).
@@ -64,7 +65,9 @@ YAML) to run before any Mac publish. **TODO before the festival: build the recon
 - **Both platforms + an already-open user** both pick it up on next launch.
 
 ## Undo a bad photo
-Remove its `{ url, dateTaken }` line from `photos:` → `publish-content.py`. Gone in ~1 min.
+Move its url from `photos:` to a `photosRemoved:` list in the YAML → `publish-content.py`.
+Gone in ~1 min. (Just deleting the line isn't enough — the pre-publish sync would re-add it
+from the live manifest.)
 
 ## When the test/demo is done
 Strip #900 the same way as #999 before any production binary build, unless it's
