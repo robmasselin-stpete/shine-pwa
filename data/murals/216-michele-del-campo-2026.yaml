@@ -1,0 +1,32 @@
+# SHINE 2026 — wall #4 (SPAA "SHINE Walls & Artists 2026"). Placeholder until painted.
+
+# ── Required ──
+id: 216
+artist: "Michele Del Campo"
+year: 2026
+lat: 27.764   # ESTIMATED (no geocoder): odd/north side of Fairfield, ~50 m from wall #5; anchors #21 Groove Haven 2655 Fairfield (27.764095,-82.66996), #25 FloridaRAMA
+lng: -82.6685
+address: "2605 Fairfield Ave S"
+category: shine
+img: "images/murals/2026/shine2026-coming-soon.jpeg"
+
+# ── Optional ──
+title: "Title TBA"
+building: "The Factory"
+instagram: ""
+basedIn: ""
+
+artistBio: "Coming after the SHINE artist interviews."
+
+searchMuralDescription: ""
+muralInspiration: "Coming after the SHINE artist interviews."
+muralAwards: ""
+artistAwards: ""
+
+impressions: []
+
+# ── Provenance (not exported to data.js) ──
+source: manual
+revisionLog:
+  - "2026-10-24 — Placeholder for SHINE 2026 wall #4 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): odd/north side of Fairfield, ~50 m from wall #5; anchors #21 Groove Haven 2655 Fairfield (27.764095,-82.66996), #25 FloridaRAMA. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
+sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #4. Wall: Lucky Cup back trailside wall."

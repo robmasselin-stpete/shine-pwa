@@ -1,0 +1,32 @@
+# SHINE 2026 — wall #3 (SPAA "SHINE Walls & Artists 2026"). Placeholder until painted.
+
+# ── Required ──
+id: 215
+artist: "Hiero Veiga"
+year: 2026
+lat: 27.7719094   # dropped pin (brief), ~30 ft from wall #2
+lng: -82.6483233
+address: "1000 1st Ave N"
+category: shine
+img: "images/murals/2026/shine2026-coming-soon.jpeg"
+
+# ── Optional ──
+title: "Title TBA"
+building: "VIV"
+instagram: ""
+basedIn: ""
+
+artistBio: "Coming after the SHINE artist interviews."
+
+searchMuralDescription: ""
+muralInspiration: "Coming after the SHINE artist interviews."
+muralAwards: ""
+artistAwards: ""
+
+impressions: []
+
+# ── Provenance (not exported to data.js) ──
+source: manual
+revisionLog:
+  - "2026-10-24 — Placeholder for SHINE 2026 wall #3 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief), ~30 ft from wall #2. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
+sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #3. SPAA list spells it 'Heiro Viega'; Rob confirmed Hiero Veiga 2026-10-24."

@@ -1,0 +1,32 @@
+# SHINE 2026 — wall #9 (SPAA "SHINE Walls & Artists 2026"). Placeholder until painted.
+
+# ── Required ──
+id: 221
+artist: "Merritt Horan Capurro"
+year: 2026
+lat: 27.8005   # ROUGH ESTIMATE (no geocoder): NW of Stonehenge Park (2993 Tyrone Blvd N, 27.79911,-82.7374)
+lng: -82.742
+address: "3190 Tyrone Blvd N"
+category: shine
+img: "images/murals/2026/shine2026-coming-soon.jpeg"
+
+# ── Optional ──
+title: "Title TBA"
+building: "PARC"
+instagram: ""
+basedIn: ""
+
+artistBio: "Coming after the SHINE artist interviews."
+
+searchMuralDescription: ""
+muralInspiration: "Coming after the SHINE artist interviews."
+muralAwards: ""
+artistAwards: ""
+
+impressions: []
+
+# ── Provenance (not exported to data.js) ──
+source: manual
+revisionLog:
+  - "2026-10-24 — Placeholder for SHINE 2026 wall #9 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ROUGH ESTIMATE (no geocoder): NW of Stonehenge Park (2993 Tyrone Blvd N, 27.79911,-82.7374). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
+sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #9."
