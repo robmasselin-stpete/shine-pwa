@@ -41,7 +41,9 @@ LIVE_URL = 'https://cdn.muralquest.app/content.json'
 
 def load_live(source):
     if source.startswith(('http://', 'https://')):
-        req = urllib.request.Request(source, headers={'Cache-Control': 'no-cache'})
+        # Cloudflare bot protection 403s Python's default User-Agent.
+        req = urllib.request.Request(source, headers={'Cache-Control': 'no-cache',
+                                                      'User-Agent': 'MuralQuest-publish/1.0'})
         with urllib.request.urlopen(req, timeout=30) as r:
             data = json.load(r)
     else:

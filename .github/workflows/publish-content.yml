@@ -19,7 +19,12 @@ on:
       - 'images/murals/**'
       - 'images/cards/**'
       - 'scripts/build-data.py'
-  workflow_dispatch: {}   # allow manual "Run workflow" from the Actions tab
+  workflow_dispatch:      # allow manual "Run workflow" from the Actions tab
+    inputs:
+      since:
+        description: 'Upload images changed since this commit (e.g. the last successful publish). Blank = this commit only.'
+        required: false
+        default: ''
 
 concurrency:
   group: publish-content        # never let two publishes race the R2 object
@@ -49,8 +54,16 @@ jobs:
       # The Capture Worker writes photos straight into the live content.json and never
       # touches YAML — pull them into the YAMLs before rebuilding, or this publish
       # would wipe them. Fails the job (no upload) if the live manifest can't be read.
+      # Read straight from R2 (not the CDN): no bot-protection 403s, no 60s edge cache
+      # that could hide a photo the Worker added a moment ago.
       - name: Sync live Worker photos into YAMLs
-        run: python3 scripts/sync-photos-from-live.py
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 r2 object get "$BUCKET/content.json" --file "$RUNNER_TEMP/live-content.json" --remote
+          python3 scripts/sync-photos-from-live.py --source "$RUNNER_TEMP/live-content.json"
 
       - name: Build OTA manifest (content.json)
         run: python3 scripts/build-data.py
@@ -72,7 +85,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          BEFORE='${{ github.event.before }}'
+          BEFORE='${{ github.event.inputs.since || github.event.before }}'
           AFTER='${{ github.sha }}'
           # First push to a branch reports an all-zero "before"; fall back to this commit only.
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
