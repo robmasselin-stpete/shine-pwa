@@ -1,0 +1,32 @@
+# SHINE 2026 — wall #11 (SPAA "SHINE Walls & Artists 2026"). Placeholder until painted.
+
+# ── Required ──
+id: 222
+artist: "Chroma Creature"
+year: 2026
+lat: 27.76023   # ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack
+lng: -82.637055
+address: "1000 3rd St S"
+category: shine
+img: "images/murals/2026/shine2026-coming-soon.jpeg"
+
+# ── Optional ──
+title: "Title TBA"
+building: "USF Harbor Hall"
+instagram: ""
+basedIn: ""
+
+artistBio: "Coming after the SHINE artist interviews."
+
+searchMuralDescription: "Also known as Regean McCreight."
+muralInspiration: "Coming after the SHINE artist interviews."
+muralAwards: ""
+artistAwards: ""
+
+impressions: []
+
+# ── Provenance (not exported to data.js) ──
+source: manual
+revisionLog:
+  - "2026-10-24 — Placeholder for SHINE 2026 wall #11 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
+sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #11."
