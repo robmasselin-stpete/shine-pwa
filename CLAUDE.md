@@ -58,6 +58,15 @@ in place at boot.
 predate this pipeline, emit the wrong format, and overwrite `routes.js`.
 `data/routes/*.geojson` are the editor's load state, not the runtime source.
 
+## This Mac is the source of truth — publish from here
+
+The **GitHub publish Action no longer runs on push** (disabled 2026-10-30). On Oct 24 an
+iPad cloud session pushed from a stale clone and the Action rolled live data back to
+Aug 22. That job also rebuilds without pulling Capture Worker photos first, so it would
+erase festival photos. Publish data with `scripts/publish-content.py` on this Mac, which
+reconciles photos first. Before working from any other clone or cloud session, check it's
+level with this Mac: `git fetch && git status` should say "up to date".
+
 ## Build / ship checklist
 
 `npm run cap:sync` (NOT `npx cap sync`) → bump build in `ios/App/App/Info.plist`

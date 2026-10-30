@@ -174,7 +174,12 @@ Publish the OTA manifest live (no build):
 
 ---
 
-## 7. commit = live  (GitHub Action — the OTA autopilot)
+## 7. commit = live  (GitHub Action) — ⚠ PUSH TRIGGER DISABLED 2026-10-30
+
+> A push no longer publishes. The Oct 24 iPad session pushed from a stale clone and the
+> Action rolled live data back to Aug 22; it also rebuilds without pulling Capture Worker
+> photos, so it would erase festival photos. **Publish from the Mac with
+> `scripts/publish-content.py`.** The Action is manual-run only (Actions tab).
 
 ```
  git push origin v1.5   (touching data/murals, data/config.yaml, images/*, build-data.py)

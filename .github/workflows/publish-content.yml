@@ -11,16 +11,12 @@ name: Publish content to CDN
 #   CLOUDFLARE_ACCOUNT_ID  — the Cloudflare account id (not secret, but stored here)
 
 on:
-  push:
-    branches: [v1.5]
-    paths:
-      - 'data/murals/**'
-      - 'data/routes.json'   # routes ship over OTA too (v1.7) — build-data.py reads this
-      - 'data/config.yaml'
-      - 'images/murals/**'
-      - 'images/cards/**'
-      - 'scripts/build-data.py'
-  workflow_dispatch: {}   # allow manual "Run workflow" from the Actions tab
+  # Push trigger DISABLED 2026-10-30. A push from a stale clone (the Oct 24 iPad session)
+  # republished Aug 22 data over the live manifest, and this job rebuilds from YAML
+  # without first pulling the Capture Worker's photos, so it would erase festival photos.
+  # Publish from the Mac with scripts/publish-content.py (reconciles photos first).
+  # Manual runs only; don't re-enable the push trigger without adding that reconcile step.
+  workflow_dispatch: {}
 
 concurrency:
   group: publish-content        # never let two publishes race the R2 object
