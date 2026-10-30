@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 225
-artist: "Ashley Marie & The Happy Mural Project"
+artist: "Alyssa Marie & The Happy Mural Project"
 year: 2026
 lat: 27.7963202   # dropped pin (brief), northernmost
 lng: -82.6468413
@@ -28,5 +28,6 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "2026-10-30 — Artist corrected Ashley Marie → Alyssa Marie (Rob checked the SPAA SHINE Walls & Artists 2026 list; matches the Tampa Bay Beacons 29 Oct 2026 lineup and her shineonmurals.com SHINE 2026 artist record). File renamed 225-ashley-marie-2026.yaml → 225-alyssa-marie-2026.yaml."
   - "2026-10-24 — Placeholder for SHINE 2026 wall #14 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief), northernmost. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #14. Wall: north perimeter. The Happy Mural Project is a collective (existing walls #51, #71, #100, #188)."
