@@ -17,20 +17,19 @@ instagram: ashley.cassens
 basedIn: "Tampa, FL"
 
 artistBio: |
-  Two of her oil paintings ended up at HomeGoods. She has sixty-two murals under
-  her belt and a five-star rating across forty reviews on Thumbtack.
+  Two of her oil paintings ended up at HomeGoods.
 
   Ashley Cassens is a Tampa-based representational figure painter and muralist.
   She grew up in Daytona Beach, earned a BFA from Florida Southern College in
-  2006, and an MFA from Florida Atlantic University in 2017. She taught K-5 art for five years before going full-time as an artist around
-  2020.
+  2006, and an MFA from Florida Atlantic University in 2017. She taught K-5 art for five years and went full-time in
+  2022.
 
   Her studio work is intimate figurative portraiture — layered, chromatic oil
   paint on canvas and wood panels, often focused on specific body parts and
-  details of people she knows. Her "Eye Traps" series celebrates women through
-  traditional oil painting, patterned fabrics, and fresh color. A series of tiny portrait paintings responds to fundamentalist cult
-  pamphlets, addressing women's repression; she learned of the group through
-  the true-crime podcast "Some Place Under Neith."
+  details of people she knows. Her "Eye Traps" series — small oil portraits
+  of women on patterned fabric — takes its name from an IBLP pamphlet on how
+  women should dress; she learned of the group through the true-crime podcast
+  "Some Place Under Neith."
 
   "Sweet Disposition" wraps the side of 54th Ave Deli Mart in the Lealman area —
   bold botanical imagery flowing from orange blossoms through a bumblebee in
@@ -38,8 +37,7 @@ artistBio: |
   with the Lealman CRA. She installed it in May 2025.
 
 searchBio: |
-  Two of her oil paintings ended up at HomeGoods. She has sixty-two murals under
-  her belt and a five-star rating across forty reviews on Thumbtack.
+  Two of her oil paintings ended up at HomeGoods.
 
   Ashley Cassens is a Tampa-based representational figure painter and muralist,
   native Floridian from Daytona Beach. She earned a BFA from Florida Southern
@@ -50,26 +48,24 @@ searchBio: |
   Ambassador of the Arts Scholarship, and the Women in the Visual Arts
   Scholarship (twice).
 
-  She taught K-5 art for five years and was a teaching assistant at FAU before
-  becoming a full-time artist around 2020. She runs Painting Possibilities LLC
-  in Tampa's Northdale area. She is certified in scissor and boom lift safety,
-  insured, and background checked. She charges $25-30 per square foot for murals
-  with a $1,500 minimum.
+  She taught K-5 art for five years and was a teaching assistant at FAU
+  before becoming a full-time artist in 2022. She works from Tampa's Northdale
+  area.
 
   Her studio work is intimate figurative portraiture in oil — layered, chromatic
   paint on canvas and wood panels, often focused on body parts and details of
-  loved ones. Notable series include "Eye Traps" (celebrating women through oil
-  painting and patterned fabrics; two pieces licensed to HomeGoods; shown at
-  Elevation Coffee Roasters, Tampa), "Projection Series" (vibrant portraits
-  exploring experiences filtered through screens), and tiny portraits responding to IBLP cult pamphlets, addressing women's
-  repression (she learned of the group through the true-crime podcast "Some
-  Place Under Neith").
+  loved ones. Notable series include "Eye Traps" (small oil
+  portraits of women on patterned fabric, named for an IBLP pamphlet on how
+  women should dress; she learned of the group through the true-crime podcast
+  "Some Place Under Neith"; two pieces licensed to HomeGoods; shown at
+  Elevation Coffee Roasters, Tampa) and "Projection Series" (vibrant portraits
+  exploring experiences filtered through screens).
 
   Commercial clients include HomeGoods (licensing), Ann Cox Design, Cori Rose
   Handmade, Creative Pinellas, and various schools, non-profits, national
   corporations, and private residences. She has been featured on Fox 13 Tampa
   Bay (January 2023), Creative Loafing Tampa, CanvasRebel Magazine, Artsy Shark,
-  and Daytime TV on News Channel 8. Thumbtack Top Pro 2022-2025.
+  and Daytime TV on News Channel 8.
 
   "Sweet Disposition" at 2705 54th Ave N, St. Petersburg (54th Ave Deli Mart)
   was commissioned by Creative Pinellas in partnership with the Lealman
@@ -93,7 +89,7 @@ searchMuralDescription: |
 
 muralInspiration: "Commissioned by Creative Pinellas in partnership with the Lealman CRA to enhance community visibility."
 muralAwards: ""
-artistAwards: "Provost Fellowship; Women in the Visual Arts Scholarship (x2); Thumbtack Top Pro 2022-2025"
+artistAwards: "Provost Fellowship; Women in the Visual Arts Scholarship (x2)"
 
 furtherWork:
   - name: "ashleycassens.com"
@@ -102,6 +98,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "30 October 2026 — Rob-approved corrections from the #217 fact-check: full-time year 2020 → 2022 (her About page: \"In 2022, she quit teaching full-time to paint murals\"; CL Jan 2022 + VoyageTampa Mar 2022 still call her a teacher); Eye Traps and the IBLP-pamphlet portraits merged into one series (her Eye Traps page, CL); removed unverifiable Thumbtack claims (62 murals, 5-star/40 reviews, Top Pro 2022-2025 — profile now 404); Painting Possibilities is a journal, not an LLC; removed lift/insurance/background-check and pricing (dead Thumbtack source)"
   - "28 August 2026 — Fact-check fleet: her own About page says K-5 for five years; Some Place Under Neith is the true-crime podcast that introduced her to the IBLP, not a series of her paintings; Some Place Under Neith is a podcast, not a series of her paintings"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Full research and bio, Claude-enhanced"
@@ -114,4 +111,8 @@ sourceNotes:
   - "https://canvasrebel.com/meet-ashley-cassens/"
   - "https://www.artsyshark.com/2017/12/15/featured-artist-ashley-cassens/"
   - "https://www.fox13news.com/news/lifelong-artist-turns-her-art-into-full-time-business"
-  - "https://www.thumbtack.com/fl/tampa/art-services/ashley-cassens-art/"
+  - "https://www.thumbtack.com/fl/tampa/art-services/ashley-cassens-art/ (404 as of 2026-10-30; claims sourced only here removed)"
+  - "https://www.ashleycassens.com/about"
+  - "https://www.ashleycassens.com/eyetraps"
+  - "https://www.cltampa.com/arts/in-northdale-tampa-artist-ashley-cassens-fights-womens-repression-one-tiny-portrait-at-a-time-12721851"
+  - "https://voyagetampa.com/interview/life-work-with-ashley-cassens-of-tampa/"

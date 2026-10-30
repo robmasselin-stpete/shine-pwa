@@ -23,7 +23,7 @@ artistBio: |
 
   Ashley Cassens is a Tampa-based representational painter and muralist. She
   grew up in Daytona Beach, earned a BFA from Florida Southern College in 2006
-  and an MFA from Florida Atlantic University in 2017, and taught K-5 art for five years before going full-time around 2020. Two of her oil paintings
+  and an MFA from Florida Atlantic University in 2017, and taught K-5 art for five years before going full-time in 2022. Two of her oil paintings
   ended up licensed to HomeGoods.
 
   Her studio work is intimate figurative portraiture in layered oil. Her
@@ -46,25 +46,23 @@ searchBio: |
   Arts Scholarship (twice).
 
   She taught K-5 art for five years and was a teaching assistant at FAU
-  before becoming a full-time artist around 2020. She runs Painting
-  Possibilities LLC in Tampa's Northdale area. She is certified in scissor and
-  boom lift safety, insured, and background checked. She charges $25-30 per
-  square foot for murals with a $1,500 minimum.
+  before becoming a full-time artist in 2022. She works from Tampa's Northdale
+  area.
 
   Her studio work is intimate figurative portraiture in oil — layered,
   chromatic paint on canvas and wood panels, often focused on body parts and
-  details of loved ones. Notable series include "Eye Traps" (celebrating women
-  through oil painting and patterned fabrics; two pieces licensed to
-  HomeGoods; shown at Elevation Coffee Roasters, Tampa), "Projection Series"
-  (vibrant portraits exploring experiences filtered through screens), and tiny portraits responding to IBLP cult pamphlets, addressing women's
-  repression (she learned of the group through the true-crime podcast "Some
-  Place Under Neith").
+  details of loved ones. Notable series include "Eye Traps" (small oil
+  portraits of women on patterned fabric, named for an IBLP pamphlet on how
+  women should dress; she learned of the group through the true-crime podcast
+  "Some Place Under Neith"; two pieces licensed to HomeGoods; shown at
+  Elevation Coffee Roasters, Tampa) and "Projection Series" (vibrant portraits
+  exploring experiences filtered through screens).
 
   Commercial clients include HomeGoods (licensing), Ann Cox Design, Cori Rose
   Handmade, Creative Pinellas, and various schools, non-profits, national
   corporations, and private residences. She has been featured on Fox 13 Tampa
   Bay (January 2023), Creative Loafing Tampa, CanvasRebel Magazine, Artsy
-  Shark, and Daytime TV on News Channel 8. Thumbtack Top Pro 2022-2025.
+  Shark, and Daytime TV on News Channel 8.
 
   This wall at Florida Orange Groves Winery (1500 Pasadena Ave S, South
   Pasadena) features two large oranges with white citrus blossoms hanging from
@@ -96,7 +94,7 @@ searchMuralDescription: |
 
 muralInspiration: ""
 muralAwards: ""
-artistAwards: "Provost Fellowship; Women in the Visual Arts Scholarship (x2); Thumbtack Top Pro 2022-2025"
+artistAwards: "Provost Fellowship; Women in the Visual Arts Scholarship (x2)"
 
 furtherWork:
   - name: "ashleycassens.com"
@@ -105,6 +103,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "30 October 2026 — Rob-approved corrections from the #217 fact-check: full-time year 2020 → 2022 (her About page: \"In 2022, she quit teaching full-time to paint murals\"; CL Jan 2022 + VoyageTampa Mar 2022 still call her a teacher); Eye Traps and the IBLP-pamphlet portraits merged into one series (her Eye Traps page, CL); removed unverifiable Thumbtack claims (62 murals, 5-star/40 reviews, Top Pro 2022-2025 — profile now 404); Painting Possibilities is a journal, not an LLC; removed lift/insurance/background-check and pricing (dead Thumbtack source)"
   - "28 August 2026 — Fact-check fleet: her own About page says K-5 for five years"
   - "28 August 2026 — Fact-check fleet: her own About page says K-5 for five years; Some Place Under Neith is a podcast, not a series of her paintings"
   - "2026-05-14 — New mural added by Rob: second Ashley Cassens, citrus + lorikeet + tropical flowers on Florida Orange Groves Winery in South Pasadena. GPS from photo IMG_0290.jpeg EXIF (27.75273, -82.73796), photo dated 2026-05-13. Year 2026; signed lower-left 'ASHLEY CASSENS @ashley.cassens.' Bio carried over from #153 (Sweet Disposition)."
@@ -113,6 +112,10 @@ sourceNotes:
   - "Signed 'ASHLEY CASSENS @ashley.cassens' lower-left on wall"
   - "https://www.ashleycassens.com/"
   - "https://www.instagram.com/ashley.cassens/"
+  - "https://www.ashleycassens.com/about"
+  - "https://www.ashleycassens.com/eyetraps"
+  - "https://www.cltampa.com/arts/in-northdale-tampa-artist-ashley-cassens-fights-womens-repression-one-tiny-portrait-at-a-time-12721851"
+  - "https://voyagetampa.com/interview/life-work-with-ashley-cassens-of-tampa/"
 verification:
   date: 2026-05-14
   method: on-wall signature + Rob photo with EXIF GPS
