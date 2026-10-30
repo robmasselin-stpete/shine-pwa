@@ -27,8 +27,7 @@ artistBio: |
   people came out over Mother's Day weekend 2024 to paint it.
 
   Gulf Coast Jewish Family and Community Services commissioned "Compassion In
-  Action" for their 50th anniversary. Two brown hands cradle a cluster of bright
-  blue morpho butterflies against flowing green leaves. The location was
+  Action" for their 50th anniversary. Two hands reach toward each other: one releases blue butterflies toward a lotus flower held in the other. The location was
   deliberate too — the west side of the building that housed Dr. Philip
   Benjamin's optometrist practice, built in 1969. Benjamin was a longtime
   supporter of St. Petersburg Junior College and pushed for affirmative action
@@ -36,8 +35,7 @@ artistBio: |
 
   Alyssa Marie founded the Happy Mural Project after moving from Colorado to St.
   Petersburg in 2017. She holds a BFA from Metropolitan State University of
-  Denver. The project's signature is exactly what it sounds like: she designs
-  the wall, breaks it into numbered sections, and runs paint-by-numbers events
+  Denver. The project's signature is exactly what it sounds like: she designs the wall, numbers its shapes in Adobe Illustrator, and runs paint-by-numbers events
   where hundreds of volunteers each take a 30-minute slot. Children paint the
   lower sections; volunteers comfortable on ladders paint the higher ones.
 
@@ -79,10 +77,7 @@ searchBio: |
   murals on her own and noticed that people were always interested in the
   process — she remembered the paint-by-number books she did as a kid and built
   the format around that. "When I started this, I just wanted to find a way to
-  get everybody involved," she told Northeast Journal in 2024. The format: she
-  designs the wall and team breaks it into numbered sections; volunteers come
-  for 30-minute slots, get a numbered cup of paint, and find the corresponding
-  section. Children paint the lower sections; volunteers comfortable on ladders
+  get everybody involved," she told Northeast Journal in 2024. The format: she designs the wall and numbers its shapes in Adobe Illustrator; her team hands each volunteer, signed up for a 30-minute slot, a numbered cup of paint to match a section. Children paint the lower sections; volunteers comfortable on ladders
   paint the higher ones.
 
   Marie also works to find the right design to fit with the organization that
@@ -98,9 +93,7 @@ searchBio: |
   at thehappymuralproject.com and gulfcoastjewishfamilyandcommunityservices.org.
 
 searchMuralDescription: |
-  A large community mural on a long wall, 16 feet tall by 105 feet long. A pair
-  of brown hands cradles a cluster of bright blue morpho butterflies against a
-  background of flowing green leaves and fronds. A banner at the top left reads
+  A large community mural on a long wall, 16 feet tall by 105 feet long. Two hands reach toward each other: one releases blue butterflies toward a lotus flower held in the other, against a background of flowing green leaves and fronds. A banner at the top left reads
   "Compassion In Action" in script lettering with "GulfCoastJFCS.org" below it.
   The palette is soft greens, browns, and vivid blue. Painted by roughly 600
   volunteers over Mother's Day weekend 2024.
@@ -114,9 +107,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "30 October 2026 — Happy Mural corrections from the #225 fact-check: hands described per Northeast Journal 2024 (one hand releases butterflies toward a lotus held in the other — matches this record's own searchBio; 'morpho' was unsourced); she numbers the shapes herself in Adobe Illustrator (TBT 2023), her team hands out the paint (Northeast Journal 2024)"
   - "26 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten with hook ('Paint-by-numbers, but the wall is 16 feet tall and 105 feet long. Six hundred people came out…') and body covering Gulf Coast JFCS commission, Dr. Philip Benjamin building backstory, Marilyn Benjamin painting glasses, Alyssa Marie's process. SearchBio populated from Northeast Journal source."
 sourceNotes:
+  - "https://www.shineonmurals.com/events"
+  - "https://www.thehappymuralproject.com"
   - "Photo by Rob 2026-04-26, GPS from EXIF"
   - "https://northeastjournal.org/inspired-by-the-mission-hundreds-help-paint-community-mural/"
   - "https://thehappymuralproject.com"
