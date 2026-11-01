@@ -443,8 +443,7 @@ function render() {
     <div class="card">
       <h3>${changed.length ? `${changed.length} field${changed.length > 1 ? 's' : ''} changed ${onDraft ? 'from the draft' : 'from the live record'}` : (onDraft ? 'No changes to the draft yet' : 'No changes yet')}</h3>
       <div class="cols" style="margin-bottom:6px"><div class="left muted">${onDraft ? 'Draft as written' : 'Live in the app now'}</div><div class="muted">Your version — tap to type</div></div>
-      ${changed.map(([k]) => fieldBlock(k)).join('')}
-      ${unchanged.length ? `<details class="unchanged"><summary>Unchanged fields (${unchanged.length})</summary>${unchanged.map(([k]) => fieldBlock(k)).join('')}</details>` : ''}
+      ${FIELDS.map(([k]) => fieldBlock(k)).join('')}
     </div>`}
 
     ${sibs.length ? `<div class="card sib"><h3>Other walls by this artist</h3>
@@ -463,7 +462,7 @@ function fieldBlock(k) {
   const a = asText(k, o), b = asText(k, p);
   const changed = !same(k, o, p);
   return `<div class="field" data-k="${k}">
-    <div class="fhead"><b>${esc(LABEL[k])}</b><span class="sp"></span>
+    <div class="fhead"><b>${esc(LABEL[k])}</b><span class="chip draft ${changed ? '' : 'hidden'}" data-chg>Changed</span><span class="sp"></span>
       <button data-act="undo" class="${changed ? '' : 'hidden'}">Undo</button></div>
     <div class="cols">
       <div class="pane left ${changed ? '' : 'same'}">${renderDiff(a, b, 'left')}</div>
@@ -549,6 +548,7 @@ function wire() {
         const changed = !same(k, baseOf(d)[k], d.proposed[k]);
         left.classList.toggle('same', !changed);
         f.querySelector('[data-act="undo"]').classList.toggle('hidden', !changed);
+        f.querySelector('[data-chg]').classList.toggle('hidden', !changed);
       }, 120);
     };
   });
