@@ -238,7 +238,7 @@ async function busy(btn, fn) {
 }
 
 // ── word diff ───────────────────────────────────────────────────────────────
-function tokens(s) { return String(s || '').match(/\s+|[^\s]+/g) || []; }
+function tokens(s) { return String(s || '').match(/\s+|[\p{L}\p{N}'’-]+|[^\s\p{L}\p{N}]/gu) || []; }
 function diff(a, b) {
   const A = tokens(a), B = tokens(b);
   let pre = 0; while (pre < A.length && pre < B.length && A[pre] === B[pre]) pre++;
@@ -457,6 +457,59 @@ function render() {
   wire();
 }
 
+// Mirror a hand edit of the display bio into the search bio. The display bio is meant to
+// be extractable from the search bio, so most sentences appear in both. Each changed run
+// of words is located in the search bio by its unchanged neighbours (widening until the
+// match is unique) and replaced there. Anything that can't be placed is reported.
+function mirrorEdit(before, after, target) {
+  const ops = diff(before, after);
+  const hunks = [];
+  for (let i = 0; i < ops.length;) {
+    if (ops[i][0] === '=') { i++; continue; }
+    let j = i, del = '', ins = '';
+    while (j < ops.length && ops[j][0] !== '=') { if (ops[j][0] === '-') del += ops[j][1]; else ins += ops[j][1]; j++; }
+    hunks.push({ i, j, del, ins });
+    i = j;
+  }
+  let text = target, ok = 0, missed = 0;
+  const count = (h, n) => { let c = 0, at = -1; while ((at = h.indexOf(n, at + 1)) !== -1) c++; return c; };
+  for (const h of hunks) {
+    let done = false;
+    for (let ctx = 2; ctx <= 24 && !done; ctx += 2) {
+      // Context = unchanged tokens right next to the hunk, stopping at any other edit.
+      let pre = '', post = '';
+      for (let x = h.i - 1, n = 0; x >= 0 && n < ctx && ops[x][0] === '='; x--, n++) pre = ops[x][1] + pre;
+      for (let x = h.j, n = 0; x < ops.length && n < ctx && ops[x][0] === '='; x++, n++) post += ops[x][1];
+      // Both sides first, then one side only — the two bios often differ just after
+      // (or before) the edited words, e.g. "in 2009." vs "in 2009, working…".
+      for (const [a, z] of [[pre, post], [pre, ''], ['', post]]) {
+        const needle = a + h.del + z;
+        if (!needle.trim() || (!h.del && !(a.trim() && z.trim()) && !(a.trim() || z.trim()))) continue;
+        if ((a + z).replace(/\s/g, '').length < 3 && h.del.replace(/\s/g, '').length < 4) continue; // too little to place safely
+        if (count(text, needle) === 1) { text = text.replace(needle, a + h.ins + z); done = true; break; }
+      }
+    }
+    done ? ok++ : missed++;
+  }
+  return { text, ok, missed, total: hunks.length };
+}
+function setField(k, value) {
+  const d = S.cur, f = document.querySelector(`.field[data-k="${k}"]`);
+  d.proposed[k] = value;
+  if (!f) return;
+  const ta = f.querySelector('textarea[data-edit]');
+  ta.value = asText(k, value);
+  growTA(ta);
+  const a = asText(k, baseOf(d)[k]);
+  f.querySelector('.bd').innerHTML = backdrop(a, ta.value);
+  const left = f.querySelector('.pane.left');
+  left.innerHTML = renderDiff(a, ta.value, 'left');
+  const changed = !same(k, baseOf(d)[k], value);
+  left.classList.toggle('same', !changed);
+  f.querySelector('[data-act="undo"]').classList.toggle('hidden', !changed);
+  f.querySelector('[data-chg]').classList.toggle('hidden', !changed);
+}
+
 function fieldBlock(k) {
   const d = S.cur, o = baseOf(d)[k], p = d.proposed[k];
   const a = asText(k, o), b = asText(k, p);
@@ -534,6 +587,19 @@ function wire() {
     const ta = f.querySelector('textarea[data-edit]');
     if (!ta) return;
     growTA(ta);
+    if (k === 'artistBio') {
+      let snap = null;
+      ta.onfocus = () => { snap = ta.value; };
+      ta.onblur = () => {
+        if (snap === null || snap === ta.value) return;
+        const m = mirrorEdit(snap, ta.value, String(d.proposed.searchBio || ''));
+        snap = null;
+        if (m.ok) { setField('searchBio', m.text); keep(); }
+        if (m.total) toast(m.missed
+          ? `Search bio: matched ${m.ok} of ${m.total} edit${m.total > 1 ? 's' : ''} — it's worded differently there, so check it by hand`
+          : 'Search bio updated to match', !!m.missed);
+      };
+    }
     let t;
     ta.oninput = () => {
       growTA(ta);
@@ -581,7 +647,10 @@ async function syncDraft(loud) {
 async function applyWithClaude() {
   const d = S.cur;
   const instructions = $('#instr').value.trim();
-  if (!instructions) { toast('Dictate or type the corrections first', true); return; }
+  if (!instructions) {
+    toast('Nothing in Corrections to apply. Typed edits are already saved — to send them live, tap Approve at the bottom.', true);
+    return;
+  }
   try {
     const r = await api('/review/propose', {
       id: d.id, fields: d.proposed, instructions, speaker: d.speaker || 'rob',
