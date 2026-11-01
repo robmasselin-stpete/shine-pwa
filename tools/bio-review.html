@@ -129,7 +129,14 @@ const BANNED = [/\bincredible\b/i, /\bamazing\b/i, /\bstunning\b/i, /\bperhaps\b
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const S = { list: null, filter: localStorage.getItem('mq_review_filter') || 'shine', q: '', cur: null };
+const S = { list: null, filter: localStorage.getItem('mq_review_filter') || 'shine', q: '', cur: null,
+  base: localStorage.getItem('mq_review_base') || 'draft' };
+// What the right side is compared against. "draft" = the draft as first written (e.g. the
+// fact-checked SHINE bios), so your own corrections show in green. "live" = the record as
+// it is in the app now (for the SHINE walls that's just the placeholder). Approval always
+// publishes against the live record, whichever view is on.
+const hasDraftBase = d => d.draftBase && FIELDS.some(([k]) => !same(k, d.draftBase[k], d.original[k]));
+const baseOf = d => (S.base === 'draft' && hasDraftBase(d)) ? d.draftBase : d.original;
 
 // ── settings ────────────────────────────────────────────────────────────────
 const getKey = () => localStorage.getItem('mq_capture_key') || '';
@@ -340,7 +347,8 @@ async function openMural(id) {
   // Prefer an unsynced local copy if it's newer than the server's.
   let d = server ? structuredClone(server) : null;
   if (local?.unsynced && (!server || local.localAt > Date.parse(server.updatedAt || 0))) d = local;
-  if (!d) d = { id, status: 'new', original, proposed: structuredClone(original), flags: [], sources: [], changes: [], questions: [], transcripts: [] };
+  if (!d) d = { id, status: 'new', original, proposed: structuredClone(original), draftBase: structuredClone(original), flags: [], sources: [], changes: [], questions: [], transcripts: [] };
+  if (!d.draftBase && server?.draftBase) d.draftBase = server.draftBase;
   // The YAML may have been updated by a Mac publish since this draft began.
   d.original = original;
   d.meta = res.mural.meta;
@@ -350,7 +358,8 @@ async function openMural(id) {
 }
 
 function render() {
-  const d = S.cur, o = d.original, p = d.proposed;
+  const d = S.cur, o = baseOf(d), p = d.proposed;
+  const onDraft = o !== d.original;
   $('#title').textContent = `#${d.id} ${p.artist || o.artist}`;
   $('#bar').classList.remove('hidden');
   $('#b-revert').classList.toggle('hidden', d.status !== 'approved');
@@ -361,6 +370,10 @@ function render() {
   const sibs = siblings(d);
   $('#main').innerHTML = `
     <div class="toolbar">
+      ${hasDraftBase(d) ? `<div class="seg" id="bseg" title="Compare against">
+        <button data-b="draft" class="${onDraft ? 'on' : ''}">vs Draft</button>
+        <button data-b="live" class="${!onDraft ? 'on' : ''}">vs Live</button>
+      </div>` : ''}
       <div class="seg" id="vseg">
         <button data-v="compare" class="${view === 'compare' ? 'on' : ''}">Compare</button>
         <button data-v="artist" class="${view === 'artist' ? 'on' : ''}">Artist view</button>
@@ -401,8 +414,8 @@ function render() {
 
     ${view === 'artist' ? artistView(p) : `
     <div class="card">
-      <h3>${changed.length ? `${changed.length} field${changed.length > 1 ? 's' : ''} changed` : 'No changes yet'}</h3>
-      <div class="cols" style="margin-bottom:6px"><div class="left muted">Current record</div><div class="muted">Proposed — tap Edit to change</div></div>
+      <h3>${changed.length ? `${changed.length} field${changed.length > 1 ? 's' : ''} changed ${onDraft ? 'from the draft' : 'from the live record'}` : (onDraft ? 'No changes to the draft yet' : 'No changes yet')}</h3>
+      <div class="cols" style="margin-bottom:6px"><div class="left muted">${onDraft ? 'Draft as written' : 'Live in the app now'}</div><div class="muted">Your version — tap Edit to change</div></div>
       ${changed.map(([k]) => fieldBlock(k)).join('')}
       ${unchanged.length ? `<details class="unchanged"><summary>Unchanged fields (${unchanged.length})</summary>${unchanged.map(([k]) => fieldBlock(k)).join('')}</details>` : ''}
     </div>`}
@@ -419,7 +432,7 @@ function render() {
 }
 
 function fieldBlock(k) {
-  const d = S.cur, o = d.original[k], p = d.proposed[k];
+  const d = S.cur, o = baseOf(d)[k], p = d.proposed[k];
   const a = asText(k, o), b = asText(k, p);
   const editing = S.editing === k;
   return `<div class="field" data-k="${k}">
@@ -475,6 +488,9 @@ function siblings(d) {
 function wire() {
   const d = S.cur;
   document.querySelectorAll('#vseg button').forEach(b => b.onclick = () => { S.view = b.dataset.v; render(); });
+  document.querySelectorAll('#bseg button').forEach(b => b.onclick = () => {
+    S.base = b.dataset.b; localStorage.setItem('mq_review_base', S.base); render();
+  });
   document.querySelectorAll('#spk button').forEach(b => b.onclick = () => { d.speaker = b.dataset.s; keep(); render(); });
   const instr = $('#instr');
   instr.oninput = () => { d.pending = instr.value; keep(); };
@@ -485,13 +501,13 @@ function wire() {
     f.querySelectorAll('button[data-act]').forEach(b => b.onclick = () => {
       if (b.dataset.act === 'edit') { S.editing = k; render(); setTimeout(() => document.querySelector(`[data-edit="${k}"]`)?.focus(), 0); }
       if (b.dataset.act === 'done') { S.editing = null; render(); }
-      if (b.dataset.act === 'undo') { d.proposed[k] = structuredClone(d.original[k] ?? (k === 'furtherWork' ? [] : '')); keep(); render(); }
+      if (b.dataset.act === 'undo') { d.proposed[k] = structuredClone(baseOf(d)[k] ?? (k === 'furtherWork' ? [] : '')); keep(); render(); }
     });
     const ta = f.querySelector('textarea[data-edit]');
     if (ta) ta.oninput = () => {
       d.proposed[k] = k === 'furtherWork' ? textToFw(ta.value) : ta.value;
       keep();
-      f.querySelector('.pane.left').innerHTML = renderDiff(asText(k, d.original[k]), asText(k, d.proposed[k]), 'left');
+      f.querySelector('.pane.left').innerHTML = renderDiff(asText(k, baseOf(d)[k]), asText(k, d.proposed[k]), 'left');
     };
   });
   const sb = $('#sibbtn');
