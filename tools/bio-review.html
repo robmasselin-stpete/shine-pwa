@@ -587,24 +587,25 @@ function wire() {
     const ta = f.querySelector('textarea[data-edit]');
     if (!ta) return;
     growTA(ta);
-    if (k === 'artistBio') {
-      let snap = null;
-      ta.onfocus = () => { snap = ta.value; };
-      ta.onblur = () => {
-        if (snap === null || snap === ta.value) return;
-        const m = mirrorEdit(snap, ta.value, String(d.proposed.searchBio || ''));
-        snap = null;
-        if (m.ok) { setField('searchBio', m.text); keep(); }
-        if (m.total) toast(m.missed
-          ? `Search bio: matched ${m.ok} of ${m.total} edit${m.total > 1 ? 's' : ''} — it's worded differently there, so check it by hand`
-          : 'Search bio updated to match', !!m.missed);
-      };
-    }
+    // Display bio → search bio: mirror each edit about a second after typing pauses.
+    // (Not on blur: on the iPad, tapping elsewhere often leaves the box focused.)
+    let snap = k === 'artistBio' ? ta.value : null, mt;
+    const mirrorNow = () => {
+      if (snap === null || snap === ta.value) return;
+      const m = mirrorEdit(snap, ta.value, String(d.proposed.searchBio || ''));
+      snap = ta.value;
+      if (m.ok) { setField('searchBio', m.text); keep(); }
+      const chip = document.querySelector('.field[data-k="searchBio"] [data-chg]');
+      if (m.missed) toast(`Search bio: couldn't find ${m.missed} of those words there — it's worded differently, so change it by hand`, true);
+      else if (m.ok && chip) { chip.textContent = 'Updated to match'; setTimeout(() => { chip.textContent = 'Changed'; }, 2500); }
+    };
+    if (k === 'artistBio') ta.onblur = mirrorNow;
     let t;
     ta.oninput = () => {
       growTA(ta);
       d.proposed[k] = k === 'furtherWork' ? textToFw(ta.value) : ta.value;
       keep();
+      if (k === 'artistBio') { clearTimeout(mt); mt = setTimeout(mirrorNow, 1100); }
       clearTimeout(t);
       t = setTimeout(() => {            // re-highlight after a short pause in typing
         const a = asText(k, baseOf(d)[k]);
