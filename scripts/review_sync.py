@@ -167,7 +167,7 @@ def _render(key, value):
         for g in value:
             out += [f'  - name: {_q(g["name"])}', f'    url: {_q(g["url"])}']
         return out
-    if key in BLOCK_FIELDS and value:
+    if key in BLOCK_FIELDS and value and ('\n' in value or len(key) + len(value) > 74):
         out = [f'{key}: |']
         paras = value.split('\n\n')
         for n, para in enumerate(paras):
@@ -296,7 +296,9 @@ def _apply_one(rec, mid, m, written, index):
             extra.append(f"Dictated corrections, {_human(rec.get('date') or rec['at'])} — transcript "
                          f"kept in R2 muralquest-review/applied/{rec['approvalId']}.json")
         have = set(notes if isinstance(notes, list) else [notes] if notes else [])
-        extra += [s for s in m.get('sources') or [] if s not in have]
+        # Skip fragments (e.g. "— bio + CV (primary)" split off a source line).
+        extra += [s for s in m.get('sources') or []
+                  if s not in have and not re.match(r'^\s*[—–-]', s) and len(s.strip()) > 10]
         for item in reversed(extra):
             d2 = yaml.safe_load('\n'.join(lines))
             lines = _prepend_list_item(lines, 'sourceNotes', item, d2.get('sourceNotes'))

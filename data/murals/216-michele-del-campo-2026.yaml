@@ -11,22 +11,132 @@ category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
 
 # ── Optional ──
-title: "Title TBA"
+title: "Title To Be Announced"
 building: "The Factory"
-instagram: ""
-basedIn: ""
+instagram: "micheledelcampo"
+basedIn: "South Florida"
 
-artistBio: "Coming after the SHINE artist interviews."
+artistBio: |
+  In 2017 he started traveling with two suitcases and a tube for his canvases.
+  He painted wherever he landed, rolled up the finished work, and carried it
+  to the galleries.
 
-searchMuralDescription: ""
-muralInspiration: "Coming after the SHINE artist interviews."
+  Michele Del Campo grew up in San Nicandro Garganico, a small town in
+  southern Italy. He spent his free time drawing and cycling long distances.
+  His family moved to Milan when he was 18. He started Fine Arts there, but
+  the teaching didn't encourage representational art, so at 20 he left. He
+  studied illustration in Falmouth and Dundee, then went to Madrid and
+  finished an MFA at Universidad Complutense in 2007. London came next, in
+  2008, then Glasgow in 2016. Glasgow has hardly any of the sun his paintings
+  run on, and that is where he quit looking for a studio altogether. He moved
+  to South Florida in 2023.
+
+  He paints his friends and family, and the people he meets along the way. The
+  places in his work are left vague on purpose, often features of different
+  cities merged into one. The people and their stories carry the painting: the
+  uprooting, the zest for life, the solitude, the sense that none of it lasts.
+  He works alla prima, a quick silhouette and then straight to paint, keeping
+  his colors as pure as he can.
+
+  In 2006 he won the Premio BMW de Pintura, which his own bio calls the most
+  prestigious painting prize in Spain. The Artist's Magazine gave him its All
+  Media Grand Prize in 2015. He has had solo shows in Madrid, London, Lugano,
+  Lima, San Francisco and Dallas. His portfolio is mostly oil on linen.
+
+searchBio: |
+  In 2017 he started traveling with two suitcases and a tube for his canvases.
+  He painted wherever he landed, rolled up the finished work, and carried it
+  to the galleries.
+
+  Michele Del Campo is an Italian figurative painter, born in 1976 in San
+  Nicandro Garganico, a small town in southern Italy. Isolated in the
+  countryside, he spent his free time drawing and cycling long distances. His
+  family moved to Milan when he was 18. He started Fine Arts there, but the
+  teaching didn't encourage representational art, so at 20 he left on what his
+  own bio calls a pilgrimage. He studied illustration in Falmouth, England,
+  then at the University of Dundee in Scotland, where he earned a Bachelor of
+  Design (Honours) in Illustration and Printmaking in 2001. In Madrid he went
+  back to Fine Arts at Universidad Complutense and began showing in galleries
+  at the same time, finishing an MFA in 2007. Arts Warehouse in Delray Beach
+  says he has been a full-time artist since 2004, the year of his first solo
+  show in a Madrid gallery.
+
+  London came next, in 2008. A 2016 Collage Arts interview has him keeping a
+  studio at the Chocolate Factory in Wood Green. Then Glasgow, in 2016.
+  Glasgow has hardly any of the sun his paintings run on, and that is where he
+  quit looking for a studio altogether. He stopped accumulating things, got
+  rid of his possessions, and started painting wherever he was. He moved to
+  South Florida in 2023. In his own words to Broward's Arts Calendar, he is "a
+  fine art painter from Italy, who recently immigrated to the United States."
+
+  He paints his friends and family, and the people he meets along the way. The
+  places in his work are left vague on purpose, often features of different
+  cities merged into one. The people and their stories carry the painting: the
+  uprooting, the zest for life, the solitude, the sense that none of it lasts.
+  He calls his paintings "little stories that suggest moods and situations."
+  He builds each image like a collage. He photographs models, settings and
+  objects separately and assembles them, so the people in a painting have
+  often never met. Little eye contact, nobody talking. "People by themselves
+  in a crowd," he says. He works alla prima, a quick silhouette and then
+  straight to paint, using as few colors as possible and keeping them pure. In
+  the same interview he splits his work into two strands. One has more light
+  and colour. The other is darker, set in London, which he uses for "greyer,
+  more post-industrial settings."
+
+  During the pandemic lockdown he interviewed people around the world over
+  Zoom and sketched their portraits. The project is called "Pandemic Stories."
+  His paintings include a portrait of Supreme Court Justice Ruth Bader
+  Ginsburg, and single canvases as big as 198x305cm.
+
+  In 2006 he won the Premio BMW de Pintura, which his own bio calls the most
+  prestigious painting prize in Spain. The Artist's Magazine gave him its All
+  Media Grand Prize in 2015. In 2016 he won the Oil Painters of America Award
+  in the Art Renewal Center International Salon. In 2012 he won the Winsor &
+  Newton Oil Prize at the Royal Society of Marine Artists, and the Premios
+  Luces award for the best solo exhibition of the year in Peru. In 2023 he got
+  an Artist Innovation Grant from the Broward County Cultural Division and a
+  residency at the Bailey Contemporary Arts Center in Pompano Beach. He has
+  also taken prizes at the Royal Institute of Oil Painters and Patchings Open,
+  and shown at the Royal Society of Portrait Painters annual exhibition and
+  the MEAM museum in Barcelona.
+
+  Galleries that have given him solo shows: Galería Ansorena (Madrid; "Almas
+  Nómadas," 2020, and "Fragments of Being," 2025), Galería Enlace (Lima),
+  Imago Art Gallery (Lugano), Mark Jason Gallery (London), CK Contemporary
+  (San Francisco; a 2019 two-artist show with Hollis Dunlap), Ron Hall Gallery
+  (Dallas), and Galería Jorge Alcolea (Madrid). His art fairs run from Context
+  Art Miami to Hong Kong. A monograph, "Michele Del Campo Paintings
+  2003-2019," came out in 2019. He also teaches drawing and painting
+  workshops.
+
+  His portfolio is mostly oil on linen.
+
+searchMuralDescription: "Painting during SHINE, Nov 6–15."
+muralInspiration: "Painting during SHINE, Nov 6–15."
 muralAwards: ""
-artistAwards: ""
+artistAwards: "Premio BMW de Pintura (2006); The Artist's Magazine All Media Grand Prize (2015); Oil Painters of America Award, ARC International Salon (2016); Winsor & Newton Oil Prize, Royal Society of Marine Artists (2012); Premios Luces, Best Solo Exhibition in Peru (2012); Broward County Artist Innovation Grant (2023); Bailey Contemporary Arts Center residency (2023)"
+
+furtherWork:
+  - name: "micheledelcampo.com"
+    url: "https://www.micheledelcampo.com"
+  - name: "Paintings portfolio"
+    url: "https://micheledelcampo.com/paintings"
 
 impressions: []
 
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "1 November 2026 — Bio review tool, approved by Rob: title, basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: Removed the sentence \"It lists one mural, painted in Fort Lauderdale in 2026.\" Kept \"His portfolio is almost all oil on linen.\"; searchBio: Removed the sentence \"It lists one mural: \"Where your mom came from,\" 8.05 by 9.23 meters, painted in Fort Lauderdale in 2026.\" Kept \"His portfolio is almost all oil on linen.\". Note: First Corrected Bio by Rob [review:20261101160425-4a7e332a]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #4 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): odd/north side of Fairfield, ~50 m from wall #5; anchors #21 Groove Haven 2655 Fairfield (27.764095,-82.66996), #25 FloridaRAMA. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
-sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #4. Wall: Lucky Cup back trailside wall."
+sourceNotes:
+  - "Dictated corrections, 1 November 2026 — transcript kept in R2 muralquest-review/applied/20261101160425-4a7e332a.json"
+  - "SPAA SHINE Walls & Artists 2026 list (via Rob) — wall assignment"
+  - "https://www.micheledelcampo.com/about"
+  - "https://micheledelcampo.com/paintings"
+  - "https://www.artscalendar.com/wp-content/uploads/sites/www.artscalendar.com/images/2024/03/CV-Michele-Del-Camp.pdf"
+  - "https://www.artscalendar.com/artist/michele-del-campo/"
+  - "https://www.pompanobeacharts.org/baca/artists-in-residence/michele-del-campo"
+  - "https://www.collage-arts.org/michele-del-campo-interview/"
+  - "https://artswarehouse.org/dt_team/michele-del-campo"
+  - "SPAA SHINE Walls & Artists 2026, wall #4. Wall: Lucky Cup back trailside wall."
