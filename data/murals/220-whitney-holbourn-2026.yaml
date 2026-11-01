@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 220
-artist: "Whitney Holburn"
+artist: "Whitney Holbourn"
 year: 2026
 lat: 27.7695   # ESTIMATED (no geocoder): grid-interpolated from 2010/2060/2125 1st Ave S anchors
 lng: -82.6614
@@ -13,21 +13,132 @@ img: "images/murals/2026/shine2026-coming-soon.jpeg"
 # ── Optional ──
 title: "Title TBA"
 building: "Jeeves Law"
-instagram: ""
-basedIn: ""
+instagram: "whitneyholbourn"
+basedIn: "Florida"
 
-artistBio: "Coming after the SHINE artist interviews."
+pronouns: "she/her"
 
-searchMuralDescription: ""
-muralInspiration: "Coming after the SHINE artist interviews."
+artistBio: |
+  When vandals covered her "Say Their Names" mural in Louisville with blue
+  paint in 2021, she said every time someone vandalizes the mural she will fix
+  it and add another face.
+
+  The wall was unveiled in July 2020 at 11th and Main, painted with Andrew
+  Thompson and Braylyn "Resko" Stewart. It fills the side of a warehouse more
+  than 100 feet wide and shows Breonna Taylor, George Floyd, David McAtee,
+  Elijah McClain and Sandra Bland. The face she added was Travis Nagdy, a
+  local protester killed in a shooting in November 2020.
+
+  Whitney Holbourn was born in St. Pete and started her art career in Tampa.
+  She came to walls by way of a camera: a BFA in photography from the Savannah
+  College of Art and Design in 2011, then painting a few years later, then
+  spray-painted murals full-time. In 2017 she had a solo show, "Neon Dreams,"
+  in St. Petersburg. Her own statement says her work "predominantly highlights
+  women as larger than life within colorful worlds and a dream like
+  aesthetic," driven by personal experience, vivid colors and psychedelic
+  themes.
+
+  She has worked out of both Tampa and Denver, and her resume covers a lot of
+  ground: Art Basel walls in Wynwood in 2018 and 2020, "Joan of Hearts" for
+  the Desert Hearts festival in San Diego, "Obtuse" in New Haven, stage design
+  for Encore Beach Club in Las Vegas, and an 80-foot mural in Louisville. In
+  Denver she has shown with Movement Gallery and Ila Gallery. Her biggest
+  commercial job, by her own account, took a year and covered more than 14,000
+  square feet of wall in the Tampa area. For PINCfest 2025 in Sarasota she
+  painted "Head in the Clouds," which she calls "an abstract tribute to
+  Sarasota in how I was experiencing it right then and there."
+
+  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
+  painting a wall at Jeeves Law.
+
+searchBio: |
+  When vandals covered her "Say Their Names" mural in Louisville with blue
+  paint in 2021, she said every time someone vandalizes the mural she will fix
+  it and add another face.
+
+  The wall was unveiled in July 2020 at 11th and Main in Louisville, Kentucky,
+  painted with Andrew Thompson and Braylyn "Resko" Stewart. The three
+  independent artists donated their time, talent and resources, community
+  members helped fund it, and the group No Justice No Peace Louisville helped
+  facilitate it. It fills the side of a warehouse more than 100 feet wide and
+  30 feet tall and shows Breonna Taylor, George Floyd, David McAtee, Elijah
+  McClain and Sandra Bland and the words "say their names." It was vandalized
+  in June 2021. The face she added in the repair was Travis Nagdy, a
+  well-known local protester killed in a shooting in November 2020.
+
+  She was born in St. Pete and has spent much of her life in the Tampa area,
+  where she started pursuing her career in art. She earned a BFA in photo from
+  the Savannah College of Art and Design in 2011. She came to walls by way of
+  a camera. Painting came a few years later, and spray-painted murals
+  full-time after that. Her own statement says her work "generally features
+  figure work and predominantly highlights women as larger than life within
+  colorful worlds and a dream like aesthetic." She names personal experience,
+  vivid colors and psychedelic themes as what drives it.
+
+  She has split her time between Tampa and Denver, by her own account, and
+  travels for work. Her resume lists walls in Florida, Colorado, Kentucky,
+  Connecticut, Nevada and California: "Know Yourself" for Art Basel in Miami
+  (2018); "Welcome to Paradise" (2018) and "Secret Garden" (2021) in Suwannee,
+  Florida; "Colorado Dreamin'" in Denver (2018); "Joan of Hearts" for Desert
+  Hearts in San Diego (2019); "Latitude/Longitude" and "Chynna" in Wynwood and
+  "Longitude/Latitude" for Art Basel in Miami (2020); "Compass" in Tampa
+  (2020); "Cycles" and a Wingchow collaboration in Denver (2020); "Obtuse" in
+  New Haven, Connecticut (2021); "DMX" in St. Petersburg (2021); a Florida
+  Avenue Brewery wall in Tampa (2021); stage design for Encore Beach Club in
+  Las Vegas (2021); the KRATE shopping center in Wesley Chapel (2021–2022); an
+  untitled 80-foot mural in Louisville (2022); and an outside mural and two
+  immersive units for Airbnb in Denver (2022). Her Monochronicle profile also
+  names the Wynwood Mural Festival during Art Basel. Her website says one of
+  her murals, which it doesn't name, has been featured by the New York Times
+  twice, in a Hulu documentary and in a history book. By her own account, her
+  biggest commercial job took about a year and covered more than 14,000 square
+  feet of wall in the Tampa area. She also animates, and in 2021 she showed
+  work in an NFT gallery show in Denver.
+
+  In the gallery she showed a solo exhibition, "Neon Dreams," in St.
+  Petersburg in 2017, and group shows "Portrait De Brew" (Tampa, 2015),
+  "Collide" (Tampa, 2016), "Lust Multiplied" (St. Petersburg, 2016), "The
+  Order" (Denver, 2018), the "Colorado Woman's Show" (Denver, 2018 and 2020),
+  "To The Stars… Through Obstacles" (Denver, 2019) and "MOTION, an NFT gallery
+  show" (Denver, 2021). Her resume lists CASS Gallery in Tampa, Movement
+  Gallery and Ila Gallery in Denver.
+
+  For PINCfest 2025 in Sarasota, commissioned by DreamLarge, she painted "Head
+  in the Clouds" at 600 Central Ave in the Rosemary District. She calls it "an
+  abstract tribute to Sarasota in how I was experiencing it right then and
+  there."
+
+  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
+  painting a wall at Jeeves Law.
+
+searchMuralDescription: "Painting during SHINE, Nov 6–15."
+muralInspiration: "Painting during SHINE, Nov 6–15."
 muralAwards: ""
 artistAwards: ""
+
+furtherWork:
+  - name: "whitneyholbourn.com"
+    url: "https://www.whitneyholbourn.com"
+  - name: "Head in the Clouds, Rosemary District"
+    url: "https://www.rosemarydistrict.org/head-in-the-clouds"
 
 impressions: []
 
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "1 November 2026 — Bio review tool, approved by Rob: artist, basedIn, pronouns, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: Kept your opening. New middle: photo BFA → painting → murals, her 2017 \"Neon Dreams\" solo show in St. Pete, and a road map of walls (Art Basel/Wynwood 2018 and 2020, Desert Hearts in San Diego, New Haven, Encore Beach Club in Las Vegas, the 80-foot Louisville wall), her Denver galleries, and her 14,000 sq ft Tampa-area commercial job; searchBio: Added the 14,000 sq ft commercial job and her animation/NFT work; \"came to walls by way of a camera\"; pronouns: \"\" → \"she/her\". [review:20261101173428-bd8d9a39]"
   - "1 November 2026 — File renamed 220-whitney-holburn-2026.yaml → 220-whitney-holbourn-2026.yaml (+ _index.json) at Rob's request: her name is spelled Holbourn (her site, the SHINE artist record and press agree; \"Holburn\" was a misspelling in the SPAA list). The artist field changes with her bio approval in the bio-review tool."
   - "2026-10-24 — Placeholder for SHINE 2026 wall #8 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): grid-interpolated from 2010/2060/2125 1st Ave S anchors. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
-sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #8."
+sourceNotes:
+  - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
+  - "SPAA SHINE Walls & Artists 2026 list (via Rob)"
+  - "shineonmurals.com SHINE 2026 artist record"
+  - "https://www.whitneyholbourn.com"
+  - "(incl. the Louisville wall photo in her gallery)"
+  - "https://web.archive.org/web/20210813210609/https://www.wlky.com/article/artist-repairs-vandalized-breonna-taylor-mural-and-adds-a-new-face-as-well/37124588"
+  - "https://web.archive.org/web/2021id_/https://www.wave3.com/2020/07/06/louisville-artists-unveil-mural-honoring-breonna-taylor-others-killed-by-police/"
+  - "https://en.wikipedia.org/wiki/Say_Their_Names"
+  - "https://monochronicle.com/artist/whitney-holbourn"
+  - "https://www.rosemarydistrict.org/head-in-the-clouds"
+  - "SPAA SHINE Walls & Artists 2026, wall #8."

@@ -13,20 +13,116 @@ img: "images/murals/2026/shine2026-coming-soon.jpeg"
 # ── Optional ──
 title: "Title TBA"
 building: "USF Harbor Hall"
-instagram: ""
-basedIn: ""
+instagram: "chromacreature"
+basedIn: "St. Petersburg, FL"
 
-artistBio: "Coming after the SHINE artist interviews."
+pronouns: "she/her"
 
-searchMuralDescription: "Also known as Regean McCreight."
-muralInspiration: "Coming after the SHINE artist interviews."
+artistBio: |
+  Regan McCreight paints walls, canvases and people. As Chroma Creature she
+  does murals, face and body painting and special-effects makeup, and she
+  taught herself all of it.
+
+  Her subject is the feminine and its tie to the natural world. She works in
+  acrylic, gouache, airbrush and spray paint. For her, making art starts with
+  paying attention: noticing the urge to create, then giving shape to the
+  things people feel more than they can say.
+
+  Creative Pinellas calls her creations surreal and vibrant, rooted in nature
+  and the divine feminine, with themes of love, hope and freedom — "a
+  colorful, dreamlike world that bridges femininity and nature." Besides
+  murals she paints signs and logos, custom canvases, and airbrush face and
+  body paint for parties and festivals. Creative Pinellas also lists her as a
+  curator.
+
+  She works out of studio #208 at the ArtsXchange, the Warehouse Arts District
+  Association's studio building at 515 22nd St S. Her portfolio runs to local
+  businesses and homes: Muddy Root kava cafés in St. Pete and Gulfport, Beau &
+  Mo's Italian Steakhouse, a house in Historic Kenwood, BSA Design in Tampa,
+  and a 2026 traveling mural for the We Belong Here music festival. In Lealman
+  her design "Stuck on Venus & Swamp Puppy" wraps a traffic signal box at 28th
+  St N and 54th Ave N, part of Creative Pinellas's 2025 signal box program.
+
+  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
+  painting a wall at USF Harbor Hall.
+
+searchBio: |
+  Regan McCreight paints walls, canvases and people. As Chroma Creature she
+  does murals, face and body painting and special-effects makeup, and she
+  taught herself all of it. Her Instagram, @chromacreature, signs off "Art by
+  Regan McCreight" and lists her as muralist, body painter and artist.
+
+  Her subject is the feminine and its tie to the natural world. She works in
+  acrylic, gouache, airbrush and spray paint. For her, making art starts with
+  paying attention: noticing the urge to create, then giving shape to the
+  things people feel more than they can say. Her SHINE artist record calls her
+  a multidisciplinary artist with a lifelong pull toward making things, and
+  lists body art and special-effects makeup alongside painting and murals.
+
+  She starts from nature. Creative Pinellas, the Pinellas County arts agency,
+  describes her as a St. Petersburg muralist, artist, body painter and
+  curator, "renowned for her surreal and vibrant creations," who draws on
+  nature and the divine feminine. Her work, in the agency's words, invites
+  viewers to connect with themes of love, hope and freedom, and reflects "a
+  colorful, dreamlike world that bridges femininity and nature" — whether on
+  canvas, skin or large-scale murals. Her own site says she is "inspired by
+  the beauty found within nature" and lists her mediums as acrylic, spray
+  paint, airbrush and oil.
+
+  Murals are one of four services. She also paints custom signage and logos,
+  custom canvas commissions — portraits, pets, landscapes — and airbrush face
+  and body painting for parties, festivals and celebrations.
+
+  She works out of studio #208 at the ArtsXchange, 515 22nd St S in St.
+  Petersburg. The Warehouse Arts District Association, a 501(c)(3), bought the
+  nearly three-acre ArtsXchange property in 2014 to give artists affordable
+  space; her Instagram calls her a studio artist at WADA.
+
+  Her portfolio runs to local businesses and homes. It lists, for 2025: Muddy
+  Root Kava in St. Pete, a second Muddy Root job in St. Pete, Beau & Mo's
+  Italian Steakhouse in St. Pete, a residence in St. Pete, and a commercial
+  pool company. For 2026: Muddy Root in Gulfport, a residence in Historic
+  Kenwood, Healing House Chiropractic, BSA Design in Tampa, and a traveling
+  mural for the We Belong Here music festival.
+
+  In 2025 Creative Pinellas picked her for its signal box program, which turns
+  artists' designs into vinyl wraps on traffic signal control boxes as a
+  graffiti deterrent, in partnership with Pinellas County and the Lealman
+  Community Redevelopment Area. Her design, "Stuck on Venus & Swamp Puppy,"
+  went up in May 2025 on the box at 28th St N and 54th Ave N in Lealman.
+
+  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
+  which runs Nov. 6–15. The lineup lists her as Regan "Chroma Creature"
+  McCreight, of Florida. Her wall is at USF Harbor Hall, 1000 3rd St S, which
+  already carries an earlier mural in the Mural Quest collection (#102).
+
+searchMuralDescription: |
+  Painting during SHINE, Nov 6–15. Also known as Regan McCreight.
+muralInspiration: "Painting during SHINE, Nov 6–15."
 muralAwards: ""
 artistAwards: ""
+
+furtherWork:
+  - name: "chromacreature.com"
+    url: "https://chromacreature.com"
+  - name: "Stuck on Venus & Swamp Puppy"
+    url: "https://creativepinellas.org/?p=101405"
 
 impressions: []
 
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New opening: walls, canvases and people; murals, face/body painting and special-effects makeup, all self-taught. New paragraph from her SHINE record: ArtsXchange studio artist, the feminine and nature, acrylic/gouache/airbrush/spray, art as paying attention; searchBio: Same opening and paragraph, plus multidisciplinary/lifelong and body art + SFX makeup. [review:20261101175307-28006159]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #11 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
-sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #11."
+sourceNotes:
+  - "SPAA SHINE Walls & Artists 2026 list (via Rob) — wall assignment"
+  - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
+  - "https://creativepinellas.org/artist/regan-mccreight-chroma-creature/"
+  - "https://creativepinellas.org/?p=101405"
+  - "https://chromacreature.com"
+  - "https://linktr.ee/ChromaCreature"
+  - "https://www.instagram.com/chromacreature/"
+  - "https://www.visitstpeteclearwater.com/profile/artsxchange/140589"
+  - "shineonmurals.com SHINE 2026 artist record"
+  - "SPAA SHINE Walls & Artists 2026, wall #11."
