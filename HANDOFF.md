@@ -1,9 +1,50 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-10-01): v1.7.6 LIVE on both stores** — iOS build 160, Android
+> **CURRENT (2026-11-01): SHINE 2026 bio work in progress — see the 2026-11-01 entry.** v1.7.6 LIVE on both stores — iOS build 160, Android
 > versionCode 18. Authoritative release state + backlog live in auto-memory
 > (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-01 — SHINE 2026 bios + the bio-review tool (resume here)
+
+SHINE is **Nov 6–15**. The Mac is the source of truth; publish only from here
+(`python3 scripts/publish-content.py`). Last publish: **Nov 1, ~18:00**, verified live.
+
+**Bio-review tool** — https://mural-tools.pages.dev/tools/bio-review.html (CLAUDE.md has the
+architecture). Rob reviews/edits on iPad or Mac; Approve / Approved-by-artist writes live via
+the Capture Worker and queues the edit; `publish-content.py` pulls the queue into the YAMLs
+first (revisionLog + sourceNotes), so publishing never reverts an approval. Tool is in
+**Dry run** unless Rob turns it off in Settings. Reload the page after Claude edits a draft
+server-side, or the open copy can overwrite it.
+
+**SHINE 2026 walls — status**
+- LIVE + in YAML: #214 Murrill, #215 Hiero Veiga, #216 Del Campo, #218 Esh, #219 Starve
+  (he/him; collaborator quote stays with Hiero), #220 Holbourn (file renamed to
+  `220-whitney-holbourn-2026.yaml`), #221 Merritt Horan Capurro, #222 Chroma Creature,
+  #223 Osiris Rain (approved after the publish; pulled into YAML + committed, ships next publish).
+- Drafts awaiting Rob: **#213 Jacksun, #217 Ashley Cassens, #225 Alyssa Marie**.
+- **#224** (Hobson/REIVER, Warren, White): research notes only, on hold until Rob meets them.
+- Titles stay "Title TBA" (#216 Rob chose "Title To Be Announced" — ask if all should match).
+
+**Happy Mural cross-check (Nov 1)** — report `scratchpad/work-225/CROSSCHECK.md` (session
+scratchpad; summary in this entry). Loaded as drafts for Rob: #51 + #71 (own openings — they
+were word-for-word the same for two paragraphs), #188 (wrong overseer fixed; artist →
+"The Happy Mural Project" so "More by" links; height wording), #211 ("outlier" removed;
+paint-by-numbers; SHINE 2026), #225 (sunflowers "signature" not "every mural"; awards no
+longer list the Pier commission; "led" not "hosted"; Hands of Change detail). Open for Rob:
+#71 photo (one gator or mother+baby?), #188 naming Marilyn Benjamin, #51 Kenneth City
+house number (removed in the draft), #100 is hidden (status research) and still shares #51's
+old bio. Linking "Alyssa Marie" records to the project needs an app alias = post-festival.
+
+**Store (no build):** App Store promo text + Play short/full description now lead with
+$6.99/year and SHINE 2026. "Official Mural App of the 2026 SHINE Mural Festival" is held until
+Rob has the signed SPAA MOU — reminder set for Tue Nov 3 9:00 (Reminders: "Reminders For Rob").
+
+**Post-festival binary backlog (added):** the open mural page doesn't refresh its TEXT on a live
+update (only photos) — back out and reopen meanwhile. See memory `project-next-binary-fixes`.
+
+**Still to do:** final on-site GPS for all walls; post-festival GIF/MP4 export of the
+daily-photo builds.
 
 ## 2026-10-01 — Tool maps keyed; tour analytics staged
 
