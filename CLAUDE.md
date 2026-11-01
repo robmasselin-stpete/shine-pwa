@@ -136,6 +136,27 @@ no local YAML (e.g. held in `.mq-held/`) — that mural gets dropped from the ma
 `uc:true` mural exists** (festival mode), idle otherwise. So a new photo pops into an open
 app without a restart.
 
+## Bio review tool — field bio edits, approved on the iPad, live over OTA
+
+`tools/bio-review.html` (on mural-tools.pages.dev, iPad-first, works on Mac/phone) lets Rob
+review a bio, dictate or type corrections (alone or with the artist), have Claude apply
+them, see word-level changes (green = added), edit by hand, then **Approve** or **Approved
+by artist**. Backend = `/review/*` routes in the Capture Worker (`src/review.js`), same
+`X-Capture-Key`. Recordings → Workers AI Whisper; edits → Claude API (Worker secret
+`ANTHROPIC_KEY`). Drafts, the YAML bundle and the approval queue live in the **private**
+R2 bucket `muralquest-review` (never the public CDN bucket).
+
+An approval writes the fields straight into content.json (live in ~1 min) **and** queues
+them. Like Worker photos, that means a Mac publish would revert them — so
+`publish-content.py` first runs `scripts/review_sync.py` `pull_approvals()`, which writes
+each queued edit into its YAML with a revisionLog entry (`[review:<id>]` token makes it
+idempotent) + sourceNotes, with a **field-level conflict check** (a field changed on the
+Mac since the edit was made is not overwritten; the publish aborts until resolved). After
+publishing it acks the queue and re-uploads the YAML bundle the tool reads.
+`--no-review-pull` skips the pull (reverts live field edits). Standalone:
+`python3 scripts/review_sync.py --bundle` / `--queue`. The tool starts in **Dry run**
+(Settings) — approvals preview only, nothing written.
+
 ## Content OTA (v1.5) — update data WITHOUT an app build
 
 As of v1.5, mural **data** (not the app code or images yet) can be pushed live

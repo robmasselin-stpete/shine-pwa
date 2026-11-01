@@ -8,6 +8,9 @@ This is the v1.5 festival workflow. Instead of rebuilding + resubmitting the app
     edit data/murals/*.yaml  →  python3 scripts/publish-content.py  →  live
 
 Steps:
+  0. BIO REVIEW — write bio edits approved in the field (tools/bio-review.html) into
+     the YAMLs first; they are live via the Worker, so skipping this reverts them.
+     See scripts/review_sync.py. Fails closed like the photo step.
   0. RECONCILE — pull Worker-written progress photos DOWN from the live manifest
      into the source YAMLs first. The SHINE 2026 Capture Worker writes photos
      straight into content.json on R2 and never touches the YAML, so without this
@@ -36,6 +39,9 @@ Usage:
                                                 # SKIP the photo pull-down. Only safe when
                                                 # you know no Worker photos exist live —
                                                 # it will drop any that do.
+  python3 scripts/publish-content.py --no-review-pull
+                                                # SKIP pulling bio-review approvals into the
+                                                # YAMLs. Reverts any field edit live now.
   python3 scripts/publish-content.py --post 210 # publish, then post mural #210 to IG
                                                 # (drafts a caption you edit + confirm)
   python3 scripts/publish-content.py --tools     # publish, then refresh the editor tools
@@ -205,7 +211,20 @@ def reconcile_photos():
 def main():
     dry = '--dry-run' in sys.argv
 
-    # 0. Reconcile — pull Worker-written photos down BEFORE the rebuild reads the YAMLs.
+    # 0a. Bio review — write field-approved bio edits into the YAMLs (see review_sync.py).
+    #     Before the photo step: both edit YAMLs, and this one checks field-level conflicts.
+    sys.path.insert(0, SCRIPT_DIR)
+    import review_sync
+    review_ack = []
+    if '--no-review-pull' in sys.argv:
+        print("⚠ --no-review-pull: skipping bio-review approvals. Any edit approved in the "
+              "field and live right now will be reverted by this publish.")
+    else:
+        ok, review_ack = review_sync.pull_approvals(dry=dry)
+        if not ok:
+            sys.exit(1)
+
+    # 0b. Reconcile — pull Worker-written photos down BEFORE the rebuild reads the YAMLs.
     if '--no-reconcile' in sys.argv:
         print("⚠ --no-reconcile: skipping the photo pull-down. Any Worker photos "
               "live right now will be erased by this publish.")
@@ -258,6 +277,11 @@ def main():
                   "Edge cache may still be catching up — re-check in a minute.")
     except Exception as e:
         print(f"⚠ Uploaded, but could not verify the live URL: {e}")
+
+    # 3b. Bio review — mark pulled approvals done, and refresh the tool's YAML bundle so
+    #     it starts from what was just published.
+    review_sync.ack(review_ack)
+    review_sync.push_bundle()
 
     # 4. Optionally refresh the editor-tools snapshot (opt-in).
     # tools/*.html read data/murals/*.yaml relative to wherever they're SERVED, so the

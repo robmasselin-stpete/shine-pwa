@@ -1,0 +1,743 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bio Review">
+<meta name="theme-color" content="#0E918C">
+<title>Mural Quest — Bio Review</title>
+<style>
+ :root{--teal:#0E918C;--teal-dark:#0A706C;--cream:#F7F4EF;--card:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3ded5;
+   --add-bg:#d9f5df;--add-ink:#0b5a1f;--del-bg:#fde2e1;--del-ink:#8a1c17;--warn:#b25b00}
+ *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+ html,body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}
+ header{position:sticky;top:0;z-index:20;background:var(--teal);color:#fff;padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;display:flex;align-items:center;gap:10px}
+ header h1{font-size:17px;margin:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ header .sp{flex:1}
+ header button{background:rgba(255,255,255,.18);color:#fff;border:none;border-radius:8px;padding:7px 11px;font-size:14px;font-weight:600}
+ .mode{font-size:11px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:10px;background:#fff;color:var(--teal)}
+ .mode.dry{background:#ffd8a8;color:#7a3e00}
+ main{max-width:1280px;margin:0 auto;padding:12px 14px calc(110px + env(safe-area-inset-bottom))}
+ button{font:inherit;cursor:pointer}
+ .btn{border:none;border-radius:10px;padding:11px 16px;font-weight:600;background:var(--teal);color:#fff}
+ .btn.sec{background:#e9e4da;color:var(--ink)}
+ .btn.warn{background:#fff;color:var(--del-ink);border:1px solid #e7b9b6}
+ .btn:disabled{opacity:.45}
+ input[type=text],input[type=search],input[type=date],textarea,select{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+ textarea{resize:vertical;min-height:90px;line-height:1.5}
+ .seg{display:inline-flex;background:#e9e4da;border-radius:10px;padding:3px;gap:2px}
+ .seg button{border:none;background:none;padding:7px 12px;border-radius:8px;font-size:14px;font-weight:600;color:var(--muted)}
+ .seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+ .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+ .toolbar input{flex:1;min-width:180px}
+ .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+ .row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:12px;align-items:center;text-align:left;width:100%;color:inherit}
+ .row img{width:52px;height:52px;border-radius:8px;object-fit:cover;background:#eee;flex:none}
+ .row .t{font-weight:700}
+ .row .s{font-size:13px;color:var(--muted)}
+ .chip{display:inline-block;font-size:11px;font-weight:700;border-radius:9px;padding:2px 8px;margin-left:6px;vertical-align:1px}
+ .chip.draft{background:#fff2d6;color:#7a4b00}
+ .chip.approved{background:#d9f5df;color:#0b5a1f}
+ .chip.local{background:#e3e8ff;color:#273a8a}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+ .card h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+ .muted{color:var(--muted);font-size:14px}
+ .flags li{margin:4px 0;font-size:14px}
+ .flags .q{color:var(--warn)}
+ .field{border-top:1px solid var(--line);padding:12px 0}
+ .field:first-of-type{border-top:none}
+ .fhead{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+ .fhead b{font-size:14px}
+ .fhead .sp{flex:1}
+ .fhead button{border:none;background:#eef7f6;color:var(--teal-dark);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600}
+ .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+ .cols>*{min-width:0}
+ html,body{overflow-x:hidden}
+ .pane{white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.55;padding:10px 12px;border-radius:10px;background:#faf8f4;border:1px solid var(--line);min-height:42px}
+ .pane.right{background:#fff}
+ .pane .lbl{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px;white-space:normal}
+ ins{background:var(--add-bg);color:var(--add-ink);text-decoration:none;border-radius:3px}
+ del{background:var(--del-bg);color:var(--del-ink);border-radius:3px}
+ .empty{color:#aaa;font-style:italic}
+ .unchanged summary{cursor:pointer;color:var(--muted);font-size:14px;padding:6px 0}
+ .changes li{font-size:14px;margin:3px 0}
+ .changes .f{font-weight:700;color:var(--teal-dark)}
+ .style-flag{color:var(--warn);font-size:14px;margin:3px 0}
+ .rec{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+ .rec .dot{width:10px;height:10px;border-radius:50%;background:#d00;animation:blink 1s infinite}
+ @keyframes blink{50%{opacity:.2}}
+ .speaker{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+ .artistview{max-width:640px}
+ .artistview .an{font-size:22px;font-weight:800;margin:0}
+ .artistview .at{font-size:15px;color:var(--muted);margin:2px 0 10px}
+ .artistview .ab p{margin:0 0 12px;font-size:16px;line-height:1.6}
+ .artistview .links a{display:inline-block;margin:4px 8px 4px 0;color:var(--teal-dark);font-weight:600}
+ .bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(247,244,239,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+ .bar .btn{min-width:150px}
+ .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+ .modal .box{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow:auto;padding:18px}
+ .modal h2{margin:0 0 10px;font-size:19px}
+ .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+ .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom));background:#1d1d1f;color:#fff;padding:10px 16px;border-radius:12px;z-index:60;font-size:14px;max-width:90vw}
+ .toast.err{background:#8a1c17}
+ .sib label{display:flex;gap:8px;align-items:center;font-size:14px;margin:4px 0}
+ .hidden{display:none!important}
+ .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.5);border-top-color:#fff;border-radius:50%;animation:sp 0.8s linear infinite;vertical-align:-2px;margin-right:6px}
+ .btn.sec .spin{border-color:rgba(0,0,0,.2);border-top-color:#333}
+ @keyframes sp{to{transform:rotate(360deg)}}
+ /* Phone: one column, inline changes */
+ @media (max-width:760px){
+   .cols{grid-template-columns:1fr}
+   .cols .left{display:none}
+   .bar .btn{min-width:0;flex:1;padding:11px 8px;font-size:14px}
+ }
+</style></head><body>
+<header>
+  <button id="back" class="hidden">‹ List</button>
+  <h1 id="title">Bio Review</h1>
+  <span class="sp"></span>
+  <span id="mode" class="mode dry">DRY RUN</span>
+  <button id="settings" aria-label="Settings">Settings</button>
+</header>
+<main id="main"></main>
+<div id="bar" class="bar hidden">
+  <button class="btn sec" id="b-save">Save draft</button>
+  <button class="btn" id="b-approve">Approve</button>
+  <button class="btn" id="b-artist">Approved by artist</button>
+  <button class="btn warn hidden" id="b-revert">Revert</button>
+</div>
+
+<script>
+// Mural Quest bio review — see workers/mural-capture/src/review.js and scripts/review_sync.py.
+// Rob reviews a mural's bio fields, dictates or types corrections (alone or with the artist),
+// Claude applies them, Rob edits and approves. Approval goes live via the Capture Worker and
+// is queued for the Mac, which writes it into the YAML on the next publish.
+const WORKER = 'https://capture.muralquest.app';
+const CDN = 'https://cdn.muralquest.app/';
+const FIELDS = [
+  ['artist', 'Artist name'], ['title', 'Mural title'], ['basedIn', 'Based in'],
+  ['pronouns', 'Pronouns (not shown in app)'], ['instagram', 'Instagram'],
+  ['artistBio', 'Display bio'], ['searchBio', 'Search bio (longer)'],
+  ['artistAwards', 'Artist awards'], ['furtherWork', 'Links'],
+  ['muralInspiration', 'Inspiration'], ['searchMuralDescription', 'Mural description'],
+];
+const LABEL = Object.fromEntries(FIELDS);
+// Same mapping as app.js cardSrc(): images/murals/X.jpeg → images/cards/X.webp (384px)
+const cardOf = img => String(img || '').replace(/^images\/murals\//, 'images/cards/').replace(/\.(jpe?g|png|webp)$/i, '.webp');
+const BIO_FIELDS = ['artistBio', 'searchBio'];
+const BANNED = [/\bincredible\b/i, /\bamazing\b/i, /\bstunning\b/i, /\bperhaps\b/i, /\blikely\b/i,
+  /\bmay have\b/i, /\bbreathtaking\b/i, /\bvibrant tapestry\b/i];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const S = { list: null, filter: localStorage.getItem('mq_review_filter') || 'shine', q: '', cur: null };
+
+// ── settings ────────────────────────────────────────────────────────────────
+const getKey = () => localStorage.getItem('mq_capture_key') || '';
+const isDry = () => localStorage.getItem('mq_review_dry') !== '0';
+function paintMode() {
+  const m = $('#mode');
+  m.textContent = isDry() ? 'DRY RUN' : 'LIVE';
+  m.classList.toggle('dry', isDry());
+}
+function askKey() {
+  const k = (prompt('Capture key (saved on this device):', getKey()) || '').trim();
+  if (k) localStorage.setItem('mq_capture_key', k);
+  return k;
+}
+$('#settings').onclick = () => {
+  modal(`<h2>Settings</h2>
+    <p class="muted">Dry run shows exactly what an approval would change, without writing anything live.</p>
+    <label class="speaker"><input type="checkbox" id="s-dry" ${isDry() ? 'checked' : ''}> Dry run (nothing goes live)</label>
+    <div class="acts"><button class="btn sec" id="s-key">Change key</button><button class="btn" id="s-ok">Done</button></div>`,
+    box => {
+      box.querySelector('#s-key').onclick = askKey;
+      box.querySelector('#s-ok').onclick = () => {
+        localStorage.setItem('mq_review_dry', box.querySelector('#s-dry').checked ? '1' : '0');
+        paintMode(); closeModal();
+      };
+    });
+};
+
+// ── API ─────────────────────────────────────────────────────────────────────
+async function api(path, body) {
+  let key = getKey() || askKey();
+  const res = await fetch(WORKER + path, {
+    method: body ? 'POST' : 'GET',
+    headers: { 'X-Capture-Key': key, 'Content-Type': 'application/json' },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const data = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
+  if (res.status === 401) { localStorage.removeItem('mq_capture_key'); throw new Error('Wrong key — try again'); }
+  if (!res.ok || data.error) throw new Error(data.error || `HTTP ${res.status}`);
+  return data;
+}
+
+// ── UI helpers ──────────────────────────────────────────────────────────────
+let toastT;
+function toast(msg, err) {
+  document.querySelectorAll('.toast').forEach(t => t.remove());
+  const t = document.createElement('div');
+  t.className = 'toast' + (err ? ' err' : '');
+  t.textContent = msg;
+  document.body.appendChild(t);
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.remove(), err ? 6000 : 2800);
+}
+function modal(html, wire) {
+  closeModal();
+  const m = document.createElement('div');
+  m.className = 'modal';
+  m.innerHTML = `<div class="box">${html}</div>`;
+  m.addEventListener('click', e => { if (e.target === m) closeModal(); });
+  document.body.appendChild(m);
+  wire && wire(m.querySelector('.box'));
+}
+const closeModal = () => document.querySelectorAll('.modal').forEach(m => m.remove());
+async function busy(btn, fn) {
+  const html = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = `<span class="spin"></span>${html}`;
+  try { return await fn(); } finally { btn.disabled = false; btn.innerHTML = html; }
+}
+
+// ── word diff ───────────────────────────────────────────────────────────────
+function tokens(s) { return String(s || '').match(/\s+|[^\s]+/g) || []; }
+function diff(a, b) {
+  const A = tokens(a), B = tokens(b);
+  let pre = 0; while (pre < A.length && pre < B.length && A[pre] === B[pre]) pre++;
+  let suf = 0; while (suf < A.length - pre && suf < B.length - pre && A[A.length - 1 - suf] === B[B.length - 1 - suf]) suf++;
+  const a2 = A.slice(pre, A.length - suf), b2 = B.slice(pre, B.length - suf);
+  const n = a2.length, m = b2.length, W = m + 1;
+  const L = new Uint16Array((n + 1) * W);
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--)
+    L[i * W + j] = a2[i] === b2[j] ? L[(i + 1) * W + j + 1] + 1 : Math.max(L[(i + 1) * W + j], L[i * W + j + 1]);
+  const ops = A.slice(0, pre).map(t => ['=', t]);
+  let i = 0, j = 0;
+  while (i < n && j < m) {
+    if (a2[i] === b2[j]) { ops.push(['=', a2[i]]); i++; j++; }
+    else if (L[(i + 1) * W + j] >= L[i * W + j + 1]) ops.push(['-', a2[i++]]);
+    else ops.push(['+', b2[j++]]);
+  }
+  while (i < n) ops.push(['-', a2[i++]]);
+  while (j < m) ops.push(['+', b2[j++]]);
+  A.slice(A.length - suf).forEach(t => ops.push(['=', t]));
+  return ops;
+}
+// side: 'left' (deletions), 'right' (insertions), 'inline' (both)
+function renderDiff(a, b, side) {
+  let ops = diff(a, b);
+  // A full rewrite matches only scattered words ("the", "SHINE"), which reads as noise.
+  // Below ~35% overlap, show it as one deletion and one insertion instead.
+  const words = ops.filter(([, t]) => /\S/.test(t));
+  const kept = words.filter(([op]) => op === '=').length;
+  if (a && b && kept / Math.max(1, words.length) < 0.35) {
+    ops = [['-', String(a)], ['+', String(b)]];
+  }
+  let out = '', run = null, buf = '';
+  const flush = () => {
+    if (!buf) return;
+    out += run === '+' ? `<ins>${esc(buf)}</ins>` : run === '-' ? `<del>${esc(buf)}</del>` : esc(buf);
+    buf = '';
+  };
+  for (const [op, t] of ops) {
+    if (op === '+' && side === 'left') continue;
+    if (op === '-' && side === 'right') continue;
+    if (op !== run) { flush(); run = op; }
+    buf += t;
+  }
+  flush();
+  return out || '<span class="empty">(empty)</span>';
+}
+
+// furtherWork <-> editable text ("name | url" per line)
+const fwToText = v => (v || []).map(g => `${g.name} | ${g.url}`).join('\n');
+const textToFw = t => t.split('\n').map(l => l.trim()).filter(Boolean).map(l => {
+  const i = l.lastIndexOf('|');
+  if (i < 0) return /^https?:/.test(l) ? { name: l, url: l } : { name: l, url: '' };
+  return { name: l.slice(0, i).trim(), url: l.slice(i + 1).trim() };
+});
+const asText = (k, v) => k === 'furtherWork' ? fwToText(v) : String(v ?? '');
+const same = (k, a, b) => JSON.stringify(k === 'furtherWork' ? (a || []) : String(a ?? '')) === JSON.stringify(k === 'furtherWork' ? (b || []) : String(b ?? ''));
+
+// ── local persistence (drafts survive a dead zone) ──────────────────────────
+const LKEY = id => `mq_review_draft_${id}`;
+function saveLocal(d) { try { localStorage.setItem(LKEY(d.id), JSON.stringify({ ...d, localAt: Date.now(), unsynced: true })); } catch (e) {} }
+function loadLocal(id) { try { return JSON.parse(localStorage.getItem(LKEY(id)) || 'null'); } catch (e) { return null; } }
+function markSynced(id) { const l = loadLocal(id); if (l) { l.unsynced = false; localStorage.setItem(LKEY(id), JSON.stringify(l)); } }
+
+// ── list view ───────────────────────────────────────────────────────────────
+async function showList() {
+  S.cur = null;
+  stopRecording();
+  history.replaceState(null, '', location.pathname);
+  $('#back').classList.add('hidden');
+  $('#bar').classList.add('hidden');
+  $('#title').textContent = 'Bio Review';
+  const main = $('#main');
+  if (!S.list) {
+    main.innerHTML = '<p class="muted">Loading murals…</p>';
+    try { S.list = await api('/review/list'); }
+    catch (e) { main.innerHTML = `<div class="card"><b>Couldn't load.</b><p class="muted">${esc(e.message)}</p><button class="btn" onclick="S.list=null;showList()">Retry</button></div>`; return; }
+  }
+  const { murals, drafts, generated } = S.list;
+  main.innerHTML = `
+    <div class="toolbar">
+      <div class="seg" id="seg">
+        <button data-f="shine" class="${S.filter === 'shine' ? 'on' : ''}">SHINE 2026</button>
+        <button data-f="drafts" class="${S.filter === 'drafts' ? 'on' : ''}">Drafts</button>
+        <button data-f="all" class="${S.filter === 'all' ? 'on' : ''}">All</button>
+      </div>
+      <input type="search" id="q" placeholder="Search artist, title, #id" value="${esc(S.q)}">
+      <button class="btn sec" id="reload">Refresh</button>
+    </div>
+    <div class="list" id="rows"></div>
+    <p class="muted" style="margin-top:14px">Records as of the Mac's last publish: ${esc(new Date(generated).toLocaleString())}</p>`;
+  const paint = () => {
+    const q = S.q.toLowerCase().replace(/^#/, '');
+    const rows = murals.filter(m => {
+      const d = drafts[m.id];
+      if (S.filter === 'shine' && !(m.year === 2026 && m.category === 'shine')) return false;
+      if (S.filter === 'drafts' && !d && !loadLocal(m.id)) return false;
+      if (!q) return true;
+      return String(m.id) === q || `${m.artist} ${m.title} ${m.building}`.toLowerCase().includes(q);
+    }).sort((a, b) => (S.filter === 'all' ? a.artist.localeCompare(b.artist) : a.id - b.id));
+    $('#rows').innerHTML = rows.map(m => {
+      const d = drafts[m.id], l = loadLocal(m.id);
+      const chip = d?.status === 'approved' ? '<span class="chip approved">Approved</span>'
+        : d ? '<span class="chip draft">Draft</span>' : '';
+      const lchip = l?.unsynced ? '<span class="chip local">Not synced</span>' : '';
+      return `<button class="row" data-id="${m.id}">
+        <img loading="lazy" src="${CDN}${esc(cardOf(m.img))}" onerror="this.onerror=()=>this.style.visibility='hidden';this.src='${CDN}${esc(m.img || '')}'">
+        <div><div class="t">#${m.id} ${esc(m.artist)}${chip}${lchip}</div>
+        <div class="s">${esc(m.title || 'Untitled')} · ${esc(m.building || m.address || '')} · ${esc(m.year || '')}</div></div></button>`;
+    }).join('') || '<p class="muted">Nothing here.</p>';
+    $('#rows').querySelectorAll('.row').forEach(r => r.onclick = () => openMural(+r.dataset.id));
+  };
+  $('#seg').querySelectorAll('button').forEach(b => b.onclick = () => {
+    S.filter = b.dataset.f; localStorage.setItem('mq_review_filter', S.filter); showList();
+  });
+  $('#q').oninput = e => { S.q = e.target.value; paint(); };
+  $('#reload').onclick = () => { S.list = null; showList(); };
+  paint();
+}
+
+// ── detail view ─────────────────────────────────────────────────────────────
+async function openMural(id) {
+  history.replaceState(null, '', `#${id}`);
+  $('#back').classList.remove('hidden');
+  $('#main').innerHTML = '<p class="muted">Loading…</p>';
+  let res;
+  try { res = await api(`/review/mural?id=${id}`); }
+  catch (e) {
+    const l = loadLocal(id);
+    if (!l) { $('#main').innerHTML = `<div class="card"><b>Couldn't load #${id}.</b><p class="muted">${esc(e.message)}</p></div>`; return; }
+    toast('Offline — showing the copy saved on this device', true);
+    res = { mural: { id, fields: l.original, meta: l.meta || {} }, draft: l };
+  }
+  const original = res.mural.fields;
+  const server = res.draft;
+  const local = loadLocal(id);
+  // Prefer an unsynced local copy if it's newer than the server's.
+  let d = server ? structuredClone(server) : null;
+  if (local?.unsynced && (!server || local.localAt > Date.parse(server.updatedAt || 0))) d = local;
+  if (!d) d = { id, status: 'new', original, proposed: structuredClone(original), flags: [], sources: [], changes: [], questions: [], transcripts: [] };
+  // The YAML may have been updated by a Mac publish since this draft began.
+  d.original = original;
+  d.meta = res.mural.meta;
+  d.id = id;
+  S.cur = d;
+  render();
+}
+
+function render() {
+  const d = S.cur, o = d.original, p = d.proposed;
+  $('#title').textContent = `#${d.id} ${p.artist || o.artist}`;
+  $('#bar').classList.remove('hidden');
+  $('#b-revert').classList.toggle('hidden', d.status !== 'approved');
+  const changed = FIELDS.filter(([k]) => !same(k, o[k], p[k]));
+  const unchanged = FIELDS.filter(([k]) => same(k, o[k], p[k]));
+  const view = S.view || 'compare';
+  const style = styleFlags(p);
+  const sibs = siblings(d);
+  $('#main').innerHTML = `
+    <div class="toolbar">
+      <div class="seg" id="vseg">
+        <button data-v="compare" class="${view === 'compare' ? 'on' : ''}">Compare</button>
+        <button data-v="artist" class="${view === 'artist' ? 'on' : ''}">Artist view</button>
+      </div>
+      <span class="muted">${esc(d.meta?.building || d.meta?.address || '')} · ${esc(d.meta?.year || '')}
+        ${d.status === 'approved' ? '<span class="chip approved">Approved — live, Mac writes the YAML on next publish</span>' : d.status === 'draft' ? '<span class="chip draft">Draft</span>' : ''}
+        ${d.unsynced ? '<span class="chip local">Not synced</span>' : ''}</span>
+    </div>
+
+    ${(d.flags?.length || d.questions?.length) ? `<div class="card flags"><h3>Open questions</h3><ul>
+      ${(d.questions || []).map(q => `<li class="q">${esc(q)}</li>`).join('')}
+      ${(d.flags || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+      ${d.origin ? `<p class="muted">${esc(d.origin)}</p>` : ''}</div>` : ''}
+
+    <div class="card" id="dictate">
+      <h3>Corrections</h3>
+      <div class="speaker">
+        <span class="muted">Who's speaking:</span>
+        <div class="seg" id="spk">
+          <button data-s="rob" class="${(d.speaker || 'rob') === 'rob' ? 'on' : ''}">Rob</button>
+          <button data-s="artist" class="${d.speaker === 'artist' ? 'on' : ''}">The artist</button>
+        </div>
+      </div>
+      <textarea id="instr" placeholder="Type, use the keyboard mic, or tap Record. Say what to change: “She moved to Tampa in 2018, not 2019. Add that she studied at Ringling.”">${esc(d.pending || '')}</textarea>
+      <div class="rec">
+        <button class="btn sec" id="recbtn">🎙 Record</button>
+        <span id="recstate" class="muted"></span>
+        <span class="sp" style="flex:1"></span>
+        <button class="btn" id="applybtn">Apply with Claude</button>
+      </div>
+      <div id="pendingrec"></div>
+    </div>
+
+    ${d.changes?.length ? `<div class="card"><h3>What Claude changed</h3><ul class="changes">
+      ${d.changes.map(c => `<li><span class="f">${esc(LABEL[c.field] || c.field)}:</span> ${esc(c.change)} <span class="muted">— ${esc(c.reason)}</span></li>`).join('')}</ul></div>` : ''}
+
+    ${style.length ? `<div class="card"><h3>Style check</h3>${style.map(s => `<div class="style-flag">⚠︎ ${esc(s)}</div>`).join('')}</div>` : ''}
+
+    ${view === 'artist' ? artistView(p) : `
+    <div class="card">
+      <h3>${changed.length ? `${changed.length} field${changed.length > 1 ? 's' : ''} changed` : 'No changes yet'}</h3>
+      <div class="cols" style="margin-bottom:6px"><div class="left muted">Current record</div><div class="muted">Proposed — tap Edit to change</div></div>
+      ${changed.map(([k]) => fieldBlock(k)).join('')}
+      ${unchanged.length ? `<details class="unchanged"><summary>Unchanged fields (${unchanged.length})</summary>${unchanged.map(([k]) => fieldBlock(k)).join('')}</details>` : ''}
+    </div>`}
+
+    ${sibs.length ? `<div class="card sib"><h3>Other walls by this artist</h3>
+      <p class="muted">Bios are copied between an artist's walls. Send the same corrections to these as separate drafts to review (their wall paragraphs differ, so nothing is overwritten):</p>
+      ${sibs.map(m => `<label><input type="checkbox" value="${m.id}"> #${m.id} ${esc(m.title || 'Untitled')} · ${esc(m.building || '')}</label>`).join('')}
+      <button class="btn sec" id="sibbtn" style="margin-top:8px">Make drafts for checked walls</button></div>` : ''}
+
+    ${d.sources?.length ? `<details class="card"><summary class="muted">Sources (${d.sources.length}) — go into sourceNotes on approval</summary>
+      <ul>${d.sources.map(s => `<li style="font-size:13px;word-break:break-all">${/^https?:/.test(s) ? `<a href="${esc(s)}" target="_blank" rel="noopener">${esc(s)}</a>` : esc(s)}</li>`).join('')}</ul></details>` : ''}
+  `;
+  wire();
+}
+
+function fieldBlock(k) {
+  const d = S.cur, o = d.original[k], p = d.proposed[k];
+  const a = asText(k, o), b = asText(k, p);
+  const editing = S.editing === k;
+  return `<div class="field" data-k="${k}">
+    <div class="fhead"><b>${esc(LABEL[k])}</b><span class="sp"></span>
+      ${editing ? `<button data-act="done">Done</button>` : `<button data-act="edit">Edit</button>`}
+      ${!same(k, o, p) ? `<button data-act="undo">Undo</button>` : ''}</div>
+    <div class="cols">
+      <div class="pane left">${renderDiff(a, b, 'left')}</div>
+      ${editing ? `<textarea class="pane right" data-edit="${k}" rows="${Math.min(30, Math.max(3, Math.ceil(b.length / 60) + 2))}">${esc(b)}</textarea>`
+        : `<div class="pane right">${renderDiff(a, b, innerWidth <= 760 ? 'inline' : 'right')}</div>`}
+    </div>
+    ${k === 'furtherWork' && editing ? '<p class="muted">One link per line: name | https://…</p>' : ''}
+  </div>`;
+}
+
+function artistView(p) {
+  const paras = String(p.artistBio || '').split(/\n\n+/).filter(Boolean);
+  const links = [];
+  if (p.instagram) links.push(`<a href="https://instagram.com/${esc(p.instagram)}" target="_blank" rel="noopener">@${esc(p.instagram)}</a>`);
+  (p.furtherWork || []).forEach(g => g.url && links.push(`<a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name || g.url)}</a>`));
+  return `<div class="card artistview">
+    <img src="${CDN}${esc(S.cur.meta?.img || '')}" style="width:100%;border-radius:12px;margin-bottom:12px" onerror="this.remove()">
+    <p class="an">${esc(p.artist)}</p>
+    <p class="at">${esc(p.title || 'Untitled')}${p.basedIn ? ` · Based in ${esc(p.basedIn)}` : ''}</p>
+    <div class="ab">${paras.map(x => `<p>${esc(x)}</p>`).join('') || '<p class="empty">No bio yet.</p>'}</div>
+    ${p.artistAwards ? `<p class="muted"><b>Awards:</b> ${esc(p.artistAwards)}</p>` : ''}
+    ${links.length ? `<div class="links">${links.join('')}</div>` : ''}
+    ${p.muralInspiration ? `<p class="muted"><b>Inspiration:</b> ${esc(p.muralInspiration)}</p>` : ''}
+  </div>`;
+}
+
+function styleFlags(p) {
+  const out = [];
+  for (const k of BIO_FIELDS) {
+    const t = String(p[k] || '');
+    if (t.includes('!')) out.push(`${LABEL[k]}: exclamation point`);
+    BANNED.forEach(r => { const m = t.match(r); if (m) out.push(`${LABEL[k]}: “${m[0]}”`); });
+    if (/^[^.]{0,80}\bis an? [\w\s,.-]*-based (artist|muralist|painter)\b/i.test(t)) out.push(`${LABEL[k]}: opens “X is a …-based artist” (hollow opener)`);
+  }
+  const words = String(p.artistBio || '').split(/\s+/).filter(Boolean).length;
+  if (words > 450) out.push(`Display bio is ${words} words (aim for 250–400)`);
+  if (p.instagram && /^@|\s|instagram\.com/i.test(p.instagram)) out.push('Instagram should be a bare handle (no @, no URL)');
+  return out;
+}
+
+function siblings(d) {
+  if (!S.list) return [];
+  const name = (d.original.artist || '').toLowerCase().split(/\s*(?:&|,| and )\s*/)[0].trim();
+  if (!name || name.length < 4) return [];
+  return S.list.murals.filter(m => m.id !== d.id && (m.artist || '').toLowerCase().includes(name));
+}
+
+function wire() {
+  const d = S.cur;
+  document.querySelectorAll('#vseg button').forEach(b => b.onclick = () => { S.view = b.dataset.v; render(); });
+  document.querySelectorAll('#spk button').forEach(b => b.onclick = () => { d.speaker = b.dataset.s; keep(); render(); });
+  const instr = $('#instr');
+  instr.oninput = () => { d.pending = instr.value; keep(); };
+  $('#recbtn').onclick = toggleRecording;
+  $('#applybtn').onclick = e => busy(e.currentTarget, applyWithClaude);
+  document.querySelectorAll('.field').forEach(f => {
+    const k = f.dataset.k;
+    f.querySelectorAll('button[data-act]').forEach(b => b.onclick = () => {
+      if (b.dataset.act === 'edit') { S.editing = k; render(); setTimeout(() => document.querySelector(`[data-edit="${k}"]`)?.focus(), 0); }
+      if (b.dataset.act === 'done') { S.editing = null; render(); }
+      if (b.dataset.act === 'undo') { d.proposed[k] = structuredClone(d.original[k] ?? (k === 'furtherWork' ? [] : '')); keep(); render(); }
+    });
+    const ta = f.querySelector('textarea[data-edit]');
+    if (ta) ta.oninput = () => {
+      d.proposed[k] = k === 'furtherWork' ? textToFw(ta.value) : ta.value;
+      keep();
+      f.querySelector('.pane.left').innerHTML = renderDiff(asText(k, d.original[k]), asText(k, d.proposed[k]), 'left');
+    };
+  });
+  const sb = $('#sibbtn');
+  if (sb) sb.onclick = e => busy(e.currentTarget, makeSiblingDrafts);
+  paintPendingRecs();
+}
+
+let keepT;
+function keep() {
+  saveLocal(S.cur);
+  clearTimeout(keepT);
+  keepT = setTimeout(() => syncDraft(false), 1500);   // autosave to the server
+}
+async function syncDraft(loud) {
+  const d = S.cur;
+  if (!d) return;
+  const { meta, unsynced, localAt, ...body } = d;
+  if (body.status === 'new') body.status = 'draft';
+  try {
+    await api('/review/draft', { id: d.id, draft: body });
+    d.status = body.status; d.unsynced = false; markSynced(d.id);
+    if (S.list) S.list.drafts[d.id] = { status: d.status };
+    if (loud) toast('Draft saved');
+  } catch (e) { d.unsynced = true; if (loud) toast(`Saved on this device only — ${e.message}`, true); }
+}
+
+// ── Claude ──────────────────────────────────────────────────────────────────
+async function applyWithClaude() {
+  const d = S.cur;
+  const instructions = $('#instr').value.trim();
+  if (!instructions) { toast('Dictate or type the corrections first', true); return; }
+  try {
+    const r = await api('/review/propose', {
+      id: d.id, fields: d.proposed, instructions, speaker: d.speaker || 'rob',
+      artistName: d.proposed.artist,
+    });
+    d.proposed = r.fields;
+    d.changes = [...(d.changes || []), ...r.changes];
+    d.questions = r.questions;
+    d.transcripts = [...(d.transcripts || []), { at: new Date().toISOString(), speaker: d.speaker || 'rob', text: instructions }];
+    d.pending = '';
+    S.editing = null;
+    keep();
+    render();
+    toast(r.changes.length ? `${r.changes.length} change${r.changes.length > 1 ? 's' : ''} made — check them in green` : 'No changes made — see the questions');
+  } catch (e) { toast(`Claude: ${e.message}`, true); }
+}
+
+async function makeSiblingDrafts() {
+  const d = S.cur;
+  const ids = [...document.querySelectorAll('.sib input:checked')].map(x => +x.value);
+  const text = (d.transcripts || []).map(t => t.text).join('\n\n');
+  if (!ids.length) { toast('Tick at least one wall', true); return; }
+  if (!text) { toast('Apply corrections here first — the same ones go to the other walls', true); return; }
+  let ok = 0;
+  for (const id of ids) {
+    try {
+      const m = await api(`/review/mural?id=${id}`);
+      const base = m.draft?.proposed || m.mural.fields;
+      const r = await api('/review/propose', { id, fields: base, instructions: text, speaker: d.speaker || 'rob', artistName: base.artist });
+      await api('/review/draft', { id, draft: {
+        status: 'draft', origin: `Corrections carried over from #${d.id}`, original: m.mural.fields,
+        proposed: r.fields, changes: r.changes, questions: r.questions, flags: [], sources: [],
+        transcripts: d.transcripts, speaker: d.speaker } });
+      ok++;
+    } catch (e) { toast(`#${id}: ${e.message}`, true); }
+  }
+  S.list = null;
+  toast(`${ok} draft${ok === 1 ? '' : 's'} made — find them under Drafts`);
+}
+
+// ── approve / revert ────────────────────────────────────────────────────────
+function approveDialog(by) {
+  const d = S.cur;
+  const changed = FIELDS.filter(([k]) => !same(k, d.original[k], d.proposed[k]));
+  if (!changed.length) { toast('Nothing has changed', true); return; }
+  const today = new Date().toLocaleDateString('en-CA');
+  modal(`<h2>${by === 'artist' ? 'Approved by the artist' : 'Approve'}</h2>
+    <p>${changed.map(([, l]) => esc(l)).join(', ')}</p>
+    ${by === 'artist' ? `<label class="muted">Artist's name</label><input type="text" id="a-name" value="${esc(d.proposed.artist)}">
+      <label class="muted" style="display:block;margin-top:8px">Date reviewed</label><input type="date" id="a-date" value="${today}">` : ''}
+    <label class="muted" style="display:block;margin-top:8px">Note for the revision log (optional)</label>
+    <input type="text" id="a-note" placeholder="e.g. Corrected at the wall">
+    <p class="muted" style="margin-top:12px">${isDry() ? '<b>Dry run:</b> shows what would change. Nothing goes live.' : '<b>Live:</b> the app shows this within about a minute. The Mac writes it into the YAML on the next publish.'}</p>
+    <div class="acts"><button class="btn sec" id="a-cancel">Cancel</button><button class="btn" id="a-go">${isDry() ? 'Preview' : 'Publish'}</button></div>`,
+    box => {
+      box.querySelector('#a-cancel').onclick = closeModal;
+      box.querySelector('#a-go').onclick = e => busy(e.currentTarget, async () => {
+        const artistName = box.querySelector('#a-name')?.value.trim() || '';
+        if (by === 'artist' && !artistName) { toast("Add the artist's name", true); return; }
+        try {
+          const r = await api('/review/approve', {
+            ids: [d.id], fieldsById: { [d.id]: d.proposed }, by, artistName,
+            date: box.querySelector('#a-date')?.value || today,
+            note: box.querySelector('#a-note').value, changes: d.changes, transcripts: d.transcripts,
+            sourcesById: { [d.id]: d.sources || [] }, dry: isDry(),
+          });
+          if (r.dry) {
+            const m = r.record.murals[d.id];
+            modal(`<h2>Dry run — nothing was written</h2>
+              <p>An approval would set these fields live and queue them for the Mac:</p>
+              <ul>${Object.keys(m.after).map(k => `<li>${esc(LABEL[k])}</li>`).join('')}</ul>
+              <p class="muted">Revision log would read: ${by === 'artist' ? `reviewed and approved in person by ${esc(artistName)}` : 'approved by Rob'}.</p>
+              <p class="muted">Turn off Dry run in Settings to publish for real.</p>
+              <div class="acts"><button class="btn" onclick="closeModal()">OK</button></div>`);
+            return;
+          }
+          d.status = 'approved'; d.approvalId = r.approvalId;
+          markSynced(d.id);
+          if (S.list) S.list.drafts[d.id] = { status: 'approved' };
+          closeModal(); render();
+          toast('Approved — live in about a minute');
+        } catch (e) { toast(e.message, true); }
+      });
+    });
+}
+$('#b-approve').onclick = () => approveDialog('rob');
+$('#b-artist').onclick = () => approveDialog('artist');
+$('#b-save').onclick = e => busy(e.currentTarget, () => syncDraft(true));
+$('#b-revert').onclick = () => {
+  const d = S.cur;
+  modal(`<h2>Revert #${d.id}?</h2><p>Puts the fields back to how they were before this approval, live, and logs the revert.</p>
+    <div class="acts"><button class="btn sec" onclick="closeModal()">Cancel</button><button class="btn warn" id="r-go">Revert</button></div>`,
+    box => box.querySelector('#r-go').onclick = e => busy(e.currentTarget, async () => {
+      if (isDry()) { toast('Dry run — turn it off in Settings to revert', true); return; }
+      try {
+        await api('/review/revert', { approvalId: d.approvalId });
+        d.status = 'draft'; closeModal(); render(); toast('Reverted');
+      } catch (e) { toast(e.message, true); }
+    }));
+};
+$('#back').onclick = () => { S.editing = null; showList(); };
+
+// ── recording → Whisper ─────────────────────────────────────────────────────
+let rec = null;
+async function toggleRecording() { rec ? stopRecording(true) : startRecording(); }
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mr = new MediaRecorder(stream);
+    const chunks = [];
+    mr.ondataavailable = e => e.data.size && chunks.push(e.data);
+    rec = { mr, stream, chunks, t0: Date.now(), tick: setInterval(paintRec, 500) };
+    mr.start(1000);
+    paintRec();
+  } catch (e) { toast(`Microphone: ${e.message}`, true); }
+}
+function paintRec() {
+  const st = $('#recstate'), btn = $('#recbtn');
+  if (!st || !btn) return;
+  if (rec) {
+    const s = Math.round((Date.now() - rec.t0) / 1000);
+    st.innerHTML = `<span class="dot" style="display:inline-block"></span> Recording ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+    btn.textContent = '■ Stop';
+  } else { st.textContent = ''; btn.textContent = '🎙 Record'; }
+}
+function stopRecording(transcribe) {
+  if (!rec) return;
+  const { mr, stream, chunks, tick } = rec;
+  rec = null;
+  clearInterval(tick);
+  mr.onstop = async () => {
+    stream.getTracks().forEach(t => t.stop());
+    paintRec();
+    if (!transcribe) return;
+    const blob = new Blob(chunks, { type: mr.mimeType || 'audio/mp4' });
+    const id = S.cur?.id;
+    const st = $('#recstate');
+    if (st) st.textContent = 'Transcribing…';
+    try {
+      const wav = await toWav16k(blob);
+      await storeRec(id, wav);            // kept until it transcribes
+      await transcribePending(id);
+    } catch (e) { toast(`Recording: ${e.message}`, true); if (st) st.textContent = ''; }
+  };
+  mr.stop();
+}
+async function toWav16k(blob) {
+  const buf = await blob.arrayBuffer();
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  const ctx = new Ctx();
+  const decoded = await ctx.decodeAudioData(buf);
+  ctx.close && ctx.close();
+  const off = new OfflineAudioContext(1, Math.ceil(decoded.duration * 16000), 16000);
+  const src = off.createBufferSource();
+  src.buffer = decoded; src.connect(off.destination); src.start();
+  const out = (await off.startRendering()).getChannelData(0);
+  const ab = new ArrayBuffer(44 + out.length * 2), v = new DataView(ab);
+  const w = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  w(0, 'RIFF'); v.setUint32(4, 36 + out.length * 2, true); w(8, 'WAVE'); w(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, 16000, true); v.setUint32(28, 32000, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  w(36, 'data'); v.setUint32(40, out.length * 2, true);
+  for (let i = 0; i < out.length; i++) v.setInt16(44 + i * 2, Math.max(-1, Math.min(1, out[i])) * 0x7fff, true);
+  return new Blob([ab], { type: 'audio/wav' });
+}
+// Recordings wait in IndexedDB until they transcribe, so no signal ≠ lost words.
+function idb() {
+  return new Promise((ok, no) => {
+    const r = indexedDB.open('mq-bio-review', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('recs', { keyPath: 'k' });
+    r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error);
+  });
+}
+async function storeRec(id, wav) {
+  const db = await idb();
+  await new Promise((ok, no) => { const t = db.transaction('recs', 'readwrite'); t.objectStore('recs').put({ k: `${id}-${Date.now()}`, id, wav }); t.oncomplete = ok; t.onerror = () => no(t.error); });
+}
+async function pendingRecs(id) {
+  const db = await idb();
+  return new Promise(ok => { const r = db.transaction('recs').objectStore('recs').getAll(); r.onsuccess = () => ok(r.result.filter(x => x.id === id)); r.onerror = () => ok([]); });
+}
+async function dropRec(k) {
+  const db = await idb();
+  await new Promise(ok => { const t = db.transaction('recs', 'readwrite'); t.objectStore('recs').delete(k); t.oncomplete = ok; t.onerror = ok; });
+}
+const b64 = blob => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1]); r.onerror = () => no(r.error); r.readAsDataURL(blob); });
+async function transcribePending(id) {
+  const recs = await pendingRecs(id);
+  for (const r of recs) {
+    try {
+      const { text } = await api('/review/transcribe', { audio: await b64(r.wav) });
+      await dropRec(r.k);
+      if (S.cur?.id === id) {
+        const ta = $('#instr');
+        ta.value = (ta.value.trim() ? ta.value.trim() + '\n\n' : '') + text;
+        S.cur.pending = ta.value; keep();
+      }
+    } catch (e) { toast(`Couldn't transcribe yet (${e.message}). It's saved — tap Transcribe when you have signal.`, true); break; }
+  }
+  const st = $('#recstate'); if (st) st.textContent = '';
+  paintPendingRecs();
+}
+async function paintPendingRecs() {
+  const host = $('#pendingrec');
+  if (!host || !S.cur) return;
+  const n = (await pendingRecs(S.cur.id)).length;
+  host.innerHTML = n ? `<p class="muted" style="margin-top:8px">${n} recording${n > 1 ? 's' : ''} waiting for signal
+    <button class="btn sec" id="trbtn" style="margin-left:8px;padding:6px 12px">Transcribe</button></p>` : '';
+  const b = $('#trbtn'); if (b) b.onclick = e => busy(e.currentTarget, () => transcribePending(S.cur.id));
+}
+
+// ── boot ────────────────────────────────────────────────────────────────────
+paintMode();
+const startId = parseInt(location.hash.slice(1), 10);
+showList().then(() => { if (startId) openMural(startId); });
+addEventListener('online', () => S.cur?.unsynced && syncDraft(false));
+</script>
+</body></html>

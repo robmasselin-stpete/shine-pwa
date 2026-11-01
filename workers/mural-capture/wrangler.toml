@@ -17,3 +17,16 @@ bucket_name = "muralquest-content"
 
 # POST_KEY gates the endpoint — set as a secret (never in this file/repo):
 #   echo <key> | npx wrangler secret put POST_KEY
+
+# Bio review tool (src/review.js): drafts + the approval queue live in a PRIVATE
+# bucket — unapproved bios never sit on the public CDN.
+[[r2_buckets]]
+binding = "REVIEW"
+bucket_name = "muralquest-review"
+
+# Whisper transcription for recordings made in the bio-review tool.
+[ai]
+binding = "AI"
+
+# ANTHROPIC_KEY (Claude edits in the bio-review tool) is a secret too:
+#   cat .mq-anthropic-key | npx wrangler secret put ANTHROPIC_KEY

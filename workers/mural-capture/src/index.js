@@ -24,6 +24,8 @@
 // of the festival and every caption already sent lights up when the render ships in a
 // binary. Nothing here needs to be sequenced with that build.
 
+import { handleReview } from './review.js';
+
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
@@ -56,6 +58,14 @@ export default {
   async fetch(request, env) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS });
     const url = new URL(request.url);
+
+    // Bio review tool (tools/bio-review.html) — see review.js. Same key as photos.
+    if (url.pathname.startsWith('/review/')) {
+      const rkey = request.headers.get('X-Capture-Key') || '';
+      if (!env.POST_KEY || rkey !== env.POST_KEY) return json({ error: 'unauthorized' }, 401);
+      try { return await handleReview(request, env, url, json); }
+      catch (e) { return json({ error: e.message || String(e) }, 500); }
+    }
 
     if (request.method === 'GET') {
       return json({
