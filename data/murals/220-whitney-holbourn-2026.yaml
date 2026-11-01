@@ -28,5 +28,6 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "1 November 2026 — File renamed 220-whitney-holburn-2026.yaml → 220-whitney-holbourn-2026.yaml (+ _index.json) at Rob's request: her name is spelled Holbourn (her site, the SHINE artist record and press agree; \"Holburn\" was a misspelling in the SPAA list). The artist field changes with her bio approval in the bio-review tool."
   - "2026-10-24 — Placeholder for SHINE 2026 wall #8 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): grid-interpolated from 2010/2060/2125 1st Ave S anchors. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #8."
