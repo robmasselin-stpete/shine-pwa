@@ -9,6 +9,7 @@
  :root{--teal:#0E918C;--teal-dark:#0A706C;--cream:#F7F4EF;--card:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3ded5;
    --add-bg:#d9f5df;--add-ink:#0b5a1f;--del-bg:#fde2e1;--del-ink:#8a1c17;--warn:#b25b00}
  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+ html{scroll-padding-top:calc(var(--hdr,60px) + 12px);scroll-padding-bottom:90px}
  html,body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}
  header{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--teal);color:#fff;padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
  .dock{flex-basis:100%;display:flex;align-items:center;gap:10px;padding-top:8px;margin-top:2px;border-top:1px solid rgba(255,255,255,.25)}
@@ -61,6 +62,16 @@
  html,body{overflow-x:hidden}
  .pane{white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.55;padding:10px 12px;border-radius:10px;background:#faf8f4;border:1px solid var(--line);min-height:42px}
  .pane.right{background:#fff}
+ /* Right side is always typeable. The textarea is transparent and sits on a backdrop
+    that renders the same text with the additions highlighted, so typed changes go green
+    as you type, exactly like Claude's. Both layers must share font, padding and wrap. */
+ .hl{position:relative;padding:0!important;min-height:0}
+ .hl .bd,.hl textarea{display:block;margin:0;font:inherit;font-size:15px;line-height:1.55;padding:10px 12px;
+   white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;letter-spacing:normal;border:0;border-radius:10px}
+ .hl .bd{position:absolute;inset:0;color:transparent;pointer-events:none;overflow:hidden}
+ .hl .bd ins{background:var(--add-bg);color:transparent;border-radius:3px}
+ .hl textarea{position:relative;width:100%;background:transparent;color:var(--ink);resize:none;overflow:hidden;min-height:44px;outline:none}
+ .hl:focus-within{box-shadow:0 0 0 2px var(--teal)}
  .pane .lbl{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px;white-space:normal}
  ins{background:var(--add-bg);color:var(--add-ink);text-decoration:none;border-radius:3px}
  del{background:var(--del-bg);color:var(--del-ink);border-radius:3px}
@@ -93,11 +104,13 @@
  @keyframes sp{to{transform:rotate(360deg)}}
  /* Phone: one column, inline changes */
  @media (max-width:760px){
+   .cols .left::before{content:'Was';display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
    .dock .info{display:none}
    .dock .rb{min-width:0;flex:1}
    .dock .ab{flex:1}
-   .cols{grid-template-columns:1fr}
-   .cols .left{display:none}
+   .cols{grid-template-columns:1fr;gap:6px}
+   .cols .left{font-size:13px}
+   .cols .left.same{display:none}
    .bar .btn{min-width:0;flex:1;padding:11px 8px;font-size:14px}
  }
 </style></head><body>
@@ -429,7 +442,7 @@ function render() {
     ${view === 'artist' ? artistView(p) : `
     <div class="card">
       <h3>${changed.length ? `${changed.length} field${changed.length > 1 ? 's' : ''} changed ${onDraft ? 'from the draft' : 'from the live record'}` : (onDraft ? 'No changes to the draft yet' : 'No changes yet')}</h3>
-      <div class="cols" style="margin-bottom:6px"><div class="left muted">${onDraft ? 'Draft as written' : 'Live in the app now'}</div><div class="muted">Your version — tap Edit to change</div></div>
+      <div class="cols" style="margin-bottom:6px"><div class="left muted">${onDraft ? 'Draft as written' : 'Live in the app now'}</div><div class="muted">Your version — tap to type</div></div>
       ${changed.map(([k]) => fieldBlock(k)).join('')}
       ${unchanged.length ? `<details class="unchanged"><summary>Unchanged fields (${unchanged.length})</summary>${unchanged.map(([k]) => fieldBlock(k)).join('')}</details>` : ''}
     </div>`}
@@ -448,19 +461,24 @@ function render() {
 function fieldBlock(k) {
   const d = S.cur, o = baseOf(d)[k], p = d.proposed[k];
   const a = asText(k, o), b = asText(k, p);
-  const editing = S.editing === k;
+  const changed = !same(k, o, p);
   return `<div class="field" data-k="${k}">
     <div class="fhead"><b>${esc(LABEL[k])}</b><span class="sp"></span>
-      ${editing ? `<button data-act="done">Done</button>` : `<button data-act="edit">Edit</button>`}
-      ${!same(k, o, p) ? `<button data-act="undo">Undo</button>` : ''}</div>
+      <button data-act="undo" class="${changed ? '' : 'hidden'}">Undo</button></div>
     <div class="cols">
-      <div class="pane left">${renderDiff(a, b, 'left')}</div>
-      ${editing ? `<textarea class="pane right" data-edit="${k}" rows="${Math.min(30, Math.max(3, Math.ceil(b.length / 60) + 2))}">${esc(b)}</textarea>`
-        : `<div class="pane right">${renderDiff(a, b, innerWidth <= 760 ? 'inline' : 'right')}</div>`}
+      <div class="pane left ${changed ? '' : 'same'}">${renderDiff(a, b, 'left')}</div>
+      <div class="pane right hl"><div class="bd">${backdrop(a, b)}</div><textarea data-edit="${k}" rows="1" spellcheck="true" autocapitalize="sentences">${esc(b)}</textarea></div>
     </div>
-    ${k === 'furtherWork' && editing ? '<p class="muted">One link per line: name | https://…</p>' : ''}
+    ${k === 'furtherWork' ? '<p class="muted">One link per line: name | https://…</p>' : ''}
   </div>`;
 }
+// Backdrop text must equal the textarea text exactly, plus a trailing space so a final
+// newline still gets its line height.
+function backdrop(a, b) {
+  if (!b) return '';
+  return renderDiff(a, b, 'right') + ' ';
+}
+function growTA(ta) { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; }
 
 function artistView(p) {
   const paras = String(p.artistBio || '').split(/\n\n+/).filter(Boolean);
@@ -512,17 +530,29 @@ function wire() {
   document.querySelectorAll('.field').forEach(f => {
     const k = f.dataset.k;
     f.querySelectorAll('button[data-act]').forEach(b => b.onclick = () => {
-      if (b.dataset.act === 'edit') { S.editing = k; render(); setTimeout(() => document.querySelector(`[data-edit="${k}"]`)?.focus(), 0); }
-      if (b.dataset.act === 'done') { S.editing = null; render(); }
       if (b.dataset.act === 'undo') { d.proposed[k] = structuredClone(baseOf(d)[k] ?? (k === 'furtherWork' ? [] : '')); keep(); render(); }
     });
     const ta = f.querySelector('textarea[data-edit]');
-    if (ta) ta.oninput = () => {
+    if (!ta) return;
+    growTA(ta);
+    let t;
+    ta.oninput = () => {
+      growTA(ta);
       d.proposed[k] = k === 'furtherWork' ? textToFw(ta.value) : ta.value;
       keep();
-      f.querySelector('.pane.left').innerHTML = renderDiff(asText(k, baseOf(d)[k]), asText(k, d.proposed[k]), 'left');
+      clearTimeout(t);
+      t = setTimeout(() => {            // re-highlight after a short pause in typing
+        const a = asText(k, baseOf(d)[k]);
+        f.querySelector('.bd').innerHTML = backdrop(a, ta.value);
+        const left = f.querySelector('.pane.left');
+        left.innerHTML = renderDiff(a, ta.value, 'left');
+        const changed = !same(k, baseOf(d)[k], d.proposed[k]);
+        left.classList.toggle('same', !changed);
+        f.querySelector('[data-act="undo"]').classList.toggle('hidden', !changed);
+      }, 120);
     };
   });
+  window.onresize = () => document.querySelectorAll('textarea[data-edit]').forEach(growTA);
   const sb = $('#sibbtn');
   if (sb) sb.onclick = e => busy(e.currentTarget, makeSiblingDrafts);
   paintPendingRecs();
@@ -562,7 +592,6 @@ async function applyWithClaude() {
     d.questions = r.questions;
     d.transcripts = [...(d.transcripts || []), { at: new Date().toISOString(), speaker: d.speaker || 'rob', text: instructions }];
     d.pending = '';
-    S.editing = null;
     keep();
     render();
     toast(r.changes.length ? `${r.changes.length} change${r.changes.length > 1 ? 's' : ''} made — check them in green` : 'No changes made — see the questions');
@@ -652,7 +681,7 @@ $('#b-revert').onclick = () => {
       } catch (e) { toast(e.message, true); }
     }));
 };
-$('#back').onclick = () => { S.editing = null; showList(); };
+$('#back').onclick = () => showList();
 $('#startbtn').onclick = () => { if (!rec) startRecording(); };
 $('#stopbtn').onclick = () => stopRecording(true);
 // Keep main's top padding equal to the fixed header's height (it wraps on a phone).
