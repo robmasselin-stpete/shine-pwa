@@ -10,7 +10,13 @@
    --add-bg:#d9f5df;--add-ink:#0b5a1f;--del-bg:#fde2e1;--del-ink:#8a1c17;--warn:#b25b00}
  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
  html,body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}
- header{position:sticky;top:0;z-index:20;background:var(--teal);color:#fff;padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;display:flex;align-items:center;gap:10px}
+ header{position:sticky;top:0;z-index:20;background:var(--teal);color:#fff;padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+ .dock{flex-basis:100%;display:flex;align-items:center;gap:10px;padding-top:8px;margin-top:2px;border-top:1px solid rgba(255,255,255,.25)}
+ .dock .rb{background:#fff;color:var(--teal-dark);border:none;border-radius:10px;padding:9px 16px;font-size:15px;font-weight:700;min-width:118px}
+ .dock .rb.on{background:#d00;color:#fff}
+ .dock .ab{background:var(--teal-dark);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:10px;padding:9px 14px;font-size:15px;font-weight:700}
+ .dock .info{flex:1;font-size:13px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+ .dock .st{font-size:13px;font-weight:600;white-space:nowrap}
  header h1{font-size:17px;margin:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  header .sp{flex:1}
  header button{background:rgba(255,255,255,.18);color:#fff;border:none;border-radius:8px;padding:7px 11px;font-size:14px;font-weight:600}
@@ -86,6 +92,9 @@
  @keyframes sp{to{transform:rotate(360deg)}}
  /* Phone: one column, inline changes */
  @media (max-width:760px){
+   .dock .info{display:none}
+   .dock .rb{min-width:0;flex:1}
+   .dock .ab{flex:1}
    .cols{grid-template-columns:1fr}
    .cols .left{display:none}
    .bar .btn{min-width:0;flex:1;padding:11px 8px;font-size:14px}
@@ -97,6 +106,12 @@
   <span class="sp"></span>
   <span id="mode" class="mode dry">DRY RUN</span>
   <button id="settings" aria-label="Settings">Settings</button>
+  <div id="dock" class="dock hidden">
+    <button class="rb" id="recbtn">● Record</button>
+    <span id="recstate" class="st"></span>
+    <span id="dockinfo" class="info" title="Show the corrections"></span>
+    <button class="ab" id="applybtn">Apply changes</button>
+  </div>
 </header>
 <main id="main"></main>
 <div id="bar" class="bar hidden">
@@ -279,6 +294,7 @@ async function showList() {
   history.replaceState(null, '', location.pathname);
   $('#back').classList.add('hidden');
   $('#bar').classList.add('hidden');
+  $('#dock').classList.add('hidden');
   $('#title').textContent = 'Bio Review';
   const main = $('#main');
   if (!S.list) {
@@ -362,6 +378,7 @@ function render() {
   const onDraft = o !== d.original;
   $('#title').textContent = `#${d.id} ${p.artist || o.artist}`;
   $('#bar').classList.remove('hidden');
+  $('#dock').classList.remove('hidden');
   $('#b-revert').classList.toggle('hidden', d.status !== 'approved');
   const changed = FIELDS.filter(([k]) => !same(k, o[k], p[k]));
   const unchanged = FIELDS.filter(([k]) => same(k, o[k], p[k]));
@@ -398,12 +415,7 @@ function render() {
         </div>
       </div>
       <textarea id="instr" placeholder="Type, use the keyboard mic, or tap Record. Say what to change: “She moved to Tampa in 2018, not 2019. Add that she studied at Ringling.”">${esc(d.pending || '')}</textarea>
-      <div class="rec">
-        <button class="btn sec" id="recbtn">🎙 Record</button>
-        <span id="recstate" class="muted"></span>
-        <span class="sp" style="flex:1"></span>
-        <button class="btn" id="applybtn">Apply with Claude</button>
-      </div>
+      <p class="muted" style="margin:8px 0 0">Record and Apply changes stay pinned at the top while you scroll. Each recording is added here when it's transcribed.</p>
       <div id="pendingrec"></div>
     </div>
 
@@ -493,9 +505,8 @@ function wire() {
   });
   document.querySelectorAll('#spk button').forEach(b => b.onclick = () => { d.speaker = b.dataset.s; keep(); render(); });
   const instr = $('#instr');
-  instr.oninput = () => { d.pending = instr.value; keep(); };
-  $('#recbtn').onclick = toggleRecording;
-  $('#applybtn').onclick = e => busy(e.currentTarget, applyWithClaude);
+  instr.oninput = () => { d.pending = instr.value; keep(); paintDockInfo(); };
+  paintDockInfo();
   document.querySelectorAll('.field').forEach(f => {
     const k = f.dataset.k;
     f.querySelectorAll('button[data-act]').forEach(b => b.onclick = () => {
@@ -640,6 +651,17 @@ $('#b-revert').onclick = () => {
     }));
 };
 $('#back').onclick = () => { S.editing = null; showList(); };
+$('#recbtn').onclick = toggleRecording;
+$('#applybtn').onclick = e => busy(e.currentTarget, applyWithClaude);
+$('#dockinfo').onclick = () => { const t = $('#instr'); if (t) { t.scrollIntoView({ behavior: 'smooth', block: 'center' }); } };
+function paintDockInfo() {
+  const el = $('#dockinfo');
+  const t = ($('#instr')?.value || '').trim();
+  if (!el) return;
+  if (rec) { el.textContent = ''; return; }
+  const n = t ? t.split(/\s+/).length : 0;
+  el.textContent = n ? `Corrections: ${n} words — “${t.slice(-60)}”` : 'No corrections yet';
+}
 
 // ── recording → Whisper ─────────────────────────────────────────────────────
 let rec = null;
@@ -660,9 +682,11 @@ function paintRec() {
   if (!st || !btn) return;
   if (rec) {
     const s = Math.round((Date.now() - rec.t0) / 1000);
-    st.innerHTML = `<span class="dot" style="display:inline-block"></span> Recording ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+    st.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
     btn.textContent = '■ Stop';
-  } else { st.textContent = ''; btn.textContent = '🎙 Record'; }
+    btn.classList.add('on');
+  } else { if (!st.dataset.busy) st.textContent = ''; btn.textContent = '● Record'; btn.classList.remove('on'); }
+  paintDockInfo();
 }
 function stopRecording(transcribe) {
   if (!rec) return;
@@ -676,12 +700,12 @@ function stopRecording(transcribe) {
     const blob = new Blob(chunks, { type: mr.mimeType || 'audio/mp4' });
     const id = S.cur?.id;
     const st = $('#recstate');
-    if (st) st.textContent = 'Transcribing…';
+    if (st) { st.dataset.busy = '1'; st.textContent = 'Transcribing…'; }
     try {
       const wav = await toWav16k(blob);
       await storeRec(id, wav);            // kept until it transcribes
       await transcribePending(id);
-    } catch (e) { toast(`Recording: ${e.message}`, true); if (st) st.textContent = ''; }
+    } catch (e) { toast(`Recording: ${e.message}`, true); if (st) { delete st.dataset.busy; st.textContent = ''; } }
   };
   mr.stop();
 }
@@ -731,14 +755,17 @@ async function transcribePending(id) {
     try {
       const { text } = await api('/review/transcribe', { audio: await b64(r.wav) });
       await dropRec(r.k);
+      if (!text.trim()) { toast("Didn't catch any words — try again closer to the mic", true); continue; }
       if (S.cur?.id === id) {
         const ta = $('#instr');
         ta.value = (ta.value.trim() ? ta.value.trim() + '\n\n' : '') + text;
         S.cur.pending = ta.value; keep();
+        toast('Added to corrections');
       }
     } catch (e) { toast(`Couldn't transcribe yet (${e.message}). It's saved — tap Transcribe when you have signal.`, true); break; }
   }
-  const st = $('#recstate'); if (st) st.textContent = '';
+  const st = $('#recstate'); if (st) { delete st.dataset.busy; st.textContent = ''; }
+  paintDockInfo();
   paintPendingRecs();
 }
 async function paintPendingRecs() {
