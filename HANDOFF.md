@@ -71,7 +71,16 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
 - Bio-review approvals: #217 Ashley Cassens, #224 Reiver (Rob approved it after all), #225 Alyssa Marie.
 - Artist name "Alyssa Marie and the Happy Mural Project" on #51, #71, #188, #225 and hidden #100. This is interim; Rob is confirming the credit with her this week. #211 the biplane stays "Alyssa Marie" (her own work).
 - `scripts/review_sync.py` fix: the round-trip check now ignores trailing spaces before line breaks. Before the fix it refused #224 because of a stray space.
-- Still drafts in the tool: #213 Jacksun, plus the Happy Mural cross-check drafts #51, #71, #188, #211.
+
+**After the Nov 2 publish, approved live in the tool (Live mode). Still in the queue; the next `publish-content.py` writes them into the YAMLs:**
+- **#213 Jacksun:** approved and live. New two-sentence opening: "At fifteen, Jacksun picked up a pencil to work through what he couldn't put into words. With no teacher, he worked out how to turn a sketchbook drawing into a wall five or ten times its size." The sun-titles line moved down. **All 13 SHINE 2026 walls now have approved bios live.**
+- **#214:** "some" → "Some" (display bio).
+- **#216:** closing SHINE 2026 sentence added ("…painting a wall at The Factory") + pronouns he/him.
+- **Pronouns, taken from the he/she in each approved bio (confirm with the artists):** #217 she/her, #218 he/him, #225 she/her. Pronouns live only in the YAML, not in content.json.
+- **#215 Hiero Veiga:** pronoun draft (he/him) **not yet approved**.
+- **Still drafts:** the Happy Mural cross-check fixes on #51, #71, #188, #211.
+- **Pilot drafts doc:** new "Live bios (Nov 2)" tab holds the live display text of all 13 walls (now 12 approved + #213 approved after). The original tab keeps the October drafts as history.
+- **Tool is in Live mode** (Dry run off).
 
 **QR:**
 - `qr-crescent-heights.png` (tag `crescent-heights`) added to `~/Desktop/Mural Quest Marketing Plans/mural-quest-qr/`. Its README and reference sheet are updated.
