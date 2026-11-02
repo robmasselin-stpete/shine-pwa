@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 211
-artist: "Alyssa Marie and the Happy Mural Project"
+artist: "Alyssa Marie"
 year: 2024
 lat: 27.764316   # Rob-set via route-editor (Albert Whitted hangar, First St S side)
 lng: -82.633739
@@ -87,7 +87,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
-  - "2 November 2026 — Artist name set to 'Alyssa Marie and the Happy Mural Project' on all six of her records so they match and link under 'More by' (Rob, interim until he confirms her preferred credit with her this week) (was: 'Alyssa Marie')"
+  - "2 November 2026 — Artist stays 'Alyssa Marie' (Rob: the biplane is her own work, not a Happy Mural Project wall). Briefly set to 'Alyssa Marie and the Happy Mural Project' with her other records the same day, then reverted"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: removed 'husband'/'half of' framing (2023–2026 sources credit her as founder/lead); 'commissioned in 2024' had no source — FOAWA's 2 Jan 2024 post says the murals were organized and supported by the three bodies, weather delayed them and they were 'well on their way to completion' at the January unveiling, so the 28 Aug 'already painted' note was wrong; year 2024 stands"
   - "28 August 2026 — Fact-check fleet: it was already painted at the 1 January 2024 unveiling, so it cannot have been commissioned in 2024"
   - "2026-06-16 — New mural added by Rob: Alyssa Marie yellow Stearman biplane on the Albert Whitted Airport hangar (First St side). Photo from Rob (IMG_7213.jpeg, 2026-05-28). Forwarded photo's EXIF GPS (27.78708, -82.64674) is ~1.5mi N of the airport — bogus, discarded. Rob set final GPS via route-editor: 27.764316, -82.633739 (Albert Whitted hangar, First St S side). Year 2024 (unveiled Jan 2024). Category commercial (commissioned public art via FOAWA/City/SPAA — not a SHINE festival mural). Bio researched fresh; not copied from any site."
