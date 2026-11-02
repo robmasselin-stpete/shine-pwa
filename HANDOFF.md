@@ -52,6 +52,8 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
 - No artist introductions: artist interviews → St. Petersburg Arts Alliance. Rob still offers the walk.
 - No usage-data offers or story angles anywhere in the press material (Rob: maybe in a few months, once there is enough data).
 - Boilerplate is back to one page.
+- Coverage is never claimed as complete (St. Pete likely has 500+ murals): "200+ murals" instead of "every mural in the city" / "for all murals"; "every mural" only where it means "in the app". Pelican now says "200+ street murals", not "the 200+".
+- The "previous owners keep free access for life" line was removed from the press kit.
 - The "Available to press covering SHINE 2026" list (daily photos, time-lapses, data) was removed from the Press page, the press kit and READ-FIRST. Rob handles any requests for those himself.
 - **How to rebuild:**
   1. Sources are `~/Desktop/MuralQuest-Press/01-Documents/_source/*.md`.
