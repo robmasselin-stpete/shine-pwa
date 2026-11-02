@@ -52,6 +52,7 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
 - No artist introductions: artist interviews → St. Petersburg Arts Alliance. Rob still offers the walk.
 - Walking-data claim is now "which murals people look up most in the app".
 - Boilerplate is back to one page.
+- The "Available to press covering SHINE 2026" list (daily photos, time-lapses, data) was removed from the Press page, the press kit and READ-FIRST. Rob handles any requests for those himself.
 - **How to rebuild:**
   1. Sources are `~/Desktop/MuralQuest-Press/01-Documents/_source/*.md`.
   2. Run `build_pdf.py` / `build_docx.py`. The plain-text boilerplate and `00-READ-FIRST.txt` are edited by hand.
