@@ -25,7 +25,7 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
 
 **Privacy finding:** the app sends the user's coordinates to `routing.openstreetmap.de` for walking distance and the walking path (`js/app.js` ~3180 and ~3378). It also sends anonymous usage events (app open, tab, mural open, filter, search term, book taps, with a random per-install ID) to analytics.muralquest.app.
 - **muralquest.app/privacy** was rewritten to say both, plus Google Play billing. Last updated Nov 2, 2026.
-- **Rob to check in the consoles:** App Store Connect → App Privacy, and Play Console → Data safety. Neither API can read them.
+- Store labels: see "Store privacy labels" below.
 
 **Websites.**
 - muralquest.app (Netlify `muralquest`, deployed from `~/muralquest-website`):
@@ -77,10 +77,31 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
 - **#214:** "some" → "Some" (display bio).
 - **#216:** closing SHINE 2026 sentence added ("…painting a wall at The Factory") + pronouns he/him.
 - **Pronouns, taken from the he/she in each approved bio (confirm with the artists):** #217 she/her, #218 he/him, #225 she/her. Pronouns live only in the YAML, not in content.json.
-- **#215 Hiero Veiga:** pronoun draft (he/him) **not yet approved**.
-- **Still drafts:** the Happy Mural cross-check fixes on #51, #71, #188, #211.
 - **Pilot drafts doc:** new "Live bios (Nov 2)" tab holds the live display text of all 13 walls (now 12 approved + #213 approved after). The original tab keeps the October drafts as history.
 - **Tool is in Live mode** (Dry run off).
+
+**Second publish Nov 2 (~21:00), verified live:**
+- The publish pulled 12 queued approvals into the YAMLs: #213–218, #225, and the Happy Mural fixes on #51 (Kenneth City house number gone), #71 and #188.
+- **Only #211 (biplane) is still a draft** in the tool.
+- Pilot drafts doc, "Live bios (Nov 2)" tab: shows all 13 walls live, with pronouns filled in.
+- Still open:
+  - #71 photo: one gator or mother+baby?
+  - #188: Marilyn Benjamin naming
+  - "Title To Be Announced" (#216) vs "Title TBA"
+  - #100 (hidden) still shares #51's old bio
+
+**Store privacy labels.** Both said "no data collected", which has been wrong since v1.5 (anonymous analytics plus the routing location). Neither store's API can read or edit them; the public store pages show them.
+- **App Store:** Rob published new App Privacy answers Nov 2 (App Store → Trust & Safety → App Privacy). No new version is needed for that.
+  - Product Interaction → Analytics
+  - Search History → Analytics
+  - Precise Location → App Functionality
+  - All three: not linked, no tracking
+  - Public page not yet re-checked: Apple's page cache lags.
+- **Google Play Data safety: still to do.**
+  - App activity → App interactions + In-app search history: collected, not shared, Analytics, not optional.
+  - Precise location: App functionality.
+  - Location is a judgement call; Rob is declaring it.
+  - Google reviews the change.
 
 **QR:**
 - `qr-crescent-heights.png` (tag `crescent-heights`) added to `~/Desktop/Mural Quest Marketing Plans/mural-quest-qr/`. Its README and reference sheet are updated.
