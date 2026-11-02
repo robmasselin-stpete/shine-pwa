@@ -96,7 +96,7 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
   - Search History → Analytics
   - Precise Location → App Functionality
   - All three: not linked, no tracking
-  - Public page not yet re-checked: Apple's page cache lags.
+  - Verified on the public App Store page Nov 2: "Data Not Linked to You", with Analytics (Search History, Product Interaction) and App Functionality (Precise Location).
 - **Google Play Data safety: still to do.**
   - App activity → App interactions + In-app search history: collected, not shared, Analytics, not optional.
   - Precise location: App functionality.
