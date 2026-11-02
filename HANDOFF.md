@@ -1,11 +1,78 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-01): SHINE 2026 bio work in progress — see the 2026-11-01 entry.** v1.7.6 LIVE on both stores — iOS build 160, Android
-> versionCode 18. Authoritative release state + backlog live in auto-memory
-> (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
+> **CURRENT (2026-11-02): see the 2026-11-02 entry (store "Official" wording live, websites + press
+> kit refreshed, #224 Reiver draft), then the 2026-11-01 entry for SHINE bio status.** v1.7.6 LIVE on
+> both stores — iOS build 160, Android versionCode 18. Authoritative release state + backlog live in
+> auto-memory (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
 > Everything below the 2026-10-01 entry is history.
 
-## 2026-11-01 — SHINE 2026 bios + the bio-review tool (resume here)
+## 2026-11-02 — Official wording live, websites + press kit refreshed, Reiver draft
+
+No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
+
+**SPAA MOU signed** (Rob Oct 13, Helen French Nov 2): `~/Desktop/Mural Quest Marketing Plans/MuralQuest SPAA MOU .pdf`.
+- **Store text, live, no review needed:**
+  - iOS promotional text: "The Official Mural App of the 2026 SHINE Mural Festival, Nov 6–15. Find every new wall, watch daily progress photos, get to know the artists. 200+ murals. $6.99/year."
+  - Play short description: "Official Mural App of SHINE 2026. 200+ St. Pete murals. $6.99/year."
+  - Play full description: that line added as its first line.
+- **Waits for the first post-SHINE version** (listed in memory `project-next-binary-fixes` §0c):
+  - iOS subtitle
+  - App Review notes with the MOU attached
+  - iOS description "Official" opening
+  - remove the false "Your location never leaves your device" from the iOS description
+  - in-app items from the brief (paywall line, review prompt, festival default view; ask before building the redeem link)
+- The Tuesday 9:00 "check for MOU" reminder is now moot; Rob can delete it.
+
+**Privacy finding:** the app sends the user's coordinates to `routing.openstreetmap.de` for walking distance and the walking path (`js/app.js` ~3180 and ~3378). It also sends anonymous usage events (app open, tab, mural open, filter, search term, book taps, with a random per-install ID) to analytics.muralquest.app.
+- **muralquest.app/privacy** was rewritten to say both, plus Google Play billing. Last updated Nov 2, 2026.
+- **Rob to check in the consoles:** App Store Connect → App Privacy, and Play Console → Data safety. Neither API can read them.
+
+**Websites.**
+- muralquest.app (Netlify `muralquest`, deployed from `~/muralquest-website`):
+  - Tour stop counts now match the app (16/14/11/15/14/21/15, about 12 mi); were stale from spring.
+  - Support FAQ: Android is available, refunds cover Google Play, version 1.7.6, requires iOS 15 or Android 7.0 or later.
+  - Footer on every page: "Official Mural App…" (was "Not affiliated with SHINE/SPAA").
+  - Pricing: "$6.99 billed annually"; no "cancel anytime".
+  - Official App Store and Google Play badges in the red bar and the pricing box; none in page headers.
+  - Phone hero tightened so the badges show on first load: bigger wordmark, 33px headline, eyebrow on two lines.
+- pelicandigital.app (Netlify `pelicandigital`, deployed from `~/pelicandigital`, a clean copy without the CHNA PDF):
+  - Facts updated: 200+, 140+, iPhone and Android, $6.99/yr, Official footer.
+  - Phone header is wordmark-only; footer links wrap.
+- Wording rules for both sites (also in memory `project_mural_quest_website`):
+  - "geo compass"
+  - "load it once on WiFi and use it all day"
+  - "iPhone and Android"
+  - support@ for support, hello@ for everything else
+  - "one person" wording stays where it is (Rob)
+
+**Press kit.**
+- SHINE dates fixed to Nov 6–15.
+- "SPAA has named Mural Quest 'The Official Mural App of the 2026 SHINE Mural Festival'" is in the fact sheet, the press kit, the boilerplate and the Press page.
+- No "high-resolution" wording.
+- No artist introductions: artist interviews → St. Petersburg Arts Alliance. Rob still offers the walk.
+- Walking-data claim is now "which murals people look up most in the app".
+- Boilerplate is back to one page.
+- **How to rebuild:**
+  1. Sources are `~/Desktop/MuralQuest-Press/01-Documents/_source/*.md`.
+  2. Run `build_pdf.py` / `build_docx.py`. The plain-text boilerplate and `00-READ-FIRST.txt` are edited by hand.
+  3. Copy to `~/muralquest-website/press-assets/docs/`, rebuild `MuralQuest-Press-Kit.zip`, then deploy.
+
+**Bios.**
+- **#224 Reiver (Lewis Hobson):**
+  - Draft in the bio-review tool. Artist field "Reiver (Lewis Hobson), Ellis Warren & Daniel White"; Durham, UK; he/him; reiver_94.
+  - Also in the "SHINE 2026 Bios — Pilot Drafts" doc.
+  - Open questions: graffiti vs lockdown start, Spennymoor home town, a line each on Warren and White, title.
+- The other drafts from Nov 1 are unchanged (see below).
+
+**QR:**
+- `qr-crescent-heights.png` (tag `crescent-heights`) added to `~/Desktop/Mural Quest Marketing Plans/mural-quest-qr/`. Its README and reference sheet are updated.
+- Rob placed it in the Crescent Heights newsletter ad.
+
+**Store screenshots (for reference):** what's live on iOS:
+- iPhone 6.7": `~/Desktop/MuralQuest-Press/03-Screenshots/iPhone/MQ_screen_ios_map.png` and `MQ_screen_ios_explore.png`. The live 03_tours shot has no local copy.
+- iPad: `screenshots/ipad-13-map.png` + `~/Desktop/Mural Quest Marketing Plans/MQ-screenshots-ipad/01, 02, 05.png`.
+
+## 2026-11-01 — SHINE 2026 bios + the bio-review tool
 
 SHINE is **Nov 6–15**. The Mac is the source of truth; publish only from here
 (`python3 scripts/publish-content.py`). Last publish: **Nov 1, ~18:00**, verified live.
@@ -37,8 +104,8 @@ house number (removed in the draft), #100 is hidden (status research) and still 
 old bio. Linking "Alyssa Marie" records to the project needs an app alias = post-festival.
 
 **Store (no build):** App Store promo text + Play short/full description now lead with
-$6.99/year and SHINE 2026. "Official Mural App of the 2026 SHINE Mural Festival" is held until
-Rob has the signed SPAA MOU — reminder set for Tue Nov 3 9:00 (Reminders: "Reminders For Rob").
+$6.99/year and SHINE 2026. "Official Mural App…" wording was held for the MOU — it arrived Nov 2 and the wording is
+now live (see the 2026-11-02 entry).
 
 **Post-festival binary backlog (added):** the open mural page doesn't refresh its TEXT on a live
 update (only photos) — back out and reopen meanwhile. See memory `project-next-binary-fixes`.
