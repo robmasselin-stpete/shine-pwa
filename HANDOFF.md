@@ -67,6 +67,12 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
   - Open questions: graffiti vs lockdown start, Spennymoor home town, a line each on Warren and White, title.
 - The other drafts from Nov 1 are unchanged (see below).
 
+**Published Nov 2 (~20:30), verified live:**
+- Bio-review approvals: #217 Ashley Cassens, #224 Reiver (Rob approved it after all), #225 Alyssa Marie.
+- Artist name "Alyssa Marie and the Happy Mural Project" on #51, #71, #188, #225 and hidden #100. This is interim; Rob is confirming the credit with her this week. #211 the biplane stays "Alyssa Marie" (her own work).
+- `scripts/review_sync.py` fix: the round-trip check now ignores trailing spaces before line breaks. Before the fix it refused #224 because of a stray space.
+- Still drafts in the tool: #213 Jacksun, plus the Happy Mural cross-check drafts #51, #71, #188, #211.
+
 **QR:**
 - `qr-crescent-heights.png` (tag `crescent-heights`) added to `~/Desktop/Mural Quest Marketing Plans/mural-quest-qr/`. Its README and reference sheet are updated.
 - Rob placed it in the Crescent Heights newsletter ad.
