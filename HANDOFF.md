@@ -97,11 +97,13 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
   - Precise Location → App Functionality
   - All three: not linked, no tracking
   - Verified on the public App Store page Nov 2: "Data Not Linked to You", with Analytics (Search History, Product Interaction) and App Functionality (Precise Location).
-- **Google Play Data safety: still to do.**
-  - App activity → App interactions + In-app search history: collected, not shared, Analytics, not optional.
-  - Precise location: App functionality.
-  - Location is a judgement call; Rob is declaring it.
-  - Google reviews the change.
+- **Google Play Data safety:** Rob submitted it Nov 2, ~16:50. Google is reviewing it. Answers:
+  - Collects data: yes. Encrypted in transit: yes.
+  - No accounts, no deletion requests.
+  - App interactions + In-app search history: collected, not shared, Analytics, required, not ephemeral.
+  - Precise location: collected, not shared, App functionality, optional. Ephemeral set to "No" so it shows on the listing and matches Apple.
+  - Path in the new console: Monitor and improve (pulse icon) → Policy and programs → App content → Actioned tab → Data safety. Then Publishing overview → send for review.
+  - **To do:** once approved, check the public listing at play.google.com/store/apps/datasafety?id=com.muralquest.stpete.
 
 **QR:**
 - `qr-crescent-heights.png` (tag `crescent-heights`) added to `~/Desktop/Mural Quest Marketing Plans/mural-quest-qr/`. Its README and reference sheet are updated.
