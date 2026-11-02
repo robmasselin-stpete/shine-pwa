@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 71
-artist: The Happy Mural Project
+artist: "Alyssa Marie and the Happy Mural Project"
 year: 2022
 lat: 27.771142
 lng: -82.673944
@@ -65,6 +65,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2 November 2026 — Artist name set to 'Alyssa Marie and the Happy Mural Project' on all six of her records so they match and link under 'More by' (Rob, interim until he confirms her preferred credit with her this week) (was: 'The Happy Mural Project')"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: removed 'married couple' framing; 'Honk if You're Happy' was the first wall's sign, not the motto; manatees + 'ecological connectivity' removed (unsourced); sponsor is 'Florida Wildlife Corridor' (TBT 2023, SPAA 2022), and a commission is not an award; Wild Ride is a mother alligator with a baby on her (TBT 2023); SHINE 2026 added as fourth festival. BFA now verified (Northeast Journal 2024), superseding the 10 April 'unverified' note"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "10 April 2026 — Fixed hollow opener, aligned with 051 and 100 bio, removed unverified Metro State Denver BFA claim"

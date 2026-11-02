@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 100
-artist: Happy Mural Project
+artist: "Alyssa Marie and the Happy Mural Project"
 year: 2020
 lat: 27.731135
 lng: -82.675585
@@ -95,6 +95,7 @@ furtherWork:
   - name: "thehappymuralproject.com"
     url: "https://www.thehappymuralproject.com"
 revisionLog:
+  - "2 November 2026 — Artist name set to 'Alyssa Marie and the Happy Mural Project' on all six of her records so they match and link under 'More by' (Rob, interim until he confirms her preferred credit with her this week) (was: 'Happy Mural Project')"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: removed 'married couple'/'newly married' framing and personal/travel handles; 'Honk if You're Happy' was the first wall's sign, not the motto; SHINE 2026 added; Bay News 9 / CBS 10 sentences removed (no source found)"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

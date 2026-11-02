@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 51
-artist: The Happy Mural Project
+artist: "Alyssa Marie and the Happy Mural Project"
 year: 2023
 lat: 27.76500833
 lng: -82.67086667
@@ -98,6 +98,7 @@ furtherWork:
   - name: "thehappymuralproject.com"
     url: "https://www.thehappymuralproject.com"
 revisionLog:
+  - "2 November 2026 — Artist name set to 'Alyssa Marie and the Happy Mural Project' on all six of her records so they match and link under 'More by' (Rob, interim until he confirms her preferred credit with her this week) (was: 'The Happy Mural Project')"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: removed 'married couple' framing and personal/travel handles (2023–2026 sources credit Alyssa Marie as founder/lead: TBT 2023, Northeast Journal 2024, Osprey Observer 2024, her shineonmurals.com SHINE 2026 record); 'Honk if You're Happy' was the first wall's sign, not the motto (motto: 'Happy people inspire others. Inspired people change the world.' — HMP site); SHINE 2026 added as her fourth festival; Bay News 9 / CBS 10 coverage removed (no source found); Sammy & Paco's dropped as a separate location (same address as the first Lolita's wall, 2735 5th Ave N)"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

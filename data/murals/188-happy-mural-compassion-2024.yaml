@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 188
-artist: Happy Mural Project
+artist: "Alyssa Marie and the Happy Mural Project"
 year: 2024
 lat: 27.772397
 lng: -82.647942
@@ -107,6 +107,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2 November 2026 — Artist name set to 'Alyssa Marie and the Happy Mural Project' on all six of her records so they match and link under 'More by' (Rob, interim until he confirms her preferred credit with her this week) (was: 'Happy Mural Project')"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: hands described per Northeast Journal 2024 (one hand releases butterflies toward a lotus held in the other — matches this record's own searchBio; 'morpho' was unsourced); she numbers the shapes herself in Adobe Illustrator (TBT 2023), her team hands out the paint (Northeast Journal 2024)"
   - "26 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten with hook ('Paint-by-numbers, but the wall is 16 feet tall and 105 feet long. Six hundred people came out…') and body covering Gulf Coast JFCS commission, Dr. Philip Benjamin building backstory, Marilyn Benjamin painting glasses, Alyssa Marie's process. SearchBio populated from Northeast Journal source."
