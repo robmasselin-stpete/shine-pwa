@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 224
-artist: "Lewis Hobson, Ellis Warren & Daniel White"
+artist: "Reiver (Lewis Hobson), Ellis Warren & Daniel White"
 year: 2026
 lat: 27.7961005   # dropped pin (brief), set back ~34 m west
 lng: -82.6472011
@@ -13,10 +13,59 @@ img: "images/murals/2026/shine2026-coming-soon.jpeg"
 # ── Optional ──
 title: "Title TBA"
 building: "Skyline Campus"
-instagram: ""
-basedIn: ""
+instagram: "reiver_94"
+basedIn: "Durham, UK"
 
-artistBio: "Coming after the SHINE artist interviews."
+pronouns: "he/him"
+
+artistBio: |
+  Reiver's first big wall was a trade: he asked to paint an abandoned building
+  beside a scrapyard, for free, so his work would cover the graffiti already
+  on it. Passers-by liked it enough to start asking him for murals of their
+  own.
+
+  Reiver is the name Lewis Hobson paints under; at home in the North East of
+  England he is also known as Durham Spray Paints. A lifelong Durham resident
+  with no art-school training, he came up through graffiti and turned to
+  murals during the 2020 lockdown. His walls tend to start with local stories,
+  like the RNLI lifeboat he painted on The Ship Inn in Hartlepool. A wall, he
+  has said, is "70 percent chatting and 30 percent painting."
+
+  In 2023 he launched a mural festival in his home town of Spennymoor and set
+  up CYAN CIC, a community arts company.
+
+  For SHINE 2026 he paints the back walls at Skyline Campus with Ellis Warren
+  and Daniel White.
+
+searchBio: |
+  Reiver's first big wall was a trade: he asked to paint an abandoned building
+  beside a scrapyard, for free, so his work would cover the graffiti already
+  on it. Passers-by liked it enough to start asking him for murals of their
+  own.
+
+  Reiver is the name Lewis Hobson paints under; at home in the North East of
+  England he is also known as Durham Spray Paints. A lifelong Durham resident
+  with no art-school training, he came up through graffiti and turned to
+  murals during the 2020 lockdown. His walls tend to start with local stories,
+  like the RNLI lifeboat he painted on The Ship Inn in Hartlepool. A wall, he
+  has said, is "70 percent chatting and 30 percent painting."
+
+  In 2023 he launched a mural festival in his home town of Spennymoor and set
+  up CYAN CIC, a community arts company.
+
+  For SHINE 2026 he paints the back walls at Skyline Campus with Ellis Warren
+  and Daniel White.
+
+  Spennymoor's festival, billed as the North East's first, sends his Durham
+  Spray Paints crew across the town for a week each July; one round added a
+  giant curious pigeon and the town crest to the back of R. Defty's. Other
+  walls include a tiger in Sacriston and pieces on Hartlepool's Headland,
+  among them The Pot House pub. In 2023–24 he was artist in residence at
+  Durham Sixth Form Centre, where he had studied, gathering photos,
+  memorabilia and memories of Durham's ice rink, open from the 1930s until
+  1996, for an April 2024 show at Dead Dog Gallery. The idea, he said, came
+  from hearing his parents and grandparents talk about the rink. He posts his
+  work on Instagram as reiver_94.
 
 searchMuralDescription: ""
 muralInspiration: "Coming after the SHINE artist interviews."
@@ -28,5 +77,13 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "2 November 2026 — Bio review tool, approved by Rob: artist, basedIn, pronouns, instagram, artistBio, searchBio. Changes — artist: \"Lewis Hobson, Ellis Warren & Daniel White\" → \"Reiver (Lewis Hobson), Ellis Warren & Daniel White\"; artistBio: Drafted from his SHINE record, Living North and Durham Sixth Form Centre: scrapyard-wall hook (2 sentences), Durham Spray Paints, graffiti → lockdown murals, Hartlepool lifeboat, \"70 percent chatting\" quote, Spennymoor festival + CYAN CIC, SHINE 2026 wall; searchBio: Display text + Spennymoor walls, Sacriston tiger, Headland, ice-rink residency and Dead Dog Gallery show, Instagram; basedIn: \"\" → \"Durham, UK\"; pronouns: \"\" → \"he/him\"; instagram: \"\" → \"reiver_94\". [review:20261102201940-26622089]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #13 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief), set back ~34 m west. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
-sourceNotes: "SPAA SHINE Walls & Artists 2026, wall #13. Wall: back walls."
+sourceNotes:
+  - "Dictated corrections, 2 November 2026 — transcript kept in R2 muralquest-review/applied/20261102201940-26622089.json"
+  - "https://spennymoor-tc.gov.uk/the-bob-abley-gallery/wall-in-a-weeks-work/"
+  - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
+  - "shineonmurals.com SHINE 2026 artist record (Lewis Hobson / REIVER)"
+  - "https://www.livingnorth.com/article/living-north-talks-creatives-behind-north-easts-street-art"
+  - "https://sites.google.com/durhamsixthformcentre.org.uk/dsfc-air/artists/2023-24-lewis-hobson"
+  - "SPAA SHINE Walls & Artists 2026, wall #13. Wall: back walls."
