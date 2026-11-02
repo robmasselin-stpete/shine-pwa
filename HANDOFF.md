@@ -109,6 +109,14 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
 - `qr-crescent-heights.png` (tag `crescent-heights`) added to `~/Desktop/Mural Quest Marketing Plans/mural-quest-qr/`. Its README and reference sheet are updated.
 - Rob placed it in the Crescent Heights newsletter ad.
 
+**Cards for SHINE (Nov 2), in `~/Desktop/Mural Quest Marketing Plans/`:**
+- `MuralQuest_Code_Cards_Apple_Nov2026.pdf`: 20 new Apple codes.
+- `MuralQuest_Code_Cards_Android_Nov2026.pdf`: 10 new Google codes. These are 90-day free subscription codes; the card says Google renews at $6.99/yr unless cancelled.
+- `MuralQuest_Reception_Cards_SHINE2026.pdf`: 20 plain download cards for Thursday's reception.
+- QR tags: code cards `code-cards`, reception `shine-reception`. The old cards used the `hotels` tag.
+- Card header now reads "YOUR FREE ACCESS CODE" (the old cards said "FREE TRIAL").
+- Builder: `mural-quest-qr/make_code_cards.py`. Rob first pasted the Aug Google batch (already on the Sep v3 cards); always check new codes against `Downloads/promotion_codes*.csv` and the old card PDFs.
+
 **Store screenshots (for reference):** what's live on iOS:
 - iPhone 6.7": `~/Desktop/MuralQuest-Press/03-Screenshots/iPhone/MQ_screen_ios_map.png` and `MQ_screen_ios_explore.png`. The live 03_tours shot has no local copy.
 - iPad: `screenshots/ipad-13-map.png` + `~/Desktop/Mural Quest Marketing Plans/MQ-screenshots-ipad/01, 02, 05.png`.
