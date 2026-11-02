@@ -16,6 +16,8 @@ building: ""
 instagram: "artist_esh"
 basedIn: "Tampa, FL"
 
+pronouns: "he/him"
+
 artistBio: |
   He spent 14 years as a park ranger, by Creative Pinellas's count, before he
   quit his day job to paint. Eric Hornsby goes by Esh, short for "Eat, Sleep,
@@ -139,6 +141,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "2 November 2026 — Bio review tool, approved by Rob: pronouns. Changes — pronouns: \"\" → \"he/him\". [review:20261102204020-292093aa]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Note: Rob first approval draft [review:20261101171017-3e0dc176]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. [review:20261101170918-367f2d29]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #6 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: PLACEHOLDER: shares wall #7's address; set ~20 m south of #7's pin per Rob 2026-10-24 — fix on Oct 30 scouting. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."

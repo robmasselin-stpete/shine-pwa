@@ -16,6 +16,8 @@ building: "The Factory"
 instagram: "ashley.cassens"
 basedIn: "Tampa, FL"
 
+pronouns: "she/her"
+
 artistBio: |
   Ashley Cassens's favorite mural subject is flora and fauna, and her walls
   take their color from Florida. She is partial to cadmium red.
@@ -142,6 +144,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "2 November 2026 — Bio review tool, approved by Rob: pronouns. Changes — pronouns: \"\" → \"she/her\". [review:20261102203959-6ac46c66]"
   - "2 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. [review:20261102202343-5df6b7b7]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #5 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:

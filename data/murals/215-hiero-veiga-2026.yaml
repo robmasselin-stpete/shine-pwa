@@ -16,6 +16,8 @@ building: "VIV"
 instagram: "hieroveiga"
 basedIn: "Florida"
 
+pronouns: "he/him"
+
 artistBio: |
   Out of 60 artists considered, a committee of Prince's family, friends and
   collaborators chose Hiero Veiga to paint the 100-foot Prince mural in
@@ -107,6 +109,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "2 November 2026 — Bio review tool, approved by Rob: pronouns. Changes — pronouns: \"\" → \"he/him\". [review:20261102205219-ec9d5474]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. [review:20261101165624-ce25bc9c]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #3 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief), ~30 ft from wall #2. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:

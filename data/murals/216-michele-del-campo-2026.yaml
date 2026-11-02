@@ -16,6 +16,8 @@ building: "The Factory"
 instagram: "micheledelcampo"
 basedIn: "South Florida"
 
+pronouns: "he/him"
+
 artistBio: |
   In 2017 he started traveling with two suitcases and a tube for his canvases.
   He painted wherever he landed, rolled up the finished work, and carried it
@@ -42,6 +44,9 @@ artistBio: |
   prestigious painting prize in Spain. The Artist's Magazine gave him its All
   Media Grand Prize in 2015. He has had solo shows in Madrid, London, Lugano,
   Lima, San Francisco and Dallas. His portfolio is mostly oil on linen.
+
+  For SHINE 2026 he is one of fifteen artists in the festival's twelfth year,
+  painting a wall at The Factory.
 
 searchBio: |
   In 2017 he started traveling with two suitcases and a tube for his canvases.
@@ -111,6 +116,9 @@ searchBio: |
 
   His portfolio is mostly oil on linen.
 
+  For SHINE 2026 he is one of fifteen artists in the festival's twelfth year,
+  painting a wall at The Factory.
+
 searchMuralDescription: "Painting during SHINE, Nov 6–15."
 muralInspiration: "Painting during SHINE, Nov 6–15."
 muralAwards: ""
@@ -127,6 +135,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "2 November 2026 — Bio review tool, approved by Rob: pronouns, artistBio, searchBio. Changes — pronouns: \"\" → \"he/him\"; artistBio: Added the closing SHINE 2026 sentence the other walls have; searchBio: Same sentence added at the end. [review:20261102203942-1d012bd7]"
   - "1 November 2026 — Bio review tool, approved by Rob: title, basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: Removed the sentence \"It lists one mural, painted in Fort Lauderdale in 2026.\" Kept \"His portfolio is almost all oil on linen.\"; searchBio: Removed the sentence \"It lists one mural: \"Where your mom came from,\" 8.05 by 9.23 meters, painted in Fort Lauderdale in 2026.\" Kept \"His portfolio is almost all oil on linen.\". Note: First Corrected Bio by Rob [review:20261101160425-4a7e332a]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #4 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): odd/north side of Fairfield, ~50 m from wall #5; anchors #21 Groove Haven 2655 Fairfield (27.764095,-82.66996), #25 FloridaRAMA. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
