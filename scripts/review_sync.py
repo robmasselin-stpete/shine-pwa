@@ -60,6 +60,7 @@ def norm(s):
         return ''
     s = str(s).replace('‘', "'").replace('’', "'")
     s = s.replace('“', '"').replace('”', '"').replace('\r', '')
+    s = re.sub(r'[ \t]+\n', '\n', s)   # YAML block scalars drop trailing spaces; don't flag them
     s = re.sub(r'\n\n+', '\x00', s).replace('\n', ' ').replace('\x00', '\n\n')
     return re.sub(r' {2,}', ' ', s).strip()
 
