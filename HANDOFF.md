@@ -50,7 +50,7 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
 - "SPAA has named Mural Quest 'The Official Mural App of the 2026 SHINE Mural Festival'" is in the fact sheet, the press kit, the boilerplate and the Press page.
 - No "high-resolution" wording.
 - No artist introductions: artist interviews → St. Petersburg Arts Alliance. Rob still offers the walk.
-- Walking-data claim is now "which murals people look up most in the app".
+- No usage-data offers or story angles anywhere in the press material (Rob: maybe in a few months, once there is enough data).
 - Boilerplate is back to one page.
 - The "Available to press covering SHINE 2026" list (daily photos, time-lapses, data) was removed from the Press page, the press kit and READ-FIRST. Rob handles any requests for those himself.
 - **How to rebuild:**
