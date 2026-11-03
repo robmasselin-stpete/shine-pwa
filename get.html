@@ -51,20 +51,27 @@
   document.getElementById('ios').href = iosUrl;
   document.getElementById('android').href = playUrl;
 
-  // Log the scan to first-party analytics (best-effort; never block the redirect).
-  try {
-    var sid = 'qr-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
-    var payload = JSON.stringify({ events: [{ event: 'qr_scan', sid: sid, ts: Date.now(), props: { source: src } }] });
-    if (navigator.sendBeacon) navigator.sendBeacon(ANALYTICS, new Blob([payload], { type: 'application/json' }));
-    else fetch(ANALYTICS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true });
-  } catch (e) {}
-
   var ua = navigator.userAgent || navigator.vendor || '';
   var isAndroid = /android/i.test(ua);
   var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
-  // small delay so the beacon has a beat to fire before we navigate away
-  if (isAndroid) setTimeout(function(){ location.replace(playUrl); }, 120);
-  else if (isIOS) setTimeout(function(){ location.replace(iosUrl); }, 120);
+  var target = isAndroid ? playUrl : (isIOS ? iosUrl : null);
+  var gone = false;
+  function go() { if (target && !gone) { gone = true; location.replace(target); } }
+
+  // Log the scan to first-party analytics, then redirect once it is delivered (capped at 800 ms).
+  // The body is sent as text/plain: a CORS-safelisted type needs no preflight. The old
+  // application/json beacon needed one, and phones dropped it when the page left for the store
+  // 120 ms later, so only desktop (no-redirect) scans were ever recorded (Aug-Nov 2026).
+  try {
+    var sid = 'qr-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+    var payload = JSON.stringify({ events: [{ event: 'qr_scan', sid: sid, ts: Date.now(), props: { source: src } }] });
+    if (window.fetch) {
+      fetch(ANALYTICS, { method: 'POST', body: payload, keepalive: true }).then(go, go);
+    } else if (navigator.sendBeacon) {
+      navigator.sendBeacon(ANALYTICS, payload);
+    }
+  } catch (e) {}
+  setTimeout(go, window.fetch ? 800 : 300);
   // desktop/unknown: no redirect — both buttons are shown.
 })();
 </script>
