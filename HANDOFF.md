@@ -30,16 +30,9 @@
 | `code-cards` / `shine-reception` | The Nov sheets |
 | `lockscreen` | Rob's lock screen. `qr-lockscreen.png` is now in the folder and the README. |
 
-**Device field (Nov 3, committed, deploy pending Rob's OK):**
+**Device field (Nov 3), DEPLOYED.** The page, the Worker (version 37fb0fc4) and the stats page are all live. The first real Android scan, on `lockscreen`, logged as `android`.
 - **The page:** `get.html` now adds `device: ios|android|other` to each `qr_scan` record.
 - **The stats:** the analytics Worker's `qrSources` query returns `ios` and `android` counts per tag, and `tools/stats.html` shows iPhone and Android columns. Scans before the deploy have no device and count as 0 in both columns.
-- **Status:**
-  - On the qrfix preview and headless-tested.
-  - Still to deploy:
-    - `get.html` to production.
-    - The Worker (`cd workers/analytics && npx wrangler deploy`).
-    - `bash scripts/deploy-tools.sh` for the stats page.
-  - The Worker and stats-page changes are backward-compatible, so they can go in any order.
 
 **Loose ends checked Nov 3:**
 - **Play Data safety:** approved and public. It matches the App Store label: no sharing; precise location (optional, app functionality); app interactions and search history (analytics).
