@@ -33,7 +33,7 @@
 ## 2026-11-03 — QR scan tracking fixed (it had never recorded a phone scan)
 
 **Bug:** from Aug 18 to Nov 3, `get.html` (the QR redirect at `muralquest-app.pages.dev`) never logged a scan from a phone. Its beacon went out as `application/json` cross-origin, which needs a CORS preflight. The page then left for the store 120 ms later, and phones dropped the beacon. Only desktop visits (no redirect) were recorded: 11 `qr_scan` events, all `direct`, and not one tagged.
-**Fix (commit 174990a):** the beacon now goes as `text/plain` (no preflight), and the redirect waits for delivery, capped at 800 ms. Rob confirmed it on his iPhone, first on a preview deploy (`test-fix`) and then live (`lockscreen`, 10:51). Both of those test scans are in the counts.
+**Fix (commit 174990a):** the beacon now goes as `text/plain` (no preflight), and the redirect waits for delivery, capped at 800 ms. Rob confirmed it on his iPhone, first on a preview deploy (`test-fix`) and then live (`lockscreen`, 10:51). The test scans were later deleted from the counts.
 
 **Deploy:** the `muralquest-app` Pages project holds ONE file, `index.html` = `get.html`; every other path falls back to it.
 - Redeploy: copy `get.html` to an empty dir as `index.html`, then `npx wrangler pages deploy <dir> --project-name muralquest-app --branch main`.
@@ -61,7 +61,7 @@
 **Loose ends checked Nov 3:**
 - **Play Data safety:** approved and public. It matches the App Store label: no sharing; precise location (optional, app functionality); app interactions and search history (analytics).
 - **Review queue:** one approval waiting, #211 artistBio (Nov 2, 20:59). It's already live and gets pulled into the YAML at the next publish. No publish was made for it (pre-SHINE freeze).
-- **Test rows in D1:** `test-fix` (1), `test-pt` (2), `lockscreen` (1). The lockscreen scan is real use, not a test.
+- **Test rows in D1:** the `test-fix` and `test-pt` scans (3 rows) were deleted Nov 3 at Rob's request. The `lockscreen` scans are real and stay.
 
 **Domain brief (`~/Downloads/MuralQuest_Domain_Brief.md`), still open:**
 - **Apex:** muralquest.app is the Netlify marketing site (Cloudflare DNS, DNS-only). It has store badges, so a typed visit lands somewhere sensible. `/get` is a 404.
