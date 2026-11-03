@@ -30,6 +30,22 @@
 | `code-cards` / `shine-reception` | The Nov sheets |
 | `lockscreen` | Rob's lock screen. `qr-lockscreen.png` is now in the folder and the README. |
 
+**Device field (Nov 3, committed, deploy pending Rob's OK):**
+- **The page:** `get.html` now adds `device: ios|android|other` to each `qr_scan` record.
+- **The stats:** the analytics Worker's `qrSources` query returns `ios` and `android` counts per tag, and `tools/stats.html` shows iPhone and Android columns. Scans before the deploy have no device and count as 0 in both columns.
+- **Status:**
+  - On the qrfix preview and headless-tested.
+  - Still to deploy:
+    - `get.html` to production.
+    - The Worker (`cd workers/analytics && npx wrangler deploy`).
+    - `bash scripts/deploy-tools.sh` for the stats page.
+  - The Worker and stats-page changes are backward-compatible, so they can go in any order.
+
+**Loose ends checked Nov 3:**
+- **Play Data safety:** approved and public. It matches the App Store label: no sharing; precise location (optional, app functionality); app interactions and search history (analytics).
+- **Review queue:** one approval waiting, #211 artistBio (Nov 2, 20:59). It's already live and gets pulled into the YAML at the next publish. No publish was made for it (pre-SHINE freeze).
+- **Test rows in D1:** `test-fix` (1), `test-pt` (2), `lockscreen` (1). The lockscreen scan is real use, not a test.
+
 **Domain brief (`~/Downloads/MuralQuest_Domain_Brief.md`), still open:**
 - **Apex:** muralquest.app is the Netlify marketing site (Cloudflare DNS, DNS-only). It has store badges, so a typed visit lands somewhere sensible. `/get` is a 404.
 - **Address for future QRs: `muralquest.app/get?s=<tag>` (Rob chose it, live Nov 3).** It's a Netlify `_redirects` proxy (`/get  https://muralquest-app.pages.dev/  200!`) in `~/muralquest-website`, so there is one source page and one analytics stream. The QR README is updated. The Nov code-card and reception sheets still use the pages.dev address, and both work.

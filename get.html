@@ -65,7 +65,7 @@
   // 120 ms later, so only desktop (no-redirect) scans were ever recorded (Aug-Nov 2026).
   try {
     var sid = 'qr-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
-    var payload = JSON.stringify({ events: [{ event: 'qr_scan', sid: sid, ts: Date.now(), props: { source: src } }] });
+    var payload = JSON.stringify({ events: [{ event: 'qr_scan', sid: sid, ts: Date.now(), props: { source: src, device: isAndroid ? 'android' : (isIOS ? 'ios' : 'other') } }] });
     if (window.fetch) {
       fetch(ANALYTICS, { method: 'POST', body: payload, keepalive: true }).then(go, go);
     } else if (navigator.sendBeacon) {

@@ -70,7 +70,7 @@ export default {
         // CAST to INTEGER also folds numeric vs string ids logged by different app builds.
         rows("SELECT CAST(json_extract(props,'$.id') AS INTEGER) id, COUNT(*) n FROM events WHERE event='mural_open' AND json_extract(props,'$.id') IS NOT NULL GROUP BY CAST(json_extract(props,'$.id') AS INTEGER) ORDER BY n DESC LIMIT 250"),
         // QR lead-source scans (from the app-download redirect page).
-        rows("SELECT json_extract(props,'$.source') source, COUNT(*) n FROM events WHERE event='qr_scan' AND json_extract(props,'$.source') IS NOT NULL GROUP BY json_extract(props,'$.source') ORDER BY n DESC LIMIT 50"),
+        rows("SELECT json_extract(props,'$.source') source, COUNT(*) n, SUM(json_extract(props,'$.device')='ios') ios, SUM(json_extract(props,'$.device')='android') android FROM events WHERE event='qr_scan' AND json_extract(props,'$.source') IS NOT NULL GROUP BY json_extract(props,'$.source') ORDER BY n DESC LIMIT 50"),
       ]);
       return json({ total, byEvent, byDay, topMurals, qrSources });
     }
