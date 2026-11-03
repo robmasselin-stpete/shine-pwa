@@ -32,7 +32,7 @@
 
 **Domain brief (`~/Downloads/MuralQuest_Domain_Brief.md`), still open:**
 - **Apex:** muralquest.app is the Netlify marketing site (Cloudflare DNS, DNS-only). It has store badges, so a typed visit lands somewhere sensible. `/get` is a 404.
-- **Address for future QRs (Rob to decide):** Claude recommends `muralquest.app/get`, a Netlify proxy rewrite to pages.dev, so there is still one source and one analytics stream. The alternative is `get.muralquest.app`.
+- **Address for future QRs: `muralquest.app/get?s=<tag>` (Rob chose it, live Nov 3).** It's a Netlify `_redirects` proxy (`/get  https://muralquest-app.pages.dev/  200!`) in `~/muralquest-website`, so there is one source page and one analytics stream. The QR README is updated. The Nov code-card and reception sheets still use the pages.dev address, and both work.
 - **Hard rule:** never touch, rename, or retire the pages.dev address. Printed QRs (500 rack cards, the annual Downtown Guide ad) depend on it.
 - **Apple attribution: FIXED Nov 3.** The App Store link now carries provider token `pt=128689267` plus `ct=<tag>&mt=8`. Rob tested it on his iPhone (`test-pt`) and it's deployed live. Credited installs show in App Store Connect → Analytics → Acquisition → Campaigns, but only for users who share analytics, within 30 days of the scan. Play gets the full UTM referrer.
 
