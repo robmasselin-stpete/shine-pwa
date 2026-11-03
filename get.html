@@ -37,7 +37,8 @@
 
 <script>
 (function () {
-  var IOS_BASE  = 'https://apps.apple.com/app/id6761023231';
+  var IOS_BASE  = 'https://apps.apple.com/app/apple-store/id6761023231';
+  var APPLE_PT  = '128689267';   // provider token: App Analytics only credits ct= campaigns that carry it
   var PLAY_BASE = 'https://play.google.com/store/apps/details?id=com.muralquest.stpete';
   var ANALYTICS = 'https://analytics.muralquest.app/e';
 
@@ -46,7 +47,7 @@
               .toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'direct';
 
   // Store links carry a campaign tag so App Store Connect / Play Console attribute installs.
-  var iosUrl  = IOS_BASE  + '?ct=' + encodeURIComponent(src);
+  var iosUrl  = IOS_BASE  + '?pt=' + APPLE_PT + '&ct=' + encodeURIComponent(src) + '&mt=8';
   var playUrl = PLAY_BASE + '&referrer=' + encodeURIComponent('utm_source=' + src + '&utm_medium=qr');
   document.getElementById('ios').href = iosUrl;
   document.getElementById('android').href = playUrl;
