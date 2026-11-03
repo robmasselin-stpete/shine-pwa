@@ -6,6 +6,36 @@
 > auto-memory (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
 > Everything below the 2026-10-01 entry is history.
 
+## 2026-11-03 — QR scan tracking fixed (it had never recorded a phone scan)
+
+**Bug:** from Aug 18 to Nov 3, `get.html` (the QR redirect at `muralquest-app.pages.dev`) never logged a scan from a phone. Its beacon went out as `application/json` cross-origin, which needs a CORS preflight. The page then left for the store 120 ms later, and phones dropped the beacon. Only desktop visits (no redirect) were recorded: 11 `qr_scan` events, all `direct`, and not one tagged.
+**Fix (commit 174990a):** the beacon now goes as `text/plain` (no preflight), and the redirect waits for delivery, capped at 800 ms. Rob confirmed it on his iPhone, first on a preview deploy (`test-fix`) and then live (`lockscreen`, 10:51). Both of those test scans are in the counts.
+
+**Deploy:** the `muralquest-app` Pages project holds ONE file, `index.html` = `get.html`; every other path falls back to it.
+- Redeploy: copy `get.html` to an empty dir as `index.html`, then `npx wrangler pages deploy <dir> --project-name muralquest-app --branch main`.
+- Test first with `--branch qrfix`, which serves at `qrfix.muralquest-app.pages.dev`.
+
+**Checking scans:**
+- Use `/stats` → `qrSources`.
+- Or query D1 directly: `npx wrangler d1 execute mural-quest-analytics --remote --command "SELECT ... WHERE event='qr_scan'"`.
+
+**QR inventory** (every printed PDF in Marketing Plans was decoded):
+
+| Tag | Printed on |
+|---|---|
+| `visitor-center` | Rack cards V1/V2 *and* the visitor center (shared tag) |
+| `hotels` | The four hotel guides and the Sep promo cards |
+| `downtown-quarter` / `downtown-half` | Downtown Guide Fall–Winter ads. They also carry the publisher's own `stp.ddm.cx` code. |
+| `crescent-heights` | CHNA November ad |
+| `code-cards` / `shine-reception` | The Nov sheets |
+| `lockscreen` | Rob's lock screen. `qr-lockscreen.png` is now in the folder and the README. |
+
+**Domain brief (`~/Downloads/MuralQuest_Domain_Brief.md`), still open:**
+- **Apex:** muralquest.app is the Netlify marketing site (Cloudflare DNS, DNS-only). It has store badges, so a typed visit lands somewhere sensible. `/get` is a 404.
+- **Address for future QRs (Rob to decide):** Claude recommends `muralquest.app/get`, a Netlify proxy rewrite to pages.dev, so there is still one source and one analytics stream. The alternative is `get.muralquest.app`.
+- **Hard rule:** never touch, rename, or retire the pages.dev address. Printed QRs (500 rack cards, the annual Downtown Guide ad) depend on it.
+- **Apple attribution:** store links carry `ct=<tag>` but no `pt=` provider token, so App Analytics probably isn't crediting campaigns. Play gets the full UTM referrer.
+
 ## 2026-11-02 — Official wording live, websites + press kit refreshed, Reiver draft
 
 No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
