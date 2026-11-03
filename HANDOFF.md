@@ -6,6 +6,30 @@
 > auto-memory (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
 > Everything below the 2026-10-01 entry is history.
 
+## 2026-11-03 (later) — Cleanup audit, GitHub backup, freeze until after SHINE
+
+**Audit after Rob's file cleanup with another Claude session: nothing Mural Quest was harmed.**
+- **The one move:** the old Feb 2026 prototype ("SHINE St. Pete Mural Guide"), whose git repo had been cloned straight into `~/Downloads`, was MOVED intact to `~/Documents/Quar - Old Mural Quest Docs/Old Mural Quest/`. That folder is read-only and has a README. Its uncommitted Feb 23–24 edits aren't in this repo's history, and nothing current depends on them. `~/Downloads/shine-deploy` (the prototype's files) is untouched.
+- **What was checked and found intact:**
+  - **The repo:** clean.
+  - **Branches:** all unchanged, and `main` is still at de67b8a (Aug 16) locally and on GitHub.
+  - **Keys and signing:** the ASC key and distribution cert, the Android keystore, and every `.mq-*` key.
+  - **Build scripts:** `assets/wip/` and `.mq-held/`.
+  - **Live content.json:** matches local (201 murals). The only difference is #211, the queued approval.
+  - **muralquest.app and pelicandigital.app:** match local. The only differences are Netlify's pretty-URL link rewrites.
+  - **Folders:** the QR and card folder, press folder and Play assets.
+
+**GitHub backup:** pushed `v1.5` (39 commits, Oct 30–Nov 3) to origin. `origin/v1.5` = 1966c0b, level with the Mac. The publish Action is disabled, so the push published nothing. `main` was not touched.
+
+**FREEZE until after SHINE (Rob, Nov 3).** No cleanup, reorganising, file moves, or branch work until the festival is over. Only festival work: capture photos, GPS, bio approvals, and publishes Rob asks for.
+**Post-SHINE major cleanup and organisation**, still to be scoped:
+- **Prototype quarantine folder and `~/Downloads/shine-deploy`:** keep or discard.
+- **Branches:** reconcile the stale `main` with `v1.5`, and drop the old ones (`android-spike`, `shine-book-card`, `pre-capacitor`).
+- **Duplicates:** the press-kit copies in Downloads and `press-assets/` ("MuralQuest-Press-Kit 2").
+- **Old files:** the old card PDFs and the Marketing Plans folder sprawl.
+- **Reprints:** the code and reception cards move to the `muralquest.app/get` QR, with the same tags.
+- **Post-SHINE app update:** the items in memory `project-next-binary-fixes`.
+
 ## 2026-11-03 — QR scan tracking fixed (it had never recorded a phone scan)
 
 **Bug:** from Aug 18 to Nov 3, `get.html` (the QR redirect at `muralquest-app.pages.dev`) never logged a scan from a phone. Its beacon went out as `application/json` cross-origin, which needs a CORS preflight. The page then left for the store 120 ms later, and phones dropped the beacon. Only desktop visits (no redirect) were recorded: 11 `qr_scan` events, all `direct`, and not one tagged.
