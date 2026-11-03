@@ -60,7 +60,6 @@ No app build and no OTA publish today. Rob's call: **no binary before SHINE**.
   - iOS description "Official" opening
   - remove the false "Your location never leaves your device" from the iOS description
   - in-app items from the brief (paywall line, review prompt, festival default view; ask before building the redeem link)
-- The Tuesday 9:00 "check for MOU" reminder is now moot; Rob can delete it.
 
 **Privacy finding:** the app sends the user's coordinates to `routing.openstreetmap.de` for walking distance and the walking path (`js/app.js` ~3180 and ~3378). It also sends anonymous usage events (app open, tab, mural open, filter, search term, book taps, with a random per-install ID) to analytics.muralquest.app.
 - **muralquest.app/privacy** was rewritten to say both, plus Google Play billing. Last updated Nov 2, 2026.
