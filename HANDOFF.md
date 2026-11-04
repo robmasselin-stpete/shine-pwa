@@ -1,16 +1,54 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-02): see the 2026-11-02 entry (store "Official" wording live, websites + press
-> kit refreshed, #224 Reiver draft), then the 2026-11-01 entry for SHINE bio status.** v1.7.6 LIVE on
-> both stores — iOS build 160, Android versionCode 18. Authoritative release state + backlog live in
-> auto-memory (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
+> **CURRENT (2026-11-04): see the 2026-11-04 (evening) entry: SHINE lineup update, Android compass
+> investigation, #226 published.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18.
+> Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
+> `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-04 (evening) — SHINE lineup update, Android compass, #226 published
+
+**#226 published** (OTA 1793802941574, Nov 4) with Rob's approved bio, including the Jungle Prada line. That publish also carried the #119 Mooney fix and the queued #211 approval. `publish-images.py` ignores `--help` and runs a full upload; it did (503 objects, harmless and idempotent). Still open on #226: a title, and the pin (estimated).
+
+**SHINE lineup update (Rob's updated SPAA "Walls & Artists" list, Nov 4).** Published as OTA 1793827123950, 201 murals (commits 8c4cb79, a346e83).
+- **#215 Hiero Veiga: OUT** (Rob confirmed). YAML removed with `git rm` (it's still in history) and dropped from `_index.json`.
+- **#222 Chroma Creature: Harbor Hall → VIV**, 1000 1st Ave N. Takes #215's old VIV pin. Bio approved by Rob.
+- **#214 Jon Murrill: VIV → Skyline Campus**, 2600 Dr. MLK Jr St N. The pin is ESTIMATED (about 30 m south of #223), because the list doesn't say which wall. Set it on site. Bio approved by Rob.
+- **#216 Del Campo:** address 2605 → 2606 Fairfield. The pin wasn't moved, but it was estimated for the odd (north) side of the street, so check it on site.
+- **#223 Osiris Rain:** a queued "revert" (Nov 4, 2:55 pm) was pulled into the YAML, so the live bio is back to the earlier approved version.
+- **Unchanged:** #213, #217, #218, #219 (location), #220, #221, #224, #225 (location).
+- **List typos ignored:** "Chrome Creature" (Chroma), "Holburn" (Holbourn, Rob confirmed Nov 1), and "Ashley Marie" (Alyssa Marie).
+
+**9 bio drafts waiting in the review tool.** Each goes live on its own when approved; no Mac publish is needed. Loader script: scratchpad `lineup_drafts.py`.
+- **#213, #216, #217, #218, #220, #221:** "one of fifteen artists in the festival's twelfth year" becomes "For SHINE 2026, the festival's twelfth year, he/she is painting…". No count, so it can't go stale.
+- **#225:** the same change, plus "one of three walls at Skyline" becomes "the north perimeter wall at Skyline Campus".
+- **#219 Starve:** the same change, plus removing "Hiero Veiga paints at VIV". The collaborator paragraph stays.
+- **#223:** the same change, added to Rob's earlier unapproved draft (his other edits are kept).
+
+**USF Harbor Hall (wall 9): ON HOLD, no record made.** Rob's list credits Jay Giroux, Dominique Labauvie and Greater Public Studio. Rob doesn't know what the piece is.
+- **Conflict:** the St Pete Catalyst lineup (Nov 2) still gives Harbor Hall to Regan McCreight and lists none of the three. No source credits them.
+- Rob needs to confirm his list is newer before #227 is created. Don't create the YAML early: it would ship with the next publish.
+- **Research is done**, with sources, in this session's subagent report:
+  - **Giroux:** founded Greater Public Studio in 2018 and teaches at USFSP. He led SHINE 2023's USFSP street mural, removed in Aug 2025 under the FDOT ban; its title conflicts ("Fluid Structures" vs "Dive Into Discovery").
+  - **Labauvie:** a Strasbourg-born sculptor in Tampa since 1998, who mentored the 2019 Harbor Hall lobby sculpture.
+  - **GPS:** Giroux's studio, in Seminole Heights.
+  - **All three are Tampa-based,** so #214's "only Virginian" still holds.
+
+**Android geo compass: investigating, binary only, waiting for Rob's field retest.** Full notes are in memory `project-android-compass-heading`.
+- Both handlers use `360 - e.alpha` from plain `deviceorientation`. There are three suspected faults, which Rob's retest should tell apart:
+  1. The event may be *relative*, a gyro with an arbitrary zero. That would give an offset that changes each session, up to 180°.
+  2. There is no tilt compensation. It flips about 180° once the phone is tilted past vertical.
+  3. Declination, if we move to `deviceorientationabsolute`.
+- **Diagnostic page, LIVE:** https://mural-tools.pages.dev/tools/compass-test.html (commit 64dbd00). It shows the app's reading, the absolute event, the tilt-corrected value, the `absolute` flags and the GPS course, with Snapshot and Copy log.
+- **Candidate fix (needs a build):** prefer `deviceorientationabsolute` on Android, ignore `absolute === false`, use the W3C tilt-compensated heading, then re-check declination.
+
+**Not ours, left alone:** untracked `scripts/daily_dashboard.py`, `scripts/com.pelicandigital.muralquest.dashboard.plist` and `scripts/DAILY-DASHBOARD-SETUP.md`, from another session.
 
 ## 2026-11-04 — New mural #226 (Matt Kress peacock), #119 fix
 
 **#226, Matt Kress peacock.** Anvil St N near 72nd St N, near Tyrone. Taken from Rob's photo IMG_1265 (Nov 3), which has GPS.
 - **Files:** `data/murals/226-matt-kress-peacock-2026.yaml`, `images/murals/commercial/matt-kress-peacock.jpeg` (EXIF stripped), and its card. All committed (7fe9441).
-- **NOT PUBLISHED.** To put it live: `python3 scripts/publish-images.py --cards-only` (uploads the card + full-res), then `python3 scripts/publish-content.py`.
+- **PUBLISHED Nov 4** (OTA 1793802941574). See the evening entry.
 - **What's unconfirmed:**
   - Untitled; no title was found online.
   - Year 2026 is from Rob.
@@ -23,7 +61,7 @@
   - Sources: WFLA, and the Jungle Country Club history project blog. Their accounts of how the birds first arrived differ, so that's left out of the display bio.
 - **Approving it in the tool** queues the change. There's no live entry yet, so the live write is skipped. The next publish pulls the change into the YAML before building.
 
-**#119 fix:** its field note said "Beechcraft Bonanza"; corrected to the 1967 Mooney M20F (commit 89db57d). Not yet published; it goes with the next publish.
+**#119 fix:** its field note said "Beechcraft Bonanza"; corrected to the 1967 Mooney M20F (commit 89db57d). Published Nov 4 with #226.
 
 **The bio-review bundle** was re-uploaded (202 murals), so the tool can see #226.
 
