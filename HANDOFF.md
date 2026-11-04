@@ -6,6 +6,27 @@
 > auto-memory (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
 > Everything below the 2026-10-01 entry is history.
 
+## 2026-11-04 — New mural #226 (Matt Kress peacock), #119 fix
+
+**#226, Matt Kress peacock.** Anvil St N near 72nd St N, near Tyrone. Taken from Rob's photo IMG_1265 (Nov 3), which has GPS.
+- **Files:** `data/murals/226-matt-kress-peacock-2026.yaml`, `images/murals/commercial/matt-kress-peacock.jpeg` (EXIF stripped), and its card. All committed (7fe9441).
+- **NOT PUBLISHED.** To put it live: `python3 scripts/publish-images.py --cards-only` (uploads the card + full-res), then `python3 scripts/publish-content.py`.
+- **What's unconfirmed:**
+  - Untitled; no title was found online.
+  - Year 2026 is from Rob.
+  - The pin is estimated 30 m from the camera along the 255° bearing, and the address is approximate. Confirm both in the route editor.
+- **Instagram:** @mattkressart was not checked by Claude (automated access blocked). Rob reads it.
+- **Bio:** the artist paragraphs are shared with #119, with a new one-sentence hook.
+- **Review-tool draft (Nov 4):** adds the Jungle Prada peafowl, which Kress points out on Instagram (per Rob).
+  - Display bio: since the 1950s, about fifty at a 2019 count, about a mile southwest of the wall.
+  - Search bio: also the 1953 pair on Park Street.
+  - Sources: WFLA, and the Jungle Country Club history project blog. Their accounts of how the birds first arrived differ, so that's left out of the display bio.
+- **Approving it in the tool** queues the change. There's no live entry yet, so the live write is skipped. The next publish pulls the change into the YAML before building.
+
+**#119 fix:** its field note said "Beechcraft Bonanza"; corrected to the 1967 Mooney M20F (commit 89db57d). Not yet published; it goes with the next publish.
+
+**The bio-review bundle** was re-uploaded (202 murals), so the tool can see #226.
+
 ## Standing rule: push after every commit (Rob, Nov 3)
 
 After committing in `~/shine-pwa`, push the working branch (`git push origin v1.5`) without asking. That keeps GitHub level with the Mac as the off-Mac backup. The publish Action is disabled, so a push never changes the live app.
