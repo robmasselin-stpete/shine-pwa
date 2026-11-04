@@ -4,15 +4,15 @@
 id: 222
 artist: "Chroma Creature"
 year: 2026
-lat: 27.76023   # ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack
-lng: -82.637055
-address: "1000 3rd St S"
+lat: 27.7719094   # VIV: reuses #215 Hiero Veiga's dropped pin (~30 ft from the VIV wall); Hiero is out of SHINE 2026
+lng: -82.6483233
+address: "1000 1st Ave N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
 
 # ── Optional ──
 title: "Title TBA"
-building: "USF Harbor Hall"
+building: "VIV"
 instagram: "chromacreature"
 basedIn: "St. Petersburg, FL"
 
@@ -113,9 +113,11 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "4 November 2026 — Wall moved USF Harbor Hall → VIV, 1000 1st Ave N, per the updated SPAA SHINE Walls & Artists list (Rob). Building, address and pin changed (pin from #215's VIV drop). Note: St Pete Catalyst lineup (Nov 2) still had her at Harbor Hall. Bio change approved in the review tool the same day."
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New opening: walls, canvases and people; murals, face/body painting and special-effects makeup, all self-taught. New paragraph from her SHINE record: ArtsXchange studio artist, the feminine and nature, acrylic/gouache/airbrush/spray, art as paying attention; searchBio: Same opening and paragraph, plus multidisciplinary/lifelong and body art + SFX makeup. [review:20261101175307-28006159]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #11 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated version given by Rob 4 Nov 2026"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob) — wall assignment"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "https://creativepinellas.org/artist/regan-mccreight-chroma-creature/"
