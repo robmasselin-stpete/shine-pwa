@@ -50,8 +50,8 @@ artistBio: |
   side, working with students ten at a time. In September 2026 about 70
   volunteers helped him finish "The River's Radiance" in Danville.
 
-  For SHINE 2026 he is one of fifteen artists in the festival's twelfth year,
-  and the lineup's only Virginian. He is painting one of two walls at VIV.
+  For SHINE 2026, the festival's twelfth year, he is the lineup's only
+  Virginian, painting a wall at Skyline Campus.
 
 searchBio: |
   Jon Murrill drew Southwest Virginians in charcoal for more than ten years,
@@ -131,8 +131,8 @@ searchBio: |
   believe that the role of the artist is to be an advocate for those
   individuals or stories in society that need to be given a voice," he says.
 
-  For SHINE 2026 he is one of fifteen artists in the festival's twelfth year,
-  and the lineup's only Virginian. He is painting one of two walls at VIV.
+  For SHINE 2026, the festival's twelfth year, he is the lineup's only
+  Virginian, painting a wall at Skyline Campus.
 
 searchMuralDescription: "Painting during SHINE, Nov 6–15."
 muralInspiration: "Painting during SHINE, Nov 6–15."
@@ -154,11 +154,13 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Wall moved: VIV → Skyline Campus, 2600 Dr. MLK Jr St N (Nov 4 lineup); searchBio: Wall moved: VIV → Skyline Campus, 2600 Dr. MLK Jr St N (Nov 4 lineup). [review:20261104211432-4e794395]"
   - "4 November 2026 — Wall moved VIV → Skyline Campus, 2600 Dr. MLK Jr St N, per the updated SPAA SHINE Walls & Artists list (Rob). Building, address and pin changed; pin ESTIMATED (wall not specified). Bio change approved in the review tool the same day."
   - "2 November 2026 — Bio review tool, approved by Rob: artistBio. Changes — artistBio: Rewritten from his own site: opens on his decade of charcoal portraits of Southwest Virginians; adds his mural list with towns and sizes, the Maroon Village student sessions, and that he works out of Roanoke; searchBio: Same rewrite, plus his four themes, his 2024–25 walls by town/year/size, how he runs community walls, and his one-large-mural-a-month schedule; Lady Appalachia date now gives both Kellard (Apr 2024) and his site (2025); pronouns: \"\" → \"he/him\"; furtherWork: Added his mural map; artistBio: Opening cut to two sentences; the exhibitions line moved to the education paragraph and the \"true, not flattering\" idea to the Lady Appalachia paragraph (same in the search bio). [review:20261102203705-2344c43c]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: Rewritten from his own site: opens on his decade of charcoal portraits of Southwest Virginians; adds his mural list with towns and sizes, the Maroon Village student sessions, and that he works out of Roanoke; searchBio: Same rewrite, plus his four themes, his 2024–25 walls by town/year/size, how he runs community walls, and his one-large-mural-a-month schedule; Lady Appalachia date now gives both Kellard (Apr 2024) and his site (2025); pronouns: \"\" → \"he/him\"; furtherWork: Added his mural map; artistBio: Opening cut to two sentences; the exhibitions line moved to the education paragraph and the \"true, not flattering\" idea to the Lady Appalachia paragraph (same in the search bio). [review:20261101165029-03387673]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #2 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "SPAA SHINE Walls & Artists list, updated version given by Rob 4 Nov 2026"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob) — wall assignment"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
