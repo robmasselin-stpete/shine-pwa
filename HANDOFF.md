@@ -6,6 +6,13 @@
 > auto-memory (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
 > Everything below the 2026-10-01 entry is history.
 
+## Standing rule: push after every commit (Rob, Nov 3)
+
+After committing in `~/shine-pwa`, push the working branch (`git push origin v1.5`) without asking. That keeps GitHub level with the Mac as the off-Mac backup. The publish Action is disabled, so a push never changes the live app.
+- Working branch only. Never touch `main` or other branches without asking.
+- Publishing (OTA, Pages and Netlify deploys) still needs Rob's specific ask.
+- This is saved in memory as `feedback-push-after-commit`.
+
 ## 2026-11-03 (evening) — Channel data report
 
 **Report:** written for Rob, 5 pages, as a Markdown source and a PDF:
