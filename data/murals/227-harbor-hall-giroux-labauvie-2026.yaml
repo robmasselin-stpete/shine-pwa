@@ -1,0 +1,56 @@
+# SHINE 2026 — USF Harbor Hall (SPAA "SHINE Walls & Artists" list, updated Nov 4). Placeholder until painted.
+
+# ── Required ──
+id: 227
+artist: "Jay Giroux, Dominique Labauvie & Greater Public Studio"
+year: 2026
+lat: 27.76023   # ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack; was #222's pin before it moved to VIV
+lng: -82.637055
+address: "1000 3rd St S"
+category: shine
+img: "images/murals/2026/shine2026-coming-soon.jpeg"
+
+# ── Optional ──
+title: "Title TBA"
+building: "USF Harbor Hall"
+instagram: "greaterpublicstudio"
+basedIn: "Tampa, FL"
+
+artistBio: |
+  Jay Giroux and his Tampa design firm, Greater Public Studio, team up with
+  the sculptor Dominique Labauvie at USF St. Petersburg's Harbor Hall for
+  SHINE 2026.
+
+muralInspiration: "Painting during SHINE, Nov 6–15."
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "greaterpublicstudio.com"
+    url: "https://greaterpublicstudio.com"
+  - name: "jaygiroux.com"
+    url: "https://jaygiroux.com"
+
+impressions: []
+
+# ── Provenance (not exported to data.js) ──
+source: manual
+revisionLog:
+  - "4 November 2026 — New placeholder for the SHINE 2026 USF Harbor Hall wall. Artists from the updated SPAA SHINE Walls & Artists list, from the SPAA director via Rob (Nov 4). It supersedes the St Pete Catalyst lineup (Nov 2), which still gave Harbor Hall to Regan McCreight (#222, now at VIV). The piece itself is unknown (Rob). Title TBA. Pin ESTIMATED (#222's old Harbor Hall pin). Full bio drafted in the review tool."
+sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated version from the SPAA director via Rob, 4 Nov 2026 (wall 9: USF Harbor Hall, 1000 3rd St S)"
+  - "https://voyagetampa.com/interview/meet-jay-giroux-of-seminole-heights-temple-terrace-area/"
+  - "https://creativepinellas.org/magazine/new-acquaintance/"
+  - "https://jaygiroux.com"
+  - "https://greaterpublicstudio.com"
+  - "https://stpeteartsalliance.org/greater-public-studio-2023"
+  - "https://stpetersburg.usf.edu/news/2023/new-street-mural-adds-color-vibrancy-to-campus.aspx"
+  - "https://stpetersburg.usf.edu/news/2024/marine-mural-adds-color-vibrancy-to-parking-garage.aspx"
+  - "https://crowsneststpete.com/2025/08/31/students-react-usf-st-petersburg-among-first-of-st-pete-murals-to-be-removed/"
+  - "https://www.wusf.org/transportation/2023-04-25/a-new-intersection-mural-in-downtown-tampa-is-helping-guide-people-along-the-riverwalk"
+  - "https://www.choosewestshore.com/place/avion-park-mural/"
+  - "https://mergeculture.com/2023/09/17/15-most-influential-people-in-the-tampa-art-scene-for-the-last-two-decades/"
+  - "https://www.cltampa.com/news/from-the-seine-to-the-hillsborough-12232500/"
+  - "https://www.aquaartmiami.com/blogdetails/35"
+  - "https://tampamuseum.org/?p=18132"
+  - "https://crowsneststpete.com/2019/09/09/students-sculpture-finds-home-in-harbor-hall/"
