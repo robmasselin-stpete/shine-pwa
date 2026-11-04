@@ -1,0 +1,120 @@
+# Matt Kress — Peacock (Anvil St N, near Tyrone)
+
+# ── Required ──
+id: 226
+artist: Matt Kress
+year: 2026
+lat: 27.797543   # Rob's photo GPS (IMG_1265, 3 Nov 2026), moved 30 m toward the wall along the camera bearing (255°) — confirm in the route editor
+lng: -82.738912
+address: "Anvil St N near 72nd St N"
+category: commercial
+img: "images/murals/commercial/matt-kress-peacock.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: mattkressart
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Air traffic controllers call his airplane 'Skittles'"
+  - "Aviation + art — Mooney Anomaly project"
+
+artistBio: |
+  A peacock turns its head toward a setting sun while its train sweeps the
+  length of the wall behind it, dozens of eyes deep.
+
+  Matt Kress grew up in Minerva, Ohio, studied painting and graphic design at
+  Kent State, then spent nearly sixteen years in a desk job because he was
+  afraid art wasn't a real career. In 2014 he visited St. Petersburg on a
+  business trip, found a town alive with murals, and moved. His friend Christian
+  McAlhaney of the band Anberlin told him: "I love the art you're doing, but
+  don't forget you're nothing right now. Get your work out there and do some
+  murals."
+
+  He applied to SHINE 2018 and got his first mural — a pirate ship sponsored by
+  the Tampa Bay Buccaneers. It paid a thousand dollars for two weeks of work.
+  After that the phone started ringing. He has since painted over thirty murals
+  including the seventy-foot sea turtle at Channel Club in Tampa — the tallest
+  mural in the city at the time. Air traffic controllers call the 1967 Mooney he
+  spray-painted in forty-five colors "Skittles."
+
+  This wall went up in 2026 on Anvil Street North, near Tyrone. Monstera,
+  palms and white hibiscus crowd the left end; the peacock and its feathers take
+  everything else. His signature, @mattkressart, sits at the lower right.
+
+searchBio: |
+  A peacock turns its head toward a setting sun while its train sweeps the
+  length of the wall behind it, dozens of eyes deep.
+
+  Matt Kress was born and raised in Minerva, Ohio (1994 Minerva High School
+  graduate). He studied art and graphic design at Kent State University,
+  originally enrolling as an architecture student before switching to painting.
+  Inspired by Klimt, Chuck Close, Dali, Picasso, Warhol, and Mondrian. He spent
+  nearly sixteen years in business (ten years at Fastenal in sales, plus process
+  engineering) before moving to St. Petersburg in 2014 and going full-time as an
+  artist at age 43 in 2018.
+
+  His friend Christian McAlhaney (lead guitarist of Anberlin) encouraged him to
+  pursue murals and referenced the SHINE festival. His first mural was "The
+  Voyage" for SHINE 2018 — a 25-foot pirate ship sponsored by the Tampa Bay
+  Buccaneers at 128 20th St S. It paid $1,000 for two weeks. He has since
+  painted 30-plus murals nationwide including the 70-foot sea turtle "Gaspar's
+  Direction" at Channel Club Apartments in Tampa (tallest mural in Tampa at the
+  time, 2022), a Roman goddess Minerva mural in his hometown, and "PiCOWso" — a
+  Picasso-inspired 14-foot fiberglass cow for Minerva Dairy (possibly the
+  world's largest painted art cow).
+
+  "The Mooney Anomaly" is a 1967 Mooney M20F airplane (N3205F) owned by pilot
+  Liam Hawkins, based at Albert Whitted Airport in downtown St. Pete. Kress
+  spray-painted it in 40-45 Montana Colors graffiti cans with an asymmetrical
+  design — no two parts alike. It won Best Unique Paint Scheme at Sun 'n Fun
+  Aerospace Expo in Lakeland and appeared at EAA AirVenture Oshkosh (world's
+  largest airshow, 677,000 attendees). Air traffic controllers nicknamed it
+  "Skittles." Featured in AOPA, Flying Magazine, General Aviation News, and
+  Axios Tampa Bay.
+
+  He exhibits at Red Dot Miami (Art Basel) and Art Santa Fe. Original paintings
+  range $5,000-$20,000. Revenue is approximately 75% murals, 25% originals. He
+  cycles 100 miles weekly on the Pinellas Trail and mentors young artists in
+  Tampa Bay. His motto: "The eye is the lamp of the body."
+
+  This peacock wall went up in 2026 on Anvil Street North near 72nd Street
+  North, near Tyrone, facing a parking lot. His other St. Pete wall in Mural
+  Quest is the dogs-and-cats mural at the animal hospital on 1st Ave N.
+
+  Instagram: @mattkressart. Website: mattkress.art.
+
+searchMuralDescription: |
+  A long, low warehouse wall facing a parking lot, painted end to end. A
+  peacock in teal, blue and green stands just left of center, head turned left
+  toward a pale sun setting over water, with pink clouds and a yellow-and-pink
+  sky behind it. Its train fans out across the whole right two-thirds of the
+  wall: dozens of eye feathers in purple, teal, orange and lime, outlined in
+  black. The left end is a dense tropical jungle of monstera leaves, palms and
+  spiky leaves in hot pink, purple, yellow and blue, with two white hibiscus
+  flowers in front of the bird. Flat, graphic shapes with hard edges. Signed
+  "@mattkressart" in a white circle at the lower right.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE 2018 festival artist; Best Unique Paint Scheme at Sun 'n Fun (Mooney Anomaly); tallest mural in Tampa (Channel Club, 2022)"
+
+furtherWork:
+  - name: "mattkress.art"
+    url: "https://mattkress.art"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+sourceNotes:
+  - "Rob's field photo IMG_1265, 3 Nov 2026, with GPS 27.797611, -82.738617 (camera position, facing 255°); Rob: new Matt Kress mural near Tyrone"
+  - "Address from OpenStreetMap reverse geocoding of the photo position (2766 Anvil St N); the building's own address is unconfirmed"
+  - "Artist facts reused from #119 (Matt Kress, animal hospital) and its sources:"
+  - "https://mattkress.art/"
+  - "https://www.aopa.org/news-and-media/all-news/2023/february/22/the-mooney-anomaly"
+  - "https://artbusinessnews.com/2024/07/meet-the-artist-matt-kress-the-kress-collection-gallery/"
+  - "https://blog.artstorefronts.com/artist-matt-kress/"
+  - "https://www.axios.com/local/tampa-bay/2024/06/25/mooney-anomaly-plane-mural-st-petersburg"
+  - "Web search 4 Nov 2026 found nothing published on this wall (title, client, date); Instagram not checked by Claude (automated access blocked)"
+revisionLog:
+  - "4 November 2026 — New record from Rob's photo and GPS. Untitled (no verified title). Year 2026 per Rob ('new mural'). Pin estimated 30 m from the camera toward the wall; address approximate. Artist paragraphs shared with #119; new two-sentence hook. Not yet published."
