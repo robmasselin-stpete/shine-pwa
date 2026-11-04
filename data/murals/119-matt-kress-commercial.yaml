@@ -19,7 +19,7 @@ basedIn: "St. Petersburg, FL"
 
 fieldNotes:
   - "Air traffic controllers call his airplane 'Skittles'"
-  - "Spray-paints a Beechcraft Bonanza in geometric color"
+  - "Spray-painted a 1967 Mooney M20F in forty-five colors"
   - "Aviation + art — Mooney Anomaly project"
 
 artistBio: |
@@ -106,6 +106,7 @@ sourceNotes:
   - "https://blog.artstorefronts.com/artist-matt-kress/"
   - "https://www.axios.com/local/tampa-bay/2024/06/25/mooney-anomaly-plane-mural-st-petersburg"
 revisionLog:
+  - "4 November 2026 — Field note corrected: the plane is a 1967 Mooney M20F (per the bio and AOPA), not a Beechcraft Bonanza. Rob approved the fix."
   - "27 August 2026 — Fact-check fleet: 1st St N and MLK St N are parallel and never meet; the wall is at 913 1st Ave N and the pin already matched"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "16 April 2026 — Full research, bio rewrite with Mooney Anomaly hook, searchBio added"
