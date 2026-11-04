@@ -48,8 +48,8 @@ artistBio: |
   painted "Head in the Clouds," which she calls "an abstract tribute to
   Sarasota in how I was experiencing it right then and there."
 
-  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
-  painting a wall at Jeeves Law.
+  For SHINE 2026, the festival's twelfth year, she is painting a wall at
+  Jeeves Law.
 
 searchBio: |
   When vandals covered her "Say Their Names" mural in Louisville with blue
@@ -108,8 +108,8 @@ searchBio: |
   abstract tribute to Sarasota in how I was experiencing it right then and
   there."
 
-  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
-  painting a wall at Jeeves Law.
+  For SHINE 2026, the festival's twelfth year, she is painting a wall at
+  Jeeves Law.
 
 searchMuralDescription: "Painting during SHINE, Nov 6–15."
 muralInspiration: "Painting during SHINE, Nov 6–15."
@@ -127,10 +127,12 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212409-15b5ac25]"
   - "1 November 2026 — Bio review tool, approved by Rob: artist, basedIn, pronouns, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: Kept your opening. New middle: photo BFA → painting → murals, her 2017 \"Neon Dreams\" solo show in St. Pete, and a road map of walls (Art Basel/Wynwood 2018 and 2020, Desert Hearts in San Diego, New Haven, Encore Beach Club in Las Vegas, the 80-foot Louisville wall), her Denver galleries, and her 14,000 sq ft Tampa-area commercial job; searchBio: Added the 14,000 sq ft commercial job and her animation/NFT work; \"came to walls by way of a camera\"; pronouns: \"\" → \"she/her\". [review:20261101173428-bd8d9a39]"
   - "1 November 2026 — File renamed 220-whitney-holburn-2026.yaml → 220-whitney-holbourn-2026.yaml (+ _index.json) at Rob's request: her name is spelled Holbourn (her site, the SHINE artist record and press agree; \"Holburn\" was a misspelling in the SPAA list). The artist field changes with her bio approval in the bio-review tool."
   - "2026-10-24 — Placeholder for SHINE 2026 wall #8 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): grid-interpolated from 2010/2060/2125 1st Ave S anchors. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob)"
   - "shineonmurals.com SHINE 2026 artist record"

@@ -45,8 +45,8 @@ artistBio: |
   paint is "a conduit for touch in a digital world." Her MFA thesis came out
   of three years living apart from her husband. She painted the parts of him
   she missed touching: his brow, a freckled shoulder, the crook of his arm.
-  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
-  painting a wall at The Factory.
+  For SHINE 2026, the festival's twelfth year, she is painting a wall at The
+  Factory.
 
 searchBio: |
   A fundamentalist group's pamphlet warned women about "eye traps": jangling
@@ -120,9 +120,8 @@ searchBio: |
   podcasts "Colour Me Happy" and "The Artist Academy Podcast." She makes a
   point of arguing against the starving-artist myth.
 
-  For SHINE 2026 (November 6–15) she is one of fifteen artists in the
-  festival's twelfth year, painting a wall at The Factory, 2606 Fairfield
-  Avenue South.
+  For SHINE 2026 (November 6–15), the festival's twelfth year, she is painting
+  a wall at The Factory, 2606 Fairfield Avenue South.
 
   Instagram: @ashley.cassens. Website: ashleycassens.com.
 
@@ -144,10 +143,12 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212312-54508d1f]"
   - "2 November 2026 — Bio review tool, approved by Rob: pronouns. Changes — pronouns: \"\" → \"she/her\". [review:20261102203959-6ac46c66]"
   - "2 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. [review:20261102202343-5df6b7b7]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #5 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob) — wall assignment"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "https://www.ashleycassens.com/about"

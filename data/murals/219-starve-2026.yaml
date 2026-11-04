@@ -48,9 +48,8 @@ artistBio: |
   The crowd voted for the apple.
 
   Starve was on the 2019 Tampa Bay Fresh Fest roster and the 2024 Secret Walls
-  bill at the Florida State Fair. For SHINE 2026 he is one of fifteen artists
-  in the festival's twelfth year, painting a wall at 939 Dr. MLK Jr St S, the
-  same address as Esh. Hiero Veiga paints at VIV.
+  bill at the Florida State Fair. For SHINE 2026, the festival's twelfth year,
+  he is painting a wall at 939 Dr. MLK Jr St S, the same address as Esh.
 
 searchBio: |
   Eduardo "Eddie" Rivera wrote graffiti first and picked up tattooing second,
@@ -119,10 +118,8 @@ searchBio: |
   February 2024 he was among the Tampa Bay locals in the Secret Walls
   competition at the Florida State Fair.
 
-  For SHINE 2026 he is one of fifteen artists in the festival's twelfth year,
-  painting a wall at 939 Dr. MLK Jr St S, the same address as Eric "Esh"
-  Hornsby. Hiero Veiga, by his account his most frequent collaborator, paints
-  a wall at VIV.
+  For SHINE 2026, the festival's twelfth year, he is painting a wall at 939
+  Dr. MLK Jr St S, the same address as Eric "Esh" Hornsby.
 
 searchMuralDescription: |
   Painting during SHINE, Nov 6–15. Also known as Eduardo "Eddie" Rivera.
@@ -141,10 +138,12 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Removed the Hiero Veiga at VIV line: he is out of SHINE 2026 (Rob, Nov 4); artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: Removed the Hiero Veiga at VIV line: he is out of SHINE 2026 (Rob, Nov 4); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212533-461c07c2]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn. Changes — artistBio: New two-sentence opening: graffiti first, tattooing second, and the crew is the best part. The gore point moved down and softened; added the Esh 2018 link and the Hiero quote in a crew paragraph; searchBio: Same new opening; the festival-gore view moved to its own later paragraph; pronouns: \"\" → \"he/him\"; both bios now use he/him instead of repeating \"Rivera\". [review:20261101172537-66e53f81]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening: graffiti first, tattooing second, and the crew is the best part. The gore point moved down and softened; added the Esh 2018 link and the Hiero quote in a crew paragraph; searchBio: Same new opening; the festival-gore view moved to its own later paragraph; pronouns: \"\" → \"he/him\"; both bios now use he/him instead of repeating \"Rivera\". [review:20261101172301-fcdeccbe]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #7 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob)"
   - "shineonmurals.com SHINE 2026 artist record"

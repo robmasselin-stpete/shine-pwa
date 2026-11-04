@@ -44,8 +44,8 @@ artistBio: |
   reaches "Quetzalcóatl" at a co-op housing community in Austin. The artist
   statement fits on a T-shirt: "I create to remember."
 
-  For SHINE 2026 Jacksun is one of fifteen artists in the festival's twelfth
-  year, painting a wall at Duncan McClellan Studio on Emerson Avenue South.
+  For SHINE 2026, the festival's twelfth year, Jacksun is painting a wall at
+  Duncan McClellan Studio on Emerson Avenue South.
 
 searchBio: |
   At fifteen, Jacksun picked up a pencil to work through what he couldn't put
@@ -125,8 +125,8 @@ searchBio: |
   grants for larger projects. The website statement is shorter: "I create to
   remember."
 
-  For SHINE 2026 Jacksun is one of fifteen artists in the festival's twelfth
-  year, painting a wall at Duncan McClellan Studio on Emerson Avenue South.
+  For SHINE 2026, the festival's twelfth year, Jacksun is painting a wall at
+  Duncan McClellan Studio on Emerson Avenue South.
 
 searchMuralDescription: |
   Painting during SHINE, Nov 6–15. Also known as Jackson Benavidez.
@@ -147,9 +147,12 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212227-aafc4beb]"
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212203-717ea474]"
   - "2 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening (a pencil at fifteen to work through feelings; no teacher, scaling a sketchbook drawing five or ten times up). The sun-titles line moved to the end of paragraph two; the duplicated \"fifteen / self-taught / five or ten times\" sentences trimmed from paragraph two; searchBio: Same opening added before the sun-titles paragraph. [review:20261102204639-929e7a07]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #1 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): across Emerson Ave S from #93 (2343 Emerson, 27.765839,-82.665414). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob)"
   - "shineonmurals.com SHINE 2026 artist record"

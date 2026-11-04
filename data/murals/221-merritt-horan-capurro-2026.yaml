@@ -55,9 +55,9 @@ artistBio: |
   Shining," a one-night show of Pinellas artists at its hurricane relief
   fundraiser. By her own count, 15 of the 24 paintings sold.
 
-  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
-  painting a wall at PARC on Tyrone Boulevard, a nonprofit that has served
-  people with intellectual and developmental disabilities since 1953.
+  For SHINE 2026, the festival's twelfth year, she is painting a wall at PARC
+  on Tyrone Boulevard, a nonprofit that has served people with intellectual
+  and developmental disabilities since 1953.
 
 searchBio: |
   Merritt Horan Capurro paints walls several stories tall. She also built a
@@ -159,9 +159,9 @@ searchBio: |
   artworks. "I really like to take the universe's nod and say, 'Yep,'" she
   told Creative Loafing.
 
-  For SHINE 2026 she is one of fifteen artists in the festival's twelfth year,
-  painting a wall at PARC on Tyrone Boulevard, a nonprofit that has served
-  people with intellectual and developmental disabilities since 1953.
+  For SHINE 2026, the festival's twelfth year, she is painting a wall at PARC
+  on Tyrone Boulevard, a nonprofit that has served people with intellectual
+  and developmental disabilities since 1953.
 
 searchMuralDescription: "Painting during SHINE, Nov 6–15."
 muralInspiration: "Painting during SHINE, Nov 6–15."
@@ -181,10 +181,12 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212430-7193dd20]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening on walls several stories tall vs. her one-twelfth-scale St. Pete Mini Gallery (from her SHINE record); grant line + her view of art follows; the Bellwether story moves to paragraph 3; \"about 20 years\" as a textile designer; searchBio: Same opening and Mini Gallery paragraph. [review:20261101174443-ad7d6905]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening on walls several stories tall vs. her one-twelfth-scale St. Pete Mini Gallery (from her SHINE record); grant line + her view of art follows; the Bellwether story moves to paragraph 3; \"about 20 years\" as a textile designer; searchBio: Same opening and Mini Gallery paragraph. [review:20261101174306-d57f9abc]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #9 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ROUGH ESTIMATE (no geocoder): NW of Stonehenge Park (2993 Tyrone Blvd N, 27.79911,-82.7374). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob)"
   - "shineonmurals.com SHINE 2026 artist record"
