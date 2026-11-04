@@ -18,20 +18,23 @@ basedIn: "St. Petersburg, FL"
 
 artistBio: |
   A bright yellow Stearman biplane punches straight out of the hangar wall
-  it's painted on — wings, struts, bracing wires, and a propeller blurred
-  into a translucent disc, all scaled up to read from a moving car on First
-  Street.
+  it's painted on — wings, struts, bracing wires, and a propeller blurred into
+  a translucent disc, all scaled up to read from a moving car on First Street.
 
   Alyssa Marie is a fine artist from Colorado who moved to St. Petersburg in
   2017 and opened Alyssa Marie Gallery on Beach Drive NE the next year (it
-  closed in January 2020). She also runs The Happy Mural Project, the paint-by-numbers community sunflower walls she started in 2020, which have been part of SHINE in 2020, 2022 and 2023.
+  closed in January 2020). She also runs The Happy Mural Project, the
+  sunflower and paint-by-numbers community walls she started in 2020, which
+  have been part of SHINE in 2020, 2022 and 2023; she returns for SHINE 2026.
 
   Her solo work runs to local and nature scenes — water, birds, the Florida
-  coast — in oil and on walls. The biplane is the outlier: an aircraft instead
-  of wildlife, and it earns the exception.
+  coast — in oil and on walls. The biplane trades her usual wildlife for an
+  aircraft.
 
   Friends of Albert Whitted Airport, the City of St. Petersburg, and the St.
-  Petersburg Arts Alliance organized it, funded by the William and Katherine McMannis charitable fund, and unveiled it, still in progress, in January 2024. A second
+  Petersburg Arts Alliance organized it, funded by the William and Katherine
+  McMannis charitable fund, and unveiled it, still in progress, in January
+  2024. Friends of Albert Whitted called it a paint-by-numbers mural. A second
   airport mural by Brian McAllister went up alongside it. The plane bursting
   from its own hangar turns the building into a picture of what's parked
   inside.
@@ -87,11 +90,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "2 November 2026 — Bio review tool, approved by Rob: artistBio. Changes — artistBio: Removed \"the outlier … earns the exception\" (her portfolio has other non-wildlife walls); \"sunflower and paint-by-numbers\" walls (the first 2020 wall wasn't paint-by-numbers); notes the biplane is itself paint-by-numbers; adds SHINE 2026. [review:20261102205948-df2be103]"
   - "2 November 2026 — Artist stays 'Alyssa Marie' (Rob: the biplane is her own work, not a Happy Mural Project wall). Briefly set to 'Alyssa Marie and the Happy Mural Project' with her other records the same day, then reverted"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: removed 'husband'/'half of' framing (2023–2026 sources credit her as founder/lead); 'commissioned in 2024' had no source — FOAWA's 2 Jan 2024 post says the murals were organized and supported by the three bodies, weather delayed them and they were 'well on their way to completion' at the January unveiling, so the 28 Aug 'already painted' note was wrong; year 2024 stands"
   - "28 August 2026 — Fact-check fleet: it was already painted at the 1 January 2024 unveiling, so it cannot have been commissioned in 2024"
   - "2026-06-16 — New mural added by Rob: Alyssa Marie yellow Stearman biplane on the Albert Whitted Airport hangar (First St side). Photo from Rob (IMG_7213.jpeg, 2026-05-28). Forwarded photo's EXIF GPS (27.78708, -82.64674) is ~1.5mi N of the airport — bogus, discarded. Rob set final GPS via route-editor: 27.764316, -82.633739 (Albert Whitted hangar, First St S side). Year 2024 (unveiled Jan 2024). Category commercial (commissioned public art via FOAWA/City/SPAA — not a SHINE festival mural). Bio researched fresh; not copied from any site."
 sourceNotes:
+  - "Friends of Albert Whitted Airport — biplane mural page"
+  - "https://www.thehappymuralproject.com (mural portfolio)"
   - "https://www.shineonmurals.com/events"
   - "https://www.thehappymuralproject.com"
   - "Photo by Rob (forwarded), IMG_7213.jpeg dated 2026-05-28; EXIF GPS unreliable (re-stamped on forward) — GPS to be set manually"

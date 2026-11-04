@@ -27,21 +27,24 @@ artistBio: |
   Matt Kress grew up in Minerva, Ohio, studied painting and graphic design at
   Kent State, then spent nearly sixteen years in a desk job because he was
   afraid art wasn't a real career. In 2014 he visited St. Petersburg on a
-  business trip, found a town alive with murals, and moved. His friend Christian
-  McAlhaney of the band Anberlin told him: "I love the art you're doing, but
-  don't forget you're nothing right now. Get your work out there and do some
-  murals."
+  business trip, found a town alive with murals, and moved. His friend
+  Christian McAlhaney of the band Anberlin told him: "I love the art you're
+  doing, but don't forget you're nothing right now. Get your work out there
+  and do some murals."
 
-  He applied to SHINE 2018 and got his first mural — a pirate ship sponsored by
-  the Tampa Bay Buccaneers. It paid a thousand dollars for two weeks of work.
-  After that the phone started ringing. He has since painted over thirty murals
-  including the seventy-foot sea turtle at Channel Club in Tampa — the tallest
-  mural in the city at the time. Air traffic controllers call the 1967 Mooney he
-  spray-painted in forty-five colors "Skittles."
+  He applied to SHINE 2018 and got his first mural — a pirate ship sponsored
+  by the Tampa Bay Buccaneers. It paid a thousand dollars for two weeks of
+  work. After that the phone started ringing. He has since painted over thirty
+  murals including the seventy-foot sea turtle at Channel Club in Tampa — the
+  tallest mural in the city at the time. Air traffic controllers call the 1967
+  Mooney he spray-painted in forty-five colors "Skittles."
 
-  This wall went up in 2026 on Anvil Street North, near Tyrone. Monstera,
-  palms and white hibiscus crowd the left end; the peacock and its feathers take
-  everything else. His signature, @mattkressart, sits at the lower right.
+  This wall went up in 2026 on Anvil Street North, near Tyrone. The bird has
+  local relatives, a point Kress makes himself: peafowl have roamed the Jungle
+  Prada neighborhood, about a mile southwest, since the 1950s, and a 2019
+  neighborhood count put them at about fifty. Monstera, palms and white
+  hibiscus crowd the left end; the peacock and its feathers take everything
+  else. His signature, @mattkressart, sits at the lower right.
 
 searchBio: |
   A peacock turns its head toward a setting sun while its train sweeps the
@@ -49,21 +52,21 @@ searchBio: |
 
   Matt Kress was born and raised in Minerva, Ohio (1994 Minerva High School
   graduate). He studied art and graphic design at Kent State University,
-  originally enrolling as an architecture student before switching to painting.
-  Inspired by Klimt, Chuck Close, Dali, Picasso, Warhol, and Mondrian. He spent
-  nearly sixteen years in business (ten years at Fastenal in sales, plus process
-  engineering) before moving to St. Petersburg in 2014 and going full-time as an
-  artist at age 43 in 2018.
+  originally enrolling as an architecture student before switching to
+  painting. Inspired by Klimt, Chuck Close, Dali, Picasso, Warhol, and
+  Mondrian. He spent nearly sixteen years in business (ten years at Fastenal
+  in sales, plus process engineering) before moving to St. Petersburg in 2014
+  and going full-time as an artist at age 43 in 2018.
 
-  His friend Christian McAlhaney (lead guitarist of Anberlin) encouraged him to
-  pursue murals and referenced the SHINE festival. His first mural was "The
+  His friend Christian McAlhaney (lead guitarist of Anberlin) encouraged him
+  to pursue murals and referenced the SHINE festival. His first mural was "The
   Voyage" for SHINE 2018 — a 25-foot pirate ship sponsored by the Tampa Bay
   Buccaneers at 128 20th St S. It paid $1,000 for two weeks. He has since
   painted 30-plus murals nationwide including the 70-foot sea turtle "Gaspar's
-  Direction" at Channel Club Apartments in Tampa (tallest mural in Tampa at the
-  time, 2022), a Roman goddess Minerva mural in his hometown, and "PiCOWso" — a
-  Picasso-inspired 14-foot fiberglass cow for Minerva Dairy (possibly the
-  world's largest painted art cow).
+  Direction" at Channel Club Apartments in Tampa (tallest mural in Tampa at
+  the time, 2022), a Roman goddess Minerva mural in his hometown, and
+  "PiCOWso" — a Picasso-inspired 14-foot fiberglass cow for Minerva Dairy
+  (possibly the world's largest painted art cow).
 
   "The Mooney Anomaly" is a 1967 Mooney M20F airplane (N3205F) owned by pilot
   Liam Hawkins, based at Albert Whitted Airport in downtown St. Pete. Kress
@@ -74,14 +77,21 @@ searchBio: |
   "Skittles." Featured in AOPA, Flying Magazine, General Aviation News, and
   Axios Tampa Bay.
 
-  He exhibits at Red Dot Miami (Art Basel) and Art Santa Fe. Original paintings
-  range $5,000-$20,000. Revenue is approximately 75% murals, 25% originals. He
-  cycles 100 miles weekly on the Pinellas Trail and mentors young artists in
-  Tampa Bay. His motto: "The eye is the lamp of the body."
+  He exhibits at Red Dot Miami (Art Basel) and Art Santa Fe. Original
+  paintings range $5,000-$20,000. Revenue is approximately 75% murals, 25%
+  originals. He cycles 100 miles weekly on the Pinellas Trail and mentors
+  young artists in Tampa Bay. His motto: "The eye is the lamp of the body."
 
   This peacock wall went up in 2026 on Anvil Street North near 72nd Street
   North, near Tyrone, facing a parking lot. His other St. Pete wall in Mural
   Quest is the dogs-and-cats mural at the animal hospital on 1st Ave N.
+
+  The subject is local. Kress has pointed out on Instagram that wild peafowl
+  live nearby: they have roamed the Jungle Terrace and Jungle Prada area,
+  about a mile southwest of the wall, since the 1950s. Neighborhood history
+  traces them to a pair delivered in 1953 to a family on Park Street near the
+  Jungle Prada Site; by 2019 the flock had grown to about fifty, roughly half
+  of them on the grounds beside Jungle Prada Tavern.
 
   Instagram: @mattkressart. Website: mattkress.art.
 
@@ -107,6 +117,10 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "https://www.wfla.com/news/speed-busters-speeders-killing-peacocks-in-st-pete-neighborhood/"
+  - "https://junglecountryclubhistoryproject.blogspot.com/2019/08/q-why-did-peacock-cross-road-update.html"
+  - "Rob: Matt Kress Instagram post on the Jungle Prada peacocks (Nov 2026)"
+  - "Rob photo IMG_1265, 3 Nov 2026, with GPS"
   - "Rob's field photo IMG_1265, 3 Nov 2026, with GPS 27.797611, -82.738617 (camera position, facing 255°); Rob: new Matt Kress mural near Tyrone"
   - "Address from OpenStreetMap reverse geocoding of the photo position (2766 Anvil St N); the building's own address is unconfirmed"
   - "Artist facts reused from #119 (Matt Kress, animal hospital) and its sources:"
@@ -117,4 +131,6 @@ sourceNotes:
   - "https://www.axios.com/local/tampa-bay/2024/06/25/mooney-anomaly-plane-mural-st-petersburg"
   - "Web search 4 Nov 2026 found nothing published on this wall (title, client, date); Instagram not checked by Claude (automated access blocked)"
 revisionLog:
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Added the Jungle Prada peafowl (since the 1950s, about fifty in 2019, about a mile southwest) to the wall paragraph; searchBio: Added a Jungle Prada peafowl paragraph with the 1953 Park Street origin and the 2019 count. [review:20261104143302-bf6cab7c]"
+  - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Added the Jungle Prada peafowl (since the 1950s, about fifty in 2019, about a mile southwest) to the wall paragraph; searchBio: Added a Jungle Prada peafowl paragraph with the 1953 Park Street origin and the 2019 count. [review:20261104134049-9b9b551a]"
   - "4 November 2026 — New record from Rob's photo and GPS. Untitled (no verified title). Year 2026 per Rob ('new mural'). Pin estimated 30 m from the camera toward the wall; address approximate. Artist paragraphs shared with #119; new two-sentence hook. Not yet published."
