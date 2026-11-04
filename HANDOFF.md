@@ -6,6 +6,34 @@
 > auto-memory (`project-v1.7-in-review`, `project-next-binary-fixes`), not in this file.
 > Everything below the 2026-10-01 entry is history.
 
+## 2026-11-03 (evening) — Channel data report
+
+**Report:** written for Rob, 5 pages, as a Markdown source and a PDF:
+- `~/Desktop/Mural Quest Marketing Plans/MuralQuest_Channel_Data_Report.pdf`
+- `.../MuralQuest_Channel_Data_Report.md`
+
+**Rebuild** after editing the Markdown, from that folder: `python3 build_channel_report.py MuralQuest_Channel_Data_Report.md MuralQuest_Channel_Data_Report.pdf`. It renders HTML through Playwright Chromium.
+
+**What it covers:**
+1. What we collect: the in-app events, the QR scan record, and the Apple, Google and Apple Ads reports.
+2. The channels and their tags, with a cost column.
+3. The decision framework:
+   - pieces placed, then scans, then installs, then paying users;
+   - about 20 scans or 30 days before judging a channel;
+   - half vs quarter page decided on scans per dollar;
+   - Apple Ads judged on cost per install against a subscriber's value.
+
+   Also a review schedule and a monthly scorecard.
+4. Limits of the data.
+5. The Nov 3 baseline.
+6. Post-SHINE improvements.
+
+**Open:**
+- **The cost column is blank.** No channel costs are recorded; the expense ledger stops in April. Rob is to supply them.
+- **"75 at the Visitor Center"** comes from the domain brief and is unverified.
+- **The lock-screen cost reads "$0"**, at Rob's request (it said "free", which read like the app was free).
+- **The Apple Ads campaign** ("SHINE 2026 Festival", ID 2145037757, set up in another session): up to $20/day, Nov 3–20, search results only. It was waiting on Apple's ad-eligibility review. Check it Nov 5; the summary is on the Desktop as `MuralQuest_AppleAds_Campaign.pdf`.
+
 ## 2026-11-03 (later) — Cleanup audit, GitHub backup, freeze until after SHINE
 
 **Audit after Rob's file cleanup with another Claude session: nothing Mural Quest was harmed.**
