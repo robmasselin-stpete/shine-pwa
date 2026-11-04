@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compass Test</title>
+<style>
+  :root { --bg:#f5f2ec; --ink:#1a1a1a; --teal:#1f7a6f; --brick:#c1441e; --rule:#ddd; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151515; --ink:#eee; --rule:#333; } }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--ink);
+         font:16px/1.4 -apple-system, system-ui, sans-serif; }
+  h1 { font-size:20px; margin:0 0 4px; color:var(--brick); }
+  p { margin:4px 0 12px; font-size:14px; }
+  button { font:inherit; padding:10px 16px; border:0; border-radius:8px;
+           background:var(--teal); color:#fff; margin:0 8px 8px 0; }
+  table { width:100%; border-collapse:collapse; margin:8px 0 16px; font-variant-numeric:tabular-nums; }
+  td, th { text-align:left; padding:6px 4px; border-bottom:1px solid var(--rule); font-size:15px; }
+  th { font-size:12px; text-transform:uppercase; letter-spacing:.04em; opacity:.7; }
+  .big { font-size:28px; font-weight:700; }
+  #log { font:12px/1.3 ui-monospace, monospace; white-space:pre-wrap; max-height:30vh; overflow:auto; }
+</style>
+</head>
+<body>
+<h1>Mural Quest compass test</h1>
+<p>Hold the phone the way you would on a tour and point its top edge at a known direction
+(a street you know runs north–south, or a wall). Compare the rows. Tap <b>Snapshot</b>
+to record a reading, then send the log.</p>
+<button id="go">Start</button><button id="snap">Snapshot</button><button id="copy">Copy log</button>
+
+<table>
+  <tr><th>Source</th><th>Heading</th><th>absolute?</th><th>events</th></tr>
+  <tr><td>App today<br><small>deviceorientation, 360−α</small></td>
+      <td class="big" id="h-app">–</td><td id="a-app">–</td><td id="n-app">0</td></tr>
+  <tr><td>Absolute event<br><small>deviceorientationabsolute, 360−α</small></td>
+      <td class="big" id="h-abs">–</td><td id="a-abs">–</td><td id="n-abs">0</td></tr>
+  <tr><td>Absolute, tilt-corrected<br><small>α, β, γ (W3C formula)</small></td>
+      <td class="big" id="h-tilt">–</td><td>–</td><td>–</td></tr>
+  <tr><td>iOS heading<br><small>webkitCompassHeading</small></td>
+      <td class="big" id="h-ios">–</td><td>–</td><td>–</td></tr>
+  <tr><td>Tilt (β / γ)</td><td id="tilt">–</td><td></td><td></td></tr>
+  <tr><td>GPS course<br><small>while walking</small></td><td id="gps">–</td><td></td><td></td></tr>
+</table>
+<div id="log"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = h => h == null || isNaN(h) ? '–' : Math.round((h + 360) % 360) + '°';
+const ua = navigator.userAgent;
+let n = { app: 0, abs: 0 }, last = {};
+const log = s => { $('log').textContent = s + '\n' + $('log').textContent; };
+
+// Tilt-compensated compass heading (W3C DeviceOrientation spec, "Worked example").
+function tiltHeading(a, b, g) {
+  const r = Math.PI / 180, x = b * r, y = g * r, z = a * r;
+  const cX = Math.cos(x), cY = Math.cos(y), cZ = Math.cos(z);
+  const sX = Math.sin(x), sY = Math.sin(y), sZ = Math.sin(z);
+  const Vx = -cZ * sY - sZ * sX * cY, Vy = -sZ * sY + cZ * sX * cY;
+  let h = Math.atan(Vx / Vy);
+  if (Vy < 0) h += Math.PI; else if (Vx < 0) h += 2 * Math.PI;
+  return h / r;
+}
+
+function onRel(e) {
+  n.app++; $('n-app').textContent = n.app;
+  $('a-app').textContent = String(e.absolute);
+  if (e.webkitCompassHeading != null) { last.ios = e.webkitCompassHeading; $('h-ios').textContent = fmt(last.ios); }
+  if (e.alpha != null) { last.app = 360 - e.alpha; $('h-app').textContent = fmt(last.app); }
+  last.b = e.beta; last.g = e.gamma;
+  $('tilt').textContent = Math.round(e.beta) + '° / ' + Math.round(e.gamma) + '°';
+}
+function onAbs(e) {
+  n.abs++; $('n-abs').textContent = n.abs;
+  $('a-abs').textContent = String(e.absolute);
+  if (e.alpha == null) return;
+  last.abs = 360 - e.alpha; $('h-abs').textContent = fmt(last.abs);
+  last.tilt = tiltHeading(e.alpha, e.beta, e.gamma); $('h-tilt').textContent = fmt(last.tilt);
+}
+
+$('go').onclick = async () => {
+  try {
+    if (window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission)
+      await DeviceOrientationEvent.requestPermission();
+  } catch (err) { log('permission: ' + err); }
+  window.addEventListener('deviceorientation', onRel, true);
+  if ('ondeviceorientationabsolute' in window)
+    window.addEventListener('deviceorientationabsolute', onAbs, true);
+  else log('deviceorientationabsolute: NOT SUPPORTED');
+  navigator.geolocation.watchPosition(p => {
+    last.gps = p.coords.heading;
+    $('gps').textContent = p.coords.heading == null || isNaN(p.coords.heading)
+      ? 'standing still' : fmt(p.coords.heading) + ' @ ' + (p.coords.speed || 0).toFixed(1) + ' m/s';
+  }, () => { $('gps').textContent = 'no GPS'; }, { enableHighAccuracy: true });
+  log('started · ' + ua);
+};
+
+$('snap').onclick = () => {
+  log(new Date().toLocaleTimeString() + '  app ' + fmt(last.app) + '  abs ' + fmt(last.abs) +
+      '  tilt ' + fmt(last.tilt) + '  ios ' + fmt(last.ios) + '  gps ' + fmt(last.gps) +
+      '  β ' + Math.round(last.b) + ' γ ' + Math.round(last.g) +
+      '  absFlag ' + $('a-app').textContent + '/' + $('a-abs').textContent);
+};
+$('copy').onclick = () => navigator.clipboard.writeText($('log').textContent).then(
+  () => log('(copied)'), () => log('(copy failed — screenshot instead)'));
+</script>
+</body>
+</html>
