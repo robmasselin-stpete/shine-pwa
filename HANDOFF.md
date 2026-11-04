@@ -39,7 +39,7 @@ After committing in `~/shine-pwa`, push the working branch (`git push origin v1.
 - **The cost column is blank.** No channel costs are recorded; the expense ledger stops in April. Rob is to supply them.
 - **"75 at the Visitor Center"** comes from the domain brief and is unverified.
 - **The lock-screen cost reads "$0"**, at Rob's request (it said "free", which read like the app was free).
-- **The Apple Ads campaign** ("SHINE 2026 Festival", ID 2145037757, set up in another session): up to $20/day, Nov 3–20, search results only. It was waiting on Apple's ad-eligibility review. Check it Nov 5; the summary is on the Desktop as `MuralQuest_AppleAds_Campaign.pdf`.
+- **The Apple Ads campaign** ("SHINE 2026 Festival", ID 2145037757, set up in another session): up to $20/day, Nov 3–20, search results only. **RUNNING as of Nov 4** (Rob confirmed). Apple's eligibility review cleared. On the Nov 5–6 check, if total spend is under $5 after two days, raise bids rather than cutting keywords. Review results Nov 20 when it ends. The summary is on the Desktop as `MuralQuest_AppleAds_Campaign.pdf`.
 
 ## 2026-11-03 (later) — Cleanup audit, GitHub backup, freeze until after SHINE
 
