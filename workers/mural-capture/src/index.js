@@ -28,6 +28,11 @@
 // can't encode WebP); the Content-Type is set from the data URL and browsers sniff
 // image bytes anyway. A card failure never fails the photo.
 //
+// IMG. That alone isn't enough: a missing bundled card falls back to the card of the
+// mural's `img`, never of the photo. So /photo also points `img` at the newest photo
+// (keeping the placeholder in `pimg`) and /delete puts it back. build-data.py does the
+// same from the YAML, so a Mac publish keeps it.
+//
 // CAPTIONS ARE FORWARD-COMPATIBLE. Shipped app versions (<=1.7.5) read `u` and `d`
 // and ignore unknown keys, so adding `c` breaks nothing. Rob can caption from day one
 // of the festival and every caption already sent lights up when the render ships in a
@@ -45,6 +50,7 @@ const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json', ...CORS } });
 
 const CAPTION_MAX = 140;
+const PLACEHOLDER_IMG = 'images/murals/2026/shine2026-coming-soon.jpeg';
 
 // Normalise a caption. Returns {ok:true, caption} where caption is '' for "no caption",
 // or {ok:false, error} to reject. Rejecting on length rather than truncating is
@@ -125,8 +131,13 @@ export default {
         removed = dM.ph.pop();          // ph is sorted oldest→newest
       }
 
-      // Last photo gone → the wall is no longer "being painted now".
-      if (!dM.ph.length) { delete dM.ph; delete dM.uc; }
+      // Last photo gone → the wall is no longer "being painted now"; restore the placeholder.
+      if (!dM.ph.length) {
+        delete dM.ph; delete dM.uc;
+        dM.img = dM.pimg || PLACEHOLDER_IMG; delete dM.pimg;
+      } else {
+        dM.img = dM.ph[dM.ph.length - 1].u;
+      }
       dData.version = Date.now();
 
       await env.BUCKET.put('content.json', JSON.stringify(dData), {
@@ -258,6 +269,9 @@ export default {
     mural.ph.push(entry);
     mural.ph.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0)); // oldest→newest
     mural.uc = true; // being painted
+    // Grid card / map pin / tour stops fall back to `img` (see IMG above).
+    if (!mural.pimg && mural.img && !mural.img.startsWith('images/murals/2026/' + muralId + '-')) mural.pimg = mural.img;
+    mural.img = mural.ph[mural.ph.length - 1].u;
     data.version = Date.now();
 
     await env.BUCKET.put('content.json', JSON.stringify(data), {

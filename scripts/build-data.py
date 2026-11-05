@@ -225,6 +225,19 @@ def _build_along_the_way(m):
     return f"[{items}]"
 
 
+def _display_img(m):
+    """`img` as shipped. While a wall is under construction with progress photos, the
+    newest photo stands in for the placeholder. Shipped apps (<=1.7.6) only use `ph`
+    on the detail hero; the grid card, map pin and tour stops fall back to `img`, so
+    without this they show "Coming soon" all festival. Mirrors the Capture Worker,
+    which sets `img` the same way, so a Mac publish doesn't undo it (Nov 5, #223)."""
+    if m.get('underConstruction'):
+        urls = [p.get('url') for p in (m.get('photos') or []) if p and p.get('url')]
+        if urls:
+            return urls[-1]
+    return m.get('img', '')
+
+
 def _build_photos(m):
     """SHINE 2026 build-viewer: photos [{url,dateTaken}] → JS array [{u,d}], '' if none.
     Additive — existing murals keep their single `img`; construction murals populate this."""
@@ -270,7 +283,7 @@ def mural_to_js(m):
     year = m.get('year', 0)
     category = js_string_escape(m.get('category', 'shine'))
     instagram = js_string_escape(m.get('instagram', ''))
-    img = js_string_escape(m.get('img', ''))
+    img = js_string_escape(_display_img(m))
     based_in = js_string_escape(m.get('basedIn', ''))
 
     # Separate bio and mural description fields
@@ -497,7 +510,7 @@ def mural_to_dict(m):
         'bio': text_normalize((m.get('artistBio', '') or '').strip()),
         'desc': text_normalize((m.get('searchMuralDescription', '') or '').strip()),
         'imp': [text_normalize(s) for s in (m.get('impressions') or []) if s],
-        'img': text_normalize(m.get('img', '')),
+        'img': text_normalize(_display_img(m)),
         'from': text_normalize(m.get('basedIn', '')),
         'aud': text_normalize(m.get('audio', '') or ''),
         'insp': text_normalize((m.get('muralInspiration', '') or '').strip()),
