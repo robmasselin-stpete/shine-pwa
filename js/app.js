@@ -493,6 +493,33 @@ const COMPASS_ARC_SPAN_DEG = 140;
 // north, so subtracting declination over-corrected. Set to 0 (no correction). If a device that
 // reports RAW magnetic ever shows a ~7° bias, revisit per-device instead of a blanket constant.
 const MAGNETIC_DECLINATION = 0;
+// ANDROID HEADING FIX (Nov 5, 2026). Chrome/WebView's plain `deviceorientation` is RELATIVE
+// on Android (e.absolute === false): a gyro frame whose zero is wherever the sensor started,
+// not north. Field test on Rob's Samsung, Chrome 157: the app read 177–179° off, steady
+// across restarts, while `deviceorientationabsolute` read 2–6° facing north (iPhone's
+// webkitCompassHeading read 6° on the same street). So listen to the absolute event where
+// it exists and never trust a reading flagged non-absolute. iOS has no absolute event and
+// keeps using deviceorientation + webkitCompassHeading, unchanged.
+const ORIENT_EVT = ('ondeviceorientationabsolute' in window) ? 'deviceorientationabsolute' : 'deviceorientation';
+
+/** Compass heading (0 = north, clockwise) from an orientation event, or null if unusable. */
+function compassHeadingFrom(e) {
+  if (e.webkitCompassHeading != null) return e.webkitCompassHeading;   // iOS
+  if (e.alpha == null || e.absolute !== true) return null;             // relative frame: not a compass
+  const r = Math.PI / 180, a = e.alpha * r, b = (e.beta || 0) * r, g = (e.gamma || 0) * r;
+  // Top edge: flat to ~55° (how a phone is held on a tour) its heading is exactly 360 − α
+  // at any roll, so the old formula is right there. Back camera: past upright 360 − α
+  // flips 180°, so use the direction the back faces (W3C DeviceOrientation spec, worked
+  // example) — undefined when flat. With roll the two differ a little, so blend them
+  // across 55–75° of tilt instead of switching (a hard switch jumped ~11° at 10° roll).
+  const top = (360 - e.alpha) * r;
+  const Vx = -Math.cos(a) * Math.sin(g) - Math.sin(a) * Math.sin(b) * Math.cos(g);
+  const Vy = -Math.sin(a) * Math.sin(g) + Math.cos(a) * Math.sin(b) * Math.cos(g);
+  const w = Math.min(1, Math.max(0, (Math.abs(e.beta || 0) - 55) / 20));
+  const h = Math.atan2((1 - w) * Math.sin(top) + w * Vx / (Math.hypot(Vx, Vy) || 1),
+                       (1 - w) * Math.cos(top) + w * Vy / (Math.hypot(Vx, Vy) || 1)) / r;
+  return ((h + MAGNETIC_DECLINATION) % 360 + 360) % 360;
+}
 let compassGrantedThisSession = false;
 let lastCompassEventTime = 0;     // timestamp of last deviceorientation event
 let compassWatchdogId = null;     // interval ID for compass liveness check
@@ -956,13 +983,13 @@ document.addEventListener('visibilitychange', () => {
     if (state.tourWalking) requestWakeLock();
     // Kick compass listeners back to life
     if (compassHandler) {
-      window.removeEventListener('deviceorientation', compassHandler, true);
-      window.addEventListener('deviceorientation', compassHandler, true);
+      window.removeEventListener(ORIENT_EVT, compassHandler, true);
+      window.addEventListener(ORIENT_EVT, compassHandler, true);
       lastCompassEventTime = Date.now();
     }
     if (detailCompassHandler) {
-      window.removeEventListener('deviceorientation', detailCompassHandler, true);
-      window.addEventListener('deviceorientation', detailCompassHandler, true);
+      window.removeEventListener(ORIENT_EVT, detailCompassHandler, true);
+      window.addEventListener(ORIENT_EVT, detailCompassHandler, true);
     }
   }
 });
@@ -2823,11 +2850,8 @@ function startCompassListener(arcEl) {
   }
 
   compassHandler = (e) => {
-    // iOS: webkitCompassHeading (0=N, clockwise, already true-north).
-    // Android: 360 - alpha is MAGNETIC north → add declination to get true north.
-    let heading = e.webkitCompassHeading != null
-      ? e.webkitCompassHeading
-      : (e.alpha != null ? ((360 - e.alpha) % 360 + MAGNETIC_DECLINATION + 360) % 360 : null);
+    // iOS: webkitCompassHeading. Android: the absolute event only (see compassHeadingFrom).
+    const heading = compassHeadingFrom(e);
     if (heading == null) return;
 
     lastCompassEventTime = Date.now();
@@ -2845,7 +2869,7 @@ function startCompassListener(arcEl) {
     state.compassHeading = compassSmoothedHeading;
     scheduleArcUpdate();
   };
-  window.addEventListener('deviceorientation', compassHandler, true);
+  window.addEventListener(ORIENT_EVT, compassHandler, true);
   lastCompassEventTime = Date.now();
 
   // Watchdog: if no compass event for 3s, tear down and re-attach listener
@@ -2854,8 +2878,8 @@ function startCompassListener(arcEl) {
     if (!compassHandler) { clearInterval(compassWatchdogId); compassWatchdogId = null; return; }
     if (Date.now() - lastCompassEventTime > 3000) {
       console.warn('Compass watchdog: no events for 3s, restarting listener');
-      window.removeEventListener('deviceorientation', compassHandler, true);
-      window.addEventListener('deviceorientation', compassHandler, true);
+      window.removeEventListener(ORIENT_EVT, compassHandler, true);
+      window.addEventListener(ORIENT_EVT, compassHandler, true);
       lastCompassEventTime = Date.now(); // reset so we don't spam restarts
     }
   }, 3000);
@@ -2995,7 +3019,7 @@ function updateCompassArc() {
 /** Stop compass arc: remove listeners, cancel rAF, clear GPS watcher. */
 function stopCompassArc() {
   if (compassHandler) {
-    window.removeEventListener('deviceorientation', compassHandler, true);
+    window.removeEventListener(ORIENT_EVT, compassHandler, true);
     compassHandler = null;
   }
   if (compassAnimFrame) {
@@ -3076,10 +3100,7 @@ function startDetailCompassListener(arcEl, mural) {
   }
 
   detailCompassHandler = (e) => {
-    // iOS webkitCompassHeading is true-north; Android magnetic → add declination.
-    let heading = e.webkitCompassHeading != null
-      ? e.webkitCompassHeading
-      : (e.alpha != null ? ((360 - e.alpha) % 360 + MAGNETIC_DECLINATION + 360) % 360 : null);
+    const heading = compassHeadingFrom(e);   // see ANDROID HEADING FIX
     if (heading == null) return;
 
     const ALPHA = 0.3;
@@ -3094,7 +3115,7 @@ function startDetailCompassListener(arcEl, mural) {
     detailCompassHeading = detailCompassSmoothed;
     scheduleDetailArcUpdate(mural);
   };
-  window.addEventListener('deviceorientation', detailCompassHandler, true);
+  window.addEventListener(ORIENT_EVT, detailCompassHandler, true);
 
   // GPS watcher for detail compass
   if (detailCompassGpsWatchId == null && state.walkWatchId == null && compassGpsWatchId == null) {
@@ -3224,7 +3245,7 @@ function updateDetailNavInfo(mural) {
 
 function stopDetailCompass() {
   if (detailCompassHandler) {
-    window.removeEventListener('deviceorientation', detailCompassHandler, true);
+    window.removeEventListener(ORIENT_EVT, detailCompassHandler, true);
     detailCompassHandler = null;
   }
   if (detailCompassAnimFrame) {
