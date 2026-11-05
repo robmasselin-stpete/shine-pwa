@@ -1,6 +1,6 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-05): see the 2026-11-05 entry (field photos → grid card fix, #227 live), then
+> **CURRENT (2026-11-05): see the 2026-11-05 entry (field photos → grid card fix, GPS capture, #223 pin, #227 live), then
 > 2026-11-04 (evening): SHINE lineup update, Android compass investigation.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
@@ -23,6 +23,22 @@
 - **Tested** locally (`wrangler dev --local` against a simulated bucket): WebP card, JPEG card, no card, bad card, two photos and then two deletes. Real-iPhone Safari is still untested; the next field capture is the test.
 - **#223** is published with the photo as its `img` (OTA 1793902328815, commit a016e9e). Its card was also uploaded by hand.
 - **Next binary, in memory `project-next-binary-fixes`:** make `mqCardErr` try the photo's own CDN card and then the full-res before `m.img`.
+
+**Verified on Rob's iPhone (1:14 pm):** #223's grid card shows the photo.
+
+**GPS capture** (deployed Nov 5: Worker version d225964c, PWA on mural-tools, commit 014dc8b).
+- **PWA:** takes a location fix on Shoot (`grabFix`) and sends `gps {lat,lng,acc}` with the photo. The result message shows "Location saved: ±N m, X m from the app's pin", or "No location saved". Safari asks permission on the first Shoot.
+- **Worker:** validates the location and stores it on the photo entry as `g:[lat,lng,acc]`. **It is a pin hint only and never moves the mural's lat/lng**, since the camera usually stands across the street from the wall.
+- **`publish-content.py` reconcile** writes it into the YAML photo entry (`gps: [lat, lng, acc]`). `build-data.py` `_photo_gps()` exports it to data.js and content.json, so a Mac publish doesn't strip it. Same pattern as captions.
+- **Tested** locally: valid, missing and junk locations, plus the YAML → content.json → YAML round trip. The real Safari permission prompt is still untested.
+- **If there's no location:** Settings → Privacy & Security → Location Services → Safari Websites → While Using.
+
+**#223 pin moved** 27.7960776,-82.6468547 → **27.79635,-82.64688** (published, OTA 1793902949649, commit 8f2d053).
+- **Source:** Rob's photo IMG_1290 (`~/Desktop/Mural Quest Marketing Plans/In process Shine 2026 pics/`). GPS 27.796708,-82.6466 ±8 m, on the east side of MLK, facing 214°.
+- **Method:** projected about 47 m along that bearing to the tower's street face. The bearing line passes OSM's 2600 MLK address point (27.796191,-82.647012) at about 70 m.
+- **Still ESTIMATED.** Confirm in the route editor.
+
+The editor tools snapshot was refreshed with this publish (`--tools`).
 
 **#227 Harbor Hall** (Jay Giroux, Dominique Labauvie & Greater Public Studio) is LIVE (OTA 1793828863346).
 - The list came from the SPAA director (Nov 4), so it supersedes the St Pete Catalyst lineup (Nov 2).
