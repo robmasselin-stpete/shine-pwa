@@ -1,7 +1,7 @@
 // Mural Quest — SHINE 2026 progress-photo capture endpoint.
 //
 // POST /photo  (gated by POST_KEY)
-//   body: { muralId, date: "YYYY-MM-DD", imageBase64, cardBase64?, caption?, dry? }
+//   body: { muralId, date: "YYYY-MM-DD", imageBase64, cardBase64?, caption?, gps?, dry? }
 //   → uploads images/murals/2026/<id>-<date>-<HHMMSS>.jpeg to R2 (+ its card, see below), appends {u,d,c?} to
 //     the mural's `ph` in content.json, bumps the version. Live over OTA in ~1 min.
 //
@@ -33,6 +33,11 @@
 // (keeping the placeholder in `pimg`) and /delete puts it back. build-data.py does the
 // same from the YAML, so a Mac publish keeps it.
 //
+// GPS. The PWA sends where the PHONE was at capture: gps {lat,lng,acc}. It is stored
+// on the photo entry as g:[lat,lng,acc] — a hint for setting the pin, never applied
+// to the mural's lat/lng (the camera stands across the street from the wall). Shipped
+// apps ignore unknown keys. publish-content.py writes it into the YAML photo entry.
+//
 // CAPTIONS ARE FORWARD-COMPATIBLE. Shipped app versions (<=1.7.5) read `u` and `d`
 // and ignore unknown keys, so adding `c` breaks nothing. Rob can caption from day one
 // of the festival and every caption already sent lights up when the render ships in a
@@ -51,6 +56,15 @@ const json = (obj, status = 200) =>
 
 const CAPTION_MAX = 140;
 const PLACEHOLDER_IMG = 'images/murals/2026/shine2026-coming-soon.jpeg';
+
+// Validate the optional capture location. Returns [lat,lng,acc] or null.
+function readGps(g) {
+  if (!g || typeof g !== 'object') return null;
+  const lat = Number(g.lat), lng = Number(g.lng), acc = Number(g.acc);
+  if (!isFinite(lat) || !isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return null;
+  return [Math.round(lat * 1e6) / 1e6, Math.round(lng * 1e6) / 1e6,
+          isFinite(acc) && acc >= 0 ? Math.round(acc) : null];
+}
 
 // Normalise a caption. Returns {ok:true, caption} where caption is '' for "no caption",
 // or {ok:false, error} to reject. Rejecting on length rather than truncating is
@@ -266,6 +280,8 @@ export default {
     // ── append to the mural's photos, bump version, write content.json back ──
     const entry = { u: imgKey, d: date };
     if (cap.caption) entry.c = cap.caption;  // omitted when empty, never c:''
+    const gps = readGps(body.gps);
+    if (gps) entry.g = gps;
     mural.ph.push(entry);
     mural.ph.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0)); // oldest→newest
     mural.uc = true; // being painted
@@ -287,6 +303,7 @@ export default {
       imageUrl: `https://cdn.muralquest.app/${imgKey}`,
       cardUrl: cardWritten ? `https://cdn.muralquest.app/${cardWritten}` : null,
       cardError,
+      gps: gps || null,
       version: data.version,
     });
   },

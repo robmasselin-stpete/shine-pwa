@@ -4,8 +4,8 @@
 id: 223
 artist: "Osiris Rain"
 year: 2026
-lat: 27.7960776   # dropped pin (brief)
-lng: -82.6468547
+lat: 27.79635   # from Rob's photo IMG_1290 (Nov 5): camera 27.796708,-82.6466 (±8 m) facing 214°, east side of MLK; pin moved ~47 m along that bearing to the tower's street face. The bearing line passes the OSM address point for 2600 MLK (27.796191,-82.647012) at ~70 m. ESTIMATED — confirm in the route editor
+lng: -82.64688
 address: "2600 Dr. MLK Jr St N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -187,11 +187,13 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "5 November 2026 — Pin moved 27.7960776,-82.6468547 → 27.79635,-82.64688 from Rob's photo IMG_1290 (GPS 27.796708,-82.6466 ±8 m, bearing 214°), projected ~47 m to the tower face. Estimated; confirm in the route editor."
   - "4 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening: Florence + Nerdrum training meets the 1961 \"Round Bank\" he is painting. Rebuilt around his own words (born 1986 on a Waxhaw homestead, film → murals when NC cut incentives, \"emotion first\"), Bloom at his own expense, a St. Pete link (met Marcus Debie at a St. Pete mural festival in 2018), and a closing paragraph on the Skyline Building; searchBio: Same opening; added Florence was brief (his words), Stavern, film work incl. Iron Man 3, Observer quote on Bloom, Dogfather (Catalonia 2019), NOVEL Stonewall Station, The Space Between with Debie (Utah 2025), TAOH co-founders + he manages it, full Skyline Building history; artistBio: \"One of fifteen artists\" → \"…. [review:20261104212556-72120b4d]"
   - "4 November 2026 — Bio review tool, revert of 20261101181416-2935658b by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Note: Reverted in bio-review [review:20261104185549-89e38174]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening: Florence + Nerdrum training meets the 1961 \"Round Bank\" he is painting. Rebuilt around his own words (born 1986 on a Waxhaw homestead, film → murals when NC cut incentives, \"emotion first\"), Bloom at his own expense, a St. Pete link (met Marcus Debie at a St. Pete mural festival in 2018), and a closing paragraph on the Skyline Building; searchBio: Same opening; added Florence was brief (his words), Stavern, film work incl. Iron Man 3, Observer quote on Bloom, Dogfather (Catalonia 2019), NOVEL Stonewall Station, The Space Between with Debie (Utah 2025), TAOH co-founders + he manages it, full Skyline Building history. Note: Rob review [review:20261101181416-2935658b]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #12 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob's photo IMG_1290, 5 Nov 2026 09:28, with GPS 27.796708,-82.6466 (±8 m), facing 214° — used for the pin"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob)"

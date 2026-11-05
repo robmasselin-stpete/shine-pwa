@@ -155,8 +155,24 @@ $('opacity').addEventListener('input', applyOpacity);
 function applyOpacity(){ $('ghost').style.opacity = $('opacity').value/100; }
 $('grid-toggle').addEventListener('change', () => $('grid').classList.toggle('hidden', !$('grid-toggle').checked || $('canvas').classList.contains('hidden') && $('video').classList.contains('hidden')));
 
+// ── capture location (a hint for the pin; the server never moves the pin itself) ──
+let captureFix = null;
+function grabFix(){
+  captureFix = null;
+  if (!navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(
+    p => { captureFix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; },
+    () => {}, { enableHighAccuracy: true, timeout: 10000, maximumAge: 15000 });
+}
+function metersBetween(a1, o1, a2, o2){
+  const R = 6371000, r = Math.PI/180, dA = (a2-a1)*r, dO = (o2-o1)*r;
+  const h = Math.sin(dA/2)**2 + Math.cos(a1*r)*Math.cos(a2*r)*Math.sin(dO/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+
 // ── capture ──
 $('shoot').addEventListener('click', () => {
+  grabFix();
   const v = $('video'), cv = $('canvas');
   const vw = v.videoWidth, vh = v.videoHeight;
   // crop the video's centre to the 4:3 stage, then downscale to <=1280 long edge
@@ -227,7 +243,7 @@ $('send').addEventListener('click', async () => {
       method:'POST',
       headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
       body: JSON.stringify({ muralId: current.id, date, imageBase64: b64, cardBase64: cardB64,
-                            caption: $('caption').value }),
+                            caption: $('caption').value, gps: captureFix }),
     });
     const j = await res.json().catch(()=>({}));
     if (!res.ok){
@@ -239,6 +255,11 @@ $('send').addEventListener('click', async () => {
       + (j.caption ? `\nCaption: “${j.caption}”` : '\nNo caption.')
       + `\n${j.imageUrl}`
       + (j.cardUrl ? '\nGrid card: ✓' : `\n⚠ Grid card NOT saved (${j.cardError || 'none sent'}) — the grid will show "Coming soon" for this photo.`)
+      + (j.gps
+          ? `\nLocation saved: ±${j.gps[2] ?? '?'} m` + (current.lat && current.lng
+              ? `, ${Math.round(metersBetween(j.gps[0], j.gps[1], current.lat, current.lng))} m from the app's pin (that's where you stood, not the wall — the pin is unchanged).`
+              : '.')
+          : '\nNo location saved (location off or no fix yet).')
       + `\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
     // Fix a typo spotted seconds later, without sending a duplicate photo.
     addFixCaption(current.id, j.caption || '');

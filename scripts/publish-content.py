@@ -149,10 +149,15 @@ def _photos_block(photos):
         # live manifest, so if it is not written back here a Mac publish silently
         # erases every caption Rob sent from the field.
         cap = str(p.get('c', '') or '').replace('"', '\\"')
+        # `g` = [lat, lng, acc] where the phone stood at capture (Capture Worker, Nov 5).
+        # Same as captions: drop it here and the next publish erases it.
+        g = p.get('g')
+        gps = (', gps: [' + ', '.join('null' if v is None else str(v) for v in g) + ']') \
+            if isinstance(g, list) and len(g) == 3 else ''
         if cap:
-            out.append(f'  - {{ url: "{url}", dateTaken: "{date}", caption: "{cap}" }}')
+            out.append(f'  - {{ url: "{url}", dateTaken: "{date}", caption: "{cap}"{gps} }}')
         else:
-            out.append(f'  - {{ url: "{url}", dateTaken: "{date}" }}')
+            out.append(f'  - {{ url: "{url}", dateTaken: "{date}"{gps} }}')
     return out
 
 

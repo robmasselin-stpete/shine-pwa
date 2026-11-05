@@ -238,6 +238,16 @@ def _display_img(m):
     return m.get('img', '')
 
 
+def _photo_gps(p):
+    """Capture location [lat, lng, acc] on a progress photo (Capture Worker `g`), or None.
+    Exported so a Mac publish doesn't strip it from the live manifest, which reconcile
+    then copies back into the YAML."""
+    g = p.get('gps')
+    if isinstance(g, list) and len(g) == 3 and all(isinstance(v, (int, float)) for v in g[:2]):
+        return [g[0], g[1], g[2] if isinstance(g[2], (int, float)) else None]
+    return None
+
+
 def _build_photos(m):
     """SHINE 2026 build-viewer: photos [{url,dateTaken}] → JS array [{u,d}], '' if none.
     Additive — existing murals keep their single `img`; construction murals populate this."""
@@ -248,8 +258,10 @@ def _build_photos(m):
             continue
         cap = (p.get('caption') or '').strip()
         capjs = f",c:'{js_string_escape(cap)}'" if cap else ''
+        g = _photo_gps(p)
+        gjs = (",g:[" + ",".join('null' if v is None else repr(v) for v in g) + "]") if g else ''
         items.append(f"{{u:'{js_string_escape(p.get('url',''))}',"
-                     f"d:'{js_string_escape(p.get('dateTaken',''))}'{capjs}}}")
+                     f"d:'{js_string_escape(p.get('dateTaken',''))}'{capjs}{gjs}}}")
     return f"[{','.join(items)}]" if items else ''
 
 
@@ -545,6 +557,9 @@ def mural_to_dict(m):
         cap = text_normalize(p.get('caption', '') or '').strip()
         if cap:
             entry['c'] = cap
+        g = _photo_gps(p)
+        if g:
+            entry['g'] = g
         ph.append(entry)
     if ph:
         d['ph'] = ph
