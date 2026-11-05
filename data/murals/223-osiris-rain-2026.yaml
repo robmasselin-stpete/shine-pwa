@@ -18,6 +18,11 @@ basedIn: "Charlotte, NC"
 
 pronouns: "he/him"
 
+photos:
+  - { url: "images/murals/2026/223-2026-11-05-143044.jpeg", dateTaken: "2026-11-05" }
+
+underConstruction: true
+
 artistBio: |
   Osiris Rain studied painting in Florence and apprenticed on Odd Nerdrum's
   farm in Norway. For SHINE 2026 he brings that classical training to a
