@@ -1,10 +1,36 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-04): see the 2026-11-04 (evening) entry: SHINE lineup update, Android compass
-> investigation, #226 published.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18.
+> **CURRENT (2026-11-05): see the 2026-11-05 entry (field photos → grid card fix, #227 live), then
+> 2026-11-04 (evening): SHINE lineup update, Android compass investigation.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-05 — Field photos now reach the grid card and map pin; #227 live; lineup bios approved
+
+**Capture bug found live (#223 Osiris Rain, first field photo Nov 5).** The photo showed on the detail page, but the grid card, map pin and tour stop stayed on "Coming soon".
+- **Cause, in shipped app code (<=1.7.6):**
+  - Those spots load `cardSrc(newest photo)`, the bundled card. The photo has no bundled card.
+  - `mqCardErr` then falls back to the card of `data-img`, which is `m.img`, the placeholder. It never tries the photo's own card.
+  - The old Worker comment claiming "grid thumbnails fall back to full-res" was wrong. The August #900 test only checked the detail view.
+- **Fix, no binary needed:**
+  - **Capture Worker** (deployed, version e8a7b86d, commits d3f7e3a and 6b12b27):
+    - `/photo` sets `img` to the newest photo and keeps the placeholder in `pimg`.
+    - `/delete` restores the previous photo, or `pimg` / the coming-soon image when the last photo goes.
+    - `/photo` also stores a card (720px) at `images/cards/2026/<same name>.webp`, written before content.json. It's often JPEG bytes under a .webp name (iOS Safari can't encode WebP), which browsers sniff fine. A failed card never fails the photo; it returns `cardUrl` / `cardError`.
+  - **Capture PWA** (`tools/mural-capture.html`, deployed to mural-tools): makes the 720px card on Send and shows "Grid card: ✓" or a ⚠ in the result.
+  - **`build-data.py` `_display_img()`:** while `underConstruction` and photos exist, `img` = the newest photo URL, in both data.js and content.json. That keeps a Mac publish from undoing the Worker.
+- **Tested** locally (`wrangler dev --local` against a simulated bucket): WebP card, JPEG card, no card, bad card, two photos and then two deletes. Real-iPhone Safari is still untested; the next field capture is the test.
+- **#223** is published with the photo as its `img` (OTA 1793902328815, commit a016e9e). Its card was also uploaded by hand.
+- **Next binary, in memory `project-next-binary-fixes`:** make `mqCardErr` try the photo's own CDN card and then the full-res before `m.img`.
+
+**#227 Harbor Hall** (Jay Giroux, Dominique Labauvie & Greater Public Studio) is LIVE (OTA 1793828863346).
+- The list came from the SPAA director (Nov 4), so it supersedes the St Pete Catalyst lineup (Nov 2).
+- Rob says it's definitely a mural. He doesn't yet know whether it goes on the 2020 wall (#102 *Rooted in the Community*) or a wall next to it. **If it's #102's wall, #102 needs retiring.**
+- The live bio's first line reads "Harbor Hall project at USF St. Petersburg for SHINE 2026, more to be announced." It looks truncated by Rob's edit and still says "project". Flagged to Rob.
+- Pin estimated, "Title TBA".
+
+**Lineup bios:** all 10 count/venue drafts were approved and published (#213, #216–#221, #223, #225, plus #214/#222 earlier). No lineup drafts remain.
 
 ## 2026-11-04 (evening) — SHINE lineup update, Android compass, #226 published
 
