@@ -1,10 +1,44 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-05): see the 2026-11-05 entry (field photos → grid card fix, GPS capture, #223 pin, #227 live), then
-> 2026-11-04 (evening): SHINE lineup update, Android compass investigation.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18.
+> **CURRENT (2026-11-05): Android compass FIXED — 1.7.7 (vc19) in Play review (see the afternoon entry); then the
+> 2026-11-05 entry (field photos → grid card fix, GPS capture, #223 pin, #227 live), then
+> 2026-11-04 (evening): SHINE lineup update, Android compass investigation.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18; Android 1.7.7 (vc19) submitted Nov 5.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-05 (afternoon) — Android compass FIXED, Android 1.7.7 (vc19) submitted to Play
+
+**Root cause, confirmed with the test page on Rob's Samsung (Chrome 157):**
+- On Android, Chrome/WebView's plain `deviceorientation` is RELATIVE (`absolute:false`): a gyro frame whose zero is wherever the sensor started.
+- The app read 177–179° off, and 131° off after a restart, so the offset moves every session.
+- `deviceorientationabsolute` (`absolute:true`) read 2–6° facing north up a numbered street. The iPhone's `webkitCompassHeading` read 6° on the same street.
+- The August −6.8° declination attempt failed because it was applied to the relative event.
+
+**Fix** (`js/app.js`, commit 294f29a):
+- `ORIENT_EVT` = `deviceorientationabsolute` where it exists, else `deviceorientation`. All 10 add/remove listener calls use it.
+- `compassHeadingFrom(e)`:
+  - iOS → `webkitCompassHeading`, unchanged.
+  - Android → drop events where `absolute !== true`.
+  - Up to 55° of tilt it uses `360 − α`, which is exact for the top edge at any roll. It blends to the back-camera heading (W3C formula) across 55–75° tilt, because `360 − α` flips past vertical.
+- **Unit-tested:** Rob's readings give 6° north and 92° east, and the 55–75° seam is smooth.
+- **The test page** (mural-tools.pages.dev/tools/compass-test.html) has a "Fixed app" row running the same function. On the Samsung it matched the absolute event exactly.
+
+**Release:**
+- **Android 1.7.7, versionCode 19** (build.gradle bump, commit 7810612), AAB `~/Desktop/mural-quest-play-assets/app-release-v19.aab`.
+- **Checked the bundle:** it contains the fix and no #900/#999.
+- **Uploaded to Play production, full rollout,** by Rob running `mq_play_upload.py` (Claude's upload was blocked by the auto-mode safety check). Waiting for Google review; it auto-publishes on approval.
+- **Release notes:** "The Official Mural App of the 2026 SHINE Mural Festival. The geo compass on Android now points true to the wall, so it takes you straight to each mural. Follow the festival walls as they are painted, with new progress photos from SHINE."
+- **iOS stays 1.7.6 (build 160)** and needs no build. Version numbers are out of step until the next iOS build; realign then.
+- **Shell tip:** an apostrophe in `--notes` plus a missing closing quote broke Rob's first paste.
+
+**Left for the next COMBINED build (not urgent):**
+- After a figure-8 calibration, the Samsung is about 5° off the iPhone.
+- Both phones read about 6° east of true north facing north, which matches St. Pete's magnetic declination; `webkitCompassHeading` appears to be magnetic too.
+- Set `MAGNETIC_DECLINATION` (≈ −6°, confirm with NOAA) for BOTH platforms together, so they keep agreeing.
+- An earlier reading 10° off was sensor noise: the phone was on a table near the iPhone and uncalibrated.
+
+**After approval, Rob will:** update the Samsung and walk a tour leg. The compass should point at the mural within about 5°.
 
 ## 2026-11-05 — Field photos now reach the grid card and map pin; #227 live; lineup bios approved
 
