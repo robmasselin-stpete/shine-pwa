@@ -1,11 +1,23 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-05): Android compass FIXED — 1.7.7 (vc19) in Play review (see the afternoon entry); then the
+> **CURRENT (2026-11-05): Android compass FIXED — 1.7.7 (vc19) LIVE on Play (see the evening + afternoon entries); then the
 > 2026-11-05 entry (field photos → grid card fix, GPS capture, #223 pin, #227 live), then
-> 2026-11-04 (evening): SHINE lineup update, Android compass investigation.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18; Android 1.7.7 (vc19) submitted Nov 5.
+> 2026-11-04 (evening): SHINE lineup update, Android compass investigation.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18; Android 1.7.7 (vc19) LIVE on Play Nov 5.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-05 (evening) — Android 1.7.7 approved and live; Samsung still feels ~10° off
+
+- **Approved:** the Play Console showed the 1.7.7 production release published to 100% about 2 hours after upload ("App update published"). The Play API can't show review status; it reports `completed` as soon as an upload is committed, so check the Console or the Play Store page.
+- **Google Play trader status:** declare by **February 1, 2027** (Console banner; email Nov 4). Not urgent during SHINE.
+- **Rob's report:** the Samsung still feels about 10° off. He installs 1.7.7 tonight and recalibrates tomorrow.
+  - That's expected: about 6° is magnetic vs true north (`MAGNETIC_DECLINATION` is still 0, and the mural bearings come from GPS, which uses true north), plus 4–5° from the Samsung's sensor after calibration.
+  - **Tomorrow's test:**
+    1. Confirm the Samsung is on 1.7.7.
+    2. Figure-8 away from metal and the other phone.
+    3. On the compass test page, point the top edge down a north–south avenue and tap Snapshot, on BOTH phones.
+    4. Read the result: if both read about 6°, the declination fix in the next combined build covers it. If the Samsung is about 10° while the iPhone is about 6°, it's the Samsung's hardware or calibration, which a build can't fix.
 
 ## 2026-11-05 (afternoon) — Android compass FIXED, Android 1.7.7 (vc19) submitted to Play
 
@@ -27,7 +39,7 @@
 **Release:**
 - **Android 1.7.7, versionCode 19** (build.gradle bump, commit 7810612), AAB `~/Desktop/mural-quest-play-assets/app-release-v19.aab`.
 - **Checked the bundle:** it contains the fix and no #900/#999.
-- **Uploaded to Play production, full rollout,** by Rob running `mq_play_upload.py` (Claude's upload was blocked by the auto-mode safety check). Waiting for Google review; it auto-publishes on approval.
+- **Uploaded to Play production, full rollout,** by Rob running `mq_play_upload.py` (Claude's upload was blocked by the auto-mode safety check). Approved and published the same day (see the evening entry).
 - **Release notes:** "The Official Mural App of the 2026 SHINE Mural Festival. The geo compass on Android now points true to the wall, so it takes you straight to each mural. Follow the festival walls as they are painted, with new progress photos from SHINE."
 - **iOS stays 1.7.6 (build 160)** and needs no build. Version numbers are out of step until the next iOS build; realign then.
 - **Shell tip:** an apostrophe in `--notes` plus a missing closing quote broke Rob's first paste.
