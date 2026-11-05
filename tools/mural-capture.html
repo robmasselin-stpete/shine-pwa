@@ -210,10 +210,23 @@ $('send').addEventListener('click', async () => {
   const btn = $('send'), label = btn.textContent; btn.textContent='Sending…'; btn.disabled=true; hideErr();
   try {
     const b64 = $('canvas').toDataURL('image/jpeg', 0.92);
+    // Card for the app's grid + map pin (shorter side 720, longer capped at 1280 —
+    // same as scripts/generate-cards.py). Without it the grid shows "Coming soon".
+    let cardB64 = '';
+    try {
+      const src = $('canvas'), s0 = 720 / Math.min(src.width, src.height);
+      let cw = Math.round(src.width * s0), ch = Math.round(src.height * s0);
+      if (Math.max(cw, ch) > 1280){ const s1 = 1280 / Math.max(cw, ch); cw = Math.round(cw*s1); ch = Math.round(ch*s1); }
+      const cc = document.createElement('canvas'); cc.width = cw; cc.height = ch;
+      const cx = cc.getContext('2d'); cx.imageSmoothingQuality = 'high';
+      cx.drawImage(src, 0, 0, cw, ch);
+      cardB64 = cc.toDataURL('image/webp', 0.8);
+      if (!cardB64.startsWith('data:image/webp')) cardB64 = cc.toDataURL('image/jpeg', 0.82);
+    } catch (e) { cardB64 = ''; }
     const res = await fetch(WORKER, {
       method:'POST',
       headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
-      body: JSON.stringify({ muralId: current.id, date, imageBase64: b64,
+      body: JSON.stringify({ muralId: current.id, date, imageBase64: b64, cardBase64: cardB64,
                             caption: $('caption').value }),
     });
     const j = await res.json().catch(()=>({}));
@@ -224,7 +237,9 @@ $('send').addEventListener('click', async () => {
     $('out').classList.remove('hidden');
     $('out').textContent = `✓ LIVE — photo #${j.photoCount} on #${j.muralId} (${date}).`
       + (j.caption ? `\nCaption: “${j.caption}”` : '\nNo caption.')
-      + `\n${j.imageUrl}\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
+      + `\n${j.imageUrl}`
+      + (j.cardUrl ? '\nGrid card: ✓' : `\n⚠ Grid card NOT saved (${j.cardError || 'none sent'}) — the grid will show "Coming soon" for this photo.`)
+      + `\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
     // Fix a typo spotted seconds later, without sending a duplicate photo.
     addFixCaption(current.id, j.caption || '');
     addRemovePhoto(current.id, j.imageUrl);

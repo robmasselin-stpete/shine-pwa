@@ -1,8 +1,8 @@
 // Mural Quest — SHINE 2026 progress-photo capture endpoint.
 //
 // POST /photo  (gated by POST_KEY)
-//   body: { muralId, date: "YYYY-MM-DD", imageBase64, caption?, dry? }
-//   → uploads images/murals/2026/<id>-<date>-<HHMMSS>.jpeg to R2, appends {u,d,c?} to
+//   body: { muralId, date: "YYYY-MM-DD", imageBase64, cardBase64?, caption?, dry? }
+//   → uploads images/murals/2026/<id>-<date>-<HHMMSS>.jpeg to R2 (+ its card, see below), appends {u,d,c?} to
 //     the mural's `ph` in content.json, bumps the version. Live over OTA in ~1 min.
 //
 // POST /caption  (gated by POST_KEY)
@@ -17,7 +17,16 @@
 //     handler for why the R2 object is deliberately left in place.
 //
 // The image full-res is served from cdn.muralquest.app; the app's build-viewer
-// reads it directly (no bundled card needed — grid thumbnails fall back to full-res).
+// reads it directly.
+//
+// CARDS. The grid card and map pin for a `uc` mural ask for the CARD of its newest
+// photo (images/cards/2026/<same name>.webp). Shipped apps (<=1.7.6) do NOT fall back
+// to the full-res photo: a missing card falls back to the mural's `img` — the "Coming
+// soon" placeholder — so without a card the photo never reaches the grid (found live
+// 2026-11-05 on #223). The PWA therefore sends a small `cardBase64` with each photo and
+// we store it at that card key. It is usually JPEG bytes under a .webp name (iOS Safari
+// can't encode WebP); the Content-Type is set from the data URL and browsers sniff
+// image bytes anyway. A card failure never fails the photo.
 //
 // CAPTIONS ARE FORWARD-COMPATIBLE. Shipped app versions (<=1.7.5) read `u` and `d`
 // and ignore unknown keys, so adding `c` breaks nothing. Rob can caption from day one
@@ -164,6 +173,10 @@ export default {
     const muralId = parseInt(body.muralId, 10);
     const date = String(body.date || '').trim();
     const b64 = String(body.imageBase64 || '').replace(/^data:image\/\w+;base64,/, '');
+    // Optional card (see CARDS above). Keep its data-URL type for the Content-Type.
+    const cardRaw = String(body.cardBase64 || '');
+    const cardType = (cardRaw.match(/^data:(image\/(?:jpeg|webp|png));base64,/) || [])[1] || 'image/jpeg';
+    const cardB64 = cardRaw.replace(/^data:image\/\w+;base64,/, '');
     if (!muralId || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !b64) {
       return json({ error: 'need muralId, date (YYYY-MM-DD), imageBase64' }, 400);
     }
@@ -211,8 +224,11 @@ export default {
     let imgKey = `${baseKey}.jpeg`;
     for (let n = 1; taken.has(imgKey); ) imgKey = `${baseKey}-${++n}.jpeg`;
 
+    // Same name as the photo under images/cards/, .webp — what the app's cardPath() asks for.
+    const cardKey = imgKey.replace('images/murals/', 'images/cards/').replace(/\.jpeg$/, '.webp');
+
     if (body.dry) {
-      return json({ ok: true, dry: true, wouldWrite: imgKey, muralId,
+      return json({ ok: true, dry: true, wouldWrite: imgKey, wouldWriteCard: cardB64 ? cardKey : null, muralId,
                    currentPhotos: mural.ph.length, caption: cap.caption });
     }
 
@@ -220,6 +236,21 @@ export default {
     await env.BUCKET.put(imgKey, bytes, {
       httpMetadata: { contentType: 'image/jpeg', cacheControl: 'public,max-age=31536000,immutable' },
     });
+
+    // ── upload card BEFORE content.json, so the app never sees a ph entry without one ──
+    let cardWritten = null, cardError = null;
+    if (cardB64) {
+      try {
+        const cbin = atob(cardB64);
+        if (cbin.length > 2 * 1024 * 1024) throw new Error('card too large (>2MB)');
+        const cbytes = new Uint8Array(cbin.length);
+        for (let i = 0; i < cbin.length; i++) cbytes[i] = cbin.charCodeAt(i);
+        await env.BUCKET.put(cardKey, cbytes, {
+          httpMetadata: { contentType: cardType, cacheControl: 'public,max-age=31536000,immutable' },
+        });
+        cardWritten = cardKey;
+      } catch (e) { cardError = e.message || String(e); }
+    }
 
     // ── append to the mural's photos, bump version, write content.json back ──
     const entry = { u: imgKey, d: date };
@@ -240,6 +271,8 @@ export default {
       photoCount: mural.ph.length,
       caption: cap.caption,
       imageUrl: `https://cdn.muralquest.app/${imgKey}`,
+      cardUrl: cardWritten ? `https://cdn.muralquest.app/${cardWritten}` : null,
+      cardError,
       version: data.version,
     });
   },
