@@ -66,6 +66,7 @@
   <div class="cap-row hidden" id="cap-row">
     <label for="caption">Caption <span class="cap-count" id="cap-count">0/140</span></label>
     <input type="text" id="caption" maxlength="140" placeholder="Optional — e.g. Outlines up">
+    <span class="chk" style="margin-top:8px"><input type="checkbox" id="to-photos"> Save a full-size copy to Photos when I send</span>
   </div>
 
   <div class="actions">
@@ -83,7 +84,7 @@
 <script type="module">
 const CDN = 'https://cdn.muralquest.app';
 const $ = id => document.getElementById(id);
-let murals = [], current = null, refImg = null, capturedBlob = null;
+let murals = [], current = null, refImg = null, capturedBlob = null, fullBytes = null;
 
 // ── today's date default (browser Date is fine here) ──
 $('date').value = new Date().toISOString().slice(0,10);
@@ -189,6 +190,12 @@ $('shoot').addEventListener('click', () => {
   $('cap-row').classList.remove('hidden');
   // keep ghost on top so you can verify alignment
   cv.toBlob(b => capturedBlob = b, 'image/jpeg', 0.92);
+  // Full-size copy for Photos: same 4:3 crop, no downscale. Kept as bytes so Send can
+  // open the share sheet straight away (iOS needs the tap; an await first would lose it).
+  fullBytes = null;
+  const fc = document.createElement('canvas'); fc.width = Math.round(sw); fc.height = Math.round(sh);
+  fc.getContext('2d').drawImage(v, sx,sy,sw,sh, 0,0,fc.width,fc.height);
+  fc.toBlob(b => b && b.arrayBuffer().then(a => { fullBytes = new Uint8Array(a); }), 'image/jpeg', 0.92);
 });
 
 $('retake').addEventListener('click', () => {
@@ -197,7 +204,7 @@ $('retake').addEventListener('click', () => {
   $('cap-row').classList.add('hidden');
   document.querySelectorAll('.fix-caption, .rm-photo').forEach(b => b.remove());
   $('shoot').classList.remove('hidden'); $('out').classList.add('hidden');
-  capturedBlob = null;
+  capturedBlob = null; fullBytes = null;
 });
 
 // ── Capture Worker: field-autonomous publish over OTA (no Mac) ──
@@ -218,12 +225,74 @@ $('dl').addEventListener('click', () => {
   a.href = URL.createObjectURL(capturedBlob); a.download = `${current.id}-${$('date').value}.jpeg`; a.click();
 });
 
+// ── Save to Photos ──
+// A web page can't write to Photos itself; the share sheet's "Save Image" is the way in.
+// The canvas frame has no metadata, so write the date, mural and location into it first.
+const toPhotosPref = (() => { try { return localStorage.getItem('mq_to_photos'); } catch(e){ return null; } })();
+$('to-photos').checked = toPhotosPref === '1';
+$('to-photos').addEventListener('change', () => { try { localStorage.setItem('mq_to_photos', $('to-photos').checked ? '1' : '0'); } catch(e){} });
+
+function saveToPhotos(date){
+  if (!fullBytes || !current) { showErr('Full-size copy not ready yet, so it was not saved to Photos (the send still goes).'); return; }
+  const t = new Date(), pad = n => String(n).padStart(2,'0');
+  const stamp = `${t.getFullYear()}:${pad(t.getMonth()+1)}:${pad(t.getDate())} ${pad(t.getHours())}:${pad(t.getMinutes())}:${pad(t.getSeconds())}`;
+  const cap = $('caption').value.trim();
+  const desc = `#${current.id} ${current.a || ''}${cap ? ' - ' + cap : ''}`;
+  const bytes = withExif(fullBytes, { desc, stamp, fix: captureFix });
+  const file = new File([bytes], `${current.id}-${date}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}.jpg`, { type: 'image/jpeg' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    navigator.share({ files: [file] }).catch(() => {});      // cancelled = not saved, nothing else changes
+  } else {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = file.name; a.click();
+  }
+}
+
+// Minimal EXIF (big-endian TIFF): description, date taken, GPS. Spliced in after SOI,
+// so the JPEG data itself isn't re-encoded.
+function withExif(jpeg, { desc, stamp, fix }){
+  const enc = s => { const b = new TextEncoder().encode(s); const o = new Uint8Array(b.length+1); o.set(b); return o; };
+  const u16 = n => [n>>8 & 255, n & 255], u32 = n => [n>>>24 & 255, n>>16 & 255, n>>8 & 255, n & 255];
+  const rat = list => new Uint8Array(list.flatMap(([a,b]) => [...u32(a), ...u32(b)]));
+  const dms = x => { x = Math.abs(x); const d = Math.floor(x), m = Math.floor((x-d)*60), s = Math.round(((x-d)*60-m)*60*10000); return rat([[d,1],[m,1],[s,10000]]); };
+  // entries: [tag, type, count, bytes]; type 1 BYTE, 2 ASCII, 4 LONG, 5 RATIONAL
+  const ifd0 = [[0x010E,2,0,enc(desc)], [0x0132,2,0,enc(stamp)]];
+  const exif = [[0x9003,2,0,enc(stamp)]];
+  const gps = fix ? [[0x0000,1,4,new Uint8Array([2,2,0,0])],
+                     [0x0001,2,0,enc(fix.lat >= 0 ? 'N' : 'S')], [0x0002,5,3,dms(fix.lat)],
+                     [0x0003,2,0,enc(fix.lng >= 0 ? 'E' : 'W')], [0x0004,5,3,dms(fix.lng)],
+                     [0x001F,5,1,rat([[Math.round((fix.acc||0)*100),100]])]] : null;
+  ifd0.push([0x8769,4,1,null]); if (gps) ifd0.push([0x8825,4,1,null]);
+  const size = es => 6 + es.length*12 + es.reduce((n,e) => n + (e[3] && e[3].length > 4 ? e[3].length + (e[3].length & 1) : 0), 0);
+  const o0 = 8, oE = o0 + size(ifd0), oG = oE + size(exif), total = oG + (gps ? size(gps) : 0);
+  const out = new Uint8Array(total); let p = 0;
+  const put = arr => { out.set(arr, p); p += arr.length; };
+  put([0x4D,0x4D,0,42,...u32(8)]);
+  const write = (es, start) => {
+    p = start; let data = start + 2 + es.length*12 + 4;
+    put(u16(es.length));
+    for (const [tag,type,count,b] of es){
+      put([...u16(tag), ...u16(type)]);
+      if (b === null){ put(u32(1)); put(u32(tag === 0x8769 ? oE : oG)); continue; }
+      put(u32(type === 2 ? b.length : count));
+      if (b.length <= 4){ const v = new Uint8Array(4); v.set(b); put(v); }
+      else { put(u32(data)); out.set(b, data); data += b.length + (b.length & 1); }
+    }
+    put(u32(0));
+  };
+  write(ifd0, o0); write(exif, oE); if (gps) write(gps, oG);
+  const head = new Uint8Array([0xFF,0xE1, ...u16(total + 8), 0x45,0x78,0x69,0x66,0,0]);
+  const res = new Uint8Array(jpeg.length + head.length + total);
+  res.set(jpeg.subarray(0,2)); res.set(head, 2); res.set(out, 2 + head.length); res.set(jpeg.subarray(2), 2 + head.length + total);
+  return res;
+}
+
 // Send → POST to the Capture Worker → live in the app over OTA in ~1 min.
 $('send').addEventListener('click', async () => {
   if (!capturedBlob || !current) return;
   const key = getKey(); if (!key){ showErr('No Capture key entered.'); return; }
   const date = $('date').value;
   const btn = $('send'), label = btn.textContent; btn.textContent='Sending…'; btn.disabled=true; hideErr();
+  if ($('to-photos').checked) saveToPhotos(date);   // opens the share sheet; the upload carries on
   try {
     const b64 = $('canvas').toDataURL('image/jpeg', 0.92);
     // Card for the app's grid + map pin (shorter side 720, longer capped at 1280 —
