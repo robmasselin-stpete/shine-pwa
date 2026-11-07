@@ -66,7 +66,7 @@
   <div class="cap-row hidden" id="cap-row">
     <label for="caption">Caption <span class="cap-count" id="cap-count">0/140</span></label>
     <input type="text" id="caption" maxlength="140" placeholder="Optional — e.g. Outlines up">
-    <span class="chk" style="margin-top:8px"><input type="checkbox" id="to-photos"> Save a full-size copy to Photos when I send</span>
+    <span class="chk" style="margin-top:8px"><input type="checkbox" id="to-photos" checked> Offer a full-size copy for Photos after sending</span>
   </div>
 
   <div class="actions">
@@ -203,6 +203,8 @@ $('retake').addEventListener('click', () => {
   $('retake').classList.add('hidden'); $('send').classList.add('hidden'); $('dl').classList.add('hidden');
   $('cap-row').classList.add('hidden');
   document.querySelectorAll('.fix-caption, .rm-photo').forEach(b => b.remove());
+  document.querySelectorAll('.save-photo').forEach(b => b.remove());
+  $('send').textContent = 'Send to app'; $('send').disabled = false;
   $('shoot').classList.remove('hidden'); $('out').classList.add('hidden');
   capturedBlob = null; fullBytes = null;
 });
@@ -229,17 +231,16 @@ $('dl').addEventListener('click', () => {
 // A web page can't write to Photos itself; the share sheet's "Save Image" is the way in.
 // The canvas frame has no metadata, so write the date, mural and location into it first.
 const toPhotosPref = (() => { try { return localStorage.getItem('mq_to_photos'); } catch(e){ return null; } })();
-$('to-photos').checked = toPhotosPref === '1';
+$('to-photos').checked = toPhotosPref !== '0';   // on unless turned off on this device
 $('to-photos').addEventListener('change', () => { try { localStorage.setItem('mq_to_photos', $('to-photos').checked ? '1' : '0'); } catch(e){} });
 
-function saveToPhotos(date){
-  if (!fullBytes || !current) { showErr('Full-size copy not ready yet, so it was not saved to Photos (the send still goes).'); return; }
+function saveToPhotos(date, cap, mural){
+  if (!fullBytes) { showErr('Full-size copy not ready, so it can\'t be saved to Photos.'); return; }
   const t = new Date(), pad = n => String(n).padStart(2,'0');
   const stamp = `${t.getFullYear()}:${pad(t.getMonth()+1)}:${pad(t.getDate())} ${pad(t.getHours())}:${pad(t.getMinutes())}:${pad(t.getSeconds())}`;
-  const cap = $('caption').value.trim();
-  const desc = `#${current.id} ${current.a || ''}${cap ? ' - ' + cap : ''}`;
+  const desc = `#${mural.id} ${mural.a || ''}${cap ? ' - ' + cap : ''}`;
   const bytes = withExif(fullBytes, { desc, stamp, fix: captureFix });
-  const file = new File([bytes], `${current.id}-${date}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}.jpg`, { type: 'image/jpeg' });
+  const file = new File([bytes], `${mural.id}-${date}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}.jpg`, { type: 'image/jpeg' });
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
     navigator.share({ files: [file] }).catch(() => {});      // cancelled = not saved, nothing else changes
   } else {
@@ -292,7 +293,8 @@ $('send').addEventListener('click', async () => {
   const key = getKey(); if (!key){ showErr('No Capture key entered.'); return; }
   const date = $('date').value;
   const btn = $('send'), label = btn.textContent; btn.textContent='Sending…'; btn.disabled=true; hideErr();
-  if ($('to-photos').checked) saveToPhotos(date);   // opens the share sheet; the upload carries on
+  const sentCap = $('caption').value.trim(), sentMural = current;
+  let sent = false;
   try {
     const b64 = $('canvas').toDataURL('image/jpeg', 0.92);
     // Card for the app's grid + map pin (shorter side 720, longer capped at 1280 —
@@ -333,6 +335,10 @@ $('send').addEventListener('click', async () => {
     // Fix a typo spotted seconds later, without sending a duplicate photo.
     addFixCaption(current.id, j.caption || '');
     addRemovePhoto(current.id, j.imageUrl);
+    // The share sheet needs its own tap (the Send tap is spent by the time the upload
+    // returns), and opening it only now means the ✓ LIVE result is visible underneath.
+    if ($('to-photos').checked) addSavePhoto(date, sentCap, sentMural);
+    sent = true;
     // Clear the box — otherwise today's caption silently rides along on tomorrow's photo.
     $('caption').value = ''; $('cap-count').textContent = '0/140';
     $('cap-count').classList.remove('over');
@@ -341,8 +347,21 @@ $('send').addEventListener('click', async () => {
     setGhost(j.imageUrl);
   } catch (e) {
     showErr('Send failed: ' + e.message + (String(e.message).includes('unauthorized') ? ' — re-enter the key and retry.' : ''));
-  } finally { btn.textContent=label; btn.disabled=false; }
+  } finally {
+    // After a good send the same frame can't go again; Retake re-arms the button.
+    if (sent){ btn.textContent = '✓ Sent'; btn.disabled = true; }
+    else { btn.textContent = label; btn.disabled = false; }
+  }
 });
+
+function addSavePhoto(date, cap, mural){
+  document.querySelectorAll('.save-photo').forEach(b => b.remove());
+  const btn = document.createElement('button');
+  btn.className = 'save-photo'; btn.style.marginTop = '10px'; btn.style.marginRight = '8px';
+  btn.textContent = 'Save to Photos';
+  btn.addEventListener('click', () => saveToPhotos(date, cap, mural));
+  $('out').after(btn);
+}
 
 // Amend the caption on the photo just sent. Empty input clears it.
 function addFixCaption(muralId, currentCaption){
