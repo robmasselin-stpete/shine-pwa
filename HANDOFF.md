@@ -1,11 +1,48 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-05): Android compass FIXED — 1.7.7 (vc19) LIVE on Play (see the evening + afternoon entries); then the
-> 2026-11-05 entry (field photos → grid card fix, GPS capture, #223 pin, #227 live), then
-> 2026-11-04 (evening): SHINE lineup update, Android compass investigation.** v1.7.6 LIVE on both stores — iOS build 160, Android versionCode 18; Android 1.7.7 (vc19) LIVE on Play Nov 5.
+> **CURRENT (2026-11-07): SHINE field capture — Save to Photos, duplicate sends fixed (see the 2026-11-06/07 entry);
+> then 2026-11-05: Android compass FIXED, 1.7.7 (vc19) LIVE on Play.** v1.7.6 LIVE on both stores — iOS build 160,
+> Android 1.7.7 (vc19) LIVE on Play Nov 5.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-06/07 — Capture tool: Save to Photos, no duplicate sends; duplicates removed
+
+**Rob's photos for email (Nov 6).**
+- The capture tool never saves to the phone. It uploads a frame from the camera feed, at most 1600×1200, and that server copy is the only one.
+- Downloaded the 5 photos taken Nov 5–6 to `~/Desktop/SHINE capture photos/`. GPS from the capture (`g`), the time and "#id artist - caption" are written into the EXIF; the JPEG data isn't re-encoded.
+- The 3 from Nov 6 morning (#223, #224, #225) are imported into Photos on the Mac.
+
+**Capture tool changes** (`tools/mural-capture.html`, deployed to mural-tools.pages.dev):
+- **Full-size copy for Photos** (6ebd7c9).
+  - On Capture it also keeps the uncropped-resolution 4:3 frame: about 2880×2160 from the 4K feed, not the 1600 px upload.
+  - `withExif()` writes ImageDescription, DateTime and DateTimeOriginal, plus GPS (lat, lng, HPositioningError). It's spliced in after the JPEG's start marker.
+  - Checked with PIL and with Apple's ImageIO.
+- **Duplicate-send fix** (d6cf3f9).
+  - At first the share sheet opened on the Send tap and covered the "✓ LIVE" result. Rob thought the send had failed and tapped again, so one frame went 2–6 times.
+  - Now Send locks to "✓ Sent" after a good send, and Retake re-arms it. A failed send leaves it live.
+  - A **Save to Photos** button appears with the result. It needs its own tap: iOS won't open the share sheet after an await.
+  - The option ("Offer a full-size copy for Photos after sending") is **on by default** (Rob). Unticking it sticks per device (`localStorage` `mq_to_photos`).
+- **Deploys:** Rob ran the first one (the auto-mode check blocked Claude); Claude ran the second.
+
+**Duplicates removed** via Worker `/delete`, keeping the first frame of each. Every SHINE 2026 photo was checked by md5 and by an average-hash near-duplicate check; nothing else was found. The removed R2 files stay in place by design.
+
+| Mural | Before | After |
+|---|---|---|
+| #217 Ashley Cassens | 6 identical | 1 (13:37:06) |
+| #213 Jacksun | 3 identical | 1 (13:33:45) |
+| #218 Artist Esh | 2 identical | 1 (14:12:18) |
+
+**#218 grid card showed "Coming soon"** while the build-viewer showed the photo.
+- The server was correct: `img` = the photo, and the card and full image were both on the CDN.
+- Closing and reopening the app fixed it.
+- Likely cause: the live OTA re-render doesn't rebuild the Explore grid's or the hero's `<img>`. Added to the next-build backlog.
+- **Field fix:** close and reopen the app.
+
+**Not changed:**
+- **Re-asking for the capture key:** the home-screen app and Safari tabs have separate storage, and a 401 clears the key. Putting the key in the home-screen link was offered, and Rob didn't take it up.
+- **Camera permission:** Rob's case is iOS asking every time. Fix it in Safari: **aA → Website Settings → Camera and Location = Allow**. A home-screen app may still ask once per launch.
 
 ## 2026-11-05 (evening) — Android 1.7.7 approved and live; Samsung still feels ~10° off
 
