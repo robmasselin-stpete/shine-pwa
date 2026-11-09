@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Runs scripts/pull_originals.py every 5 minutes: new SHINE progress photos →
+     ~/Desktop/SHINE capture photos/ + the Photos album "SHINE 2026 progress".
+     Install:  cp scripts/com.pelicandigital.muralquest.photos.plist ~/Library/LaunchAgents/ &&
+               launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pelicandigital.muralquest.photos.plist
+     Stop:     launchctl bootout gui/$(id -u)/com.pelicandigital.muralquest.photos
+     Log:      ~/Library/Logs/muralquest-photos.log -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.pelicandigital.muralquest.photos</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/robasselin/shine-pwa/scripts/pull_originals.py</string>
+  </array>
+  <key>StartInterval</key><integer>300</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>/Users/robasselin/Library/Logs/muralquest-photos.log</string>
+  <key>StandardErrorPath</key><string>/Users/robasselin/Library/Logs/muralquest-photos.log</string>
+  <key>EnvironmentVariables</key>
+  <dict><key>PYTHONWARNINGS</key><string>ignore</string></dict>
+</dict>
+</plist>

@@ -37,7 +37,7 @@
  .cap-count.over{color:#f88;font-weight:700}
  .hidden{display:none}
 </style></head><body>
-<header><h1>Progress Capture</h1><span class="v">v3 · Nov 9 · sends over OTA</span></header>
+<header><h1>Progress Capture</h1><span class="v">v4 · Nov 9 · sends over OTA</span></header>
 <div class="wrap">
 
   <label>Mural</label>
@@ -74,7 +74,6 @@
     <button id="shoot" class="hidden">● Capture</button>
     <button id="retake" class="sec hidden">Retake</button>
     <button id="send" class="hidden">Send to app</button>
-    <button id="dl" class="sec hidden">Download</button>
   </div>
 
   <div id="err" class="err hidden"></div>
@@ -84,7 +83,7 @@
 <script type="module">
 const CDN = 'https://cdn.muralquest.app';
 const $ = id => document.getElementById(id);
-let murals = [], current = null, refImg = null, capturedBlob = null, fullBytes = null;
+let murals = [], current = null, refImg = null, capturedBlob = null, fullBytes = null, shotAt = null;
 
 // ── today's date default (browser Date is fine here) ──
 $('date').value = new Date().toISOString().slice(0,10);
@@ -189,7 +188,7 @@ function metersBetween(a1, o1, a2, o2){
 
 // ── capture ──
 $('shoot').addEventListener('click', () => {
-  grabFix();
+  grabFix(); shotAt = new Date();
   const v = $('video'), cv = $('canvas');
   const vw = v.videoWidth, vh = v.videoHeight;
   // crop the video's centre to the 4:3 stage, then downscale to <=1280 long edge
@@ -202,7 +201,7 @@ $('shoot').addEventListener('click', () => {
   cv.getContext('2d').drawImage(v, sx,sy,sw,sh, 0,0,ow,oh);
   cv.classList.remove('hidden'); v.classList.add('hidden');
   $('shoot').classList.add('hidden');
-  $('retake').classList.remove('hidden'); $('send').classList.remove('hidden'); $('dl').classList.remove('hidden');
+  $('retake').classList.remove('hidden'); $('send').classList.remove('hidden');
   $('cap-row').classList.remove('hidden');
   // keep ghost on top so you can verify alignment
   cv.toBlob(b => capturedBlob = b, 'image/jpeg', 0.92);
@@ -216,7 +215,7 @@ $('shoot').addEventListener('click', () => {
 
 $('retake').addEventListener('click', () => {
   $('canvas').classList.add('hidden'); $('video').classList.remove('hidden');
-  $('retake').classList.add('hidden'); $('send').classList.add('hidden'); $('dl').classList.add('hidden');
+  $('retake').classList.add('hidden'); $('send').classList.add('hidden');
   $('cap-row').classList.add('hidden');
   document.querySelectorAll('.fix-caption, .rm-photo').forEach(b => b.remove());
   document.querySelectorAll('.save-photo').forEach(b => b.remove());
@@ -238,27 +237,33 @@ function getKey(){
   return k;
 }
 
-// Download fallback — save the frame, publish from the Mac if the Worker is down.
-$('dl').addEventListener('click', () => {
-  if (!capturedBlob || !current) return;
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(capturedBlob); a.download = `${current.id}-${$('date').value}.jpeg`; a.click();
-});
-
 // ── Save to Photos ──
 // A web page can't write to Photos itself; the share sheet's "Save Image" is the way in.
 // The canvas frame has no metadata, so write the date, mural and location into it first.
 const toPhotosPref = (() => { try { return localStorage.getItem('mq_to_photos'); } catch(e){ return null; } })();
-$('to-photos').checked = toPhotosPref !== '0';   // on unless turned off on this device
+// Off by default: every send now also goes to the Mac, which files it in Photos itself.
+$('to-photos').checked = toPhotosPref === '1';
 $('to-photos').addEventListener('change', () => { try { localStorage.setItem('mq_to_photos', $('to-photos').checked ? '1' : '0'); } catch(e){} });
+
+const pad2 = n => String(n).padStart(2,'0');
+// The full-size frame with the shot's time, mural/caption and location written in.
+function fullWithExif(cap, mural){
+  const t = shotAt || new Date();
+  const stamp = `${t.getFullYear()}:${pad2(t.getMonth()+1)}:${pad2(t.getDate())} ${pad2(t.getHours())}:${pad2(t.getMinutes())}:${pad2(t.getSeconds())}`;
+  const desc = `#${mural.id} ${mural.a || ''}${cap ? ' - ' + cap : ''}`;
+  return withExif(fullBytes, { desc, stamp, fix: captureFix });
+}
+function b64of(bytes){
+  let s = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(s);
+}
 
 function saveToPhotos(date, cap, mural){
   if (!fullBytes) { showErr('Full-size copy not ready, so it can\'t be saved to Photos.'); return; }
-  const t = new Date(), pad = n => String(n).padStart(2,'0');
-  const stamp = `${t.getFullYear()}:${pad(t.getMonth()+1)}:${pad(t.getDate())} ${pad(t.getHours())}:${pad(t.getMinutes())}:${pad(t.getSeconds())}`;
-  const desc = `#${mural.id} ${mural.a || ''}${cap ? ' - ' + cap : ''}`;
-  const bytes = withExif(fullBytes, { desc, stamp, fix: captureFix });
-  const file = new File([bytes], `${mural.id}-${date}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}.jpg`, { type: 'image/jpeg' });
+  const t = shotAt || new Date();
+  const bytes = fullWithExif(cap, mural);
+  const file = new File([bytes], `${mural.id}-${date}-${pad2(t.getHours())}${pad2(t.getMinutes())}${pad2(t.getSeconds())}.jpg`, { type: 'image/jpeg' });
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
     navigator.share({ files: [file] }).catch(() => {});      // cancelled = not saved, nothing else changes
   } else {
@@ -328,10 +333,15 @@ $('send').addEventListener('click', async () => {
       cardB64 = cc.toDataURL('image/webp', 0.8);
       if (!cardB64.startsWith('data:image/webp')) cardB64 = cc.toDataURL('image/jpeg', 0.82);
     } catch (e) { cardB64 = ''; }
+    // Full-size copy for the Mac (→ Desktop folder + Photos). It's encoded on a short
+    // timer after Capture, so give it a moment if Send came very fast.
+    for (let i = 0; !fullBytes && i < 20; i++) await new Promise(r => setTimeout(r, 100));
+    let fullB64 = '';
+    try { if (fullBytes) fullB64 = b64of(fullWithExif(sentCap, sentMural)); } catch (e) { fullB64 = ''; }
     const res = await fetch(WORKER, {
       method:'POST',
       headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
-      body: JSON.stringify({ muralId: current.id, date, imageBase64: b64, cardBase64: cardB64,
+      body: JSON.stringify({ muralId: current.id, date, imageBase64: b64, cardBase64: cardB64, fullBase64: fullB64,
                             caption: $('caption').value, gps: captureFix }),
     });
     const j = await res.json().catch(()=>({}));
@@ -351,6 +361,7 @@ $('send').addEventListener('click', async () => {
     $('out').textContent = `✓ LIVE — photo #${j.photoCount} on #${j.muralId} (${date}).`
       + (j.caption ? `\nCaption: “${j.caption}”` : '\nNo caption.')
       + `\n${j.imageUrl}`
+      + (j.originalSaved ? '\nFull-size copy: ✓ (the Mac files it in Photos)' : `\n⚠ Full-size copy not saved (${j.originalError || 'none sent'}) — the Mac will use the app-size photo.`)
       + (j.cardUrl ? '\nGrid card: ✓' : `\n⚠ Grid card NOT saved (${j.cardError || 'none sent'}) — the grid will show "Coming soon" for this photo.`)
       + (j.gps
           ? `\nLocation saved: ±${j.gps[2] ?? '?'} m` + (current.lat && current.lng

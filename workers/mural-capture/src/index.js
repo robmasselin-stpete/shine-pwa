@@ -99,10 +99,10 @@ export default {
     if (request.method === 'GET') {
       return json({
         ok: true, service: 'mural-quest-capture',
-        usage: 'POST /photo, /caption or /delete with X-Capture-Key',
+        usage: 'POST /photo, /caption, /delete or /original with X-Capture-Key',
       });
     }
-    const ROUTES = ['/photo', '/caption', '/delete'];
+    const ROUTES = ['/photo', '/caption', '/delete', '/original'];
     if (request.method !== 'POST' || !ROUTES.includes(url.pathname)) {
       return json({ error: 'not_found' }, 404);
     }
@@ -114,6 +114,17 @@ export default {
     // ── parse ──
     let body;
     try { body = await request.json(); } catch { return json({ error: 'bad_json' }, 400); }
+
+    // ── POST /original — the full-size frame, for Rob's Mac (scripts/pull_originals.py) ──
+    // Originals live in the PRIVATE review bucket: they carry the capture GPS in EXIF
+    // and are larger than the app needs, so they never sit on the public CDN.
+    if (url.pathname === '/original') {
+      const name = String(body.name || '');
+      if (!/^\d+-\d{4}-\d{2}-\d{2}-\d{6}(-\d+)?\.jpeg$/.test(name)) return json({ error: 'bad name' }, 400);
+      const o = await env.REVIEW.get('originals/' + name);
+      if (!o) return json({ error: 'no original' }, 404);
+      return new Response(o.body, { headers: { ...CORS, 'Content-Type': 'image/jpeg' } });
+    }
 
     // ── POST /delete — remove a bad frame shot in the field ──
     // Without this a blurry capture is live until Rob is back at the Mac, and
@@ -296,6 +307,23 @@ export default {
       } catch (e) { cardError = e.message || String(e); }
     }
 
+    // ── optional full-size original (with EXIF from the phone) → private bucket ──
+    // Written BEFORE content.json, so once a photo is listed its original is already
+    // there for the Mac to collect. A failure here never fails the photo.
+    let originalSaved = false, originalError = null;
+    if (body.fullBase64) {
+      try {
+        const fbin = atob(String(body.fullBase64).replace(/^data:image\/\w+;base64,/, ''));
+        if (fbin.length > 20 * 1024 * 1024) throw new Error('original too large (>20MB)');
+        const fbytes = new Uint8Array(fbin.length);
+        for (let i = 0; i < fbin.length; i++) fbytes[i] = fbin.charCodeAt(i);
+        await env.REVIEW.put('originals/' + imgKey.split('/').pop(), fbytes, {
+          httpMetadata: { contentType: 'image/jpeg' },
+        });
+        originalSaved = true;
+      } catch (e) { originalError = e.message || String(e); }
+    }
+
     // ── append to the mural's photos, bump version, write content.json back ──
     const entry = { u: imgKey, d: date };
     if (cap.caption) entry.c = cap.caption;  // omitted when empty, never c:''
@@ -322,6 +350,8 @@ export default {
       imageUrl: `https://cdn.muralquest.app/${imgKey}`,
       cardUrl: cardWritten ? `https://cdn.muralquest.app/${cardWritten}` : null,
       cardError,
+      originalSaved,
+      originalError,
       gps: gps || null,
       version: data.version,
     });
