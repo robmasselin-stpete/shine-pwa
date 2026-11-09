@@ -1,11 +1,45 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-07): SHINE field capture — Save to Photos, duplicate sends fixed (see the 2026-11-06/07 entry);
-> then 2026-11-05: Android compass FIXED, 1.7.7 (vc19) LIVE on Play.** v1.7.6 LIVE on both stores — iOS build 160,
-> Android 1.7.7 (vc19) LIVE on Play Nov 5.
+> **CURRENT (2026-11-09): capture tool v3 — server refuses repeat frames, Take another, camera self-restart
+> (see the 2026-11-09 entry); then 2026-11-06/07: Save to Photos, duplicates removed; then 2026-11-05: Android
+> compass FIXED, 1.7.7 (vc19) LIVE on Play.** v1.7.6 LIVE on both stores — iOS build 160, Android 1.7.7 (vc19) on Play.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-09 — Capture tool v3: server refuses repeat frames, Take another, camera restarts itself
+
+**More duplicates removed:**
+- #213 Jacksun had the same "Monday Morning" frame twice, 11 s apart. Removed `213-2026-11-09-134117`. #213 now has 3 photos, and `img` = `134106`.
+- Earlier (Nov 7): all 2026 photos were re-checked for repeats, and #217, #213 and #218 were cleaned. See the 2026-11-06/07 entry.
+
+**Server duplicate check** (Worker `/photo`, commit b5562d2; Rob deployed it, version 8232e63e — Claude's deploy was blocked as a production deploy):
+- The incoming image's MD5 is compared with the R2 `etag` of the mural's last 6 photos. For a single-part put, R2's etag is the MD5 of the bytes; confirmed on a real Jacksun photo.
+- **On a match:** the reply is `{ok:true, duplicate:true, imageUrl: <existing>, …}` and nothing is written. The tool shows "✓ Already live — this exact frame was sent before".
+- If the check itself errors, the upload carries on as normal.
+- **Tested live:** resending `213-2026-11-09-134106` came back `duplicate:true`. #213 stayed at 3 photos, and the content version didn't change.
+
+**Tool changes** (`tools/mural-capture.html`, deployed; the header reads **"v3 · Nov 9"**):
+- After a send, **Retake** reads **Take another** and goes straight back to the live camera.
+- Changing the mural in the picker drops the sent frame and returns to the camera, with that mural's latest photo as the overlay. Rob no longer has to back out to the tools page.
+- **The camera restarts itself:** `ensureCamera()` runs on Take another, on a mural change and on `visibilitychange`. iOS kills a page's camera on screen lock, app switch or the share sheet.
+
+**Rob was using Safari Private mode** to avoid stale tools. That's why the capture key, camera and location permissions and the Photos option reset every time.
+- It isn't needed: Pages serves the tools with `cache-control: max-age=0, must-revalidate`, so a normal tab always gets the current version.
+- Advised: a normal tab, the key entered once, and aA → Website Settings → Camera/Location = Allow. Check the header version to confirm you're on the latest.
+
+**Lost photo:** a #219 Starve shot from the morning never reached the server. GPS matching of all 11 uploads that morning found none sent to the wrong mural; the nearest, #218 at 9:08, is Esh's wall. Rob will reshoot it.
+- **Open question:** the new blue and teal sections either side of Esh's woman on #218 (Nov 9). Are they Starve's? The #219 pin is 45 m away. If they are, move that photo.
+
+**Photos for Rob:**
+- All 16 2026 progress photos up to Nov 7 are in `~/Desktop/SHINE capture photos/`, with EXIF time in local EST (the Worker names files in **UTC**; St. Pete is UTC−5 after Nov 1), GPS and a description.
+- They're imported into the Mac's Photos in an album, **SHINE 2026 progress**; the dates of the three earlier imports were corrected.
+- Going forward: the one-tap **Save to Photos** in the tool, which is Rob's choice over a Mac auto-import or a Shortcut.
+
+**Claude API credits ran out** (console banner, Rob's Individual Org).
+- The only Mural Quest user of that key is the bio-review **Apply changes** step (`/review/propose`), plus `gen-narration.py`.
+- Rob says he doesn't use Apply changes; typed edits and Approve don't touch the API.
+- Rob is checking the console Usage page. **Leave it as is:** no top-up, and don't remove the feature unless Rob asks.
 
 ## 2026-11-06/07 — Capture tool: Save to Photos, no duplicate sends; duplicates removed
 
