@@ -4,8 +4,9 @@
 id: 224
 artist: "Reiver (Lewis Hobson), Ellis Warren & Daniel White"
 year: 2026
-lat: 27.7961005   # dropped pin (brief), set back ~34 m west
-lng: -82.6472011
+lat: 27.796219   # Rob, route editor 9 Nov 2026 (was 27.7961005)
+lng: -82.647346
+facing: 87   # wall faces E; Rob, route editor 9 Nov 2026
 address: "2600 Dr. MLK Jr St N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -87,9 +88,11 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "9 November 2026 — Pin moved to 27.796219, -82.647346 by Rob in the route editor (13.2 m N, 14.2 m W). Was 27.7961005, -82.6472011. Facing set to 87° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2 November 2026 — Bio review tool, approved by Rob: artist, basedIn, pronouns, instagram, artistBio, searchBio. Changes — artist: \"Lewis Hobson, Ellis Warren & Daniel White\" → \"Reiver (Lewis Hobson), Ellis Warren & Daniel White\"; artistBio: Drafted from his SHINE record, Living North and Durham Sixth Form Centre: scrapyard-wall hook (2 sentences), Durham Spray Paints, graffiti → lockdown murals, Hartlepool lifeboat, \"70 percent chatting\" quote, Spennymoor festival + CYAN CIC, SHINE 2026 wall; searchBio: Display text + Spennymoor walls, Sacriston tiger, Headland, ice-rink residency and Dead Dog Gallery show, Instagram; basedIn: \"\" → \"Durham, UK\"; pronouns: \"\" → \"he/him\"; instagram: \"\" → \"reiver_94\". [review:20261102201940-26622089]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #13 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief), set back ~34 m west. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (pin + wall facing)"
   - "Dictated corrections, 2 November 2026 — transcript kept in R2 muralquest-review/applied/20261102201940-26622089.json"
   - "https://spennymoor-tc.gov.uk/the-bob-abley-gallery/wall-in-a-weeks-work/"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
