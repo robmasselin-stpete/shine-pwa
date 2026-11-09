@@ -6,6 +6,7 @@ artist: Sam Yong
 year: 2017
 lat: 27.770083
 lng: -82.66149
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: ""
 category: shine
 img: "images/murals/2016/angela-delaplane-ospreys.jpeg"
@@ -102,9 +103,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2026-05-03 — New mural added by Rob (initially mis-attributed to Angela Delaplane SHINE 2016)."
   - "2026-05-03 — MAJOR ATTRIBUTION CORRECTION per Rob: this is Sam Yong, not Angela Delaplane. File renamed 195-angela-delaplane-2016.yaml → 195-sam-yong-2017.yaml. Year corrected to 2017 per samyong.art/murals (Sam Yong's own portfolio lists his SHINE St. Petersburg wall as 2017; Rob said 2015 but the artist's own site is the primary source — flagging discrepancy). Bio fully replaced; Delaplane sources removed; samyong.art sources added."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-05-03, GPS from EXIF (IMG_1422.jpeg)"
   - "https://samyong.art"
   - "https://samyong.art/about"

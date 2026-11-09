@@ -6,6 +6,7 @@ artist: Abys
 year: 2024
 lat: 27.768488
 lng: -82.657474
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 201 17th Street South
 category: shine
 img: "images/murals/2024/abys.jpeg"
@@ -153,11 +154,13 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - '2026-08-27 — Fact-check: Display bio said "no formal art education" absolutely; street-artwork.com (a cited source) says he trained in applied arts at Lycée Loritz. Matched the hedge already present in searchBio.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Appended osmoz-colors.fr findings to searchBio: studio address (74 rue de Mon Désert, Nancy), email/phone, additional Osmoz collaborators (Mites, Reso, Joef, Fogsprod), specific named projects with year/location (Le Mur Oberkampf, Mesto Gallery Czech Republic, Underground Effect La Défense, Zoo Art Show Lyon, etc.), canvas work titles, and additional commercial clients (Spadas Clothing, BDS's Gaming House Geneva, School of Style Luxembourg). NOTE: user gave URL as 'osmoz-color.fr' — actual domain is 'osmoz-colors.fr' (with an s). Added osmoz-colors.fr URLs to sourceNotes."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_abys"
   - "https://www.axios.com/local/tampa-bay/2024/11/22/shine-mural-festival-2024-st-pete"
   - "https://stpetecatalyst.com/brush-to-canvas-shine-and-other-art-news/"

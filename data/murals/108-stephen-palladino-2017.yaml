@@ -6,6 +6,7 @@ artist: Stephen Palladino
 year: 2017
 lat: 27.774637
 lng: -82.646987
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 276 Dr. Martin Luther King Jr. St N
 category: shine
 img: "images/murals/2017/stephen-palladino.jpeg"
@@ -117,12 +118,14 @@ furtherWork:
     url: ""
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/stephen-palladino/"
   - "https://stpeteartsalliance.org/shine-2017"
   - "https://www.palladinoart.com/about"
   - "https://hypebeast.com/2016/5/essentials-stephen-palladino-good-and-shiddy"
   - "https://www.brooklynstreetart.com/2017/10/28/selections-from-shine-mural-festival-in-st-petersburg-florida/"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: St Petersburg's thoroughfare is MLK Jr Street N; Blvd is the Tampa naming"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

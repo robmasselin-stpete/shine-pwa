@@ -6,6 +6,7 @@ artist: "Alyssa Marie and the Happy Mural Project"
 year: 2024
 lat: 27.772397
 lng: -82.647942
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 929 1st Ave N
 category: commercial
 img: "images/murals/commercial/happy-mural-compassion.jpeg"
@@ -123,12 +124,14 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio, searchMuralDescription. Changes — searchBio: Fixed who oversaw the wall: the org chose Alyssa Marie to oversee it (was credited to Hana Cowart); artistBio: \"16 feet tall\" → \"16 feet at its tallest\" (also search bio and description). [review:20261102205615-7920c9d9]"
   - "2 November 2026 — Artist name set to 'Alyssa Marie and the Happy Mural Project' on all six of her records so they match and link under 'More by' (Rob, interim until he confirms her preferred credit with her this week) (was: 'Happy Mural Project')"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: hands described per Northeast Journal 2024 (one hand releases butterflies toward a lotus held in the other — matches this record's own searchBio; 'morpho' was unsourced); she numbers the shapes herself in Adobe Illustrator (TBT 2023), her team hands out the paint (Northeast Journal 2024)"
   - "26 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten with hook ('Paint-by-numbers, but the wall is 16 feet tall and 105 feet long. Six hundred people came out…') and body covering Gulf Coast JFCS commission, Dr. Philip Benjamin building backstory, Marilyn Benjamin painting glasses, Alyssa Marie's process. SearchBio populated from Northeast Journal source."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Northeast Journal (2024) — Compassion in Action"
   - "https://www.shineonmurals.com/events"
   - "https://www.thehappymuralproject.com"

@@ -6,6 +6,7 @@ artist: Daniel Mrgan
 year: 2016
 lat: 27.770584
 lng: -82.656358
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 1701 1st Ave S
 category: shine
 img: images/murals/2016/daniel-mrgan.jpeg
@@ -143,6 +144,7 @@ artistAwards: "SHINE 2016 selected artist"
 furtherWork: []
 
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. Creative Loafing's profile is the fullest account of his education and says only \"While studying at Schiller International University and St. Petersburg College, he began making wood burnings of whimsical characters\" — attendance at both, no degree and no major named anywhere. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: his own site and this record's own basedIn field both say Missoula; the blog's most recent post is dated February 2023; the source names no degree or major, only attendance; the posts' own datePublished metadata puts these two years later than stated; SPAA describes it as the east-facing wall"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
@@ -151,6 +153,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - |
     GPS from user photo. User photo replaces stock image.
     This mural is on the south side of the same FRSTeam by Rogers building

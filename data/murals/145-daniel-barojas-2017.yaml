@@ -6,6 +6,7 @@ artist: Daniel Barojas
 year: 2017
 lat: 27.772362
 lng: -82.650755
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: "1211 1st Ave N"
 category: shine
 img: "images/murals/commercial/daniel-barojas-tlaloc.jpeg"
@@ -51,6 +52,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://r5imaging.com/"
   - "https://www.instagram.com/r5imaging/"
   - "https://stpeteartsalliance.org/daniel-r5-barojas"
@@ -61,6 +63,7 @@ sourceNotes:
   - "https://www.visitstpeteclearwater.com/article/murals-edge-district"
   - "GPS from Rob's photo IMG_1960.jpeg taken April 8, 2026. @R5Imaging tag visible on wall. Located in the Edge District."
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: his handle is r5imaging — the record's own instagram field, artistBio and sourceNotes all say R5; Creative Pinellas: born in Mexico City, currently resides in St. Petersburg"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "26 April 2026 — Audit: alias was wrong (R3 → R5), Instagram was wrong (r3imaging → r5imaging). Softened Mesoamerican-mythology overgeneralization. Added verified URLs and award credentials."

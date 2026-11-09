@@ -6,6 +6,7 @@ artist: Justin Bass
 year: 0
 lat: 27.770672
 lng: -82.655992
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: "1650 Central Ave"
 category: commercial
 img: "images/murals/commercial/justin-bass-tru.jpeg"
@@ -91,6 +92,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, both items. No source documents a painting date for this wall, so the \"112 years later\" arithmetic — which silently asserts a 2026 painting date off the 1914 first scheduled airline flight — cannot stand. And no publication called Project In The Paint appears in any reachable source, so the \"dynamic duo\" quotation attributed to it has no origin. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: the record's own coords put it ~1.5 miles from the takeoff site, not two blocks; 112 years implies a 2026 painting date that no source establishes; the record's own year field is 0; 112 years implies an unestablished 2026 date; a direct quotation attributed to a publication that appears in no sourceNotes and could not be corroborated"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
@@ -99,6 +101,7 @@ revisionLog:
   - "24 May 2026 — Rob recategorized all three birds as flamingos (was pelican-carrier + flamingo escort + pelican diver). File renamed 154-justin-bass-commercial.yaml → 154-justin-bass.yaml. Applied flamingo edits across artistBio / searchBio / searchMuralDescription / muralInspiration. Fixed two stray 'pelican' references in searchBio ('second winged pelican dives' and 'boombox the pelican carries') for consistency with the rest of the file."
 
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from Rob's photo, IMG_1595.jpeg"
   - "Artist identified by Rob: Justin Bass, @dropthelove, on Tru building on Central Ave"
   - "Bird identification (per Rob, 24 May 2026): all three birds are flamingos, not pelicans"

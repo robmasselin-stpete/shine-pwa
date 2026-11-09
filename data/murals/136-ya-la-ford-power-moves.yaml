@@ -6,6 +6,7 @@ artist: Ya La'Ford
 year: 2022
 lat: 27.765208
 lng: -82.663275
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 569 22nd St S
 category: commercial
 img: images/murals/commercial/ya-la-ford-power-moves.jpeg
@@ -122,12 +123,14 @@ furtherWork:
   - name: "yalaford.com"
     url: "https://www.yalaford.com"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: no source mentions the Boston Public Library"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from user photo. User photo replaces stock image."
   - "Private commercial commission for Power Moves Electric LLC (owner Tre Marshall). Year estimated as 2022."
   - "https://www.yalaford.com/"

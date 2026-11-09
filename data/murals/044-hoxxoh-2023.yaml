@@ -6,6 +6,7 @@ artist: HOXXOH
 year: 2023
 lat: 27.768592
 lng: -82.660671
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 2025 3rd Ave S
 category: shine
 img: "images/murals/2023/hoxxoh.jpeg"
@@ -139,11 +140,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, and in fact CONTRADICTED. HOXXOH Champagne is a French luxury brand created by Adelaide de Castillac, which patented its \"Bubble-Light\" luminous bottle; the Gold/Ruby/Grand Cru/Saphir range is theirs and nothing connects it to Douglas Hoekzema. Name collision only. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: hoxxoh.com is an unrelated French champagne brand, not the artist; nothing connects him to it"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "User photo with GPS 2026-03-08"
   - "https://wynwoodwalls.com/artists/hoxxoh"
   - "https://www.hoxxoh.com/"

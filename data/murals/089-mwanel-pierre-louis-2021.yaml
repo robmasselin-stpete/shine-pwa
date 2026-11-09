@@ -6,6 +6,7 @@ artist: "Mwanel Pierre-Louis"
 year: 2021
 lat: 27.771883
 lng: -82.649903
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 1100 1st Ave. N.
 category: shine
 img: "images/murals/2021/mwanel-pierre-louis.jpeg"
@@ -114,6 +115,7 @@ muralAwards: ""
 artistAwards: ""
 furtherWork: []
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: palette corrected against the field photo: black ground with magenta/teal/yellow, no warm washes; palette corrected against the field photo; palette corrected against the field photo"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -121,6 +123,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://www.mwanel.com/about"
   - "https://stpeteartsalliance.org/Mwanel-Pierre-Louis-2021"

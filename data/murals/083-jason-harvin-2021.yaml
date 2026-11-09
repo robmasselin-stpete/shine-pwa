@@ -6,6 +6,7 @@ artist: Jason Harvin
 year: 2021
 lat: 27.772442
 lng: -82.650938
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 1211 1st Ave. N.
 category: shine
 img: "images/murals/2021/jason-harvin.jpeg"
@@ -118,11 +119,13 @@ furtherWork:
   - name: "waywardwalls.com"
     url: "https://www.waywardwalls.com"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob Asselin. Bio reused from 2022 profile. 2026-03-05."
   - "https://www.waywardwalls.com/about-6"
   - "https://www.fox13news.com/news/tampa-artist-pursuing-full-time-mural-painting"

@@ -6,6 +6,7 @@ artist: 123Klan
 year: 2022
 lat: 27.769732
 lng: -82.660111
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 128 20th St S
 category: shine
 img: images/murals/2022/123klan.jpeg
@@ -130,12 +131,14 @@ furtherWork:
   - name: "123klan.com"
     url: "https://www.123klan.com"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: 123Klan appeared in SHINE 2022, per the lineup announcement"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from user photo (IMG_1601.jpeg). User photo replaces stock image."
   - "https://www.123klan.com/pages/story-of-graffiti-art-couple-scien-and-klor-123klan"
   - "https://en.wikipedia.org/wiki/123Klan"

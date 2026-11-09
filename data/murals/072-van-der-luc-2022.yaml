@@ -6,6 +6,7 @@ artist: Van Der Luc
 year: 2022
 lat: 27.763846
 lng: -82.66551
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 602 24th St S
 category: shine
 img: images/murals/2022/van-der-luc.jpeg
@@ -86,10 +87,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: Tank School is an earlier Van Der Luc work used as a sample image in the lineup article, not this wall; Tank School is a different, earlier work"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "10 April 2026 — Fixed hollow opener, restructured with hook and paragraph breaks"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from user photo (IMG_1610.jpeg). User photo replaces stock image."
   - "https://www.instagram.com/van_der_luc_/"
   - "https://stpeterising.com/home/2022/9/12/artist-lineup-revealed-for-st-petes-eighth-annual-shine-mural-festival"

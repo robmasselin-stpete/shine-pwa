@@ -6,6 +6,7 @@ artist: Lili Yuan
 year: 2020
 lat: 27.771386
 lng: -82.655009
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: Grand Central District
 category: shine
 img: "images/murals/2020/lili-yuan.jpeg"
@@ -113,6 +114,7 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "User photo with GPS 2026-03-08"
   - "https://voyagemia.com/interview/meet-lili-gallerry-jacksonville/"
   - "https://stpetemuraltour.com/2021/03/01/lili-yuan/"
@@ -121,6 +123,7 @@ sourceNotes:
   - "https://stpeteartsalliance.org/lili-yuan/"
   - "https://seawalls.org/mural/gift/"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. No source names Hangzhou or any Chinese hometown. The St. Pete Mural Tour profile adds that she earned an economics degree in China and did not take art classes until after moving to Jacksonville, but places her origin no more precisely than \"China\". Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: no source names Hangzhou or any Chinese hometown; no source names Hangzhou"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

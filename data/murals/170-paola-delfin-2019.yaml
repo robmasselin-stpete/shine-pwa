@@ -6,6 +6,7 @@ artist: Paola Delfín
 year: 2019
 lat: 27.768538
 lng: -82.660055
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 1975 3rd Ave S
 category: shine
 img: "images/murals/commercial/paola-delfin-emperatriz.jpeg"
@@ -82,11 +83,13 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (pilot/batch-2 sweep, full web search): RESTORED the St+Art India Foundation credit — she painted at least three St+Art India projects in 2023: \"Instante/क्षण\" in New Delhi's Lodhi Art District for The Lodhi Festival, a Mumbai wall for MUAF 2022-23, and \"Life\" in Chennai supported by Asian Paints, documented by St+Art India itself and by Barbara Picci's street-art index. POW! WOW! and Buenos Aires remain UNSUPPORTED after a full search and stay removed — and Buenos Aires has now also been dropped from the searchBio, which had kept it while the display bio was stripped. Universidad Iberoamericana also remains unsupported; the Academia de San Carlos wording is correct."
   - "2026-08-27 — Fact-check: No source names Universidad Iberoamericana; es.wikipedia describes her as self-taught with study at the Academia de San Carlos. Removed unsupported Buenos Aires, St+Art India and POW! WOW! credits."
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Reclassified per Rob: this is SHINE 2019 (was tagged 'commercial' with year 0). File renamed 170-paola-delfin-commercial.yaml → 170-paola-delfin-2019.yaml."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-16, GPS from EXIF"
   - "Artist: Paola Delfín"
   - "Title: La Emperatriz"

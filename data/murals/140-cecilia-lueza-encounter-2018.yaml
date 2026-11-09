@@ -6,6 +6,7 @@ artist: Cecilia Lueza
 year: 2018
 lat: 27.765763
 lng: -82.663528
+facing: 315   # wall faces NW; Rob, route editor 9 Nov 2026
 address: 515 22nd St S
 category: commercial
 img: images/murals/commercial/cecilia-lueza-encounter.jpeg
@@ -139,10 +140,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 315° (NW) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2026-08-27 — Fact-check: Removed Encounter from the SHINE list — it is a commissioned ArtsXchange wall, not a festival mural (stpetecatalyst.com). Same error previously corrected in #4 and #210."
   - "2026-08-27 — Fact-check: Address corrected to the ArtsXchange campus at 515 22nd Street South (matches the record's own building field, its GPS, and sibling records #010/#019). Delta is in Tarpon Springs, not Jacksonville (lueza.com/public-sculpture)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from user photo. User photo replaces stock image. Originally painted 2018, restored April 2023. Address approximate from GPS — entrance to ArtsXchange campus on 22nd St S in the Warehouse Arts District."
   - "stpetecatalyst.com/art-news-new-life-for-bold-mural-artwalk-weekend/"
   - "https://en.wikipedia.org/wiki/Cecilia_Lueza"

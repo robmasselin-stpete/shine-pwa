@@ -6,6 +6,7 @@ artist: DAAS
 year: 2018
 lat: 27.769537
 lng: -82.660215
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 128 20th St S
 category: shine
 img: "images/murals/2018/daas.jpeg"
@@ -140,6 +141,7 @@ furtherWork:
     url: "https://www.artist-daas.com"
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.artist-daas.com/"
   - "https://stpetecatalyst.com/shine-up-close-mural-artist-daas/"
@@ -148,5 +150,6 @@ sourceNotes:
   - "https://cliburn.org/mural/"
   - "https://stpeteartsalliance.org/daas"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

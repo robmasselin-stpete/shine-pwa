@@ -6,6 +6,7 @@ artist: Jenipher Chandley
 year: 2021
 lat: 27.763857
 lng: -82.664543
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 625 23rd St S
 category: shine
 img: images/murals/2021/jenipher-chandley.jpeg
@@ -146,10 +147,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Display bio rewritten with new hook anchored to this wall: 'Giant lemons and orange blossoms, with a tiny self-affirmation tucked into the design: Be-you-tiful!' Removed survival lead per earlier user direction (same as #10)."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from user photo (IMG_1609.jpeg). User photo replaces stock image."
   - "https://www.jenipherchandley.com/about-1"
   - "https://creativepinellas.org/artist/jenipher-chandley/"

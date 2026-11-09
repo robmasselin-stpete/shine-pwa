@@ -6,6 +6,7 @@ artist: PHYBR
 year: 2024
 lat: 27.770883
 lng: -82.657692
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 1756 Central Ave
 category: commercial
 img: images/murals/commercial/phybr-neon-lunchbox.jpeg
@@ -98,6 +99,7 @@ artistAwards: ""
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "26 April 2026 — Removed unsupported claims (played in bands; age-30 divorce). Softened 'IT and computer networking' → 'IT security'; 'holds a residency' → 'completed a residency'; 'From The Earth Dispensary' client → noted as collab with Skela. Added verified URLs."
 verification:
@@ -106,6 +108,7 @@ verification:
   status: pass
   notes: "Two unsourced personal-history claims removed (played in bands, age-30 divorce). Past-tense softening applied to ongoing claims that sources only documented as completed."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://www.phybrart.com/"
   - "https://voyagekc.com/interview/daily-inspiration-meet-phybr/"
   - "https://shoutoutla.com/meet-ken-phybr-dushane-muralist-designer/"

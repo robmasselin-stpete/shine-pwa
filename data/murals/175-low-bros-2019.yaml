@@ -6,6 +6,7 @@ artist: Low Bros
 year: 2019
 lat: 27.778142
 lng: -82.646401
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 535 Dr. Martin Luther King Jr. St N
 category: shine
 img: "images/murals/2019/low-bros.jpeg"
@@ -100,11 +101,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2026-08-27 — Fact-check: What's Cooking was shown at Urban Art Fair Paris in 2023 (presented with H.D. Gallery), not an H.D. Gallery exhibition in 2024; only Window Views is the 2024 H.D. Gallery show."
   - "2026-08-27 — Fact-check: Email was a scrape artifact; his contact page lists hello@christophflorin.com."
   - "22 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Appended lowbros.de + christophflorin.com (homepage, /about, /selected-works) findings to searchBio: Hamburg studio address (Bogenstraße 19), recent Christoph Florin rebrand exhibitions (H.D. Gallery Paris, Affenfaust, Mirus Denver, Urban Spree, Mirus SF), art-fair history (Urban Art Fair Paris, Scope Miami, Juxtapoz Clubhouse, Context, Affordable Artfair), Art Collection Berlin + private collections in 7 countries, multiple ADC Awards 2020 (Gold/Silver/Bronze across categories), named works Jet Set + The Medium is the Message, new IG @christoph_florin, contact email. Added 4 URLs to sourceNotes."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-21, GPS from EXIF"
   - "https://streetartnews.net/2019/11/post-internet-explorers-low-bros-in-st-petersburg-florida.html"
   - "https://stpeteartsalliance.org/shine?alias=/2019_SHINE_low_bros"

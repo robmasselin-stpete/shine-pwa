@@ -6,6 +6,7 @@ artist: Chenlin Cai
 year: 2023
 lat: 27.768329
 lng: -82.659899
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 1927 4th Ave S
 category: shine
 img: "images/murals/2023/chenlin-cai.jpeg"
@@ -180,11 +181,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2026-08-27 — Fact-check: record described Chenlin Cai as female throughout (~42 she/her). Every source uses he/him — SHINE's own artist page, phl.org, muralarts.org, 6abc and the Philadelphia Inquirer, which the searchBio was drawn from. Corrected all pronouns. Also fixed fieldNotes 'Born in Hangzhou, studied at RISD' — he was born in Fujian and holds MFAs from Tsinghua and PAFA, as the record's own bio already stated."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Expanded the James Museum sponsorship paragraph in searchBio: tied to 'From Far East to West: The Chinese American Frontier' exhibition (Oct 14 2023 – Jan 28 2024), 12 thematic sections including railroad construction, contemporary artists Hung Liu / Mian Situ / Jie Wei Zhou / Benjamin Wu, Chief Curator Emily Kapes quote, Catalyst caption credit. Added thejamesmuseum.org/exhibitions/fareast and ilovetheburg.com/james-museum-far-east-to-west to sourceNotes."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/shine?alias=/2023_SHINE_chenlin_cai"
   - "https://www.cai-chenlin.com/"
   - "https://www.inquirer.com/philly/news/chenlin-cai-artist-philadelphia-chinatown-murals-20181202.html"

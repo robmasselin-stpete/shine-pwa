@@ -6,6 +6,7 @@ artist: NeSpoon
 year: 2024
 lat: 27.764297
 lng: -82.666143
+facing: 135   # wall faces SE; Rob, route editor 9 Nov 2026
 address: 601 24th St South
 category: shine
 img: "images/murals/2024/nespoon.jpeg"
@@ -182,11 +183,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 135° (SE) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — New hook leads with the 30-year 'Thoughts' project per user direction. Ties to this wall (porcelain petals come from leftover clay of her lace work — same tradition as the lace mural here)."
   - "2026-06-16 — Artist-direct update (NeSpoon via Rob): added her Instagram reel to links; wove her hurricane account into muralInspiration, artistBio, searchMuralDescription, and searchBio. Due to arrive Oct 10 2024 (Hurricane Milton landfall Oct 9), festival postponed, painted a month later — the storm is the right-side swirls. Hurricane named/dated per public record."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Artist-direct (Nov 2024): NeSpoon sent Rob a reel + copy describing the hurricane inspiration — https://www.instagram.com/reel/DCwsjteTyEa/ ; thanks Jenee Priebe + SHINE team; tagged @shineonstpete @nogooddeeds_art"
   - "Hurricane Milton — landfall near Siesta Key Oct 9, 2024; ~16-18in rain on St. Petersburg — https://www.tampabay.com/hurricane/2024/10/09/hurricane-milton-live-updates-forecast-today-tampa-bay-hillsborough-pinellas-pasco/"
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_nespoon"

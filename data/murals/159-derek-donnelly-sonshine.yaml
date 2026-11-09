@@ -6,6 +6,7 @@ artist: Derek Donnelly
 year: 0
 lat: 27.774037
 lng: -82.647116
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: "226 Dr MLK Jr St N"
 category: commercial
 img: "images/murals/commercial/derek-donnelly-sonshine.jpeg"
@@ -72,8 +73,10 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "16 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-16, GPS from EXIF"
   - "Artist: Derek Donnelly, signed on wall"
   - "Title: Sonshine (per Rob)"

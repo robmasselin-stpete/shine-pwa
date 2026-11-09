@@ -6,6 +6,7 @@ artist: R2romero
 year: 0
 lat: 27.773947
 lng: -82.647051
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: "933 Burlington Ave N"
 category: commercial
 img: "images/murals/commercial/romero-stpetersrun.jpeg"
@@ -78,9 +79,11 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; corrected Paint It Pink date (2024-2025 → 2026, project was early 2026); removed standalone 'ENKI the water god' banknote subject (not in documented gallery, may be sub-element of The Sumerians); cross-street '4th Ave S' dropped as unverified."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://creativepinellas.org/artist/arturo-romero-r2romero/"
   - "https://banknoteartconcept.com/gallery/r2romero/"
   - "https://www.streetartsf.com/tag/r2romero/"

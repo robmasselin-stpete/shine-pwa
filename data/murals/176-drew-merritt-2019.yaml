@@ -6,6 +6,7 @@ artist: Drew Merritt
 year: 2019
 lat: 27.778247
 lng: -82.646402
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 551 Dr. Martin Luther King Jr. St N
 category: shine
 img: "images/murals/2019/drew-merritt.jpeg"
@@ -80,10 +81,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): LEFT REMOVED, deliberately. Search-engine summaries do assert that the model is Kari Michelle and point at the St. Pete Arts Alliance mural page as the source, but that page is JavaScript-rendered and returns no such text to any fetch, and no other reachable source names her. Since this identifies a named private individual, an unverifiable search summary is not a good enough basis to restore it. Not re-litigated again unless a first-party citation turns up."
   - "28 August 2026 — Fact-check fleet: a named private individual with no citation; removed rather than left unsourced"
   - "22 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-21, GPS from EXIF"
   - "https://www.visitstpeteclearwater.com/profile/mask-off-edge-district/140781"
   - "https://www.drewmerritt.com/about-drew-merritt"

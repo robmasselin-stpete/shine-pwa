@@ -6,6 +6,7 @@ artist: Vitale Bros
 year: 2019
 lat: 27.768137
 lng: -82.660307
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 301 20th St S
 category: shine
 img: "images/murals/2019/vitale-bros.jpeg"
@@ -117,12 +118,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: Ocean Conservancy and Patch both place this wall at 301 20th St S (Techno-Solis); the address string was copied from the Illsol record; self-contradictory: two solo walls, one of them a collaboration. The searchBio was missed when artistBio was corrected"
   - "28 August 2026 — Fact-check fleet: the only source dates Hot Walls to July and does not tie it to SHINE"
   - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year; artistAwards hedged: painted walls documented from 2015 on"
   - "27 August 2026 — Fact-check fleet: Sionna Sio MacLeish is a collaborator, not Vitale's daughter; the Factory wall was shared, not solo"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-03-18, GPS from EXIF. New entry (no prior YAML)."
   - "https://stpeteartsalliance.org/vitale-brothers"
   - "https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/"

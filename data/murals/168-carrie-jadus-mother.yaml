@@ -6,6 +6,7 @@ artist: Carrie Jadus
 year: 0
 lat: 27.766276
 lng: -82.663354
+facing: 135   # wall faces SE; Rob, route editor 9 Nov 2026
 address: 515 22nd St S
 category: commercial
 img: "images/murals/commercial/carrie-jadus-mother.jpeg"
@@ -95,12 +96,14 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 135° (SE) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED the two-week duration. Alive Tampa Bay reports that Jadus and her assistant Tara Radosevich \"spent two weeks\" painting the Tesla mural in 2015. The three-assistant credit already in this record is correct and unchanged — the duration and the crew size were never in conflict."
   - "28 August 2026 — Fact-check fleet: the source names three assistants and gives no duration; the two-week figure belongs to the Dog Bar mural"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "29 April 2026 — Replaced placeholder bio with canonical Carrie Jadus bio (matches #149/#150 for consistency). Added Instagram handle and verified source URLs."
   - "29 April 2026 — Filled building (ArtsXchange) and address (515 22nd St S — confirmed by mural serial number 'AXΔ515 22ND ST S.O.'). Added muralInspiration narrative from carriejadus.com/murals.html and Creative Pinellas."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "http://www.carriejadus.com/bio.html"
   - "http://www.carriejadus.com/murals.html"
   - "https://creativepinellas.org/magazine/carrie-jadus-paints-on/"

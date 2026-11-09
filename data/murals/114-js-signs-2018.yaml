@@ -6,6 +6,7 @@ artist: J&S Signs
 year: 2018
 lat: 27.778632
 lng: -82.646407
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 553 9th St N
 category: shine
 img: "images/murals/2018/js-signs-point-of-pines.jpeg"
@@ -81,8 +82,10 @@ artistAwards: "SHINE 2018 festival artist"
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/js-signs/"
   - "https://www.pdxmonthly.com/home-and-real-estate/2019/02/this-duo-makes-some-of-portland-s-most-eye-catching-signs"
   - "https://www.jeffreysincich.com/about"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

@@ -6,6 +6,7 @@ artist: Blake Emory
 year: 0
 lat: 27.770581
 lng: -82.660612
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 2001 1st Ave S
 category: commercial
 img: "images/murals/commercial/blake-emory-cage-diver-jellyfish.jpeg"
@@ -102,11 +103,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED both removals, and applied to BOTH Emory records since they share one bio. \"Optic Modernism\" is used of him by name in press — Food & Beverage Magazine calls him \"one of today's most innovative pioneers in the Optic Modernism movement\" and Drink Me Magazine \"an innovative mind in the Optic Modernism movement\" (both re: EMORY Vodka / the Zebra Love collection). The 1983 birth year is on his gallery bio: \"Blake Emory was born in 1983 and raised in Plant City, Florida, into an unconventional family of artists, inventors, and musicians\", which also gives the birthplace, now added."
   - "28 August 2026 — Fact-check fleet: neither biographical source carries a birth year; that sourceNotes URL is Emory Blake the former NFL receiver, a different person"
   - "28 August 2026 — Fact-check fleet: his own gallery names the movement Etherealism; Optic Modernism appears in no source; his own gallery names the movement Etherealism; instagram.com/emory_blake is Emory Blake the former NFL receiver, a different person with a transposed name; that handle belongs to a different person"
   - "2026-05-06 — New mural added by Rob: third Blake Emory at Cage Brewing, exterior outdoor wall (deep-sea diver removing helmet under three jellyfish). GPS from photo IMG_0282.jpeg EXIF (27.77072, -82.66072). Year unknown — flagged. Attribution authoritative (Rob met the artist on site 2026-05-01)."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-05-05, GPS from EXIF (IMG_0282.jpeg)"
   - "Rob met Blake Emory in person at Cage Brewing on 2026-05-01 — primary-source attribution confirmed."
   - "https://www.emorybrothersart.com/biography"

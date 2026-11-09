@@ -6,6 +6,7 @@ artist: Hannah Eddy
 year: 2023
 lat: 27.772697
 lng: -82.649439
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 1019 Arlington Ave N
 category: shine
 img: images/murals/2023/hannah-eddy.jpeg
@@ -136,9 +137,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from user photo (IMG_1510.jpeg). User photo replaces stock image."
   - "https://hannaheddyart.com/"
   - "https://www.hannaheddyart.com/about"

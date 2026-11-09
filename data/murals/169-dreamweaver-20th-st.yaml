@@ -6,6 +6,7 @@ artist: Dreamweaver
 year: 0
 lat: 27.767103
 lng: -82.660247
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 415 20th St S
 category: commercial
 img: "images/murals/commercial/dreamweaver-20th-st.jpeg"
@@ -75,9 +76,11 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: two pooled sources give a Bachelor of Arts, not a BFA"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-16, GPS from EXIF"
   - "Artist: Taylor Smith / Dreamweaver / @dream.weavin"
   - "Address: 415 20th St S"

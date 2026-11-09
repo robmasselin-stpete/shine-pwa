@@ -6,6 +6,7 @@ artist: Michael Reeder
 year: 2016
 lat: 27.77066
 lng: -82.656498
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 1701 1st Ave S
 category: shine
 img: images/murals/2016/michael-reeder.jpeg
@@ -127,11 +128,13 @@ furtherWork:
     url: "https://reederone.com"
 
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - |
     GPS from user photo. User photo replaces stock image.
     This mural is on the north side of the same FRSTeam by Rogers building

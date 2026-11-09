@@ -6,6 +6,7 @@ artist: Melanie Posner
 year: 2023
 lat: 27.771887
 lng: -82.649063
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: "77 11th St N"
 category: commercial
 img: "images/murals/commercial/unknown-1506.jpeg"
@@ -110,6 +111,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED \"a small town just outside Philadelphia\". She says it herself in her SHOUTOUT MIAMI interview: \"I am from a small town right outside of Philadelphia.\" The St. Pete Catalyst's \"Philadelphia native\" is the looser regional shorthand, not a contradiction. Applied across all four Posner records, whose searchBio had drifted to the bare city while three of the display bios still said \"outside Philadelphia\"."
   - "28 August 2026 — Fact-check fleet: the only source calls her a Philadelphia native, not suburban"
   - "28 August 2026 — Fact-check fleet: her own portfolio places it at the LGBT Center in Hollywood, not West Hollywood"
@@ -117,6 +119,7 @@ revisionLog:
   - "10 April 2026 — Deep research, full bio with hook, copied to all 3 Posner files"
   - "2026-05-02 — Display bio rewritten anchored to THIS wall (sunglasses with reflected skyline) instead of the red-headscarf Hollander wall. Hollander/Disney/TikTok/Tampa Baes facts kept as career context. Fixed inconsistent 'red headscarf' fieldNote."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "Credit on wall: therealmelpoz 2023"
   - "https://stpetecatalyst.com/melanie-posner/"

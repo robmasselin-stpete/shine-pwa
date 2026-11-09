@@ -6,6 +6,7 @@ artist: Dreamweaver
 year: 2022
 lat: 27.771635
 lng: -82.654535
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 1510 1st Ave. N.
 category: shine
 img: "images/murals/2022/dreamweaver.jpeg"
@@ -109,10 +110,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. Every source describes Dreamweaver as Taylor Smith working solo (born Dallas, raised Portland then Atlanta, BA Georgia College & State University 2017). The only \"Denise Weaver\" who surfaces is Denise Weaver Ross, an unrelated Albuquerque artist and poet. Sibling record #007 carries the same removal. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: removed the mother-daughter duo field note. No source knows a Denise Weaver; her own site, the St. Petersburg Arts Alliance credit for this wall, Creative Pinellas and a long Artisan Magazine interview all describe Taylor Smith working solo. Unsubstantiated, so dropped per Rob"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob Asselin. Bio from approved 2025 profile. 2026-03-05."
   - "https://voyagemia.com/interview/meet-taylor-smith-dreamweaver-designs-st-pete-fl/"
   - "https://www.artistsalapts.com/taylor-smith"

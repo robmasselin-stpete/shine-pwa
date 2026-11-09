@@ -6,6 +6,7 @@ artist: ArtFluent Creatives
 year: 0
 lat: 27.770912
 lng: -82.659295
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: "1901 Central Ave"
 category: commercial
 img: "images/murals/commercial/morgan-harper-nichols.jpeg"
@@ -64,11 +65,13 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. Nothing connects Morgan Harper Nichols to a mural at 1901 Central Ave or to St. Petersburg, Florida at all; the reachable material on her is entirely biographical and publishing-related. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: MISATTRIBUTION CORRECTED. This mural was credited to poet Morgan Harper Nichols and carried her full biography. The wall is signed at lower left by three artists under the name ArtFluent Creatives, an agency founded by Michelle Sasha (instagram.com/artfluent.creatives). The Morgan Harper Nichols connection is real but narrower: the poem on the painted scroll is hers and her name is signed beneath it. Confirmed from Rob's own field photo. The previous bio (approx 600 words of her life story) has been removed. Also: the address may be wrong - the photo shows the boutique at 1916 A Central Ave while this record says 1901"
   - "16 April 2026 — New mural added, GPS from Rob's photos (IMG_0048, IMG_0049)"
   - "26 April 2026 — Audited (PASS). 19/20 claims fully verified, 1 (extended client list) verified via her own CV. Zero hallucinations."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://en.wikipedia.org/wiki/Morgan_Harper_Nichols"
   - "https://en.wikipedia.org/wiki/Jamie_Grace"
   - "https://twloha.com/board/"

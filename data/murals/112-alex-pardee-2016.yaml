@@ -6,6 +6,7 @@ artist: Alex Pardee
 year: 2016
 lat: 27.774628
 lng: -82.647193
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 251 10th St N
 category: shine
 img: "images/murals/2016/alex-pardee.jpeg"
@@ -114,6 +115,7 @@ artistAwards: "SHINE 2016 selected artist"
 furtherWork: []
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/alex-pardee/"
   - "https://en.wikipedia.org/wiki/Alex_Pardee"
   - "http://shineonstpete.com/2016/09/06/alex-pardee-brightmares/"
@@ -121,6 +123,7 @@ sourceNotes:
   - "https://spoke-art.com/collections/alex-pardee"
   - "https://en.wikipedia.org/wiki/Cage_(rapper)"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED — this was a correct fix, not a loss. \"Cage Kennylz\" is the rapper's name and the record now correctly lists Hell's Winter, the I Never Knew You EP and Depart from Me as the releases. Nothing to restore. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: Kennylz is part of the rapper's name (Cage Kennylz), not a release"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

@@ -6,6 +6,7 @@ artist: Ink Werkz Crew
 year: 2015
 lat: 27.770947
 lng: -82.655105
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 1610 Central Ave
 category: shine
 img: "images/murals/2015/ink-werkz-2015.jpeg"
@@ -70,8 +71,10 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: the studio's own Instagram lists @duke_727; the record's own artistBio agrees"
   - "29 April 2026 — New mural added, GPS from Rob's photo IMG_0218 taken 2026-04-29"
   - "2026-05-03 — New hook ('Three friends painted this at SHINE's first year in 2015. A decade later, a building covers most of it. The signatures are still there.'). Updated to reflect current state: a building (not just an ATM kiosk) was built in front, only a slice of the original artwork plus the signatures are visible. Per Rob (May 2026 visit)."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-29, GPS from EXIF. Crew tags visible on mural: @duke_727, @hillis727, @reidjenkinsart. Painted SHINE 2015 (inaugural year). Partially obscured by Chase Bank ATM kiosk built in front in 2018. Source: Tampa Bay Times coverage of SHINE 2015."

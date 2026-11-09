@@ -6,6 +6,7 @@ artist: Blake Emory
 year: 0
 lat: 27.770425
 lng: -82.660570
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 2001 1st Ave S
 category: commercial
 img: "images/murals/commercial/blake-emory-cage-interior-goddess.jpeg"
@@ -101,10 +102,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: neither biographical source carries a birth year; that sourceNotes URL is Emory Blake the former NFL receiver, a different person"
   - "28 August 2026 — Fact-check fleet: his own gallery names the movement Etherealism; Optic Modernism appears in no source; his own gallery names the movement Etherealism; instagram.com/emory_blake is Emory Blake the former NFL receiver, a different person with a transposed name; that handle belongs to a different person"
   - "2026-05-06 — New mural added by Rob: second Blake Emory at Cage Brewing, interior (women's-room exterior in covered patio). GPS from photo IMG_0279.jpeg EXIF (27.77072, -82.66113). Year unknown — flagged. Attribution authoritative (Rob met the artist on site 2026-05-01)."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-05-05, GPS from EXIF (IMG_0279.jpeg)"
   - "Rob met Blake Emory in person at Cage Brewing on 2026-05-01 — primary-source attribution confirmed."
   - "https://www.emorybrothersart.com/biography"

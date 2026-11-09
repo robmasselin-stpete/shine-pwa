@@ -6,6 +6,7 @@ artist: Chad Mize
 year: 0
 lat: 27.770053
 lng: -82.662247
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: ""
 category: commercial
 img: "images/murals/commercial/chad-mize-eye-love-stpete.jpeg"
@@ -152,10 +153,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2026-05-03 — New mural added by Rob: Chad Mize commercial 'Eye Love St. Pete' doodle wall. GPS from photo IMG_0249.jpeg EXIF. Bio drawn from canonical Mize sources used in #58 and #116."
   - "2026-05-14 — Chad Mize sent his updated display bio directly for inclusion; replaced previous display bio verbatim and appended same text to searchBio so search still hits both versions."
 
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-05-03, GPS from EXIF (IMG_0249.jpeg). Signed 'MIZE' visible in upper right of wall."
   - "http://chadmize.com/"
   - "https://stpetecatalyst.com/influencers/chad-mize/"

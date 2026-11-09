@@ -6,6 +6,7 @@ artist: Morning Breath
 year: 2019
 lat: 27.774454
 lng: -82.646928
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 250 Dr. Martin Luther King Jr. St N
 category: shine
 img: "images/murals/2019/morning-breath.jpeg"
@@ -131,12 +132,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (pilot/batch-2 sweep, full web search): CONFIRMED REMOVED. No source names any school for either partner. Their own about page and every profile give the same origin story — Cunningham and Noto met in 1996 in the in-house design department at Think Skateboards in San Francisco and formalised Morning Breath in 2002 — with no education section anywhere. Not re-litigated again."
   - "2026-08-27 — Fact-check: Removed the same unsupported Academy of Art University claim corrected in #18 — no source names any school for either partner, including every archived version of their own about page."
   - "2026-08-27 — Fact-check: Same Morning Breath errors as #18: monograph 2016 -> 2017, The Early Bird 2007 -> 2006. Sources: morningbreathinc.com/about, OpenLibrary."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/morning-breath"
   - "https://stpeteartsalliance.org/morning-breath-2015"
   - "http://www.morningbreathinc.com/about"

@@ -6,6 +6,7 @@ artist: Brian Butler
 year: 2020
 lat: 27.772439
 lng: -82.649909
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 1101 1st Ave N
 category: shine
 img: "images/murals/2020/brian-butler.jpeg"
@@ -137,6 +138,7 @@ artistAwards: "SHINE 2020 / Sea Walls selected artist"
 furtherWork: []
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://upperhandart.com/"
   - "https://mieuxmagazine.com/brian-butler-the-upper-hand-in-art/"
@@ -149,6 +151,7 @@ sourceNotes:
   - "https://seawalls.org/mural/carbon-punishment/"
   - "https://www.cltampa.com/arts-entertainment/visual-art/article/21146034/st-pete-artist-to-display-carbon-punishment-piece-at-shine-mural-festival"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: he is Miami-based, per SPAA and the record's own basedIn field"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

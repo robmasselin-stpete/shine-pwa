@@ -6,6 +6,7 @@ artist: Bakpak Durden
 year: 2021
 lat: 27.772283
 lng: -82.647522
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 919 1st Ave. N.
 category: shine
 img: "images/murals/2021/bakpak-durden.jpeg"
@@ -122,6 +123,7 @@ furtherWork:
   - name: "bakpakdurden.com"
     url: "https://www.bakpakdurden.com"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED — the removal was surgical and correct, and the true fact behind it survived intact. Cranbrook Art Museum's own page states \"The Eye of Horus is Durden's first solo museum exhibition and the inaugural show of the Cranbrook Art Museum's Fresh Paint series\" (5 Nov 2022 - 12 Mar 2023), which the record already says. No source anywhere describes the show as selling out, so that stays out. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: corrected pronouns to they/their throughout. Durden is a Black trans postgender artist; the artist's own site avoids gendered pronouns and Kresge, Cranbrook, Playground Detroit and SPAA all use they/their. Also dropped the unsupported claim that the Cranbrook show sold out — no source says so, and it was a curated museum exhibition, not a selling show"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
@@ -129,6 +131,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://www.bakpakdurden.com/about"
   - "https://cranbrookartmuseum.org/exhibition/bakpak-durden-eye-of-horus/"

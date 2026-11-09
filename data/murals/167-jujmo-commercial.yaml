@@ -6,6 +6,7 @@ artist: Jujmo
 year: 2021
 lat: 27.766404
 lng: -82.663515
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: Warehouse Arts District
 category: shine
 img: "images/murals/commercial/jujmo-blobs.jpeg"
@@ -71,9 +72,11 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: Space Rainbows is a Ricky Watts mural; SPAA confirms Jujmo's 2017 wall is Aquatic Forest (already fixed in #163); Space Rainbows is a Ricky Watts mural; the correct title is Aquatic Forest"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-16, GPS from EXIF"
   - "Artist: Jujmo (Cheryl Weber), signed on wall"
   - "Third Jujmo wall — also has SHINE 2017 (id 163) and SHINE 2021 (id 85)"

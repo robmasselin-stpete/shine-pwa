@@ -6,6 +6,7 @@ artist: Illsol
 year: 2018
 lat: 27.76994
 lng: -82.660513
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 2010 1st Ave S
 category: shine
 img: "images/murals/2018/notice-us.jpeg"
@@ -117,6 +118,7 @@ furtherWork:
     url: ""
 
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED for T-Mobile only. Illsol's own project index lists 20 projects including \"Tampa Convention Center Interior Mural\" and \"Dream Pushers - Commissioned by the City of Tampa\" — so two of the three named clients stand — but T-Mobile appears nowhere in their portfolio or in any coverage. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: T-Mobile appears in no source; replaced with Valspar, which does; T-Mobile appears in no source; 120-230 is the present-day FWC estimate, not the 1990s low"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
@@ -124,6 +126,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "User photo with GPS 2026-03-08"
   - "https://voyagemia.com/interview/meet-illsol-michelle-sawyer-tony-krol-illsol-located-tampa/"
   - "https://illsol.com/us"

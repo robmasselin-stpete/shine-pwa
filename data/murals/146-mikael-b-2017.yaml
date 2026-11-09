@@ -6,6 +6,7 @@ artist: Mikael B
 year: 2017
 lat: 27.772337
 lng: -82.650497
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: "1123 1st Ave N"
 category: shine
 img: "images/murals/2017/mikael-b.jpeg"
@@ -107,6 +108,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from Rob's photo IMG_1961.jpeg taken April 8, 2026"
   - "SHINE 2017 festival piece"
   - "https://en.wikipedia.org/wiki/Mikael_Brandrup"
@@ -115,6 +117,7 @@ sourceNotes:
   - "https://blog.molotow.com/introducing-mikael-brandrup-aka-kets-x-interview-photos/"
   - "https://www.culturedmag.com/article/2022/12/05/mikael-b-denmark-artist-graffiti/"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "2026-08-27 — Fact-check: Foundation predates 2017 and funded one school, not several — his own charity page describes a 2015 visit and a school housing 150 children. The Red Cross Denmark ambassadorship is correct."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "16 April 2026 — Full research, bio rewrite with hook, searchBio added"

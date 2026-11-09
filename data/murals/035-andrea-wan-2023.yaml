@@ -6,6 +6,7 @@ artist: Andrea Wan
 year: 2023
 lat: 27.76947
 lng: -82.656237
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 155 17th St S
 category: shine
 img: "images/murals/2023/andrea-wan.jpeg"
@@ -107,6 +108,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from Rob's photo IMG_1935.jpeg taken April 8, 2026"
   - "Rob's photo replaces stock image"
   - "https://www.andreawan.com/"
@@ -116,6 +118,7 @@ sourceNotes:
   - "https://rabbiteyemovement.at/an-interview-with-andrea-wan/"
   - "https://cosmopola.de/visual-artists/andrea-wan/"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED Finland. Pendulum Magazine quotes her directly — \"The mural I did last year in Rovaniemi Finland communicates the idea that there's a universe inside each of us to be explored.\" The cited Pendulum URL was truncated (404) and has been corrected, which is why the 28 Aug check found nothing."
   - "28 August 2026 — Fact-check fleet: no Finland wall appears on her own portfolio or anywhere else"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

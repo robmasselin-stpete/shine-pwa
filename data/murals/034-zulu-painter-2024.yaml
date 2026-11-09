@@ -6,6 +6,7 @@ artist: Zulu Painter
 year: 2022
 lat: 27.772442
 lng: -82.649044
+facing: 135   # wall faces SE; Rob, route editor 9 Nov 2026
 address: Arlington Ave N
 category: commercial
 img: "images/murals/2024/zulu-painter.jpeg"
@@ -136,11 +137,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 135° (SE) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: no biographical source mentions any degree; Broome County's executive is Jason T. Garnar; SHINE Origins 2025 is a fifth appearance, per SPAA's own directory"
   - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY; Cultivate Kindness is in Charleston WV; only Spread Love is in Binghamton"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://creativepinellas.org/magazine/welcoming-domestic-violence-survivors-with-art/"
   - "https://www.zulupainter.com/about.html"

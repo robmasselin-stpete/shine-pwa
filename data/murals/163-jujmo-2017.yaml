@@ -6,6 +6,7 @@ artist: Jujmo
 year: 2017
 lat: 27.770471
 lng: -82.656416
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 1701 1st Ave S
 category: shine
 img: "images/murals/2017/jujmo-space-rainbows.jpeg"
@@ -86,10 +87,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: every source and this record's own bio place her in Tampa"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; FIXED title: 'Space Rainbows' was wrong (that's a Ricky Watts mural). Per SPAA, Jujmo's 2017 mural at 1701 1st Ave S is 'Aquatic Forest.' Removed unsourced 'cute forward' style quote."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://jujmo.com/about"
   - "https://creativepinellas.org/artist/cheryl-weber/"
   - "https://ilovetheburg.com/jujmo-murals-tampa-st-pete/"

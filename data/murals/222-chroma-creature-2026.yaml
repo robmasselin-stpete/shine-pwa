@@ -6,6 +6,7 @@ artist: "Chroma Creature"
 year: 2026
 lat: 27.7719094   # VIV: reuses #215 Hiero Veiga's dropped pin (~30 ft from the VIV wall); Hiero is out of SHINE 2026
 lng: -82.6483233
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: "1000 1st Ave N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -111,11 +112,13 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Wall moved: USF Harbor Hall → VIV, 1000 1st Ave N (Nov 4 lineup); artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: Wall moved: USF Harbor Hall → VIV (search bio). [review:20261104211508-7f72434a]"
   - "4 November 2026 — Wall moved USF Harbor Hall → VIV, 1000 1st Ave N, per the updated SPAA SHINE Walls & Artists list (Rob). Building, address and pin changed (pin from #215's VIV drop). Note: St Pete Catalyst lineup (Nov 2) still had her at Harbor Hall. Bio change approved in the review tool the same day."
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New opening: walls, canvases and people; murals, face/body painting and special-effects makeup, all self-taught. New paragraph from her SHINE record: ArtsXchange studio artist, the feminine and nature, acrylic/gouache/airbrush/spray, art as paying attention; searchBio: Same opening and paragraph, plus multidisciplinary/lifelong and body art + SFX makeup. [review:20261101175307-28006159]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #11 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "SPAA SHINE Walls & Artists list, updated version given by Rob 4 Nov 2026"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob) — wall assignment"

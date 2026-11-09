@@ -6,6 +6,7 @@ artist: Matt Kress
 year: 0
 lat: 27.772306
 lng: -82.646803
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: "1st Ave N & Dr. MLK Jr St N"
 category: commercial
 img: "images/murals/commercial/unknown-1503.jpeg"
@@ -98,6 +99,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://mattkress.art/"
   - "https://eyesonthestreets.blog/2022/04/23/at-1st-street-north-mlk/"
@@ -106,6 +108,7 @@ sourceNotes:
   - "https://blog.artstorefronts.com/artist-matt-kress/"
   - "https://www.axios.com/local/tampa-bay/2024/06/25/mooney-anomaly-plane-mural-st-petersburg"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "4 November 2026 — Field note corrected: the plane is a 1967 Mooney M20F (per the bio and AOPA), not a Beechcraft Bonanza. Rob approved the fix."
   - "27 August 2026 — Fact-check fleet: 1st St N and MLK St N are parallel and never meet; the wall is at 913 1st Ave N and the pin already matched"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
