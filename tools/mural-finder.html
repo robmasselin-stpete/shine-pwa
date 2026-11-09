@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mural Finder Test</title>
+<style>
+  :root { --bg:#f5f2ec; --ink:#1a1a1a; --card:#fff; --blue:#2e5e7e; --green:#2e6b2e; --brick:#c1441e;
+          --rule:#ddd; --mute:#666; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151515; --ink:#eee; --card:#222; --rule:#333; --mute:#999; } }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:16px; padding-bottom:calc(16px + env(safe-area-inset-bottom)); background:var(--bg);
+         color:var(--ink); font:16px/1.4 -apple-system, system-ui, sans-serif; max-width:520px; margin-inline:auto; }
+  h1 { font-size:20px; margin:0; color:var(--brick); }
+  .sub { font-size:13px; color:var(--mute); margin:2px 0 12px; }
+  button { font:inherit; border:0; border-radius:10px; cursor:pointer; }
+  #scan { width:100%; padding:16px; background:var(--blue); color:#fff; font-size:19px; font-weight:600; }
+  #status { font-size:13px; color:var(--mute); margin:8px 0; min-height:1.4em; font-variant-numeric:tabular-nums; }
+  #pane { display:none; }
+  .pic { position:relative; width:100%; aspect-ratio:4/3; background:var(--blue); border-radius:10px; overflow:hidden; }
+  .pic img { width:100%; height:100%; object-fit:cover; display:block; }
+  .check { position:absolute; inset:0; display:none; align-items:center; justify-content:center;
+           background:rgba(46,107,46,.55); color:#fff; font-size:140px; font-weight:700; }
+  .who { margin:10px 0 2px; font-size:19px; font-weight:700; }
+  .what { font-size:14px; color:var(--mute); }
+  .why { font-size:13px; color:var(--mute); margin-top:4px; font-variant-numeric:tabular-nums; }
+  .nav { display:grid; grid-template-columns:1fr 1.4fr 1fr; gap:10px; margin:14px 0 10px; align-items:stretch; }
+  .nav button { padding:14px 6px; background:var(--card); color:var(--blue); border:2px solid var(--blue); font-weight:600; }
+  .nav button:disabled { opacity:.3; }
+  #yes { background:var(--green); border-color:var(--green); color:#fff; font-size:19px; }
+  #rescan { display:block; margin:0 0 0 auto; padding:10px 16px; background:none; color:var(--blue); font-weight:600; }
+  #empty { display:none; background:var(--card); border-radius:10px; padding:14px; font-size:15px; }
+  #done { display:none; background:var(--card); border-radius:10px; padding:14px; }
+  #done img { width:100%; border-radius:8px; display:block; }
+  #done p { margin:8px 0 0; font-size:14px; }
+  details { margin-top:18px; font-size:13px; }
+  summary { color:var(--mute); cursor:pointer; }
+  table { width:100%; border-collapse:collapse; margin-top:6px; font-variant-numeric:tabular-nums; }
+  td, th { text-align:left; padding:4px 3px; border-bottom:1px solid var(--rule); }
+  th { font-size:11px; text-transform:uppercase; color:var(--mute); }
+  #log { font:12px/1.35 ui-monospace, monospace; white-space:pre-wrap; max-height:35vh; overflow:auto; margin-top:6px; }
+  .small { padding:8px 12px; background:var(--card); color:var(--ink); border:1px solid var(--rule); font-size:13px; margin:6px 6px 0 0; }
+</style>
+</head>
+<body>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test</small></h1>
+<div class="sub">Stand in front of a mural, point the phone at it, tap Scan.</div>
+
+<button id="scan">Scan</button>
+<div id="status"></div>
+
+<div id="empty"></div>
+
+<div id="pane">
+  <div class="pic"><img id="img" alt=""><div class="check" id="check">✓</div></div>
+  <div class="who" id="who"></div>
+  <div class="what" id="what"></div>
+  <div class="why" id="why"></div>
+  <div class="nav">
+    <button id="prev">◀ Prev</button>
+    <button id="yes">That's It!</button>
+    <button id="next">Next ▶</button>
+  </div>
+  <button id="rescan">↻ ReScan</button>
+</div>
+
+<div id="done"></div>
+
+<details id="dbg">
+  <summary>Candidates (why this order)</summary>
+  <table id="cands"></table>
+</details>
+<details>
+  <summary>Test log</summary>
+  <div id="log"></div>
+  <button class="small" id="copy">Copy log</button><button class="small" id="clear">Clear log</button>
+</details>
+
+<script>
+// Standalone test of the "find the mural I'm standing in front of" idea. Reads the live
+// mural list from the CDN; nothing here touches the app. Desk testing:
+//   ?at=27.77415,-82.64715&h=90&acc=8   fakes the position, heading and GPS accuracy.
+const CDN = 'https://cdn.muralquest.app/';
+const RADIUS = 120;          // metres searched (widened when GPS is poor)
+const SHOW = 8;              // candidates offered via Prev / Next
+const $ = id => document.getElementById(id);
+const q = new URLSearchParams(location.search);
+const fake = q.get('at') ? { lat: +q.get('at').split(',')[0], lng: +q.get('at').split(',')[1],
+                             h: q.has('h') ? +q.get('h') : null, acc: +(q.get('acc') || 8) } : null;
+
+let murals = [], headings = [], cands = [], idx = 0, scan = null, listening = false;
+
+// ── compass: same logic as js/app.js compassHeadingFrom() (the Nov 5 fix) ──
+const MAGNETIC_DECLINATION = 0;
+function compassHeadingFrom(e) {
+  if (e.webkitCompassHeading != null) return e.webkitCompassHeading;   // iOS
+  if (e.alpha == null || e.absolute !== true) return null;             // relative frame: not a compass
+  const r = Math.PI / 180, a = e.alpha * r, b = (e.beta || 0) * r, g = (e.gamma || 0) * r;
+  const top = (360 - e.alpha) * r;
+  const Vx = -Math.cos(a) * Math.sin(g) - Math.sin(a) * Math.sin(b) * Math.cos(g);
+  const Vy = -Math.sin(a) * Math.sin(g) + Math.cos(a) * Math.sin(b) * Math.cos(g);
+  const w = Math.min(1, Math.max(0, (Math.abs(e.beta || 0) - 55) / 20));
+  const h = Math.atan2((1 - w) * Math.sin(top) + w * Vx / (Math.hypot(Vx, Vy) || 1),
+                       (1 - w) * Math.cos(top) + w * Vy / (Math.hypot(Vx, Vy) || 1)) / r;
+  return ((h + MAGNETIC_DECLINATION) % 360 + 360) % 360;
+}
+function onOrient(e) {
+  const h = compassHeadingFrom(e);
+  if (h != null) headings.push({ t: Date.now(), h });
+  if (headings.length > 200) headings.splice(0, 100);
+}
+// Circular mean of the last second of readings (plain averaging breaks across 0°/360°).
+function heading() {
+  if (fake) return fake.h;
+  const now = Date.now(), r = Math.PI / 180;
+  const recent = headings.filter(x => now - x.t < 1000);
+  if (!recent.length) return null;
+  const s = recent.reduce((a, x) => a + Math.sin(x.h * r), 0), c = recent.reduce((a, x) => a + Math.cos(x.h * r), 0);
+  return ((Math.atan2(s, c) / r) + 360) % 360;
+}
+
+// ── geometry ──
+function distBearing(lat1, lng1, lat2, lng2) {
+  const r = Math.PI / 180, dLat = (lat2 - lat1) * r, dLng = (lng2 - lng1) * r * Math.cos(lat1 * r);
+  return { d: 6371000 * Math.hypot(dLat, dLng), b: ((Math.atan2(dLng, dLat) / r) + 360) % 360 };
+}
+const angDiff = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+
+// Lower cost = more likely. Distance always counts. Direction counts less when the pin is
+// so close that GPS error blurs the bearing to it, but never drops below 0.3, so a wall right behind you still loses to one in front.
+function rank(pos, h) {
+  const radius = Math.max(RADIUS, pos.acc * 3);
+  return murals.map(m => {
+    const { d, b } = distBearing(pos.lat, pos.lng, m.lat, m.lng);
+    const off = h == null ? null : angDiff(h, b);
+    const w = h == null ? 0 : Math.min(1, Math.max(0.3, (d - 3) / 17));
+    const cost = (d / 40) ** 2 + w * ((off || 0) / 35) ** 2;
+    return { m, d, b, off, w, cost };
+  }).filter(c => c.d <= radius).sort((x, y) => x.cost - y.cost).slice(0, SHOW);
+}
+
+// ── position: watch until accuracy is good or 6 s pass, keep the best fix ──
+function getPosition() {
+  if (fake) return Promise.resolve({ lat: fake.lat, lng: fake.lng, acc: fake.acc });
+  return new Promise((resolve, reject) => {
+    let best = null;
+    const done = () => { navigator.geolocation.clearWatch(id); clearTimeout(t); best ? resolve(best) : reject(new Error('no GPS fix')); };
+    const id = navigator.geolocation.watchPosition(p => {
+      const fix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy };
+      if (!best || fix.acc < best.acc) best = fix;
+      status(`Finding you… GPS ±${Math.round(fix.acc)} m`);
+      if (fix.acc <= 12) done();
+    }, err => { if (!best) { clearTimeout(t); navigator.geolocation.clearWatch(id); reject(err); } },
+       { enableHighAccuracy: true, maximumAge: 0, timeout: 15000 });
+    const t = setTimeout(done, 6000);
+  });
+}
+
+const status = s => { $('status').textContent = s; };
+const cardUrl = img => CDN + img.replace('images/murals/', 'images/cards/').replace(/\.(jpe?g|png)$/i, '.webp');
+const latestImg = m => (m.ph && m.ph.length ? m.ph[m.ph.length - 1].u : m.img);
+const compass = d => ['N','NE','E','SE','S','SW','W','NW'][Math.round(d / 45) % 8];
+
+async function loadMurals() {
+  const r = await fetch(CDN + 'content.json', { cache: 'no-cache' });
+  const j = await r.json();
+  murals = j.murals.filter(m => m.lat && m.lng).map(m => ({ ...m, lat: +m.lat, lng: +m.lng }));
+}
+
+async function startSensors() {
+  if (listening || fake) return;
+  try {
+    if (window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission)
+      await DeviceOrientationEvent.requestPermission();      // iOS: must be inside the tap
+  } catch (e) { log('compass permission: ' + e); }
+  window.addEventListener('ondeviceorientationabsolute' in window ? 'deviceorientationabsolute' : 'deviceorientation', onOrient, true);
+  listening = true;
+}
+
+async function doScan() {
+  $('scan').disabled = true; $('pane').style.display = 'none'; $('empty').style.display = 'none'; $('done').style.display = 'none';
+  try {
+    await startSensors();                 // first, while we still have the tap
+    if (!murals.length) { status('Loading murals…'); await loadMurals(); }
+    status('Finding you…');
+    const pos = await getPosition();
+    await new Promise(r => setTimeout(r, fake ? 0 : 600));   // let the compass settle
+    const h = heading();
+    cands = rank(pos, h); idx = 0;
+    scan = { at: new Date(), pos, h, cands };
+    status(`GPS ±${Math.round(pos.acc)} m · facing ${h == null ? 'unknown (no compass)' : Math.round(h) + '° ' + compass(h)}`);
+    showCands();
+    if (!cands.length) {
+      $('empty').innerHTML = `<b>No murals within ${Math.max(RADIUS, Math.round(pos.acc * 3))} m.</b><br>
+        Open the Map in Mural Quest and zoom in on your blue dot to see what's nearby.`;
+      $('empty').style.display = 'block';
+      log(`${stamp()}  NONE  ${fmtPos(pos)}  h ${fmtH(h)}`);
+      return;
+    }
+    if (h != null && cands[0].off > 90) status($('status').textContent + ' · nothing in front of you: turn to face the wall and ReScan');
+    show();
+  } catch (e) {
+    $('empty').innerHTML = `<b>Couldn't get your location</b> (${e.message || e}).<br>
+      Check that location is allowed for this site, or open the Map in Mural Quest and zoom in on your blue dot.`;
+    $('empty').style.display = 'block'; status('');
+  } finally { $('scan').disabled = false; }
+}
+
+function show() {
+  const c = cands[idx], m = c.m;
+  $('check').style.display = 'none';
+  $('img').src = cardUrl(latestImg(m));
+  $('img').onerror = () => { $('img').onerror = null; $('img').src = CDN + latestImg(m); };
+  $('who').textContent = m.a;
+  $('what').textContent = [m.t && m.t !== 'Title TBA' ? m.t : '', m.loc].filter(Boolean).join(' · ');
+  $('why').textContent = `#${m.id} · ${Math.round(c.d)} m ${compass(c.b)}` +
+    (c.off == null ? '' : ` · ${Math.round(c.off)}° off where you're pointing`) + ` · ${idx + 1} of ${cands.length}`;
+  $('prev').disabled = idx === 0; $('next').disabled = idx === cands.length - 1;
+  $('pane').style.display = 'block';
+  [...$('cands').rows].forEach((r, i) => r.style.fontWeight = i === idx + 1 ? '700' : '');
+}
+
+function showCands() {
+  $('cands').innerHTML = '<tr><th>#</th><th>Mural</th><th>m</th><th>off°</th><th>dir wt</th><th>cost</th></tr>' +
+    cands.map(c => `<tr><td>${c.m.id}</td><td>${c.m.a.slice(0, 22)}</td><td>${Math.round(c.d)}</td>
+      <td>${c.off == null ? '–' : Math.round(c.off)}</td><td>${c.w.toFixed(2)}</td><td>${c.cost.toFixed(2)}</td></tr>`).join('');
+}
+
+function thatsIt() {
+  const c = cands[idx], m = c.m;
+  $('check').style.display = 'flex';
+  // The log line doubles as field data: where you stood and which way you faced to see this wall.
+  log(`${stamp()}  #${m.id} ${m.a.slice(0, 20)}  RANK ${idx + 1}/${cands.length}  ${Math.round(c.d)} m  off ${c.off == null ? '–' : Math.round(c.off)}°  ` +
+      `${fmtPos(scan.pos)}  h ${fmtH(scan.h)}  top3 ${cands.slice(0, 3).map(x => x.m.id).join(',')}`);
+  setTimeout(() => {
+    $('pane').style.display = 'none';
+    $('done').innerHTML = `<img src="${cardUrl(latestImg(m))}" alt="">
+      <div class="who">${esc(m.a)}</div><div class="what">${esc([m.t, m.loc].filter(Boolean).join(' · '))}</div>
+      <p>${esc(m.sbio || m.bio || '')}</p>
+      <p style="color:var(--mute)">In the app this opens the mural's detail card.</p>`;
+    $('done').style.display = 'block';
+  }, 900);
+}
+
+// ── test log (this phone only) ──
+const LOG_KEY = 'mq_finder_log';
+const stamp = () => new Date().toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+const fmtPos = p => `${p.lat.toFixed(6)},${p.lng.toFixed(6)} ±${Math.round(p.acc)}`;
+const fmtH = h => h == null ? '–' : Math.round(h) + '°';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function log(s) {
+  $('log').textContent = s + '\n' + $('log').textContent;
+  try { localStorage.setItem(LOG_KEY, $('log').textContent); } catch {}
+}
+try { $('log').textContent = localStorage.getItem(LOG_KEY) || ''; } catch {}
+
+$('scan').onclick = doScan;
+$('rescan').onclick = doScan;
+$('prev').onclick = () => { if (idx > 0) { idx--; show(); } };
+$('next').onclick = () => { if (idx < cands.length - 1) { idx++; show(); } };
+$('yes').onclick = thatsIt;
+$('copy').onclick = () => navigator.clipboard.writeText($('log').textContent).then(
+  () => status('Log copied'), () => status('Copy failed — screenshot the log instead'));
+$('clear').onclick = () => { if (window.confirm('Clear the test log on this phone?')) { $('log').textContent = ''; try { localStorage.removeItem(LOG_KEY); } catch {} } };
+if (fake) status(`Desk test: fake position ${fake.lat}, ${fake.lng}, facing ${fake.h ?? 'none'}`);
+</script>
+</body>
+</html>
