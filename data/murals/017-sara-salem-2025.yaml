@@ -4,8 +4,9 @@
 id: 17
 artist: Sara Salem
 year: 2025
-lat: 27.791175
-lng: -82.640104
+lat: 27.792005   # Rob, route editor 9 Nov 2026 (was 27.791175)
+lng: -82.638948
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 2180 4th St N
 category: shine
 img: "images/murals/2025/sara-salem.jpeg"
@@ -143,11 +144,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Pin moved to 27.792005, -82.638948 by Rob in the route editor (92 m N, 114 m E, onto 4th St N at the LMCU building, matching the 2180 4th St N address). Was 27.791175, -82.640104. Facing set to 180° (S) (new field, used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: the two projects were swapped: LMCU is the 2025 SHINE wall, the community mural at 22nd and Central was 2024"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Corrected mural title to 'Sol' per artist request via Rob (Sara Salem confirmed directly). 'We Are St. Pete' is the rallying line painted across the design, not the title. Updated artistBio + searchBio refs; description retains the painted-text mention."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (pin + wall facing)"
   - "https://phiphiartland.com/murals"
   - "https://canvasrebel.com/meet-sara-salem/"
   - "https://queuevision.com/discovering-wellness-through-art-the-inspiring-journey-of-phi-phi-artland/"
