@@ -37,7 +37,7 @@
  .cap-count.over{color:#f88;font-weight:700}
  .hidden{display:none}
 </style></head><body>
-<header><h1>Progress Capture</h1><span class="v">v4 · Nov 9 · sends over OTA</span></header>
+<header><h1>Progress Capture</h1><span class="v">v5 · Nov 9 · records wall facing</span></header>
 <div class="wrap">
 
   <label>Mural</label>
@@ -83,7 +83,7 @@
 <script type="module">
 const CDN = 'https://cdn.muralquest.app';
 const $ = id => document.getElementById(id);
-let murals = [], current = null, refImg = null, capturedBlob = null, fullBytes = null, shotAt = null;
+let murals = [], current = null, refImg = null, capturedBlob = null, fullBytes = null, shotAt = null, shotHeading = null;
 
 // ── today's date default (browser Date is fine here) ──
 $('date').value = new Date().toISOString().slice(0,10);
@@ -141,7 +141,7 @@ function setGhost(url){
 // ── camera ──
 let stream = null;
 const camAlive = () => !!stream && stream.getVideoTracks().some(t => t.readyState === 'live' && !t.muted);
-$('start').addEventListener('click', () => startCamera());
+$('start').addEventListener('click', () => { startCompass(); startCamera(); });
 async function startCamera(){
   if (!current) { showErr('Pick a mural first.'); return; }
   try {
@@ -180,6 +180,44 @@ function grabFix(){
     p => { captureFix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; },
     () => {}, { enableHighAccuracy: true, timeout: 10000, maximumAge: 15000 });
 }
+// ── compass at Shoot: which way the camera points, so the wall faces the other way ──
+// Same reading as the app's geo compass (js/app.js compassHeadingFrom, the Nov 5 fix).
+let headings = [], compassOn = false;
+function compassHeadingFrom(e){
+  if (e.webkitCompassHeading != null) return e.webkitCompassHeading;   // iOS
+  if (e.alpha == null || e.absolute !== true) return null;             // relative frame: not a compass
+  const r = Math.PI / 180, a = e.alpha * r, b = (e.beta || 0) * r, g = (e.gamma || 0) * r;
+  const top = (360 - e.alpha) * r;
+  const Vx = -Math.cos(a) * Math.sin(g) - Math.sin(a) * Math.sin(b) * Math.cos(g);
+  const Vy = -Math.sin(a) * Math.sin(g) + Math.cos(a) * Math.sin(b) * Math.cos(g);
+  const w = Math.min(1, Math.max(0, (Math.abs(e.beta || 0) - 55) / 20));
+  const h = Math.atan2((1 - w) * Math.sin(top) + w * Vx / (Math.hypot(Vx, Vy) || 1),
+                       (1 - w) * Math.cos(top) + w * Vy / (Math.hypot(Vx, Vy) || 1)) / r;
+  return (h % 360 + 360) % 360;
+}
+async function startCompass(){
+  if (compassOn) return;
+  try {   // iOS asks once per page load (every time in a private window); must run inside the tap
+    if (window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission)
+      if (await DeviceOrientationEvent.requestPermission() !== 'granted') return;
+  } catch (e) { return; }
+  window.addEventListener('ondeviceorientationabsolute' in window ? 'deviceorientationabsolute' : 'deviceorientation', e => {
+    const h = compassHeadingFrom(e);
+    if (h != null) { headings.push({ t: Date.now(), h }); if (headings.length > 200) headings.splice(0, 100); }
+  }, true);
+  compassOn = true;
+}
+// Circular mean of the last second (a plain average breaks across 0°/360°).
+function cameraHeading(){
+  const now = Date.now(), r = Math.PI / 180, recent = headings.filter(x => now - x.t < 1000);
+  if (!recent.length) return null;
+  const s = recent.reduce((a, x) => a + Math.sin(x.h * r), 0), c = recent.reduce((a, x) => a + Math.cos(x.h * r), 0);
+  return Math.round(((Math.atan2(s, c) / r) + 360) % 360) % 360;
+}
+const POINTS = ['N','NE','E','SE','S','SW','W','NW'];
+const pointOf = d => POINTS[Math.round(d / 45) % 8];
+const angDiff = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+
 function metersBetween(a1, o1, a2, o2){
   const R = 6371000, r = Math.PI/180, dA = (a2-a1)*r, dO = (o2-o1)*r;
   const h = Math.sin(dA/2)**2 + Math.cos(a1*r)*Math.cos(a2*r)*Math.sin(dO/2)**2;
@@ -188,7 +226,7 @@ function metersBetween(a1, o1, a2, o2){
 
 // ── capture ──
 $('shoot').addEventListener('click', () => {
-  grabFix(); shotAt = new Date();
+  grabFix(); shotAt = new Date(); shotHeading = cameraHeading();
   const v = $('video'), cv = $('canvas');
   const vw = v.videoWidth, vh = v.videoHeight;
   // crop the video's centre to the 4:3 stage, then downscale to <=1280 long edge
@@ -342,7 +380,7 @@ $('send').addEventListener('click', async () => {
       method:'POST',
       headers:{ 'Content-Type':'application/json', 'X-Capture-Key': key },
       body: JSON.stringify({ muralId: current.id, date, imageBase64: b64, cardBase64: cardB64, fullBase64: fullB64,
-                            caption: $('caption').value, gps: captureFix }),
+                            caption: $('caption').value, gps: captureFix, heading: shotHeading }),
     });
     const j = await res.json().catch(()=>({}));
     if (!res.ok){
@@ -368,6 +406,13 @@ $('send').addEventListener('click', async () => {
               ? `, ${Math.round(metersBetween(j.gps[0], j.gps[1], current.lat, current.lng))} m from the app's pin (that's where you stood, not the wall — the pin is unchanged).`
               : '.')
           : '\nNo location saved (location off or no fix yet).')
+      + (j.heading != null
+          ? `\nCompass saved: camera pointed ${j.heading}° ${pointOf(j.heading)}, so the wall faces ${pointOf((j.heading + 180) % 360)}.`
+            + (current.fc != null && angDiff(current.fc, (j.heading + 180) % 360) > 35
+                ? ` ⚠ The mural's facing is set to ${current.fc}° ${pointOf(current.fc)}: check it in the route editor.` : '')
+          : shotHeading != null
+            ? `\n⚠ Compass read ${shotHeading}° but the server didn't keep it (Capture Worker needs its Nov 9 update).`
+            : '\nNo compass reading (allow Motion & Orientation when asked; Start Camera asks).')
       + `\n\nRelaunch the app within ~1 min to see it in the build-viewer.\nCapture another frame for the next day — it aligns to this one.`;
     // Fix a typo spotted seconds later, without sending a duplicate photo.
     addFixCaption(current.id, j.caption || '');

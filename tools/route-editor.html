@@ -29,6 +29,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
 #toolbar .spacer { flex: 1; }
 #toolbar .info { font-size: 12px; color: #aaa; }
 #toolbar .mode-label { font-size: 11px; color: #f90; font-weight: 600; }
+/* ➤ Facing mode: pins ignore taps (the map picks the nearest one) so none can be dragged */
+#map.facing-mode .leaflet-marker-pane, #map.facing-mode .leaflet-marker-pane * { pointer-events: none !important; }
 
 #map { position: fixed; top: 48px; bottom: 0; left: 0; right: 0; }
 
@@ -165,6 +167,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
     <option value="60.96">200 ft</option>
     <option value="91.44">300 ft</option>
   </select>
+  <button id="facing-mode" title="Set the direction each wall faces: tap a mural, then tap the side its wall faces">➤ Facing</button>
   <button id="add-poi">+ POI</button>
   <button id="add-commercial">+ Commercial</button>
   <button id="delete-point" class="danger" style="display:none">Delete Point</button>
@@ -176,7 +179,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   <span class="spacer"></span>
   <span class="mode-label" id="mode-label"></span>
   <span class="info" id="status"></span>
-  <span style="font-size:10px;color:#666">v12</span>
+  <span style="font-size:10px;color:#666">v13</span>
   <button class="primary" id="copy-changes">Export All</button>
   <button class="primary" id="copy-current" style="background:#1E88E5;border-color:#1E88E5">Export Route</button>
 </div>
@@ -1002,6 +1005,7 @@ function togglePOIMode(type) {
 
 // Map click — place POI when in placement mode
 map.on('click', (e) => {
+  if (facingMode) { facingClick(e.latlng); return; }
   // Handle add-segment mode
   if (addSegmentMode) {
     const pt = [parseFloat(e.latlng.lat.toFixed(5)), parseFloat(e.latlng.lng.toFixed(5))];
@@ -1346,29 +1350,130 @@ function updateStatus() {
   if (n) parts.push(`${n} mural(s) moved`);
   if (p) parts.push(`${p} path(s) edited`);
   if (q) parts.push(`${q} POI(s)`);
+  const f = facingChanges ? Object.keys(facingChanges).length : 0;   // var: may run before it's set
+  if (f) parts.push(`${f} facing(s) set`);
   document.getElementById('status').textContent = parts.join(', ');
+  drawFacing();   // every pin move ends here, so arrows follow their pins
+}
+
+// ── Wall facing (Nov 2026) ──
+// The compass direction each wall faces (0 = N, 90 = E): stand on that side to see it.
+// Exported as `facing:` with the GPS lines; the Mural Finder uses it to rule out walls
+// you're behind or beside. In ➤ Facing mode: tap a mural, then tap the side its wall faces.
+// Pins can't be dragged in this mode (their taps go to the map), so a stray tap can't move one.
+var facingChanges = {};            // id → degrees, or null = clear the live facing
+var facingLayer = L.layerGroup().addTo(map);
+let facingMode = false, facingSel = null, facingSelRing = null;
+const POINTS = ['N','NE','E','SE','S','SW','W','NW'];
+const pointOf = d => POINTS[Math.round(d / 45) % 8];
+const facingOf = id => (id in facingChanges ? facingChanges[id] : (muralById[id]?.fc ?? null));
+const posOf = id => changes[id] || { lat: muralById[id].lat, lng: muralById[id].lng };
+function bearingTo(a, b) {
+  const r = Math.PI / 180;
+  return ((Math.atan2((b.lng - a.lng) * Math.cos(a.lat * r), b.lat - a.lat) / r) + 360) % 360;
+}
+function drawFacing() {
+  if (!facingLayer) return;
+  facingLayer.clearLayers();
+  murals.forEach(m => {
+    const deg = facingOf(m.id);
+    if (deg == null || !m.lat || !m.lng) return;
+    const pos = posOf(m.id), edited = m.id in facingChanges;
+    const color = edited ? '#0d7' : '#FFB300';
+    const p0 = map.latLngToLayerPoint([pos.lat, pos.lng]);
+    const r = deg * Math.PI / 180, len = 34;
+    const tip = map.layerPointToLatLng(L.point(p0.x + Math.sin(r) * len, p0.y - Math.cos(r) * len));
+    L.polyline([[pos.lat, pos.lng], tip], { color, weight: 3, opacity: 0.95, interactive: false }).addTo(facingLayer);
+    L.marker(tip, { interactive: false, keyboard: false, icon: L.divIcon({ className: '', iconSize: [16, 16], iconAnchor: [8, 8],
+      html: `<div style="width:16px;height:16px;transform:rotate(${deg}deg);color:${color};font-size:15px;line-height:16px;text-align:center;text-shadow:0 0 2px #000">▲</div>` }) }).addTo(facingLayer);
+  });
+}
+map.on('zoomend', drawFacing);
+function facingStatus(msg) { document.getElementById('mode-label').textContent = msg; }
+function setFacingMode(on) {
+  facingMode = on;
+  document.getElementById('facing-mode').classList.toggle('active', on);
+  map.getContainer().classList.toggle('facing-mode', on);
+  map.getContainer().style.cursor = on ? 'crosshair' : '';
+  selectFacing(null);
+  if (on) {
+    if (poiMode) togglePOIMode(poiMode);
+    if (typeof addSegmentMode !== 'undefined' && addSegmentMode) cancelAddSegment();
+    facingStatus('Facing: tap a mural');
+  } else facingStatus('');
+}
+function selectFacing(id) {
+  facingSel = id;
+  if (facingSelRing) { map.removeLayer(facingSelRing); facingSelRing = null; }
+  if (id == null) return;
+  const pos = posOf(id), m = muralById[id], cur = facingOf(id);
+  facingSelRing = L.circleMarker([pos.lat, pos.lng], { radius: 22, color: '#0d7', weight: 3, fill: false, interactive: false }).addTo(map);
+  facingStatus(`#${id} ${m.a}${cur != null ? ` (faces ${cur}° ${pointOf(cur)})` : ''}: tap the side the wall faces · Esc cancels · Delete clears`);
+}
+function nearestMural(latlng, maxPx = 30) {
+  const p = map.latLngToContainerPoint(latlng);
+  let best = null, bestD = maxPx;
+  murals.forEach(m => {
+    if (!m.lat || !m.lng) return;
+    const pos = posOf(m.id), d = p.distanceTo(map.latLngToContainerPoint([pos.lat, pos.lng]));
+    if (d < bestD) { bestD = d; best = m.id; }
+  });
+  return best;
+}
+function facingClick(latlng) {
+  if (facingSel == null) { const id = nearestMural(latlng); if (id != null) selectFacing(id); return; }
+  const pos = posOf(facingSel);
+  if (map.latLngToContainerPoint(latlng).distanceTo(map.latLngToContainerPoint([pos.lat, pos.lng])) < 12) return;
+  const deg = Math.round(bearingTo(pos, latlng)) % 360, id = facingSel;
+  if (muralById[id]?.fc === deg) delete facingChanges[id]; else facingChanges[id] = deg;
+  selectFacing(null);
+  facingStatus(`#${id} faces ${deg}° ${pointOf(deg)} · tap the next mural`);
+  updateStatus(); saveState();
+}
+function clearFacing() {
+  if (facingSel == null) return;
+  const id = facingSel;
+  if (muralById[id]?.fc != null) facingChanges[id] = null; else delete facingChanges[id];
+  selectFacing(null);
+  facingStatus(`#${id}: facing cleared · tap the next mural`);
+  updateStatus(); saveState();
+}
+document.getElementById('facing-mode').addEventListener('click', () => setFacingMode(!facingMode));
+document.addEventListener('keydown', e => {
+  if (!facingMode || e.target.matches('input,textarea,select')) return;
+  if (e.key === 'Escape') { selectFacing(null); facingStatus('Facing: tap a mural'); }
+  if ((e.key === 'Delete' || e.key === 'Backspace') && facingSel != null) { e.preventDefault(); clearFacing(); }
+});
+// The GPS-section lines for one mural: lat/lng if moved, facing if set or cleared.
+function gpsEntry(id) {
+  const m = muralById[id], pos = changes[id], pad = id.toString().padStart(3, '0');
+  let out = `# ${m?.a || '?'} — ${m?.t || ''} (id: ${id})\n`;
+  if (pos) {
+    const orig = originalPos[id] || muralById[id] || {};
+    const dLat = ((pos.lat - (orig.lat||pos.lat)) * 111139).toFixed(1);
+    const dLng = ((pos.lng - (orig.lng||pos.lng)) * 111139 * Math.cos(pos.lat * Math.PI / 180)).toFixed(1);
+    out += `# moved ${dLat}m N, ${dLng}m E\n`;
+  }
+  out += `# file: data/murals/${pad}-*.yaml\n`;
+  if (pos) out += `lat: ${pos.lat}\nlng: ${pos.lng}\n`;
+  if (id in facingChanges) {
+    const f = facingChanges[id], was = m?.fc;
+    out += f == null ? `facing: none   # remove the facing line (was ${was}°)\n`
+                     : `facing: ${f}   # wall faces ${pointOf(f)}${was != null ? ` (was ${was}°)` : ''}\n`;
+  }
+  return out + '\n';
 }
 
 // ── Export ──
 function exportChanges() {
   let output = '';
 
-  // GPS changes
-  const entries = Object.entries(changes);
-  if (entries.length) {
+  // GPS changes (positions and wall facings)
+  const ids = [...new Set([...Object.keys(changes), ...Object.keys(facingChanges)])];
+  if (ids.length) {
     output += '# ═══ GPS Position Updates ═══\n';
-    output += '# Update lat/lng in each YAML file\n\n';
-    entries.forEach(([id, pos]) => {
-      const m = muralById[id];
-      const orig = originalPos[id] || muralById[id] || {};
-      const dLat = ((pos.lat - (orig.lat||pos.lat)) * 111139).toFixed(1);
-      const dLng = ((pos.lng - (orig.lng||pos.lng)) * 111139 * Math.cos(pos.lat * Math.PI / 180)).toFixed(1);
-      const pad = id.toString().padStart(3, '0');
-      output += `# ${m?.a || '?'} — ${m?.t || ''} (id: ${id})\n`;
-      output += `# moved ${dLat}m N, ${dLng}m E\n`;
-      output += `# file: data/murals/${pad}-*.yaml\n`;
-      output += `lat: ${pos.lat}\nlng: ${pos.lng}\n\n`;
-    });
+    output += '# Update lat/lng (and facing) in each YAML file\n\n';
+    ids.forEach(id => { output += gpsEntry(id); });
   }
 
   // Route definitions — only routes whose stops or name differ from what's live
@@ -1433,21 +1538,11 @@ function exportCurrentRoute() {
 
   // GPS changes for murals on this route only
   const routeIds = new Set(def.ids.map(String));
-  const entries = Object.entries(changes).filter(([id]) => routeIds.has(id));
-  if (entries.length) {
+  const ids = [...new Set([...Object.keys(changes), ...Object.keys(facingChanges)])].filter(id => routeIds.has(id));
+  if (ids.length) {
     output += '# ═══ GPS Position Updates ═══\n';
-    output += '# Update lat/lng in each YAML file\n\n';
-    entries.forEach(([id, pos]) => {
-      const m = muralById[id];
-      const orig = originalPos[id] || muralById[id] || {};
-      const dLat = ((pos.lat - (orig.lat||pos.lat)) * 111139).toFixed(1);
-      const dLng = ((pos.lng - (orig.lng||pos.lng)) * 111139 * Math.cos(pos.lat * Math.PI / 180)).toFixed(1);
-      const pad = id.toString().padStart(3, '0');
-      output += `# ${m?.a || '?'} — ${m?.t || ''} (id: ${id})\n`;
-      output += `# moved ${dLat}m N, ${dLng}m E\n`;
-      output += `# file: data/murals/${pad}-*.yaml\n`;
-      output += `lat: ${pos.lat}\nlng: ${pos.lng}\n\n`;
-    });
+    output += '# Update lat/lng (and facing) in each YAML file\n\n';
+    ids.forEach(id => { output += gpsEntry(id); });
   }
 
   // Route definition for this route — only if its stops or name differ from what's live
@@ -1562,6 +1657,7 @@ function saveState() {
   // POIs
   localStorage.setItem('route-editor-pois', JSON.stringify(pois));
   localStorage.setItem('route-editor-poi-next', poiNextId);
+  localStorage.setItem('route-editor-facing', JSON.stringify(facingChanges));
 }
 
 function loadState() {
@@ -1604,6 +1700,12 @@ function loadState() {
     }
     const savedNextId = parseInt(localStorage.getItem('route-editor-poi-next'));
     if (savedNextId) poiNextId = savedNextId;
+    // Facings: drop any that now match what's live (applied and published).
+    const savedFacing = JSON.parse(localStorage.getItem('route-editor-facing') || '{}');
+    Object.entries(savedFacing).forEach(([id, f]) => {
+      const live = muralById[id]?.fc ?? null;
+      if (muralById[id] && f !== live) facingChanges[id] = f;
+    });
   } catch(e) {}
 }
 
@@ -1615,9 +1717,10 @@ setInterval(saveState, 5000);
 
 // Load saved state
 loadState();
-if (Object.keys(changes).length) {
-  document.getElementById('status').textContent = `Restored ${Object.keys(changes).length} change(s) from last session`;
+if (Object.keys(changes).length || Object.keys(facingChanges).length) {
+  document.getElementById('status').textContent = `Restored ${Object.keys(changes).length + Object.keys(facingChanges).length} change(s) from last session`;
 }
+drawFacing();
 
 // Start with downtown-north
 sel.value = 'downtown-north';

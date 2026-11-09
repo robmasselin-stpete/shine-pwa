@@ -79,7 +79,8 @@
 <script>
 // Standalone test of the "find the mural I'm standing in front of" idea. Reads the live
 // mural list from the CDN; nothing here touches the app. Desk testing:
-//   ?at=27.77415,-82.64715&h=90&acc=8   fakes the position, heading and GPS accuracy.
+//   ?at=27.77415,-82.64715&h=90&acc=8   fakes the position, heading and GPS accuracy;
+//   &src=local reads js/content.json from the same server instead of the CDN.
 const CDN = 'https://cdn.muralquest.app/';
 const RADIUS = 120;          // metres searched (widened when GPS is poor)
 const SHOW = 8;              // candidates offered via Prev / Next
@@ -134,8 +135,17 @@ function rank(pos, h) {
     const { d, b } = distBearing(pos.lat, pos.lng, m.lat, m.lng);
     const off = h == null ? null : angDiff(h, b);
     const w = h == null ? 0 : Math.min(1, Math.max(0.3, (d - 3) / 17));
-    const cost = (d / 40) ** 2 + w * ((off || 0) / 35) ** 2;
-    return { m, d, b, off, w, cost };
+    let cost = (d / 40) ** 2 + w * ((off || 0) / 35) ** 2;
+    // Wall facing (fc, set in the route editor or from capture headings): you should be
+    // standing on the side the wall faces and looking back at it. Within 70° of square-on
+    // costs nothing, so the street-corner angles people really view from still count.
+    let side = null;
+    if (m.fc != null) {
+      side = angDiff(m.fc, (b + 180) % 360);                       // where you are, seen from the wall
+      if (d > 4) cost += (Math.max(0, side - 70) / 25) ** 2;
+      if (h != null) cost += 0.5 * (Math.max(0, angDiff(h, (m.fc + 180) % 360) - 50) / 30) ** 2;
+    }
+    return { m, d, b, off, w, side, cost };
   }).filter(c => c.d <= radius).sort((x, y) => x.cost - y.cost).slice(0, SHOW);
 }
 
@@ -162,7 +172,8 @@ const latestImg = m => (m.ph && m.ph.length ? m.ph[m.ph.length - 1].u : m.img);
 const compass = d => ['N','NE','E','SE','S','SW','W','NW'][Math.round(d / 45) % 8];
 
 async function loadMurals() {
-  const r = await fetch(CDN + 'content.json', { cache: 'no-cache' });
+  // ?src=local reads the Mac's unpublished build (desk testing data before it goes live).
+  const r = await fetch(q.get('src') === 'local' ? '../js/content.json' : CDN + 'content.json', { cache: 'no-cache' });
   const j = await r.json();
   murals = j.murals.filter(m => m.lat && m.lng).map(m => ({ ...m, lat: +m.lat, lng: +m.lng }));
 }
@@ -221,9 +232,9 @@ function show() {
 }
 
 function showCands() {
-  $('cands').innerHTML = '<tr><th>#</th><th>Mural</th><th>m</th><th>off°</th><th>dir wt</th><th>cost</th></tr>' +
+  $('cands').innerHTML = '<tr><th>#</th><th>Mural</th><th>m</th><th>off°</th><th>dir wt</th><th>side°</th><th>cost</th></tr>' +
     cands.map(c => `<tr><td>${c.m.id}</td><td>${c.m.a.slice(0, 22)}</td><td>${Math.round(c.d)}</td>
-      <td>${c.off == null ? '–' : Math.round(c.off)}</td><td>${c.w.toFixed(2)}</td><td>${c.cost.toFixed(2)}</td></tr>`).join('');
+      <td>${c.off == null ? '–' : Math.round(c.off)}</td><td>${c.w.toFixed(2)}</td><td>${c.side == null ? '–' : Math.round(c.side)}</td><td>${c.cost.toFixed(2)}</td></tr>`).join('');
 }
 
 function thatsIt() {
@@ -231,7 +242,7 @@ function thatsIt() {
   $('check').style.display = 'flex';
   // The log line doubles as field data: where you stood and which way you faced to see this wall.
   log(`${stamp()}  #${m.id} ${m.a.slice(0, 20)}  RANK ${idx + 1}/${cands.length}  ${Math.round(c.d)} m  off ${c.off == null ? '–' : Math.round(c.off)}°  ` +
-      `${fmtPos(scan.pos)}  h ${fmtH(scan.h)}  top3 ${cands.slice(0, 3).map(x => x.m.id).join(',')}`);
+      `${fmtPos(scan.pos)}  h ${fmtH(scan.h)}  fc ${m.fc ?? '–'}  top3 ${cands.slice(0, 3).map(x => x.m.id).join(',')}`);
   setTimeout(() => {
     $('pane').style.display = 'none';
     $('done').innerHTML = `<img src="${cardUrl(latestImg(m))}" alt="">

@@ -1,7 +1,7 @@
 // Mural Quest — SHINE 2026 progress-photo capture endpoint.
 //
 // POST /photo  (gated by POST_KEY)
-//   body: { muralId, date: "YYYY-MM-DD", imageBase64, cardBase64?, caption?, gps?, dry? }
+//   body: { muralId, date: "YYYY-MM-DD", imageBase64, cardBase64?, caption?, gps?, heading?, dry? }
 //   → uploads images/murals/2026/<id>-<date>-<HHMMSS>.jpeg to R2 (+ its card, see below), appends {u,d,c?} to
 //     the mural's `ph` in content.json, bumps the version. Live over OTA in ~1 min.
 //
@@ -38,6 +38,10 @@
 // to the mural's lat/lng (the camera stands across the street from the wall). Shipped
 // apps ignore unknown keys. publish-content.py writes it into the YAML photo entry.
 //
+// HEADING. The geo compass reading when Rob pressed Shoot (degrees, 0 = north): the way
+// the CAMERA pointed, so the wall faces the opposite way. Stored as h on the photo entry.
+// publish-content.py uses it to fill the mural's `facing` when Rob hasn't set one.
+//
 // CAPTIONS ARE FORWARD-COMPATIBLE. Shipped app versions (<=1.7.5) read `u` and `d`
 // and ignore unknown keys, so adding `c` breaks nothing. Rob can caption from day one
 // of the festival and every caption already sent lights up when the render ships in a
@@ -69,6 +73,12 @@ function readGps(g) {
 // Normalise a caption. Returns {ok:true, caption} where caption is '' for "no caption",
 // or {ok:false, error} to reject. Rejecting on length rather than truncating is
 // deliberate: Rob finds out at the wall, not later in the app.
+function readHeading(h) {
+  const n = Number(h);
+  if (h === null || h === undefined || h === '' || !isFinite(n)) return null;
+  return Math.round(((n % 360) + 360) % 360) % 360;
+}
+
 function readCaption(raw) {
   if (raw === undefined || raw === null) return { ok: true, caption: '' };
   // Strip control characters: this string is rendered into HTML by the app.
@@ -329,6 +339,8 @@ export default {
     if (cap.caption) entry.c = cap.caption;  // omitted when empty, never c:''
     const gps = readGps(body.gps);
     if (gps) entry.g = gps;
+    const heading = readHeading(body.heading);
+    if (heading !== null) entry.h = heading;
     mural.ph.push(entry);
     mural.ph.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0)); // oldest→newest
     mural.uc = true; // being painted
@@ -353,6 +365,7 @@ export default {
       originalSaved,
       originalError,
       gps: gps || null,
+      heading,
       version: data.version,
     });
   },

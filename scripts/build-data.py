@@ -59,6 +59,7 @@ EXPORT_FIELDS = [
     'searchMuralDescription', 'muralInspiration', 'muralAwards', 'artistAwards',
     'impressions', 'furtherWork',
     'photos', 'underConstruction',   # SHINE 2026 build-viewer + construction flag
+    'facing',                        # Nov 2026: compass direction the wall faces (Mural Finder)
 ]
 
 # Provenance fields — stripped from output
@@ -171,6 +172,10 @@ def validate_murals(murals, config):
             if not (bounds.get('lng_min', -180) <= lng <= bounds.get('lng_max', 0)):
                 warnings.append(f"{prefix}: lng {lng} outside Tampa Bay bounds")
 
+        # Facing: degrees the wall faces, 0 = north (route editor / capture heading)
+        if 'facing' in m and m['facing'] is not None and _facing(m) is None:
+            errors.append(f"{prefix}: facing must be a number 0–359 (got {m['facing']!r})")
+
         # Image file check
         img = m.get('img', '')
         if img:
@@ -248,6 +253,24 @@ def _photo_gps(p):
     return None
 
 
+def _facing(m):
+    """The direction the wall faces in whole degrees (0 = north, 90 = east), or None.
+    Exported as `fc`. The Mural Finder uses it to rule out walls you're behind or beside."""
+    f = m.get('facing')
+    if isinstance(f, bool) or not isinstance(f, (int, float)) or not 0 <= f < 360:
+        return None
+    return int(round(f)) % 360
+
+
+def _photo_heading(p):
+    """Geo compass reading when the photo was taken (Capture Worker `h`), or None.
+    The way the camera pointed, so the wall faces the opposite way."""
+    h = p.get('heading')
+    if isinstance(h, bool) or not isinstance(h, (int, float)):
+        return None
+    return int(round(h)) % 360
+
+
 def _build_photos(m):
     """SHINE 2026 build-viewer: photos [{url,dateTaken}] → JS array [{u,d}], '' if none.
     Additive — existing murals keep their single `img`; construction murals populate this."""
@@ -260,8 +283,10 @@ def _build_photos(m):
         capjs = f",c:'{js_string_escape(cap)}'" if cap else ''
         g = _photo_gps(p)
         gjs = (",g:[" + ",".join('null' if v is None else repr(v) for v in g) + "]") if g else ''
+        h = _photo_heading(p)
+        hjs = f",h:{h}" if h is not None else ''
         items.append(f"{{u:'{js_string_escape(p.get('url',''))}',"
-                     f"d:'{js_string_escape(p.get('dateTaken',''))}'{capjs}{gjs}}}")
+                     f"d:'{js_string_escape(p.get('dateTaken',''))}'{capjs}{gjs}{hjs}}}")
     return f"[{','.join(items)}]" if items else ''
 
 
@@ -355,6 +380,7 @@ def mural_to_js(m):
         + (f",src:{src_str}" if (src_str := _build_sources(m)) else '')
         + (',uc:true' if m.get('underConstruction') else '')            # SHINE 2026
         + (f",ph:{ph_str}" if (ph_str := _build_photos(m)) else '')     # SHINE 2026 build-viewer
+        + (f",fc:{fc}" if (fc := _facing(m)) is not None else '')       # wall facing (Mural Finder)
         + '}'
     )
 
@@ -560,9 +586,15 @@ def mural_to_dict(m):
         g = _photo_gps(p)
         if g:
             entry['g'] = g
+        h = _photo_heading(p)
+        if h is not None:
+            entry['h'] = h
         ph.append(entry)
     if ph:
         d['ph'] = ph
+    fc = _facing(m)
+    if fc is not None:
+        d['fc'] = fc
     fn = [text_normalize(n) for n in (m.get('fieldNotes') or []) if n]
     if fn:
         d['fn'] = fn

@@ -154,11 +154,56 @@ def _photos_block(photos):
         g = p.get('g')
         gps = (', gps: [' + ', '.join('null' if v is None else str(v) for v in g) + ']') \
             if isinstance(g, list) and len(g) == 3 else ''
+        # `h` = geo compass reading at Shoot (Capture Worker, Nov 9). Same again.
+        h = p.get('h')
+        if isinstance(h, (int, float)) and not isinstance(h, bool):
+            gps += f', heading: {int(round(h)) % 360}'
         if cap:
             out.append(f'  - {{ url: "{url}", dateTaken: "{date}", caption: "{cap}"{gps} }}')
         else:
             out.append(f'  - {{ url: "{url}", dateTaken: "{date}"{gps} }}')
     return out
+
+
+COMPASS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
+
+
+def _facing_from_capture(text, photos):
+    """Fill `facing` from the capture tool's compass readings when the mural has none.
+
+    Each photo's `h` is the way the camera pointed at Shoot, so the wall faces the
+    opposite way. A facing already in the YAML (set by Rob in the route editor, or filled
+    here on an earlier publish) is never changed. Returns (text, facing or None)."""
+    import math
+    from datetime import datetime
+    import review_sync
+    heads = [p['h'] for p in photos if isinstance(p.get('h'), (int, float)) and not isinstance(p.get('h'), bool)]
+    if not heads or re.search(r'^facing\s*:', text, re.M):
+        return text, None
+    r = math.pi / 180
+    cam = math.atan2(sum(math.sin(h * r) for h in heads), sum(math.cos(h * r) for h in heads)) / r
+    cam = round(cam) % 360
+    fc = (cam + 180) % 360
+    point = COMPASS[round(fc / 45) % 8]
+    lines = text.split('\n')
+    at = next((i for i, l in enumerate(lines) if re.match(r'^lng\s*:', l)), None)
+    if at is None:
+        return text, None
+    lines.insert(at + 1, f'facing: {fc}   # wall faces {point}; from the capture tool (camera pointed {cam}°, '
+                         f'{len(heads)} photo(s)). Change it in the route editor.')
+    today = datetime.now()
+    day = f'{today.day} {today:%B %Y}'
+    import yaml
+    d = yaml.safe_load('\n'.join(lines)) or {}
+    lines = review_sync._prepend_list_item(
+        lines, 'revisionLog',
+        f'{day} — facing set to {fc}° ({point}) from the capture tool: the geo compass read {cam}° '
+        f'when Rob took {len(heads)} progress photo(s), so the wall faces the opposite way. Set by publish-content.py.',
+        d.get('revisionLog'))
+    d = yaml.safe_load('\n'.join(lines)) or {}
+    lines = review_sync._prepend_list_item(
+        lines, 'sourceNotes', f'Capture tool compass heading(s), {day} (facing)', d.get('sourceNotes'))
+    return '\n'.join(lines), fc
 
 
 def reconcile_photos():
@@ -192,6 +237,9 @@ def reconcile_photos():
         with open(path, encoding='utf-8') as f:
             text = original = f.read()
         text = _set_block(text, 'photos', _photos_block(photos))
+        text, fc = _facing_from_capture(text, photos)
+        if fc is not None:
+            print(f"  ✓ #{mid}: facing {fc}° filled from the capture tool's compass")
         if m.get('uc'):
             text = _set_block(text, 'underConstruction', ['underConstruction: true'])
         if text != original:
