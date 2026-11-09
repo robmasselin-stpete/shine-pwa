@@ -4,8 +4,8 @@
 id: 225
 artist: "Alyssa Marie and the Happy Mural Project"
 year: 2026
-lat: 27.7963202   # dropped pin (brief), northernmost
-lng: -82.6468413
+lat: 27.796622   # Rob, route editor 9 Nov 2026 (was 27.7963202)
+lng: -82.647478
 address: "2600 Dr. MLK Jr St N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -150,6 +150,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "9 November 2026 — Pin moved to 27.796622, -82.647478 by Rob in the route editor (he adjusted the 2026 SHINE pins after site visits). Was 27.7963202, -82.6468413; moved about 71 m. Address unchanged."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Skyline now has four SHINE walls (Murrill added); the list places her on the north perimeter, so the bio names that instead of a count; artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: Skyline now has four SHINE walls (Murrill added); the list places her on the north perimeter, so the bio names that instead of a count; searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212458-624bccfe]"
   - "2 November 2026 — Bio review tool, approved by Rob: pronouns. Changes — pronouns: \"\" → \"she/her\". [review:20261102204033-32d051c4]"
   - "2 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — searchBio: \"Sunflowers appear in every mural\" → \"Sunflowers are the project's signature\" (not every wall has them); \"hosted\" → \"led\" SHINE walls; Hands of Change now front row of six hands + two clasped hands and the Lennon line; biplane no longer called \"solo\"; artistAwards: Dropped the Pier mural (a commission is not an award, same rule as #71); \"SHINE 2020, 2022, 2023, 2026 selected artist\". [review:20261102202849-d18bf89c]"
@@ -158,6 +159,7 @@ revisionLog:
   - "2026-10-30 — Artist corrected Ashley Marie → Alyssa Marie (Rob checked the SPAA SHINE Walls & Artists 2026 list; matches the Tampa Bay Beacons 29 Oct 2026 lineup and her shineonmurals.com SHINE 2026 artist record). File renamed 225-ashley-marie-2026.yaml → 225-alyssa-marie-2026.yaml."
   - "2026-10-24 — Placeholder for SHINE 2026 wall #14 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief), northernmost. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob, route-editor GPS export 9 Nov 2026 (SHINE 2026 pins tweaked on site)"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob)"
