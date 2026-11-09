@@ -37,7 +37,7 @@
  .cap-count.over{color:#f88;font-weight:700}
  .hidden{display:none}
 </style></head><body>
-<header><h1>Progress Capture</h1><span class="v">v2 · sends over OTA</span></header>
+<header><h1>Progress Capture</h1><span class="v">v3 · Nov 9 · sends over OTA</span></header>
 <div class="wrap">
 
   <label>Mural</label>
@@ -129,6 +129,9 @@ $('mural').addEventListener('change', () => {
     ? `Aligning to the most recent of <b>${n}</b> photo(s)` + (ph[n-1].d?` (${ph[n-1].d})`:'') + `. This will be photo #${n+1}.`
     : `No progress photos yet — aligning to the mural's base image. This will be the <b>first</b> photo.`;
   setGhost(refImg);
+  // Switching walls mid-session: leave the last frame and go straight back to the camera.
+  if (!$('canvas').classList.contains('hidden')) $('retake').click();
+  else if (stream) { if (refImg){ $('ghost').classList.remove('hidden'); $('opacity-row').classList.remove('hidden'); } ensureCamera(); }
 });
 
 function setGhost(url){
@@ -138,9 +141,12 @@ function setGhost(url){
 
 // ── camera ──
 let stream = null;
-$('start').addEventListener('click', async () => {
+const camAlive = () => !!stream && stream.getVideoTracks().some(t => t.readyState === 'live' && !t.muted);
+$('start').addEventListener('click', () => startCamera());
+async function startCamera(){
   if (!current) { showErr('Pick a mural first.'); return; }
   try {
+    if (stream) stream.getTracks().forEach(t => t.stop());
     stream = await navigator.mediaDevices.getUserMedia({
       video:{ facingMode:'environment', width:{ideal:3840}, height:{ideal:2160} }, audio:false });
     const v = $('video'); v.srcObject = stream; await v.play();
@@ -150,6 +156,16 @@ $('start').addEventListener('click', async () => {
     $('start').classList.add('hidden'); $('shoot').classList.remove('hidden');
     hideErr();
   } catch (e) { showErr('Camera error: ' + e.message + ' (allow camera access; must be https).'); }
+}
+// iOS stops a page's camera when the screen locks, the app switches, or the share sheet
+// opens. Bring it back on its own instead of making Rob reload the page.
+async function ensureCamera(){
+  if (!stream) return;                       // never started — the Start button handles it
+  if (camAlive()) { $('video').play().catch(() => {}); return; }
+  await startCamera();
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && !$('video').classList.contains('hidden')) ensureCamera();
 });
 
 $('opacity').addEventListener('input', applyOpacity);
@@ -206,7 +222,9 @@ $('retake').addEventListener('click', () => {
   document.querySelectorAll('.save-photo').forEach(b => b.remove());
   $('send').textContent = 'Send to app'; $('send').disabled = false;
   $('shoot').classList.remove('hidden'); $('out').classList.add('hidden');
+  $('retake').textContent = 'Retake';
   capturedBlob = null; fullBytes = null;
+  ensureCamera();
 });
 
 // ── Capture Worker: field-autonomous publish over OTA (no Mac) ──
@@ -320,6 +338,14 @@ $('send').addEventListener('click', async () => {
     if (!res.ok){
       if (res.status===401) localStorage.removeItem('mq_capture_key');
       throw new Error(j.error || ('HTTP '+res.status));
+    }
+    $('retake').textContent = 'Take another';
+    if (j.duplicate){
+      $('out').classList.remove('hidden');
+      $('out').textContent = `✓ Already live — this exact frame was sent before (#${j.muralId}, ${j.date}), so nothing new was added.\n${j.imageUrl}`;
+      if ($('to-photos').checked) addSavePhoto(date, sentCap, sentMural);
+      sent = true;
+      return;
     }
     $('out').classList.remove('hidden');
     $('out').textContent = `✓ LIVE — photo #${j.photoCount} on #${j.muralId} (${date}).`

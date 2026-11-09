@@ -224,6 +224,25 @@ export default {
     const mural = (data.murals || []).find(m => m.id === muralId);
     if (!mural) return json({ error: `mural #${muralId} not in content.json` }, 404);
 
+    // ── same frame sent twice? (a lost reply on a weak signal, then a re-tap of Send) ──
+    // R2's etag for a single-part put is the MD5 of the bytes, so compare against the
+    // mural's recent photos without downloading them. A repeat is answered as success,
+    // pointing at the photo already live, and nothing is written.
+    try {
+      const md5 = [...new Uint8Array(await crypto.subtle.digest('MD5', bytes))]
+        .map(x => x.toString(16).padStart(2, '0')).join('');
+      for (const p of (mural.ph || []).slice(-6)) {
+        const h = await env.BUCKET.head(p.u);
+        if (h && h.etag === md5) {
+          return json({
+            ok: true, duplicate: true, muralId, date: p.d,
+            photoCount: mural.ph.length, caption: p.c || '',
+            imageUrl: `https://cdn.muralquest.app/${p.u}`, gps: p.g || null, version: data.version,
+          });
+        }
+      }
+    } catch (e) { /* the check is a guard, never a reason to fail the upload */ }
+
     // Key carries a UTC time token, so MULTIPLE photos per day are allowed AND no
     // name is ever written twice: <id>-<date>-<HHMMSS>.jpeg.
     //
