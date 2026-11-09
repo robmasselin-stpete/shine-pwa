@@ -1,11 +1,40 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-09): capture tool v3 — server refuses repeat frames, Take another, camera self-restart
-> (see the 2026-11-09 entry); then 2026-11-06/07: Save to Photos, duplicates removed; then 2026-11-05: Android
-> compass FIXED, 1.7.7 (vc19) LIVE on Play.** v1.7.6 LIVE on both stores — iOS build 160, Android 1.7.7 (vc19) on Play.
+> **CURRENT (2026-11-09, later): capture v4 — full-size originals collected automatically to the Mac + Photos;
+> #219 Starve photo + pin (pin PUBLISH PENDING) (see the 2026-11-09 (later) entry); then 2026-11-09: server refuses
+> repeat frames, Take another; then 2026-11-05: Android 1.7.7 (vc19) LIVE on Play.** v1.7.6 LIVE on both stores.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-09 (later) — Capture v4: full-size originals go to the Mac + Photos automatically; Starve fixed
+
+**Rob wants every shot in Photos without being asked.** A web page can't save to Photos without a tap (iOS), so the Mac does it:
+- **Tool** (`tools/mural-capture.html`, header **"v4 · Nov 9"**, deployed): each Send also uploads `fullBase64`.
+  - That's the full-size 4:3 frame (≈2880×2160) with EXIF written by `fullWithExif()`: the shot time (`shotAt`, set at Capture), "#id artist - caption", and GPS.
+  - The result line reads "Full-size copy: ✓", or a ⚠ with the reason.
+  - **The Download button is removed.** Rob's Starve shot went to Files (iCloud Drive/Downloads) through it instead of the app.
+  - **Save to Photos is now OFF by default** (`mq_to_photos` = '1' to turn it on).
+- **Worker** (deployed by Rob, version 9c41c6cf):
+  - `/photo` stores the original at **`muralquest-review/originals/<name>`** in the PRIVATE bucket, written before content.json. A failure there never fails the photo; the reply carries `originalSaved` and `originalError`.
+  - **`POST /original {name}`** (needs the key) returns it, or 404 `no original`. Checked live: unauthorised requests are refused.
+- **Mac collector, `scripts/pull_originals.py`:**
+  - For every 2026 photo listed in the live content.json that isn't yet in its state file: it takes the original if there is one, otherwise the public 1600 px copy with EXIF written in (UTC file name → America/New_York time, GPS from `g`, description).
+  - It saves to **`~/Desktop/SHINE capture photos/`** and imports into the Photos album **"SHINE 2026 progress"**; iCloud Photos takes it to the phone.
+  - Photos removed from the app are never collected.
+  - State: `~/Library/Application Support/MuralQuest/photos-collected.json`, seeded from the folder on first run. `--dry-run` lists what it would collect.
+- **launchd:** `scripts/com.pelicandigital.muralquest.photos.plist` runs it every 5 minutes. Rob installed it; Claude's install was blocked as "persistence".
+  - It ran once (exit 0) with nothing new to collect. Log: `~/Library/Logs/muralquest-photos.log`.
+  - **Not yet proven end to end:** the next real capture is the first unattended import. macOS may ask once for Desktop access and for control of Photos.
+  - Stop it: `launchctl bootout gui/$(id -u)/com.pelicandigital.muralquest.photos`.
+- **Backfill:** Claude ran the collector by hand once, adding 18 photos from Nov 8–9 (app-size; there are no originals before v4). The album has 34 photos.
+
+**#219 Starve:**
+- **The "lost" photo was found** in iCloud Drive/Downloads (`219-2026-11-09.jpeg`, saved by the Download button). Posted to #219 via `/photo` with a 720 px card: live as `219-2026-11-09-150314.jpeg`, with no GPS in the app.
+- **In Photos and the Desktop copy,** its time is set to 9:10 and its location to Rob's 27.760945, -82.646297.
+- **Pin moved** to 27.760945, -82.646297 (Rob: the wall's location). It was the brief's dropped pin 27.7608976, -82.6467112, 41 m west. Logged in revisionLog and sourceNotes; commit c6c543f.
+  - **⚠ NOT PUBLISHED:** Claude's publish was blocked. Rob runs `python3 scripts/publish-content.py --tools`.
+- The open question from earlier (the blue and teal sections beside Esh on #218) is settled: Starve's wall is a separate wall.
 
 ## 2026-11-09 — Capture tool v3: server refuses repeat frames, Take another, camera restarts itself
 
@@ -29,7 +58,7 @@
 - Advised: a normal tab, the key entered once, and aA → Website Settings → Camera/Location = Allow. Check the header version to confirm you're on the latest.
 
 **Lost photo:** a #219 Starve shot from the morning never reached the server. GPS matching of all 11 uploads that morning found none sent to the wrong mural; the nearest, #218 at 9:08, is Esh's wall. Rob will reshoot it.
-- **Open question:** the new blue and teal sections either side of Esh's woman on #218 (Nov 9). Are they Starve's? The #219 pin is 45 m away. If they are, move that photo.
+- **Found later:** the photo had been saved with the Download button, and is now live on #219. See the 2026-11-09 (later) entry.
 
 **Photos for Rob:**
 - All 16 2026 progress photos up to Nov 7 are in `~/Desktop/SHINE capture photos/`, with EXIF time in local EST (the Worker names files in **UTC**; St. Pete is UTC−5 after Nov 1), GPS and a description.
