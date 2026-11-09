@@ -199,28 +199,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
 
 <script type="module">
 const { murals } = await import('../js/data.js?v=' + Date.now());
-const { ROUTE_PATHS } = await import('../js/routes.js?v=' + Date.now());
+const { ROUTE_PATHS, ROUTE_DEFS: LIVE_ROUTE_DEFS } = await import('../js/routes.js?v=' + Date.now());
 
 console.log('ROUTE_PATHS loaded:', Object.keys(ROUTE_PATHS));
 
-// ── Route definitions (editable copy) ──
-// Keep in sync with ROUTE_DEFS in js/app.js (the source of truth the app uses).
-const ROUTE_DEFS = [
-  { id: 'downtown-north', name: 'Downtown North',
-    ids: [6, 116, 23, 30, 1, 36, 66, 129, 109, 110, 7, 9, 111, 115, 73, 24] },
-  { id: 'the-edge', name: 'The Edge',
-    ids: [119, 80, 75, 120, 57, 135, 40, 130, 89, 98, 43, 34] },
-  { id: 'methodist-town', name: 'Methodist Town',
-    ids: [4, 61, 108, 60, 24, 114, 64] },
-  { id: 'tropicana-field', name: 'Tropicana Field',
-    ids: [59, 103, 163, 133, 171, 138, 52, 170, 87, 123, 125, 16, 194, 18, 131] },
-  { id: 'central-ave', name: 'Central Ave',
-    ids: [48, 122, 62, 55, 156, 173, 76, 174, 71, 88, 38, 151, 101] },
-  { id: 'arts-district', name: 'Arts District',
-    ids: [140, 136, 90, 84, 72, 29, 93, 121, 50, 79, 167, 168] },
-  { id: 'pinellas-trail', name: 'Pinellas Trail',
-    ids: [26, 78, 32, 58, 170, 168, 29, 157, 8, 46, 39, 166, 189, 12, 25] },
-];
+// ── Route definitions (editable copy of what's LIVE) ──
+// js/routes.js is generated from data/routes.json by build-data.py and ships in the tools
+// snapshot, so after `publish-content.py --tools` this is exactly what the app runs.
+// (Until Nov 9, 2026 these stop lists were typed in here and had gone stale since Oct.)
+const ROUTE_DEFS = LIVE_ROUTE_DEFS.map(d => ({ ...d, ids: [...d.ids] }));
+const LIVE_ROUTE = Object.fromEntries(LIVE_ROUTE_DEFS.map(d => [d.id, { name: d.name, ids: d.ids.join(',') }]));
+const routeChanged = def => !LIVE_ROUTE[def.id] || LIVE_ROUTE[def.id].ids !== def.ids.join(',') || LIVE_ROUTE[def.id].name !== def.name;
 
 // ── State ──
 const muralById = {};
@@ -1371,7 +1360,7 @@ function exportChanges() {
     output += '# Update lat/lng in each YAML file\n\n';
     entries.forEach(([id, pos]) => {
       const m = muralById[id];
-      const orig = originalPos[id] || {};
+      const orig = originalPos[id] || muralById[id] || {};
       const dLat = ((pos.lat - (orig.lat||pos.lat)) * 111139).toFixed(1);
       const dLng = ((pos.lng - (orig.lng||pos.lng)) * 111139 * Math.cos(pos.lat * Math.PI / 180)).toFixed(1);
       const pad = id.toString().padStart(3, '0');
@@ -1382,10 +1371,13 @@ function exportChanges() {
     });
   }
 
-  // Route definitions
+  // Route definitions — only routes whose stops or name differ from what's live
+  const changedRoutes = ROUTE_DEFS.filter(routeChanged);
+  if (changedRoutes.length) {
   output += '# ═══ Route Definitions ═══\n';
-  output += '# Replace ROUTE_DEFS in js/app.js\n\n';
-  ROUTE_DEFS.forEach(def => {
+  output += '# Apply ids (and name) to that route in data/routes.json\n\n';
+  }
+  changedRoutes.forEach(def => {
     output += `# ${def.name}\n`;
     output += `{ id: '${def.id}', name: '${def.name}',\n`;
     output += `  ids: [${def.ids.join(', ')}] },\n\n`;
@@ -1395,7 +1387,7 @@ function exportChanges() {
   const dirtyRoutes = Object.keys(pathDirty);
   if (dirtyRoutes.length) {
     output += '# ═══ Path Changes ═══\n';
-    output += '# Replace matching entries in ROUTE_PATHS (js/routes.js)\n\n';
+    output += '# Apply segments + distance to that route in data/routes.json\n\n';
     dirtyRoutes.forEach(routeId => {
       const data = editPaths[routeId];
       output += `"${routeId}":${JSON.stringify(data)},\n\n`;
@@ -1447,7 +1439,7 @@ function exportCurrentRoute() {
     output += '# Update lat/lng in each YAML file\n\n';
     entries.forEach(([id, pos]) => {
       const m = muralById[id];
-      const orig = originalPos[id] || {};
+      const orig = originalPos[id] || muralById[id] || {};
       const dLat = ((pos.lat - (orig.lat||pos.lat)) * 111139).toFixed(1);
       const dLng = ((pos.lng - (orig.lng||pos.lng)) * 111139 * Math.cos(pos.lat * Math.PI / 180)).toFixed(1);
       const pad = id.toString().padStart(3, '0');
@@ -1458,11 +1450,14 @@ function exportCurrentRoute() {
     });
   }
 
-  // Route definition for this route
-  output += '# ═══ Route Definition ═══\n\n';
-  output += `# ${def.name}\n`;
-  output += `{ id: '${def.id}', name: '${def.name}',\n`;
-  output += `  ids: [${def.ids.join(', ')}] },\n\n`;
+  // Route definition for this route — only if its stops or name differ from what's live
+  if (routeChanged(def)) {
+    output += '# ═══ Route Definition ═══\n';
+    output += '# Apply ids (and name) to this route in data/routes.json\n\n';
+    output += `# ${def.name}\n`;
+    output += `{ id: '${def.id}', name: '${def.name}',\n`;
+    output += `  ids: [${def.ids.join(', ')}] },\n\n`;
+  }
 
   // Path changes for this route
   if (pathDirty[currentRoute]) {
@@ -1573,7 +1568,13 @@ function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem('route-editor-changes') || '{}');
     Object.assign(changes, saved);
-    // Only restore saved routes if version matches — otherwise use hardcoded defaults
+    // A move that's already been applied and published is now the live position: drop it,
+    // or it rides along in every export as "moved 0.0m".
+    Object.keys(changes).forEach(id => {
+      const m = muralById[id], c = changes[id];
+      if (m && Math.abs(c.lat - m.lat) < 1e-7 && Math.abs(c.lng - m.lng) < 1e-7) delete changes[id];
+    });
+    // Only restore saved routes if version matches — otherwise start from the live routes (js/routes.js)
     const ROUTE_VERSION = 'v14';
     const savedVersion = localStorage.getItem('route-editor-version');
     if (savedVersion === ROUTE_VERSION) {
