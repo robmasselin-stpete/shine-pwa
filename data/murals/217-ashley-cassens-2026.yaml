@@ -18,6 +18,13 @@ basedIn: "Tampa, FL"
 
 pronouns: "she/her"
 
+photos:
+  - { url: "images/murals/2026/217-2026-11-07-133706.jpeg", dateTaken: "2026-11-07", gps: [27.763682, -82.66867, 14] }
+  - { url: "images/murals/2026/217-2026-11-09-133532.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.763677, -82.668641, 3] }
+  - { url: "images/murals/2026/217-2026-11-09-133629.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.763641, -82.66866, 2] }
+
+underConstruction: true
+
 artistBio: |
   Ashley Cassens's favorite mural subject is flora and fauna, and her walls
   take their color from Florida. She is partial to cadmium red.

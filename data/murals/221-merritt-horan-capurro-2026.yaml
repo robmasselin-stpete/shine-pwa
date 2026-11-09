@@ -18,6 +18,11 @@ basedIn: "St. Pete Beach, FL"
 
 pronouns: "she/her"
 
+photos:
+  - { url: "images/murals/2026/221-2026-11-09-131529.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.800891, -82.74279, 9] }
+
+underConstruction: true
+
 artistBio: |
   Merritt Horan Capurro paints walls several stories tall. She also built a
   gallery at one-twelfth scale, the St. Pete Mini Gallery, and takes it on the

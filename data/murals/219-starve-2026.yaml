@@ -18,6 +18,11 @@ basedIn: "Florida"
 
 pronouns: "he/him"
 
+photos:
+  - { url: "images/murals/2026/219-2026-11-09-150314.jpeg", dateTaken: "2026-11-09" }
+
+underConstruction: true
+
 artistBio: |
   Eduardo "Eddie" Rivera wrote graffiti first and picked up tattooing second,
   and has kept at both for more than 25 years. Ask Starve what the best part

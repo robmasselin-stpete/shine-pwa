@@ -18,6 +18,15 @@ basedIn: "St. Petersburg, FL"
 
 pronouns: "she/her"
 
+photos:
+  - { url: "images/murals/2026/225-2026-11-06-125323.jpeg", dateTaken: "2026-11-06", caption: "Outlines Up", gps: [27.796599, -82.646962, 36] }
+  - { url: "images/murals/2026/225-2026-11-07-125708.jpeg", dateTaken: "2026-11-07", gps: [27.796572, -82.647592, 6] }
+  - { url: "images/murals/2026/225-2026-11-07-170126.jpeg", dateTaken: "2026-11-07", gps: [27.796577, -82.647143, 35] }
+  - { url: "images/murals/2026/225-2026-11-08-124036.jpeg", dateTaken: "2026-11-08", caption: "Sunday morning", gps: [27.796628, -82.647538, 9] }
+  - { url: "images/murals/2026/225-2026-11-09-124251.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.796613, -82.647542, 10] }
+
+underConstruction: true
+
 artistBio: |
   Alyssa Marie's sunflower walls start with a bunch of sunflowers from Publix.
   She photographs them, photographs the wall, and moves the pieces around on

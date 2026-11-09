@@ -2,7 +2,7 @@
 
 # ── Required ──
 id: 227
-artist: "Jay Giroux, Dominique Labauvie & Greater Public Studio"
+artist: "Dominique Labauvie & Greater Public Studio"
 year: 2026
 lat: 27.76023   # ESTIMATED: #102 (older Harbor Hall mural, 27.760053,-82.637055) shifted ~20 m north so pins don't stack; was #222's pin before it moved to VIV
 lng: -82.637055
@@ -112,6 +112,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "7 November 2026 — Bio review tool, approved by Rob: artist. Changes — artistBio: Drafted: Rodin/design-studio hook (2 sentences), Giroux + Greater Public Studio, USFSP teaching (garage mural, 2023 street mural removed 2025), Labauvie (Strasbourg, Paris, Seine commission, Tampa since 1998, Air Fer Mer, Harbor Hall lobby sculpture), the building's 2020 mural; searchBio: Fuller version: Wujcik, Beautiful Losers, Pep Rally, GPS clients and projects, Cass & Tyler, Avion Park, HCC, both 2023 titles, FIAC, Maeght, Gottlieb grant, 2010 museum show, Tampa General, 2019 student sculpture, Instagram and sites. [review:20261107221549-3caed781]"
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Drafted: Rodin/design-studio hook (2 sentences), Giroux + Greater Public Studio, USFSP teaching (garage mural, 2023 street mural removed 2025), Labauvie (Strasbourg, Paris, Seine commission, Tampa since 1998, Air Fer Mer, Harbor Hall lobby sculpture), the building's 2020 mural; searchBio: Fuller version: Wujcik, Beautiful Losers, Pep Rally, GPS clients and projects, Cass & Tyler, Avion Park, HCC, both 2023 titles, FIAC, Maeght, Gottlieb grant, 2010 museum show, Tampa General, 2019 student sculpture, Instagram and sites. [review:20261104214453-4212f683]"
   - "4 November 2026 — New placeholder for the SHINE 2026 USF Harbor Hall wall. Artists from the updated SPAA SHINE Walls & Artists list, from the SPAA director via Rob (Nov 4). It supersedes the St Pete Catalyst lineup (Nov 2), which still gave Harbor Hall to Regan McCreight (#222, now at VIV). The piece itself is unknown (Rob). Title TBA. Pin ESTIMATED (#222's old Harbor Hall pin). Full bio drafted in the review tool."
 sourceNotes:

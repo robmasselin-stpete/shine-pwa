@@ -18,6 +18,14 @@ basedIn: "Tampa, FL"
 
 pronouns: "he/him"
 
+photos:
+  - { url: "images/murals/2026/218-2026-11-07-141218.jpeg", dateTaken: "2026-11-07", gps: [27.760684, -82.646368, 2] }
+  - { url: "images/murals/2026/218-2026-11-07-165211.jpeg", dateTaken: "2026-11-07", gps: [27.760698, -82.646376, 3] }
+  - { url: "images/murals/2026/218-2026-11-08-134136.jpeg", dateTaken: "2026-11-08", gps: [27.760433, -82.646812, 19] }
+  - { url: "images/murals/2026/218-2026-11-09-140816.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.760638, -82.646348, 2] }
+
+underConstruction: true
+
 artistBio: |
   He spent 14 years as a park ranger, by Creative Pinellas's count, before he
   quit his day job to paint. Eric Hornsby goes by Esh, short for "Eat, Sleep,

@@ -18,6 +18,11 @@ basedIn: "Florida"
 
 pronouns: "she/her"
 
+photos:
+  - { url: "images/murals/2026/220-2026-11-09-135309.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.770154, -82.661874, 24] }
+
+underConstruction: true
+
 artistBio: |
   When vandals covered her "Say Their Names" mural in Louisville with blue
   paint in 2021, she said every time someone vandalizes the mural she will fix
