@@ -31,6 +31,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
 #toolbar .mode-label { font-size: 11px; color: #f90; font-weight: 600; }
 /* ➤ Facing mode: pins ignore taps (the map picks the nearest one) so none can be dragged */
 #map.facing-mode .leaflet-marker-pane, #map.facing-mode .leaflet-marker-pane * { pointer-events: none !important; }
+#map:not(.facing-mode) .leaflet-facingRose-pane { display: none; }
 
 #map { position: fixed; top: 48px; bottom: 0; left: 0; right: 0; }
 
@@ -179,7 +180,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   <span class="spacer"></span>
   <span class="mode-label" id="mode-label"></span>
   <span class="info" id="status"></span>
-  <span style="font-size:10px;color:#666">v13</span>
+  <span style="font-size:10px;color:#666">v14</span>
   <button class="primary" id="copy-changes">Export All</button>
   <button class="primary" id="copy-current" style="background:#1E88E5;border-color:#1E88E5">Export Route</button>
 </div>
@@ -1381,7 +1382,7 @@ function drawFacing() {
     const pos = posOf(m.id), edited = m.id in facingChanges;
     const color = edited ? '#0d7' : '#FFB300';
     const p0 = map.latLngToLayerPoint([pos.lat, pos.lng]);
-    const r = deg * Math.PI / 180, len = 34;
+    const r = deg * Math.PI / 180, len = 46;
     const tip = map.layerPointToLatLng(L.point(p0.x + Math.sin(r) * len, p0.y - Math.cos(r) * len));
     L.polyline([[pos.lat, pos.lng], tip], { color, weight: 3, opacity: 0.95, interactive: false }).addTo(facingLayer);
     L.marker(tip, { interactive: false, keyboard: false, icon: L.divIcon({ className: '', iconSize: [16, 16], iconAnchor: [8, 8],
@@ -1402,13 +1403,65 @@ function setFacingMode(on) {
     facingStatus('Facing: tap a mural');
   } else facingStatus('');
 }
+// Picking a direction: a rose of 8 arrows (N, NE, E…) around the chosen pin, tap one to
+// set it exactly. For walls that aren't on the grid, tap anywhere else around the pin: a
+// dashed arrow follows the pointer (snaps to the nearest point within 6°) and shows the angle.
+map.createPane('facingRose').style.zIndex = 650;            // above pins, below popups
+const roseLayer = L.layerGroup().addTo(map);
+let facingPreview = null;
+const snapDeg = d => { const n = Math.round(d / 45) * 45 % 360; return angDiffDeg(d, n) <= 6 ? n : Math.round(d) % 360; };
+const angDiffDeg = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+function offsetPx(pos, deg, px) {
+  const p0 = map.latLngToLayerPoint([pos.lat, pos.lng]), r = deg * Math.PI / 180;
+  return map.layerPointToLatLng(L.point(p0.x + Math.sin(r) * px, p0.y - Math.cos(r) * px));
+}
+function drawRose() {
+  roseLayer.clearLayers();
+  if (facingSel == null) return;
+  const id = facingSel, pos = posOf(id), cur = facingOf(id);
+  L.circleMarker([pos.lat, pos.lng], { radius: 22, color: '#0d7', weight: 3, fill: false, interactive: false, pane: 'facingRose' }).addTo(roseLayer);
+  POINTS.forEach((pt, i) => {
+    const deg = i * 45, on = cur != null && angDiffDeg(cur, deg) < 1;
+    const tip = offsetPx(pos, deg, 74);
+    L.polyline([offsetPx(pos, deg, 24), tip], { color: on ? '#0d7' : '#fff', weight: 2, opacity: 0.8, dashArray: '3 4', interactive: false, pane: 'facingRose' }).addTo(roseLayer);
+    const btn = L.marker(tip, { pane: 'facingRose', keyboard: false, icon: L.divIcon({ className: '', iconSize: [40, 40], iconAnchor: [20, 20],
+      html: `<div style="width:40px;height:40px;border-radius:50%;background:${on ? '#0d7' : '#1E88E5'};border:2px solid #fff;
+        box-shadow:0 2px 6px rgba(0,0,0,.5);color:${on ? '#000' : '#fff'};display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer">
+        <div style="transform:rotate(${deg}deg);font-size:13px;line-height:12px">▲</div><div style="font:700 11px/12px system-ui">${pt}</div></div>` }) });
+    btn.on('click', e => { L.DomEvent.stop(e); setFacing(deg); });
+    btn.addTo(roseLayer);
+  });
+}
+function previewFacing(latlng) {
+  if (facingPreview) { roseLayer.removeLayer(facingPreview); facingPreview = null; }
+  if (facingSel == null || !latlng) return;
+  const pos = posOf(facingSel);
+  if (map.latLngToContainerPoint(latlng).distanceTo(map.latLngToContainerPoint([pos.lat, pos.lng])) < 24) return;
+  const deg = snapDeg(bearingTo(pos, latlng));
+  const tip = offsetPx(pos, deg, 110);
+  facingPreview = L.layerGroup([
+    L.polyline([[pos.lat, pos.lng], tip], { color: '#FFEB3B', weight: 3, dashArray: '6 5', interactive: false, pane: 'facingRose' }),
+    L.marker(tip, { interactive: false, keyboard: false, pane: 'facingRose', icon: L.divIcon({ className: '', iconSize: [70, 22], iconAnchor: [35, 11],
+      html: `<div style="background:#FFEB3B;color:#000;border-radius:11px;font:700 12px/22px system-ui;text-align:center">${deg % 45 === 0 ? pointOf(deg) + ' ' : ''}${deg}°</div>` }) }),
+  ]).addTo(roseLayer);
+}
+map.on('mousemove', e => { if (facingMode && facingSel != null) previewFacing(e.latlng); });
+map.on('zoomend', () => { if (facingSel != null) drawRose(); });
 function selectFacing(id) {
   facingSel = id;
-  if (facingSelRing) { map.removeLayer(facingSelRing); facingSelRing = null; }
+  facingPreview = null;
+  drawRose();
   if (id == null) return;
-  const pos = posOf(id), m = muralById[id], cur = facingOf(id);
-  facingSelRing = L.circleMarker([pos.lat, pos.lng], { radius: 22, color: '#0d7', weight: 3, fill: false, interactive: false }).addTo(map);
-  facingStatus(`#${id} ${m.a}${cur != null ? ` (faces ${cur}° ${pointOf(cur)})` : ''}: tap the side the wall faces · Esc cancels · Delete clears`);
+  const m = muralById[id], cur = facingOf(id);
+  facingStatus(`#${id} ${m.a}${cur != null ? ` (faces ${cur}° ${pointOf(cur)})` : ''}: tap an arrow, or anywhere around the pin for an in-between angle · Esc cancels · Delete clears`);
+}
+function setFacing(deg) {
+  const id = facingSel;
+  if (id == null) return;
+  if (muralById[id]?.fc === deg) delete facingChanges[id]; else facingChanges[id] = deg;
+  selectFacing(null);
+  facingStatus(`#${id} faces ${deg}° ${pointOf(deg)} · tap the next mural`);
+  updateStatus(); saveState();
 }
 function nearestMural(latlng, maxPx = 30) {
   const p = map.latLngToContainerPoint(latlng);
@@ -1423,12 +1476,10 @@ function nearestMural(latlng, maxPx = 30) {
 function facingClick(latlng) {
   if (facingSel == null) { const id = nearestMural(latlng); if (id != null) selectFacing(id); return; }
   const pos = posOf(facingSel);
-  if (map.latLngToContainerPoint(latlng).distanceTo(map.latLngToContainerPoint([pos.lat, pos.lng])) < 12) return;
-  const deg = Math.round(bearingTo(pos, latlng)) % 360, id = facingSel;
-  if (muralById[id]?.fc === deg) delete facingChanges[id]; else facingChanges[id] = deg;
-  selectFacing(null);
-  facingStatus(`#${id} faces ${deg}° ${pointOf(deg)} · tap the next mural`);
-  updateStatus(); saveState();
+  const px = map.latLngToContainerPoint(latlng).distanceTo(map.latLngToContainerPoint([pos.lat, pos.lng]));
+  if (px < 24) return;                                      // on the pin itself: keep it selected
+  if (px > 220) { const id = nearestMural(latlng); selectFacing(id); if (id == null) facingStatus('Facing: tap a mural'); return; }   // far away: pick another mural
+  setFacing(snapDeg(bearingTo(pos, latlng)));
 }
 function clearFacing() {
   if (facingSel == null) return;
