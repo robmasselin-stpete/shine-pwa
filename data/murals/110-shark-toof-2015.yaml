@@ -6,6 +6,7 @@ artist: Shark Toof
 year: 2015
 lat: 27.771639
 lng: -82.643215
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 687 Central Ave
 category: shine
 img: "images/murals/2015/shark-toof.jpeg"
@@ -135,11 +136,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/shark-toof/"
   - "https://en.wikipedia.org/wiki/Shark_Toof"
   - "http://shineonstpete.com/portfolio/shark-toof/"
   - "https://stpetemuraltour.com/2016/08/01/shark-toof/"
   - "http://www.sharktoof.com/about"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

@@ -6,6 +6,7 @@ artist: Derek Donnelly
 year: 2014
 lat: 27.771642
 lng: -82.642395
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: Central Ave
 category: commercial
 img: "images/murals/commercial/derek-donnelly-iguana-2014.jpeg"
@@ -53,7 +54,9 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "26 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Photo by Rob 2026-04-26, GPS from EXIF"
   - "Signed Donnelly 2K14 on wall"

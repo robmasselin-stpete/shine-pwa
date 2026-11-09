@@ -6,6 +6,7 @@ artist: Chad Mize
 year: 0
 lat: 27.77164
 lng: -82.642647
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 653 Central Ave (alley)
 category: shine-legacy
 img: "images/murals/pre-shine/chad-mize-twiggy.jpeg"
@@ -187,6 +188,7 @@ furtherWork:
     url: "http://chadmize.com"
 
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-14 — Chad Mize sent his updated display bio directly for inclusion; replaced previous display bio verbatim and appended same text to searchBio so search still hits both versions."
@@ -194,6 +196,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://www.visitstpeteclearwater.com/profile/twiggy-chad-mize/5944"
   - "https://stpetemuraltour.com/2014/08/12/chad-mize-blue-lucy/"
   - "https://theartisanmagazine.com/chad-size-stpete/"

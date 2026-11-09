@@ -6,6 +6,7 @@ artist: Vitale Bros
 year: 2021
 lat: 27.771652
 lng: -82.644567
+facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
 address: 719 Central Ave (behind the Morean Arts Center)
 category: commercial
 img: "images/murals/2025/john-vitale-600.jpeg"
@@ -123,12 +124,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 90° (E) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. Hot Walls is an Overspray Art Space event in Gulfport held Saturday 12 July (2025), 6-10pm — \"a one-night, indoor street-art takeover\" — with no connection to SHINE in any source. The Vitale Bros are listed as featured talent, but the SHINE tie was the fabricated part. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: self-contradictory: two solo walls, one of them a collaboration. The searchBio was missed when artistBio was corrected"
   - "28 August 2026 — Fact-check fleet: this is the 2021 Power to the Patients wall, not a 2025 SHINE mural; sources and the pin both put it at 719 Central, behind the Morean Arts Center; every source credits this wall to Vitale Bros as a studio, not to Johnny individually; a Power to the Patients campaign wall, not a SHINE festival mural; the Factory wall was shared, not solo; the only source dates Hot Walls to July and does not tie it to SHINE"
   - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year; artistAwards hedged: painted walls documented from 2015 on"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://ilovetheburg.com/vitale-bros-power-to-the-patients-st-pete-obey/"
   - "https://www.powertothepatients.org/murals-across-america"
   - "https://vitalebrothers.com/about/"

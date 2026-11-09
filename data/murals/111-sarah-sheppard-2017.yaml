@@ -6,6 +6,7 @@ artist: Sarah Sheppard
 year: 2017
 lat: 27.771673
 lng: -82.644074
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 719 Central Ave
 category: shine
 img: "images/murals/2017/sarah-sheppard-life-reimagined.jpeg"
@@ -121,6 +122,7 @@ muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — RETRACTION of the entry below it dated the same day. The \"artist-confirmed\" provenance for \"University of North Texas\" was a MISIDENTIFICATION: Rob was thinking of **Sara Salem** (#017), who supplied her own bio — not Sarah Sheppard. There is no artist provenance for this claim and no reachable source for it either, so UNT has been REMOVED again, this time from the searchBio as well as the display bio (the Aug 28 pass had only stripped the display bio, leaving the two inconsistent). Treat the \"RESOLVED BY THE ARTIST\" entry below as void. Status: UNSUPPORTED, and now checked twice."
   - "29 August 2026 — Re-verify pass (full web search): STILL UNVERIFIED — flagged for a human check, same finding as #050 and #126. \"University of North Texas\" could not be confirmed or refuted from any fetchable source; the only trace is a search-engine summary apparently reading her LinkedIn education field. Left removed pending Rob checking her LinkedIn."
   - "27 August 2026 — Fact-check fleet: school is the Creative Side Jewelry Academy, per her own words in Voyage Houston; no reachable source names the school; subject list is sourced, the institution is not; current handle is sarah.g.sheppard, per her own site and SPAA; the record's own instagram field already said so"
@@ -130,6 +132,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/age-friendly-st-pete-with-aarp/121-shine-aarp/611-life-reimagined-by-sarah-sheppard"
   - "https://www.visitstpeteclearwater.com/profile/life-reimagined-sarah-sheppard/140395"
   - "https://www.cltampa.com/arts/life-reimagined-sarah-sheppard-completes-new-mural-in-downtown-st-pete-12280945"

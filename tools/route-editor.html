@@ -31,6 +31,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
 #toolbar .mode-label { font-size: 11px; color: #f90; font-weight: 600; }
 /* ➤ Facing mode: pins ignore taps (the map picks the nearest one) so none can be dragged */
 #map.facing-mode .leaflet-marker-pane, #map.facing-mode .leaflet-marker-pane * { pointer-events: none !important; }
+/* …and route lines too: tapping a line adds a path vertex, which facing taps must never do */
+#map.facing-mode .leaflet-overlay-pane path { pointer-events: none !important; }
 #map:not(.facing-mode) .leaflet-facingRose-pane { display: none; }
 
 #map { position: fixed; top: 48px; bottom: 0; left: 0; right: 0; }

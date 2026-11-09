@@ -6,6 +6,7 @@ artist: Dreamweaver
 year: 2025
 lat: 27.771649
 lng: -82.643688
+facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
 address: 696 1st Ave N
 category: shine
 img: "images/murals/2025/dreamweaver.jpeg"
@@ -110,10 +111,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 0° (N) by Rob in the route editor (new field, used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: removed the mother-daughter duo field note. No source knows a Denise Weaver; her own site, the St. Petersburg Arts Alliance credit for this wall, Creative Pinellas and a long Artisan Magazine interview all describe Taylor Smith working solo. Unsubstantiated, so dropped per Rob"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-06-16 — Title set to 'Abiding Light' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/dream-weaver-2022"
   - "https://www.tampabay.com/life-culture/entertainment/2025/12/04/shine-mural-festival-st-petersburg-florida-arts-hurricane/"
   - "https://www.graffitistreet.com/shine-st-petersburg-street-art-mural-festival-florida-2022/"

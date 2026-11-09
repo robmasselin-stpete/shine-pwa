@@ -6,6 +6,7 @@ artist: George F Baker III
 year: 2024
 lat: 27.770121
 lng: -82.642003
+facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
 address: 620 1st Ave South
 category: shine
 img: "images/murals/2024/george-f-baker-iii.jpeg"
@@ -139,9 +140,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 270° (W) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "User photo with GPS 2026-03-08"
   - "https://roughdraftatlanta.com/2023/11/01/artist-george-f-baker-iii-taps-into-memories-personal-history-at-cat-eye-creative/"
   - "https://www.artsatl.org/today-in-street-art-2019-has-been-a-very-good-year-for-muralist-george-f-baker-iii/"

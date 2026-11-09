@@ -6,6 +6,7 @@ artist: PlasticBirdie & Blaine Fontana
 year: 2019
 lat: 27.762702
 lng: -82.670483
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 756 28th St S
 category: shine
 img: "images/murals/2019/plasticbirdie-fontana.jpeg"
@@ -120,12 +121,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (pilot/batch-2 sweep, full web search): RESTORED the Hi-Fructose credit, REATTRIBUTED. The Aug 27 check was right that Hi-Fructose has nothing on PlasticBirdie — but this is a two-artist record, and the magazine did feature the other half: Hi-Fructose Volume 36 (July 2015) carried \"new works from Portland artist Blaine Fontana\", per the magazine's own issue preview. The sentence had been sitting in Nichols's paragraph, which is why a single-artist search killed it. Moved to Fontana in both bios."
   - "2026-08-27 — Fact-check: searchMuralDescription described a bald eagle head and crystalline abstraction that are not on this wall. Ocean Conservancy, who co-funded it and were on site, describe yellowfin grouper, moray eel, spotted eagle ray and threatened corals; the record's own photo shows a numbered infographic of Florida fishing towns. 'Spotted eagle ray' appears to have become 'bald eagle'."
   - "2026-08-27 — Fact-check: No source supports a Hi-Fructose feature; the magazine's own site search returns nothing for the artist."
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Full research and bio, Claude-enhanced. Title corrected to The 8th Funky Fish Town"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "GPS from Rob's photo, IMG_1616.jpeg"
   - "Artists: PlasticBirdie (Jeremy Nichols) and Blaine Fontana, SHINE 2019"
   - "Title per all sources: The 8th Funky Fish Town (not Victory Park)"

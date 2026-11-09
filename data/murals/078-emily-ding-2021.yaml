@@ -6,6 +6,7 @@ artist: Emily Ding
 year: 2021
 lat: 27.77026667
 lng: -82.64296667
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: 100 7th St. S.
 category: shine
 img: "images/murals/2021/emily-ding.jpeg"
@@ -94,12 +95,14 @@ furtherWork:
   - name: "emilyding.art"
     url: "https://www.emilyding.art"
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Bio body bulked: Thinkspace gallery title list (Refuge/Revival/Resilience/Rewilding/Convalescent — themes echo this wall's tenderness) and Street Art for Mankind nonprofit work. Hook unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://stpeteartsalliance.org/emily-ding-2021"
   - "https://streetartmankind.org/artists/emily-ding/"

@@ -6,6 +6,7 @@ artist: Palehorse
 year: 2020
 lat: 27.771635
 lng: -82.643454
+facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
 address: "687 Central Ave"
 category: commercial
 img: "images/murals/2020/palehorse.jpeg"
@@ -118,11 +119,13 @@ furtherWork:
     url: ""
 
 revisionLog:
+  - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://palehorsedesign.com/saraswati-goddess-mural-artwork"
   - "https://palehorsedesign.com/about/"
