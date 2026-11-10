@@ -11,3 +11,9 @@ CREATE TABLE IF NOT EXISTS events (
 CREATE INDEX IF NOT EXISTS idx_events_day   ON events(day);
 CREATE INDEX IF NOT EXISTS idx_events_event ON events(event);
 CREATE INDEX IF NOT EXISTS idx_events_sid   ON events(sid);
+
+-- Rob's own devices, left out of /stats unless &mine=1 (his testing distorts the numbers).
+CREATE TABLE IF NOT EXISTS excluded_sids (
+  sid    TEXT PRIMARY KEY,
+  note   TEXT
+);

@@ -235,7 +235,10 @@ Anonymous usage analytics on Cloudflare (no PII, no IP, no cross-app tracking).
 
 - **Worker** `workers/analytics/` → deployed at `analytics.muralquest.app`. `POST /e`
   ingests event batches into **D1** (`mural-quest-analytics`). `GET /stats?key=…`
-  returns aggregates (total, sessions, by-event, by-day, top murals). Deploy with
+  returns aggregates (total, sessions, by-event, by-day, top murals); `&from=&to=&tz=` limits
+  it to a date range. **Rob's own devices are left out** — their anonymous ids are rows in the
+  D1 table `excluded_sids` (add one with a `wrangler d1 execute --remote` INSERT, no deploy);
+  `&mine=1` / the stats page's "Include my devices" box puts them back. Deploy with
   `cd workers/analytics && npx wrangler deploy`; schema in `schema.sql`.
 - **Client** `js/analytics.js` — `track(event, props)` (also `window.mqTrack`),
   anonymous session id, offline queue, `sendBeacon` flush. Events wired in app.js:

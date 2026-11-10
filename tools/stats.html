@@ -70,6 +70,7 @@
       <button data-r="30">Last 30 days</button>
       <button data-r="all">All time</button>
       <span class="custom">From <input type="date" id="from"> to <input type="date" id="to"></span>
+      <label class="custom"><input type="checkbox" id="mine"> Include my devices</label>
     </div>
     <div class="range-label" id="range-label"></div>
     <div class="cards" id="cards"></div>
@@ -155,6 +156,15 @@ function setRange(next) {
   try { localStorage.setItem('mq_stats_range', JSON.stringify(range)); } catch (e) {}
   load();
 }
+// Rob's own devices are left out by default (the Worker's excluded_sids list); tick to include them.
+let mine = false;
+try { mine = localStorage.getItem('mq_stats_mine') === '1'; } catch (e) {}
+document.getElementById('mine').checked = mine;
+document.getElementById('mine').addEventListener('change', e => {
+  mine = e.target.checked;
+  try { localStorage.setItem('mq_stats_mine', mine ? '1' : '0'); } catch (e) {}
+  load();
+});
 function currentBounds() {
   if (range.r === 'custom') return range.from && range.to ? [range.from, range.to].sort() : null;
   return presetRange(range.r);
@@ -190,7 +200,7 @@ async function load() {
     // tz = minutes east of UTC on the first day of the range (St. Pete: −240 before Nov 1, −300 after)
     const tz = b ? -new Date(b[0] + 'T12:00:00').getTimezoneOffset() : 0;
     const q = b ? `&from=${b[0]}&to=${b[1]}&tz=${tz}` : '';
-    const res = await fetch(`${API}?key=${encodeURIComponent(key)}${q}&_=${Date.now()}`);
+    const res = await fetch(`${API}?key=${encodeURIComponent(key)}${q}${mine ? '&mine=1' : ''}&_=${Date.now()}`);
     if (res.status === 401) return showPrompt('That key was rejected. Try again.');
     if (!res.ok) return showPrompt('Stats request failed (HTTP ' + res.status + ').');
     d = await res.json();
@@ -250,6 +260,8 @@ async function load() {
   document.getElementById('bars').innerHTML = days.length ? days.map((x, i) =>
     `<div class="bar" style="height:${Math.round(x.n / maxDay * 100)}%" title="${x.day}: ${x.n} events, ${x.sessions} sessions"><span>${i % every ? '' : x.day.slice(5)}</span></div>`
   ).join('') : '<div style="color:#999;font-size:13px">No activity in this range</div>';
+  document.getElementById('range-label').textContent += mine ? ' · including your devices'
+    : d.excluded ? ` · your ${d.excluded === 1 ? 'phone is' : d.excluded + ' devices are'} left out` : '';
   if (bb && !d.range) document.getElementById('range-label').textContent += ' — ⚠ the analytics Worker hasn\'t been updated yet, so these are all-time numbers';
 
   // QR lead sources
