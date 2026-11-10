@@ -48,7 +48,7 @@
 </style>
 </head>
 <body>
-<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v4 · Nov 10</small></h1>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v5 · Nov 10</small></h1>
 <div class="sub">Stand in front of a mural, point the phone at it, tap Scan.<br><span id="ver">Data: loading…</span></div>
 
 <button id="scan">Scan</button>
@@ -293,6 +293,8 @@ function issuesFor(c) {
   const m = c.m, h = scan.h, out = [];
   if (h != null && m.fc != null && angDiff(h, m.fc) > 45)
     out.push({ k: 'aim', t: `Your phone pointed <b>${compass(h)} (${Math.round(h)}°)</b>, but the arrow says <b>look ${compass(m.fc)}</b>.` });
+  if (h != null && m.fc == null)
+    out.push({ k: 'noarrow', t: `This mural has <b>no arrow yet</b>.` });
   if (c.side != null && c.side > 70 && c.d > 4)
     out.push({ k: 'side', t: `You seem to be on the <b>${compass((c.b + 180) % 360)}</b> side of the pin; the arrow puts viewers on the <b>${compass((m.fc + 180) % 360)}</b> side.` });
   if (idx > 0)
@@ -320,10 +322,20 @@ function thatsIt() {
     const h = scan.h, p = scan.pos;
     setTimeout(() => {
       $('pane').style.display = 'none';
+      // No arrow and nothing else wrong: just offer the phone's direction as the arrow.
+      if (issues.length === 1 && issues[0].k === 'noarrow') {
+        $('ask').innerHTML = `<p class="q"><b>#${m.id} ${esc(m.a)}</b> has no arrow yet.</p>` +
+          `<p class="q">Set it to <b>look ${compass(h)} (${Math.round(h)}°)</b>, the way your phone is pointing?</p>` +
+          `<button class="fine" data-t="arrow→${Math.round(h)}">Yes, look ${compass(h)} (${Math.round(h)}°)</button>` +
+          `<button data-t="not-aimed">No, I wasn't pointed at it</button>`;
+        $('ask').querySelectorAll('button').forEach(b => b.onclick = () => { finishCheck(b.dataset.t); showDone(m); });
+        $('ask').style.display = 'block';
+        return;
+      }
       $('ask').innerHTML = `<p class="q"><b>Check #${m.id} ${esc(m.a)}</b></p>` +
         issues.map(x => `<p class="q">${x.t}</p>`).join('') +
         `<p class="q"><b>Is this mural in front of you right now?</b> What's wrong?</p>` +
-        (h != null ? `<button data-t="arrow→${Math.round(h)}">The arrow is wrong → <b>look ${compass(h)} (${Math.round(h)}°)</b></button>` : '') +
+        (h != null ? `<button data-t="arrow→${Math.round(h)}">${m.fc == null ? 'Set the arrow' : 'The arrow is wrong'} → <b>look ${compass(h)} (${Math.round(h)}°)</b></button>` : '') +
         `<button data-t="pin@${p.lat.toFixed(6)},${p.lng.toFixed(6)}">The pin is in the wrong place → put it near me</button>` +
         `<button data-t="not-aimed">I wasn't pointed at it (bad scan)</button>` +
         `<button class="fine" data-t="ok">Nothing, it's all fine</button>`;
