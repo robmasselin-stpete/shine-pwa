@@ -6,6 +6,7 @@ artist: Vitale Bros
 year: 0
 lat: 27.771234
 lng: -82.666803
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: "2451 Central Ave"
 category: commercial
 img: "images/murals/commercial/vitale-bros-ridem-cowboy.jpeg"
@@ -76,10 +77,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: id 38 is Bunnie Reiss, not a Vitale record; corrected the pointer list"
   - "27 August 2026 — Fact-check fleet: Vitale SHINE claim hedged to match source: involved since inception, not a painted wall every year; artistAwards hedged: painted walls documented from 2015 on"
   - "27 August 2026 — Fact-check fleet: Sionna Sio MacLeish is a collaborator, not Vitale's daughter; the Factory wall was shared, not solo"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "GPS from Rob's photo, vitale bros commercial.jpeg"
   - "Building identified by Rob as Ride 'em Cowboy bar"

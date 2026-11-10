@@ -6,6 +6,7 @@ artist: Kelly Quinn
 year: 2023
 lat: 27.77203833
 lng: -82.66821333
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: 2553 1st Ave N
 category: shine
 img: images/murals/2023/kelly-quinn.jpeg
@@ -138,11 +139,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED the Florida Aquarium Artist-in-Residence post in its sourced form. She states it herself — \"I'm also the Artist in Residence at The Florida Aquarium\" (Artsy Shark, 2018) and \"I started working with The Florida Aquarium as their Artist in Residence\" (Sharks4Kids, 2018). Artsy Shark also documents the residency/community arts programme and \"Paint in The Wild\" classes. Live-painting is still unsourced and was not restored."
   - "28 August 2026 — Fact-check fleet: no source supports an Artist-in-Residence post at The Florida Aquarium; her own full CV does not list it"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "GPS from user photo (IMG_1613.jpeg). User photo replaces stock image."
   - "Instagram corrected from @canvasofthewild to @kellyofthewild (personal handle)."
   - "https://kellyofthewild.com/"

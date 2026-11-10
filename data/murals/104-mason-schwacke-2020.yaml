@@ -6,6 +6,7 @@ artist: Mason Schwacke
 year: 2020
 lat: 27.756430
 lng: -82.636938
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 1400 3rd St S
 category: shine
 img: "images/murals/2020/mason-schwacke.jpeg"
@@ -78,6 +79,7 @@ artistAwards: ""
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpetecatalyst.com/a-little-rain-wont-stop-shine-artist-mason-schwacke/"
   - "https://seawalls.org/activation/st-petersburg/"
   - "https://stpeteartsalliance.org/mason-schwacke-2020"
@@ -88,6 +90,7 @@ sourceNotes:
   - "Photo by Rob — confirmed iPhone EXIF audit 2026-05-12"
   - "https://www.cltampa.com/arts/breakout-artist-bekky-beukess-pieces-come-together-at-gulfports-portspace-gallery-12270350/"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED the Art Asylum association — Creative Loafing Tampa Bay (Dec 17-23, 2015) ends its Portspace piece with \"Next up at Portspace: murals and street-inspired art by Art Asylum artist Mason Schwacke.\" That one sentence also independently confirms the Portspace Gallery credit flagged as an untested weak spot in the job spec, so both now stand on a citation."
   - "28 August 2026 — Fact-check fleet: no source names Art Asylum; the only St. Pete entity by that name has no visible link to him"
   - "5 March 2026 — Migrated from data.js"

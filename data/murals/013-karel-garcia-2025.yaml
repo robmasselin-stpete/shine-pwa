@@ -6,6 +6,7 @@ artist: Karel Garcia
 year: 2025
 lat: 27.76287
 lng: -82.674461
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/karel-garcia.jpeg"
@@ -77,10 +78,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): PARTIALLY RESTORED the Vedado detail in its sourced form — Creative Pinellas ties Vedado to his childhood art workshops, not his birth, so the bio now says so. The \"first public art installation in America\" claim remains UNSUPPORTED after a full-search pass; leaving it removed."
   - "28 August 2026 — Fact-check fleet: no source supports the first-in-America claim; the source places Vedado with his childhood workshops, not his birth"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://creativepinellas.org/artist/karel-garcia/"
   - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
   - "https://ilovetheburg.com/st-pete-shine-origins/"

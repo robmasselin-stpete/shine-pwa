@@ -6,6 +6,7 @@ artist: Ernesto Maranje
 year: 0
 lat: 27.763898
 lng: -82.668085
+facing: 135   # look SE to see it; Rob, route editor 10 Nov 2026
 address: 2606 Fairfield Ave S
 category: commercial
 img: "images/murals/commercial/ernesto-maranje-wildlife-corridor.jpeg"
@@ -89,11 +90,13 @@ artistAwards: "Wynwood Walls 10-year anniversary (2019); Johnnie Walker Blue Lab
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.maranje.com/projects/florida-wildlife-corridor"
   - "https://floridawildlifecorridor.org/corridor-foundation-hq-mural/"
   - "https://www.maranje.com/about"
   - "https://thewynwoodwalls.com/artists/ernesto-maranje/"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 135° (SE) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "16 April 2026 — Bio rewrite with hook, searchBio added"

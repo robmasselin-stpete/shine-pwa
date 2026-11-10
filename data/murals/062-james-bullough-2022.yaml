@@ -6,6 +6,7 @@ artist: James Bullough
 year: 2022
 lat: 27.771227
 lng: -82.663499
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 2201 Central Ave.
 category: shine
 img: "images/murals/2022/james-bullough.jpeg"
@@ -135,12 +136,14 @@ furtherWork:
     url: "https://jamesbullough.com"
 
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "2026-08-27 — Fact-check: The bio attached the title of one Thinkspace show to another show's venue and year: Stand Strong is Long Beach 2025; the 2024 Brand Library show is Perseverance: 20 Years of Thinkspace."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob Asselin. Bio originally written. 2026-03-05."
   - "https://jamesbullough.com/"
   - "https://muralform.com/artists/james-bullough-bio/"

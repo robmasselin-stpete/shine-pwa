@@ -6,6 +6,7 @@ artist: Emmanuel Jarus
 year: 2024
 lat: 27.777316
 lng: -82.636864
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: 226 5th Ave N
 category: shine
 img: "images/murals/2024/emmanuel-jarus.jpeg"
@@ -144,12 +145,14 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. The Boulogne-sur-Mer wall is documented in detail by the city's own street-art site and press — Jarus painted there in the first festival edition (2016) and returned in 2022 for a wall at 404 Boulevard Sainte-Beuve facing the sea, depicting his friend Mila — but no source in French or English gives the building a storey count. The \"17-story\" figure appears nowhere. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: the 17-story figure belongs to a headline about a different wall; no source gives Boulogne a story count; no source gives the Boulogne wall a story count"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Added instagram.com/youngjarus to sourceNotes per user request. WebFetch could not extract IG bio/post content (login wall) — no new facts integrated. Fixed incorrect @jarus handle reference in searchBio to @youngjarus (matches the YAML's instagram: field)."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_emmanuel_jarus"
   - "https://ilovetheburg.com/jarus-largest-mural-in-st-pete/"
   - "https://stpetecatalyst.com/st-petes-mural-festival-shines-despite-hurricane-interference/"

@@ -6,6 +6,7 @@ artist: "Alyssa Marie and the Happy Mural Project"
 year: 2023
 lat: 27.76500833
 lng: -82.67086667
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 2727 6th Ave South
 category: shine
 img: "images/murals/2023/happy-mural-project.jpeg"
@@ -115,6 +116,7 @@ furtherWork:
   - name: "thehappymuralproject.com"
     url: "https://www.thehappymuralproject.com"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "2 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: New opening of its own (Girl Power: designed to inspire girls; Girl Scouts painted it). Was word-for-word the same as #71/#100 for two paragraphs; searchBio: Same new opening; dropped the Kenneth City house number (possible private home) and fixed the Fossil Park wall (on a home near Fire Station 7, not in the park); \"their\" → \"her\"; mission attributed to Creative Pinellas; Artesia \"across a week\" removed (unsupported). [review:20261102205714-3a2342d7]"
   - "2 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: New opening of its own (Girl Power: designed to inspire girls; Girl Scouts painted it). Was word-for-word the same as #71/#100 for two paragraphs; searchBio: Same new opening; dropped the Kenneth City house number (possible private home) and fixed the Fossil Park wall (on a home near Fire Station 7, not in the park); \"their\" → \"her\"; mission attributed to Creative Pinellas; Artesia \"across a week\" removed (unsupported). [review:20261102205301-572042d9]"
   - "2 November 2026 — Artist name set to 'Alyssa Marie and the Happy Mural Project' on all six of her records so they match and link under 'More by' (Rob, interim until he confirms her preferred credit with her this week) (was: 'The Happy Mural Project')"
@@ -124,6 +126,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://www.tampabay.com/life-culture/arts/2023/06/23/st-pete-happy-mural-project-paint-by-numbers/"
   - "https://www.thehappymuralproject.com (locations page)"
   - "https://www.shineonmurals.com/events"

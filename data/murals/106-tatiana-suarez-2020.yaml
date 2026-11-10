@@ -6,6 +6,7 @@ artist: Tatiana Suarez
 year: 2020
 lat: 27.76938833
 lng: -82.63242167
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 250 2nd Ave SE
 category: shine
 img: images/murals/2020/tatiana-suarez.jpeg
@@ -129,11 +130,13 @@ furtherWork:
     url: "https://www.tatisuarez.com"
 
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-03 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - |
     GPS from user photo (IMG_1584.jpeg). User photo replaces stock image.
     Sources consulted:

@@ -6,6 +6,7 @@ artist: Melanie Posner
 year: 2026
 lat: 27.770736
 lng: -82.665998
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: 2200 block Central Ave
 category: commercial
 img: "images/murals/commercial/melanie-posner-irina.jpeg"
@@ -110,6 +111,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED \"a small town just outside Philadelphia\". She says it herself in her SHOUTOUT MIAMI interview: \"I am from a small town right outside of Philadelphia.\" The St. Pete Catalyst's \"Philadelphia native\" is the looser regional shorthand, not a contradiction. Applied across all four Posner records, whose searchBio had drifted to the bare city while three of the display bios still said \"outside Philadelphia\"."
   - "28 August 2026 — Fact-check fleet: the only source calls her a Philadelphia native, not suburban"
   - "28 August 2026 — Fact-check fleet: her own portfolio places it at the LGBT Center in Hollywood, not West Hollywood"
@@ -118,6 +120,7 @@ revisionLog:
   - "2026-05-03 — Display bio rewritten as a memorial bio anchored to THIS wall: Iryna Zarutska's story (Ukrainian refugee, killed Aug 22 2025 on Charlotte light rail, age 23), the painted detail (golden-blonde hair, pink hibiscus, mint-to-gold), and the legal aftermath (Iryna's Law). Generic Posner career context now sits below."
   - "2026-05-03 — Trimmed Iryna's full story out of the display bio per Rob (we already have it in muralInspiration field). Display bio now just names her and describes the painted portrait; muralInspiration carries the Ukrainian refugee / Charlotte light rail / Iryna's Law context."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpetecatalyst.com/melanie-posner/"
   - "https://www.melanieposner.com/"
   - "https://stpeteartsalliance.org/shine?alias=/2018_SHINE_Mural_Melanie_Posner"

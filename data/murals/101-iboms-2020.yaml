@@ -6,6 +6,7 @@ artist: IBOMS
 year: 2020
 lat: 27.770733
 lng: -82.665406
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 2324 Central Ave
 category: shine
 img: "images/murals/2020/iboms.jpeg"
@@ -134,6 +135,7 @@ artistAwards: "SHINE 2020 and 2021 selected artist; Tampa Bay Rays Artist Print 
 furtherWork: []
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://creativepinellas.org/directory/jabari-reed-diop/"
   - "https://seawalls.org/murals/where-the-bloom-begins/"
@@ -142,6 +144,7 @@ sourceNotes:
   - "https://creativepinellas.org/artist/jabari-reed-diop-i-b-o-m-s/"
   - "https://ilovetheburg.com/tampa-bay-murals-iboms/"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: the source describes a show with Chad Mize, not a solo show; no pooled source mentions the Tampa Bay Rays"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

@@ -6,6 +6,7 @@ artist: "Alyssa Marie"
 year: 2024
 lat: 27.764316   # Rob-set via route-editor (Albert Whitted hangar, First St S side)
 lng: -82.633739
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: "Albert Whitted Airport"
 category: commercial
 img: "images/murals/commercial/alyssa-marie-biplane.jpeg"
@@ -90,12 +91,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "2 November 2026 — Bio review tool, approved by Rob: artistBio. Changes — artistBio: Removed \"the outlier … earns the exception\" (her portfolio has other non-wildlife walls); \"sunflower and paint-by-numbers\" walls (the first 2020 wall wasn't paint-by-numbers); notes the biplane is itself paint-by-numbers; adds SHINE 2026. [review:20261102205948-df2be103]"
   - "2 November 2026 — Artist stays 'Alyssa Marie' (Rob: the biplane is her own work, not a Happy Mural Project wall). Briefly set to 'Alyssa Marie and the Happy Mural Project' with her other records the same day, then reverted"
   - "30 October 2026 — Happy Mural corrections from the #225 fact-check: removed 'husband'/'half of' framing (2023–2026 sources credit her as founder/lead); 'commissioned in 2024' had no source — FOAWA's 2 Jan 2024 post says the murals were organized and supported by the three bodies, weather delayed them and they were 'well on their way to completion' at the January unveiling, so the 28 Aug 'already painted' note was wrong; year 2024 stands"
   - "28 August 2026 — Fact-check fleet: it was already painted at the 1 January 2024 unveiling, so it cannot have been commissioned in 2024"
   - "2026-06-16 — New mural added by Rob: Alyssa Marie yellow Stearman biplane on the Albert Whitted Airport hangar (First St side). Photo from Rob (IMG_7213.jpeg, 2026-05-28). Forwarded photo's EXIF GPS (27.78708, -82.64674) is ~1.5mi N of the airport — bogus, discarded. Rob set final GPS via route-editor: 27.764316, -82.633739 (Albert Whitted hangar, First St S side). Year 2024 (unveiled Jan 2024). Category commercial (commissioned public art via FOAWA/City/SPAA — not a SHINE festival mural). Bio researched fresh; not copied from any site."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Friends of Albert Whitted Airport — biplane mural page"
   - "https://www.thehappymuralproject.com (mural portfolio)"
   - "https://www.shineonmurals.com/events"

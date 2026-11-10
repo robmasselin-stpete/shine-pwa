@@ -6,6 +6,7 @@ artist: IBOMS
 year: 0
 lat: 27.753037
 lng: -82.650763
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: St Pete Youth Farm
 category: commercial
 img: "images/murals/commercial/iboms-youth-farm.jpeg"
@@ -122,11 +123,13 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED the Tampa Bay Rays credit — the Tampa Bay Times (14 June 2019) ran \"St. Petersburg artist Jabari Reed-Diop the youngest yet to be featured in Tampa Bay Rays art series\", reporting he designed the poster for the Rays' series against the Los Angeles Angels. Separately, the 48-hour Mize Gallery sellout is documented by I Love the Burg (\"his show with Chad Mize completely sold out within 48 hours of its debut\") but is NOT tied by any source to the \"Ego Death\" show specifically — he had more than one Mize Gallery show — so the untitled form stands and the title stays off it."
   - "28 August 2026 — Fact-check fleet: the source describes a show with Chad Mize, not a solo show; self-contradictory: a solo show with another artist; no pooled source mentions the Tampa Bay Rays"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten + searchBio populated using context from #101 (the SHINE 2020 IBOMS YAML). Hook anchored to existing IBOMS/Youth Farm relationship (he co-created the 'Together We Grow' PSTA bus wrap with the Youth Farm in 2021 — this wall extends that). Added canonical IBOMS sources from #101."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-04-23, GPS from EXIF"
   - "https://creativepinellas.org/directory/jabari-reed-diop/"
   - "https://stpeteartsalliance.org/shine?alias=/2020_SHINE_Mural_IBOMS"

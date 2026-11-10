@@ -6,6 +6,7 @@ artist: Sarah Sheppard
 year: 2023
 lat: 27.766483
 lng: -82.665218
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: 2336 5th Ave S
 category: shine
 img: "images/murals/2023/sarah-sheppard.jpeg"
@@ -123,6 +124,7 @@ muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — RETRACTION of the entry below it dated the same day. The \"artist-confirmed\" provenance for \"University of North Texas\" was a MISIDENTIFICATION: Rob was thinking of **Sara Salem** (#017), who supplied her own bio — not Sarah Sheppard. There is no artist provenance for this claim and no reachable source for it either, so UNT has been REMOVED again, this time from the searchBio as well as the display bio (the Aug 28 pass had only stripped the display bio, leaving the two inconsistent). Treat the \"RESOLVED BY THE ARTIST\" entry below as void. Status: UNSUPPORTED, and now checked twice."
   - "29 August 2026 — Re-verify pass (full web search): STILL UNVERIFIED — flagged for a human check. The University of North Texas attribution could not be confirmed or refuted: her own site (sarahsheppardsart.com) is dead and unarchived, Voyage Houston names the subjects but no institution, and the only trace of \"University of North Texas\" is a search-engine summary that appears to be reading her LinkedIn education field, which cannot be fetched. Because #126 KEPT this in the April audit, this is the one item in this pass where a false positive is genuinely possible; Rob can settle it from her LinkedIn in seconds. Left removed pending that."
   - "27 August 2026 — Fact-check fleet: school is the Creative Side Jewelry Academy, per her own words in Voyage Houston; no reachable source names the school; subject list is sourced, the institution is not; current handle is sarah.g.sheppard, per her own site and SPAA; the record's own instagram field already said so"
@@ -132,6 +134,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://stpetemuraltour.com/2019/12/10/sarah-sheppard/"
   - "https://voyagehouston.com/interview/art-life-sarah-sheppard/"

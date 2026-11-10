@@ -6,6 +6,7 @@ artist: Cecilia Lueza
 year: 2018
 lat: 27.771342
 lng: -82.634121
+facing: 315   # look NW to see it; Rob, route editor 10 Nov 2026
 address: 100 1st Ave N
 category: shine
 img: images/murals/2018/cecilia-lueza-blue-hour.jpeg
@@ -133,9 +134,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 315° (NW) by Rob in the route editor (used by the Mural Finder)."
   - '2026-08-27 — Fact-check: Removed "Encounter" from the list of SHINE festival murals — lueza.com dates it to August 2018 and SHINE 2018 ran Oct 5-14; only "The Blue Hour" is her documented SHINE 2018 wall (stpeteartsalliance.org/cecilia-lueza-2).'
   - '2026-08-27 — Fact-check: Delta is at Icaria on Pinellas, Tarpon Springs FL (2020), not Jacksonville; only Nova is Jacksonville. Source: lueza.com/public-sculpture, creativepinellas.org." "24 May 2026 — New entry. Photo and GPS sent directly to Rob by Cecilia Lueza. Bio reused from #4 (canonical Lueza bio, style card v1). Mural description written from the photo. Rob reviewed.'
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo sent directly to Rob by Cecilia Lueza (artist-supplied, authoritative). GPS 27.771342, -82.634121 provided by Rob. ONE St. Petersburg residential tower at 1st Ave N and 1st St N, downtown St. Pete."
   - "https://www.lueza.com/mural-art/"
   - "https://www.lueza.com/bio/"

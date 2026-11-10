@@ -6,6 +6,7 @@ artist: Derek Donnelly
 year: 2025
 lat: 27.738070
 lng: -82.707725
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: Gulfport
 category: commercial
 img: "images/murals/commercial/derek-donnelly-guardian-gulfport.jpeg"
@@ -130,10 +131,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass: the duplicate-key defect is FIXED and verified. grep -c '^searchBio:' now returns 1 and yaml.safe_load returns the full ~600-word block, so the empty second key that was silently winning is gone. No factual content was at issue in this finding."
   - "28 August 2026 — Fact-check fleet: removed a duplicate empty searchBio key — YAML last-key-wins was discarding the entire ~600-word searchBio"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-04-23, GPS from EXIF"
   - "https://thegabber.com/have-you-seen-the-guardian-of-gulfport-on-stormrunners/"

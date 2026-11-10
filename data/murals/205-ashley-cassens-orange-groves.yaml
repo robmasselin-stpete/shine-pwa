@@ -6,6 +6,7 @@ artist: Ashley Cassens
 year: 2026
 lat: 27.75273
 lng: -82.73796
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "1500 Pasadena Ave S"
 category: commercial
 img: "images/murals/commercial/ashley-cassens-orange-groves.jpeg"
@@ -103,11 +104,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "30 October 2026 — Rob-approved corrections from the #217 fact-check: full-time year 2020 → 2022 (her About page: \"In 2022, she quit teaching full-time to paint murals\"; CL Jan 2022 + VoyageTampa Mar 2022 still call her a teacher); Eye Traps and the IBLP-pamphlet portraits merged into one series (her Eye Traps page, CL); removed unverifiable Thumbtack claims (62 murals, 5-star/40 reviews, Top Pro 2022-2025 — profile now 404); Painting Possibilities is a journal, not an LLC; removed lift/insurance/background-check and pricing (dead Thumbtack source)"
   - "28 August 2026 — Fact-check fleet: her own About page says K-5 for five years"
   - "28 August 2026 — Fact-check fleet: her own About page says K-5 for five years; Some Place Under Neith is a podcast, not a series of her paintings"
   - "2026-05-14 — New mural added by Rob: second Ashley Cassens, citrus + lorikeet + tropical flowers on Florida Orange Groves Winery in South Pasadena. GPS from photo IMG_0290.jpeg EXIF (27.75273, -82.73796), photo dated 2026-05-13. Year 2026; signed lower-left 'ASHLEY CASSENS @ashley.cassens.' Bio carried over from #153 (Sweet Disposition)."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-05-13, GPS from EXIF (IMG_0290.jpeg)"
   - "Signed 'ASHLEY CASSENS @ashley.cassens' lower-left on wall"
   - "https://www.ashleycassens.com/"

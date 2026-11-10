@@ -6,6 +6,7 @@ artist: "Amy Ilic-Volpe"
 year: 2025
 lat: 27.762868
 lng: -82.674598
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/amy-ilic-volpe.jpeg"
@@ -80,8 +81,10 @@ artistAwards: "2022 Gasparilla Festival of the Arts Emerging Artist Recipient; A
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Enhanced from photo, 2026-03-05"
   - "https://notrealart.com/artist-amy-ilic-volpe-paintings-cultivate-childlike-glee/"
   - "https://floridarama.art/"

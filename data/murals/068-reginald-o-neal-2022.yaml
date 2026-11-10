@@ -6,6 +6,7 @@ artist: "Reginald O'Neal"
 year: 2022
 lat: 27.76296167
 lng: -82.63767167
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 701 3rd St. S.
 category: shine
 img: "images/murals/2022/reginald-oneal.jpeg"
@@ -134,6 +135,7 @@ artistAwards: "Artsy Vanguard 2021; Oolite Arts resident (2022-23); Anderson Ran
 furtherWork: []
 
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — New hook anchored to this wall: his usual Overtown intimate portraits scaled up to building size (Clarke + Mundari). Replaced the resume-style 'self-taught/Sorolla/Vanguard 2021' opener; Vanguard credit moved into body."
@@ -141,6 +143,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://stpeteartsalliance.org/reginald-o-neal-2022"
   - "https://www.artsy.net/article/artsy-editorial-artsy-vanguard-2021-reginald-oneal"

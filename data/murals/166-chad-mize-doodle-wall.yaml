@@ -6,6 +6,7 @@ artist: Chad Mize
 year: 0
 lat: 27.763205
 lng: -82.669829
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: "Pinellas Trail"
 category: commercial
 img: "images/murals/commercial/chad-mize-doodle-wall.jpeg"
@@ -117,10 +118,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "16 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-14 — Chad Mize sent his updated display bio directly for inclusion; replaced previous display bio verbatim and appended same text to searchBio so search still hits both versions."
 
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-04-16, GPS from EXIF"
   - "Artist: Chad Mize, signed on wall"
   - "Commercial doodle wall in Warehouse Arts District"

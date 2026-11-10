@@ -6,6 +6,7 @@ artist: Melanie Posner
 year: 0
 lat: 27.757783
 lng: -82.638612
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: St. Petersburg
 category: commercial
 img: "images/murals/commercial/melanie-posner-heart-hands.jpeg"
@@ -116,12 +117,14 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED \"a small town just outside Philadelphia\". She says it herself in her SHOUTOUT MIAMI interview: \"I am from a small town right outside of Philadelphia.\" The St. Pete Catalyst's \"Philadelphia native\" is the looser regional shorthand, not a contradiction. Applied across all four Posner records, whose searchBio had drifted to the bare city while three of the display bios still said \"outside Philadelphia\"."
   - "28 August 2026 — Fact-check fleet: the only source calls her a Philadelphia native, not suburban"
   - "28 August 2026 — Fact-check fleet: her own portfolio places it at the LGBT Center in Hollywood, not West Hollywood; her verified handle is therealmelpoz; the record's own instagram field already said so"
   - "24 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-05-03 — Display bio rewritten + searchBio populated using context from #120 (Mint House Posner). Hook anchored to this wall's heart/diverse-silhouettes design. Notes that this is an awareness/community piece — flat graphic style rather than her usual photorealism. Cross-references to other Posner walls (#120 Mint House, #139 Iryna memorial, #119 SHINE 2018 New Beginnings)."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-04-23, GPS from EXIF"
   - "https://stpetecatalyst.com/melanie-posner/"
   - "https://www.melanieposner.com/"

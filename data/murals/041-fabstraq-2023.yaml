@@ -6,6 +6,7 @@ artist: Fabstraq
 year: 2023
 lat: 27.764656
 lng: -82.670531
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: 2724 6th Ave S
 category: shine
 img: "images/murals/2023/fabstraq.jpeg"
@@ -112,12 +113,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, all three. The St. Petersburg Arts Alliance bio is the fullest available and describes him only as a painter and poet, \"a certified Art Therapy Life Coach\" — no audio engineering, no music production, no statement about formal education. His own site states a different goal (sharing his art with the world and helping fellow artists), so the \"art programs worldwide\" line stays out. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: no source mentions audio engineering or music production; his own site states a different goal; no source states he has no formal art education"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://fabstraq.com/"
   - "https://www.baynews9.com/fl/tampa/news/2019/08/05/everyday-hero--local-artist-inspires-children-to-grow-their-imaginations"

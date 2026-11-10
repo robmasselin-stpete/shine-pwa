@@ -4,8 +4,9 @@
 id: 213
 artist: "Jacksun"
 year: 2026
-lat: 27.766   # ESTIMATED (no geocoder): across Emerson Ave S from #93 (2343 Emerson, 27.765839,-82.665414)
-lng: -82.6653
+lat: 27.76508   # Rob, route editor 10 Nov 2026, after on-site visits (was the 27.766 estimate)
+lng: -82.665714
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: "2342 Emerson Ave S"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -155,11 +156,13 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "10 November 2026 — Pin moved to 27.76508, -82.665714 by Rob in the route editor (102 m S, 41 m W), about 9 m from where he stood for the Nov 9–10 photos (±3–5 m). Was 27.766, -82.6653, an ESTIMATE across Emerson Ave S from #93. Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212227-aafc4beb]"
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212203-717ea474]"
   - "2 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening (a pencil at fifteen to work through feelings; no teacher, scaling a sketchbook drawing five or ten times up). The sun-titles line moved to the end of paragraph two; the duplicated \"fifteen / self-taught / five or ten times\" sentences trimmed from paragraph two; searchBio: Same opening added before the sun-titles paragraph. [review:20261102204639-929e7a07]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #1 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): across Emerson Ave S from #93 (2343 Emerson, 27.765839,-82.665414). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (pin + facing)"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob)"

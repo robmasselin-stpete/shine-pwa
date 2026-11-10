@@ -6,6 +6,7 @@ artist: Chris Dyer
 year: 2023
 lat: 27.762877
 lng: -82.672623
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: 2875 7th Ave S
 category: shine
 img: "images/murals/2023/chris-dyer.jpeg"
@@ -150,11 +151,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: sources describe him as having SHOWN WITH these artists, not trained under them"
   - "2026-08-27 — Fact-check: fieldNotes said based in Montreal; he relocated to St. Pete/Gulfport around 2022 and the record's own basedIn already said St. Petersburg. Sources: en.wikipedia.org/wiki/Chris_Dyer_(artist), positivecreations.ca/about/bio, stpeteartsalliance.org/chris-dyer-2023."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpeteartsalliance.org/chris-dyer-2023"
   - "https://en.wikipedia.org/wiki/Chris_Dyer_(artist)"
   - "https://positivecreations.ca/about/bio/"

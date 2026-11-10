@@ -6,6 +6,7 @@ artist: Palehorse
 year: 2019
 lat: 27.766483
 lng: -82.665565
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: 2390 5th Ave S
 category: shine
 img: "images/murals/commercial/palehorse-bayboro.jpeg"
@@ -119,6 +120,7 @@ furtherWork:
     url: ""
 
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. Palehorse is Chris Parks, and his documented music-art credits are screen-printed posters and album art for Foo Fighters, Queens of the Stone Age, Puscifer, 108, Converge, Primus, Iggy Pop, Jimi Hendrix and Rush. Shinedown appears in no source and on no page of his portfolio. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: no source connects him to Shinedown; replaced with credits his own portfolio documents"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
@@ -126,6 +128,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.palehorsedesign.com/"
   - "https://www.instagram.com/palehorsedesign/"

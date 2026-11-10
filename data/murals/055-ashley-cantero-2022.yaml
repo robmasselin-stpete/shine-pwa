@@ -6,6 +6,7 @@ artist: Ashley Cantero
 year: 2022
 lat: 27.771255
 lng: -82.666106
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: 2421 Central Ave.
 category: shine
 img: "images/murals/2022/ashley-cantero.jpeg"
@@ -107,12 +108,14 @@ furtherWork:
   - name: "ashleycantero.com"
     url: ""
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: dropped the eight-wall mural Cosmic Dreams and Sunshine Beams. FloridaRAMA's own artist page credits her with exactly two works, the dioramas Drive-In and Swamp Motel, and describes them as a pair of dioramas; no mural by that title appears there, on the FloridaRAMA site, or on her own site. Verified directly 27 Aug 2026 (this record lost its verifier agent to a machine sleep and was re-checked by hand)"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.kresscontemporary.com/artists/ashleycantero"
   - "https://www.floridarama.art/artist/ashley-cantero"

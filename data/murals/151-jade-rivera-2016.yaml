@@ -6,6 +6,7 @@ artist: Jade Rivera
 year: 2016
 lat: 27.770883
 lng: -82.66805
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 2536 Central Ave
 category: shine
 img: "images/murals/2016/jade-rivera.jpeg"
@@ -116,10 +117,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: field note carried another artist's identity — Jade Rivera is Peruvian and Lima-based"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "16 April 2026 — Full research and bio, Claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "GPS from Rob's photo, IMG_0012.jpeg"
   - "Title and artist identified by Rob: El Templo - Find the Light by Jade Rivera, SHINE 2016"
   - "Address: 2536 Central Ave (from SPAA)"

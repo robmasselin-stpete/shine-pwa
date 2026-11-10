@@ -6,6 +6,7 @@ artist: Zulu Painter
 year: 2025
 lat: 27.76287
 lng: -82.674952
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/zulu-painter.jpeg"
@@ -134,6 +135,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): the \"degree in fine arts painting\" is still UNSUPPORTED, but the fact behind it is now documented and has been restored in corrected form — the Huntington Museum of Art's artist dictionary states he \"was born in West Virginia and attended Huntington High School and West Virginia State College in Institute, West Virginia\" and \"was one of the winners of the 2003 Verizon Historically Black Colleges and Universities Student Art Competition.\" Attendance, not a degree. The 2021 Business Arts Award / UF Big Idea Competition / Springer publication / Innovate Gainesville cluster remains UNSUPPORTED after a full-search pass — none of them appear anywhere; leaving them removed. (Cultivate Kindness was corrected, not removed, and is intact.)"
   - "28 August 2026 — Fact-check fleet: none of the pooled sources mention these four awards or credits; no biographical source mentions any degree; Broome County's executive is Jason T. Garnar; SHINE Origins 2025 is a fifth appearance, per SPAA's own directory; SHINE Origins 2025 is a fifth appearance"
   - "27 August 2026 — Fact-check fleet: Cultivate Kindness is in Charleston WV, not Binghamton NY"
@@ -141,6 +143,7 @@ revisionLog:
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-06-16 — Title set to 'The Hero's Journey for Love and Community' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://creativepinellas.org/magazine/the-mindful-murals-of-zulu-painter/"
   - "https://stpeteartsalliance.org/zulupainter-2"
   - "https://baynews9.com/fl/tampa/news/2024/02/20/local-muralist-painting-with-children-at-the-pinellas-american-heritage-celebration-at-the-florida-botanical-garden-in-largo"

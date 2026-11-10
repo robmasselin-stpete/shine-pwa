@@ -6,6 +6,7 @@ artist: Carrie Jadus
 year: 0
 lat: 27.770808
 lng: -82.664828
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: "23rd St S"
 category: commercial
 img: "images/murals/commercial/carrie-jadus-dog-bar.jpeg"
@@ -91,10 +92,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: the source names three assistants and gives no duration; the two-week figure belongs to the Dog Bar mural"
   - "15 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; dropped 'Resonance' title for Tesla mural (sources call it just 'Tesla'); 'Soft Water Gallery' → 'Soft Water Studios'. Note: agent flagged this as Grand Central Brewhouse — verified that the Dog Bar location is correct (the wall faces Dog Bar; Grand Central is on the opposite side of the building)."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "http://www.carriejadus.com/bio.html"
   - "https://theartisanmagazine.com/carrie-jadus/"
   - "https://creativepinellas.org/magazine/carrie-jadus/"

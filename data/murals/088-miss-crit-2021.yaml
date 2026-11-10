@@ -6,6 +6,7 @@ artist: Miss Crit
 year: 2021
 lat: 27.770714
 lng: -82.674029
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: 3000 Central Ave.
 category: shine
 img: "images/murals/2021/miss-crit.jpeg"
@@ -147,11 +148,13 @@ furtherWork:
   - name: "themisscrit.com"
     url: "https://www.themisscrit.com"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://creativepinellas.org/directory/laura-spencer/"
   - "https://thedali.org/outside-in/"

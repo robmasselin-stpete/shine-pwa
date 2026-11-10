@@ -6,6 +6,7 @@ artist: Artist Jones
 year: 2023
 lat: 27.77346167
 lng: -82.63773333
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: 350 2nd Ave N
 category: shine
 img: images/murals/2023/artist-jones.jpeg
@@ -123,12 +124,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED, and in fact CONTRADICTED. Her Voyage Tampa interview names \"my hometown of Coatesville, Pennsylvania\" and attributes the international exposure to three childhood years in Singapore for her father's work — not to Caribbean birth. Her own site and the CanvasRebel interview carry no Trinidad or Caribbean reference. Not re-litigated again."
   - "27 August 2026 — Fact-check fleet: Trinidad and Tobago birth is unsourced for Tracey Jones and appears to have bled over from Nneka Jones, a different artist"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-03 — Checked theartistjones.com per user request — redirects 301 to traceyrjones.com (already cited). Squarespace site homepage truncated by WebFetch and all subpaths (/about, /work, /murals, /portfolio) returned 404 — no extractable new content. theartistjones.com added to sources for completeness."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "GPS from user photo (IMG_1583.jpeg). User photo replaces stock image."
   - "https://canvasrebel.com/meet-tracey-jones/"
   - "https://www.traceyrjones.com/"

@@ -6,6 +6,7 @@ artist: Gibbs High School Mural Club
 year: 0
 lat: 27.7618
 lng: -82.67518667
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 800 31st St S
 category: commercial
 img: "images/murals/commercial/gibbs-mural-club-distillery.jpeg"
@@ -118,10 +119,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: The Gabber, this record's own source, refers to Anderson Bray as she"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced"
   - "10 April 2026 — Deep research, full bio rewrite, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-03-18, GPS from EXIF"
   - "https://thegabber.com/gibbs-mural-club-students-tackle-st-pete-walls/"
   - "https://stpetersburgdistillery.com/gibbs-high-school-mural-club-unveil-artistic-collaboration-in-st-pete/"

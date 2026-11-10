@@ -6,6 +6,7 @@ artist: Cristi López
 year: 2024
 lat: 27.764095
 lng: -82.66996
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 2655 Fairfield Ave S
 category: shine
 img: images/murals/2024/cristi-lopez.jpeg
@@ -150,9 +151,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "GPS from user photo (IMG_1615.jpeg). User photo replaces stock image."
   - "cristilopezart.com (about, exhibitions, paintings)"
   - "instagram.com/cristi.lopez.s"

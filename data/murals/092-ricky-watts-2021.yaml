@@ -6,6 +6,7 @@ artist: Ricky Watts
 year: 2021
 lat: 27.763627
 lng: -82.668705
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: 2622 Fairfield Ave. S.
 category: shine
 img: "images/murals/2021/ricky-watts.jpeg"
@@ -132,12 +133,14 @@ furtherWork:
   - name: "watts.art"
     url: "https://watts.art"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - '2026-08-27 — Fact-check: San Francisco is his birthplace, not his base — his own site says he works from a Sebastopol studio; searchBio already said Northern California. Mural list on watts.art begins 2012; 2004 was his first solo show.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://watts.art/pages/about"
   - "https://www.sprayplanet.com/blogs/news/spray-planet-artist-feature-ricky-watts"

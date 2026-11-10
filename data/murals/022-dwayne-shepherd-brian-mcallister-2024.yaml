@@ -6,6 +6,7 @@ artist: "Dwayne Shepherd & Brian McAllister"
 year: 2024
 lat: 27.771228
 lng: -82.681511
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: 3535 Central Ave
 category: shine
 img: "images/murals/2024/dwayne-shepherd-brian-mcallister.jpeg"
@@ -150,10 +151,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Display bio rewritten as the story of THIS mural per user direction ('no headline'). Opens directly with the wall — Bell Pharmacy, FAEA convention partnership, Bright Spots community paint — then McAllister, then Shepherd. No hook line."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_dwayne_shepherd_and_brian_mcallister"
   - "https://stpetecatalyst.com/brush-to-canvas-shine-and-other-art-news/"
   - "https://jbmstudios.com/"

@@ -6,6 +6,7 @@ artist: Loretta Lizzio
 year: 2023
 lat: 27.762868
 lng: -82.673163
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: 2875 7th Ave S
 category: shine
 img: "images/murals/2023/loretta-lizzio.jpeg"
@@ -129,10 +130,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - '2026-08-27 — Fact-check: Removed a sourceNote about Hannah Eddy (a different SHINE 2023 artist) that had been copied in from a sibling record; it contains no mention of Lizzio.'
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpeteartsalliance.org/loretta-lizzio-2023"
   - "https://www.lorettalizzio.com/"
   - "https://www.hellenic.org.au/post/artist-in-conversation-meet-loretta-lizzio"

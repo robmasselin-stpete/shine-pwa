@@ -6,6 +6,7 @@ artist: Jenipher Chandley
 year: 2025
 lat: 27.762868
 lng: -82.675064
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/jenipher-chandley.jpeg"
@@ -136,11 +137,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: these are titles of blog posts she wrote for Creative Pinellas, not titles of paintings"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
   - "2026-05-02 — Rewrote display bio hook: removed 'survivor of economic hardship and domestic abuse' lead per user direction ('i dont want to lead with survival'). New hook anchors to THIS wall — painted with her daughter Becka — making 'Stronger Together' literal. Female-form fragility/strength substance retained in body. SearchBio unchanged."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://www.jenipherchandley.com/about-1"
   - "https://www.jenipherchandley.com/statement"
   - "https://creativepinellas.org/artist/jenipher-chandley/"

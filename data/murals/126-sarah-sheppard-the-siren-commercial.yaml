@@ -6,6 +6,7 @@ artist: Sarah Sheppard
 year: 2014
 lat: 27.764593
 lng: -82.669381
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 600 27th St S
 category: commercial
 img: "images/murals/commercial/the-siren.jpeg"
@@ -137,6 +138,7 @@ muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — RETRACTION of the entry below it dated the same day. The \"artist-confirmed\" provenance for \"University of North Texas\" was a MISIDENTIFICATION: Rob was thinking of **Sara Salem** (#017), who supplied her own bio — not Sarah Sheppard. There is no artist provenance for this claim and no reachable source for it either, so UNT has been REMOVED again, this time from the searchBio as well as the display bio (the Aug 28 pass had only stripped the display bio, leaving the two inconsistent). Treat the \"RESOLVED BY THE ARTIST\" entry below as void. Status: UNSUPPORTED, and now checked twice."
   - "29 August 2026 — Re-verify pass (full web search): STILL UNVERIFIED — flagged for a human check, same finding as #050 and #111. This is the record that KEPT the University of North Texas line in the April audit, which is why the job spec called it a weak spot. No fetchable source confirms or refutes it; the Creative Side Jewelry Academy metalsmithing training is likewise uncorroborated. The truncated \"studied at the University of\" fragment stays out either way, since it was broken text. Left removed pending Rob checking her LinkedIn."
   - "28 August 2026 — Fact-check fleet: repairs a sentence left dangling ('studied at the University of') when the unsourced school was removed on 27 Aug; no source names any university"
@@ -148,6 +150,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.cltampa.com/arts/8-murals-that-make-us-heart-the-burg-12287690"
   - "https://stpetemuraltour.com/2019/12/10/sarah-sheppard/"

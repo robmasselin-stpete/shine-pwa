@@ -6,6 +6,7 @@ artist: "John Vitale & Sionna MacLeish"
 year: 2025
 lat: 27.763181
 lng: -82.668868
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: 2606 Fairfield Ave S
 category: shine
 img: "images/murals/2025/john-vitale-factory.jpeg"
@@ -130,11 +131,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: self-contradictory: two solo walls, one of them a collaboration. The searchBio was missed when artistBio was corrected"
   - "27 August 2026 — Fact-check fleet: artistAwards hedged: painted walls documented from 2015 on"
   - "2026-08-27 — Fact-check: Hot Walls is an Overspray Art Space event in Gulfport, not a SHINE event (thegabber.com). 'Painted SHINE every year' overstates the cited source, which says involved 'in various ways' since inception (stpetecatalyst.com). Solo handle is @johnnyvitale, per vitalebrothers.com."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://ilovetheburg.com/st-pete-shine-origins/"
   - "https://stpetecatalyst.com/vitale-bros-and-shine-this-time-its-personal/"
   - "https://vitalebrothers.com/"

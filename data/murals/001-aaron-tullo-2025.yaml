@@ -6,6 +6,7 @@ artist: Aaron Tullo
 year: 2025
 lat: 27.773963
 lng: -82.636558
+facing: 315   # look NW to see it; Rob, route editor 10 Nov 2026
 address: 253 2nd Ave N
 category: shine
 img: "images/murals/2025/aaron-tullo.jpeg"
@@ -114,10 +115,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 315° (NW) by Rob in the route editor (used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: Tullo: 2007 draft was out of St. Petersburg College, unsigned; pro career was Angels + indy, not Brewers; Tullo: arm injury was summer 2004; 2005 was the re-aggravation; Tullo: those freshman numbers are St. Petersburg College, not Tennessee; Tullo: he did not sign in 2007; first pro contract was the Angels in 2010"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-06-16 — Title set to 'Golden Dawn' (was empty) — from the SPAA mural directory listing for this 2025 wall."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://www.aaronjamestullo.com/"
   - "https://utsports.com/sports/baseball/roster/aaron-tullo/443"
   - "https://www.milb.com/player/aaron-tullo-476609"

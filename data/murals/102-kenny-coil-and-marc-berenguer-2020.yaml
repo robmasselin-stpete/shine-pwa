@@ -6,6 +6,7 @@ artist: Kenny Coil and Marc Berenguer
 year: 2020
 lat: 27.76005333
 lng: -82.637055
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 1000 3rd St S
 category: shine
 img: "images/murals/2020/kenny-coil-and-marc-berenguer.jpeg"
@@ -65,8 +66,10 @@ furtherWork:
     url: "https://www.breakmaiden.co"
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.breakmaiden.co/about"
   - "https://stpeteartsalliance.org/kenny-coil-with-marc-berenguer/"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"

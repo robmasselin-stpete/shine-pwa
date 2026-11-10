@@ -6,6 +6,7 @@ artist: Dulk
 year: 2025
 lat: 27.763100
 lng: -82.669472
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: 680 28th St S
 category: commercial
 img: "images/murals/commercial/unknown-animals-running.jpeg"
@@ -79,10 +80,12 @@ furtherWork: []
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "26 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; softened 'Valencia School of Art and Design' (exact institution unverified — sources say studied at University of Valencia then switched to illustration); dropped 'Denver' from city list (not in sources); added Las Fallas piece title and details."
   - "2026-05-03 — New hook anchored to this two-sided wall (panther+boar on land side, manatee+flower-headed figure on water side) and the Weeki Wachee research trip with Florida Wildlife Corridor Foundation. Body tightened: Valencia origin, ecology-research practice, global mural cities, NatGeo + Liquitex + Las Fallas, then The Factory commission with Jenee Priebe of No Good Deeds Art."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://dulk.es/about/"
   - "https://dulk.es/bio/"
   - "https://www.artsy.net/artist/antonio-segura-donat-dulk"

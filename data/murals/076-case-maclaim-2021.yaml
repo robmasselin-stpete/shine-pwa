@@ -6,6 +6,7 @@ artist: Case Maclaim
 year: 2021
 lat: 27.771213
 lng: -82.669389
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 2641 Central Ave.
 category: shine
 img: "images/murals/2021/case-maclaim.jpeg"
@@ -120,11 +121,13 @@ muralAwards: ""
 artistAwards: "SHINE 2021 selected artist; founding member Ma'Claim crew"
 furtherWork: []
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://en.wikipedia.org/wiki/CASE_Maclaim"
   - "https://www.maclaim.de/"

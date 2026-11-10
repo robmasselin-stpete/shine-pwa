@@ -6,6 +6,7 @@ artist: "Ashley Cassens"
 year: 2026
 lat: 27.763675   # Rob, route editor 9 Nov 2026 (was 27.7636728)
 lng: -82.668627
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: "2606 Fairfield Ave S"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -151,12 +152,14 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 November 2026 — Pin moved to 27.763675, -82.668627 by Rob in the route editor (he adjusted the 2026 SHINE pins after site visits). Was 27.7636728, -82.6688378; moved about 21 m. Address unchanged."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212312-54508d1f]"
   - "2 November 2026 — Bio review tool, approved by Rob: pronouns. Changes — pronouns: \"\" → \"she/her\". [review:20261102203959-6ac46c66]"
   - "2 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. [review:20261102202343-5df6b7b7]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #5 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Rob, route-editor GPS export 9 Nov 2026 (SHINE 2026 pins tweaked on site)"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "SPAA SHINE Walls & Artists 2026 list (via Rob) — wall assignment"

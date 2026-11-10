@@ -6,6 +6,7 @@ artist: Quinn Cale
 year: 2024
 lat: 27.773643
 lng: -82.636226
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 225 2nd Ave North
 category: shine
 img: "images/murals/2024/quinn-cale.jpeg"
@@ -93,10 +94,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-03 — Integrated quinncale.com (artist site): added Tampa Walls 2022, Guava Paint Jam 2025, Hot Walls 2025, Fish Food 2025; named 'Fire Fist Mario 8-Bit' for Straz Center; Gasparilla Remote Studio Artist; original-painting titles; two artist statements. Added 3 source URLs."
   - "2026-05-12 — Confirmed photo is Rob's (iPhone EXIF audit)"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://stpeteartsalliance.org/shine?alias=/2024_SHINE_quinn_cale"
   - "https://www.cltampa.com/arts/interview-tampa-artist-quinn-cale-merges-technology-with-childhood-nostalgia-for-shine-mural-festival-18892874/"

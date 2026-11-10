@@ -6,6 +6,7 @@ artist: Raisa Nosova
 year: 2025
 lat: 27.763822
 lng: -82.668158
+facing: 135   # look SE to see it; Rob, route editor 10 Nov 2026
 address: 2606 Fairfield Ave S
 category: commercial
 img: "images/murals/commercial/raisa-nosova-museum-of-motherhood.jpeg"
@@ -145,12 +146,14 @@ artistAwards: "MFA, NYU Steinhardt; George T. Dorsch Art History Grant; Fannie K
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.raisanosova.com/about"
   - "https://mommuseum.org/2025/04/11/mural-at-mom-living-in-light-ongoing-art-auction-live/"
   - "https://stpetecatalyst.com/w/raisa-nosova-paints-the-town/"
   - "https://canvasrebel.com/meet-raisa-nosova/"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 135° (SE) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: the artist titles this piece One on One, not Woman of Light; the artist titles this piece One on One; the press release for this mural and her own site give Brooklyn"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."

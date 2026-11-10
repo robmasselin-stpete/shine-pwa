@@ -6,6 +6,7 @@ artist: Elizabeth Barenis
 year: 2025
 lat: 27.762875
 lng: -82.674804
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "31st St & 7th Ave S"
 category: shine
 img: "images/murals/2025/elizabeth-barenis.jpeg"
@@ -107,10 +108,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing (view direction) set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "26 April 2026 — Title set to 'Shine on Palms'; removed photography/medical-illustration sentences from artistBio and searchBio per Rob"
   - "2026-06-16 — Title casing corrected 'Shine on Palms' → 'Shine On Palms' to match the SPAA mural directory listing."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpetecatalyst.com/for-year-11-shine-mural-festival-brings-it-back-home/"
   - "https://ilovetheburg.com/st-pete-shine-origins/"
   - "https://floridapaints.com/blog/shine-mural-festival-st-petersburg-2025/"
