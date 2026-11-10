@@ -42,6 +42,13 @@
 // the CAMERA pointed = the mural's view direction (`facing`). Stored as h on the photo entry.
 // publish-content.py uses it to fill the mural's `facing` when Rob hasn't set one.
 //
+// NEW MURALS (tools/new-mural.html). Rob photographs a mural that isn't in the app yet:
+//   POST /newmural  { photoBase64, signBase64?, note?, gps?, heading?, shotAt? }
+//     → PRIVATE bucket only: newmurals/<stamp>/{photo.jpg, sign.jpg, meta.json}. Nothing
+//       goes live and content.json is never touched; Claude drafts the YAML from the queue.
+//   POST /newmurals {}                  → the queue: [{ id, meta }]
+//   POST /newmural/file { id, part }    → the photo / sign image (part = 'photo' | 'sign')
+
 // CAPTIONS ARE FORWARD-COMPATIBLE. Shipped app versions (<=1.7.5) read `u` and `d`
 // and ignore unknown keys, so adding `c` breaks nothing. Rob can caption from day one
 // of the festival and every caption already sent lights up when the render ships in a
@@ -112,7 +119,7 @@ export default {
         usage: 'POST /photo, /caption, /delete or /original with X-Capture-Key',
       });
     }
-    const ROUTES = ['/photo', '/caption', '/delete', '/original'];
+    const ROUTES = ['/photo', '/caption', '/delete', '/original', '/newmural', '/newmurals', '/newmural/file'];
     if (request.method !== 'POST' || !ROUTES.includes(url.pathname)) {
       return json({ error: 'not_found' }, 404);
     }
@@ -124,6 +131,49 @@ export default {
     // ── parse ──
     let body;
     try { body = await request.json(); } catch { return json({ error: 'bad_json' }, 400); }
+
+    // ── New-mural queue (private bucket; see NEW MURALS above) ──
+    if (url.pathname === '/newmural') {
+      const img = (b64) => {
+        const m = /^data:image\/(jpeg|png|webp);base64,(.+)$/.exec(String(b64 || ''));
+        if (!m) return null;
+        const bin = atob(m[2]); const u = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+        return { bytes: u, type: 'image/' + m[1] };
+      };
+      const photo = img(body.photoBase64);
+      if (!photo) return json({ error: 'photo_required' }, 400);
+      const sign = img(body.signBase64);
+      const d = new Date();
+      const id = d.toISOString().replace(/[-:]/g, '').replace(/\..*/, '') + '-' + Math.random().toString(36).slice(2, 6);
+      const note = String(body.note || '').replace(/[\u0000-\u0008\u000B-\u001F\u007F]/g, ' ').slice(0, 4000);
+      const meta = { id, received: d.toISOString(), shotAt: body.shotAt || null, note,
+                     gps: readGps(body.gps), heading: readHeading(body.heading), hasSign: !!sign };
+      await env.REVIEW.put(`newmurals/${id}/photo.jpg`, photo.bytes, { httpMetadata: { contentType: photo.type } });
+      if (sign) await env.REVIEW.put(`newmurals/${id}/sign.jpg`, sign.bytes, { httpMetadata: { contentType: sign.type } });
+      await env.REVIEW.put(`newmurals/${id}/meta.json`, JSON.stringify(meta, null, 2), { httpMetadata: { contentType: 'application/json' } });
+      return json({ ok: true, id, gps: meta.gps, heading: meta.heading, hasSign: meta.hasSign });
+    }
+    if (url.pathname === '/newmurals') {
+      const out = [];
+      let cursor;
+      do {
+        const l = await env.REVIEW.list({ prefix: 'newmurals/', cursor });
+        for (const o of l.objects) if (o.key.endsWith('/meta.json')) {
+          const m = await env.REVIEW.get(o.key);
+          if (m) out.push(JSON.parse(await m.text()));
+        }
+        cursor = l.truncated ? l.cursor : undefined;
+      } while (cursor);
+      return json({ ok: true, queue: out.sort((a, b) => (a.id < b.id ? -1 : 1)) });
+    }
+    if (url.pathname === '/newmural/file') {
+      if (!/^[0-9TZ]+-[a-z0-9]{4}$/.test(String(body.id || '')) || !['photo', 'sign'].includes(body.part))
+        return json({ error: 'bad_request' }, 400);
+      const o = await env.REVIEW.get(`newmurals/${body.id}/${body.part}.jpg`);
+      if (!o) return json({ error: 'not_found' }, 404);
+      return new Response(o.body, { headers: { 'Content-Type': o.httpMetadata?.contentType || 'image/jpeg', ...CORS } });
+    }
 
     // ── POST /original — the full-size frame, for Rob's Mac (scripts/pull_originals.py) ──
     // Originals live in the PRIVATE review bucket: they carry the capture GPS in EXIF

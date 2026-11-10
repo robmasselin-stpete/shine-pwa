@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New Mural</title>
+<style>
+  :root { --bg:#f5f2ec; --ink:#1a1a1a; --card:#fff; --blue:#2e5e7e; --green:#2e6b2e; --brick:#c1441e;
+          --rule:#ddd; --mute:#666; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151515; --ink:#eee; --card:#222; --rule:#333; --mute:#999; } }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:16px; padding-bottom:calc(16px + env(safe-area-inset-bottom)); background:var(--bg);
+         color:var(--ink); font:16px/1.4 -apple-system, system-ui, sans-serif; max-width:520px; margin-inline:auto; }
+  h1 { font-size:20px; margin:0; color:var(--brick); }
+  .sub { font-size:13px; color:var(--mute); margin:2px 0 12px; }
+  button { font:inherit; border:0; border-radius:10px; cursor:pointer; width:100%; padding:15px; font-weight:600; }
+  .step { background:var(--card); border-radius:10px; padding:12px; margin:0 0 12px; }
+  .step h2 { font-size:15px; margin:0 0 8px; }
+  .go { background:var(--blue); color:#fff; font-size:17px; }
+  .send { background:var(--green); color:#fff; font-size:19px; }
+  .send:disabled, .go:disabled { opacity:.35; }
+  .live { font-size:13px; color:var(--mute); margin:8px 0 0; font-variant-numeric:tabular-nums; }
+  .thumb { width:100%; border-radius:8px; display:none; margin-top:8px; }
+  textarea { width:100%; min-height:110px; font:15px/1.4 inherit; padding:10px; border:1px solid var(--rule);
+             border-radius:8px; background:var(--bg); color:var(--ink); }
+  #result { font-size:14px; margin:10px 0; white-space:pre-wrap; }
+  #sent { font:12px/1.4 ui-monospace, monospace; color:var(--mute); white-space:pre-wrap; }
+  input[type=file] { display:none; }
+</style>
+</head>
+<body>
+<h1>New Mural <small style="font-weight:400;color:var(--mute)">test · v1 · Nov 10</small></h1>
+<div class="sub">For a mural that isn't in the app yet. It goes to a private queue; nothing goes live.
+  Claude drafts the YAML and bio from it for you to review.</div>
+
+<div class="step">
+  <button class="go" id="start">Start (compass + GPS)</button>
+  <div class="live" id="live">Tap Start, then stand in front of the mural.</div>
+</div>
+
+<div class="step">
+  <h2>1 · The mural</h2>
+  <button class="go" id="shoot" disabled>📷 Point at the mural, then tap</button>
+  <div class="live" id="shot"></div>
+  <img class="thumb" id="t-photo" alt="">
+  <input type="file" id="f-photo" accept="image/*" capture="environment">
+</div>
+
+<div class="step">
+  <h2>2 · The artist's mark <span style="font-weight:400;color:var(--mute)">(optional)</span></h2>
+  <button class="go" id="sign">✍️ Photograph the signature</button>
+  <img class="thumb" id="t-sign" alt="">
+  <input type="file" id="f-sign" accept="image/*" capture="environment">
+</div>
+
+<div class="step">
+  <h2>3 · Notes <span style="font-weight:400;color:var(--mute)">(anything that helps the research)</span></h2>
+  <textarea id="note" placeholder="Artist if you know it, the business, the year, what's on the wall, Instagram handle on the wall…"></textarea>
+</div>
+
+<button class="send" id="send" disabled>Send to the queue</button>
+<div id="result"></div>
+<details><summary class="live">Sent from this phone</summary><div id="sent"></div></details>
+
+<script>
+// Field intake for a NEW mural (not yet in the app). Sends the mural photo (with the GPS
+// and geo compass reading taken when you tapped to shoot), an optional signature photo and
+// notes to the Capture Worker's PRIVATE queue (POST /newmural → muralquest-review/newmurals/).
+// Nothing is published. Same key as the Capture tool (localStorage mq_capture_key).
+const WORKER = 'https://capture.muralquest.app';
+const $ = id => document.getElementById(id);
+const compass = d => ['N','NE','E','SE','S','SW','W','NW'][Math.round(d / 45) % 8];
+const angDiff = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+
+// ── geo compass: the app's heading maths (same as the Finder), circular mean over 1 s ──
+const headings = [];
+function compassHeadingFrom(e) {
+  if (e.webkitCompassHeading != null) return e.webkitCompassHeading;   // iOS
+  if (e.alpha == null || e.absolute !== true) return null;             // relative frame: not a compass
+  const r = Math.PI / 180, a = e.alpha * r, b = (e.beta || 0) * r, g = (e.gamma || 0) * r;
+  const top = (360 - e.alpha) * r;
+  const Vx = -Math.cos(a) * Math.sin(g) - Math.sin(a) * Math.sin(b) * Math.cos(g);
+  const Vy = -Math.sin(a) * Math.sin(g) + Math.cos(a) * Math.sin(b) * Math.cos(g);
+  const w = Math.min(1, Math.max(0, (Math.abs(e.beta || 0) - 55) / 20));
+  const h = Math.atan2((1 - w) * Math.sin(top) + w * Vx / (Math.hypot(Vx, Vy) || 1),
+                       (1 - w) * Math.cos(top) + w * Vy / (Math.hypot(Vx, Vy) || 1)) / r;
+  return (h % 360 + 360) % 360;
+}
+function heading() {
+  const now = Date.now(), r = Math.PI / 180, recent = headings.filter(x => now - x.t < 1000);
+  if (!recent.length) return null;
+  const s = recent.reduce((a, x) => a + Math.sin(x.h * r), 0), c = recent.reduce((a, x) => a + Math.cos(x.h * r), 0);
+  return ((Math.atan2(s, c) / r) + 360) % 360;
+}
+let fix = null;
+async function start() {
+  try {
+    if (window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) await DeviceOrientationEvent.requestPermission();
+  } catch (e) {}
+  window.addEventListener('ondeviceorientationabsolute' in window ? 'deviceorientationabsolute' : 'deviceorientation', e => {
+    const h = compassHeadingFrom(e);
+    if (h != null) { headings.push({ t: Date.now(), h }); if (headings.length > 200) headings.splice(0, 100); }
+  }, true);
+  navigator.geolocation.watchPosition(p => {
+    fix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, t: Date.now() };
+  }, () => {}, { enableHighAccuracy: true, maximumAge: 0, timeout: 30000 });
+  $('start').disabled = true; $('start').textContent = 'Compass + GPS on';
+  $('shoot').disabled = false;
+  setInterval(() => {
+    const h = heading();
+    $('live').textContent = `GPS ${fix ? '±' + Math.round(fix.acc) + ' m' : 'finding you…'} · facing ${h == null ? 'no compass yet' : Math.round(h) + '° ' + compass(h)}`;
+  }, 300);
+}
+
+// ── photos: shrink to ≤2400 px JPEG on the phone (keeps the upload quick on cell data) ──
+function shrink(file, max) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(img.src);
+      resolve(c.toDataURL('image/jpeg', 0.85));
+    };
+    img.onerror = () => reject(new Error('could not read the photo'));
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+let photo = null, sign = null, at = null;   // at = { gps, heading, shotAt } taken when you tapped to shoot
+$('start').onclick = start;
+$('shoot').onclick = () => {
+  const h = heading();
+  at = { gps: fix ? { lat: fix.lat, lng: fix.lng, acc: fix.acc } : null, heading: h, shotAt: new Date().toISOString() };
+  $('shot').textContent = `Recorded at the tap: GPS ${at.gps ? '±' + Math.round(at.gps.acc) + ' m' : 'none'} · ` +
+    `you looked ${h == null ? '— (no compass)' : compass(h) + ' ' + Math.round(h) + '°'}`;
+  $('f-photo').click();
+};
+$('sign').onclick = () => $('f-sign').click();
+$('f-photo').onchange = async e => {
+  if (!e.target.files[0]) return;
+  photo = await shrink(e.target.files[0], 2400);
+  $('t-photo').src = photo; $('t-photo').style.display = 'block';
+  $('send').disabled = false;
+};
+$('f-sign').onchange = async e => {
+  if (!e.target.files[0]) return;
+  sign = await shrink(e.target.files[0], 1600);
+  $('t-sign').src = sign; $('t-sign').style.display = 'block';
+};
+
+function key() {
+  let k = null;
+  try { k = localStorage.getItem('mq_capture_key'); } catch (e) {}
+  if (!k) { k = (prompt('Enter the Capture key (one-time; saved on this device):') || '').trim(); try { if (k) localStorage.setItem('mq_capture_key', k); } catch (e) {} }
+  return k;
+}
+$('send').onclick = async () => {
+  const k = key(); if (!k) return;
+  $('send').disabled = true; $('result').textContent = 'Sending…';
+  try {
+    const res = await fetch(WORKER + '/newmural', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Capture-Key': k },
+      body: JSON.stringify({ photoBase64: photo, signBase64: sign, note: $('note').value, ...at }),
+    });
+    const j = await res.json().catch(() => ({}));
+    if (res.status === 401) { try { localStorage.removeItem('mq_capture_key'); } catch (e) {} throw new Error('the key was rejected; tap Send again to re-enter it'); }
+    if (!res.ok || !j.ok) throw new Error(j.error || 'HTTP ' + res.status);
+    $('result').innerHTML = `<b style="color:var(--green)">✓ In the queue</b> (${j.id})<br>` +
+      `GPS ${j.gps ? '±' + j.gps[2] + ' m' : '— none'} · arrow ${j.heading == null ? '— none' : 'look ' + compass(j.heading) + ' ' + j.heading + '°'} · signature ${j.hasSign ? '✓' : '—'}`;
+    const line = `${new Date().toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}  ${j.id}  ${($('note').value || '').slice(0, 40)}`;
+    try { localStorage.setItem('mq_newmural_sent', line + '\n' + (localStorage.getItem('mq_newmural_sent') || '')); } catch (e) {}
+    showSent();
+    // ready for the next mural
+    photo = sign = at = null; $('note').value = '';
+    ['t-photo', 't-sign'].forEach(id => { $(id).style.display = 'none'; $(id).src = ''; });
+    $('f-photo').value = $('f-sign').value = ''; $('shot').textContent = '';
+  } catch (e) {
+    $('result').innerHTML = `<b style="color:var(--brick)">Not sent:</b> ${e.message}. Your photos and notes are still here; try again.`;
+    $('send').disabled = false;
+  }
+};
+function showSent() { try { $('sent').textContent = localStorage.getItem('mq_newmural_sent') || 'Nothing yet'; } catch (e) {} }
+showSent();
+</script>
+</body>
+</html>
