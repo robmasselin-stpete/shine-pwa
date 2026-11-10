@@ -89,6 +89,9 @@
     <h2>Activity by day</h2>
     <div class="bars" id="bars"></div>
 
+    <h2>SHINE book <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa">(taps in the app; orders happen on the Arts Alliance form, so sales can't be seen)</span></h2>
+    <table id="book"><tbody></tbody></table>
+
     <h2>QR lead sources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa">(scans per code)</span></h2>
     <table id="qr"><thead><tr><th>Source</th><th class="n">Scans</th><th class="n">iPhone</th><th class="n">Android</th></tr></thead><tbody></tbody></table>
 
@@ -263,6 +266,12 @@ async function load() {
   document.getElementById('range-label').textContent += mine ? ' · including your devices'
     : d.excluded ? ` · your ${d.excluded === 1 ? 'phone is' : d.excluded + ' devices are'} left out` : '';
   if (bb && !d.range) document.getElementById('range-label').textContent += ' — ⚠ the analytics Worker hasn\'t been updated yet, so these are all-time numbers';
+
+  // SHINE book: the book page (Explore's SHINE banner) and its "To order" link
+  const ev = Object.fromEntries(d.byEvent.map(e => [e.event, e.n]));
+  document.querySelector('#book tbody').innerHTML = [
+    ['Opened the book page', ev.book_card_tap], ['Tapped “To order your SHINE mural book”', ev.book_buy_click],
+  ].map(([l, n]) => `<tr><td>${l}</td><td class="n">${n || 0}</td></tr>`).join('');
 
   // QR lead sources
   const qr = d.qrSources || [];
