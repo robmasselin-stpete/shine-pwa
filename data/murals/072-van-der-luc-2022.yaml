@@ -6,7 +6,7 @@ artist: Van Der Luc
 year: 2022
 lat: 27.763846
 lng: -82.66551
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 602 24th St S
 category: shine
 img: images/murals/2022/van-der-luc.jpeg

@@ -6,7 +6,7 @@ artist: Dreamweaver
 year: 0
 lat: 27.767103
 lng: -82.660247
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: 415 20th St S
 category: commercial
 img: "images/murals/commercial/dreamweaver-20th-st.jpeg"

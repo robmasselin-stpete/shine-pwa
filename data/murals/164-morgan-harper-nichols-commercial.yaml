@@ -6,7 +6,7 @@ artist: ArtFluent Creatives
 year: 0
 lat: 27.770912
 lng: -82.659295
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: "1901 Central Ave"
 category: commercial
 img: "images/murals/commercial/morgan-harper-nichols.jpeg"

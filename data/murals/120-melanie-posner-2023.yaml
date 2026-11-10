@@ -6,7 +6,7 @@ artist: Melanie Posner
 year: 2023
 lat: 27.771887
 lng: -82.649063
-facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
+facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: "77 11th St N"
 category: commercial
 img: "images/murals/commercial/unknown-1506.jpeg"

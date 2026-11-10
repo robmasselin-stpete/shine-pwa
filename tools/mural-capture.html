@@ -37,7 +37,7 @@
  .cap-count.over{color:#f88;font-weight:700}
  .hidden{display:none}
 </style></head><body>
-<header><h1>Progress Capture</h1><span class="v">v5 · Nov 9 · records wall facing</span></header>
+<header><h1>Progress Capture</h1><span class="v">v6 · Nov 10 · records view direction</span></header>
 <div class="wrap">
 
   <label>Mural</label>
@@ -180,7 +180,7 @@ function grabFix(){
     p => { captureFix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; },
     () => {}, { enableHighAccuracy: true, timeout: 10000, maximumAge: 15000 });
 }
-// ── compass at Shoot: which way the camera points, so the wall faces the other way ──
+// ── compass at Shoot: which way the camera points = the mural's view direction (facing) ──
 // Same reading as the app's geo compass (js/app.js compassHeadingFrom, the Nov 5 fix).
 let headings = [], compassOn = false;
 function compassHeadingFrom(e){
@@ -407,9 +407,9 @@ $('send').addEventListener('click', async () => {
               : '.')
           : '\nNo location saved (location off or no fix yet).')
       + (j.heading != null
-          ? `\nCompass saved: camera pointed ${j.heading}° ${pointOf(j.heading)}, so the wall faces ${pointOf((j.heading + 180) % 360)}.`
-            + (current.fc != null && angDiff(current.fc, (j.heading + 180) % 360) > 35
-                ? ` ⚠ The mural's facing is set to ${current.fc}° ${pointOf(current.fc)}: check it in the route editor.` : '')
+          ? `\nCompass saved: you looked ${pointOf(j.heading)} ${j.heading}°.`
+            + (current.fc != null && angDiff(current.fc, j.heading) > 35
+                ? ` ⚠ The mural's facing says look ${pointOf(current.fc)} ${current.fc}°: check it in the route editor.` : '')
           : shotHeading != null
             ? `\n⚠ Compass read ${shotHeading}° but the server didn't keep it (Capture Worker needs its Nov 9 update).`
             : '\nNo compass reading (allow Motion & Orientation when asked; Start Camera asks).')

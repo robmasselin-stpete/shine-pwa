@@ -6,7 +6,7 @@ artist: Reid Jenkins
 year: 2025
 lat: 27.769997
 lng: -82.661186
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 2039 1st Ave S
 category: shine
 img: "images/murals/2025/reid-jenkins.jpeg"

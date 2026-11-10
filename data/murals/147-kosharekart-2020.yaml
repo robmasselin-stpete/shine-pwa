@@ -6,7 +6,7 @@ artist: Kosharekart
 year: 2020
 lat: 27.770012
 lng: -82.662501
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: "2153 1st Ave S"
 category: commercial
 img: "images/murals/2020/kosharekart.jpeg"

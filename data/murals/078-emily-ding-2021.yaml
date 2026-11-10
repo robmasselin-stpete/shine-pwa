@@ -6,7 +6,7 @@ artist: Emily Ding
 year: 2021
 lat: 27.77026667
 lng: -82.64296667
-facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
+facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: 100 7th St. S.
 category: shine
 img: "images/murals/2021/emily-ding.jpeg"

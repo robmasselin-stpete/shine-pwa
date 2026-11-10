@@ -6,7 +6,7 @@ artist: Illsol
 year: 2018
 lat: 27.76994
 lng: -82.660513
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: 2010 1st Ave S
 category: shine
 img: "images/murals/2018/notice-us.jpeg"

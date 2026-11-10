@@ -6,7 +6,7 @@ artist: Mikael B
 year: 2017
 lat: 27.772337
 lng: -82.650497
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: "1123 1st Ave N"
 category: shine
 img: "images/murals/2017/mikael-b.jpeg"

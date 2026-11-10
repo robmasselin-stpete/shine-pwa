@@ -6,7 +6,7 @@ artist: 123Klan
 year: 2022
 lat: 27.769732
 lng: -82.660111
-facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
+facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: 128 20th St S
 category: shine
 img: images/murals/2022/123klan.jpeg

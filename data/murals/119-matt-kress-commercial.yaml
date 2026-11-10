@@ -6,7 +6,7 @@ artist: Matt Kress
 year: 0
 lat: 27.772306
 lng: -82.646803
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: "1st Ave N & Dr. MLK Jr St N"
 category: commercial
 img: "images/murals/commercial/unknown-1503.jpeg"

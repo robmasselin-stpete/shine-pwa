@@ -6,7 +6,7 @@ artist: J&S Signs
 year: 2018
 lat: 27.778632
 lng: -82.646407
-facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
+facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: 553 9th St N
 category: shine
 img: "images/murals/2018/js-signs-point-of-pines.jpeg"

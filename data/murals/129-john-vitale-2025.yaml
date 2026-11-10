@@ -6,7 +6,7 @@ artist: John Vitale
 year: 2025
 lat: 27.771668
 lng: -82.642127
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 601 1st Ave N
 category: shine
 img: "images/murals/2025/john-vitale-601.jpeg"

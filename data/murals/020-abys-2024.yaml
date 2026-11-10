@@ -6,7 +6,7 @@ artist: Abys
 year: 2024
 lat: 27.768488
 lng: -82.657474
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 201 17th Street South
 category: shine
 img: "images/murals/2024/abys.jpeg"

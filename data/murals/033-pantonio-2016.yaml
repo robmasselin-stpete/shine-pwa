@@ -6,7 +6,7 @@ artist: Pantonio
 year: 2016
 lat: 27.771478
 lng: -82.65896
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: 1901 Central Ave
 category: shine
 img: "images/murals/2016/pantonio.jpeg"

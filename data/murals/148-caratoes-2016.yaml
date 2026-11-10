@@ -6,7 +6,7 @@ artist: Caratoes
 year: 2016
 lat: 27.77042
 lng: -82.661691
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: "2125 1st Ave S"
 category: shine
 img: "images/murals/2016/carla-sa-fernandes.jpeg"

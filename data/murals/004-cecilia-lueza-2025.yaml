@@ -6,7 +6,7 @@ artist: Cecilia Lueza
 year: 2025
 lat: 27.774488
 lng: -82.647647
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 251 10th St N
 category: shine
 img: "images/murals/2025/cecilia-lueza.jpeg"

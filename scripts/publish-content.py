@@ -171,8 +171,8 @@ COMPASS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
 def _facing_from_capture(text, photos):
     """Fill `facing` from the capture tool's compass readings when the mural has none.
 
-    Each photo's `h` is the way the camera pointed at Shoot, so the wall faces the
-    opposite way. A facing already in the YAML (set by Rob in the route editor, or filled
+    Each photo's `h` is the way the camera pointed at Shoot, which is the view direction
+    `facing` holds (the way you look to see the mural). A facing already in the YAML (set by Rob in the route editor, or filled
     here on an earlier publish) is never changed. Returns (text, facing or None)."""
     import math
     from datetime import datetime
@@ -183,22 +183,22 @@ def _facing_from_capture(text, photos):
     r = math.pi / 180
     cam = math.atan2(sum(math.sin(h * r) for h in heads), sum(math.cos(h * r) for h in heads)) / r
     cam = round(cam) % 360
-    fc = (cam + 180) % 360
+    fc = cam
     point = COMPASS[round(fc / 45) % 8]
     lines = text.split('\n')
     at = next((i for i, l in enumerate(lines) if re.match(r'^lng\s*:', l)), None)
     if at is None:
         return text, None
-    lines.insert(at + 1, f'facing: {fc}   # wall faces {point}; from the capture tool (camera pointed {cam}°, '
-                         f'{len(heads)} photo(s)). Change it in the route editor.')
+    lines.insert(at + 1, f'facing: {fc}   # look {point} to see it; from the capture tool ({len(heads)} photo(s)). '
+                         f'Change it in the route editor.')
     today = datetime.now()
     day = f'{today.day} {today:%B %Y}'
     import yaml
     d = yaml.safe_load('\n'.join(lines)) or {}
     lines = review_sync._prepend_list_item(
         lines, 'revisionLog',
-        f'{day} — facing set to {fc}° ({point}) from the capture tool: the geo compass read {cam}° '
-        f'when Rob took {len(heads)} progress photo(s), so the wall faces the opposite way. Set by publish-content.py.',
+        f'{day} — facing (view direction) set to {fc}° ({point}) from the capture tool: the geo compass '
+        f'reading when Rob took {len(heads)} progress photo(s). Set by publish-content.py.',
         d.get('revisionLog'))
     d = yaml.safe_load('\n'.join(lines)) or {}
     lines = review_sync._prepend_list_item(

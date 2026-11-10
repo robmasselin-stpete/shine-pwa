@@ -6,7 +6,7 @@ artist: "Chroma Creature"
 year: 2026
 lat: 27.7719094   # VIV: reuses #215 Hiero Veiga's dropped pin (~30 ft from the VIV wall); Hiero is out of SHINE 2026
 lng: -82.6483233
-facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
+facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: "1000 1st Ave N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"

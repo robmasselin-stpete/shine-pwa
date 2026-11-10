@@ -6,7 +6,7 @@ artist: Jujmo
 year: 2021
 lat: 27.766404
 lng: -82.663515
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: Warehouse Arts District
 category: shine
 img: "images/murals/commercial/jujmo-blobs.jpeg"

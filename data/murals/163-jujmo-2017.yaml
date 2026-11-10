@@ -6,7 +6,7 @@ artist: Jujmo
 year: 2017
 lat: 27.770471
 lng: -82.656416
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 1701 1st Ave S
 category: shine
 img: "images/murals/2017/jujmo-space-rainbows.jpeg"

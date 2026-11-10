@@ -6,7 +6,7 @@ artist: "Osiris Rain"
 year: 2026
 lat: 27.79635   # from Rob's photo IMG_1290 (Nov 5): camera 27.796708,-82.6466 (±8 m) facing 214°, east side of MLK; pin moved ~47 m along that bearing to the tower's street face. The bearing line passes the OSM address point for 2600 MLK (27.796191,-82.647012) at ~70 m. ESTIMATED — confirm in the route editor
 lng: -82.64688
-facing: 229   # wall faces SW; Rob, route editor 9 Nov 2026
+facing: 229   # look SW to see it; Rob, route editor 9 Nov 2026
 address: "2600 Dr. MLK Jr St N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"

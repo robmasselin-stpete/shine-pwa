@@ -6,7 +6,7 @@ artist: R2romero
 year: 0
 lat: 27.773947
 lng: -82.647051
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: "933 Burlington Ave N"
 category: commercial
 img: "images/murals/commercial/romero-stpetersrun.jpeg"

@@ -25,7 +25,8 @@ Edits tour routes — stops, paths, mural lat/lng nudges. **Routes are now data
 like mural data — no app build. Exports come in three sections:
 
 1. `# ═══ GPS Position Updates ═══` — `lat:` / `lng:` lines per mural, and/or a
-   `facing:` line (degrees the wall faces, 0 = N; set with **➤ Facing**). Apply
+   `facing:` line (the VIEW direction: degrees you look to see the mural, 0 = N — the
+   wall faces the opposite way; set with **➤ Facing**). Apply
    to the matching `data/murals/{id}-*.yaml` (`facing:` goes under `lng:`;
    `facing: none` = delete the line). Log it in revisionLog + sourceNotes.
 2. `# ═══ Route Definition ═══` — a `{ id, name, ids: [...] }` block. Apply the
@@ -124,7 +125,7 @@ uploads the frame to `images/murals/2026/<id>-<date>[-N].jpeg` and appends `{u,d
 mural's `ph` in `content.json`, bumps version — live in ~1 min. **Multiple photos/day** get
 `-2`,`-3` suffixes. Each photo also carries the geo compass reading at Shoot
 (`h`, the way the camera pointed); `publish-content.py` turns it into the mural's
-`facing` (wall direction, exported as `fc`, used by `tools/mural-finder.html`) **only when
+`facing` (view direction = the camera's heading, exported as `fc`, used by `tools/mural-finder.html`) **only when
 the YAML has no `facing:` yet** — a facing Rob set in the route editor is never overwritten. The app's build-viewer (`mural.ph`) + "Being painted now" badge render it.
 
 **⚠️ The Worker writes `content.json` DIRECTLY on R2 — it does NOT update the source YAML.**

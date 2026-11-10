@@ -6,7 +6,7 @@ artist: Jason Harvin
 year: 2021
 lat: 27.772442
 lng: -82.650938
-facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
+facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: 1211 1st Ave. N.
 category: shine
 img: "images/murals/2021/jason-harvin.jpeg"

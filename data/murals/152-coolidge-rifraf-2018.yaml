@@ -6,7 +6,7 @@ artist: Sebastian Coolidge & Rif Raf Giraffe
 year: 2017
 lat: 27.771525
 lng: -82.662163
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: "Central Ave"
 category: commercial
 img: "images/murals/2018/coolidge-rifraf.jpeg"

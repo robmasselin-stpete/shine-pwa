@@ -6,7 +6,7 @@ artist: Carrie Jadus
 year: 0
 lat: 27.766276
 lng: -82.663354
-facing: 135   # wall faces SE; Rob, route editor 9 Nov 2026
+facing: 135   # look SE to see it; Rob, route editor 9 Nov 2026
 address: 515 22nd St S
 category: commercial
 img: "images/murals/commercial/carrie-jadus-mother.jpeg"

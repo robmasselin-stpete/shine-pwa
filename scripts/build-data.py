@@ -59,7 +59,7 @@ EXPORT_FIELDS = [
     'searchMuralDescription', 'muralInspiration', 'muralAwards', 'artistAwards',
     'impressions', 'furtherWork',
     'photos', 'underConstruction',   # SHINE 2026 build-viewer + construction flag
-    'facing',                        # Nov 2026: compass direction the wall faces (Mural Finder)
+    'facing',                        # Nov 2026: view direction, the way you look to see it (Mural Finder)
 ]
 
 # Provenance fields — stripped from output
@@ -172,7 +172,7 @@ def validate_murals(murals, config):
             if not (bounds.get('lng_min', -180) <= lng <= bounds.get('lng_max', 0)):
                 warnings.append(f"{prefix}: lng {lng} outside Tampa Bay bounds")
 
-        # Facing: degrees the wall faces, 0 = north (route editor / capture heading)
+        # Facing: view direction in degrees, 0 = north (route editor / capture heading)
         if 'facing' in m and m['facing'] is not None and _facing(m) is None:
             errors.append(f"{prefix}: facing must be a number 0–359 (got {m['facing']!r})")
 
@@ -254,7 +254,8 @@ def _photo_gps(p):
 
 
 def _facing(m):
-    """The direction the wall faces in whole degrees (0 = north, 90 = east), or None.
+    """View direction: the way you look to see the mural, whole degrees (0 = N, 90 = E), or None.
+    The wall itself faces the opposite way.
     Exported as `fc`. The Mural Finder uses it to rule out walls you're behind or beside."""
     f = m.get('facing')
     if isinstance(f, bool) or not isinstance(f, (int, float)) or not 0 <= f < 360:
@@ -264,7 +265,7 @@ def _facing(m):
 
 def _photo_heading(p):
     """Geo compass reading when the photo was taken (Capture Worker `h`), or None.
-    The way the camera pointed, so the wall faces the opposite way."""
+    The way the camera pointed, which is the mural's view direction (`facing`)."""
     h = p.get('heading')
     if isinstance(h, bool) or not isinstance(h, (int, float)):
         return None

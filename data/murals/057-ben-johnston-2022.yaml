@@ -6,7 +6,7 @@ artist: Ben Johnston
 year: 2022
 lat: 27.77069
 lng: -82.649669
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 1010 Central Ave
 category: shine
 img: "images/murals/2022/ben-johnston.jpeg"

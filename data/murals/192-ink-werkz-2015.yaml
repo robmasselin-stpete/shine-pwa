@@ -6,7 +6,7 @@ artist: Ink Werkz Crew
 year: 2015
 lat: 27.770947
 lng: -82.655105
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 1610 Central Ave
 category: shine
 img: "images/murals/2015/ink-werkz-2015.jpeg"

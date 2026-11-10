@@ -6,7 +6,7 @@ artist: "Mwanel Pierre-Louis"
 year: 2021
 lat: 27.771883
 lng: -82.649903
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: 1100 1st Ave. N.
 category: shine
 img: "images/murals/2021/mwanel-pierre-louis.jpeg"

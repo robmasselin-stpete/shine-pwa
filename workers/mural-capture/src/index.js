@@ -39,7 +39,7 @@
 // apps ignore unknown keys. publish-content.py writes it into the YAML photo entry.
 //
 // HEADING. The geo compass reading when Rob pressed Shoot (degrees, 0 = north): the way
-// the CAMERA pointed, so the wall faces the opposite way. Stored as h on the photo entry.
+// the CAMERA pointed = the mural's view direction (`facing`). Stored as h on the photo entry.
 // publish-content.py uses it to fill the mural's `facing` when Rob hasn't set one.
 //
 // CAPTIONS ARE FORWARD-COMPATIBLE. Shipped app versions (<=1.7.5) read `u` and `d`

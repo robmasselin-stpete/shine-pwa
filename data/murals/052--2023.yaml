@@ -6,7 +6,7 @@ artist: Chenlin Cai
 year: 2023
 lat: 27.768329
 lng: -82.659899
-facing: 180   # wall faces S; Rob, route editor 9 Nov 2026
+facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: 1927 4th Ave S
 category: shine
 img: "images/murals/2023/chenlin-cai.jpeg"

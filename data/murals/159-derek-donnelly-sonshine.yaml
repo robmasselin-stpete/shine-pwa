@@ -6,7 +6,7 @@ artist: Derek Donnelly
 year: 0
 lat: 27.774037
 lng: -82.647116
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: "226 Dr MLK Jr St N"
 category: commercial
 img: "images/murals/commercial/derek-donnelly-sonshine.jpeg"

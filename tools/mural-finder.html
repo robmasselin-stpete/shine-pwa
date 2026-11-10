@@ -136,14 +136,16 @@ function rank(pos, h) {
     const off = h == null ? null : angDiff(h, b);
     const w = h == null ? 0 : Math.min(1, Math.max(0.3, (d - 3) / 17));
     let cost = (d / 40) ** 2 + w * ((off || 0) / 35) ** 2;
-    // Wall facing (fc, set in the route editor or from capture headings): you should be
-    // standing on the side the wall faces and looking back at it. Within 70° of square-on
+    // Facing (fc) is the VIEW direction, the way you look to see the mural (route editor /
+    // capture headings), so the wall itself faces fc + 180. You should be standing on the
+    // side the wall faces and looking along fc. Within 70° of square-on
     // costs nothing, so the street-corner angles people really view from still count.
     let side = null;
     if (m.fc != null) {
-      side = angDiff(m.fc, (b + 180) % 360);                       // where you are, seen from the wall
+      const wall = (m.fc + 180) % 360;                              // the way the wall faces
+      side = angDiff(wall, (b + 180) % 360);                        // where you are, seen from the wall
       if (d > 4) cost += (Math.max(0, side - 70) / 25) ** 2;
-      if (h != null) cost += 0.5 * (Math.max(0, angDiff(h, (m.fc + 180) % 360) - 50) / 30) ** 2;
+      if (h != null) cost += 0.5 * (Math.max(0, angDiff(h, m.fc) - 50) / 30) ** 2;
     }
     return { m, d, b, off, w, side, cost };
   }).filter(c => c.d <= radius).sort((x, y) => x.cost - y.cost).slice(0, SHOW);

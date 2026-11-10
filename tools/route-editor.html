@@ -170,7 +170,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
     <option value="60.96">200 ft</option>
     <option value="91.44">300 ft</option>
   </select>
-  <button id="facing-mode" title="Set the direction each wall faces: tap a mural, then tap the side its wall faces">➤ Facing</button>
+  <button id="facing-mode" title="Set which way you look to see each mural: tap a mural, then tap an arrow">➤ Facing</button>
   <button id="add-poi">+ POI</button>
   <button id="add-commercial">+ Commercial</button>
   <button id="delete-point" class="danger" style="display:none">Delete Point</button>
@@ -182,7 +182,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #
   <span class="spacer"></span>
   <span class="mode-label" id="mode-label"></span>
   <span class="info" id="status"></span>
-  <span style="font-size:10px;color:#666">v14</span>
+  <span style="font-size:10px;color:#666">v15</span>
   <button class="primary" id="copy-changes">Export All</button>
   <button class="primary" id="copy-current" style="background:#1E88E5;border-color:#1E88E5">Export Route</button>
 </div>
@@ -1360,9 +1360,11 @@ function updateStatus() {
 }
 
 // ── Wall facing (Nov 2026) ──
-// The compass direction each wall faces (0 = N, 90 = E): stand on that side to see it.
+// The VIEW direction: which way you look (0 = N, 90 = E) to see the mural from the street.
+// (The wall itself faces the opposite way.) This is how Rob draws them, confirmed by the
+// Nov 10 finder walk, and it's also the way the capture tool's camera points at Shoot.
 // Exported as `facing:` with the GPS lines; the Mural Finder uses it to rule out walls
-// you're behind or beside. In ➤ Facing mode: tap a mural, then tap the side its wall faces.
+// you're behind or beside. In ➤ Facing mode: tap a mural, then tap the way you look at it.
 // Pins can't be dragged in this mode (their taps go to the map), so a stray tap can't move one.
 var facingChanges = {};            // id → degrees, or null = clear the live facing
 var facingLayer = L.layerGroup().addTo(map);
@@ -1455,14 +1457,14 @@ function selectFacing(id) {
   drawRose();
   if (id == null) return;
   const m = muralById[id], cur = facingOf(id);
-  facingStatus(`#${id} ${m.a}${cur != null ? ` (faces ${cur}° ${pointOf(cur)})` : ''}: tap an arrow, or anywhere around the pin for an in-between angle · Esc cancels · Delete clears`);
+  facingStatus(`#${id} ${m.a}${cur != null ? ` (look ${pointOf(cur)} ${cur}°)` : ''}: tap an arrow, or anywhere around the pin for an in-between angle · Esc cancels · Delete clears`);
 }
 function setFacing(deg) {
   const id = facingSel;
   if (id == null) return;
   if (muralById[id]?.fc === deg) delete facingChanges[id]; else facingChanges[id] = deg;
   selectFacing(null);
-  facingStatus(`#${id} faces ${deg}° ${pointOf(deg)} · tap the next mural`);
+  facingStatus(`#${id}: look ${pointOf(deg)} ${deg}° · tap the next mural`);
   updateStatus(); saveState();
 }
 function nearestMural(latlng, maxPx = 30) {
@@ -1512,7 +1514,7 @@ function gpsEntry(id) {
   if (id in facingChanges) {
     const f = facingChanges[id], was = m?.fc;
     out += f == null ? `facing: none   # remove the facing line (was ${was}°)\n`
-                     : `facing: ${f}   # wall faces ${pointOf(f)}${was != null ? ` (was ${was}°)` : ''}\n`;
+                     : `facing: ${f}   # look ${pointOf(f)} to see it${was != null ? ` (was ${was}°)` : ''}\n`;
   }
   return out + '\n';
 }

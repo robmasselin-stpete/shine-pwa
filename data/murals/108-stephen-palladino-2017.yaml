@@ -6,7 +6,7 @@ artist: Stephen Palladino
 year: 2017
 lat: 27.774637
 lng: -82.646987
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 276 Dr. Martin Luther King Jr. St N
 category: shine
 img: "images/murals/2017/stephen-palladino.jpeg"

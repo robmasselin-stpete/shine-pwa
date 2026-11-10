@@ -6,7 +6,7 @@ artist: Tasko
 year: 2022
 lat: 27.766272
 lng: -82.660270
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 1960 5th Ave S.
 category: shine
 img: "images/murals/2022/tasko.jpeg"

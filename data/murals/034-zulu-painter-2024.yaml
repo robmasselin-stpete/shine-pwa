@@ -6,7 +6,7 @@ artist: Zulu Painter
 year: 2022
 lat: 27.772442
 lng: -82.649044
-facing: 135   # wall faces SE; Rob, route editor 9 Nov 2026
+facing: 135   # look SE to see it; Rob, route editor 9 Nov 2026
 address: Arlington Ave N
 category: commercial
 img: "images/murals/2024/zulu-painter.jpeg"

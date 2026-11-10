@@ -6,7 +6,7 @@ artist: Andrea Wan
 year: 2023
 lat: 27.76947
 lng: -82.656237
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: 155 17th St S
 category: shine
 img: "images/murals/2023/andrea-wan.jpeg"

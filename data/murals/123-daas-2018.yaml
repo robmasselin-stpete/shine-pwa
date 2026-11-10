@@ -6,7 +6,7 @@ artist: DAAS
 year: 2018
 lat: 27.769537
 lng: -82.660215
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 128 20th St S
 category: shine
 img: "images/murals/2018/daas.jpeg"

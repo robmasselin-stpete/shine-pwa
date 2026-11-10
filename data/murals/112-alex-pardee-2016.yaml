@@ -6,7 +6,7 @@ artist: Alex Pardee
 year: 2016
 lat: 27.774628
 lng: -82.647193
-facing: 270   # wall faces W; Rob, route editor 9 Nov 2026
+facing: 270   # look W to see it; Rob, route editor 9 Nov 2026
 address: 251 10th St N
 category: shine
 img: "images/murals/2016/alex-pardee.jpeg"

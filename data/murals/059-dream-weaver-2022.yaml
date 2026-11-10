@@ -6,7 +6,7 @@ artist: Dreamweaver
 year: 2022
 lat: 27.771635
 lng: -82.654535
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 1510 1st Ave. N.
 category: shine
 img: "images/murals/2022/dreamweaver.jpeg"

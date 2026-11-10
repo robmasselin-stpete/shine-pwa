@@ -6,7 +6,7 @@ artist: PHYBR
 year: 2024
 lat: 27.770883
 lng: -82.657692
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 1756 Central Ave
 category: commercial
 img: images/murals/commercial/phybr-neon-lunchbox.jpeg

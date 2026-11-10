@@ -6,7 +6,7 @@ artist: "Alyssa Marie and the Happy Mural Project"
 year: 2024
 lat: 27.772397
 lng: -82.647942
-facing: 90   # wall faces E; Rob, route editor 9 Nov 2026
+facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: 929 1st Ave N
 category: commercial
 img: "images/murals/commercial/happy-mural-compassion.jpeg"

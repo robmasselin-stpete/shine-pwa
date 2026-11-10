@@ -6,7 +6,7 @@ artist: Jeff Williams
 year: 2022
 lat: 27.777771
 lng: -82.646536
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 511 Dr. MLK Jr St. N.
 category: shine
 img: "images/murals/2022/jeff-williams.jpeg"

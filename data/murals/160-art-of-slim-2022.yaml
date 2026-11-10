@@ -6,7 +6,7 @@ artist: Art of Slim
 year: 2022
 lat: 27.77396
 lng: -82.646858
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: "226 Dr MLK Jr St N"
 category: commercial
 img: "images/murals/commercial/art-of-slim-dreams-to-reality.jpeg"

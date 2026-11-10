@@ -6,7 +6,7 @@ artist: George Rose
 year: 2019
 lat: 27.76297
 lng: -82.65384667
-facing: 0   # wall faces N; Rob, route editor 9 Nov 2026
+facing: 0   # look N to see it; Rob, route editor 9 Nov 2026
 address: 601 14th St S
 category: shine
 img: "images/murals/2019/george-rose.jpeg"
