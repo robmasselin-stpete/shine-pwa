@@ -43,8 +43,8 @@
 </style>
 </head>
 <body>
-<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test</small></h1>
-<div class="sub">Stand in front of a mural, point the phone at it, tap Scan.</div>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v2 · Nov 10</small></h1>
+<div class="sub">Stand in front of a mural, point the phone at it, tap Scan.<br><span id="ver">Data: loading…</span></div>
 
 <button id="scan">Scan</button>
 <div id="status"></div>
@@ -178,7 +178,11 @@ async function loadMurals() {
   const r = await fetch(q.get('src') === 'local' ? '../js/content.json' : CDN + 'content.json', { cache: 'no-cache' });
   const j = await r.json();
   murals = j.murals.filter(m => m.lat && m.lng).map(m => ({ ...m, lat: +m.lat, lng: +m.lng }));
+  // The manifest version is its publish time in ms: show it so a stale copy is obvious.
+  $('ver').textContent = `Data: published ${new Date(+j.version).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}` +
+    ` · ${murals.filter(m => m.fc != null).length} with facing`;
 }
+loadMurals().catch(() => { $('ver').textContent = 'Data: not loaded yet (loads on Scan)'; });
 
 async function startSensors() {
   if (listening || fake) return;
