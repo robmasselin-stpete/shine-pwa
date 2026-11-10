@@ -43,7 +43,7 @@
 </style>
 </head>
 <body>
-<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v2 · Nov 10</small></h1>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v3 · Nov 10</small></h1>
 <div class="sub">Stand in front of a mural, point the phone at it, tap Scan.<br><span id="ver">Data: loading…</span></div>
 
 <button id="scan">Scan</button>
@@ -119,6 +119,29 @@ function heading() {
   const s = recent.reduce((a, x) => a + Math.sin(x.h * r), 0), c = recent.reduce((a, x) => a + Math.cos(x.h * r), 0);
   return ((Math.atan2(s, c) / r) + 360) % 360;
 }
+// How much the compass wandered over the last second: the biggest gap from the mean.
+function spread() {
+  if (fake) return 0;
+  const now = Date.now(), m = heading();
+  const recent = headings.filter(x => now - x.t < 1000);
+  if (m == null || recent.length < 3) return null;
+  return Math.max(...recent.map(x => angDiff(x.h, m)));
+}
+// Pressing Scan before the phone is on the wall reads the wrong way, so wait until the
+// compass has held within ±10° for a full second (give up after 5 s and say so in the log).
+async function waitSteady() {
+  if (fake) return 0;
+  const t0 = Date.now();
+  await new Promise(r => setTimeout(r, 1000));
+  for (;;) {
+    const sp = spread();
+    if (sp == null) return null;                        // no compass at all
+    if (sp <= 10) return sp;
+    if (Date.now() - t0 > 5000) return sp;
+    status(`Hold still, pointed at the mural… (compass moving ±${Math.round(sp)}°)`);
+    await new Promise(r => setTimeout(r, 150));
+  }
+}
 
 // ── geometry ──
 function distBearing(lat1, lng1, lat2, lng2) {
@@ -151,20 +174,29 @@ function rank(pos, h) {
   }).filter(c => c.d <= radius).sort((x, y) => x.cost - y.cost).slice(0, SHOW);
 }
 
-// ── position: watch until accuracy is good or 6 s pass, keep the best fix ──
+// ── position: GPS stays on after the first Scan, so later scans use the live fix at once.
+// The first scan (or a stale/weak fix) still waits until accuracy is good or 6 s pass.
+let gpsWatch = null, lastFix = null, gpsErr = null;
+function startGps() {
+  if (gpsWatch != null || fake) return;
+  gpsWatch = navigator.geolocation.watchPosition(p => {
+    lastFix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, v: p.coords.speed, t: Date.now() };
+    gpsErr = null;
+  }, e => { gpsErr = e; }, { enableHighAccuracy: true, maximumAge: 0, timeout: 30000 });
+}
 function getPosition() {
   if (fake) return Promise.resolve({ lat: fake.lat, lng: fake.lng, acc: fake.acc });
+  startGps();
+  // iOS only sends a new fix when you move, so up to 10 s old still counts when standing still.
+  const fresh = () => lastFix && Date.now() - lastFix.t < 10000 && lastFix.acc <= 15;
+  if (fresh()) return Promise.resolve(lastFix);
   return new Promise((resolve, reject) => {
-    let best = null;
-    const done = () => { navigator.geolocation.clearWatch(id); clearTimeout(t); best ? resolve(best) : reject(new Error('no GPS fix')); };
-    const id = navigator.geolocation.watchPosition(p => {
-      const fix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy };
-      if (!best || fix.acc < best.acc) best = fix;
-      status(`Finding you… GPS ±${Math.round(fix.acc)} m`);
-      if (fix.acc <= 12) done();
-    }, err => { if (!best) { clearTimeout(t); navigator.geolocation.clearWatch(id); reject(err); } },
-       { enableHighAccuracy: true, maximumAge: 0, timeout: 15000 });
-    const t = setTimeout(done, 6000);
+    const t0 = Date.now(), iv = setInterval(() => {
+      if (gpsErr && !lastFix && gpsErr.code === 1) { clearInterval(iv); return reject(gpsErr); }
+      if (lastFix) status(`Finding you… GPS ±${Math.round(lastFix.acc)} m`);
+      if (fresh() && lastFix.acc <= 12) { clearInterval(iv); resolve(lastFix); }
+      else if (Date.now() - t0 > 6000) { clearInterval(iv); lastFix ? resolve(lastFix) : reject(new Error('no GPS fix')); }
+    }, 200);
   });
 }
 
@@ -201,17 +233,19 @@ async function doScan() {
     if (!murals.length) { status('Loading murals…'); await loadMurals(); }
     status('Finding you…');
     const pos = await getPosition();
-    await new Promise(r => setTimeout(r, fake ? 0 : 600));   // let the compass settle
+    status('Hold still, pointed at the mural…');
+    const sp = await waitSteady();
     const h = heading();
     cands = rank(pos, h); idx = 0;
-    scan = { at: new Date(), pos, h, cands };
-    status(`GPS ±${Math.round(pos.acc)} m · facing ${h == null ? 'unknown (no compass)' : Math.round(h) + '° ' + compass(h)}`);
+    scan = { at: new Date(), pos, h, sp, cands };
+    status(`GPS ±${Math.round(pos.acc)} m · facing ${h == null ? 'unknown (no compass)' : Math.round(h) + '° ' + compass(h)}` +
+      (sp != null && sp > 10 ? ` · ⚠ compass never settled (±${Math.round(sp)}°)` : ''));
     showCands();
     if (!cands.length) {
       $('empty').innerHTML = `<b>No murals within ${Math.max(RADIUS, Math.round(pos.acc * 3))} m.</b><br>
         Open the Map in Mural Quest and zoom in on your blue dot to see what's nearby.`;
       $('empty').style.display = 'block';
-      log(`${stamp()}  NONE  ${fmtPos(pos)}  h ${fmtH(h)}`);
+      log(`${stamp()}  NONE  ${fmtPos(pos)}  h ${fmtH(h)}${fmtExtra(scan)}`);
       return;
     }
     if (h != null && cands[0].off > 90) status($('status').textContent + ' · nothing in front of you: turn to face the wall and ReScan');
@@ -248,7 +282,7 @@ function thatsIt() {
   $('check').style.display = 'flex';
   // The log line doubles as field data: where you stood and which way you faced to see this wall.
   log(`${stamp()}  #${m.id} ${m.a.slice(0, 20)}  RANK ${idx + 1}/${cands.length}  ${Math.round(c.d)} m  off ${c.off == null ? '–' : Math.round(c.off)}°  ` +
-      `${fmtPos(scan.pos)}  h ${fmtH(scan.h)}  fc ${m.fc ?? '–'}  top3 ${cands.slice(0, 3).map(x => x.m.id).join(',')}`);
+      `${fmtPos(scan.pos)}  h ${fmtH(scan.h)}  fc ${m.fc ?? '–'}  top3 ${cands.slice(0, 3).map(x => x.m.id).join(',')}${fmtExtra(scan)}`);
   setTimeout(() => {
     $('pane').style.display = 'none';
     $('done').innerHTML = `<img src="${cardUrl(latestImg(m))}" alt="">
@@ -264,6 +298,10 @@ const LOG_KEY = 'mq_finder_log';
 const stamp = () => new Date().toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 const fmtPos = p => `${p.lat.toFixed(6)},${p.lng.toFixed(6)} ±${Math.round(p.acc)}`;
 const fmtH = h => h == null ? '–' : Math.round(h) + '°';
+// spr = how far the compass wandered in the last second (⚠ = never settled);
+// v = GPS speed in m/s, so scans made while still rolling stand out.
+const fmtExtra = sc => `  spr ${sc.sp == null ? '–' : Math.round(sc.sp) + '°' + (sc.sp > 10 ? '⚠' : '')}` +
+  `  v ${sc.pos.v == null || isNaN(sc.pos.v) ? '–' : sc.pos.v.toFixed(1)}`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 function log(s) {
   $('log').textContent = s + '\n' + $('log').textContent;
