@@ -6,6 +6,7 @@ artist: Elizabeth Barenis
 year: 2025
 lat: 27.764375
 lng: -82.64328
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: 744 6th Ave. S.
 category: commercial
 img: "images/murals/commercial/elizabeth-barenis-healing-palms.jpeg"
@@ -113,8 +114,10 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Enhanced with Rob's field photo 2026-03-06"
   - "https://creativepinellas.org/artist/elizabeth-barenis/"
   - "https://www.elizabethbarenis.com/3d-work"

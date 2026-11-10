@@ -6,6 +6,7 @@ artist: James Oleson
 year: 0
 lat: 27.79915
 lng: -82.73745
+facing: 315   # look NW to see it; Rob, route editor 10 Nov 2026
 address: "2993 Tyrone Blvd N"
 category: commercial
 img: "images/murals/unknown/james-oleson-stonehenge-park.jpeg"
@@ -105,11 +106,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 315° (NW) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): PARTIALLY RESTORED, in corrected and unquoted form. The direct quotation \"renowned sculptor and muralist\" attributed to St. Pete press remains UNSUPPORTED — no reachable source carries that phrase — so it stays out. But the substance behind it is now sourced: Creative Pinellas calls him \"Muralist/sculptor James Oleson\" and reports that \"The former Bloom Art Center proprietor will be hosting 'Perennial Bloom' an art show featuring Bloom Collective artists.\" That is a hosting/curating role at the Bloom property, so it has been restored as plain fact rather than as a quote."
   - "28 August 2026 — Fact-check fleet: the only St. Pete press in sourceNotes contains neither the quoted phrase nor the curating claim"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "2026-05-04 — New mural added by Rob: James Oleson neo-surrealist grinning face wall at Stonehenge Park, St. Petersburg. GPS from photo IMG_0255.jpeg EXIF (27.79915, -82.73745). Year not documented in public sources — flagged for follow-up. Lower-right cursive signature unidentified. Bio compiled from St. Pete Arts Alliance directory, Morean Arts Center profile, Crow's Nest 'Perennial Bloom' coverage, and @olesonart Instagram."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0255.jpeg)"
   - "https://stpeteartsalliance.org/arts-culture-directory/details?itemid=85"
   - "https://moreanartscenter.org/james-oleson/"

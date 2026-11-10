@@ -6,6 +6,7 @@ artist: Derek Donnelly
 year: 2025
 lat: 27.776706
 lng: -82.63879
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 421 4th Ave N
 category: shine
 img: "images/murals/2025/derek-donnelly-hollander.jpeg"
@@ -147,9 +148,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: Correira died of brain cancer, not surgical complications; Donnelly did not help originate SHINE — he was excluded at its founding (St. Pete Catalyst)"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://www.saintpaintarts.com/"
   - "https://www.rutheckerdhall.com/news/detail/artmaker-2026"
   - "https://stpetecatalyst.com/catalyst-sessions-recap-derek-donnelly/"

@@ -6,6 +6,7 @@ artist: "Starve"
 year: 2026
 lat: 27.760945   # Rob, on site 9 Nov 2026 (was 27.7608976, -82.6467112 from the brief)
 lng: -82.646297
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: "939 Dr. MLK Jr St S"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -143,12 +144,14 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "10 November 2026 — Facing set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "9 November 2026 — Pin moved to 27.760945, -82.646297, the location Rob gave for the wall (Rob: 'move the starve pin to this location'). Was 27.7608976, -82.6467112, a dropped pin from the SPAA brief; the new pin is 41 m east. Address unchanged."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: Removed the Hiero Veiga at VIV line: he is out of SHINE 2026 (Rob, Nov 4); artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: Removed the Hiero Veiga at VIV line: he is out of SHINE 2026 (Rob, Nov 4); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212533-461c07c2]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn. Changes — artistBio: New two-sentence opening: graffiti first, tattooing second, and the crew is the best part. The gore point moved down and softened; added the Esh 2018 link and the Hiero quote in a crew paragraph; searchBio: Same new opening; the festival-gore view moved to its own later paragraph; pronouns: \"\" → \"he/him\"; both bios now use he/him instead of repeating \"Rivera\". [review:20261101172537-66e53f81]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening: graffiti first, tattooing second, and the crew is the best part. The gore point moved down and softened; added the Esh 2018 link and the Hiero quote in a crew paragraph; searchBio: Same new opening; the festival-gore view moved to its own later paragraph; pronouns: \"\" → \"he/him\"; both bios now use he/him instead of repeating \"Rivera\". [review:20261101172301-fcdeccbe]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #7 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Rob, on site 9 Nov 2026: Starve wall location 27.760945, -82.646297"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"

@@ -6,6 +6,7 @@ artist: "Ya La'Ford"
 year: 2021
 lat: 27.77573
 lng: -82.632255
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: 330 Beach Dr NE
 category: shine
 img: images/murals/2021/ya-la-ford.jpeg
@@ -133,6 +134,7 @@ furtherWork:
   - name: "yalaford.com"
     url: "https://www.yalaford.com"
 revisionLog:
+  - "10 November 2026 — Facing set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): CONFIRMED REMOVED. No source places any Ya La'Ford work in the Boston Public Library collection; the BPL Arts Department holdings do not list her. Her documented Boston tie is an MFA from the Art Institute of Boston, which is the likely origin of the confusion. Not re-litigated again."
   - "28 August 2026 — Fact-check fleet: St Pete Catalyst places her in Historic Kenwood; Creative Pinellas calls St. Petersburg her chosen home town; no source mentions the Boston Public Library"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
@@ -140,6 +142,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "GPS from user photo (IMG_1495.jpeg). User photo replaces stock image."
   - "https://www.yalaford.com/"
   - "https://stpetecatalyst.com/local-ish-meet-artist-ya-laford/"

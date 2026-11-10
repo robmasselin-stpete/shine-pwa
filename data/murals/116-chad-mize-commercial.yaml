@@ -6,6 +6,7 @@ artist: Chad Mize
 year: 0
 lat: 27.777079
 lng: -82.63887
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: 421 4th Ave N
 category: commercial
 img: "images/murals/commercial/chad-mize-hollander.jpeg"
@@ -113,6 +114,7 @@ artistAwards: "SHINE organizing committee member; founder of MIZE Gallery"
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Identified from photo: signed @CHADMIZE, Hollander Hotel branding + NÜTRL sponsor"
   - "Same building as Melanie Posner commercial mural (#107), different wall"
   - "http://chadmize.com/"
@@ -121,6 +123,7 @@ sourceNotes:
   - "https://www.instagram.com/chadmize/"
 
 revisionLog:
+  - "10 November 2026 — Facing set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Display bio rewritten anchored to THIS wall (Hollander Hotel commercial, NÜTRL sponsor, three-story Florida-icons design) instead of generic copy-paste from #58. Added canonical Mize URL sources (chadmize.com, Catalyst, Artisan Magazine, IG)."
   - "2026-05-03 — Refocused bio on his commercial practice: brand/venue client list (Coach/Lightning/Rays/Busch Gardens/JW Marriott/Vinoy/NUTRL/Sprouts/Kahwa/AHF), recent commercial walls (Wyndham Grand Clearwater, Element Tampa, IMG Academy, St. Pete Pier, Dali Museum, Adderley Ft. Lauderdale, UTC Sarasota). Gallery/SHINE founder context dropped to a closing line. Differentiates from #58 (the SHINE community paint with Twiggy backstory)."

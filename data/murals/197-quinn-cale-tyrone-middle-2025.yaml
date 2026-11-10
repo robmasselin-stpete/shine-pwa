@@ -6,6 +6,7 @@ artist: Quinn Cale
 year: 2025
 lat: 27.79366
 lng: -82.72751
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "2375 66th St N"
 category: shine
 img: "images/murals/2025/quinn-cale-tyrone-middle.jpeg"
@@ -83,9 +84,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "2026-05-04 — New mural added by Rob: Quinn Cale's SHINE Origins 2025 wall at Tyrone Middle School. GPS from photo IMG_0262.jpeg EXIF (27.79366, -82.72751). Image saved as quinn-cale-tyrone-middle.jpeg."
   - "2026-06-16 — Title changed from 'Center for Innovation and Digital Learning' (the building's name) to 'Pixel Reacher' to match the SPAA mural directory listing."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-05-04, GPS from EXIF (IMG_0262.jpeg)"
   - "https://quinncale.com"
   - "https://ilovetheburg.com/st-pete-shine-origins/"

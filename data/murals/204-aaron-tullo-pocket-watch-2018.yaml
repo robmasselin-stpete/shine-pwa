@@ -6,6 +6,7 @@ artist: Aaron Tullo
 year: 2018
 lat: 27.78398
 lng: -82.63817
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: "1131 4th St N"
 category: commercial
 img: "images/murals/commercial/aaron-tullo-pocket-watch.jpeg"
@@ -113,9 +114,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "27 August 2026 — Fact-check fleet: Tullo: he never pitched in the Brewers system; Tullo: arm injury was summer 2004; 2005 was the re-aggravation; Tullo: those freshman numbers are St. Petersburg College, not Tennessee; Tullo: he did not sign in 2007; first pro contract was the Angels in 2010"
   - "2026-05-06 — New mural added by Rob: Aaron Tullo's first major public piece, a vintage pocket watch on the Old Northeast Jewelers / Hess Fine Art building at 1131 4th St N. Year 2018 per his own searchBio at Mural Quest #1. GPS from photo IMG_0284.jpeg EXIF (27.78398, -82.63817). Signed 'james tullo' lower-left. Per #1, Tullo himself considers this his best work."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-05-06, GPS from EXIF (IMG_0284.jpeg)"
   - "https://www.aaronjamestullo.com/"
   - "https://northeastjournal.org/st-petes-artsy-murals-move-into-the-old-northeast/"

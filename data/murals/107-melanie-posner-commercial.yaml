@@ -6,6 +6,7 @@ artist: Melanie Posner
 year: 0
 lat: 27.776736
 lng: -82.638808
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: 421 4th Ave N
 category: commercial
 img: "images/murals/commercial/melanie-posner-hollander.jpeg"
@@ -106,12 +107,14 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "29 August 2026 — Re-verify pass (full web search): RESTORED \"a small town just outside Philadelphia\". She says it herself in her SHOUTOUT MIAMI interview: \"I am from a small town right outside of Philadelphia.\" The St. Pete Catalyst's \"Philadelphia native\" is the looser regional shorthand, not a contradiction. Applied across all four Posner records, whose searchBio had drifted to the bare city while three of the display bios still said \"outside Philadelphia\"."
   - "28 August 2026 — Fact-check fleet: the only source calls her a Philadelphia native, not suburban"
   - "28 August 2026 — Fact-check fleet: her own portfolio places it at the LGBT Center in Hollywood, not West Hollywood"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "10 April 2026 — Deep research, full bio with hook, copied to all 3 Posner files"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://stpetecatalyst.com/melanie-posner/"
   - "https://www.melanieposner.com/"
   - "https://www.melanieposner.com/murals-portfolio/hollander-hotel"

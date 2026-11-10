@@ -6,6 +6,7 @@ artist: Annie Phunk
 year: 2022
 lat: 27.776765   # Rob-set via route-editor (Satoshi Hideout wall, 425 2nd St N)
 lng: -82.635410
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "425 2nd St N"
 category: commercial
 img: "images/murals/commercial/anniephunk-satoshi-bull.jpeg"
@@ -86,11 +87,13 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: the cited Catalyst article attaches the Park Plaza name to 425 — the mural wall — not 424"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
   - "2026-06-16 — New mural added by Rob: charging bull + anime woman + crypto 'genesis block' sun on the side of Satoshi Hideout (425 2nd St N). Photo from Rob (IMG_7214.jpeg, 2026-05-28); signature close-up IMG_7215.jpeg reads 'AnniePhunk'. Forwarded photos' EXIF GPS (27.78708, -82.64674) is bogus (identical stamp across all three forwarded photos) — discarded; Rob set final GPS via route-editor: 27.776765, -82.635410 (Satoshi Hideout wall, 425 2nd St N). (Was provisionally geocoded to 27.776945/-82.635316.) Year 2022 per St Pete Catalyst. Category commercial. Attribution: on-wall signature 'AnniePhunk' (authoritative for this wall); 2022 press credited Satoshi Hideout murals to gatsbynotart w/ concept by Clear ph — relationship between the two not asserted. Artist bio initially thin (no web presence found at add time)."
   - "2026-06-16 — Rob supplied artist links: Instagram @miss.phunk (display name 'Annie Phunk'), website missphunk.com. Updated artist field 'AnniePhunk' → 'Annie Phunk' (the wall signature is the run-together 'AnniePhunk'); added IG + website; light bio enrichment (painter, realist oil — portraits and pop-leaning still lifes per her IG grid)."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob (forwarded), IMG_7214.jpeg (full wall) + IMG_7215.jpeg (signature close-up, reads 'AnniePhunk'), dated 2026-05-28; EXIF GPS unreliable — GPS to be set manually"
   - "On-wall signature: 'AnniePhunk' (lower left)"
   - "Artist Instagram @miss.phunk (display name 'Annie Phunk') + website https://www.missphunk.com — provided by Rob 2026-06-16"

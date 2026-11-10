@@ -6,6 +6,7 @@ artist: "Merritt Horan Capurro"
 year: 2026
 lat: 27.801605   # Rob, route editor 9 Nov 2026 (was 27.8005)
 lng: -82.742318
+facing: 180   # look S to see it; Rob, route editor 10 Nov 2026
 address: "3190 Tyrone Blvd N"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -187,12 +188,14 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "10 November 2026 — Facing set to 180° (S) by Rob in the route editor (used by the Mural Finder)."
   - "9 November 2026 — Pin moved to 27.801605, -82.742318 by Rob in the route editor (he adjusted the 2026 SHINE pins after site visits). Was 27.8005, -82.742; moved about 127 m. Address unchanged."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212430-7193dd20]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening on walls several stories tall vs. her one-twelfth-scale St. Pete Mini Gallery (from her SHINE record); grant line + her view of art follows; the Bellwether story moves to paragraph 3; \"about 20 years\" as a textile designer; searchBio: Same opening and Mini Gallery paragraph. [review:20261101174443-ad7d6905]"
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening on walls several stories tall vs. her one-twelfth-scale St. Pete Mini Gallery (from her SHINE record); grant line + her view of art follows; the Bellwether story moves to paragraph 3; \"about 20 years\" as a textile designer; searchBio: Same opening and Mini Gallery paragraph. [review:20261101174306-d57f9abc]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #9 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ROUGH ESTIMATE (no geocoder): NW of Stonehenge Park (2993 Tyrone Blvd N, 27.79911,-82.7374). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Rob, route-editor GPS export 9 Nov 2026 (SHINE 2026 pins tweaked on site)"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
