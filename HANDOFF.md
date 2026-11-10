@@ -1,11 +1,95 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-09, later): capture v4 — full-size originals collected automatically to the Mac + Photos;
-> #219 Starve photo + pin (pin PUBLISH PENDING) (see the 2026-11-09 (later) entry); then 2026-11-09: server refuses
-> repeat frames, Take another; then 2026-11-05: Android 1.7.7 (vc19) LIVE on Play.** v1.7.6 LIVE on both stores.
+> **CURRENT (2026-11-10): facing = VIEW direction, 168 facings live, Mural Finder field-tested (Rob to re-check
+> arrows in the route editor — don't change them), stats date ranges + Rob's 5 devices left out of stats
+> (see the 2026-11-10 entry); then 2026-11-09: Mural Finder test page + wall facing system, capture v4 originals.**
+> v1.7.6 LIVE on both stores; Android 1.7.7 (vc19) LIVE on Play. No binary changes until after SHINE.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-10 — Facing = VIEW direction, 168 facings, two Finder field tests, stats date ranges, Rob's devices out of stats
+
+**Facing convention fixed (a9c65fd).** `facing` / `fc` is the **VIEW direction**: the degrees you LOOK to see the mural (0 = N). The wall itself faces `fc + 180`.
+- Rob's first field log (Nov 10, 08:34–08:43) showed he had drawn every arrow as "the way you look", while the tools read them as "the way the wall faces". Rob's arrows were right; the code was flipped.
+- Changed everywhere: the finder scoring, the route-editor wording ("look X to see it"), capture v6 ("Compass saved: you looked X N°"), and `publish-content.py` (photo heading `h` = camera direction = view direction, used as-is).
+- The data didn't change. The YAML comments on 103 murals were reworded.
+- Replay of that log: ranks went from 1,5,1,4,2,5,3 to 1,3,3,1,1,1,1.
+
+**Facings in the data: 168 murals.** All came from Rob's route-editor exports (Nov 9 and 10), logged in revisionLog and sourceNotes. Published over OTA:
+
+| OTA version | What it carried |
+|---|---|
+| 1794249449680 | First facings, #17/#214/#224 pins |
+| 1794249667974 | 82 facings |
+| 1794318633643 | 103 facings |
+| 1794321719959 | 168 facings + #213 pin |
+
+- **#213 Jacksun pin** moved to Rob's photo spot, 27.76508, -82.665714 (831d324).
+- **Export Route only exports the route's murals.** Use **Export All** to get every facing.
+
+**Capture Worker stores the heading.** Rob deployed version ec0b50ca. `/photo` keeps `heading` as `h` on the `ph` entry, and the reply echoes it.
+- **⚠ Not yet seen on a real send.** The first new photo should show "Compass saved…". Check the live content.json `ph` entries for `h`.
+- `publish-content.py` fills `facing:` from photo headings ONLY when the YAML has no `facing:` line.
+
+**Mural Finder: second field test** (log pasted 10:48; 55 scans, Rob was in the car).
+- **Results:** 37 first and 51 in the top 3. Where the compass matched the arrow it was almost always first. #108 and #112 now come first and their arrows are right.
+- **Misses were not aiming.** On the long wall at lat 27.7628 (#2, 3, 8, 10, 13, 15, 19, 165, 37, 46, 39, all look-N) the compass read about 95° every time. On Central's 600–700 block (#172, 115, 111, 9, 7, 117, 178, 110) it read about 280° every time. Rob also says he sometimes pressed Scan before he was pointed.
+- **A scoring change for "not aimed" was tried in the sim and didn't help. Not shipped.**
+- **Rob: "Do not change orientation of arrows yet."** He will go over them in the route editor. Possible suspects he has NOT confirmed: #4 (look E; he pointed about 185° twice), #176 (look N; he pointed about 275° twice). **#172 Ya La'Ford has no facing.**
+- **Offered, not built:** Scan waits until the compass is steady for about 1 s ("hold still…").
+- **Finder page:** header "test · v2 · Nov 10". A `#ver` line shows the page version and "Data: published <date> · N with facing", because on the phone Rob couldn't tell whether the page had reloaded (d718f90).
+- **Sim tools** (scratchpad, not in the repo): `replay2.mjs` / `tune.mjs` `(0,eval)` the finder's real `rank()` against pasted logs plus a desk sim.
+
+**Stats date ranges (d113bc3; Worker deployed by Rob, version 95019fb4).**
+- **API:** `/stats?from=YYYY-MM-DD&to=YYYY-MM-DD&tz=<minutes east of UTC>` filters on `ts`, grouped by the viewer's LOCAL day. Before this, the stored `day` was UTC, so after 7 pm counted as tomorrow. With no range it returns all time, as before.
+- **Page:** buttons for Today, Yesterday, Last 7 days, SHINE (Nov 6–15), Last 30 days and All time, plus custom from/to. The choice is remembered (`mq_stats_range`). For a range, the by-day bars show every day.
+
+**Rob's own devices left out of stats (26394ce; Worker deployed by Rob, version 63178343).**
+- **How it works:** the D1 table **`excluded_sids(sid, note)`** (in `schema.sql`) lists Rob's anonymous ids, and `/stats` leaves them out unless `&mine=1`. The page has an **"Include my devices"** box (`mq_stats_mine`), and its Showing line says "your N devices are left out".
+- **Adding a device needs no deploy:** Rob opens one mural 3 times on it; Claude finds that sid in recent `mural_open` events and runs an `INSERT … SELECT … WHERE sid LIKE '<prefix>%'` after checking the prefix matches exactly one id.
+- **The 5 devices:**
+
+  | Device | ID | Events |
+  |---|---|---|
+  | iPhone | xgaeu8… | 805 |
+  | Old iPhone install, Aug 20–Sep 24 (Rob confirmed) | xehb1b… | 297 |
+  | iPad | xoo8yx… | 165 |
+  | Android | xv6q72… | 114 |
+  | Computer | xf2m62… | 24 |
+
+- **All time:** 3,518 events and 523 users without Rob's devices, against 4,923 with them, so Rob was about 29% of everything.
+- **No new data is collected** (the minimal-data rule holds).
+
+**Gotchas from today**
+- After Claude runs `wrangler d1` from `workers/analytics`, the shell stays there, and Rob's `! cd workers/analytics && …` fails. Give the absolute path: `! cd /Users/robasselin/shine-pwa/workers/analytics && npx wrangler deploy`.
+
+## 2026-11-09 (afternoon) — Mural Finder test page + wall facing system
+
+**Freeze-safe:** no binary change. Everything is on mural-tools.pages.dev or in OTA data. The current app copies unknown keys (`content.js`) and ignores `fc` and `h`.
+
+- **Mural Finder** (`tools/mural-finder.html`, 8915950): Rob's idea for a future bottom-row button, built as a standalone test page first.
+  - **How you use it:** Scan reads GPS and the geo compass (the app's `compassHeadingFrom()`, averaged over 1 s), then suggests the mural. Prev and Next step through candidates; **That's It!** shows a big green ✓ and then the card.
+  - **Test aids:** a candidate table (m, off°, side°, cost), and a test log (`mq_finder_log`, Copy / Clear) that Rob pastes back.
+  - **Desk params:** `?at=lat,lng&h=deg&acc=m`, and `&src=local` to read `../js/content.json`.
+  - **Scoring:** `(d/40)² + w·(off/35)²`. With `fc` it adds a wrong-side penalty (more than 70° off square, beyond 4 m) and a heading-vs-facing term.
+  - **After SHINE:** make it a real bottom-row button (app build).
+- **Wall facing** (e0e7cc6, 842ccef):
+  - **Route editor (v15):** the **➤ Facing** mode. Tap a pin and an 8-arrow rose appears; a preview arrow snaps within 6° for in-between angles. Esc cancels; Delete clears.
+  - In facing mode, marker and route-line taps are disabled, after facing taps had added path points by accident.
+  - It exports `facing: N   # look X to see it` (or `facing: none`) in the GPS section.
+  - **Pipeline:** `facing` in YAML (under `lng:`) becomes `fc` in data.js and content.json, validated 0–359.
+  - **Capture tool v5/v6** records the compass at Shoot.
+- **Morning:**
+  - Route editor loads the live stop lists and exports only real changes (9135d0c).
+  - SHINE pins for #216, #217, #221, #225 (ec07395); #214 (0be2cee, later refined); #224 and #17 Sara Salem (674c64d, 650a98c).
+  - #219 Starve pin published in OTA 1794237746124 (88241a9). That closes the "publish pending" note in the entry below.
+  - Downtown-north path points added from Rob's export (eefc478).
+
+**Still open from Nov 9–10**
+- **#223 pin** is still marked ESTIMATED; offered to confirm it. **#221 pin** is about 92 m from Rob's photo spot.
+- **Capture v4 originals → Mac/Photos:** an unattended import hasn't been confirmed yet (see below).
+- **Next combined build (after SHINE):** declination (about −6°), `mqCardErr`, stale grid re-render, version realign, Finder button.
 
 ## 2026-11-09 (later) — Capture v4: full-size originals go to the Mac + Photos automatically; Starve fixed
 
