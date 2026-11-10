@@ -48,7 +48,7 @@
 </style>
 </head>
 <body>
-<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v5 · Nov 10</small></h1>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v6 · Nov 10</small></h1>
 <div class="sub">Stand in front of a mural, point the phone at it, tap Scan.<br><span id="ver">Data: loading…</span></div>
 
 <button id="scan">Scan</button>
@@ -299,7 +299,7 @@ function issuesFor(c) {
     out.push({ k: 'side', t: `You seem to be on the <b>${compass((c.b + 180) % 360)}</b> side of the pin; the arrow puts viewers on the <b>${compass((m.fc + 180) % 360)}</b> side.` });
   if (idx > 0)
     out.push({ k: 'rank' + (idx + 1), t: `It came up <b>${idx + 1} of ${cands.length}</b>; #${cands[0].m.id} ${esc(cands[0].m.a)} was first.` });
-  if (c.d > 30)
+  if (c.d > 15)
     out.push({ k: 'far', t: `The pin is <b>${Math.round(c.d)} m</b> from you.` });
   return out;
 }
@@ -322,21 +322,33 @@ function thatsIt() {
     const h = scan.h, p = scan.pos;
     setTimeout(() => {
       $('pane').style.display = 'none';
-      // No arrow and nothing else wrong: just offer the phone's direction as the arrow.
-      if (issues.length === 1 && issues[0].k === 'noarrow') {
-        $('ask').innerHTML = `<p class="q"><b>#${m.id} ${esc(m.a)}</b> has no arrow yet.</p>` +
-          `<p class="q">Set it to <b>look ${compass(h)} (${Math.round(h)}°)</b>, the way your phone is pointing?</p>` +
-          `<button class="fine" data-t="arrow→${Math.round(h)}">Yes, look ${compass(h)} (${Math.round(h)}°)</button>` +
-          `<button data-t="not-aimed">No, I wasn't pointed at it</button>`;
-        $('ask').querySelectorAll('button').forEach(b => b.onclick = () => { finishCheck(b.dataset.t); showDone(m); });
-        $('ask').style.display = 'block';
-        return;
+      const pinTag = `pin@${p.lat.toFixed(6)},${p.lng.toFixed(6)}±${Math.round(p.acc)}`;
+      // Only "no arrow" and/or "pin far": ask them one at a time as plain yes/no questions.
+      if (issues.every(x => x.k === 'noarrow' || x.k === 'far')) {
+        const steps = [], tags = [];
+        if (issues.some(x => x.k === 'noarrow')) steps.push({
+          q: `<b>#${m.id} ${esc(m.a)}</b> has no arrow yet.</p><p class="q">Set it to <b>look ${compass(h)} (${Math.round(h)}°)</b>, the way your phone is pointing?`,
+          yes: [`Yes, look ${compass(h)} (${Math.round(h)}°)`, `arrow→${Math.round(h)}`], no: ["No, I wasn't pointed at it", 'not-aimed'] });
+        if (issues.some(x => x.k === 'far')) steps.push({
+          q: `The pin for <b>#${m.id} ${esc(m.a)}</b> is <b>${Math.round(c.d)} m</b> from you.</p>` +
+             `<p class="q">Are you standing right in front of the mural? <b>Use this spot as its location?</b>` +
+             (p.acc > 15 ? `</p><p class="q" style="color:var(--brick)">⚠ GPS is only ±${Math.round(p.acc)} m right now, so this spot may be off too.` : ''),
+          yes: ['Yes, use this spot', pinTag], no: ['No, the pin is fine', 'pin-ok'] });
+        const next = () => {
+          const st = steps.shift();
+          if (!st) { finishCheck(tags.join(' ')); return showDone(m); }
+          $('ask').innerHTML = `<p class="q">${st.q}</p>` +
+            `<button class="fine" data-t="${st.yes[1]}">${st.yes[0]}</button><button data-t="${st.no[1]}">${st.no[0]}</button>`;
+          $('ask').querySelectorAll('button').forEach(b => b.onclick = () => { tags.push(b.dataset.t); next(); });
+          $('ask').style.display = 'block';
+        };
+        return next();
       }
       $('ask').innerHTML = `<p class="q"><b>Check #${m.id} ${esc(m.a)}</b></p>` +
         issues.map(x => `<p class="q">${x.t}</p>`).join('') +
         `<p class="q"><b>Is this mural in front of you right now?</b> What's wrong?</p>` +
         (h != null ? `<button data-t="arrow→${Math.round(h)}">${m.fc == null ? 'Set the arrow' : 'The arrow is wrong'} → <b>look ${compass(h)} (${Math.round(h)}°)</b></button>` : '') +
-        `<button data-t="pin@${p.lat.toFixed(6)},${p.lng.toFixed(6)}">The pin is in the wrong place → put it near me</button>` +
+        `<button data-t="${pinTag}">The pin is in the wrong place → use where I'm standing</button>` +
         `<button data-t="not-aimed">I wasn't pointed at it (bad scan)</button>` +
         `<button class="fine" data-t="ok">Nothing, it's all fine</button>`;
       $('ask').querySelectorAll('button').forEach(b => b.onclick = () => { finishCheck(b.dataset.t); showDone(m); });
