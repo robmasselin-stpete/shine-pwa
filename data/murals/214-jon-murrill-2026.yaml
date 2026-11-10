@@ -24,6 +24,7 @@ photos:
   - { url: "images/murals/2026/214-2026-11-08-125523.jpeg", dateTaken: "2026-11-08", caption: "Sunday Morning", gps: [27.796071, -82.647062, 23] }
   - { url: "images/murals/2026/214-2026-11-09-124603.jpeg", dateTaken: "2026-11-09", gps: [27.796023, -82.647222, 4] }
   - { url: "images/murals/2026/214-2026-11-09-124743.jpeg", dateTaken: "2026-11-09", gps: [27.795985, -82.647236, 7] }
+  - { url: "images/murals/2026/214-2026-11-10-122343.jpeg", dateTaken: "2026-11-10", caption: "Look at those eyes!", gps: [27.795982, -82.647193, 5] }
 
 underConstruction: true
 
