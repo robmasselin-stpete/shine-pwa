@@ -30,6 +30,11 @@
   #yes { background:var(--green); border-color:var(--green); color:#fff; font-size:19px; }
   #rescan { display:block; margin:0 0 0 auto; padding:10px 16px; background:none; color:var(--blue); font-weight:600; }
   #empty { display:none; background:var(--card); border-radius:10px; padding:14px; font-size:15px; }
+  #ask { display:none; background:var(--card); border-radius:10px; padding:14px; border-left:5px solid var(--brick); }
+  #ask .q { font-size:15px; margin:0 0 10px; }
+  #ask button { display:block; width:100%; text-align:left; padding:12px 14px; margin:8px 0 0; background:var(--bg);
+                color:var(--ink); border:1px solid var(--rule); font-size:15px; }
+  #ask button.fine { background:var(--green); color:#fff; border-color:var(--green); }
   #done { display:none; background:var(--card); border-radius:10px; padding:14px; }
   #done img { width:100%; border-radius:8px; display:block; }
   #done p { margin:8px 0 0; font-size:14px; }
@@ -43,7 +48,7 @@
 </style>
 </head>
 <body>
-<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v3 · Nov 10</small></h1>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v4 · Nov 10</small></h1>
 <div class="sub">Stand in front of a mural, point the phone at it, tap Scan.<br><span id="ver">Data: loading…</span></div>
 
 <button id="scan">Scan</button>
@@ -64,6 +69,7 @@
   <button id="rescan">↻ ReScan</button>
 </div>
 
+<div id="ask"></div>
 <div id="done"></div>
 
 <details id="dbg">
@@ -227,6 +233,7 @@ async function startSensors() {
 }
 
 async function doScan() {
+  finishCheck('unanswered');             // scanning again before answering still keeps the scan
   $('scan').disabled = true; $('pane').style.display = 'none'; $('empty').style.display = 'none'; $('done').style.display = 'none';
   try {
     await startSensors();                 // first, while we still have the tap
@@ -277,20 +284,66 @@ function showCands() {
       <td>${c.off == null ? '–' : Math.round(c.off)}</td><td>${c.w.toFixed(2)}</td><td>${c.side == null ? '–' : Math.round(c.side)}</td><td>${c.cost.toFixed(2)}</td></tr>`).join('');
 }
 
+// ── field check: when the confirmed mural doesn't fit the scan, ask why and log the answer ──
+// The answers are fixes for Claude to apply from the pasted log (nothing changes live from here):
+//   CHECK arrow→N  the arrow is wrong, use the way the phone pointed · CHECK pin@lat,lng  move the pin
+//   CHECK not-aimed  bad scan, leave it out of the scoring · CHECK ok  data is fine · CHECK unanswered
+let pending = null;                        // log line waiting for an answer
+function issuesFor(c) {
+  const m = c.m, h = scan.h, out = [];
+  if (h != null && m.fc != null && angDiff(h, m.fc) > 45)
+    out.push({ k: 'aim', t: `Your phone pointed <b>${compass(h)} (${Math.round(h)}°)</b>, but the arrow says <b>look ${compass(m.fc)}</b>.` });
+  if (c.side != null && c.side > 70 && c.d > 4)
+    out.push({ k: 'side', t: `You seem to be on the <b>${compass((c.b + 180) % 360)}</b> side of the pin; the arrow puts viewers on the <b>${compass((m.fc + 180) % 360)}</b> side.` });
+  if (idx > 0)
+    out.push({ k: 'rank' + (idx + 1), t: `It came up <b>${idx + 1} of ${cands.length}</b>; #${cands[0].m.id} ${esc(cands[0].m.a)} was first.` });
+  if (c.d > 30)
+    out.push({ k: 'far', t: `The pin is <b>${Math.round(c.d)} m</b> from you.` });
+  return out;
+}
+function finishCheck(tag) {
+  if (!pending) return;
+  log(pending + '  CHECK ' + tag);
+  pending = null;
+  $('ask').style.display = 'none';
+}
+
 function thatsIt() {
   const c = cands[idx], m = c.m;
   $('check').style.display = 'flex';
   // The log line doubles as field data: where you stood and which way you faced to see this wall.
-  log(`${stamp()}  #${m.id} ${m.a.slice(0, 20)}  RANK ${idx + 1}/${cands.length}  ${Math.round(c.d)} m  off ${c.off == null ? '–' : Math.round(c.off)}°  ` +
-      `${fmtPos(scan.pos)}  h ${fmtH(scan.h)}  fc ${m.fc ?? '–'}  top3 ${cands.slice(0, 3).map(x => x.m.id).join(',')}${fmtExtra(scan)}`);
-  setTimeout(() => {
+  const line = `${stamp()}  #${m.id} ${m.a.slice(0, 20)}  RANK ${idx + 1}/${cands.length}  ${Math.round(c.d)} m  off ${c.off == null ? '–' : Math.round(c.off)}°  ` +
+      `${fmtPos(scan.pos)}  h ${fmtH(scan.h)}  fc ${m.fc ?? '–'}  top3 ${cands.slice(0, 3).map(x => x.m.id).join(',')}${fmtExtra(scan)}`;
+  const issues = issuesFor(c);
+  if (issues.length) {
+    pending = line + '  why ' + issues.map(x => x.k).join(',');
+    const h = scan.h, p = scan.pos;
+    setTimeout(() => {
+      $('pane').style.display = 'none';
+      $('ask').innerHTML = `<p class="q"><b>Check #${m.id} ${esc(m.a)}</b></p>` +
+        issues.map(x => `<p class="q">${x.t}</p>`).join('') +
+        `<p class="q"><b>Is this mural in front of you right now?</b> What's wrong?</p>` +
+        (h != null ? `<button data-t="arrow→${Math.round(h)}">The arrow is wrong → <b>look ${compass(h)} (${Math.round(h)}°)</b></button>` : '') +
+        `<button data-t="pin@${p.lat.toFixed(6)},${p.lng.toFixed(6)}">The pin is in the wrong place → put it near me</button>` +
+        `<button data-t="not-aimed">I wasn't pointed at it (bad scan)</button>` +
+        `<button class="fine" data-t="ok">Nothing, it's all fine</button>`;
+      $('ask').querySelectorAll('button').forEach(b => b.onclick = () => { finishCheck(b.dataset.t); showDone(m); });
+      $('ask').style.display = 'block';
+    }, 900);
+    return;
+  }
+  log(line);
+  setTimeout(() => showDone(m), 900);
+}
+function showDone(m) {
+  {
     $('pane').style.display = 'none';
     $('done').innerHTML = `<img src="${cardUrl(latestImg(m))}" alt="">
       <div class="who">${esc(m.a)}</div><div class="what">${esc([m.t, m.loc].filter(Boolean).join(' · '))}</div>
       <p>${esc(m.sbio || m.bio || '')}</p>
       <p style="color:var(--mute)">In the app this opens the mural's detail card.</p>`;
     $('done').style.display = 'block';
-  }, 900);
+  }
 }
 
 // ── test log (this phone only) ──
