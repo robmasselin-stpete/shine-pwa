@@ -21,6 +21,7 @@ pronouns: "she/her"
 
 photos:
   - { url: "images/murals/2026/220-2026-11-09-135309.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.770154, -82.661874, 24] }
+  - { url: "images/murals/2026/220-2026-11-10-155720.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Morning", gps: [27.770094, -82.662006, 30], heading: 93 }
 
 underConstruction: true
 

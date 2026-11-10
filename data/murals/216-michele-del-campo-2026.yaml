@@ -6,6 +6,7 @@ artist: "Michele Del Campo"
 year: 2026
 lat: 27.763677   # Rob, route editor 9 Nov 2026 (was 27.764)
 lng: -82.669051
+facing: 8   # look N to see it; from the capture tool (2 photo(s)). Change it in the route editor.
 address: "2606 Fairfield Ave S"
 category: shine
 img: "images/murals/2026/shine2026-coming-soon.jpeg"
@@ -17,6 +18,12 @@ instagram: "micheledelcampo"
 basedIn: "South Florida"
 
 pronouns: "he/him"
+
+photos:
+  - { url: "images/murals/2026/216-2026-11-10-153532.jpeg", dateTaken: "2026-11-10", caption: "Start", gps: [27.763371, -82.66888, 15], heading: 9 }
+  - { url: "images/murals/2026/216-2026-11-10-153939.jpeg", dateTaken: "2026-11-10", caption: "Tuesday morning", gps: [27.763275, -82.668744, 17], heading: 8 }
+
+underConstruction: true
 
 artistBio: |
   In 2017 he started traveling with two suitcases and a tube for his canvases.
@@ -135,6 +142,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "10 November 2026 — facing (view direction) set to 8° (N) from the capture tool: the geo compass reading when Rob took 2 progress photo(s). Set by publish-content.py."
   - "9 November 2026 — Pin moved to 27.763677, -82.669051 by Rob in the route editor (he adjusted the 2026 SHINE pins after site visits). Was 27.764, -82.6685; moved about 65 m. Address unchanged."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212248-44c60495]"
   - "4 November 2026 — Address 2605 → 2606 Fairfield Ave S per the updated SPAA list (The Factory, Lucky Cup back trailside wall). Pin unchanged; it was estimated for the odd side of the street, so check it on site."
@@ -142,6 +150,7 @@ revisionLog:
   - "1 November 2026 — Bio review tool, approved by Rob: title, basedIn, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: Removed the sentence \"It lists one mural, painted in Fort Lauderdale in 2026.\" Kept \"His portfolio is almost all oil on linen.\"; searchBio: Removed the sentence \"It lists one mural: \"Where your mom came from,\" 8.05 by 9.23 meters, painted in Fort Lauderdale in 2026.\" Kept \"His portfolio is almost all oil on linen.\". Note: First Corrected Bio by Rob [review:20261101160425-4a7e332a]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #4 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: ESTIMATED (no geocoder): odd/north side of Fairfield, ~50 m from wall #5; anchors #21 Groove Haven 2655 Fairfield (27.764095,-82.66996), #25 FloridaRAMA. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Capture tool compass heading(s), 10 November 2026 (facing)"
   - "Rob, route-editor GPS export 9 Nov 2026 (SHINE 2026 pins tweaked on site)"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "SPAA SHINE Walls & Artists list, updated version given by Rob 4 Nov 2026"
