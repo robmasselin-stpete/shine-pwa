@@ -39,6 +39,12 @@
   #prompt input { width:100%; padding:9px 12px; border:1px solid #ccc; border-radius:7px; font:14px inherit; margin:8px 0; }
   #prompt button { font:14px inherit; padding:8px 16px; border-radius:7px; border:1px solid #e8663a; background:#e8663a; color:#fff; cursor:pointer; }
   .err { color:#c00; font-size:13px; margin-top:6px; }
+  .range { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:0 0 16px; }
+  .range button { font:13px inherit; padding:6px 12px; border-radius:16px; border:1px solid #e3ddd6; background:#fff; color:#1a1a1a; cursor:pointer; }
+  .range button.on { background:#e8663a; border-color:#e8663a; color:#fff; }
+  .range .custom { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-left:6px; font-size:13px; color:#777; }
+  .range input[type=date] { font:13px inherit; padding:5px 8px; border:1px solid #ccc; border-radius:7px; background:#fff; }
+  .range-label { font-size:13px; color:#777; margin:-8px 0 14px; }
 </style>
 </head>
 <body>
@@ -56,6 +62,16 @@
 
   <div id="dash" hidden>
     <div class="keybar">Key stored in this browser · <a onclick="clearKey()">change key</a> · <a onclick="load()">refresh</a></div>
+    <div class="range" id="range">
+      <button data-r="today">Today</button>
+      <button data-r="yesterday">Yesterday</button>
+      <button data-r="7">Last 7 days</button>
+      <button data-r="shine">SHINE (Nov 6–15)</button>
+      <button data-r="30">Last 30 days</button>
+      <button data-r="all">All time</button>
+      <span class="custom">From <input type="date" id="from"> to <input type="date" id="to"></span>
+    </div>
+    <div class="range-label" id="range-label"></div>
     <div class="cards" id="cards"></div>
 
     <h2>Heat map — mural opens</h2>
@@ -119,6 +135,44 @@ function showPrompt(msg) {
   if (msg) { e.textContent = msg; e.hidden = false; }
 }
 
+// ── Date range ── days are local calendar days (the Worker filters on the event time
+// shifted by this browser's time zone, so "Today" means today in St. Pete).
+const SHINE = ['2026-11-06', '2026-11-15'];
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return ymd(d); };
+function presetRange(r) {
+  if (r === 'today') return [ymd(new Date()), ymd(new Date())];
+  if (r === 'yesterday') return [daysAgo(1), daysAgo(1)];
+  if (r === '7') return [daysAgo(6), ymd(new Date())];
+  if (r === '30') return [daysAgo(29), ymd(new Date())];
+  if (r === 'shine') return SHINE;
+  return null;                                            // all time
+}
+let range = { r: 'all', from: null, to: null };
+try { const saved = JSON.parse(localStorage.getItem('mq_stats_range') || 'null'); if (saved && saved.r) range = saved; } catch (e) {}
+function setRange(next) {
+  range = next;
+  try { localStorage.setItem('mq_stats_range', JSON.stringify(range)); } catch (e) {}
+  load();
+}
+function currentBounds() {
+  if (range.r === 'custom') return range.from && range.to ? [range.from, range.to].sort() : null;
+  return presetRange(range.r);
+}
+document.querySelectorAll('#range button').forEach(b => b.addEventListener('click', () => setRange({ r: b.dataset.r })));
+['from', 'to'].forEach(id => document.getElementById(id).addEventListener('change', () => {
+  const f = document.getElementById('from').value, t = document.getElementById('to').value;
+  if (f && t) setRange({ r: 'custom', from: f, to: t });
+}));
+function showRange(b) {
+  document.querySelectorAll('#range button').forEach(x => x.classList.toggle('on', x.dataset.r === range.r));
+  document.getElementById('from').value = b ? b[0] : '';
+  document.getElementById('to').value = b ? b[1] : '';
+  const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  document.getElementById('range-label').textContent = !b ? 'Showing: all time' :
+    b[0] === b[1] ? `Showing: ${fmt(b[0])}` : `Showing: ${fmt(b[0])} – ${fmt(b[1])}`;
+}
+
 function color(frac) {
   if (frac <= 0) return '#c9c4bd';
   if (frac < 0.34) return '#f6c344';
@@ -131,7 +185,12 @@ async function load() {
   if (!key) return showPrompt();
   let d;
   try {
-    const res = await fetch(`${API}?key=${encodeURIComponent(key)}&_=${Date.now()}`);
+    const b = currentBounds();
+    showRange(b);
+    // tz = minutes east of UTC on the first day of the range (St. Pete: −240 before Nov 1, −300 after)
+    const tz = b ? -new Date(b[0] + 'T12:00:00').getTimezoneOffset() : 0;
+    const q = b ? `&from=${b[0]}&to=${b[1]}&tz=${tz}` : '';
+    const res = await fetch(`${API}?key=${encodeURIComponent(key)}${q}&_=${Date.now()}`);
     if (res.status === 401) return showPrompt('That key was rejected. Try again.');
     if (!res.ok) return showPrompt('Stats request failed (HTTP ' + res.status + ').');
     d = await res.json();
@@ -177,12 +236,21 @@ async function load() {
     return `<tr><td>${r.id}</td><td>${name}</td><td class="n">${r.n}</td></tr>`;
   }).join('');
 
-  // By-day bars (chronological)
-  const days = [...d.byDay].reverse();
+  // By-day bars (chronological). For a range, show every day in it, quiet days as empty bars.
+  let days = [...d.byDay].reverse();
+  const bb = currentBounds();
+  if (bb && d.range) {
+    const have = Object.fromEntries(days.map(x => [x.day, x]));
+    days = [];
+    for (let t = new Date(bb[0] + 'T12:00:00'); ymd(t) <= bb[1]; t.setDate(t.getDate() + 1))
+      days.push(have[ymd(t)] || { day: ymd(t), n: 0, sessions: 0 });
+  }
   const maxDay = Math.max(1, ...days.map(x => x.n));
-  document.getElementById('bars').innerHTML = days.map(x =>
-    `<div class="bar" style="height:${Math.round(x.n / maxDay * 100)}%" title="${x.day}: ${x.n} events, ${x.sessions} sessions"><span>${x.day.slice(5)}</span></div>`
-  ).join('');
+  const every = Math.ceil(days.length / 31);              // keep the date labels readable
+  document.getElementById('bars').innerHTML = days.length ? days.map((x, i) =>
+    `<div class="bar" style="height:${Math.round(x.n / maxDay * 100)}%" title="${x.day}: ${x.n} events, ${x.sessions} sessions"><span>${i % every ? '' : x.day.slice(5)}</span></div>`
+  ).join('') : '<div style="color:#999;font-size:13px">No activity in this range</div>';
+  if (bb && !d.range) document.getElementById('range-label').textContent += ' — ⚠ the analytics Worker hasn\'t been updated yet, so these are all-time numbers';
 
   // QR lead sources
   const qr = d.qrSources || [];
