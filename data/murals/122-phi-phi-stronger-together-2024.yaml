@@ -6,6 +6,7 @@ artist: Phi Phi Artland Team
 year: 2024
 lat: 27.771246
 lng: -82.662994
+facing: 90   # look E to see it; Rob, route editor 10 Nov 2026
 address: "Central Ave"
 category: commercial
 img: "images/murals/commercial/phi-phi-stronger-together.jpeg"
@@ -95,9 +96,11 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 90° (E) by Rob in the route editor (used by the Mural Finder)."
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed (as Sarah Sheppard)"
   - "30 April 2026 — Re-attributed: this mural is the 2024 St. Pete Community Mural Project by the Phi Phi Artland Team (led by Sara Salem), NOT Sarah Sheppard. Bio rewritten to describe the collaboration story per phiphiartland.com/2024."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "https://phiphiartland.com/2024"
   - "User photo with GPS 2026-03-08"
 verification:

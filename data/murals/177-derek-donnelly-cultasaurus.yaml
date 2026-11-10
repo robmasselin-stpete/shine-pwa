@@ -6,6 +6,7 @@ artist: Derek Donnelly
 year: 0
 lat: 27.774503
 lng: -82.654687
+facing: 0   # look N to see it; Rob, route editor 10 Nov 2026
 address: "269 16th St N"
 category: commercial
 img: "images/murals/commercial/derek-donnelly-cultasaurus.jpeg"
@@ -77,8 +78,10 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "10 November 2026 — Facing set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "22 April 2026 — New mural added, GPS from Rob's photo"
   - "2026-08-27 — Removed a dead furtherWork link (domain no longer resolves); it shipped in the app under Connect to Artist and led nowhere. Instagram remains as the artist link."
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "Photo by Rob 2026-04-21, GPS from EXIF"
   - "https://stpetecatalyst.com/muralist-derek-donnelly-wants-art-scene-changes/"

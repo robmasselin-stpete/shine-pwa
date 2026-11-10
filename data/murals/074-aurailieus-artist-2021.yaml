@@ -6,6 +6,7 @@ artist: Aurailieus Artist
 year: 2021
 lat: 27.764593
 lng: -82.669474
+facing: 270   # look W to see it; Rob, route editor 10 Nov 2026
 address: 600 27th St. S.
 category: shine
 img: "images/murals/2021/aurailieus-artist.jpeg"
@@ -140,6 +141,7 @@ furtherWork:
   - name: "aurailieus.com"
     url: "https://www.aurailieus.com"
 revisionLog:
+  - "10 November 2026 — Facing set to 270° (W) by Rob in the route editor (used by the Mural Finder)."
   - "28 August 2026 — Fact-check fleet: SHINE 7 was 2021 — the record's own bio already says he painted SHINE in 2021"
   - "9 April 2026 — Bio rewritten to style card v1, Claude-enhanced, Rob reviewed"
   - "2026-05-02 — Expanded searchBio (~600-1000 words) from cached source material — display bio (artistBio) unchanged."
@@ -148,6 +150,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "User photo with GPS 2026-03-08"
   - "https://www.cltampa.com/arts/seven-questions-with-mark-stevens-aka-st-petes-aurailieus-artist-12229573"
   - "https://creativepinellas.org/artist/mark-stevens/"
