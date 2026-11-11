@@ -4,8 +4,8 @@
 id: 111
 artist: Sarah Sheppard
 year: 2017
-lat: 27.771673
-lng: -82.644074
+lat: 27.771633
+lng: -82.644065
 facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: 719 Central Ave
 category: shine
@@ -122,6 +122,7 @@ muralAwards: ""
 artistAwards: "Multiple SHINE festival murals; AARP/Morean Arts Center commission"
 furtherWork:
 revisionLog:
+  - "11 November 2026 — Pin moved 4.5 m S, from 27.771673,-82.644074 to 27.771633,-82.644065: Rob's spot in front of the mural (GPS ±5 m), from a Mural Finder field check (the old pin was behind him as he looked S at the wall)."
   - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "29 August 2026 — RETRACTION of the entry below it dated the same day. The \"artist-confirmed\" provenance for \"University of North Texas\" was a MISIDENTIFICATION: Rob was thinking of **Sara Salem** (#017), who supplied her own bio — not Sarah Sheppard. There is no artist provenance for this claim and no reachable source for it either, so UNT has been REMOVED again, this time from the searchBio as well as the display bio (the Aug 28 pass had only stripped the display bio, leaving the two inconsistent). Treat the \"RESOLVED BY THE ARTIST\" entry below as void. Status: UNSUPPORTED, and now checked twice."
   - "29 August 2026 — Re-verify pass (full web search): STILL UNVERIFIED — flagged for a human check, same finding as #050 and #126. \"University of North Texas\" could not be confirmed or refuted from any fetchable source; the only trace is a search-engine summary apparently reading her LinkedIn education field. Left removed pending Rob checking her LinkedIn."
@@ -132,6 +133,7 @@ revisionLog:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 sourceNotes:
+  - "Rob, Mural Finder field check 11 Nov 2026 08:44 (pin@27.771633,-82.644065±5)"
   - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://stpeteartsalliance.org/age-friendly-st-pete-with-aarp/121-shine-aarp/611-life-reimagined-by-sarah-sheppard"
   - "https://www.visitstpeteclearwater.com/profile/life-reimagined-sarah-sheppard/140395"
