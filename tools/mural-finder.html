@@ -44,12 +44,39 @@
   td, th { text-align:left; padding:4px 3px; border-bottom:1px solid var(--rule); }
   th { font-size:11px; text-transform:uppercase; color:var(--mute); }
   #log { font:12px/1.35 ui-monospace, monospace; white-space:pre-wrap; max-height:35vh; overflow:auto; margin-top:6px; }
+  #dialbox { background:var(--card); border-radius:10px; padding:10px; margin:0 0 12px; display:grid;
+             grid-template-columns:150px 1fr; gap:10px; align-items:center; }
+  #dialbox > div { min-width:0; }
+  #dial { width:150px; height:150px; display:block; }
+  #dialtxt { font-size:13px; line-height:1.45; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+  #dialtxt b { font-size:22px; }
+  #dialbox button { width:100%; padding:10px; margin-top:6px; background:var(--bg); color:var(--blue);
+                    border:1px solid var(--blue); font-weight:600; font-size:14px; }
   .small { padding:8px 12px; background:var(--card); color:var(--ink); border:1px solid var(--rule); font-size:13px; margin:6px 6px 0 0; }
 </style>
 </head>
 <body>
-<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v7 · Nov 10</small></h1>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v8 · Nov 10</small></h1>
 <div class="sub">Stand in front of a mural, point the phone at it, tap Scan.<br><span id="ver">Data: loading…</span></div>
+
+<div id="dialbox">
+  <svg id="dial" viewBox="-100 -100 200 200" aria-label="Live compass">
+    <circle r="92" fill="none" stroke="var(--rule)" stroke-width="3"/>
+    <g fill="var(--mute)" font-size="18" font-weight="700" text-anchor="middle" dominant-baseline="central">
+      <text y="-76">N</text><text x="76">E</text><text y="76">S</text><text x="-76">W</text></g>
+    <circle id="d-uncal" r="88" fill="none" stroke="var(--brick)" stroke-width="8" opacity=".5" style="display:none"/>
+    <g id="d-mural" style="display:none"><path d="M0,-92 L-9,-74 L9,-74 Z" fill="var(--green)"/></g>
+    <g id="d-needle" style="display:none">
+      <path id="d-wedge" fill="var(--blue)" opacity=".18"/>
+      <path d="M0,-70 L6,0 L-6,0 Z" fill="var(--brick)"/><path d="M0,40 L6,0 L-6,0 Z" fill="var(--mute)"/>
+      <circle r="5" fill="var(--ink)"/></g>
+  </svg>
+  <div>
+    <div id="dialtxt">Live compass. Tap <b style="font-size:inherit">Compass on</b>, or Scan.</div>
+    <button id="compon">Compass on</button>
+    <button id="street" style="display:none">Street check</button>
+  </div>
+</div>
 
 <button id="scan">Scan</button>
 <div id="status"></div>
@@ -248,6 +275,7 @@ async function doScan() {
   $('scan').disabled = true; $('pane').style.display = 'none'; $('empty').style.display = 'none'; $('done').style.display = 'none';
   try {
     await startSensors();                 // first, while we still have the tap
+    $('compon').style.display = 'none'; $('street').style.display = '';
     if (!murals.length) { status('Loading murals…'); await loadMurals(); }
     status('Finding you…');
     const pos = await getPosition();
@@ -383,6 +411,77 @@ function showDone(m) {
 }
 
 // ── test log (this phone only) ──
+// ── live dial (test aid): red needle = where the iPhone thinks you're pointing, blue wedge =
+// its own ±accuracy (red ring = uncalibrated), green marker = the arrow of the nearest mural
+// within 30 m. Uses the last ~0.3 s of readings so it reacts quickly.
+function headingNow() {
+  if (fake) return fake.h;
+  const now = Date.now(), r = Math.PI / 180, recent = headings.filter(x => now - x.t < 300);
+  if (!recent.length) return null;
+  const s = recent.reduce((a, x) => a + Math.sin(x.h * r), 0), c = recent.reduce((a, x) => a + Math.cos(x.h * r), 0);
+  return ((Math.atan2(s, c) / r) + 360) % 360;
+}
+function nearestWithArrow() {
+  const p = fake || lastFix;
+  if (!p || !murals.length) return null;
+  let best = null;
+  for (const m of murals) {
+    if (m.fc == null) continue;
+    const { d } = distBearing(p.lat, p.lng, m.lat, m.lng);
+    if (d <= 30 && (!best || d < best.d)) best = { m, d };
+  }
+  return best;
+}
+function wedgePath(a) {
+  a = Math.min(179, Math.max(1, a));
+  const r = Math.PI / 180, R = 86, x = R * Math.sin(a * r), y = -R * Math.cos(a * r);
+  return `M0,0 L${-x},${y} A${R},${R} 0 ${a > 90 ? 1 : 0} 1 ${x},${y} Z`;
+}
+function drawDial() {
+  const h = headingNow(), ca = compassAcc(), nm = nearestWithArrow();
+  $('d-needle').style.display = h == null ? 'none' : '';
+  if (h != null) {
+    $('d-needle').setAttribute('transform', `rotate(${h})`);
+    $('d-wedge').setAttribute('d', ca != null && ca > 0 ? wedgePath(ca) : '');
+    $('d-wedge').setAttribute('fill', caccBad(ca) ? 'var(--brick)' : 'var(--blue)');
+  }
+  $('d-uncal').style.display = ca != null && ca < 0 ? '' : 'none';
+  $('d-mural').style.display = nm ? '' : 'none';
+  if (nm) $('d-mural').setAttribute('transform', `rotate(${nm.m.fc})`);
+  if (!listening && !fake) return;
+  $('dialtxt').innerHTML = h == null ? 'No compass reading yet' :
+    `<b>${Math.round(h)}° ${compass(h)}</b><br>` +
+    `iPhone sure to ${ca == null ? '– (not reported)' : ca < 0 ? '<b style="font-size:inherit;color:var(--brick)">needs calibrating</b>' :
+      (caccBad(ca) ? '<span style="color:var(--brick)">±' + Math.round(ca) + '° ⚠</span>' : '±' + Math.round(ca) + '°')}<br>` +
+    (nm ? `<span style="color:var(--green)">▲</span> #${nm.m.id} ${esc(nm.m.a.slice(0, 18))}, ${Math.round(nm.d)} m: look ${compass(nm.m.fc)} · ` +
+          `<b style="font-size:inherit">${Math.round(angDiff(h, nm.m.fc))}°</b> apart` : 'No mural with an arrow within 30 m');
+}
+setInterval(drawDial, 100);
+async function compassOn() {
+  await startSensors(); startGps();
+  $('compon').style.display = 'none'; $('street').style.display = '';
+  if (!murals.length) loadMurals().catch(() => {});
+}
+
+// ── street check: downtown streets run N–S / E–W, so hold the phone with its top edge along a
+// curb or building edge and the reading should be a cardinal point. Logs how far off it is.
+async function streetCheck() {
+  $('street').disabled = true;
+  try {
+    status('Street check: hold the top edge along the curb, still…');
+    const sp = await waitSteady();
+    const h = heading(), ca = compassAcc();
+    if (h == null) { status('Street check: no compass reading'); return; }
+    const card = Math.round(h / 90) % 4 * 90, err = ((h - card + 540) % 360) - 180;
+    const pos = fake || lastFix;
+    const line = `${stamp()}  STREET  h ${fmtH(h)}  vs ${compass(card)}  err ${err >= 0 ? '+' : ''}${Math.round(err)}°  ` +
+      `${pos ? fmtPos(pos) : 'no GPS'}  spr ${sp == null ? '–' : Math.round(sp) + '°'}` +
+      `  cacc ${ca == null ? '–' : ca < 0 ? 'uncal⚠' : Math.round(ca) + '°' + (caccBad(ca) ? '⚠' : '')}`;
+    log(line);
+    status(`Street check: ${Math.round(h)}°, ${Math.abs(Math.round(err))}° ${err >= 0 ? 'clockwise' : 'anticlockwise'} of ${compass(card)} (logged)`);
+  } finally { $('street').disabled = false; }
+}
+
 const LOG_KEY = 'mq_finder_log';
 const stamp = () => new Date().toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 const fmtPos = p => `${p.lat.toFixed(6)},${p.lng.toFixed(6)} ±${Math.round(p.acc)}`;
@@ -401,6 +500,8 @@ function log(s) {
 try { $('log').textContent = localStorage.getItem(LOG_KEY) || ''; } catch {}
 
 $('scan').onclick = doScan;
+$('compon').onclick = compassOn;
+$('street').onclick = streetCheck;
 $('rescan').onclick = doScan;
 $('prev').onclick = () => { if (idx > 0) { idx--; show(); } };
 $('next').onclick = () => { if (idx < cands.length - 1) { idx++; show(); } };
