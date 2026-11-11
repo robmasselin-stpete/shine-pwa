@@ -1,12 +1,90 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-10): facing = VIEW direction, 168 facings live, Mural Finder field-tested (Rob to re-check
-> arrows in the route editor — don't change them), stats date ranges + Rob's 5 devices left out of stats
-> (see the 2026-11-10 entry); then 2026-11-09: Mural Finder test page + wall facing system, capture v4 originals.**
+> **CURRENT (2026-11-10 evening): Mural Finder is at v8 (live compass dial + Street check) — the compass, not the
+> arrows, is the open question (see the 2026-11-10 evening entry). 195 facings live. New-mural intake (test v1) is
+> live: Rob sends from the field, Claude drafts when he says "draft the new murals". "Which Mural?" app tab decided
+> for after SHINE. Then the 2026-11-10 morning entry: facing = VIEW direction, stats date ranges, Rob's 5 devices out.**
 > v1.7.6 LIVE on both stores; Android 1.7.7 (vc19) LIVE on Play. No binary changes until after SHINE.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-10 (evening) — Finder v3–v8, 195 facings, SHINE book line, new-mural intake, compass doubts
+
+**Stats: SHINE book line (a0d15ea).** `tools/stats.html` has a SHINE book table from `byEvent`: "Opened the book page" (`book_card_tap`) and "Tapped 'To order your SHINE mural book'" (`book_buy_click`), for the chosen dates.
+- All 3 such events ever were Rob's own, so with his devices left out it reads 0.
+- The book banner only shows when the Explore filter includes SHINE.
+- Orders go through lglforms, so sales can't be seen from our side.
+
+**Facings: 195 murals now have one** (939d664 = 23 from Rob's export, incl. #9 SE→S; f57dfe7 = #74 W, #122 E, #177 N, #190 N).
+- **#216** facing 8° was filled automatically from its capture compass heading. That confirms the Capture Worker's `h` works on real sends (#216 h 9/8, #217 h 77, #220 h 93).
+- **Published by Rob:** OTA 1794345357696 (191), then 1794346117855 (195; content-meta 3b7b7d6).
+- **Rob: #4 and #176 are fine** (measurement error, not wrong arrows).
+- **Still without facing:** #153, #199, #201 (Stonehenge pillars, deliberately none — "201 not 210"), #207, #208, #226, #227. Rob: many standalone murals don't really need one.
+- Applied with a scratchpad script (`apply4.py`): `facing:` under `lng:`, a revisionLog entry and the sourceNotes line "Rob, route-editor export 10 Nov 2026 (facing)".
+
+**Mural Finder v3 → v8** (`tools/mural-finder.html`, test page on mural-tools.pages.dev; the header shows the version).
+
+| Version | Commit | What it added |
+|---|---|---|
+| v3 | 035b91b | Waits until the compass holds within ±10° for 1 s (gives up at 5 s). GPS stays on between scans, and a fix under 10 s old at ±15 m or better is used at once. Log adds `spr` (compass wander) and `v` (speed). |
+| v4 | 31b7191 | Field check after That's It! when the mural doesn't fit the scan: `aim` (phone more than 45° off the arrow), `side`, `rank N`, `far` (more than 15 m). Log tags `why …  CHECK arrow→N \| pin@lat,lng±acc \| not-aimed \| ok \| pin-ok \| unanswered`. |
+| v5 | ac4a906 | Mural with no arrow: offers the phone's direction as its arrow (`CHECK arrow→N`). |
+| v6 | 1609726 | Pin more than 15 m away: "Are you standing right in front of the mural? Use this spot as its location?" (warns if GPS is worse than ±15 m). The questions are asked one at a time. |
+| v7 | 530f84f | Logs the iPhone's own compass accuracy, `cacc` (±°, `uncal` = needs calibrating, `–` = not reported, always on Android). Warns on screen when it's over ±25° or uncalibrated. |
+| v8 | c680e98 | **Live compass dial** above Scan. **Street check** button. Both described below. |
+
+- **The dial:** a red needle (the last ~0.3 s), a wedge for the iPhone's ±accuracy (red past ±25°, plus a red ring when uncalibrated), and a green marker for the arrow of the nearest mural within 30 m, with the gap in degrees. "Compass on" starts it without a scan.
+- **Street check:** hold the phone's top edge along a curb. It logs `STREET  h N°  vs E  err ±N°  pos  spr  cacc` against the nearest cardinal point (the downtown grid runs N–S / E–W).
+- **Applying CHECK answers:** list them for Rob's approval first. For pins, show the move distance and flag big moves or weak GPS. Arrows only change when Rob says so.
+
+**Finder field test #3 (bike, 17 scans, 17:37–18:33).**
+- **Results:** 13 of 17 were first, against 37 of 55 in the car.
+- **Rob: "it often seemed that the direction is wrong, I know i was pointing in the right direction."** The log agrees, and it's the compass, not the arrows:
+
+  | | Murals | Compass vs arrow |
+  |---|---|---|
+  | Agreed | #145, #146, #65, #83, #159, #160, #162, #214 | 3–31° |
+  | Way off | #108, #43 (3 times), #113, #120, #61, #112 | 64–135° |
+
+- On every "way off" scan Rob said the arrow was fine.
+- **The bad readings came in two runs:** 17:44–17:46 and 17:55–17:59. The same block read fine at 17:46–17:47.
+- **`spr` was 0–2° throughout**, so the compass was steady and wrong. That points to magnetic interference (bike frame, steel, cars) or calibration, not shaking.
+- **The errors varied in size**, so no single correction would fix them, and snapping readings to N/E/S/W wouldn't help either.
+- **No fixes applied.** There were no arrow answers. #65 and #146 were pin-ok. The #43 "use where I'm standing" would move the pin about 4 m, so it was left alone.
+- **Next:** Rob rides with v8 — a few scans, street checks in both directions, and the bike test (needle against the frame vs 2 m away). The question is whether `cacc` flags the bad readings (then the app can warn) or not (then the finder should lean less on the compass).
+
+**Speeding up "locating me" in the real app:** use the app's already-running GPS instead of asking for a fresh fix. This is for the Which Mural? tab.
+
+**"Which Mural?" decided (after SHINE, app build).** A middle bottom-bar button with a viewfinder icon. Recorded in memory `project-wall-facing-and-finder` and `project-next-binary-fixes`.
+
+**New-mural intake, Stage 1 (8201dcc, 01ce662; Capture Worker deployed by Rob, version 32360b37).** This is for murals not yet in the app. Nothing goes live from it.
+- **Page:** `tools/new-mural.html` ("New Mural · test · v1"; card on the tools menu).
+  - Start turns on the compass and GPS. Tap 📷 and the GPS and heading are recorded at the tap.
+  - Then come an optional signature photo and notes, then Send.
+  - Photos are shrunk on the phone (2400 px mural, 1600 px signature).
+  - The key is `mq_capture_key`; the sent list is `mq_newmural_sent`.
+  - Holding the phone upright is fine: the heading is the way the camera points (Rob's own data showed it).
+- **Worker** (same `X-Capture-Key`, PRIVATE `muralquest-review` bucket):
+  - `POST /newmural` stores `newmurals/<id>/{photo.jpg, sign.jpg, meta.json}`. meta = `{id, received, shotAt, note, gps:[lat,lng,acc], heading, hasSign}`.
+  - `POST /newmurals` lists the queue.
+  - `POST /newmural/file {id, part:'photo'|'sign'}` returns an image.
+- **When Rob says "draft the new murals":**
+  1. Pull the queue.
+  2. Research the artist from the signature and notes, and write the bio and YAML in house style (no invented titles; sources in sourceNotes). Double-check every claim.
+  3. Make a printable page per mural: photo, signature, note, draft YAML, flags.
+  4. Nothing goes live without Rob.
+- **Later (Rob's choice, tomorrow or after SHINE):** agents on the server draft and verify (Stage 2/3), plus Mac auto-print. See memory `project-field-mural-intake`.
+
+**Ideas for after SHINE (memory only, not started):**
+- A tour platform for other cities and food/POI tours, with sales pop-ups (`project-tour-platform-idea`).
+- Rob: "we will start planning after we are successful with shine."
+
+**Working notes**
+- **Rob's feedback on timing:** give real minute estimates with specific caveats, not vague caution (memory `feedback-realistic-timing`).
+- **Keeping the Mac awake** while Rob rides (the photo-collector launchd job only runs when awake): `caffeinate -dims` in its own Terminal window. On a MacBook, keep the lid open.
+- **Tool deploys:** Claude can run `scripts/deploy-tools.sh` directly. Claude's `publish-content.py --tools` is blocked as a production deploy, so Rob runs publishes himself.
+- **Headless testing of the finder:** drive it from a throwaway `tools/_drive.html` through an iframe and read `<pre>` textContent, then delete the file. Never click Clear: `window.confirm` hangs headless Chrome. Headless screenshots at about 390 px cut off the right edge on every version, so screenshot at 600 px.
 
 ## 2026-11-10 — Facing = VIEW direction, 168 facings, two Finder field tests, stats date ranges, Rob's devices out of stats
 
