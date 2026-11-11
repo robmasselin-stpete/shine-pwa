@@ -1,13 +1,69 @@
 # Mural Quest — Session Handoff
 
-> **CURRENT (2026-11-10 evening): Mural Finder is at v8 (live compass dial + Street check) — the compass, not the
-> arrows, is the open question (see the 2026-11-10 evening entry). 195 facings live. New-mural intake (test v1) is
-> live: Rob sends from the field, Claude drafts when he says "draft the new murals". "Which Mural?" app tab decided
-> for after SHINE. Then the 2026-11-10 morning entry: facing = VIEW direction, stats date ranges, Rob's 5 devices out.**
+> **CURRENT (2026-11-11): New murals are now drafted automatically. A launchd job turns each New Mural send into a
+> researched, fact-checked YAML with `status: draft` (held out of the app) on the tools site. Rob reviews it in the YAML
+> editor and publishes on his command. #228–231 are drafted and held; NOT yet published (live is still 202 murals).
+> #111 pin moved, waiting on the same publish. Finder v8 field log: compass fine today. See the 2026-11-11 entry, then
+> 2026-11-10 evening (Finder v3–v8, compass doubts).**
 > v1.7.6 LIVE on both stores; Android 1.7.7 (vc19) LIVE on Play. No binary changes until after SHINE.
 > Authoritative release state + backlog live in auto-memory (`project-v1.7-in-review`,
 > `project-next-binary-fixes`, `project-android-compass-heading`), not in this file.
 > Everything below the 2026-10-01 entry is history.
+
+## 2026-11-11 — New murals drafted automatically; #228–231 drafted and held; #214 candid; #111 pin; v8 log
+
+**New murals now draft themselves (0675226, bb1adf9).** Rob: "start doing the research as soon as they are uploaded …
+then i will review with the YAML tool and then publish on my command."
+
+| Step | What happens |
+|---|---|
+| 1. Rob sends | `tools/new-mural.html` → Capture Worker `POST /newmural` → private queue (unchanged from Nov 10). |
+| 2. Watcher picks it up | `scripts/newmural_watch.py`, launchd `com.pelicandigital.muralquest.newmurals` every 10 min (installed by Rob Nov 11). Assigns the next id (max + 1, ignoring #900+), lists records within 60 m. |
+| 3. Draft | Headless `claude -p` with `scripts/newmural-draft-prompt.md`: duplicate check, reuses sibling bios, wall research, writes `data/murals/<id>-*.yaml`. |
+| 4. Check | A second, separate `claude -p` with `scripts/newmural-verify-prompt.md` fact-checks and fixes the draft. |
+| 5. Land | Checks the YAML (parses, right id, `status: draft`, sane `img:`), copies the photo to `img:`, updates `_index.json` and `data/newmural-ledger.json`, commits only those files, pushes v1.5, runs `deploy-tools.sh`, Mac notification. |
+| 6. Rob reviews | YAML editor on mural-tools.pages.dev (reload). Open questions are `⚑ For Rob:` lines in sourceNotes. |
+| 7. Release (Rob's command) | `python3 scripts/newmural_approve.py <ids> && python3 scripts/publish-content.py --tools`. approve removes `status: draft`, logs it, runs build-data → generate-cards (that order), uploads the photo + card to R2. |
+
+- **`status: draft` keeps a record out of the app:** added to `EXCLUDED_STATUSES` in build-data.py and `SKIP_STATUS` in review_sync.py. So a publish for anything else can't release an unreviewed mural. The YAML editor still shows drafts.
+- **Headless Claude's tools are limited** to Read/Write/Edit/Glob/Grep/WebSearch/WebFetch and `python3 -c`/`grep`/`ls`; git, npx and wrangler are refused. The script does the git and deploy itself.
+- **Ledger** `data/newmural-ledger.json`: one entry per queue item (drafted / duplicate / failed). A failed item is retried once more, then Rob gets a "draft failed" notification. It's seeded with today's 4, so they won't be redrafted.
+- **Work folder** `.mq-newmurals/<qid>/` (gitignored): photos, flags.txt, draft.log / verify.log. Main log: `~/Library/Logs/muralquest-newmurals.log` (it only writes when there's work or an error).
+- **Test:** `python3 scripts/newmural_watch.py --dry --only <qid> --id 9xxx [--ignore <file>]` drafts into the work folder only. Run on the Chad Mize photo:
+  - First run: it correctly flagged it as a DUPLICATE of #229 (the same photo, already drafted).
+  - With `--ignore 229-…`: it drafted in 2½ min, matching the hand draft.
+  - The verifier found "Fit 2 Run in St. Petersburg (2025)" in Mize's mural list (#58/#109 searchBio). Rob: keep the year unknown (logged in #229).
+- **Not yet proven:** the first real run from launchd (Claude login and PATH under launchd). The job's first run at install exited 0 with an empty queue. Check the log after Rob's next send.
+- **Needs the Mac awake** (`caffeinate -dims`). The notification is on the Mac only.
+- **Installing launchd jobs is blocked for Claude** ("Unauthorized Persistence"). Rob ran the `cp` + `launchctl bootstrap`. Stop it with `launchctl bootout gui/$(id -u)/com.pelicandigital.muralquest.newmurals`.
+
+**4 new murals from this morning's sends (b749ab6), all `category: commercial`, `year: 0`, `title: ""`.** Drafted by hand with agents (draft + verifier each), reviewed by Rob on the "New Murals Review" artifact (https://claude.ai/artifact/UP8GyJ6iqVSuig6xsEP7o9).
+
+| # | Artist | Where | Rob's calls |
+|---|---|---|---|
+| 228 | Palehorse & BASK | 601 1st Ave N (alley) | "it's commercial, not pre-SHINE" |
+| 229 | Chad Mize | Fit2Run side door, 801 Central Ave (8th St N side) | "side door for fit2 run, it has running theme"; year unknown |
+| 230 | Akut | Morean Arts Center parking lot, 719 Central Ave | "use Akut, keep signed ACUT in the notes" (Morean page: Acud-Akut / Acut; CL 2012: Akut = Damir Tabakovic) |
+| 231 | Vitale Bros | St. Pete Running Company, 2601 Dr. MLK Jr. St. N | "St Pete Running Company" |
+
+- **Now held as `status: draft` (0675226)** and on the tools site for the YAML editor. **Not in the app.** The build is back to 202 = live.
+- **Pins are where Rob stood.** Nudge them in the route editor. #230 is ~12 m from #011; #231 GPS was weak (±14 m).
+- **Images** are in `images/murals/commercial/` and `images/cards/commercial/`, NOT on the CDN yet. `newmural_approve.py` uploads them. (The scratchpad `upload_new4.sh` is superseded.)
+- **To release, when Rob says:** `python3 scripts/newmural_approve.py 228 229 230 231 && python3 scripts/publish-content.py --tools`. Then commit the YAMLs + `js/content-meta.js` and check live shows 206.
+- Rob may print or edit them in the YAML editor first. Apply any export as usual (keep `status: draft` unless he's releasing).
+
+**#111 pin moved 4.5 m S (71fd97b)** to 27.771633, -82.644065, Rob's Finder field-check spot ("yes, move the #111 pin"). Committed, NOT published; it goes out with the next publish.
+
+**#214 candid (published by Rob).** The Jon Murrill candid was inserted into #214's photo stack just BEFORE the latest photo, so the latest stays on top for the onion-skin lineup (scratchpad `insert_candid.py`, run by Rob; OTA v1794395531201). Rob: "lets leave it in for a while."
+
+**Finder v8, Nov 11 morning log.**
+- Every scan's compass was within 37° of the arrow, and `cacc` read ±10–25°. No bad-compass run like the Nov 10 bike test.
+- Still not done: street checks and the needle-vs-bike-frame test.
+- `cacc` is unproven until a bad-compass day is logged with v7/v8.
+
+**Working notes**
+- Rob asked why he has to type the publish commands. Claude's production publishes (publish-content.py, R2 puts to muralquest-content) are blocked by the auto-mode classifier. An allow rule in `.claude/settings.local.json` would fix it. **Offered, no answer yet; don't add it without his OK.**
+- Rob asked "why did you not start before now?" about the queued murals. The answer is now the watcher; before it, drafting only happened when asked.
 
 ## 2026-11-10 (evening) — Finder v3–v8, 195 facings, SHINE book line, new-mural intake, compass doubts
 
