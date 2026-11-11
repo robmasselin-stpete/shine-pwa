@@ -2,6 +2,7 @@
 
 # ── Required ──
 id: 230
+status: draft   # New Mural intake — held out of the app until Rob approves
 artist: Akut
 year: 0
 lat: 27.77154     # where Rob STOOD, not the wall — nudge onto the wall in the route editor
@@ -87,6 +88,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "11 November 2026 — Held as status: draft (out of the app) until Rob approves it for release; on the tools site for review in the YAML editor."
   - "11 November 2026 — Added to the app after Rob's review of the draft (New Mural intake)."
   - "11 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude"
   - "11 November 2026 — Verifier pass: signature confirmed as ACUT...; dropped unsupported \"lower right\" position; softened Morean west-wall claims to Akut's own statement (fence runs along the west side of the main building, not the wall itself); removed \"the Morean counts him\" and the \"pyramids are still here\" link to the 2012 warehouse wall; reworded near-copied Morean phrasing; \"striped pyramid\" → \"striped wedge\" to match the photo"

@@ -1,0 +1,30 @@
+{
+  "20261111T133912-gadw": {
+    "id": 228,
+    "status": "drafted",
+    "file": "data/murals/228-palehorse-bask-alley-commercial.yaml",
+    "at": "2026-11-11T15:00:00",
+    "by": "hand (interactive session)"
+  },
+  "20261111T134706-2392": {
+    "id": 229,
+    "status": "drafted",
+    "file": "data/murals/229-chad-mize-fit2run-commercial.yaml",
+    "at": "2026-11-11T15:00:00",
+    "by": "hand (interactive session)"
+  },
+  "20261111T134852-whjq": {
+    "id": 230,
+    "status": "drafted",
+    "file": "data/murals/230-akut-morean-commercial.yaml",
+    "at": "2026-11-11T15:00:00",
+    "by": "hand (interactive session)"
+  },
+  "20261111T135611-1mv6": {
+    "id": 231,
+    "status": "drafted",
+    "file": "data/murals/231-vitale-bros-st-pete-running-commercial.yaml",
+    "at": "2026-11-11T15:00:00",
+    "by": "hand (interactive session)"
+  }
+}

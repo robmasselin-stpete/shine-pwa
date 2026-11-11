@@ -113,7 +113,9 @@ def load_murals():
     # Buckets:
     #   research      — unidentified artists / awaiting more info
     #   painted-over  — wall no longer exists (preserved for history)
-    EXCLUDED_STATUSES = {'research', 'painted-over'}
+    # 'draft' = a New Mural intake draft awaiting Rob's review (scripts/newmural_watch.py); kept
+    # out of the app until scripts/newmural_approve.py removes the line.
+    EXCLUDED_STATUSES = {'research', 'painted-over', 'draft'}
     for status in sorted(EXCLUDED_STATUSES):
         bucket = [m for m in murals if m.get('status') == status]
         if bucket:

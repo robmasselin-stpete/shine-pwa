@@ -51,7 +51,7 @@ BLOCK_FIELDS = {'artistBio', 'searchBio', 'muralInspiration', 'searchMuralDescri
 # Where a missing key gets inserted (after this key's block).
 INSERT_AFTER = {'searchBio': 'artistBio', 'pronouns': 'basedIn',
                 'furtherWork': 'artistAwards', 'basedIn': 'instagram'}
-SKIP_STATUS = {'research', 'painted-over'}
+SKIP_STATUS = {'research', 'painted-over', 'draft'}
 
 
 def norm(s):

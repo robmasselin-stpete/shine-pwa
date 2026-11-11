@@ -71,3 +71,6 @@ android/keystore.properties
 .mq-held/
 .mq-capture-key
 .mq-play-key.json
+
+# New Mural intake work folder (photos, logs) — scripts/newmural_watch.py
+.mq-newmurals/

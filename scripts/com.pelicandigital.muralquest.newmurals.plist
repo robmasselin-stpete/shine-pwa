@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Runs scripts/newmural_watch.py every 10 minutes: each new New Mural intake → a researched,
+     fact-checked draft YAML (status: draft, NOT in the app) on the tools site + a Mac notification.
+     Install:  cp scripts/com.pelicandigital.muralquest.newmurals.plist ~/Library/LaunchAgents/ &&
+               launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.pelicandigital.muralquest.newmurals.plist
+     Stop:     launchctl bootout gui/$(id -u)/com.pelicandigital.muralquest.newmurals
+     Log:      ~/Library/Logs/muralquest-newmurals.log -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.pelicandigital.muralquest.newmurals</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/robasselin/shine-pwa/scripts/newmural_watch.py</string>
+  </array>
+  <key>StartInterval</key><integer>600</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>/Users/robasselin/Library/Logs/muralquest-newmurals.log</string>
+  <key>StandardErrorPath</key><string>/Users/robasselin/Library/Logs/muralquest-newmurals.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>/Users/robasselin/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>PYTHONWARNINGS</key><string>ignore</string>
+  </dict>
+</dict>
+</plist>

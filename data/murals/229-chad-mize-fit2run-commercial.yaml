@@ -2,6 +2,7 @@
 
 # ── Required ──
 id: 229
+status: draft   # New Mural intake — held out of the app until Rob approves
 artist: Chad Mize
 year: 0
 lat: 27.771498
@@ -80,6 +81,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "11 November 2026 — Held as status: draft (out of the app) until Rob approves it for release; on the tools site for review in the YAML editor."
   - "11 November 2026 — Added to the app after Rob's review of the draft (New Mural intake)."
   - "11 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude"
   - "11 November 2026 — Verifier pass: address set to '801 Central Ave (8th St N side)' (door faces 8th St N, OSM reverse geocode 32 8th St N); added sourceNote that artistBio is Chad Mize's own bio as sent 14 May 2026 (verbatim in #196/#116/#58); all four Fit2Run/Camden URLs re-checked and support the claims; searchMuralDescription checked against the photo"

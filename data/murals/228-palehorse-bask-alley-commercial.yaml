@@ -2,6 +2,7 @@
 
 # ── Required ──
 id: 228
+status: draft   # New Mural intake — held out of the app until Rob approves
 artist: "Palehorse & BASK"
 year: 0
 lat: 27.7717      # Rob's standing position (±10 m), NOT the wall — nudge in the route editor
@@ -85,6 +86,7 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "11 November 2026 — Held as status: draft (out of the app) until Rob approves it for release; on the tools site for review in the YAML editor."
   - "11 November 2026 — Added to the app after Rob's review of the draft (New Mural intake)."
   - "11 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude"
   - "11 November 2026 — Verifier pass: searchMuralDescription corrected to the photo (eyes are pale under pink brows, not pink; palette includes lilac/lime; background is stepped zigzag bands, not cubes; drainpipe noted); artistBio 'worn textures' softened to the sourced 'rich textures' and closing line aligned. Bio claims re-checked against 117/121/134/209 and Parlor Gallery; no Aug 2026 errors (Shinedown, SHINE year, shown-at vs collected-by) reintroduced. Second wall search found nothing."
