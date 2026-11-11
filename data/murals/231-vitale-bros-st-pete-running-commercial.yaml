@@ -1,0 +1,96 @@
+# Vitale Bros — St. Pete Running Company (commercial) — DRAFT from New Mural intake
+
+# ── Required ──
+id: 231
+artist: Vitale Bros
+year: 0
+lat: 27.795798
+lng: -82.646432
+facing: 0   # look N to see it; Rob, New Mural intake 11 Nov 2026
+address: "2601 Dr. MLK Jr. St. N"
+category: commercial
+img: "images/murals/commercial/vitale-bros-st-pete-running-company.jpeg"
+
+# ── Optional ──
+title: ""
+building: "St. Pete Running Company"
+instagram: vitalebros
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Vitale Bros — family tradition since 1992"
+  - "Painted for a running store with a coffee bar"
+  - "Local St. Pete legends"
+
+artistBio: |
+  Their first mural came from a sketch on a paper napkin, handed to a restaurant
+  owner. That was 1992.
+
+  Johnny Vitale and his brother Paul started Vitale Bros in Tampa Bay
+  hand-lettering signs and painting storefront windows. Their parents are
+  artists. So were their grandparents. No formal training — just family
+  tradition and thirty-plus years of practice. Their late aunt Nancy, who had
+  Down syndrome and attended Parc Center for Disabilities, turned out to be an
+  artist too, discovered in her final decade.
+
+  In the late 1990s they opened a warehouse studio that hosted group art, music,
+  and fashion shows that helped birth St. Pete's emerging art scene. They
+  collaborated on set design for Harmony Korine's Spring Breakers. They have
+  painted for the Tampa Bay Rays, the Buccaneers, L'Oreal, and dozens of local
+  businesses. They call themselves the "mural police" — restoring damaged walls
+  around the city for free.
+
+  In 2023, Johnny launched Overspray, a street art shop and graffiti school now
+  based in Gulfport, teaching tagging, block letters, Wildstyle, and advanced
+  mural technique to classes of up to twenty students. After Hurricane Milton,
+  they painted free signs for businesses that lost theirs.
+
+  They have been involved with SHINE since its inception — "The Cool Kids" in
+  2015, "Bait and Switch" in 2019, and multiple walls since. For SHINE Origins 2025, Johnny painted two murals: a solo wall on the 600
+  block where it all began, and another at The Factory on Fairfield Ave South
+  shared with his collaborator Sionna Sio MacLeish.
+
+searchBio: |
+  See Vitale Bros entries (ids 11, 12, 27, 73, 129, 142, 156, 174, 208) for
+  full search bio. This wall is on the St. Pete Running Company store at 2601
+  Dr. MLK Jr. St. N, the shop's second location (with a coffee bar), which
+  opened in December 2025 with a grand opening on 11 January 2026.
+
+searchMuralDescription: |
+  A long single-storey building side painted edge to edge in bold pop-art
+  colour: overlapping rainbow arcs, halftone dots, geometric blocks, a
+  yellow lightning bolt and sunburst stripes. "Believe. Achieve." is lettered in
+  large white script across a black panel in the centre. On the left, three
+  running silhouettes in green, maroon and blue run in a line, with a white
+  bird-like swoosh shape above them. On the right, a large white coffee cup
+  with heart latte art sits on a saucer, carrying the St. Pete Running Company
+  logo. Signed "Vitale Bros." at bottom left; small white text at bottom right
+  begins "Mural prov…".
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "SHINE festival artist since 2015; set design for Spring Breakers (Harmony Korine)"
+
+furtherWork:
+  - name: "vitalebrothers.com"
+    url: "https://vitalebrothers.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "11 November 2026 — Added to the app after Rob's review of the draft (New Mural intake)."
+  - "11 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude"
+  - "11 November 2026 — Verifier pass: description corrected to the photo (no checkerboard; one lightning bolt, not several); address, opening dates, coffee bar and GPS block re-confirmed against sources; artist bio identical to 156"
+sourceNotes:
+  - "Rob, 11 Nov 2026: building name 'St. Pete Running Company'"
+  - "Rob, New Mural intake 11 Nov 2026 (20261111T135611-1mv6): photo, signature photo, GPS 27.795798,-82.646432 ±14 m, heading 1°"
+  - "Rob: side of the St. Pete Running Company building; wall says 'mural provided by Hoka'"
+  - "GPS is weak (±14 m) and is where Rob stood, across the street from the wall — not the wall itself"
+  - "Artist from on-wall signature 'Vitale Bros.' (bottom left; signature photo)"
+  - "Wall text bottom right reads 'Mural prov…' in Rob's photo; the rest is hidden by the bike rack on a parked SUV. 'Hoka' is Rob's on-site reading, not visible in the photo"
+  - "Address 2601 Dr. MLK Jr. St. N, second location with coffee bar, soft open Dec 2025, grand opening 11 Jan 2026: https://stpetecatalyst.com/st-pete-running-company-to-celebrate-new-location-sunday/"
+  - "Same address and coffee bar: https://995qyk.com/2026/01/09/st-pete-running-company-opens-second-location-with-coffee-bar/"
+  - "Planned site at Dr. MLK Jr. St. N and 27th Ave; first store at 6986 22nd Ave N: https://stpetecatalyst.com/zaps/st-pete-running-co-to-open-new-store-coffee-bar"
+  - "Store carries Hoka (Charley's World segment, 27 Apr 2026): https://www.fox13news.com/video/fmc-o00gje6n6p6b9xn9"
+  - "Nominatim reverse geocode of Rob's GPS: The Law Building, 2639 Dr. MLK Jr. St. N (neighbouring building; confirms the block): https://nominatim.openstreetmap.org/reverse?lat=27.7962&lon=-82.6464&format=json"
+  - "Vitale Bros artist bio reused from sibling records (156, 174); no source found for this specific wall's date, title or sponsor"

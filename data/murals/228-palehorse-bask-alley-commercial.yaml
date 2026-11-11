@@ -1,0 +1,100 @@
+# Palehorse & BASK — 600 block alley (commercial) — DRAFT, not yet in data/murals/
+
+# ── Required ──
+id: 228
+artist: "Palehorse & BASK"
+year: 0
+lat: 27.7717      # Rob's standing position (±10 m), NOT the wall — nudge in the route editor
+lng: -82.642102
+facing: 273   # look W to see it; Rob, New Mural intake 11 Nov 2026
+address: "601 1st Ave N (alley)"
+category: commercial
+img: "images/murals/commercial/palehorse-bask-600-block-alley.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: palehorse
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Two signatures on one wall: Pale Horse and BASK"
+  - "Palehorse co-founded SHINE with his wife Michelle"
+  - "BASK fled communist Czechoslovakia as a child"
+
+artistBio: |
+  One of them co-founded SHINE. The other painted a wall in its first year.
+  Both names are signed on this one: "Pale Horse" stacked over "BASK."
+
+  Chris Parks — Palehorse — earned a BA in Graphic and Interactive
+  Communication from Ringling College of Art and Design. His intricate
+  illustration draws on Eastern mysticism, sacred iconography and global
+  mythologies, and his practice is rooted in Kriya Yoga. He has designed gig
+  posters for Foo Fighters, Queens of the Stone Age, Iggy Pop and Jimi Hendrix,
+  and co-founded SHINE with his wife Michelle in 2015.
+
+  Ales Bask Hostomsky — BASK, for "Because Art Should Kill" — fled communist
+  Czechoslovakia as a child and grew up in Florida. He is self-taught. His work
+  explores the parallels between state propaganda and American consumerism, in
+  mixed media with rich textures. His art appeared in Iron Man 3, and he
+  painted for SHINE in 2015 and 2020.
+
+  The striped fur, the flower crown and the stepped zigzag behind it all meet
+  in one face, on a lime-green wall off the 600 block alley.
+
+searchBio: |
+  See Palehorse entries (ids 117, 121) and BASK entries (ids 134, 209) for the
+  full search bios.
+
+  Chris Parks works as Palehorse (also styled Pale Horse) and is based in St.
+  Petersburg, Florida. Ringling College of Art and Design graduate (BA, Graphic
+  and Interactive Communication); co-founder, with his wife Michelle, of the
+  SHINE Mural Festival in 2015. Gig posters for Foo Fighters, Queens of the
+  Stone Age, Iggy Pop and Jimi Hendrix; shown at the Dali Museum; co-created the
+  FloridaRAMA immersive art experience. Instagram @palehorse.
+
+  Ales Bask Hostomsky works as BASK — "Because Art Should Kill." Born in
+  Czechoslovakia, he fled the communist state as a child and grew up in Florida.
+  Self-taught; mixed media on wood and canvas; "anti-iconic" imagery that
+  deconstructs media. His work appeared in Iron Man 3 and has been shown at the
+  Florida International Museum; Jacksonville Museum of Modern Art permanent
+  collection. SHINE 2015 and 2020. Instagram @knownasbask.
+
+searchMuralDescription: |
+  A large beast's face, gorilla-like, fills a lime-green cinder-block wall. A
+  pink flower with a single eye at its centre sits on its head like a crown,
+  among braided pink, pale-blue and lime leaves. Its fur, mane and beard are
+  drawn in flowing stripes of pale blue, pink, lilac and lime outlined in black
+  and white; its pale eyes sit under heavy pink brows. Behind it, black panels
+  carry stepped zigzag bands striped in pink, blue, lilac and lime that read as
+  3D blocks. Pink and black splashes run across the green wall on the left,
+  where "Pale Horse" and "BASK" are signed one above the other. A small sticker
+  sits on the zigzag pattern at right, and a drainpipe crosses the top of the
+  face. The wall faces east onto a sand-and-gravel lot.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Palehorse: SHINE Mural Festival co-founder (2015); BASK: SHINE 2015 and 2020"
+
+furtherWork:
+  - name: "palehorsedesign.com"
+    url: "https://palehorsedesign.com/about/"
+  - name: "knownasbask.com"
+    url: "https://www.knownasbask.com/"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "11 November 2026 — Added to the app after Rob's review of the draft (New Mural intake)."
+  - "11 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude"
+  - "11 November 2026 — Verifier pass: searchMuralDescription corrected to the photo (eyes are pale under pink brows, not pink; palette includes lilac/lime; background is stepped zigzag bands, not cubes; drainpipe noted); artistBio 'worn textures' softened to the sourced 'rich textures' and closing line aligned. Bio claims re-checked against 117/121/134/209 and Parlor Gallery; no Aug 2026 errors (Shinedown, SHINE year, shown-at vs collected-by) reintroduced. Second wall search found nothing."
+  - "11 November 2026 — Wall-specific search (artists' sites, SPAA, Creative Loafing, Street Art Cities, general web) found no record of this wall: title, year and commissioner unverified; artist bios reused from ids 117/121 (Palehorse) and 134/209 (BASK)"
+sourceNotes:
+  - "Rob, 11 Nov 2026: commercial, not pre-SHINE"
+  - "Rob, New Mural intake 11 Nov 2026 (20261111T133912-gadw): photo, signature photo, GPS 27.7717,-82.642102 ±10 m, heading 273°"
+  - "Attribution from the on-wall signature 'Pale Horse / BASK' (signature photo) and Rob's note 'Pale horse and bask'"
+  - "Address: OpenStreetMap Nominatim reverse geocode of Rob's GPS → inside the Courthouse Square footprint, 600 1st Ave N; neighbouring record #129 (4 m) uses 601 1st Ave N — https://nominatim.openstreetmap.org/reverse?lat=27.7717&lon=-82.642102&format=jsonv2"
+  - "Palehorse bio facts: data/murals/117-palehorse-2020.yaml, 121-palehorse-bayboro-commercial.yaml; https://palehorsedesign.com/about/; https://stpeteartsalliance.org/palehorse"
+  - "BASK bio facts: data/murals/134-bask-2014.yaml, 209-bask-overspray-art-should-kill.yaml; https://stpeteartsalliance.org/bask-2020; https://www.parlor-gallery.com/artists/bask/; https://www.knownasbask.com/"
+  - "Verifier 11 Nov 2026: https://www.parlor-gallery.com/artists/bask/ confirms Czechoslovakia → Florida with his parents, propaganda vs consumer advertising, shown at Florida International Museum and Jacksonville MoMA (permanent collection); https://palehorsedesign.com/about/ confirms SHINE co-founder, Dali Museum, Foo Fighters/QOTSA/Hendrix posters, Kriya Yoga. stpeteartsalliance.org/bask-2020 and /palehorse now return 404 (cached facts kept via siblings)."
+  - "Searched, no mention of this wall: https://www.cltampa.com/arts/st-petes-state-lines-mural-was-never-meant-to-be-but-a-new-one-will-adorn-the-state-theatre-again-soon-12309934 (Dec 2019, 600 block murals); https://streetartcities.com/cities/st-petersburg-fl/markers/c98f3b42-2a2c-47a1-b99d-fa1630634d3f (BASK 2020 SHINE wall, not this one)"

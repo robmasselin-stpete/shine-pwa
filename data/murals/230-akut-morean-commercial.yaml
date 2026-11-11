@@ -1,0 +1,101 @@
+# Akut — west wall, Morean Arts Center (commercial) — DRAFT from New Mural intake
+
+# ── Required ──
+id: 230
+artist: Akut
+year: 0
+lat: 27.77154     # where Rob STOOD, not the wall — nudge onto the wall in the route editor
+lng: -82.644534
+facing: 96   # look E to see it; Rob, New Mural intake 11 Nov 2026
+address: "719 Central Ave (parking lot beside the Morean Arts Center)"
+category: commercial
+img: "images/murals/commercial/akut-morean-west-wall.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Morean Arts Center"
+basedIn: "Tampa Bay, FL"
+
+fieldNotes:
+  - "Started painting graffiti in Berlin at 12"
+  - "Signed ACUT, white on blue, low on the fence"
+  - "He counts his Morean work as part of its outdoor art gallery"
+
+artistBio: |
+  He started on the streets of Berlin at twelve. Years later he left his
+  mark on the Morean Arts Center's outdoor gallery.
+
+  Akut — Damir Tabakovic — is a graffiti artist based in Tampa Bay. He
+  gathers ideas on the road, from buildings and from nature, and the
+  results are abstract: bold color, hard angles, forms that read as birds one
+  second and shards the next.
+
+  In 2012 he and Center One painted a huge storm-and-lightning wall on a
+  warehouse at 24th Street South and 5th Avenue South, one of the first
+  pieces in the Warehouse Arts District's push to put art on the street. His
+  part was a pyramid of red-orange arrows and blue diamonds built out of the
+  letters of his name.
+
+  By his own account he helped build the Morean's outdoor gallery. He took
+  part in both of its Leave a Message shows, in 2012 and 2015, and in 2017
+  the Morean picked him for 100 Years 100 Artists, its centennial roll call.
+
+  He says he painted the west side of the Morean's main building. This fence
+  runs along that side, and it carries his tag, ACUT, low on the metal.
+
+searchBio: |
+  Akut, also written Acut, is the tag of Damir Tabakovic, a graffiti artist
+  living in Tampa Bay, Florida. Not to be confused with Akut (Falk Lehmann) of
+  the German duo Herakut. Tabakovic began painting graffiti on the streets of
+  Berlin, Germany, at age 12. He travels extensively and draws on architecture
+  and natural elements for abstract work marked by bold color and unusual
+  form, found in public places and private collections.
+
+  In March 2012 Akut and Center One (Chris James) painted a large mural on a
+  commercial warehouse at 24th Street South and 5th Avenue South in St.
+  Petersburg's Warehouse Arts District, in a project set in motion by glass
+  artist Duncan McClellan and sculptor Dan Painter, with invitations issued by
+  Central Art Supply owner Pat Jennings. The wall showed a dark landscape of
+  storm clouds and lightning with homages to neighbouring studios; Akut's
+  contribution was a pyramidal mass of red-orange arrows and blue diamonds
+  based on the letters of his name.
+
+  By his own account, at the Morean Arts Center he created the art on the
+  west side wall of the main building and collaborated with the artist Dolla on the north wall of the
+  Hot Shop. He exhibited in the Morean's Leave a Message exhibitions in 2012
+  and 2015, and was one of the artists in 100 Years 100 Artists (May 13 –
+  June 25, 2017), the exhibition marking the Morean's centennial.
+
+searchMuralDescription: |
+  A long spray-painted mural on a corrugated-metal fence along a gravel
+  parking lot, with the white Morean Arts Center building and its red "m" logo
+  rising behind it. Sharp, angular, origami-like birds and shard figures in
+  red, orange, yellow, pink and teal fly across the wall. Behind them are dark
+  misty mountain ridges and big triangle and pyramid shapes — a yellow
+  triangle on the left, a pink-and-grey striped wedge in the middle, and a
+  teal pyramid with a dark sky on the right. The signature "ACUT..." is
+  painted in white on a blue band low on the fence.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Selected for the Morean Arts Center's 100 Years 100 Artists centennial exhibition (2017)"
+
+furtherWork:
+  - name: "Morean Arts Center — 100 Years 100 Artists: Acud-Akut"
+    url: "https://moreanartscenter.org/morean-arts-center-location/past-exhibits-2/100-years-100-artists/acud-akut/"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "11 November 2026 — Added to the app after Rob's review of the draft (New Mural intake)."
+  - "11 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude"
+  - "11 November 2026 — Verifier pass: signature confirmed as ACUT...; dropped unsupported \"lower right\" position; softened Morean west-wall claims to Akut's own statement (fence runs along the west side of the main building, not the wall itself); removed \"the Morean counts him\" and the \"pyramids are still here\" link to the 2012 warehouse wall; reworded near-copied Morean phrasing; \"striped pyramid\" → \"striped wedge\" to match the photo"
+sourceNotes:
+  - "Rob, 11 Nov 2026: show the artist as Akut; keep 'signed ACUT' in the notes (the Morean's own page spells him Acud-Akut / Acut)"
+  - "Rob, 11 Nov 2026: the Morean fence is Akut ('pretty sure')"
+  - "Rob, New Mural intake 11 Nov 2026 (20261111T134852-whjq): photo, signature photo, GPS 27.77154,-82.644534 ±4 m, heading 96°"
+  - "Rob: outside the Morean Arts Center"
+  - "Signature on the wall reads ACUT... (white on blue, low on the fence; exact position along the wall not visible in the main photo) — read from Rob's signature photo"
+  - "https://moreanartscenter.org/morean-arts-center-location/past-exhibits-2/100-years-100-artists/acud-akut/ — Akut/Acut bio: Tampa Bay, Berlin at 12, architecture + nature, his quote: west side wall of the main building, Hot Shop north wall with Dolla, Leave a Message 2012 + 2015"
+  - "https://moreanartscenter.org/morean-arts-center-location/past-exhibits-2/100-years-100-artists/ — 100 Years 100 Artists, May 13 – June 25, 2017, Morean centennial"
+  - "https://www.cltampa.com/arts/taking-it-to-the-streets-new-public-art-muses-12235564/ — Creative Loafing, Megan Voeller, 29 Mar 2012: Akut aka Damir Tabakovic; warehouse mural with Center One at 24th St S & 5th Ave S"
