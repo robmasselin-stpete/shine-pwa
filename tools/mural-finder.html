@@ -48,7 +48,7 @@
 </style>
 </head>
 <body>
-<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v6 · Nov 10</small></h1>
+<h1>Mural Finder <small style="font-weight:400;color:var(--mute)">test · v7 · Nov 10</small></h1>
 <div class="sub">Stand in front of a mural, point the phone at it, tap Scan.<br><span id="ver">Data: loading…</span></div>
 
 <button id="scan">Scan</button>
@@ -113,7 +113,8 @@ function compassHeadingFrom(e) {
 }
 function onOrient(e) {
   const h = compassHeadingFrom(e);
-  if (h != null) headings.push({ t: Date.now(), h });
+  // iOS also says how sure it is: ± degrees, or -1 when it needs calibrating (Android: none).
+  if (h != null) headings.push({ t: Date.now(), h, ca: e.webkitCompassAccuracy });
   if (headings.length > 200) headings.splice(0, 100);
 }
 // Circular mean of the last second of readings (plain averaging breaks across 0°/360°).
@@ -133,6 +134,16 @@ function spread() {
   if (m == null || recent.length < 3) return null;
   return Math.max(...recent.map(x => angDiff(x.h, m)));
 }
+// iPhone's own compass accuracy over the last second: the worst value, -1 = uncalibrated,
+// null = not reported (Android). Logged as cacc so a steady-but-wrong reading can be told apart.
+function compassAcc() {
+  if (fake) return null;
+  const now = Date.now(), v = headings.filter(x => now - x.t < 1000 && x.ca != null).map(x => x.ca);
+  if (!v.length) return null;
+  return v.some(x => x < 0) ? -1 : Math.max(...v);
+}
+const CACC_WARN = 25;                     // ± degrees above this → tell Rob to calibrate
+const caccBad = ca => ca != null && (ca < 0 || ca > CACC_WARN);
 // Pressing Scan before the phone is on the wall reads the wrong way, so wait until the
 // compass has held within ±10° for a full second (give up after 5 s and say so in the log).
 async function waitSteady() {
@@ -242,11 +253,12 @@ async function doScan() {
     const pos = await getPosition();
     status('Hold still, pointed at the mural…');
     const sp = await waitSteady();
-    const h = heading();
+    const h = heading(), ca = compassAcc();
     cands = rank(pos, h); idx = 0;
-    scan = { at: new Date(), pos, h, sp, cands };
+    scan = { at: new Date(), pos, h, sp, ca, cands };
     status(`GPS ±${Math.round(pos.acc)} m · facing ${h == null ? 'unknown (no compass)' : Math.round(h) + '° ' + compass(h)}` +
-      (sp != null && sp > 10 ? ` · ⚠ compass never settled (±${Math.round(sp)}°)` : ''));
+      (sp != null && sp > 10 ? ` · ⚠ compass never settled (±${Math.round(sp)}°)` : '') +
+      (caccBad(ca) ? ` · ⚠ compass unsure (${ca < 0 ? 'needs calibrating' : '±' + Math.round(ca) + '°'}): move away from metal, wave the phone in a figure-8, ReScan` : ''));
     showCands();
     if (!cands.length) {
       $('empty').innerHTML = `<b>No murals within ${Math.max(RADIUS, Math.round(pos.acc * 3))} m.</b><br>
@@ -376,8 +388,10 @@ const stamp = () => new Date().toLocaleString([], { month: 'short', day: 'numeri
 const fmtPos = p => `${p.lat.toFixed(6)},${p.lng.toFixed(6)} ±${Math.round(p.acc)}`;
 const fmtH = h => h == null ? '–' : Math.round(h) + '°';
 // spr = how far the compass wandered in the last second (⚠ = never settled);
-// v = GPS speed in m/s, so scans made while still rolling stand out.
+// v = GPS speed in m/s, so scans made while still rolling stand out;
+// cacc = iPhone compass accuracy ±° (uncal = needs calibrating, ⚠ = over CACC_WARN, – = not reported).
 const fmtExtra = sc => `  spr ${sc.sp == null ? '–' : Math.round(sc.sp) + '°' + (sc.sp > 10 ? '⚠' : '')}` +
+  `  cacc ${sc.ca == null ? '–' : sc.ca < 0 ? 'uncal⚠' : Math.round(sc.ca) + '°' + (caccBad(sc.ca) ? '⚠' : '')}` +
   `  v ${sc.pos.v == null || isNaN(sc.pos.v) ? '–' : sc.pos.v.toFixed(1)}`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 function log(s) {
