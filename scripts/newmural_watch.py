@@ -198,7 +198,27 @@ def process(item, mural_id, dry, ignore=None):
     reply = run_claude(fill('newmural-draft-prompt.md', out=out_hint, **common) + test, 'draft', folder)
     flag_text = open(flags).read() if os.path.exists(flags) else ''
     if 'DUPLICATE' in reply or flag_text.startswith('DUPLICATE'):
-        return {'status': 'duplicate', 'note': (flag_text or reply)[:300]}
+        m = re.search(r'DUPLICATE:?\s*#?(\d+)', flag_text + ' ' + reply)
+        dup = int(m.group(1)) if m else None
+        rec = load_json(INDEX, {}).get(str(dup)) if dup else None
+        drec = yaml.safe_load(open(os.path.join(MURALS, rec))) if rec else {}
+        if drec.get('status') != 'research' or dry:
+            where = 'drafted, waiting for your review' if drec.get('status') == 'draft' else 'in the app'
+            return {'status': 'duplicate', 'of': dup, 'where': where, 'note': (flag_text or reply)[:300]}
+        # The match is a record held back as `research` (artist etc. unknown): Rob's new photos are a
+        # lead. Research it into that record, which becomes a draft for his review.
+        out = os.path.join(MURALS, rec)
+        if os.path.exists(flags):
+            os.rename(flags, flags.replace('.txt', '-duplicate.txt'))
+        common['id'] = dup
+        run_claude(fill('newmural-lead-prompt.md', out=out, **common), 'lead', folder)
+        run_claude(fill('newmural-verify-prompt.md', out=out, **common), 'verify', folder)
+        d = yaml.safe_load(open(out))
+        if d.get('id') != dup or d.get('status') != 'draft':
+            raise RuntimeError(f'{out}: id/status wrong after lead (id={d.get("id")}, status={d.get("status")})')
+        flag_text = open(flags).read() if os.path.exists(flags) else ''
+        return {'status': 'lead', 'of': dup, 'file': os.path.relpath(out, ROOT), 'artist': d.get('artist'),
+                'flags': flag_text.strip().count('\n') + 1 if flag_text.strip() else 0}
 
     if dry:
         out = os.path.join(folder, 'draft.yaml')
@@ -288,25 +308,33 @@ def run(a):
         log(f'  {res}')
         if a.dry:
             continue
-        ledger[qid] = {'id': mural_id, **res, 'at': datetime.datetime.now().isoformat(timespec='seconds')}
+        ledger[qid] = {'id': res.get('of') or mural_id, **res,
+                       'at': datetime.datetime.now().isoformat(timespec='seconds')}
         save_json(LEDGER, ledger)
         if res['status'] == 'drafted':
             done.append((mural_id, res))
             paths = [res['file'], res['img'], 'data/murals/_index.json', 'data/newmural-ledger.json']
+            msg = f"data: #{mural_id} {res.get('artist')} — automatic New Mural draft (status: draft, not in the app)"
+        elif res['status'] == 'lead':
+            done.append((res['of'], res))
+            paths = [res['file'], 'data/newmural-ledger.json']
+            msg = (f"data: #{res['of']} research record updated from New Mural intake {qid} "
+                   f"(artist: {res.get('artist')}; status: draft, not in the app)")
         else:
             paths = ['data/newmural-ledger.json']
-            notify('New mural: already in the app?', res.get('note', '')[:120])
+            msg = f"data: New Mural intake {qid} is already #{res.get('of')}"
+            notify(f"New mural: that's already #{res.get('of')}", f"{res.get('where', 'in the app')} — no new draft")
         git('add', '--', *paths)
-        msg = (f"data: #{mural_id} {res.get('artist')} — automatic New Mural draft (status: draft, not in the app)"
-               if res['status'] == 'drafted' else f'data: New Mural intake {qid} looks like a duplicate')
         c = git('commit', '-m', msg + '\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>', '--', *paths)
         log(f'  commit: {(c.stdout + c.stderr).strip().splitlines()[:1]}')
-    if done:
+    if not a.dry:
         p = git('push', 'origin', 'v1.5')
         log(f'  push: exit {p.returncode}')
+    if done:
         t = subprocess.run(['bash', 'scripts/deploy-tools.sh'], cwd=ROOT, capture_output=True, text=True)
         log(f'  deploy-tools: exit {t.returncode} {t.stdout.strip().splitlines()[-1:] if t.stdout else t.stderr[-200:]}')
-        names = ', '.join(f"#{i} {r.get('artist')}" for i, r in done)
+        names = ', '.join(f"#{i} {r.get('artist')}" + (' (research lead)' if r['status'] == 'lead' else '')
+                          for i, r in done)
         flags = sum(r.get('flags', 0) for _, r in done)
         notify('New mural draft ready', f'{names} — in the YAML editor ({flags} flag(s)). Not in the app.')
 
