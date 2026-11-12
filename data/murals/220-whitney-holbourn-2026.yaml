@@ -4,7 +4,7 @@
 id: 220
 artist: "Whitney Holbourn"
 year: 2026
-lat: 27.769959   # ESTIMATED (no geocoder): grid-interpolated from 2010/2060/2125 1st Ave S anchors
+lat: 27.769959   # Rob's Finder field-check spot, 12 Nov 2026 (±2 m)
 lng: -82.66211
 facing: 90   # look E to see it; Rob, route editor 9 Nov 2026
 address: "2100 1st Ave S"
