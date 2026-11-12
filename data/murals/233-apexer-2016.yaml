@@ -1,0 +1,119 @@
+# Apexer — SHINE 2016, Baum Ave N (Edge District)
+
+# ── Required ──
+id: 233
+status: draft   # New Mural intake — held out of the app until Rob approves
+artist: Apexer
+year: 2016
+lat: 27.771488   # Rob's standing position (±9 m), NOT the wall — nudge in the route editor
+lng: -82.648283   # Rob's standing position (±9 m), NOT the wall — nudge in the route editor
+facing: 186   # look S to see it; Rob, New Mural intake 12 Nov 2026
+address: "1000 Baum Ave N"
+category: shine
+img: "images/murals/2016/apexer.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: apexer
+basedIn: "San Francisco, CA"
+
+fieldNotes:
+  - "Graffiti letters pulled apart into pure pattern"
+  - "Third-generation San Franciscan"
+  - "Flew in from California for SHINE 2016"
+
+artistBio: |
+  Look for letters and you won't find any. Apexer starts from graffiti and
+  Chinese calligraphy, then abstracts the letterforms until only the strokes
+  are left.
+
+  Ricardo Richey was born in San Francisco in 1978, a third-generation San
+  Franciscan of Latino and African-American heritage. He studied classical
+  art technique, architecture, graphic design and art history, and credits
+  Precita Eyes, the San Francisco community mural group, with helping
+  him find his own voice.
+
+  His walls are dense, colourful, interlocking pattern work in spray paint.
+  He has painted for the de Young Museum — a Haight Street mural for the
+  Summer of Love's anniversary in 2017 — and for a Stadia Bar at Caesars
+  Palace in Las Vegas. He belongs to the Gestalt Collective, a group of
+  artists who paint collaborative murals around San Francisco.
+
+  He flew in from California for SHINE's second year, in 2016, and took
+  the long wall on Baum Avenue in the Edge District: ribbon-like bands,
+  braided so tight the eye never finds an end.
+
+searchBio: |
+  Look for letters and you won't find any. Apexer starts from graffiti and
+  Chinese calligraphy, then abstracts the letterforms into complex, dynamic
+  compositions until only the strokes are left.
+
+  Apexer is Ricardo Richey, born in San Francisco in 1978, a
+  third-generation San Franciscan of Latino and African-American heritage.
+  He studied classical art techniques, architecture, graphic design and art
+  history while working out his own artistic identity, and he credits
+  Precita Eyes, the San Francisco community mural organization, with
+  guiding him to it.
+
+  His work is colourful abstract pattern made with spray paint. His group
+  shows include "Calligraffiti: Writing in Contemporary Chinese and Latino
+  Art" at the Pacific Asia Museum in Pasadena in 2009. He is a member of the
+  Gestalt Collective, which paints collaborative murals throughout San
+  Francisco.
+
+  Commissions include the de Young Museum (a Haight Street Summer of Love
+  mural, 2017) and the San Francisco Museum of Modern Art, Stanford
+  University, a Stadia Bar at Caesars Palace in Las Vegas (2021), the
+  Timbuk2 flagship storefront in Brooklyn (2017), the Space NK boutique in
+  San Francisco (2016), Hayes Valley Playground in San Francisco (2019) and
+  the Zoox building in San Francisco (2024). Juxtapoz profiled him in 2018
+  ("Apexer: The Path of Intuition"), and KQED has featured him teaching
+  street-art technique.
+
+  He painted this wall for SHINE 2016, the festival's second year, flying in
+  from California. WMNF photographed it in progress on Baum Avenue, between
+  1st Ave N and Central, just west of 9th Street. The St. Petersburg Arts
+  Alliance lists it at 1000 Baum Ave N, on the back of the building at 965
+  Central Ave, around the corner from 11th Street and facing the alley:
+  abstract, about 74 feet wide and 20 feet high, built from thick,
+  interlocking curved lines in many colours.
+
+searchMuralDescription: |
+  A long, low single-storey wall across a side street, painted end to end
+  with abstract pattern. Hundreds of wide, ribbon-like bands in blue, teal,
+  green, yellow, orange, pink, red and purple cross, curve and weave over
+  one another, some shaded to look rounded, some filled with smaller
+  patterns. Big arching bands frame the two ends; the middle is a dense
+  tangle. At the upper left, in a yellow and orange section, it is signed
+  "@APEXER". Next door at left is a sky-blue building painted with birds.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "Apexer (Wikipedia)"
+    url: "https://en.wikipedia.org/wiki/Apexer"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "12 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude (automatic)"
+  - "12 November 2026 — Verifier pass (automatic): bio claims checked against fetched Wikipedia, KQED, Branded Arts, WMNF and Crow's Nest pages; removed the snippet-only '74 feet' and the 'alley' wording from artistBio; Crow's Nest now fetched (22 Sept 2016, 'behind Gulfshore Bank on Central'), so year 2016 is confirmed and the snippet flag is cleared"
+sourceNotes:
+  - "Rob, New Mural intake 12 Nov 2026 (20261112T205419-3k2h): photo, signature photo, GPS 27.771488,-82.648283 ±9 m, heading 186°"
+  - "Artist: signed \"@APEXER\" on the wall (signature photo)"
+  - "No existing record for Apexer / Ricardo Richey; nearby #232 (Derek Donnelly parakeets, the blue building at left in the photo) and #222 (Chroma Creature, VIV) are different walls"
+  - "SHINE 2016, 1000 Baum Ave N behind 965 Central Ave, ~74 ft x 20 ft, abstract: St. Petersburg Arts Alliance artist page (via search snippet; page 404 on direct fetch 12 Nov 2026): https://stpeteartsalliance.org/apexer/"
+  - "In progress on Baum Ave, SHINE 2016 (WMNF, 8 Sept 2016): https://wmnf.org/st-petes-shine-mural-festival"
+  - "Bio facts (born SF 1978, third-generation, Precita Eyes, de Young, commissions list, 2016 St. Pete SHINE mural): https://en.wikipedia.org/wiki/Apexer"
+  - "Graffiti + Chinese calligraphy foundation: https://kqed.org/artschool/930/apexer-on-street-art-murals"
+  - "Spray-paint abstract pattern, Calligraffiti show 2009, Gestalt Collective: https://brandedarts.com/artists/apexer"
+  - "\"Ricardo 'Apexer' Richey, flew in from California for the festival\"; wall \"behind Gulfshore Bank on Central\" (Crow's Nest St. Pete, 22 Sept 2016; fetched 12 Nov 2026): https://crowsneststpete.com/?p=12732"
+  - "Reverse geocode (OpenStreetMap Nominatim) of Rob's GPS: 1004 Baum Avenue North, Edge District, 33705"
+  - "⚑ For Rob: Title — none found; SPAA calls it simply abstract. Left blank"
+  - "⚑ For Rob: Year 2016 confirmed by WMNF in-progress photos (8 Sept 2016) and Crow's Nest (22 Sept 2016); the paint looks fresh for a 2016 wall — if it has been repainted since, say so"
+  - "⚑ For Rob: Address — SPAA says 1000 Baum Ave N (back of 965 Central Ave); Nominatim gives 1004 Baum Ave N for where you stood. Crow's Nest (2016) says behind Gulfshore Bank on Central — current occupant not confirmed, building left blank"
+  - "⚑ For Rob: Category set to shine (2016); this is a vintage 2014–19 pick, so confirm you want it in"
+  - "⚑ For Rob: Instagram set to apexer from the wall signature — confirm the handle"
