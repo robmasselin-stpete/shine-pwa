@@ -1,0 +1,101 @@
+# Derek Donnelly — Parakeets wall, Baum Ave N (commercial)
+
+# ── Required ──
+id: 232
+status: draft   # New Mural intake — held out of the app until Rob approves
+artist: Derek Donnelly
+year: 0
+lat: 27.77132   # Rob's standing position (±17 m), NOT the wall — nudge in the route editor
+lng: -82.648079   # Rob's standing position (±17 m), NOT the wall — nudge in the route editor
+facing: 199   # look S to see it; Rob, New Mural intake 12 Nov 2026
+address: "Baum Ave N"
+category: commercial
+img: "images/murals/commercial/derek-donnelly-baum-ave-parakeets.jpeg"
+
+# ── Optional ──
+title: ""
+building: ""
+instagram: saintpaintarts
+basedIn: "St. Petersburg, FL"
+
+fieldNotes:
+  - "Opened Saint Paint Arts gallery on the 600 block"
+  - "Ran operations for SHINE 2025"
+  - "His son appears in murals across the city"
+
+artistBio: |
+  He painted a T-Rex in a Hawaiian shirt going fishing — for AARP. That tells
+  you most of what you need to know about Derek Donnelly.
+
+  A Pinellas County native, Donnelly grew up in Pinellas Park, graduated from
+  the Center for the Arts at Gibbs High School in 2001, and studied graphic
+  design and digital illustration at IADT Tampa. He went full-time on murals in
+  2010. A year later he opened Saint Paint Arts gallery on the 600 block of
+  Central Avenue — not as a vanity project, but as a launchpad. Several artists
+  got their first real exposure there before he closed it in 2014 to focus on
+  walls.
+
+  His style sits at the intersection of illustration and realism — playful
+  without being childish, bold without being loud. His son shows up in
+  murals across the city. So does Florida wildlife. He doesn't separate the
+  personal from the public work. In 2012, when mentor Bill "Woo" Correira died,
+  Donnelly organized the Woomorial — a 40-artist tribute mural on the 600 block
+  that became a landmark. He founded COVE gallery in Pinellas Park and started
+  Public Art Project Inc., a nonprofit that pushes public art into places it
+  wouldn't otherwise reach.
+
+  His client list runs from Fender Guitars to the Tampa Bay Rays. Multiple Best
+  of the Bay wins. Inaugural Artmaker 2026 at Ruth Eckerd Hall. For SHINE 2025,
+  he ran operations and served as artist liaison for the entire festival while
+  producing two murals of his own.
+
+  Here the wildlife takes the whole wall: green parakeets in flight over a
+  sprouting plant whose roots run down through the soil to the sidewalk.
+
+searchBio: |
+  See Derek Donnelly entries (ids 5, 6, 115) for full search bio.
+
+  This wall on Baum Ave N in the EDGE District shows green parakeets with pale
+  grey faces flying across a sky-blue facade above a leafy plant, its roots
+  spreading through a brown underground layer of soil, bones and buried
+  creatures. Signed "Donnelly @saintpaintarts" at lower right.
+
+searchMuralDescription: |
+  The back of a two-storey building is painted sky blue across the upper floor.
+  Four green parakeets with pale grey faces and blue-tipped wings fly across it,
+  around the windows. In the middle, a tall green plant with broad heart-shaped
+  leaves sprouts from a strip of grass. Below the grass line the lower floor is
+  painted as brown underground soil: the plant's roots and long green tendrils
+  run down through it, past buried bones, a bird skull and a small lizard
+  skeleton, around the doors and boarded window. A tiny palm tree sits on the
+  horizon at left. Signed "Donnelly @saintpaintarts" at lower right.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: "Multiple Best of the Bay winner (Creative Loafing Tampa Bay); inaugural Artmaker 2026 at Ruth Eckerd Hall; SHINE 2025 Operations Lead"
+
+furtherWork:
+  - name: "saintpaintarts.com"
+    url: "https://www.saintpaintarts.com"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "12 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude (automatic)"
+  - "12 November 2026 — Verifier pass (automatic): no changes. Bio claims match siblings 006/115/177 incl. their 27 Aug 2026 corrections; Artmaker 2026 confirmed on rutheckerdhall.com; description checked against photo; signature matches artist; no duplicate within the nearby records; no source found for title/year/commission"
+sourceNotes:
+  - "Rob, New Mural intake 12 Nov 2026 (20261112T205320-jmtx): photo, signature photo, GPS 27.77132,-82.648079 ±17 m, heading 199°"
+  - "Rob's note: \"Derek Donnelly commercial\""
+  - "Artist: signed \"Donnelly @saintpaintarts\" on the wall (signature photo)"
+  - "Artist bio pooled from sibling records 006, 115, 159 (incl. their 27 Aug 2026 fact-check corrections); sources listed there"
+  - "Reverse geocode (OpenStreetMap Nominatim) of Rob's GPS: Grassroots Kava, Baum Avenue North, Edge District, 33705"
+  - "Grassroots Kava House address 957 Central Ave, EDGE District: https://stpetecatalyst.com/workarounds/grassroots-kava-house/"
+  - "https://www.saintpaintarts.com/"
+  - "https://www.rutheckerdhall.com/news/detail/artmaker-2026"
+  - "https://stpetecatalyst.com/muralist-derek-donnelly-wants-art-scene-changes/"
+  - "No online source found for this specific wall (title, year, commissioner) as of 12 Nov 2026 (verifier re-searched web for Donnelly + parakeets/Baum Ave/Grassroots Kava: nothing)"
+  - "⚑ For Rob: Title unknown — left blank; no source names this wall"
+  - "⚑ For Rob: Year unknown — set to 0"
+  - "⚑ For Rob: Building — Nominatim puts the GPS at Grassroots Kava (front door 957 Central Ave); is this its back wall on Baum Ave N? If so set building + address (and check whether the kava bar commissioned it; the heart-shaped leaves may be a kava plant — unverified, left out)"
+  - "⚑ For Rob: Address set to just \"Baum Ave N\" — confirm the street number"
+  - "⚑ For Rob: Instagram set to saintpaintarts (as signed and as on 006/115); #159 uses derekdonnelly — pick one"

@@ -36,5 +36,14 @@
     "file": "data/murals/158-unknown-planet-retro-records.yaml",
     "artist": "J. Thomas",
     "by": "interactive session (research agent)"
+  },
+  "20261112T205320-jmtx": {
+    "id": 232,
+    "status": "drafted",
+    "file": "data/murals/232-derek-donnelly-commercial.yaml",
+    "img": "images/murals/commercial/derek-donnelly-baum-ave-parakeets.jpeg",
+    "artist": "Derek Donnelly",
+    "flags": 7,
+    "at": "2026-11-12T16:01:42"
   }
 }
