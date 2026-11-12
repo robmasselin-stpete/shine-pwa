@@ -661,6 +661,22 @@ function ensureWalkAudio() {
   return walkAudioCtx;
 }
 
+/** Leaving the app (Apple Music, another app, the lock screen, AirPods switching) can
+ *  leave the context dead while it still reports 'running' or 'suspended', so resume()
+ *  "works" and stays silent (or garbles) until a force-quit: Rob reproduced it 12 Nov
+ *  2026 by playing narration, then Apple Music, then returning. The app has no
+ *  background audio, so nothing plays while hidden: on return, discard the old context
+ *  and let the next sound build a fresh one. */
+function retireWalkAudio() {
+  if (!walkAudioCtx) return;
+  stopAudioUrl();
+  const btn = document.getElementById('audio-btn');
+  if (btn) btn.classList.remove('playing');
+  try { walkAudioCtx.close(); } catch (e) {}
+  walkAudioCtx = null;
+}
+let _audioHiddenAt = 0;
+
 /** Bring audio back after iOS interrupts it (foreground return, or any touch). If
  *  resume() cannot reach 'running', discard the context — the next ensureWalkAudio()
  *  then builds a fresh one instead of staying silent until the app is force-quit. */
@@ -975,10 +991,13 @@ function releaseWakeLock() {
 
 // Re-acquire wake lock + kick compass when app returns from background
 document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') { _audioHiddenAt = Date.now(); return; }
   if (document.visibilityState === 'visible') {
-    // Revive the shared audio context — iOS suspends OR 'interrupt's it on background /
-    // screen-lock, which silenced all sound (narration + tones) until a full app restart.
-    reviveWalkAudio();
+    // Replace the shared audio context after any trip out of the app (see
+    // retireWalkAudio); a quick blip under 1 s just gets the old resume.
+    if (_audioHiddenAt && Date.now() - _audioHiddenAt > 1000) retireWalkAudio();
+    else reviveWalkAudio();
+    _audioHiddenAt = 0;
     // Re-acquire wake lock if we were navigating
     if (state.tourWalking) requestWakeLock();
     // Kick compass listeners back to life
