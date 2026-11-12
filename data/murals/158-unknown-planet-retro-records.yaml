@@ -1,11 +1,13 @@
-# Unknown Artist — Planet Retro Records
+# J. Thomas — Planet Retro Records side wall (Commercial)
 
 # ── Required ──
 id: 158
-artist: Unknown
+status: draft   # New Mural intake — held out of the app until Rob approves
+artist: J. Thomas
 year: 0
 lat: 27.774175
 lng: -82.646958
+facing: 183   # look S to see it; Rob, New Mural intake 12 Nov 2026
 address: "Burlington Ave N"
 category: commercial
 img: "images/murals/commercial/planet-retro-records.jpeg"
@@ -17,26 +19,37 @@ instagram: ""
 basedIn: ""
 
 artistBio: |
-  Artist unknown. Yellow line-drawn characters on the side of Planet Retro
-  Records — bearded figures wearing headphones, a turntable, and a "RECORDS"
-  sign in red. The style is illustrative and music-themed, matching the record
-  store.
+  The signature hides on the electrical box: a yellow spade outline over
+  "J. Thomas," painted in the same yellow as the rest of the wall. That is
+  all the wall says about who made it. No published source names the artist.
+
+  The piece wraps the side of Planet Retro Records, a vinyl shop on Dr. MLK
+  Jr. St N, and it is built for the store — bearded heads wired to the wall
+  by long ribbed hoses, a turntable panel, and a red "RECORDS" arrow pointing
+  the way in.
 
 searchBio: |
-  Artist unknown. A mural on the side of Planet Retro Records in St. Petersburg,
-  FL. Yellow line-drawn characters on a dark gray background — bearded figures
-  wearing headphones, a turntable, and a "RECORDS" sign in red neon-style
-  lettering. The style is illustrative and music-themed. Not a SHINE piece —
-  likely a commercial commission for the record store. Note: Derek Donnelly
-  painted a nearby mural but this is a different piece.
+  Signed "J. Thomas" with a spade outline, painted in yellow on the electrical
+  box set into the mural. No published source found that names or profiles the
+  artist, the year, or who commissioned the wall (searched 12 Nov 2026). The
+  mural covers the Burlington Ave N side wall of Planet Retro Records, a vinyl
+  record store at 226 Dr. MLK Jr. St N in downtown St. Petersburg, FL. Not a
+  SHINE piece; a music-themed wall for the record store. Planet Retro is home
+  to other murals too: Derek Donnelly painted the store's rear wall in 2022,
+  which is a different piece from this one.
 
 searchMuralDescription: |
-  Yellow line-drawn characters on a dark gray wall. On the left, a red "RECORDS"
-  sign and a figure with headphones and a yellow hat. At center, a yellow vinyl
-  record on a turntable. On the right, two bearded figures with flowing yellow
-  hair and headphones — their beards and hair rendered as tangled line work. The
-  entire piece uses only yellow, red, and gray/black, giving it a graphic,
-  illustrative quality that matches the record store aesthetic.
+  Yellow line-drawn figures on a dark gray wall gridded with thin yellow
+  rectangles. At the left corner, a red vertical "RECORDS" sign ends in a red
+  arrow pointing down and left. Next to it, two bearded heads in profile, one
+  above the other, in yellow caps, their long beards drawn as wavy yellow
+  lines; a ribbed hose runs from one ear. Below them, a yellow panel holds a
+  black turntable with a record. Two glass-block windows are painted with
+  rows of yellow concentric circles like speaker cones. At the right, a large
+  front-facing bearded head in a yellow cap stares out, with ribbed hoses
+  running from both ears across the wall. The electrical box near it carries
+  the signature: a yellow spade outline over "J. Thomas." Only yellow, red,
+  and gray/black are used.
 
 muralInspiration: ""
 muralAwards: ""
@@ -44,13 +57,26 @@ artistAwards: ""
 
 furtherWork: []
 
-status: research  # unidentified artist — kept for ongoing research, not exported
-
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "12 November 2026 — Artist lead from Rob's New Mural intake (signature 'J. Thomas' with spade); researched by Claude; held as status: draft for Rob's review"
   - "16 April 2026 — New mural added, GPS from Rob's photo"
 sourceNotes:
   - "Photo by Rob 2026-04-16, GPS from EXIF"
   - "Building: Planet Retro Records"
   - "Artist unknown — very thin info, not a Derek Donnelly piece"
+  - "Rob, New Mural intake 12 Nov 2026 (20261112T135555-vxi9): photo, signature photo, GPS 27.774105,-82.647026 ±13 m, heading 183°"
+  - "Rob's note (12 Nov 2026): \"Looks commercial for the record store. Pretty old too\""
+  - "Signature photo (intake 20261112T135555-vxi9, sign.jpg): yellow spade outline above hand-lettered \"J. Thomas\" on the gray electrical box, same yellow paint as the mural; mural hose line work runs behind the box"
+  - "Newer photo available: .mq-newmurals/20261112T135555-vxi9/photo.jpg (12 Nov 2026); img still points to the April 2026 photo"
+  - "Store address 226 Dr. MLK Jr. St N; Derek Donnelly painted the store's rear wall in 2022: https://stpetecatalyst.com/planet-retro-records-owner-rob-sexton-dies/"
+  - "Donnelly's Planet Retro piece (his son Syre, back wall, painted during SHINE as part of 'Outshine'): https://stpetecatalyst.com/muralist-derek-donnelly-wants-art-scene-changes/"
+  - "A mural at Planet Retro (226 MLK St N) was among four vandalised in Jan 2018; the article does not say which wall or artist: https://patch.com/florida/stpete/vandals-damage-4-murals-st-petersburg"
+  - "James Oleson has a 'Goblin' piece listed at Planet Retro Records (Wescover listing, page not readable, 403); bearded heads are not a goblin and it is not signed Oleson — not used for attribution: https://www.wescover.com/p/street-murals-by-james-oleson-at-planet-retro-records--Pr1lwjl5Xm"
+  - "No source found naming a 'J. Thomas' muralist in St. Pete / Tampa Bay, or a spade signature (web searches 12 Nov 2026). Not the same as C.J. Thomas (Christian Thomas, Commitment Tattoo, @cthomascustoms) of #104 — no evidence links him to this wall or to the 'J. Thomas' signature"
+  - "⚑ For Rob: artist set to 'J. Thomas' on the signature alone (painted in the mural's own yellow, inside the composition). Keep it, or put it back to 'Unknown'?"
+  - "⚑ For Rob: is J. Thomas the same person as C.J. Thomas (#104, with Mason Schwacke, SHINE 2020)? Unconfirmed — ask the store or C.J. Thomas (@cthomascustoms) before linking the records"
+  - "⚑ For Rob: year stays 0 — no source dates this wall. Your 'Pretty old too' is not enough to set one"
+  - "⚑ For Rob: swap img to the new 12 Nov photo?"
+  - "⚑ For Rob: address could become '226 Dr. MLK Jr. St N (Burlington Ave N side)' — the store's street address with the wall side; left as 'Burlington Ave N' for now"

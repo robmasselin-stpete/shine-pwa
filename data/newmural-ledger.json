@@ -28,9 +28,13 @@
     "by": "hand (interactive session)"
   },
   "20261112T135555-vxi9": {
-    "id": 232,
-    "status": "duplicate",
+    "id": 158,
+    "status": "lead",
     "note": "DUPLICATE: 158 data/murals/158-unknown-planet-retro-records.yaml — same wall: Planet Retro Records side wall, red \"RECORDS\" arrow sign, yellow line-drawn bearded heads with hoses/headphones, yellow turntable panel on dark grey grid; record GPS is 10 m from Rob's spot.\nNOTE: #158 is still status: res",
-    "at": "2026-11-12T09:18:26"
+    "at": "2026-11-12T09:18:26",
+    "of": 158,
+    "file": "data/murals/158-unknown-planet-retro-records.yaml",
+    "artist": "J. Thomas",
+    "by": "interactive session (research agent)"
   }
 }
