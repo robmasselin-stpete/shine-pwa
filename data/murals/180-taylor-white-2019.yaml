@@ -4,8 +4,8 @@
 id: 180
 artist: Taylor White
 year: 2019
-lat: 27.774788
-lng: -82.646867
+lat: 27.774848
+lng: -82.647016
 facing: 180   # look S to see it; Rob, route editor 9 Nov 2026
 address: 276 Dr. Martin Luther King Jr. St N
 category: shine
@@ -115,10 +115,12 @@ furtherWork:
 # ── Provenance (not exported to data.js) ──
 source: "claude-enhanced"
 revisionLog:
+  - "12 November 2026 — Pin moved 16 m to Rob's Finder field-check spot (27.774848, -82.647016 ±6 m), from 27.774788, -82.646867; Rob approved"
   - "9 November 2026 — Facing set to 180° (S) by Rob in the route editor (new field, used by the Mural Finder)."
   - "23 April 2026 — New mural added, GPS from Rob's photo"
   - "26 April 2026 — Audited; clarified Cary vs. Raleigh; fixed Abstracted Motion location (Alfred Williams Building, visible from W. Davie); dropped 'inaugural' for O-Town Walls (project not new in 2025); dropped unsourced 'nearly a hundred feet' dimension."
 sourceNotes:
+  - "Rob, Mural Finder field test 12 Nov 2026 08:57: 'use this spot' at 27.774848,-82.647016 ±6 m; approved in session"
   - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "https://taylorwhite.art/about"
   - "https://www.levelupartists.com/lua-podcast/106"
