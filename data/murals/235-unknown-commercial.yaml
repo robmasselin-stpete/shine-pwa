@@ -1,0 +1,57 @@
+# Unknown — wildlife wall at Green Bench, under construction (commercial)
+
+# ── Required ──
+id: 235
+status: draft   # New Mural intake — held out of the app until Rob approves
+artist: "Unknown"
+year: 0
+lat: 27.771529   # Rob's standing position (±7 m), NOT the wall — nudge in the route editor
+lng: -82.650782   # Rob's standing position (±7 m), NOT the wall — nudge in the route editor
+facing: 8   # look N to see it; Rob, New Mural intake 13 Nov 2026
+address: "1133 Baum Ave N"
+category: commercial
+img: "images/murals/commercial/unknown-green-bench-wildlife.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Green Bench Brewing Company"
+
+artistBio: ""
+
+searchBio: ""
+
+searchMuralDescription: |
+  A low, pink-painted block wall along the sidewalk, still being painted. A
+  pencil grid of letters and numbers runs along the top and left edge. Two dark
+  brown long-necked water birds, anhinga-like, are finished: one on the left
+  with its wings spread to dry, one on the right perched upright. Both stand on
+  brown branching roots or limbs that loop along the bottom of the wall. The
+  rest is still outline sketch: a large face in the middle, a big cat
+  resting on a branch near the top, a smoke-like curl, and a bear with a cub on
+  the right, plus pink marker underdrawing of plants. The white Green Bench
+  silo rises behind the wall.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "13 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude (automatic)"
+  - "13 November 2026 — No signature or sign in the photo and no published coverage found; artist, title and year left blank/Unknown/0. Bio fields left empty until the artist is known."
+  - "13 November 2026 — Verifier pass (automatic): description checked against the photo — \"large woman's face\" softened to \"large face\" (the sketch doesn't settle it); Crystal River lead re-checked (Kelly Quinn, Canvas of the Wild; bear + anhinga confirmed on that page, still no link to this wall); fresh search found no coverage; no duplicate (#130 is the painted-over Faustina wall here, #234 the neighbouring Jadus wall)."
+sourceNotes:
+  - "Rob, New Mural intake 13 Nov 2026 (20261113T190643-zbfp): photo, GPS 27.771529,-82.650782 ±7 m, heading 8°"
+  - "Rob's note (verbatim): \"No mark under construction. Other half of Faustina.  Record it but we will wait to know more.  \""
+  - "Address: OpenStreetMap Nominatim reverse geocode of Rob's GPS → Green Bench Brewing Co., 1133 Baum Avenue North (same as #130 and #234)"
+  - "https://nominatim.openstreetmap.org/reverse?lat=27.771529&lon=-82.650782&format=json&zoom=18"
+  - "Web searches 13 Nov 2026 (Green Bench + new mural / Florida Wildlife Corridor / anhinga, bear, panther) found no coverage of this wall"
+  - "Possible lead, NOT confirmed: the Florida Wildlife Corridor Foundation's Crystal River mural (Kelly Quinn) also shows a black bear and an anhinga — https://fl-wildlife-corridor-foundation.shorthandstories.com/crystal-river-mural/index.html — and #234 next door is a Corridor Foundation wall"
+  - "⚑ For Rob: artist — Unknown (no signature or sign yet). Check for a sign when it's finished, or ask Green Bench / the Corridor Foundation / Jenee Priebe (No Good Deeds Art, consultant on #234)."
+  - "⚑ For Rob: title — none found; left blank."
+  - "⚑ For Rob: year — left 0; set 2026 once you confirm."
+  - "⚑ For Rob: category — set commercial. If this is the second Florida Wildlife Corridor wall (like #234), keep commercial; change to shine/2026 if it turns out to be a festival wall."
+  - "⚑ For Rob: building/address — Green Bench Brewing Company, 1133 Baum Ave N, from the reverse geocode + #130/#234; confirm. Lat/lng is where you stood — nudge to the wall in the route editor."
+  - "⚑ For Rob: #130 Angela Faustina \"Citrus Medley\" — per your notes on #234 and here, both of her panels now look painted over. #130 needs retiring or updating."
+  - "⚑ For Rob: the description's animals (anhinga-like birds, big cat, bear with cub) are my reading of an unfinished sketch, not the artist's."

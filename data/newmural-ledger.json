@@ -63,5 +63,14 @@
     "artist": "Carrie Jadus",
     "flags": 8,
     "at": "2026-11-13T14:11:04"
+  },
+  "20261113T190643-zbfp": {
+    "id": 235,
+    "status": "drafted",
+    "file": "data/murals/235-unknown-commercial.yaml",
+    "img": "images/murals/commercial/unknown-green-bench-wildlife.jpeg",
+    "artist": "Unknown",
+    "flags": 9,
+    "at": "2026-11-13T14:12:28"
   }
 }
