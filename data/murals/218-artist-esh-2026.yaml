@@ -25,6 +25,10 @@ photos:
   - { url: "images/murals/2026/218-2026-11-08-134136.jpeg", dateTaken: "2026-11-08", gps: [27.760433, -82.646812, 19] }
   - { url: "images/murals/2026/218-2026-11-09-140816.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.760638, -82.646348, 2] }
   - { url: "images/murals/2026/218-2026-11-10-132002.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Morning", gps: [27.760648, -82.646316, 6] }
+  - { url: "images/murals/2026/218-2026-11-11-131355.jpeg", dateTaken: "2026-11-11", caption: "Wednesday Morning", gps: [27.760577, -82.646657, 16], heading: 4 }
+  - { url: "images/murals/2026/218-2026-11-12-133826.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.760324, -82.646808, 33], heading: 10 }
+  - { url: "images/murals/2026/218-2026-11-12-212138.jpeg", dateTaken: "2026-11-12", caption: "Thursday afternoon", gps: [27.760344, -82.646575, 38], heading: 358 }
+  - { url: "images/murals/2026/218-2026-11-13-133622.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning. The wall has expanded!", gps: [27.760536, -82.646301, 4], heading: 352 }
 
 underConstruction: true
 

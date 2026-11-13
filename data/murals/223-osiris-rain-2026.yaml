@@ -27,6 +27,10 @@ photos:
   - { url: "images/murals/2026/223-2026-11-08-123804.jpeg", dateTaken: "2026-11-08", caption: "Sunday Morning", gps: [27.794428, -82.641129, 14] }
   - { url: "images/murals/2026/223-2026-11-09-124002.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.796713, -82.646604, 6] }
   - { url: "images/murals/2026/223-2026-11-10-121813.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Morning", gps: [27.796691, -82.646632, 11] }
+  - { url: "images/murals/2026/223-2026-11-10-222743.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Evening", gps: [27.796439, -82.64678, 23], heading: 215 }
+  - { url: "images/murals/2026/223-2026-11-11-115432.jpeg", dateTaken: "2026-11-11", caption: "Wednesday Morning", gps: [27.796716, -82.646604, 5], heading: 217 }
+  - { url: "images/murals/2026/223-2026-11-12-122711.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.796719, -82.646608, 5], heading: 217 }
+  - { url: "images/murals/2026/223-2026-11-13-121516.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning", gps: [27.796668, -82.646605, 10], heading: 199 }
 
 underConstruction: true
 

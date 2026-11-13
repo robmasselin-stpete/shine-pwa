@@ -19,6 +19,15 @@ basedIn: "St. Petersburg, FL"
 
 pronouns: "she/her"
 
+photos:
+  - { url: "images/murals/2026/222-2026-11-10-225105.jpeg", dateTaken: "2026-11-10", caption: "Tuesday night", gps: [27.772399, -82.647686, 33], heading: 73 }
+  - { url: "images/murals/2026/222-2026-11-12-134637.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.772021, -82.648125, 33], heading: 89 }
+  - { url: "images/murals/2026/222-2026-11-12-204756.jpeg", dateTaken: "2026-11-12", gps: [27.7723, -82.647988, 23], heading: 97 }
+  - { url: "images/murals/2026/222-2026-11-12-204945.jpeg", dateTaken: "2026-11-12", gps: [27.771969, -82.647975, 12], heading: 115 }
+  - { url: "images/murals/2026/222-2026-11-13-134336.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning", gps: [27.772218, -82.648381, 60], heading: 113 }
+
+underConstruction: true
+
 artistBio: |
   Regan McCreight paints walls, canvases and people. As Chroma Creature she
   does murals, face and body painting and special-effects makeup, and she

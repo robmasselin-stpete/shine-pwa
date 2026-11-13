@@ -22,6 +22,10 @@ pronouns: "she/her"
 photos:
   - { url: "images/murals/2026/220-2026-11-09-135309.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.770154, -82.661874, 24] }
   - { url: "images/murals/2026/220-2026-11-10-155720.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Morning", gps: [27.770094, -82.662006, 30], heading: 93 }
+  - { url: "images/murals/2026/220-2026-11-11-130254.jpeg", dateTaken: "2026-11-11", caption: "Wednesday morning", gps: [27.769941, -82.662079, 3], heading: 97 }
+  - { url: "images/murals/2026/220-2026-11-12-132311.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.770102, -82.661961, 28], heading: 90 }
+  - { url: "images/murals/2026/220-2026-11-12-210204.jpeg", dateTaken: "2026-11-12", gps: [27.76995, -82.662071, 5], heading: 89 }
+  - { url: "images/murals/2026/220-2026-11-13-131145.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning", gps: [27.770078, -82.661972, 28], heading: 97 }
 
 underConstruction: true
 

@@ -21,6 +21,10 @@ pronouns: "he/him"
 
 photos:
   - { url: "images/murals/2026/219-2026-11-09-150314.jpeg", dateTaken: "2026-11-09" }
+  - { url: "images/murals/2026/219-2026-11-11-131653.jpeg", dateTaken: "2026-11-11", caption: "Wednesday Morning", gps: [27.760982, -82.646309, 4], heading: 179 }
+  - { url: "images/murals/2026/219-2026-11-12-133957.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.76117, -82.646326, 29], heading: 185 }
+  - { url: "images/murals/2026/219-2026-11-12-212241.jpeg", dateTaken: "2026-11-12", caption: "Thursday Afternoon", gps: [27.761061, -82.646391, 18], heading: 183 }
+  - { url: "images/murals/2026/219-2026-11-13-133719.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning", gps: [27.761053, -82.646253, 23], heading: 181 }
 
 underConstruction: true
 
