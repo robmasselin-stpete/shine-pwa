@@ -357,7 +357,9 @@ $('send').addEventListener('click', async () => {
   const sentCap = $('caption').value.trim(), sentMural = current;
   let sent = false;
   try {
-    const b64 = $('canvas').toDataURL('image/jpeg', 0.92);
+    // 0.75 (was 0.92): ~240 KB instead of ~620 KB at 1600 px — the app re-downloads these on weak
+    // signal. The full-size original for Photos (fullBytes) stays at 0.92.
+    const b64 = $('canvas').toDataURL('image/jpeg', 0.75);
     // Card for the app's grid + map pin (shorter side 720, longer capped at 1280 —
     // same as scripts/generate-cards.py). Without it the grid shows "Coming soon".
     let cardB64 = '';
