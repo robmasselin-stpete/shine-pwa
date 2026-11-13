@@ -20,17 +20,15 @@ basedIn: "Charlotte, NC"
 pronouns: "he/him"
 
 photos:
-  - { url: "images/murals/2026/223-2026-11-05-143044.jpeg", dateTaken: "2026-11-05" }
-  - { url: "images/murals/2026/223-2026-11-05-215818.jpeg", dateTaken: "2026-11-05", gps: [27.796546, -82.646744, 48] }
-  - { url: "images/murals/2026/223-2026-11-06-124750.jpeg", dateTaken: "2026-11-06", caption: "Start of day 2", gps: [27.796709, -82.646637, 2] }
-  - { url: "images/murals/2026/223-2026-11-07-125326.jpeg", dateTaken: "2026-11-07", gps: [27.796739, -82.64661, 2] }
-  - { url: "images/murals/2026/223-2026-11-08-123804.jpeg", dateTaken: "2026-11-08", caption: "Sunday Morning", gps: [27.794428, -82.641129, 14] }
-  - { url: "images/murals/2026/223-2026-11-09-124002.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.796713, -82.646604, 6] }
-  - { url: "images/murals/2026/223-2026-11-10-121813.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Morning", gps: [27.796691, -82.646632, 11] }
-  - { url: "images/murals/2026/223-2026-11-10-222743.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Evening", gps: [27.796439, -82.64678, 23], heading: 215 }
-  - { url: "images/murals/2026/223-2026-11-11-115432.jpeg", dateTaken: "2026-11-11", caption: "Wednesday Morning", gps: [27.796716, -82.646604, 5], heading: 217 }
-  - { url: "images/murals/2026/223-2026-11-12-122711.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.796719, -82.646608, 5], heading: 217 }
-  - { url: "images/murals/2026/223-2026-11-13-121516.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning", gps: [27.796668, -82.646605, 10], heading: 199 }
+  - { url: "images/murals/2026/223-2026-11-05-143044-aligned.jpeg", dateTaken: "2026-11-05" }
+  - { url: "images/murals/2026/223-2026-11-06-124750-aligned.jpeg", dateTaken: "2026-11-06", caption: "Start of day 2", gps: [27.796709, -82.646637, 2] }
+  - { url: "images/murals/2026/223-2026-11-07-125326-aligned.jpeg", dateTaken: "2026-11-07", gps: [27.796739, -82.64661, 2] }
+  - { url: "images/murals/2026/223-2026-11-08-123804-aligned.jpeg", dateTaken: "2026-11-08", caption: "Sunday Morning", gps: [27.794428, -82.641129, 14] }
+  - { url: "images/murals/2026/223-2026-11-09-124002-aligned.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.796713, -82.646604, 6] }
+  - { url: "images/murals/2026/223-2026-11-10-121813-aligned.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Morning", gps: [27.796691, -82.646632, 11] }
+  - { url: "images/murals/2026/223-2026-11-11-115432-aligned.jpeg", dateTaken: "2026-11-11", caption: "Wednesday Morning", gps: [27.796716, -82.646604, 5], heading: 217 }
+  - { url: "images/murals/2026/223-2026-11-12-122711-aligned.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.796719, -82.646608, 5], heading: 217 }
+  - { url: "images/murals/2026/223-2026-11-13-121516-aligned.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning", gps: [27.796668, -82.646605, 10], heading: 199 }
 
 underConstruction: true
 
@@ -198,6 +196,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "13 November 2026 — Build viewer: all 11 progress photos replaced with 9 photos aligned to the latest shot (Rob, marketing/builds/223-osiris-rain/README.md, approved 13 Nov). Dropped from the app only: 11-05-215818 and 11-10-222743 'Tuesday Evening' (evening shots; originals kept). Captions, capture GPS and headings carried over from the matching live photos. Main photo is now the aligned 13 Nov 12:15 shot."
   - "9 November 2026 — Facing set to 229° (SW) by Rob in the route editor (new field, used by the Mural Finder)."
   - "5 November 2026 — Pin moved 27.7960776,-82.6468547 → 27.79635,-82.64688 from Rob's photo IMG_1290 (GPS 27.796708,-82.6466 ±8 m, bearing 214°), projected ~47 m to the tower face. Estimated; confirm in the route editor."
   - "4 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening: Florence + Nerdrum training meets the 1961 \"Round Bank\" he is painting. Rebuilt around his own words (born 1986 on a Waxhaw homestead, film → murals when NC cut incentives, \"emotion first\"), Bloom at his own expense, a St. Pete link (met Marcus Debie at a St. Pete mural festival in 2018), and a closing paragraph on the Skyline Building; searchBio: Same opening; added Florence was brief (his words), Stavern, film work incl. Iron Man 3, Observer quote on Bloom, Dogfather (Catalonia 2019), NOVEL Stonewall Station, The Space Between with Debie (Utah 2025), TAOH co-founders + he manages it, full Skyline Building history; artistBio: \"One of fifteen artists\" → \"…. [review:20261104212556-72120b4d]"
@@ -205,6 +204,7 @@ revisionLog:
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, pronouns, instagram, artistBio, searchBio, artistAwards, muralInspiration, searchMuralDescription, furtherWork. Changes — artistBio: New two-sentence opening: Florence + Nerdrum training meets the 1961 \"Round Bank\" he is painting. Rebuilt around his own words (born 1986 on a Waxhaw homestead, film → murals when NC cut incentives, \"emotion first\"), Bloom at his own expense, a St. Pete link (met Marcus Debie at a St. Pete mural festival in 2018), and a closing paragraph on the Skyline Building; searchBio: Same opening; added Florence was brief (his words), Stavern, film work incl. Iron Man 3, Observer quote on Bloom, Dogfather (Catalonia 2019), NOVEL Stonewall Station, The Space Between with Debie (Utah 2025), TAOH co-founders + he manages it, full Skyline Building history. Note: Rob review [review:20261101181416-2935658b]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #12 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: dropped pin (brief). Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Aligned build photos by Rob, 13 Nov 2026: marketing/builds/223-osiris-rain/ (derived copies of the Capture originals)"
   - "Rob, route-editor export 9 Nov 2026 (wall facing)"
   - "Rob's photo IMG_1290, 5 Nov 2026 09:28, with GPS 27.796708,-82.6466 (±8 m), facing 214° — used for the pin"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
