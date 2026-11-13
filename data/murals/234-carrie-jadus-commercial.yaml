@@ -1,0 +1,127 @@
+# Carrie Jadus — Florida Wildlife Corridor wall at Green Bench (commercial)
+
+# ── Required ──
+id: 234
+status: draft   # New Mural intake — held out of the app until Rob approves
+artist: Carrie Jadus
+year: 0
+lat: 27.771555   # Rob's standing position (±5 m), NOT the wall — nudge in the route editor
+lng: -82.650877   # Rob's standing position (±5 m), NOT the wall — nudge in the route editor
+facing: 355   # look N to see it; Rob, New Mural intake 13 Nov 2026
+address: "1133 Baum Ave N"
+category: commercial
+img: "images/murals/commercial/carrie-jadus-green-bench.jpeg"
+
+# ── Optional ──
+title: ""
+building: "Green Bench Brewing Company"
+instagram: jadusfineart
+basedIn: "St. Petersburg, FL"
+
+artistBio: |
+  She has a degree in electrical engineering. She worked as a radio-frequency
+  design engineer. Then she quit to paint.
+
+  Carrie Jadus was born in 1976 in Tampa and moved to St. Petersburg at five.
+  She graduated from the Pinellas County Center for the Arts at Gibbs High
+  School, traveled to Europe, fell for Impressionism, and then — detour — earned
+  a BS in Electrical Engineering from USF and designed RF circuits for several
+  years. She creates 200 to 300 pieces annually, working primarily in oils at
+  every scale from notecards to fifty-foot walls.
+
+  Her SHINE 2015 Nikola Tesla portrait is on 22nd Street South. For Grand
+  Central Brewhouse she painted "Last Call" — six musical icons chosen because
+  "they're all extremely talented and socially conscious."
+
+  This wall at Green Bench Brewing was produced by the Florida Wildlife
+  Corridor Foundation, part of its statewide mural campaign, and sponsored by
+  ARK Invest. Manatees, sunfish and an alligator drift through seagrass around
+  a woman's face, while two tubers float overhead.
+
+searchBio: |
+  She has a degree in electrical engineering. She worked as a radio-frequency
+  design engineer. Then she quit to paint.
+
+  Carrie Jadus was born in 1976 in Tampa, FL. Her family moved to St. Petersburg
+  when she was five. She comes from an artistic lineage — family populated with
+  creatives. She attended the Pinellas County Center for the Arts magnet program
+  at Gibbs High School, training across multiple mediums. A post-graduation trip
+  to Europe sparked a fascination with Impressionism. She then earned a BS in
+  Electrical Engineering from the University of South Florida and worked as a
+  radio-frequency design engineer for several years before quitting to pursue
+  art full-time.
+
+  She works primarily in oils, comfortable at every scale from notecards to
+  fifty-foot murals. She occupies "the rich and fertile ground between realism
+  and impressionism" with a "distinctive, soft and subtly subversive style." Key
+  influences: Winslow Homer (storytelling) and Egon Schiele (the human figure).
+  She creates 200-300 pieces annually. She has expanded into large-scale
+  sculpture through collaboration with MGA Sculpture Studio. Licensed as a
+  professional artist since 2016, she uses "the business plan of a Toymaker as a
+  model" — multiple product lines to sustain income.
+
+  Her SHINE 2015 murals include the Nikola Tesla portrait at 22nd St S and 5th
+  Ave S, painted over two weeks with an
+  all-female crew — Tara Radosevich, Jules Cozine and Suzy Shultz, and "Little Miss
+  Sisyphus," a girl pushing an enormous reflective sphere up a mountain. At
+  Grand Central Brewhouse she painted "Last Call" (2020), a 50x30 ft mural of
+  six musical icons: Bob Marley, Bono, Bruce Springsteen, Lady Gaga, Eddie
+  Vedder, and John Legend — chosen because "they're all extremely talented and
+  socially conscious." Heads roughly 8 ft tall, completed in three weeks,
+  commissioned by Kevin Milkey. "Awakening Bodhisattva" at Dog Bar (2020) is a
+  memorial to Bodhi, dog of artist Marianne Wysocki — a double entendre: the dog
+  waking up, and the Buddhist concept of a being who delays nirvana out of
+  compassion. Her studio is at Soft Water Studios in the Warehouse Arts District.
+
+  This wall at Green Bench Brewing Company, 1133 Baum Ave N, was produced by the
+  Florida Wildlife Corridor Foundation as part of its state-wide mural campaign,
+  sponsored by ARK Invest, with Jenee Priebe / No Good Deeds Art as public art
+  consultant (on-site sign). An underwater spring scene: manatees, striped fish
+  and an alligator among seagrass around a woman's face, two tubers floating at
+  the surface above. Instagram: @jadusfineart.
+
+searchMuralDescription: |
+  A long, low painted wall along the sidewalk, in blues, teals and purples. It
+  shows an underwater spring scene seen from below the surface. A large woman's
+  face sits at the centre, half hidden behind long ribbons of
+  seagrass. Two manatees swim on the left. Striped sunfish-type fish swim across
+  the middle, one placed so its eye lines up with the woman's eye. An alligator
+  rests low on the right among the grasses. At the top right, two people float
+  on inner tubes at the water's surface, seen from underneath. A sandwich-board
+  sign at the left end credits the artist and the Florida Wildlife Corridor
+  Foundation.
+
+muralInspiration: ""
+muralAwards: ""
+artistAwards: ""
+
+furtherWork:
+  - name: "carriejadus.com"
+    url: "http://www.carriejadus.com"
+  - name: "Florida Wildlife Corridor Foundation"
+    url: "https://floridawildlifecorridor.org"
+
+# ── Provenance (not exported to data.js) ──
+source: "claude-enhanced"
+revisionLog:
+  - "13 November 2026 — New mural drafted from Rob's New Mural intake (photo, signature, GPS, heading); research by Claude (automatic)"
+  - "13 November 2026 — Artist bio facts reused from the sibling Carrie Jadus records #149, #150, #168 (incl. their 26–29 Aug fact-check corrections). The paragraph about this wall comes only from the on-site sign: artist Carrie Jadus; public art consultant Jenee Priebe / No Good Deeds Art; produced by the Florida Wildlife Corridor Foundation; sponsored by ARK Invest."
+  - "13 November 2026 — Verifier pass (automatic): searchBio was a pointer to the sibling records — replaced with the shared Carrie Jadus searchBio (as fact-checked in #168, incl. its 29 Aug two-week restore) plus a paragraph on this wall from the on-site sign; dropped \"eyes closed\" from searchMuralDescription (the woman's eye is covered by a fish in the photo — not visible). Bio facts match the siblings; sign text matches the draft; no duplicate (only nearby record is #130, same address). Fresh searches found no coverage of this wall."
+sourceNotes:
+  - "Rob, New Mural intake 13 Nov 2026 (20261113T190503-vus2): photo, signature photo, GPS 27.771555,-82.650877 ±5 m, heading 355°"
+  - "Rob's note (verbatim): \"On green beach replacing half of the Angela faustina mural. \""
+  - "On-site sign (signature photo): ARTIST Carrie Jadus; PUBLIC ART CONSULTANT Jenee Priebe/No Good Deeds Art; PRODUCED BY Florida Wildlife Corridor Foundation; SPONSORED BY ARK Invest; describes the Corridor Foundation's state-wide mural campaign"
+  - "Address: OpenStreetMap Nominatim reverse geocode of Rob's GPS → Green Bench Brewing Co., 1133 Baum Avenue North (same address as #130)"
+  - "https://nominatim.openstreetmap.org/reverse?lat=27.771555&lon=-82.650877&format=json&zoom=18"
+  - "Artist bio pooled from #149/#150/#168 sources: http://www.carriejadus.com/bio.html"
+  - "https://stpetecatalyst.com/art-business-business-of-art-carrie-jadus/"
+  - "https://creativepinellas.org/magazine/carrie-jadus/"
+  - "Campaign background (no mention of this wall): https://83degreesmedia.com/florida-wildlife-corridor-foundation-launches-mural-campaign-111522/"
+  - "Web searches 13 Nov 2026 found no published coverage of this specific wall (title, date) yet"
+  - "Verifier 13 Nov 2026: carriejadus.com was unreachable (DNS failure); bio facts rest on the sibling records' fact-checked sources. Re-searched (Jadus + Corridor + Green Bench / Baum Ave; Street Art Cities; Corridor Foundation story pages at https://fl-wildlife-corridor-foundation.shorthandstories.com/corridor-foundation-headquarters) — nothing on this wall"
+  - "⚑ For Rob: title — none found on the sign or online; left blank. Check Jadus's Instagram (@jadusfineart) or ask her / Jenee Priebe."
+  - "⚑ For Rob: year — left 0 (not verified in print). Your note says it is new; set 2026 if you confirm it was painted this year."
+  - "⚑ For Rob: category — set commercial (Corridor Foundation campaign, ARK Invest sponsor; the sign does not mention SHINE). Change to shine/2026 if it was part of the festival."
+  - "⚑ For Rob: #130 Angela Faustina \"Citrus Medley\" (same address, 16 m away) — per your note this wall replaces half of it. #130's text describes two panels; it needs an update (one panel left?) and a photo check."
+  - "⚑ For Rob: building Green Bench Brewing Company and address 1133 Baum Ave N come from the reverse geocode + #130; confirm. Lat/lng is where you stood — nudge to the wall in the route editor."
+  - "⚑ For Rob: the description names manatees, sunfish and an alligator from the photo; the species are my identification, not the artist's."

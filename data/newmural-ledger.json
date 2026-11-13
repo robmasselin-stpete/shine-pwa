@@ -54,5 +54,14 @@
     "artist": "Apexer",
     "flags": 7,
     "at": "2026-11-12T16:04:56"
+  },
+  "20261113T190503-vus2": {
+    "id": 234,
+    "status": "drafted",
+    "file": "data/murals/234-carrie-jadus-commercial.yaml",
+    "img": "images/murals/commercial/carrie-jadus-green-bench.jpeg",
+    "artist": "Carrie Jadus",
+    "flags": 8,
+    "at": "2026-11-13T14:11:04"
   }
 }
