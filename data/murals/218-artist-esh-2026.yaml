@@ -20,15 +20,14 @@ basedIn: "Tampa, FL"
 pronouns: "he/him"
 
 photos:
-  - { url: "images/murals/2026/218-2026-11-07-141218.jpeg", dateTaken: "2026-11-07", gps: [27.760684, -82.646368, 2] }
-  - { url: "images/murals/2026/218-2026-11-07-165211.jpeg", dateTaken: "2026-11-07", gps: [27.760698, -82.646376, 3] }
-  - { url: "images/murals/2026/218-2026-11-08-134136.jpeg", dateTaken: "2026-11-08", gps: [27.760433, -82.646812, 19] }
-  - { url: "images/murals/2026/218-2026-11-09-140816.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.760638, -82.646348, 2] }
-  - { url: "images/murals/2026/218-2026-11-10-132002.jpeg", dateTaken: "2026-11-10", caption: "Tuesday Morning", gps: [27.760648, -82.646316, 6] }
-  - { url: "images/murals/2026/218-2026-11-11-131355.jpeg", dateTaken: "2026-11-11", caption: "Wednesday Morning", gps: [27.760577, -82.646657, 16], heading: 4 }
-  - { url: "images/murals/2026/218-2026-11-12-133826.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.760324, -82.646808, 33], heading: 10 }
-  - { url: "images/murals/2026/218-2026-11-12-212138.jpeg", dateTaken: "2026-11-12", caption: "Thursday afternoon", gps: [27.760344, -82.646575, 38], heading: 358 }
-  - { url: "images/murals/2026/218-2026-11-13-133622.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning. The wall has expanded!", gps: [27.760536, -82.646301, 4], heading: 352 }
+  - { url: "images/murals/2026/218-2026-11-07-141218-aligned.jpeg", dateTaken: "2026-11-07", gps: [27.760684, -82.646368, 2] }
+  - { url: "images/murals/2026/218-2026-11-07-165211-aligned.jpeg", dateTaken: "2026-11-07", gps: [27.760698, -82.646376, 3] }
+  - { url: "images/murals/2026/218-2026-11-08-134136-aligned.jpeg", dateTaken: "2026-11-08", gps: [27.760433, -82.646812, 19] }
+  - { url: "images/murals/2026/218-2026-11-09-140816-aligned.jpeg", dateTaken: "2026-11-09", caption: "Monday Morning", gps: [27.760638, -82.646348, 2] }
+  - { url: "images/murals/2026/218-2026-11-11-131355-aligned.jpeg", dateTaken: "2026-11-11", caption: "Wednesday Morning", gps: [27.760577, -82.646657, 16], heading: 4 }
+  - { url: "images/murals/2026/218-2026-11-12-133826-aligned.jpeg", dateTaken: "2026-11-12", caption: "Thursday Morning", gps: [27.760324, -82.646808, 33], heading: 10 }
+  - { url: "images/murals/2026/218-2026-11-13-133622-close-aligned.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning", gps: [27.760536, -82.646301, 4], heading: 352 }
+  - { url: "images/murals/2026/218-2026-11-13-133622-wide-aligned.jpeg", dateTaken: "2026-11-13", caption: "Friday Morning. The wall has expanded!", gps: [27.760536, -82.646301, 4], heading: 352 }
 
 underConstruction: true
 
@@ -155,6 +154,7 @@ impressions: []
 # ── Provenance (not exported to data.js) ──
 source: manual
 revisionLog:
+  - "13 November 2026 — Build viewer: all 9 progress photos replaced with 8 photos aligned to the same wall, each framed slightly wider (Rob, marketing/builds/218-artist-esh/README.md, approved 13 Nov). Friday 13 Nov appears twice from one original: framed like Thursday (new caption 'Friday Morning'), then the full wide view (kept 'Friday Morning. The wall has expanded!'). Dropped from the app only: 11-10-132002 'Tuesday Morning' (lift basket covers the figure) and 11-12-212138 'Thursday afternoon' (originals kept). Captions, capture GPS and headings carried over from the matching live photos. Main photo is now the wide aligned 13 Nov shot."
   - "10 November 2026 — Facing set to 0° (N) by Rob in the route editor (used by the Mural Finder)."
   - "4 November 2026 — Bio review tool, approved by Rob: artistBio, searchBio. Changes — artistBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count); searchBio: \"One of fifteen artists\" → \"the festival's twelfth year\" (no count). [review:20261104212344-7f11c519]"
   - "2 November 2026 — Bio review tool, approved by Rob: pronouns. Changes — pronouns: \"\" → \"he/him\". [review:20261102204020-292093aa]"
@@ -162,6 +162,7 @@ revisionLog:
   - "1 November 2026 — Bio review tool, approved by Rob: basedIn, instagram, artistBio, searchBio, muralInspiration, searchMuralDescription, furtherWork. [review:20261101170918-367f2d29]"
   - "2026-10-24 — Placeholder for SHINE 2026 wall #6 (festival Nov 6–15). Artist + venue from SPAA list / Rob's handoff brief. Coordinates: PLACEHOLDER: shares wall #7's address; set ~20 m south of #7's pin per Rob 2026-10-24 — fix on Oct 30 scouting. Final GPS from Rob's Oct 30 scouting. Bio, links, photos to follow during/after the festival."
 sourceNotes:
+  - "Aligned build photos by Rob, 13 Nov 2026: marketing/builds/218-artist-esh/ (derived copies of the Capture originals)"
   - "Rob, route-editor export 10 Nov 2026 (facing)"
   - "SPAA SHINE Walls & Artists list, updated (Rob, 4 Nov 2026)"
   - "https://www.tampabaybeacons.com/2026/10/29/happenings-ae-news-and-events/"
